@@ -151,3 +151,6 @@ replay, memory compaction, numeric/choice scoring, dataset adapters, paired
 reporting and deadlines. The `smoke` command adds real-model GPU and resume tests.
 Run it on each new machine before a long evaluation. Python dependencies are
 locked; GPU kernels and hardware can still introduce nondeterminism.
+
+See [release verification](docs/verification.md) for the installation, portability,
+GPU recovery, and audit checks performed on this implementation.
