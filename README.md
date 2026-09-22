@@ -136,6 +136,40 @@ workspace/
 
 ## Results and verification
 
+Exploratory results through September 22, 2026, using
+**Qwen3-4B-Thinking-2507**. Each row compares the same questions completed by both
+arms; accuracy includes correct/total counts. Differences are percentage points.
+
+| Benchmark | Baseline | Ours | Difference |
+|---|---:|---:|---:|
+| LongBench v2 | **44.86% (48/107)** | 42.06% (45/107) | -2.80 |
+| HMMT25 | 43.33% (13/30) | **56.67% (17/30)** | +13.33 |
+| GPQA Main | 50.00% (53/106) | **51.89% (55/106)** | +1.89 |
+| AIME25 | 70.00% (21/30) | **76.67% (23/30)** | +6.67 |
+| SuperGPQA | 41.67% (45/108) | **42.59% (46/108)** | +0.93 |
+| **Pooled questions** | **47.24% (180/381)** | **48.82% (186/381)** | **+1.57** |
+
+These runs used 32K input/output caps. HMMT25 and AIME25 cover all 30 questions
+each; the other rows are partial evaluations. LongBench v2 uses truncated context.
+LongBench v2/HMMT25/GPQA include an additional ours run to complete the shared
+cohort, so their compute budgets are unequal. AIME25/SuperGPQA shared a three-hour,
+four-GPU budget per arm: baseline completed 183 SuperGPQA questions and ours 108;
+the table uses their 108 common questions. The pooled row is question-weighted,
+not a benchmark-average score or an equal-compute comparison.
+
+Earlier evaluation (separate run; these three datasets are not included in the
+current download CLI):
+
+| Benchmark | Baseline | Ours | Difference |
+|---|---:|---:|---:|
+| GSM8K | 95.59% (130/136) | **96.32% (131/136)** | +0.74 |
+| MATH500 | 98.51% (132/134) | 98.51% (132/134) | 0.00 |
+| MMLU-Pro | 69.40% (93/134) | 69.40% (93/134) | 0.00 |
+| **Pooled questions** | **87.87% (355/404)** | **88.12% (356/404)** | **+0.25** |
+
+The earlier run allocated 16 GPU-hours per arm. These are single-seed,
+completion-selected exploratory results, not evidence of statistical significance.
+
 Reports compare **common completed questions**, with per-task accuracy, wins/losses,
 completion counts, and runtime. Time-censored subsets can favor quickly completed
 questions; they are not full-dataset scores. Selected-rollout commit changes the
