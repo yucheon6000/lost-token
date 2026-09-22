@@ -28,3 +28,13 @@ dependency versions. New worker identities record the actual runtime.
 
 The GitHub Actions workflow repeats CPU tests, formatting checks, and package
 building. It does not assume access to GPUs or benchmark/model downloads.
+
+All complete source datasets were also normalized and hash-validated:
+
+| Dataset | Rows | Maximum prepared prompt tokens | Truncated contexts |
+|---|---:|---:|---:|
+| aime25 | 30 | 796 | 0 |
+| hmmt25 | 30 | 653 | 0 |
+| gpqa | 448 | 2,797 | 0 |
+| supergpqa | 26,529 | 4,108 | 0 |
+| longbench_v2 | 503 | 32,738 | 387 |
