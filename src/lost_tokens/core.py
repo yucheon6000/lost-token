@@ -110,7 +110,7 @@ def atomic_text(path, text):
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, name = tempfile.mkstemp(prefix=".pending-", dir=path.parent)
     try:
-        with os.fdopen(fd, "w") as stream:
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
             stream.write(text)
             stream.flush()
             os.fsync(stream.fileno())

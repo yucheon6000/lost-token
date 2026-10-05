@@ -84,7 +84,8 @@ def download_datasets(work_dir, benchmarks):
         source = manifest[task]
         root = Path(work_dir) / "inputs" / task / source["revision"]
         for name, sha in source["files"].items():
-            download_file(source["url_prefix"] + name, root / name, sha)
+            url = (source["url_prefix"] + name) if "url_prefix" in source else source["urls"][name]
+            download_file(url, root / name, sha)
         atomic_json(root / "source.json", source)
 
 
@@ -123,7 +124,20 @@ def raw_rows(work_dir, task, seed):
     for name, sha in source["files"].items():
         if not (root / name).exists() or file_digest(root / name) != sha:
             raise ValueError(f"Missing or corrupt {task} input; run lost-tokens download first")
-    if task in ("aime25", "hmmt25"):
+    if task == "gsm8k":
+        with (root / "test.jsonl").open(encoding="utf-8") as stream:
+            for index, line in enumerate(stream):
+                row = json.loads(line)
+                answer = row["answer"].split("####")[-1].strip()
+                yield {
+                    "id": f"gsm8k-test-{index}",
+                    "task": task,
+                    "question": row["question"],
+                    "gold": answer,
+                    "choices": [],
+                    "answer_format": "math",
+                }
+    elif task in ("aime25", "hmmt25"):
         import pyarrow.parquet as pq
 
         for row in pq.read_table(root / "data/train-00000-of-00001.parquet").to_pylist():

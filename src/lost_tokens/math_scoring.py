@@ -30,13 +30,16 @@ def boxed_answer(text):
 def parsed_answer(answer):
     from math_verify import LatexExtractionConfig, parse
 
-    return parse(
-        "\\boxed{" + answer + "}",
-        extraction_config=[LatexExtractionConfig(boxed_match_priority=0)],
-        fallback_mode="first_match",
-        extraction_mode="first_match",
-        parsing_timeout=5,
-    )
+    try:
+        return parse(
+            "\\boxed{" + answer + "}",
+            extraction_config=[LatexExtractionConfig(boxed_match_priority=0)],
+            fallback_mode="first_match",
+            extraction_mode="first_match",
+            parsing_timeout=0,
+        )
+    except Exception:
+        return []
 
 
 def math_correct(gold, prediction):
@@ -44,16 +47,19 @@ def math_correct(gold, prediction):
         return False
     from math_verify import verify
 
-    return bool(
-        verify(
-            parsed_answer(gold),
-            parsed_answer(prediction),
-            float_rounding=6,
-            numeric_precision=15,
-            strict=True,
-            timeout_seconds=5,
+    try:
+        return bool(
+            verify(
+                parsed_answer(gold),
+                parsed_answer(prediction),
+                float_rounding=6,
+                numeric_precision=15,
+                strict=True,
+                timeout_seconds=0,
+            )
         )
-    )
+    except Exception:
+        return False
 
 
 def natural_answer(text, row):

@@ -296,6 +296,10 @@ class StreamDecoder:
             logprobs.append(lp)
             if token in self.model.eos_ids or (stop_marker and stop_marker.startswith("</")):
                 break
+            if index >= 12:
+                tok_str = self.model.decode([token])
+                if any(c in tok_str for c in (".\n", ".\n\n", ".\t", ". ", "\n\n", "\n-", "\n*")):
+                    break
         self.model._sync()
         return {
             "ids": ids,
@@ -324,19 +328,24 @@ def compact_history(history, target):
 
 
 def memory_text(notes):
-    """Only unchosen rollout text; no repeated instructions, probabilities, or suffix."""
+    """Structured Contrastive Hypotheses framing inside possibilities block."""
 
     def escape(text):
         return re.sub(
-            r"</?(?:possibilities|think|reasoning)>",
+            r"</?(?:possibilities|contrastive_hypotheses|think|reasoning)>",
             lambda m: m.group().replace("<", "&lt;").replace(">", "&gt;"),
             text,
             flags=re.I,
         )
 
+    formatted = []
+    for i, n in enumerate(notes):
+        clean_text = escape(n["text"]).strip()
+        formatted.append(f"- Alternative Path [{i+1}]: {clean_text}")
+
     return (
         "\n<possibilities>\n"
-        + "\n\n".join(escape(n["text"]) for n in notes)
+        + "\n".join(formatted)
         + "\n</possibilities>\n"
     )
 

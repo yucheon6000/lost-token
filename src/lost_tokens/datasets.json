@@ -49,5 +49,18 @@
     "task": "aime25",
     "repo": "MathArena/aime_2025",
     "url_prefix": "https://huggingface.co/datasets/MathArena/aime_2025/resolve/c94da77eb22bbd6439e62a323bec18493a421302/"
+  },
+  "gsm8k": {
+    "task": "gsm8k",
+    "repo": "https://github.com/openai/grade-school-math",
+    "revision": "content-sha256-v1",
+    "files": {
+      "train.jsonl": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+      "test.jsonl": "3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14"
+    },
+    "urls": {
+      "train.jsonl": "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/train.jsonl",
+      "test.jsonl": "https://raw.githubusercontent.com/openai/grade-school-math/master/grade_school_math/data/test.jsonl"
+    }
   }
 }

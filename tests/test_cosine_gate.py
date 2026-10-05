@@ -83,5 +83,5 @@ class CosineTests(unittest.TestCase):
             memory_text(
                 [{"rank": 2, "text": " alternative A"}, {"rank": 3, "text": "alternative B"}]
             ),
-            "\n<possibilities>\n alternative A\n\nalternative B\n</possibilities>\n",
+            "\n<possibilities>\n- Alternative Path [1]: alternative A\n- Alternative Path [2]: alternative B\n</possibilities>\n",
         )

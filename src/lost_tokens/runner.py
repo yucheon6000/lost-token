@@ -1,9 +1,6 @@
-"""Portable sequential-arm, multi-GPU execution with strict checkpoint recovery."""
-
 from __future__ import annotations
 
 import copy
-import fcntl
 import json
 import os
 from pathlib import Path
@@ -13,6 +10,8 @@ import subprocess
 import sys
 import time
 import uuid
+
+import filelock
 
 from .core import RunStore, atomic_json, digest, file_digest, now, source_files, source_fingerprint
 from .data import load_prepared
@@ -224,8 +223,7 @@ def worker(run, name, probe=False):
         "schedule": schedule,
         "mode": "smoke" if plan["smoke"] else "study",
     }
-    with (path.parent / (name + ".lock")).open("a") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    with filelock.FileLock(str(path.parent / (name + ".lock")), timeout=0):
         store = CheckpointStore(
             path, identity, resume=path.exists(), deadline=schedule["deadline_epoch"], probe=probe
         )
@@ -324,8 +322,7 @@ def supervise(run):
     run = Path(run).resolve()
     plan = read_json(run / "plan.json")
     settings = plan["monitor"]
-    with (run / "supervisor.lock").open("a") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    with filelock.FileLock(str(run / "supervisor.lock"), timeout=0):
         if source_fingerprint() != plan["source"]:
             raise ValueError("Frozen source changed; cannot resume")
         state = read_json(run / "status.json")

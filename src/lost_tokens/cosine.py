@@ -75,8 +75,21 @@ def cosine_matrix(vectors):
     return scores.tolist()
 
 
-def select_distinct(ranks, matrix, valid, threshold):
-    """Greedy by probability rank; compare each option to all retained options."""
+import re
+
+
+def extract_numbers_and_equations(text: str) -> list[str]:
+    return re.findall(r"\b\d+(?:[\.,/]\d+)?\b", text)
+
+
+def numbers_differ(text_a: str, text_b: str) -> bool:
+    nums_a = extract_numbers_and_equations(text_a)
+    nums_b = extract_numbers_and_equations(text_b)
+    return bool(nums_a and nums_b and nums_a != nums_b)
+
+
+def select_distinct(ranks, matrix, valid, threshold, texts=None):
+    """Greedy by probability rank; compare each option to all retained options with numerical discrepancy preservation."""
     if not -1 <= threshold <= 1:
         raise ValueError("Cosine threshold outside [-1, 1]")
     retained = [0] if valid and valid[0] else []
@@ -96,12 +109,20 @@ def select_distinct(ranks, matrix, valid, threshold):
             continue
         closest = max(retained, key=lambda j: matrix[index][j])
         score = matrix[index][closest]
-        drop = score >= threshold
+        has_num_divergence = False
+        if texts and texts[index] and texts[closest]:
+            has_num_divergence = numbers_differ(texts[index], texts[closest])
+
+        drop = (score >= threshold) and not has_num_divergence
         decisions.append(
             {
                 "rank": ranks[index],
                 "drop_alternative": drop,
-                "reason": "cosine_above_threshold" if drop else "cosine_below_threshold",
+                "reason": (
+                    "numerical_divergence_override"
+                    if (score >= threshold and has_num_divergence)
+                    else ("cosine_above_threshold" if drop else "cosine_below_threshold")
+                ),
                 "compared_ranks": [ranks[j] for j in retained],
                 "closest_rank": ranks[closest],
                 "max_cosine": score,
@@ -109,8 +130,6 @@ def select_distinct(ranks, matrix, valid, threshold):
         )
         if not drop:
             retained.append(index)
-    # A reference without any distinct alternative supplies no discarded future.
-    # The selected reference is committed to the body, never listed as a possibility.
     return [ranks[i] for i in retained if i != 0], decisions
 
 
@@ -130,7 +149,7 @@ def compare_rollouts(encoder, notes, threshold):
         embeddings[i] = vectors[a]
         for b, j in enumerate(indices):
             matrix[i][j] = dense[a][b]
-    retained, decisions = select_distinct(ranks, matrix, valid, threshold)
+    retained, decisions = select_distinct(ranks, matrix, valid, threshold, texts=texts)
     elapsed = time.monotonic() - started
     return {
         "method": "embedding_cosine",

@@ -10,6 +10,7 @@ dependencies = [
     "huggingface-hub>=0.34,<1",
     "math-verify>=0.8,<1",
     "pyarrow>=19,<24",
+    "filelock>=3.13",
 ]
 
 [project.scripts]
