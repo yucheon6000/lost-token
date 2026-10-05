@@ -17,10 +17,15 @@ import uuid
 from .core import RunStore, atomic_json, digest, file_digest, now, source_files, source_fingerprint
 from .data import load_prepared
 from .protocol import planned_rows
-from .reporting import collect, read_json, report
+from .reporting import DEFAULT_ARMS, collect, plan_arms, read_json, report
 from .runtime import environment, heartbeat, install_interrupt_handlers
 
-ARMS = {"baseline": "plain_ar", "ours": "filtered_futures"}
+ARM_CONDITIONS = {
+    "baseline": "plain_ar",
+    "reference": "reference_only",
+    "all": "all_futures",
+    "ours": "filtered_futures",
+}
 
 
 class DeadlineReached(Exception):
@@ -92,7 +97,11 @@ def create_run(
     run_name=None,
     smoke=False,
     max_output_tokens=None,
+    arms=None,
 ):
+    arms = list(arms) if arms else list(DEFAULT_ARMS)
+    if len(set(arms)) != len(arms) or any(a not in ARM_CONDITIONS for a in arms):
+        raise ValueError("arms must be distinct names from " + ", ".join(ARM_CONDITIONS))
     if hours_per_arm is not None and hours_per_arm <= 0:
         raise ValueError("hours-per-arm must be positive")
     if limit is not None and limit < 1:
@@ -139,7 +148,7 @@ def create_run(
         "created_at": now(),
         "smoke": smoke,
         "benchmarks": benchmarks,
-        "arms": list(ARMS),
+        "arms": arms,
         "source": source_fingerprint(),
         "workers": [],
         "log_dir": str(log_dir),
@@ -156,7 +165,8 @@ def create_run(
             "minimum_free_bytes": 2 * 1024**3,
         },
     }
-    for arm, condition in ARMS.items():
+    for arm in arms:
+        condition = ARM_CONDITIONS[arm]
         for index, gpu in enumerate(gpu_ids):
             worker_cfg = copy.deepcopy(cfg)
             worker_cfg["experiment"]["arms"] = [condition]
@@ -185,8 +195,11 @@ def create_run(
                 }
             )
     for i in range(len(gpu_ids)):
-        left, right = plan["workers"][i], plan["workers"][i + len(gpu_ids)]
-        assert file_digest(run / left["split"]) == file_digest(run / right["split"])
+        splits = {
+            file_digest(run / plan["workers"][a * len(gpu_ids) + i]["split"])
+            for a in range(len(arms))
+        }
+        assert len(splits) == 1
     atomic_json(run / "plan.json", plan)
     for name, path in source_files().items():
         target = run / "provenance" / name
@@ -246,7 +259,7 @@ def worker(run, name, probe=False):
         try:
             with heartbeat("loading generator", log):
                 model = LocalModel(cfg["model"], log)
-            if assignment["arm"] == "ours":
+            if assignment["condition"] == "filtered_futures":
                 with heartbeat("loading embedding model", log):
                     model.semantic_encoder = CosineEncoder(cfg["similarity"]["encoder"])
             rows = planned_rows(cfg, split, identity["mode"])
@@ -354,10 +367,10 @@ def supervise(run):
                         "start_epoch": epoch + i * duration,
                         "deadline_epoch": epoch + (i + 1) * duration,
                     }
-                    for i, arm in enumerate(plan["arms"])
+                    for i, arm in enumerate(plan_arms(plan))
                 }
                 atomic_json(run / "schedule.json", schedule)
-            for arm in plan["arms"]:
+            for arm in plan_arms(plan):
                 if (run / (arm + "-complete.json")).exists():
                     continue
                 if arm not in schedule:

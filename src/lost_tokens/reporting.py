@@ -7,6 +7,13 @@ import time
 from .core import atomic_json, now
 
 
+DEFAULT_ARMS = ("baseline", "ours")
+
+
+def plan_arms(plan):
+    return list(plan.get("arms") or DEFAULT_ARMS)
+
+
 def read_json(path, default=None):
     for attempt in range(5):
         try:
@@ -23,7 +30,7 @@ def collect(run):
     run = Path(run)
     plan = read_json(run / "plan.json")
     schedule = read_json(run / "schedule.json", {})
-    outcomes = {arm: {} for arm in plan["arms"]}
+    outcomes = {arm: {} for arm in plan_arms(plan)}
     for worker in plan["workers"]:
         deadline = schedule.get(worker["arm"], {}).get("deadline_epoch")
         for path in (run / "workers" / worker["name"] / "outcomes").glob("*/*.json"):
@@ -66,6 +73,34 @@ def summarize(outcomes, tasks):
     return paired
 
 
+def summarize_vs_baseline(outcomes, tasks):
+    """Pairwise (common to baseline and the arm) comparison for each non-baseline arm."""
+    result = {}
+    base = outcomes["baseline"]
+    for arm, rows in outcomes.items():
+        if arm == "baseline":
+            continue
+        result[arm] = {}
+        for task in [*tasks, "all"]:
+            keys = sorted(
+                k for k in set(rows) & set(base) if task == "all" or k.startswith(task + "/")
+            )
+            n = len(keys)
+            arm_correct = sum(rows[k]["correct"] for k in keys)
+            base_correct = sum(base[k]["correct"] for k in keys)
+            result[arm][task] = {
+                "n": n,
+                "correct": arm_correct,
+                "baseline_correct": base_correct,
+                "accuracy": arm_correct / n if n else None,
+                "baseline_accuracy": base_correct / n if n else None,
+                "wins": sum(bool(rows[k]["correct"]) and not base[k]["correct"] for k in keys),
+                "losses": sum(bool(base[k]["correct"]) and not rows[k]["correct"] for k in keys),
+                "difference_pp": 100 * (arm_correct - base_correct) / n if n else None,
+            }
+    return result
+
+
 def report(run):
     run = Path(run)
     plan, schedule, outcomes = collect(run)
@@ -81,6 +116,10 @@ def report(run):
             "Selected-rollout commit changes the main continuation as well as alternative memory.",
         ],
     }
+    arms = plan_arms(plan)
+    extra = "baseline" in outcomes and set(arms) != set(DEFAULT_ARMS)
+    if extra:
+        result["vs_baseline"] = summarize_vs_baseline(outcomes, plan["benchmarks"])
     for arm, rows in outcomes.items():
         result["own"][arm] = {}
         for task in [*plan["benchmarks"], "all"]:
@@ -101,20 +140,48 @@ def report(run):
         "",
         "Updated: " + result["at"],
         "",
-        "| Task | Common n | " + " | ".join(plan["arms"]) + " | Difference pp |",
-        "|---|---:|" + "---:|" * len(plan["arms"]) + "---:|",
+        "| Task | Common n | " + " | ".join(arms) + " | Difference pp |",
+        "|---|---:|" + "---:|" * len(arms) + "---:|",
     ]
     for task, row in result["paired"].items():
-        cells = [
-            f"{100 * row['accuracy'][a]:.2f}% ({row['correct'][a]})" if row["n"] else "pending"
-            for a in plan["arms"]
-        ]
+        if "baseline" in outcomes:
+            cells = [
+                f"{100 * row['accuracy'][a]:.2f}% ({row['correct'][a]})" if row["n"] else "pending"
+                for a in arms
+            ]
+        else:
+            own = {a: result["own"][a][task] for a in arms}
+            cells = [
+                f"{100 * own[a]['accuracy']:.2f}% ({own[a]['correct']}/{own[a]['n']})"
+                if own[a]["n"]
+                else "pending"
+                for a in arms
+            ]
         difference = row.get("difference_pp")
         lines.append(
             f"| {task} | {row['n']} | " + " | ".join(cells) + f" | {difference:+.2f} |"
             if difference is not None
             else f"| {task} | {row['n']} | " + " | ".join(cells) + " | pending |"
         )
+    if extra:
+        lines += ["", "Paired against baseline (common to baseline and the arm):", ""]
+        lines += [
+            "| Arm | Task | Common n | Baseline | Arm | Wins | Losses | Difference pp |",
+            "|---|---|---:|---:|---:|---:|---:|---:|",
+        ]
+        for arm, tasks in result["vs_baseline"].items():
+            for task, r in tasks.items():
+                if r["n"]:
+                    lines.append(
+                        f"| {arm} | {task} | {r['n']} | "
+                        f"{100 * r['baseline_accuracy']:.2f}% ({r['baseline_correct']}) | "
+                        f"{100 * r['accuracy']:.2f}% ({r['correct']}) | {r['wins']} | "
+                        f"{r['losses']} | {r['difference_pp']:+.2f} |"
+                    )
+                else:
+                    lines.append(f"| {arm} | {task} | 0 | pending | pending | - | - | pending |")
+    elif "baseline" not in outcomes:
+        lines += ["", "No baseline arm in this run; per-arm accuracy only.", ""]
     lines += [
         "",
         "Own completed: " + ", ".join(f"{a} {len(r)}" for a, r in outcomes.items()) + ".",

@@ -11,6 +11,7 @@ from lost_tokens.config import load_spec, runtime_spec
 from lost_tokens.core import atomic_json, digest, file_digest
 from lost_tokens.data import choice_row, download_file, normalize, sources
 from lost_tokens.reporting import report
+from lost_tokens.cli import main as cli_main
 from lost_tokens.runner import CheckpointStore, DeadlineReached, create_run
 
 
@@ -136,6 +137,182 @@ class PortableTests(unittest.TestCase):
                 self.assertEqual(sum(map(len, by_arm["ours"])), 3)
             finally:
                 os.chdir(cwd)
+
+    def _make_run(self, folder, arms, rows=None, include_arms_key=True):
+        run = Path(folder)
+        plan = {"workers": [], "benchmarks": ["aime25"], "smoke": False}
+        if include_arms_key:
+            plan["arms"] = list(arms)
+        for arm in arms:
+            plan["workers"].append({"name": arm + "-worker0", "arm": arm})
+            for ident, ok in (rows or {}).get(arm, {}).items():
+                atomic_json(
+                    run / "workers" / (arm + "-worker0") / "outcomes/aime25" / (ident + ".json"),
+                    {
+                        "task": "aime25",
+                        "id": ident,
+                        "finished_epoch": 1,
+                        "correct": ok,
+                        "body_tokens": 1,
+                        "events": 0,
+                        "thinking_complete": True,
+                        "prediction": "1",
+                    },
+                )
+        atomic_json(run / "plan.json", plan)
+        return run
+
+    def test_default_and_selected_arms_in_plan(self):
+        rows = [
+            {
+                "id": f"aime25-{i}",
+                "task": "aime25",
+                "question": "Q",
+                "gold": "1",
+                "choices": [],
+                "answer_format": "math",
+                "prompt_tokens": 8,
+            }
+            for i in range(2)
+        ]
+        with tempfile.TemporaryDirectory() as folder:
+            spec = runtime_spec(load_spec(), folder)
+            with (
+                patch("lost_tokens.runner.devices", return_value=["0"]),
+                patch("lost_tokens.runner.load_prepared", return_value=rows),
+            ):
+                default = create_run(folder, spec, ["aime25"], run_name="d")
+                only = create_run(folder, spec, ["aime25"], run_name="r", arms=["reference"])
+                three = create_run(
+                    folder, spec, ["aime25"], run_name="t", arms=["baseline", "reference", "ours"]
+                )
+                with self.assertRaises(ValueError):
+                    create_run(folder, spec, ["aime25"], run_name="x", arms=["nope"])
+            plan = json.loads((default / "plan.json").read_text())
+            self.assertEqual(plan["arms"], ["baseline", "ours"])
+            self.assertEqual(
+                [(w["name"], w["condition"]) for w in plan["workers"]],
+                [("baseline-worker0", "plain_ar"), ("ours-worker0", "filtered_futures")],
+            )
+            plan = json.loads((only / "plan.json").read_text())
+            self.assertEqual(plan["arms"], ["reference"])
+            self.assertEqual(
+                [(w["name"], w["condition"]) for w in plan["workers"]],
+                [("reference-worker0", "reference_only")],
+            )
+            cfg = json.loads((only / "configs/reference-worker0.json").read_text())
+            self.assertEqual(cfg["experiment"]["arms"], ["reference_only"])
+            plan = json.loads((three / "plan.json").read_text())
+            self.assertEqual(len(plan["workers"]), 3)
+
+    def test_cli_arms_choices(self):
+        with self.assertRaises(SystemExit):
+            cli_main(["run", "--arms", "bogus"])
+
+    def test_old_plan_without_arms_key_reports(self):
+        with tempfile.TemporaryDirectory() as folder:
+            run = self._make_run(
+                folder,
+                ("baseline", "ours"),
+                {"baseline": {"a": False}, "ours": {"a": True}},
+                include_arms_key=False,
+            )
+            result = report(run)
+            self.assertEqual(result["paired"]["all"]["difference_pp"], 100)
+            self.assertNotIn("vs_baseline", result)
+
+    def test_three_arm_report_has_both_pairings(self):
+        data = {
+            "baseline": {"a": True, "b": False, "c": False},
+            "reference": {"a": False, "b": True, "c": True},
+            "ours": {"a": True, "b": True, "c": False},
+        }
+        with tempfile.TemporaryDirectory() as folder:
+            result = report(self._make_run(folder, list(data), data))
+            pairs = result["vs_baseline"]
+            self.assertEqual(
+                (pairs["reference"]["all"]["wins"], pairs["reference"]["all"]["losses"]), (2, 1)
+            )
+            self.assertEqual(pairs["ours"]["all"]["wins"], 1)
+            self.assertEqual(pairs["ours"]["all"]["n"], 3)
+            self.assertEqual(result["paired"]["all"]["n"], 3)
+            self.assertIn("reference", (Path(folder) / "report.md").read_text())
+
+    def test_report_without_baseline(self):
+        data = {"reference": {"a": True, "b": False}}
+        with tempfile.TemporaryDirectory() as folder:
+            result = report(self._make_run(folder, list(data), data))
+            self.assertEqual(result["own"]["reference"]["all"]["correct"], 1)
+
+    def test_report_without_baseline_uses_own_sets(self):
+        data = {"reference": {"a": True, "b": False}, "ours": {"a": True, "b": True, "c": True}}
+        with tempfile.TemporaryDirectory() as folder:
+            result = report(self._make_run(folder, list(data), data))
+            self.assertEqual(result["paired"]["all"]["n"], 2)
+            text = (Path(folder) / "report.md").read_text()
+            self.assertIn("| aime25 | 2 | 50.00% (1/2) | 100.00% (3/3) |", text)
+
+    def _load_compare_runs(self):
+        import importlib.util
+
+        path = Path(__file__).resolve().parents[1] / "scripts" / "compare_runs.py"
+        spec = importlib.util.spec_from_file_location("compare_runs", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_compare_runs_load_drops_late_outcomes(self):
+        module = self._load_compare_runs()
+        with tempfile.TemporaryDirectory() as folder:
+            run = self._make_run(folder, ("ours",), {"ours": {"a": True, "b": True}})
+            atomic_json(run / "workers/ours-worker0/outcomes/aime25/b.json", {
+                "task": "aime25", "id": "b", "finished_epoch": 11, "correct": True,
+            })
+            atomic_json(run / "schedule.json", {"ours": {"deadline_epoch": 10}})
+            self.assertEqual(sorted(module.load(run, "ours")), ["aime25/a"])
+
+    def test_compare_runs_load_plan_workers_and_duplicates(self):
+        module = self._load_compare_runs()
+        with tempfile.TemporaryDirectory() as folder:
+            run = self._make_run(folder, ("ours",), {"ours": {"a": True}})
+            stray = {"task": "aime25", "id": "stray", "finished_epoch": 1, "correct": True}
+            atomic_json(run / "workers/ours-worker9/outcomes/aime25/stray.json", stray)
+            self.assertEqual(sorted(module.load(run, "ours")), ["aime25/a"])
+            plan = json.loads((run / "plan.json").read_text())
+            plan["workers"].append({"name": "ours-worker1", "arm": "ours"})
+            atomic_json(run / "plan.json", plan)
+            atomic_json(
+                run / "workers/ours-worker1/outcomes/aime25/a.json",
+                {"task": "aime25", "id": "a", "finished_epoch": 1, "correct": False},
+            )
+            with self.assertRaises(ValueError):
+                module.load(run, "ours")
+
+    def test_compare_runs_script(self):
+        import contextlib
+        import importlib.util
+        import io
+
+        path = Path(__file__).resolve().parents[1] / "scripts" / "compare_runs.py"
+        spec = importlib.util.spec_from_file_location("compare_runs", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as folder:
+            a = self._make_run(
+                Path(folder) / "a",
+                ("baseline", "ours"),
+                {"baseline": {"x": True, "y": False}, "ours": {"x": False, "y": True}},
+            )
+            b = self._make_run(
+                Path(folder) / "b", ("reference",), {"reference": {"x": True, "y": True, "z": True}}
+            )
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                module.main([str(a), str(b), "--baseline", f"{a}:baseline"])
+            text = out.getvalue()
+            self.assertIn("| a | ours | 2 |", text)
+            self.assertIn("| b | reference | 2 | 50.00% (1) | 100.00% (2) | 1 | 0 | +50.00 |", text)
+            self.assertIn("b [reference] wins: aime25/y", text)
 
     def test_reports_only_common_on_time_cases(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -7,7 +7,7 @@ from pathlib import Path
 from .config import load_spec, runtime_spec
 from .data import download_datasets, download_models, prepare, sources
 from .reporting import read_json, report
-from .runner import audit_run, create_run, supervise, worker
+from .runner import ARM_CONDITIONS, audit_run, create_run, supervise, worker
 
 
 def main(argv=None):
@@ -41,6 +41,12 @@ def main(argv=None):
                 "--hours-per-arm",
                 type=float,
                 help="Sequential equal wall-time budget per arm; omit for full cohort",
+            )
+            sub.add_argument(
+                "--arms",
+                nargs="+",
+                choices=list(ARM_CONDITIONS),
+                help="Arms to run sequentially in this order (default: baseline ours)",
             )
             sub.add_argument(
                 "--limit", type=int, help="Seeded subset size per benchmark, identical across arms"
@@ -94,6 +100,7 @@ def main(argv=None):
             args.run_name,
             args.command != "run",
             args.max_output_tokens,
+            getattr(args, "arms", None),
         )
         print("Run:", run, flush=True)
         supervise(run)

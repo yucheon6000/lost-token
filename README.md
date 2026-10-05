@@ -80,6 +80,36 @@ configuration, code, or runtime identities. Resuming a timed run preserves its
 original deadlines; it does not grant a fresh budget. Completed earlier arms are
 not rerun. Start a new run name to change the experiment.
 
+## Ablation arms and seeds
+
+`run --arms` selects which arms to run, sequentially in the given order. Names:
+`baseline` (plain_ar), `reference` (reference_only), `all` (all_futures) and
+`ours` (filtered_futures). The default is `baseline ours`. When `baseline` is in
+the run, the report adds a paired table (common n, wins, losses, difference pp)
+for every other arm; without `baseline` it reports per-arm accuracy only.
+
+```bash
+uv run --frozen lost-tokens run --benchmarks aime25 --gpus 0,1 \
+  --arms reference --run-name aime25-reference
+```
+
+Per-case seeds derive from `experiment.seed`, the dataset namespace and the row
+id, so they are identical across arms and across runs with the same seed. To
+change the seed, export the config, edit `experiment.seed`, and pass it with a
+new run name:
+
+```bash
+uv run --frozen lost-tokens config > seed2.json   # edit "experiment": {"seed": ...}
+uv run --frozen lost-tokens run --config seed2.json --benchmarks aime25 \
+  --arms baseline reference ours --run-name aime25-seed2
+```
+
+Compare runs offline (stdlib only), pairing each arm with a baseline run/arm:
+
+```bash
+python scripts/compare_runs.py RUN_A RUN_B --baseline RUN_A:baseline
+```
+
 ## Data and configuration
 
 | CLI name | Dataset | Questions |
