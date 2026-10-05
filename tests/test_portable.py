@@ -12,6 +12,7 @@ from lost_tokens.core import atomic_json, digest, file_digest
 from lost_tokens.data import choice_row, download_file, normalize, sources
 from lost_tokens.reporting import report
 from lost_tokens.cli import main as cli_main
+from lost_tokens.protocol import planned_rows
 from lost_tokens.runner import CheckpointStore, DeadlineReached, create_run
 
 
@@ -137,6 +138,76 @@ class PortableTests(unittest.TestCase):
                 self.assertEqual(sum(map(len, by_arm["ours"])), 3)
             finally:
                 os.chdir(cwd)
+
+    def _subset_rows(self):
+        return [
+            {
+                "id": f"aime25-{i}",
+                "task": "aime25",
+                "question": "Q",
+                "gold": "1",
+                "choices": [],
+                "answer_format": "math",
+                "prompt_tokens": 8,
+            }
+            for i in range(6)
+        ]
+
+    def _evaluation_rows(self, run):
+        plan = json.loads((run / "plan.json").read_text())
+        w = next(w for w in plan["workers"] if w["arm"] == "baseline")
+        split = json.loads((run / w["split"]).read_text())
+        cfg = json.loads((run / w["config"]).read_text())
+        return plan, cfg, planned_rows(cfg, split, "study")
+
+    def test_ids_subset_selection_and_seed_inputs_match_full_run(self):
+        from lost_tokens.core import derived_seed
+
+        rows = self._subset_rows()
+        with tempfile.TemporaryDirectory() as folder:
+            spec = runtime_spec(load_spec(), folder)
+            ids_file = Path(folder) / "ids.json"
+            ids_file.write_text(json.dumps({"ids": ["aime25-4", "aime25-1"]}))
+            with (
+                patch("lost_tokens.runner.devices", return_value=["0"]),
+                patch("lost_tokens.runner.load_prepared", return_value=rows),
+            ):
+                full = create_run(folder, spec, ["aime25"], run_name="full")
+                sub = create_run(
+                    folder,
+                    spec,
+                    ["aime25"],
+                    run_name="sub",
+                    ids=["aime25-4", "aime25-1"],
+                    ids_file=ids_file,
+                )
+                for bad in (["aime25-1", "nope"], ["aime25-1", "aime25-1"]):
+                    with self.assertRaises(ValueError):
+                        create_run(folder, spec, ["aime25"], run_name="bad", ids=bad)
+                with self.assertRaises(ValueError):
+                    create_run(folder, spec, ["aime25"], run_name="bad", ids=["aime25-1"], limit=2)
+            _, full_cfg, full_rows = self._evaluation_rows(full)
+            plan, sub_cfg, sub_rows = self._evaluation_rows(sub)
+            self.assertEqual([r["id"] for _, r in sub_rows], ["aime25-1", "aime25-4"])
+            self.assertEqual(plan["ids"], ["aime25-4", "aime25-1"])
+            self.assertEqual(plan["ids_file"]["sha256"], file_digest(ids_file))
+            self.assertEqual(plan["counts"], {"aime25": 2})
+            lookup = {r["id"]: (ns, r) for ns, r in full_rows}
+            for ns, row in sub_rows:
+                self.assertEqual((ns, row), lookup[row["id"]])
+                self.assertEqual(
+                    derived_seed(sub_cfg["experiment"]["seed"], ns, row["id"]),
+                    derived_seed(full_cfg["experiment"]["seed"], *lookup[row["id"]][:1], row["id"]),
+                )
+
+    def test_cli_rejects_ids_file_with_limit(self):
+        with tempfile.TemporaryDirectory() as folder:
+            ids_file = Path(folder) / "ids.json"
+            ids_file.write_text('["aime25-1"]')
+            with self.assertRaises(SystemExit):
+                cli_main(
+                    ["run", "--work-dir", folder, "--limit", "2", "--ids-file", str(ids_file)]
+                )
 
     def _make_run(self, folder, arms, rows=None, include_arms_key=True):
         run = Path(folder)

@@ -98,6 +98,8 @@ def create_run(
     smoke=False,
     max_output_tokens=None,
     arms=None,
+    ids=None,
+    ids_file=None,
 ):
     arms = list(arms) if arms else list(DEFAULT_ARMS)
     if len(set(arms)) != len(arms) or any(a not in ARM_CONDITIONS for a in arms):
@@ -106,6 +108,14 @@ def create_run(
         raise ValueError("hours-per-arm must be positive")
     if limit is not None and limit < 1:
         raise ValueError("limit must be positive")
+    if ids is not None:
+        ids = list(ids)
+        if limit is not None:
+            raise ValueError("ids and limit are mutually exclusive")
+        if smoke:
+            raise ValueError("ids cannot be used with a smoke run")
+        if not ids or any(not isinstance(i, str) for i in ids) or len(set(ids)) != len(ids):
+            raise ValueError("ids must be a non-empty list of distinct strings")
     if not benchmarks or len(set(benchmarks)) != len(benchmarks):
         raise ValueError("Choose at least one distinct benchmark")
     gpu_ids = devices(gpus)
@@ -123,8 +133,22 @@ def create_run(
     if run.exists():
         raise ValueError("Run already exists; use resume or a new run-name")
     rows = {task: load_prepared(work_dir, spec, task) for task in benchmarks}
-    for task in rows:
-        rows[task] = rows[task][: len(gpu_ids) if smoke else limit]
+    if ids is not None:
+        # Keep prepared order; the namespace ("evaluation/<task>") and row id, which
+        # seed every case, are independent of which rows are selected.
+        wanted, found = set(ids), []
+        for task in rows:
+            row_ids = [r["id"] for r in rows[task]]
+            if len(set(row_ids)) != len(row_ids):
+                raise ValueError(f"{task} has duplicated row ids")
+            rows[task] = [r for r in rows[task] if r["id"] in wanted]
+            found += [r["id"] for r in rows[task]]
+        missing = wanted - set(found)
+        if missing or len(found) != len(ids):
+            raise ValueError("ids missing or ambiguous across benchmarks: " + ", ".join(sorted(missing)))
+    else:
+        for task in rows:
+            rows[task] = rows[task][: len(gpu_ids) if smoke else limit]
     cfg = copy.deepcopy(spec)
     if smoke:
         cfg["experiment"]["max_output_tokens"] = max_output_tokens or 256
@@ -156,6 +180,10 @@ def create_run(
         "seconds_per_arm": hours_per_arm * 3600 if hours_per_arm else None,
         "counts": {task: len(values) for task, values in rows.items()},
         "limit": limit,
+        "ids": ids,
+        "ids_file": (
+            {"path": str(ids_file), "sha256": file_digest(Path(ids_file))} if ids_file else None
+        ),
         "monitor": {
             "poll_seconds": 15,
             "initial_detail_seconds": 300,

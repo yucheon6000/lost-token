@@ -51,6 +51,11 @@ def main(argv=None):
             sub.add_argument(
                 "--limit", type=int, help="Seeded subset size per benchmark, identical across arms"
             )
+            sub.add_argument(
+                "--ids-file",
+                type=Path,
+                help="JSON list of ids, or {\"ids\": [...]}; runs exactly those questions",
+            )
     for name in ("resume", "report", "status", "audit"):
         sub = commands.add_parser(name)
         sub.add_argument("--run", type=Path, required=True)
@@ -83,6 +88,14 @@ def main(argv=None):
     )
     if getattr(args, "max_output_tokens", None) is not None and args.max_output_tokens < 1:
         parser.error("--max-output-tokens must be positive")
+    ids = None
+    if getattr(args, "ids_file", None) is not None:
+        if args.limit is not None:
+            parser.error("--ids-file and --limit are mutually exclusive")
+        loaded = json.loads(args.ids_file.expanduser().read_text())
+        ids = loaded.get("ids") if isinstance(loaded, dict) else loaded
+        if not isinstance(ids, list):
+            parser.error("--ids-file must hold a JSON list or an object with an 'ids' list")
     if args.command in ("setup", "download", "quickstart"):
         download_datasets(work, benchmarks)
         if not getattr(args, "data_only", False):
@@ -101,6 +114,8 @@ def main(argv=None):
             args.command != "run",
             args.max_output_tokens,
             getattr(args, "arms", None),
+            ids,
+            getattr(args, "ids_file", None),
         )
         print("Run:", run, flush=True)
         supervise(run)
