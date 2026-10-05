@@ -331,7 +331,7 @@ def supervise(run):
             return
         log_dir = Path(plan["log_dir"])
         log_dir.mkdir(parents=True, exist_ok=True)
-        controller = (log_dir / "controller.log").open("a", buffering=1)
+        controller = (log_dir / "controller.log").open("a", buffering=1, encoding="utf-8")
 
         def log(message):
             text = f"{now()} {message}"
@@ -381,7 +381,7 @@ def supervise(run):
                     }
                     if w["gpu"] != "cpu":
                         env["CUDA_VISIBLE_DEVICES"] = w["gpu"]
-                    stream = (log_dir / (w["name"] + ".log")).open("a", buffering=1)
+                    stream = (log_dir / (w["name"] + ".log")).open("a", buffering=1, encoding="utf-8")
                     streams.append(stream)
                     args = [
                         sys.executable,

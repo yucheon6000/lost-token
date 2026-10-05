@@ -9,9 +9,9 @@ from .recurrent_memory import ARMS
 
 def load_spec(path=None):
     spec = json.loads(
-        Path(path).read_text()
+        Path(path).read_text(encoding="utf-8")
         if path
-        else files("lost_tokens").joinpath("default.json").read_text()
+        else files("lost_tokens").joinpath("default.json").read_text(encoding="utf-8")
     )
     return validate_spec(spec)
 

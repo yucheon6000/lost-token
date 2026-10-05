@@ -291,6 +291,7 @@ def prepare(work_dir, spec, benchmarks):
             "gpqa": 448,
             "supergpqa": 26529,
             "longbench_v2": 503,
+            "gsm8k": 1319,
         }[task]
         if len(rows) != expected or len({r["id"] for r in rows}) != expected:
             raise ValueError("Unexpected dataset cardinality or duplicate IDs")
@@ -299,7 +300,7 @@ def prepare(work_dir, spec, benchmarks):
         for i, row in enumerate(rows):
             cache = out / "rows" / (digest(row["id"]) + ".json")
             if cache.exists():
-                saved = json.loads(cache.read_text())
+                saved = json.loads(cache.read_text(encoding="utf-8"))
                 if saved["raw_sha256"] != digest(row) or saved["row_sha256"] != digest(
                     saved["row"]
                 ):
@@ -341,8 +342,8 @@ def load_prepared(work_dir, spec, task):
     root = prepared_path(work_dir, spec, task)
     if not (root / "validation.json").exists():
         raise ValueError(f"{task} is not prepared for this configuration; run lost-tokens setup")
-    meta = json.loads((root / "validation.json").read_text())
-    rows = json.loads((root / "rows.json").read_text())
+    meta = json.loads((root / "validation.json").read_text(encoding="utf-8"))
+    rows = json.loads((root / "rows.json").read_text(encoding="utf-8"))
     if meta["identity"] != preparation_identity(spec, task) or digest(rows) != meta["rows_sha256"]:
         raise ValueError("Prepared data integrity check failed")
     return rows

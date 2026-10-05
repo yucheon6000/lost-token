@@ -31,7 +31,7 @@ def atomic_json(path: Path, value) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, name = tempfile.mkstemp(prefix=".pending-", dir=path.parent)
     try:
-        with os.fdopen(fd, "w") as stream:
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
             json.dump(value, stream, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
             stream.flush()
             os.fsync(stream.fileno())
@@ -64,7 +64,7 @@ class RunStore:
         self.path = path
         self.identity = identity
         if resume:
-            saved = json.loads((path / "identity.json").read_text())
+            saved = json.loads((path / "identity.json").read_text(encoding="utf-8"))
             if saved != identity:
                 raise ValueError("Resume rejected: config, data, code or runtime identity changed")
         else:
@@ -81,7 +81,7 @@ class RunStore:
         key = digest({"label": label, "request": request})
         path = self.path / "checkpoints" / f"{key}.json"
         if path.exists():
-            item = json.loads(path.read_text())
+            item = json.loads(path.read_text(encoding="utf-8"))
             if item.get("sha256") != digest(item.get("payload")):
                 raise ValueError(f"Corrupt checkpoint: {path}")
             payload = item["payload"]

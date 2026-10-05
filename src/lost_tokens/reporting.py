@@ -10,7 +10,7 @@ from .core import atomic_json, now
 def read_json(path, default=None):
     for attempt in range(5):
         try:
-            return json.loads(Path(path).read_text())
+            return json.loads(Path(path).read_text(encoding="utf-8"))
         except (FileNotFoundError, json.JSONDecodeError):
             if attempt == 4:
                 if default is not None and not Path(path).exists():
