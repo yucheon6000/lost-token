@@ -198,10 +198,19 @@ class LocalModel:
         }
 
     def resources(self) -> dict:
-        import resource
+        rss_mib = 0.0
+        try:
+            import resource
+            rss_mib = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+        except ImportError:
+            try:
+                import psutil
+                rss_mib = psutil.Process().memory_info().rss / (1024 * 1024)
+            except Exception:
+                pass
 
         result = {
-            "peak_rss_mib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024,
+            "peak_rss_mib": rss_mib,
             "parameters": self.parameter_count,
             "device": str(self.device),
         }
