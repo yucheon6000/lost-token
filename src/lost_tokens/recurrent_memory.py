@@ -344,7 +344,7 @@ def compact_history(history, target):
 
 
 def memory_text(notes):
-    """Structured Contrastive Hypotheses framing inside possibilities block."""
+    """Structured Consensus & Divergence Multi-Branch Memory Anchoring."""
 
     def escape(text):
         return re.sub(
@@ -357,7 +357,14 @@ def memory_text(notes):
     formatted = []
     for i, n in enumerate(notes):
         clean_text = escape(n["text"]).strip()
-        formatted.append(f"- Alternative Path [{i+1}]: {clean_text}")
+        nums = re.findall(r"\b\d+(?:[\.,/]\d+)?\b", clean_text)
+        if nums:
+            unique_nums = list(dict.fromkeys(nums))[:4]
+            formatted.append(
+                f"- Alternative Calculation [{i+1}] (Variables: {', '.join(unique_nums)}): {clean_text}"
+            )
+        else:
+            formatted.append(f"- Alternative Path [{i+1}]: {clean_text}")
 
     return (
         "\n<possibilities>\n"

@@ -294,6 +294,7 @@ def audit(run, partial=False, model=None):
                             gate["similarity_matrix"],
                             gate["valid"],
                             gate["threshold"],
+                            texts=gate.get("texts"),
                         )
                         assert ranks == gate["retained_ranks"] and decisions == gate["decisions"]
                         costs.append(gate)
