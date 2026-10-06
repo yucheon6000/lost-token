@@ -185,15 +185,31 @@ class StreamDecoder:
             if prob >= self.exp["min_candidate_probability"] and token not in self.model.special_ids
         ]
         top_special = observations[0][0] in self.model.special_ids
-        eligible = not top_special and len(items) >= 2
+        top_prob = observations[0][1]
+        second_prob = observations[1][1] if len(observations) > 1 else 0.0
+        entropy = float(-(lp.exp() * lp).sum())
+
+        has_numeric_divergence = False
+        if len(items) >= 2:
+            texts = [it["text"].strip() for it in items]
+            if any(re.search(r"[\d\+\-\*/=\(\)]", t) for t in texts):
+                has_numeric_divergence = True
+
+        entropy_threshold = self.exp.get("min_branch_entropy", 0.65)
+        entropy_spike = (
+            (entropy >= entropy_threshold)
+            or (top_prob < 0.70 and second_prob >= self.exp["min_candidate_probability"])
+            or has_numeric_divergence
+        )
+        eligible = not top_special and len(items) >= 2 and entropy_spike
         return {
             "eligible": eligible,
             "items": items if eligible else [],
             "top_token_id": observations[0][0],
-            "top_probability": observations[0][1],
-            "second_probability": observations[1][1],
+            "top_probability": top_prob,
+            "second_probability": second_prob,
             "top_is_special": top_special,
-            "entropy": float(-(lp.exp() * lp).sum()),
+            "entropy": entropy,
         }
 
     def sample(self, state, seed):

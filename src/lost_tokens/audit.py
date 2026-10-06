@@ -24,12 +24,12 @@ from lost_tokens.repetition import repeated_suffix, repetition_summary, memory_m
 
 
 def audit(run, partial=False, model=None):
-    identity = json.loads((run / "identity.json").read_text())
+    identity = json.loads((run / "identity.json").read_text(encoding="utf-8"))
     spec = identity["spec"]
     exp = spec["experiment"]
-    split = json.loads((run / "split.json").read_text())
+    split = json.loads((run / "split.json").read_text(encoding="utf-8"))
     assert digest(split) == identity["split_sha256"]
-    assert json.loads((run / "resolved-config.json").read_text()) == spec
+    assert json.loads((run / "resolved-config.json").read_text(encoding="utf-8")) == spec
     for relative, sha in identity["source"].items():
         assert file_digest(run / "provenance" / relative) == sha
     if model is None:
@@ -55,7 +55,7 @@ def audit(run, partial=False, model=None):
     think_end = model.encode("</think>")[0]
     records, hashes, case_hashes = {}, {}, {}
     for path in (run / "checkpoints").glob("*.json"):
-        saved = json.loads(path.read_text())
+        saved = json.loads(path.read_text(encoding="utf-8"))
         p = saved["payload"]
         assert digest(p) == saved["sha256"]
         assert path.stem == digest({"label": p["label"], "request": p["request"]})
@@ -387,7 +387,7 @@ def audit(run, partial=False, model=None):
         if case_label in records:
             saved = records[case_label]["result"]
             case_path = run / "cases" / namespace / (row["id"] + ".json")
-            assert json.loads(case_path.read_text()) == saved
+            assert json.loads(case_path.read_text(encoding="utf-8")) == saved
             case_hashes[str(case_path.relative_to(run))] = file_digest(case_path)
             for arm, c in saved["conditions"].items():
                 assert records[f"{namespace}/{row['id']}/{arm}/complete"]["result"] == c
@@ -396,7 +396,7 @@ def audit(run, partial=False, model=None):
         assert completed_cases == len(plans) and completed_conditions == len(plans) * len(
             exp["arms"]
         )
-        assert json.loads((run / "status.json").read_text())["state"] == "complete"
+        assert json.loads((run / "status.json").read_text(encoding="utf-8"))["state"] == "complete"
     return {
         "run": str(run),
         "partial": partial,
