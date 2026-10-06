@@ -35,10 +35,21 @@ def atomic_json(path: Path, value) -> None:
             json.dump(value, stream, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(name, path)
+        for attempt in range(10):
+            try:
+                os.replace(name, path)
+                break
+            except PermissionError:
+                if attempt == 9:
+                    raise
+                import time
+                time.sleep(0.05 * (attempt + 1))
     finally:
         if os.path.exists(name):
-            os.unlink(name)
+            try:
+                os.unlink(name)
+            except OSError:
+                pass
 
 
 def extract_choice(text: str, choices: list[str]) -> str | None:
