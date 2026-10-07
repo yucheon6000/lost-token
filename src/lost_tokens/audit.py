@@ -15,6 +15,7 @@ from lost_tokens.recurrent_memory import (
     instruction,
     memory_text,
     reasoning_phase,
+    ttl_history,
     emitted_marker,
     fragment_text,
 )
@@ -85,6 +86,12 @@ def audit(run, partial=False, model=None):
             step = 0
             compactions = []
             body_guards = []
+            forcing = exp.get("budget_forcing")
+            max_memory_events = exp.get("max_memory_events")
+            min_body = exp.get("min_branch_body_tokens") or 0
+            memory_ttl = exp.get("memory_ttl_tokens")
+            cap = exp["max_output_tokens"]
+            forced_at = None
 
             def check_guards(out, history, forced_first=False):
                 expected = []
@@ -156,9 +163,39 @@ def audit(run, partial=False, model=None):
                 costs.append(out)
                 return out
 
-            while len(body) < exp["max_output_tokens"] and (
-                not body or body[-1] not in model.eos_ids
-            ):
+            def check_compaction(raw, removed, history, context, body, reason):
+                """Rebuild the reported compaction summary from replay state."""
+                expected = {
+                    **raw,
+                    "removed_events": removed,
+                    "body_tokens_preserved": len(body),
+                    "body_position": len(body),
+                    "remaining_context_length": len(context),
+                    **({} if reason is None else {"reason": reason}),
+                }
+                assert raw["removed_events"] == removed
+                assert raw["body_tokens_preserved"] == len(body)
+                assert result["compactions"][len(compactions)] == expected
+
+            while len(body) < cap and (not body or body[-1] not in model.eos_ids):
+                ttl_label = tag + f"/step-{step}/ttl"
+                if memory_ttl is not None:
+                    kept, expired = ttl_history(history, events, len(body), memory_ttl)
+                else:
+                    kept, expired = history, []
+                if expired:
+                    record = records[ttl_label]
+                    assert record["request"]["before_sha256"] == digest(context)
+                    history = kept
+                    context = base + [i for h in history for i in h["ids"]]
+                    assert record["request"]["after_sha256"] == digest(context)
+                    assert record["request"]["removed_events"] == expired
+                    assert [i for h in history if h["kind"] == "body" for i in h["ids"]] == body
+                    check_compaction(record["result"], expired, history, context, body, "ttl")
+                    costs.append(record["result"])
+                    compactions.append(record["result"])
+                else:
+                    assert ttl_label not in records
                 memory_tokens = sum(len(h["ids"]) for h in history if h["kind"] == "memory")
                 compact_label = tag + f"/step-{step}/compact"
                 if memory_tokens > exp["memory_capacity_tokens"] - exp["max_event_memory_tokens"]:
@@ -169,21 +206,55 @@ def audit(run, partial=False, model=None):
                     assert record["request"]["after_sha256"] == digest(context)
                     assert record["request"]["removed_events"] == removed
                     assert [i for h in history if h["kind"] == "body" for i in h["ids"]] == body
+                    check_compaction(record["result"], removed, history, context, body, None)
                     costs.append(record["result"])
                     compactions.append(record["result"])
                 else:
                     assert compact_label not in records
+                force_label = tag + f"/step-{step}/force"
+                if (
+                    forcing
+                    and forced_at is None
+                    and phase == "thinking"
+                    and len(body) >= forcing["force_at_body_tokens"]
+                ):
+                    record = records[force_label]
+                    assert record["request"] == {
+                        "root_sha256": digest(context),
+                        "root_length": len(context),
+                        "generated_history_sha256": digest(body),
+                        "body_position": len(body),
+                        "token": think_end,
+                    }
+                    assert record["result"]["ids"] == [think_end]
+                    forced_at = len(body)
+                    body.extend(record["result"]["ids"])
+                    context.extend(record["result"]["ids"])
+                    history.append({"kind": "body", "ids": record["result"]["ids"]})
+                    costs.append(record["result"])
+                    phase = "final"
+                    cap = min(cap, forced_at + 1 + forcing["answer_tokens"])
+                    step += 1
+                    continue
+                assert force_label not in records
                 scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
+                if (
+                    scan
+                    and max_memory_events is not None
+                    and sum(bool(e["memory_ids"]) for e in events) >= max_memory_events
+                ):
+                    scan = False
                 next_fork_position = (
                     (events[-1]["body_position"] + exp["min_branch_interval_tokens"])
                     if events
                     else 0
                 )
-                expected_count = min(
-                    exp["checkpoint_body_tokens"], exp["max_output_tokens"] - len(body)
-                )
+                next_fork_position = max(next_fork_position, min_body)
+                expected_count = min(exp["checkpoint_body_tokens"], cap - len(body))
                 if phase == "thinking" and not has_reasoning_token:
                     expected_count = 1
+                if forcing and forced_at is None and phase == "thinking":
+                    expected_count = min(expected_count, forcing["force_at_body_tokens"] - len(body))
                 if scan and len(body) < next_fork_position:
                     expected_count = min(expected_count, next_fork_position - len(body))
                     scan = False
@@ -353,6 +424,9 @@ def audit(run, partial=False, model=None):
             )
             assert events == result["events"] and checks == result["checks"]
             assert len(compactions) == len(result["compactions"])
+            assert result.get("forced_think_end_at", "absent") == (
+                forced_at if forcing else "absent"
+            )
             assert result["body_guard_events"] == body_guards
             assert result["repetition"] == repetition_summary(
                 body, exp["repetition_guard"]["max_period_tokens"]

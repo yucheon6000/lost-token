@@ -323,6 +323,34 @@ def compact_history(history, target):
     return kept, removed
 
 
+def ttl_history(history, events, body_length, ttl):
+    """Drop memory blocks whose event began more than ttl body tokens ago; keep all body."""
+    kept, removed = [], []
+    for block in history:
+        if block["kind"] == "memory" and events[block["event"]]["body_position"] < body_length - ttl:
+            removed.append(block["event"])
+        else:
+            kept.append(block)
+    return kept, removed
+
+
+def validate_budget_forcing(exp):
+    forcing = exp.get("budget_forcing")
+    if forcing is None:
+        return
+    if (
+        not isinstance(forcing, dict)
+        or set(forcing) != {"force_at_body_tokens", "answer_tokens"}
+        or type(forcing["force_at_body_tokens"]) is not int
+        or forcing["force_at_body_tokens"] < 1
+        or type(forcing["answer_tokens"]) is not int
+        or forcing["answer_tokens"] < 0
+    ):
+        raise ValueError("Invalid budget_forcing")
+    if forcing["force_at_body_tokens"] + 1 + forcing["answer_tokens"] > exp["max_output_tokens"]:
+        raise ValueError("budget_forcing exceeds max_output_tokens")
+
+
 def memory_text(notes):
     """Only unchosen rollout text; no repeated instructions, probabilities, or suffix."""
 
@@ -343,6 +371,15 @@ def memory_text(notes):
 
 def run_condition(model, store, row, cfg, namespace, arm, log):
     exp = cfg["experiment"]
+    validate_budget_forcing(exp)
+    if exp.get("budget_forcing") is not None and arm != "plain_ar":
+        raise ValueError("budget_forcing is only supported for plain_ar")
+    max_memory_events = exp.get("max_memory_events")
+    min_body = exp.get("min_branch_body_tokens") or 0
+    memory_ttl = exp.get("memory_ttl_tokens")
+    forcing = exp.get("budget_forcing")
+    cap = exp["max_output_tokens"]
+    forced_at = None
     decoder = StreamDecoder(model, exp)
     seed = derived_seed(exp["seed"], namespace, row["id"])
     tag = f"{namespace}/{row['id']}/{arm}"
@@ -400,42 +437,102 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
         )
         return result
 
-    while len(body) < exp["max_output_tokens"] and (not body or body[-1] not in model.eos_ids):
+    def rebuild(label, history, removed, old_digest, reason):
+        nonlocal state
+        context = base + [token for block in history for token in block["ids"]]
+        state = None
+        rebuild_started = time.monotonic()
+        state = decoder.prefill(context)
+        state.generated_ids = list(body)
+        result = store.call(
+            tag + label,
+            {
+                "before_sha256": old_digest,
+                "removed_events": removed,
+                "after_sha256": digest(context),
+            },
+            lambda: {
+                "removed_events": removed,
+                "body_tokens_preserved": len(body),
+                "cost": decoder.cost(0, len(context), 0, time.monotonic() - rebuild_started),
+            },
+        )
+        costs.append(result)
+        extra = {} if reason is None else {"reason": reason}
+        compactions.append(
+            {
+                **result,
+                "body_position": len(body),
+                "remaining_context_length": len(context),
+                **extra,
+            }
+        )
+
+    while len(body) < cap and (not body or body[-1] not in model.eos_ids):
         # Compaction happens BEFORE a new fork is considered. Rollout parents and
         # the injection parent thus remain exactly the same root for every event.
+        if memory_ttl is not None:
+            kept, expired = ttl_history(history, events, len(body), memory_ttl)
+            if expired:
+                rebuild(f"/step-{step}/ttl", kept, expired, digest(state.ids), "ttl")
+                history = kept
         memory_tokens = sum(len(h["ids"]) for h in history if h["kind"] == "memory")
         if memory_tokens > exp["memory_capacity_tokens"] - exp["max_event_memory_tokens"]:
             old_digest = digest(state.ids)
             history, removed = compact_history(history, exp["memory_compact_to_tokens"])
-            context = base + [token for block in history for token in block["ids"]]
-            del state
-            rebuild_started = time.monotonic()
-            state = decoder.prefill(context)
-            state.generated_ids = list(body)
-            result = store.call(
-                tag + f"/step-{step}/compact",
-                {
-                    "before_sha256": old_digest,
-                    "removed_events": removed,
-                    "after_sha256": digest(context),
-                },
-                lambda: {
-                    "removed_events": removed,
-                    "body_tokens_preserved": len(body),
-                    "cost": decoder.cost(0, len(context), 0, time.monotonic() - rebuild_started),
-                },
-            )
-            costs.append(result)
-            compactions.append(
-                {**result, "body_position": len(body), "remaining_context_length": len(context)}
-            )
-        count = min(exp["checkpoint_body_tokens"], exp["max_output_tokens"] - len(body))
+            rebuild(f"/step-{step}/compact", history, removed, old_digest, None)
+        if forcing and forced_at is None and phase == "thinking" and len(body) >= forcing["force_at_body_tokens"]:
+            # Budget forcing: one persisted </think> token at the current body position.
+            force_request = {
+                "root_sha256": digest(state.ids),
+                "root_length": len(state.ids),
+                "generated_history_sha256": digest(state.generated_ids),
+                "body_position": len(body),
+                "token": decoder.think_end,
+            }
+            force_advanced = False
+
+            def force():
+                nonlocal force_advanced
+                before = len(state.ids)
+                force_started = time.monotonic()
+                decoder.advance(state, [decoder.think_end], generated=True)
+                force_advanced = True
+                return {
+                    "ids": [decoder.think_end],
+                    "cost": decoder.cost(before, 1, 0, time.monotonic() - force_started),
+                }
+
+            forced = store.call(tag + f"/step-{step}/force", force_request, force)
+            if not force_advanced:
+                recovery_start = time.monotonic()
+                decoder.advance(state, forced["ids"], generated=True)
+                recovery_seconds += time.monotonic() - recovery_start
+            forced_at = len(body)
+            body.extend(forced["ids"])
+            history.append({"kind": "body", "ids": forced["ids"]})
+            costs.append(forced)
+            phase = "final"
+            cap = min(cap, forced_at + 1 + forcing["answer_tokens"])
+            step += 1
+            continue
+        count = min(exp["checkpoint_body_tokens"], cap - len(body))
         if phase == "thinking" and not has_reasoning_token:
             count = 1
+        if forcing and forced_at is None and phase == "thinking":
+            # Hit the forcing boundary exactly instead of overshooting a chunk.
+            count = min(count, forcing["force_at_body_tokens"] - len(body))
         scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
+        if (
+            scan
+            and max_memory_events is not None
+            and sum(bool(e["memory_ids"]) for e in events) >= max_memory_events
+        ):
+            scan = False
         next_fork_position = (
             (events[-1]["body_position"] + exp["min_branch_interval_tokens"]) if events else 0
         )
+        next_fork_position = max(next_fork_position, min_body)
         if scan and len(body) < next_fork_position:
             # Count only body tokens, including the committed rollout. Side input
             # length and compaction never advance this clock. Resume checks at the
@@ -600,6 +697,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
         "final_context_length": len(state.ids),
         "retained_memory_events": [h["event"] for h in history if h["kind"] == "memory"],
         "compactions": compactions,
+        **({"forced_think_end_at": forced_at} if forcing else {}),
         "body_guard_events": body_guards,
         "repetition": repetition_summary(body, exp["repetition_guard"]["max_period_tokens"]),
         "memory_markup": memory_markup_summary(model.decode(body)),

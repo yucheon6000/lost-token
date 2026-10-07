@@ -110,6 +110,15 @@ Compare runs offline (stdlib only), pairing each arm with a baseline run/arm:
 python scripts/compare_runs.py RUN_A RUN_B --baseline RUN_A:baseline
 ```
 
+### Experiment knobs
+
+Optional `experiment` keys (absent or `null` = off, behavior unchanged):
+`max_memory_events`, `min_branch_body_tokens`, `memory_ttl_tokens` and
+`budget_forcing` (`{"force_at_body_tokens", "answer_tokens"}`). `budget_forcing`
+is only supported for the `plain_ar` arm; combining it with any scanning arm
+(or listing one in `experiment.arms`) raises
+`ValueError("budget_forcing is only supported for plain_ar")`.
+
 ## Data and configuration
 
 | CLI name | Dataset | Questions |

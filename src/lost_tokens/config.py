@@ -4,7 +4,7 @@ import copy
 import json
 from importlib.resources import files
 from pathlib import Path
-from .recurrent_memory import ARMS
+from .recurrent_memory import ARMS, validate_budget_forcing
 
 
 def load_spec(path=None):
@@ -56,6 +56,15 @@ def validate_spec(spec):
         raise ValueError(
             "min_branch_interval_tokens must be a nonnegative integer; 0 disables spacing"
         )
+    for key, floor in (
+        ("max_memory_events", 1),
+        ("min_branch_body_tokens", 0),
+        ("memory_ttl_tokens", 1),
+    ):
+        value = exp.get(key)
+        if value is not None and (type(value) is not int or value < floor):
+            raise ValueError(f"Invalid {key}")
+    validate_budget_forcing(exp)
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
         raise ValueError("Invalid repetition guard switch")
@@ -90,6 +99,8 @@ def validate_spec(spec):
         raise ValueError("Require compaction hysteresis and room for every event")
     if not exp["arms"] or len(set(exp["arms"])) != len(exp["arms"]) or set(exp["arms"]) - set(ARMS):
         raise ValueError("Invalid arms")
+    if exp.get("budget_forcing") is not None and set(exp["arms"]) != {"plain_ar"}:
+        raise ValueError("budget_forcing is only supported for plain_ar")
     if spec["execution"]["workers"] != 1:
         raise ValueError(
             "One worker per run; use distinct run paths/devices for independent workers"
