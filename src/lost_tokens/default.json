@@ -10,7 +10,7 @@
     "max_context_tokens": 73760,
     "name": "Qwen/Qwen3-4B-Thinking-2507",
     "revision": "768f209d9ea81521153ed38c47d515654e938aea",
-    "rollout_cache_offload_threshold_tokens": 49000,
+    "rollout_cache_offload_threshold_tokens": 8000,
     "threads": 4
   },
   "experiment": {
@@ -21,10 +21,10 @@
     "branch_tokens": 32,
     "checkpoint_body_tokens": 128,
     "commit": "selected_rollout",
-    "max_event_memory_tokens": 2048,
+    "max_event_memory_tokens": 512,
     "max_output_tokens": 32768,
-    "memory_capacity_tokens": 8192,
-    "memory_compact_to_tokens": 4096,
+    "memory_capacity_tokens": 2048,
+    "memory_compact_to_tokens": 1024,
     "min_branch_interval_tokens": 256,
     "min_candidate_probability": 0.2,
     "prefill_chunk_tokens": 256,

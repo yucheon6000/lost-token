@@ -40,7 +40,8 @@ def emitted_marker(model, before, token):
     tail = before[-32:]
     old = raw_text(model, tail)
     new = raw_text(model, tail + [token])
-    matches = [m for m in REASONING_MARKERS.finditer(new) if m.end() > len(old)]
+    matches = [m for m in REASONING_MARKERS.finditer(
+        new) if m.end() > len(old)]
     return matches[0].group() if matches else None
 
 
@@ -76,14 +77,15 @@ def final_response(model, body, row, think_end_id):
             "correct": False,
             "answer_source": "open_thinking_at_cap",
         }
-    native = closed and endings[0].group() == "</think>" and think_end_id in body
+    native = closed and endings[0].group(
+    ) == "</think>" and think_end_id in body
     boundary = body.index(think_end_id) if native else -1
     if native:
-        answer = model.decode(body[boundary + 1 :])
+        answer = model.decode(body[boundary + 1:])
     elif closed:
         visible = model.decode(body)
         match = re.search(r"</(?:think|reasoning)>", visible)
-        answer = visible[match.end() :] if match else ""
+        answer = visible[match.end():] if match else ""
     else:
         answer = model.decode(body)
     prediction = natural_answer(answer, row)
@@ -133,7 +135,7 @@ class StreamDecoder:
             for start in range(0, len(ids), self.exp["prefill_chunk_tokens"]):
                 out = self.model.model(
                     input_ids=self.torch.tensor(
-                        [ids[start : start + self.exp["prefill_chunk_tokens"]]],
+                        [ids[start: start + self.exp["prefill_chunk_tokens"]]],
                         device=self.model.device,
                     ),
                     past_key_values=cache,
@@ -142,7 +144,8 @@ class StreamDecoder:
                 )
                 cache, logits = out.past_key_values, out.logits[0, -1].float()
                 if time.monotonic() - last_log >= 15:
-                    done = min(start + self.exp["prefill_chunk_tokens"], len(ids))
+                    done = min(
+                        start + self.exp["prefill_chunk_tokens"], len(ids))
                     elapsed = time.monotonic() - started
                     self.model.log(
                         f"prefill {done}/{len(ids)} tokens; elapsed={elapsed:.1f}s ETA={elapsed / done * (len(ids) - done):.1f}s"
@@ -154,14 +157,16 @@ class StreamDecoder:
         self.model._check(state.ids, len(ids))
         with self.torch.inference_mode():
             for start in range(0, len(ids), block_size):
-                part = ids[start : start + block_size]
+                part = ids[start: start + block_size]
                 out = self.model.model(
-                    input_ids=self.torch.tensor([part], device=self.model.device),
+                    input_ids=self.torch.tensor(
+                        [part], device=self.model.device),
                     past_key_values=state.cache,
                     use_cache=True,
                     logits_to_keep=1,
                 )
-                state.cache, state.logits = out.past_key_values, out.logits[0, -1].float()
+                state.cache, state.logits = out.past_key_values, out.logits[0, -1].float(
+                )
                 state.ids.extend(part)
                 if generated:
                     state.generated_ids.extend(part)
@@ -171,7 +176,8 @@ class StreamDecoder:
         # A probability threshold itself bounds the number of qualifying tokens;
         # there is no top-2 truncation, lexical filter, ratio gate, or cooldown.
         lp = state.logits.log_softmax(-1)
-        count = min(len(lp), int(1 / self.exp["min_candidate_probability"]) + 1)
+        count = min(len(lp), int(
+            1 / self.exp["min_candidate_probability"]) + 1)
         values, indices = self.torch.topk(lp, count)
         observations = list(zip(indices.tolist(), values.exp().tolist()))
         items = [
@@ -218,18 +224,21 @@ class StreamDecoder:
         if guard is not None:
             logits = logits.clone()
             logits[guard["blocked_token"]] = -self.torch.inf
-        values, indices = self.torch.topk(logits, min(self.exp["top_k"], len(state.logits)))
+        values, indices = self.torch.topk(
+            logits, min(self.exp["top_k"], len(state.logits)))
         probabilities = values.softmax(-1)
         probabilities = probabilities.masked_fill(
             probabilities.cumsum(-1) - probabilities > self.exp["top_p"], 0
         )
-        generator = self.torch.Generator(device=self.model.device).manual_seed(seed)
+        generator = self.torch.Generator(
+            device=self.model.device).manual_seed(seed)
         index = self.torch.multinomial(probabilities, 1, generator=generator)
         token = int(indices[index].item())
         return token, float(state.logits.log_softmax(-1)[token])
 
     def loop_guard(self, state):
-        guard = repeated_suffix(state.generated_ids, self.exp["repetition_guard"])
+        guard = repeated_suffix(state.generated_ids,
+                                self.exp["repetition_guard"])
         # Never prevent termination; the guard applies only to ordinary continuation.
         if guard and guard["blocked_token"] in self.model.eos_ids | {self.think_end}:
             return None
@@ -254,14 +263,17 @@ class StreamDecoder:
         for offset in range(count):
             if scan:
                 dist = self.candidates(state)
-                checks.append({"body_position": body_position + offset, **dist})
+                checks.append(
+                    {"body_position": body_position + offset, **dist})
                 if dist["eligible"]:
                     fork = dist
                     break
             guard = self.loop_guard(state)
-            token, lp = self.sample(state, derived_seed(seed, "body", body_position + offset))
+            token, lp = self.sample(state, derived_seed(
+                seed, "body", body_position + offset))
             if guard:
-                guard_events.append({"offset": offset, "sampled_token": token, **guard})
+                guard_events.append(
+                    {"offset": offset, "sampled_token": token, **guard})
             stop_marker = emitted_marker(self.model, state.ids, token)
             self.advance(state, [token], generated=True)
             ids.append(token)
@@ -293,7 +305,8 @@ class StreamDecoder:
         # Both layer objects AND their tensors are copied. A generated sibling
         # cannot mutate root, and its returned cache is never the continuing cache.
         state = StreamState(
-            list(root.ids), copy.deepcopy(root.cache), root.logits.clone(), list(root.generated_ids)
+            list(root.ids), copy.deepcopy(
+                root.cache), root.logits.clone(), list(root.generated_ids)
         )
         ids, logprobs, guard_events = [], [], []
         stop_marker = None
@@ -303,9 +316,11 @@ class StreamDecoder:
                 lp = float(state.logits.log_softmax(-1)[token])
             else:
                 guard = self.loop_guard(state)
-                token, lp = self.sample(state, derived_seed(seed, "rollout", index))
+                token, lp = self.sample(
+                    state, derived_seed(seed, "rollout", index))
                 if guard:
-                    guard_events.append({"offset": index, "sampled_token": token, **guard})
+                    guard_events.append(
+                        {"offset": index, "sampled_token": token, **guard})
             stop_marker = emitted_marker(self.model, state.ids, token)
             self.advance(state, [token], generated=True)
             ids.append(token)
@@ -381,7 +396,9 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     base = model.prompt(instruction(row) + row["question"])
     state = decoder.prefill(base)
     prefill = store.call(
-        tag + "/prefill", {"ids": base}, lambda: {"cost": decoder.cost(0, len(base), 0)}
+        tag +
+        "/prefill", {"ids": base}, lambda: {
+            "cost": decoder.cost(0, len(base), 0)}
     )
     body, history, events, checks, costs, compactions, body_guards = (
         [],
@@ -435,11 +452,14 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     while len(body) < exp["max_output_tokens"] and (not body or body[-1] not in model.eos_ids):
         # Compaction happens BEFORE a new fork is considered. Rollout parents and
         # the injection parent thus remain exactly the same root for every event.
-        memory_tokens = sum(len(h["ids"]) for h in history if h["kind"] == "memory")
+        memory_tokens = sum(len(h["ids"])
+                            for h in history if h["kind"] == "memory")
         if memory_tokens > exp["memory_capacity_tokens"] - exp["max_event_memory_tokens"]:
             old_digest = digest(state.ids)
-            history, removed = compact_history(history, exp["memory_compact_to_tokens"])
-            context = base + [token for block in history for token in block["ids"]]
+            history, removed = compact_history(
+                history, exp["memory_compact_to_tokens"])
+            context = base + \
+                [token for block in history for token in block["ids"]]
             del state
             rebuild_started = time.monotonic()
             state = decoder.prefill(context)
@@ -459,14 +479,17 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             )
             costs.append(result)
             compactions.append(
-                {**result, "body_position": len(body), "remaining_context_length": len(context)}
+                {**result, "body_position": len(body),
+                 "remaining_context_length": len(context)}
             )
-        count = min(exp["checkpoint_body_tokens"], exp["max_output_tokens"] - len(body))
+        count = min(exp["checkpoint_body_tokens"],
+                    exp["max_output_tokens"] - len(body))
         if phase == "thinking" and not has_reasoning_token:
             count = 1
         scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
         next_fork_position = (
-            (events[-1]["body_position"] + exp["min_branch_interval_tokens"]) if events else 0
+            (events[-1]["body_position"] +
+             exp["min_branch_interval_tokens"]) if events else 0
         )
         if scan and len(body) < next_fork_position:
             # Count only body tokens, including the committed rollout. Side input
@@ -500,9 +523,11 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 "memory_ids": [],
             }
             candidates = dist["items"] if arm != "reference_only" else dist["items"][:1]
-            rollout_count = min(exp["branch_tokens"], exp["max_output_tokens"] - len(body))
+            rollout_count = min(exp["branch_tokens"],
+                                exp["max_output_tokens"] - len(body))
             for item in candidates:
-                branch_seed = derived_seed(seed, root_sha, "candidate", item["token_id"])
+                branch_seed = derived_seed(
+                    seed, root_sha, "candidate", item["token_id"])
                 request = {
                     "root_sha256": root_sha,
                     "root_length": len(state.ids),
@@ -510,7 +535,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                     "seed": branch_seed,
                     "count": rollout_count,
                 }
-                request["generated_history_sha256"] = digest(state.generated_ids)
+                request["generated_history_sha256"] = digest(
+                    state.generated_ids)
                 preview = store.call(
                     tag + f"/event-{event_index}/candidate-{item['rank']}",
                     request,
@@ -518,7 +544,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                         state, item["token_id"], branch_seed, rollout_count
                     ),
                 )
-                preview = {**preview, "rank": item["rank"], "probability": item["probability"]}
+                preview = {
+                    **preview, "rank": item["rank"], "probability": item["probability"]}
                 event["previews"].append(preview)
                 costs.append(preview)
             retained = [n for n in event["previews"][1:] if n["text"].strip()]
@@ -539,7 +566,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 )
                 event["similarity"] = result
                 costs.append(result)
-                retained = [n for n in retained if n["rank"] in result["retained_ranks"]]
+                retained = [n for n in retained if n["rank"]
+                            in result["retained_ranks"]]
             if retained:
                 text = memory_text(retained)
                 side = model.encode(text)
@@ -558,12 +586,14 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                     {"root_sha256": root_sha, "ids": side},
                     lambda: {
                         "cost": decoder.cost(
-                            before, len(side), 0, time.monotonic() - ingest_started
+                            before, len(side), 0, time.monotonic() -
+                            ingest_started
                         )
                     },
                 )
                 costs.append(ingestion)
-                history.append({"kind": "memory", "ids": side, "event": event_index})
+                history.append(
+                    {"kind": "memory", "ids": side, "event": event_index})
             event["continuation_root_sha256"] = digest(state.ids)
             chosen = event["previews"][0]["ids"]
             # The selected rollout becomes body text verbatim AFTER the alternatives.
@@ -590,7 +620,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 }
 
             committed = store.call(
-                tag + f"/event-{event_index}/commit-rollout", commit_request, commit
+                tag +
+                f"/event-{event_index}/commit-rollout", commit_request, commit
             )
             if not advanced:
                 recovery_start = time.monotonic()
@@ -607,7 +638,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 phase = "final"
             store.call(
                 tag + f"/event-{event_index}/complete",
-                {"body_position": event["body_position"], "root_sha256": root_sha},
+                {"body_position": event["body_position"],
+                    "root_sha256": root_sha},
                 lambda: event,
             )
             events.append(event)
@@ -636,7 +668,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
         "repetition": repetition_summary(body, exp["repetition_guard"]["max_period_tokens"]),
         "memory_markup": memory_markup_summary(model.decode(body)),
         "embedding_cost": {
-            k: sum(e["similarity"]["embedding_cost"][k] for e in events if e["similarity"])
+            k: sum(e["similarity"]["embedding_cost"][k]
+                   for e in events if e["similarity"])
             for k in ("input_tokens", "texts", "seconds")
         },
         "policy_cost": sum_cost(*costs),
@@ -647,13 +680,15 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
 
 def run_case(model, store, row, cfg, namespace, log):
     order = list(cfg["experiment"]["arms"])
-    random.Random(derived_seed(cfg["experiment"]["seed"], row["id"], "arm-order")).shuffle(order)
+    random.Random(derived_seed(
+        cfg["experiment"]["seed"], row["id"], "arm-order")).shuffle(order)
     conditions = {}
     for arm in order:
         log(f"condition start {namespace}/{row['id']}/{arm}")
         conditions[arm] = store.call(
             f"{namespace}/{row['id']}/{arm}/complete",
             {"row_id": row["id"], "arm": arm},
-            lambda arm=arm: run_condition(model, store, row, cfg, namespace, arm, log),
+            lambda arm=arm: run_condition(
+                model, store, row, cfg, namespace, arm, log),
         )
     return {**row, "namespace": namespace, "arm_order": order, "conditions": conditions}

@@ -29,16 +29,19 @@ def audit(run, partial=False, model=None):
     exp = spec["experiment"]
     split = json.loads((run / "split.json").read_text(encoding="utf-8"))
     assert digest(split) == identity["split_sha256"]
-    assert json.loads((run / "resolved-config.json").read_text(encoding="utf-8")) == spec
+    assert json.loads(
+        (run / "resolved-config.json").read_text(encoding="utf-8")) == spec
     for relative, sha in identity["source"].items():
         assert file_digest(run / "provenance" / relative) == sha
     if model is None:
         cfg = spec["model"]
-        kwargs = {k: cfg[k] for k in ("revision", "cache_dir", "local_files_only")}
+        kwargs = {k: cfg[k]
+                  for k in ("revision", "cache_dir", "local_files_only")}
         tok = AutoTokenizer.from_pretrained(
             cfg["name"], token=False, trust_remote_code=False, **kwargs
         )
-        eos = GenerationConfig.from_pretrained(cfg["name"], token=False, **kwargs).eos_token_id
+        eos = GenerationConfig.from_pretrained(
+            cfg["name"], token=False, **kwargs).eos_token_id
         model = SimpleNamespace(
             encode=lambda s: tok.encode(s, add_special_tokens=False),
             tokenizer=tok,
@@ -58,7 +61,8 @@ def audit(run, partial=False, model=None):
         saved = json.loads(path.read_text(encoding="utf-8"))
         p = saved["payload"]
         assert digest(p) == saved["sha256"]
-        assert path.stem == digest({"label": p["label"], "request": p["request"]})
+        assert path.stem == digest(
+            {"label": p["label"], "request": p["request"]})
         assert p["label"] not in records
         records[p["label"]] = p
         hashes[path.name] = file_digest(path)
@@ -91,10 +95,12 @@ def audit(run, partial=False, model=None):
                 for offset, token in enumerate(out["ids"]):
                     if forced_first and offset == 0:
                         continue
-                    guard = repeated_suffix(history + out["ids"][:offset], exp["repetition_guard"])
+                    guard = repeated_suffix(
+                        history + out["ids"][:offset], exp["repetition_guard"])
                     if guard and guard["blocked_token"] not in model.eos_ids | {think_end}:
                         assert token != guard["blocked_token"]
-                        expected.append({"offset": offset, "sampled_token": token, **guard})
+                        expected.append(
+                            {"offset": offset, "sampled_token": token, **guard})
                 assert out["guard_events"] == expected
 
             def segment(label, scan):
@@ -111,7 +117,8 @@ def audit(run, partial=False, model=None):
                 )
                 assert len(out["ids"]) <= request["count"]
                 assert len(out["raw_log_probabilities"]) == len(out["ids"])
-                assert not any(i in model.eos_ids or i == think_end for i in out["ids"][:-1])
+                assert not any(i in model.eos_ids or i ==
+                               think_end for i in out["ids"][:-1])
                 markers = [
                     emitted_marker(model, context + out["ids"][:i], token)
                     for i, token in enumerate(out["ids"])
@@ -123,19 +130,22 @@ def audit(run, partial=False, model=None):
                     {"body_position": len(body) + g["offset"], **g} for g in out["guard_events"]
                 )
                 if scan:
-                    assert len(out["checks"]) == len(out["ids"]) + (out["fork"] is not None)
+                    assert len(out["checks"]) == len(
+                        out["ids"]) + (out["fork"] is not None)
                     assert [c["body_position"] for c in out["checks"]] == list(
                         range(len(body), len(body) + len(out["checks"]))
                     )
                     for index, check in enumerate(out["checks"]):
                         if check["eligible"]:
-                            assert index == len(out["checks"]) - 1 and out["fork"] is not None
+                            assert index == len(
+                                out["checks"]) - 1 and out["fork"] is not None
                             assert {k: v for k, v in check.items() if k != "body_position"} == out[
                                 "fork"
                             ]
                             items = check["items"]
                             assert len(items) >= 2 and items[0]["rank"] == 1
-                            assert len({i["token_id"] for i in items}) == len(items)
+                            assert len({i["token_id"]
+                                       for i in items}) == len(items)
                             assert all(
                                 i["probability"] >= exp["min_candidate_probability"]
                                 and i["token_id"] not in model.special_ids
@@ -145,7 +155,8 @@ def audit(run, partial=False, model=None):
                                 a["probability"] >= b["probability"]
                                 for a, b in zip(items, items[1:])
                             )
-                            assert sum(i["probability"] for i in items) <= 1.00001
+                            assert sum(i["probability"]
+                                       for i in items) <= 1.00001
                 else:
                     assert not out["checks"] and out["fork"] is None
                 checks.extend(out["checks"])
@@ -159,35 +170,43 @@ def audit(run, partial=False, model=None):
             while len(body) < exp["max_output_tokens"] and (
                 not body or body[-1] not in model.eos_ids
             ):
-                memory_tokens = sum(len(h["ids"]) for h in history if h["kind"] == "memory")
+                memory_tokens = sum(len(h["ids"])
+                                    for h in history if h["kind"] == "memory")
                 compact_label = tag + f"/step-{step}/compact"
                 if memory_tokens > exp["memory_capacity_tokens"] - exp["max_event_memory_tokens"]:
                     record = records[compact_label]
-                    assert record["request"]["before_sha256"] == digest(context)
-                    history, removed = compact_history(history, exp["memory_compact_to_tokens"])
+                    assert record["request"]["before_sha256"] == digest(
+                        context)
+                    history, removed = compact_history(
+                        history, exp["memory_compact_to_tokens"])
                     context = base + [i for h in history for i in h["ids"]]
                     assert record["request"]["after_sha256"] == digest(context)
                     assert record["request"]["removed_events"] == removed
-                    assert [i for h in history if h["kind"] == "body" for i in h["ids"]] == body
+                    assert [i for h in history if h["kind"]
+                            == "body" for i in h["ids"]] == body
                     costs.append(record["result"])
                     compactions.append(record["result"])
                 else:
                     assert compact_label not in records
                 scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
                 next_fork_position = (
-                    (events[-1]["body_position"] + exp["min_branch_interval_tokens"])
+                    (events[-1]["body_position"] +
+                     exp["min_branch_interval_tokens"])
                     if events
                     else 0
                 )
                 expected_count = min(
-                    exp["checkpoint_body_tokens"], exp["max_output_tokens"] - len(body)
+                    exp["checkpoint_body_tokens"], exp["max_output_tokens"] -
+                    len(body)
                 )
                 if phase == "thinking" and not has_reasoning_token:
                     expected_count = 1
                 if scan and len(body) < next_fork_position:
-                    expected_count = min(expected_count, next_fork_position - len(body))
+                    expected_count = min(
+                        expected_count, next_fork_position - len(body))
                     scan = False
-                assert records[tag + f"/step-{step}/scan"]["request"]["count"] == expected_count
+                assert records[tag +
+                               f"/step-{step}/scan"]["request"]["count"] == expected_count
                 out = segment(f"step-{step}/scan", scan)
                 marker = out["stop_marker"]
                 if marker and marker.startswith("</"):
@@ -198,14 +217,16 @@ def audit(run, partial=False, model=None):
                 elif phase == "thinking" and out["ids"]:
                     has_reasoning_token = True
                 if out["fork"]:
-                    event = records[tag + f"/event-{len(events)}/complete"]["result"]
+                    event = records[tag +
+                                    f"/event-{len(events)}/complete"]["result"]
                     assert event == result["events"][len(events)]
                     assert event["body_position"] == len(body) and event["root_sha256"] == digest(
                         context
                     )
                     if events:
                         assert (
-                            event["body_position"] - events[-1]["body_position"]
+                            event["body_position"] -
+                            events[-1]["body_position"]
                             >= exp["min_branch_interval_tokens"]
                         )
                     assert event["distribution"] == out["fork"]
@@ -216,13 +237,15 @@ def audit(run, partial=False, model=None):
                     )
                     assert len(items) == len(event["previews"])
                     for item, preview in zip(items, event["previews"]):
-                        record = records[tag + f"/event-{len(events)}/candidate-{item['rank']}"]
+                        record = records[tag +
+                                         f"/event-{len(events)}/candidate-{item['rank']}"]
                         assert (
                             record["request"]["root_sha256"]
                             == event["root_sha256"]
                             == preview["origin_sha256"]
                         )
-                        assert record["request"]["generated_history_sha256"] == digest(body)
+                        assert record["request"]["generated_history_sha256"] == digest(
+                            body)
                         assert preview == {
                             **record["result"],
                             "rank": item["rank"],
@@ -232,9 +255,11 @@ def audit(run, partial=False, model=None):
                             seed, event["root_sha256"], "candidate", item["token_id"]
                         )
                         assert record["request"]["count"] == min(
-                            exp["branch_tokens"], exp["max_output_tokens"] - len(body)
+                            exp["branch_tokens"], exp["max_output_tokens"] -
+                            len(body)
                         )
-                        assert len(preview["ids"]) <= record["request"]["count"]
+                        assert len(preview["ids"]
+                                   ) <= record["request"]["count"]
                         assert (
                             preview["ids"][0] == item["token_id"]
                             and 1 <= len(preview["ids"]) <= exp["branch_tokens"]
@@ -243,12 +268,15 @@ def audit(run, partial=False, model=None):
                             i in model.eos_ids or i == think_end for i in preview["ids"][:-1]
                         )
                         markers = [
-                            emitted_marker(model, context + preview["ids"][:i], token)
+                            emitted_marker(model, context +
+                                           preview["ids"][:i], token)
                             for i, token in enumerate(preview["ids"])
                         ]
-                        assert not any(m and m.startswith("</") for m in markers[:-1])
+                        assert not any(m and m.startswith("</")
+                                       for m in markers[:-1])
                         assert preview["stop_marker"] == markers[-1]
-                        assert preview["text"] == fragment_text(model, preview["ids"])
+                        assert preview["text"] == fragment_text(
+                            model, preview["ids"])
                         assert (
                             "</think>" not in preview["text"]
                             and "</reasoning>" not in preview["text"]
@@ -256,7 +284,8 @@ def audit(run, partial=False, model=None):
                         check_guards(preview, body, forced_first=True)
                         costs.append(preview)
                     assert event["selected_rank"] == 1
-                    retained = [n for n in event["previews"][1:] if n["text"].strip()]
+                    retained = [n for n in event["previews"]
+                                [1:] if n["text"].strip()]
                     if arm == "filtered_futures":
                         gate = event["similarity"]
                         record = records[tag + f"/event-{len(events)}/cosine"]
@@ -272,10 +301,12 @@ def audit(run, partial=False, model=None):
                             gate["texts"] == record["request"]["texts"]
                             and gate["ranks"] == record["request"]["ranks"]
                         )
-                        assert gate["valid"] == [bool(t.strip()) for t in gate["texts"]]
+                        assert gate["valid"] == [
+                            bool(t.strip()) for t in gate["texts"]]
                         valid = [i for i, v in enumerate(gate["valid"]) if v]
                         dense = (
-                            cosine_matrix([gate["embeddings"][i] for i in valid]) if valid else []
+                            cosine_matrix([gate["embeddings"][i]
+                                          for i in valid]) if valid else []
                         )
                         for i in range(len(gate["valid"])):
                             for j in range(len(gate["valid"])):
@@ -301,7 +332,8 @@ def audit(run, partial=False, model=None):
                         retained = [n for n in retained if n["rank"] in ranks]
                     else:
                         assert event["similarity"] is None
-                    assert event["retained_ranks"] == [n["rank"] for n in retained]
+                    assert event["retained_ranks"] == [n["rank"]
+                                                       for n in retained]
                     assert 1 not in event["retained_ranks"]
                     if retained:
                         side = model.encode(memory_text(retained))
@@ -315,12 +347,14 @@ def audit(run, partial=False, model=None):
                             "ids": side,
                         }
                         context.extend(side)
-                        history.append({"kind": "memory", "ids": side, "event": len(events)})
+                        history.append(
+                            {"kind": "memory", "ids": side, "event": len(events)})
                         costs.append(record["result"])
                     else:
                         assert not event["memory_ids"]
                     assert event["continuation_root_sha256"] == digest(context)
-                    record = records[tag + f"/event-{len(events)}/commit-rollout"]
+                    record = records[tag +
+                                     f"/event-{len(events)}/commit-rollout"]
                     commit = record["result"]
                     assert record["request"] == {
                         "root_sha256": digest(context),
@@ -335,7 +369,8 @@ def audit(run, partial=False, model=None):
                         commit["cost"]["input_tokens"] == len(commit["ids"])
                         and commit["cost"]["output_tokens"] == 0
                     )
-                    assert len(body) + len(commit["ids"]) <= exp["max_output_tokens"]
+                    assert len(body) + \
+                        len(commit["ids"]) <= exp["max_output_tokens"]
                     body.extend(commit["ids"])
                     context.extend(commit["ids"])
                     history.append({"kind": "body", "ids": commit["ids"]})
@@ -346,8 +381,10 @@ def audit(run, partial=False, model=None):
                         phase = "final"
                     events.append(event)
                 step += 1
-            assert body == result["body_ids"] and model.decode(body) == result["body_text"]
-            assert context and digest(context) == result["final_context_sha256"]
+            assert body == result["body_ids"] and model.decode(
+                body) == result["body_text"]
+            assert context and digest(
+                context) == result["final_context_sha256"]
             assert (
                 len(context) == result["final_context_length"]
                 and len(context) <= spec["model"]["max_context_tokens"]
@@ -358,7 +395,8 @@ def audit(run, partial=False, model=None):
             assert result["repetition"] == repetition_summary(
                 body, exp["repetition_guard"]["max_period_tokens"]
             )
-            assert result["memory_markup"] == memory_markup_summary(result["body_text"])
+            assert result["memory_markup"] == memory_markup_summary(
+                result["body_text"])
             for key, value in final_response(model, body, row, think_end).items():
                 assert result[key] == value
             for key, value in sum_cost(*costs).items():
@@ -389,7 +427,8 @@ def audit(run, partial=False, model=None):
             saved = records[case_label]["result"]
             case_path = run / "cases" / namespace / (row["id"] + ".json")
             assert json.loads(case_path.read_text(encoding="utf-8")) == saved
-            case_hashes[str(case_path.relative_to(run))] = file_digest(case_path)
+            case_hashes[str(case_path.relative_to(run))
+                        ] = file_digest(case_path)
             for arm, c in saved["conditions"].items():
                 assert records[f"{namespace}/{row['id']}/{arm}/complete"]["result"] == c
             completed_cases += 1
@@ -397,7 +436,8 @@ def audit(run, partial=False, model=None):
         assert completed_cases == len(plans) and completed_conditions == len(plans) * len(
             exp["arms"]
         )
-        assert json.loads((run / "status.json").read_text(encoding="utf-8"))["state"] == "complete"
+        assert json.loads(
+            (run / "status.json").read_text(encoding="utf-8"))["state"] == "complete"
     return {
         "run": str(run),
         "partial": partial,
@@ -433,4 +473,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     result = audit(args.run, args.partial)
     atomic_json(args.output, result)
-    print(json.dumps({k: v for k, v in result.items() if k != "checkpoint_sha256"}, indent=2))
+    print(json.dumps({k: v for k, v in result.items()
+          if k != "checkpoint_sha256"}, indent=2))
