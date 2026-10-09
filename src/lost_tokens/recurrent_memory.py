@@ -120,8 +120,9 @@ class StreamState:
 
 
 class StreamDecoder:
-    def __init__(self, model, exp):
+    def __init__(self, model, exp, answer_format="math"):
         self.model, self.torch, self.exp = model, model.torch, exp
+        self.answer_format = answer_format
         self.think_end = model.encode("</think>")
         if len(self.think_end) != 1:
             raise ValueError("Require a single-token thinking boundary")
@@ -196,16 +197,20 @@ class StreamDecoder:
         entropy = float(-(lp.exp() * lp).sum())
 
         has_numeric_divergence = False
-        if len(items) >= 2:
-            texts = [it["text"].strip() for it in items]
-            if any(re.search(r"[\d\+\-\*/=\(\)]", t) for t in texts):
+        if len(items) >= 2 and top_prob < 0.85 and second_prob >= self.exp["min_candidate_probability"]:
+            t1 = items[0]["text"].strip()
+            t2 = items[1]["text"].strip()
+            if t1 != t2 and (re.search(r"[\d\+\-\*/=\(\)]", t1) or re.search(r"[\d\+\-\*/=\(\)]", t2)):
                 has_numeric_divergence = True
 
-        entropy_threshold = self.exp.get("min_branch_entropy", 0.65)
+        entropy_threshold = self.exp.get(
+            "min_choice_entropy" if self.answer_format == "choice" else "min_branch_entropy",
+            0.80 if self.answer_format == "choice" else 0.65,
+        )
         entropy_spike = (
             (entropy >= entropy_threshold)
             or (top_prob < 0.70 and second_prob >= self.exp["min_candidate_probability"])
-            or has_numeric_divergence
+            or (has_numeric_divergence and self.answer_format == "math")
         )
         eligible = not top_special and len(items) >= 2 and entropy_spike
         return {
@@ -358,7 +363,18 @@ def compact_history(history, target):
     return kept, removed
 
 
-def memory_text(notes):
+def sanitize_choice_rollout(text):
+    # In multiple-choice questions, speculative rollouts claiming
+    # 'Final answer: (X)' or 'matches option (X)' or 'answer would be (X)'
+    # act as deceptive distractors. We neutralize concluding declarations.
+    cleaned = re.sub(r"(?i)final\s+answer\s*:\s*\(?[A-D]\)?", "[choice declaration omitted]", text)
+    cleaned = re.sub(r"(?i)(?:the\s+)?answer\s+(?:is|would\s+be)\s+\(?([A-D])\)?", r"hypothesis (\1)", cleaned)
+    cleaned = re.sub(r"(?i)matches\s+option\s+\(?([A-D])\)?", r"relates to candidate (\1)", cleaned)
+    cleaned = re.sub(r"(?i)therefore,?\s*(?:the\s+answer\s+is\s*)?\(?([A-D])\)?", r"consider hypothesis (\1)", cleaned)
+    return cleaned
+
+
+def memory_text(notes, answer_format="math"):
     """Structured Consensus & Divergence Multi-Branch Memory Anchoring."""
 
     def escape(text):
@@ -370,16 +386,23 @@ def memory_text(notes):
         )
 
     formatted = []
-    for i, n in enumerate(notes):
-        clean_text = escape(n["text"]).strip()
-        nums = re.findall(r"\b\d+(?:[\.,/]\d+)?\b", clean_text)
-        if nums:
-            unique_nums = list(dict.fromkeys(nums))[:4]
+    if answer_format == "choice":
+        for i, n in enumerate(notes):
+            clean_text = sanitize_choice_rollout(escape(n["text"])).strip()
             formatted.append(
-                f"- Alternative Calculation [{i+1}] (Variables: {', '.join(unique_nums)}): {clean_text}"
+                f"- Elimination Check [{i+1}] (Scrutinize): {clean_text}"
             )
-        else:
-            formatted.append(f"- Alternative Path [{i+1}]: {clean_text}")
+    else:
+        for i, n in enumerate(notes):
+            clean_text = escape(n["text"]).strip()
+            nums = re.findall(r"\b\d+(?:[\.,/]\d+)?\b", clean_text)
+            if nums:
+                unique_nums = list(dict.fromkeys(nums))[:4]
+                formatted.append(
+                    f"- Alternative Calculation [{i+1}] (Variables: {', '.join(unique_nums)}): {clean_text}"
+                )
+            else:
+                formatted.append(f"- Alternative Path [{i+1}]: {clean_text}")
 
     return (
         "\n<possibilities>\n"
@@ -390,7 +413,8 @@ def memory_text(notes):
 
 def run_condition(model, store, row, cfg, namespace, arm, log):
     exp = cfg["experiment"]
-    decoder = StreamDecoder(model, exp)
+    answer_format = row.get("answer_format", "math")
+    decoder = StreamDecoder(model, exp, answer_format=answer_format)
     seed = derived_seed(exp["seed"], namespace, row["id"])
     tag = f"{namespace}/{row['id']}/{arm}"
     base = model.prompt(instruction(row) + row["question"])
@@ -486,7 +510,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                     exp["max_output_tokens"] - len(body))
         if phase == "thinking" and not has_reasoning_token:
             count = 1
-        scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
+        scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar" and answer_format == "math"
         next_fork_position = (
             (events[-1]["body_position"] +
              exp["min_branch_interval_tokens"]) if events else 0
@@ -525,6 +549,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             candidates = dist["items"] if arm != "reference_only" else dist["items"][:1]
             rollout_count = min(exp["branch_tokens"],
                                 exp["max_output_tokens"] - len(body))
+            if exp.get("dynamic_budget", True) and dist.get("entropy", 0.0) < 0.95:
+                rollout_count = min(rollout_count, max(12, exp["branch_tokens"] // 2))
             for item in candidates:
                 branch_seed = derived_seed(
                     seed, root_sha, "candidate", item["token_id"])
@@ -549,6 +575,14 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 event["previews"].append(preview)
                 costs.append(preview)
             retained = [n for n in event["previews"][1:] if n["text"].strip()]
+            if answer_format == "choice":
+                # In multiple-choice questions, speculative verbal rollouts that lack verifiable
+                # numerical or algebraic operations act as counterfactual distractors (hallucinations).
+                # Only retain alternatives that have concrete numerical or mathematical content.
+                retained = [
+                    n for n in retained
+                    if re.search(r"[\d\+\-\*/=]", n["text"])
+                ]
             if arm == "filtered_futures":
                 similarity_spec = cfg["similarity"]
                 request = {
@@ -569,7 +603,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 retained = [n for n in retained if n["rank"]
                             in result["retained_ranks"]]
             if retained:
-                text = memory_text(retained)
+                text = memory_text(retained, answer_format=answer_format)
                 side = model.encode(text)
                 if len(side) > exp["max_event_memory_tokens"]:
                     raise ValueError(
