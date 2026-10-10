@@ -114,10 +114,49 @@ python scripts/compare_runs.py RUN_A RUN_B --baseline RUN_A:baseline
 
 Optional `experiment` keys (absent or `null` = off, behavior unchanged):
 `max_memory_events`, `min_branch_body_tokens`, `memory_ttl_tokens` and
-`budget_forcing` (`{"force_at_body_tokens", "answer_tokens"}`). `budget_forcing`
-is only supported for the `plain_ar` arm; combining it with any scanning arm
-(or listing one in `experiment.arms`) raises
-`ValueError("budget_forcing is only supported for plain_ar")`.
+`budget_forcing` (`{"force_at_body_tokens", "answer_tokens"}`). Budget forcing
+supports every arm. Scanning arms limit each rollout to the remaining thinking
+budget so committing the selected rollout cannot overshoot the forcing position.
+
+### Budget forcing, entropy gating, and sentence boundaries
+
+The combined method adds exactly three features to the original implementation.
+Use [`configs/bounded-entropy-sentence.json`](configs/bounded-entropy-sentence.json)
+to enable them together; the packaged default configuration still reproduces the
+original method.
+
+1. **Budget forcing:** at body position 31,743, insert `</think>` if reasoning is
+   still open, leaving one boundary token and 1,024 answer tokens within the
+   32,768-token body cap. This guarantees the token limit and a reasoning-to-answer
+   transition for an open thinking trace; it does not guarantee a correct or
+   complete answer within the reserved tokens.
+2. **Entropy gating:** require raw next-token Shannon entropy of at least 0.65
+   nats in addition to the original candidate probability, special-token, and
+   spacing conditions. This gate applies to every scanning arm and task type.
+3. **Sentence-boundary rollouts:** after at least 13 rollout tokens, stop at a
+   newly completed `.\n`, `.\t`, `. `, `\n\n`, `\n-`, or `\n*` pattern. Boundaries
+   split across tokens are recognized. A single newline or literal backslash
+   does not stop a rollout, and this rule does not stop the main body.
+
+```bash
+uv run --frozen lost-tokens run \
+  --config configs/bounded-entropy-sentence.json \
+  --benchmarks aime25 --gpus 0 --arms baseline ours \
+  --run-name bounded-entropy-sentence-aime25
+```
+
+`experiment.min_branch_entropy` and `experiment.rollout_early_stop`
+(`{"min_tokens", "patterns"}`) are absent or `null` when disabled. The combined
+configuration also enables budget forcing for baseline, so both arms reserve the
+same answer budget. To shorten a smoke run or override `--max-output-tokens`,
+edit the forcing position and answer reservation to fit that cap first; invalid
+reservations fail rather than changing silently.
+
+The method keeps the original cosine filter, raw `<possibilities>` payload,
+selected-rollout commit, cache isolation, memory compaction, and recovery rules.
+The optimization branches' numeric filters, variable anchoring, task gating,
+dynamic rollout budgets, and hardware/platform changes are excluded. See
+[the method contract](docs/method.md) and [한국어 방법론](docs/three_features.ko.md).
 
 ## Data and configuration
 
@@ -175,6 +214,7 @@ workspace/
 
 ## Results and verification
 
+These historical results use the original method, with the three additions off.
 Exploratory results through September 22, 2026, using
 **Qwen3-4B-Thinking-2507**. Each row compares the same questions completed by both
 arms; accuracy includes correct/total counts. Differences are percentage points.

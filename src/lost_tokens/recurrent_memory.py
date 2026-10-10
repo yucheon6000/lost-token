@@ -51,6 +51,18 @@ def fragment_text(model, ids):
     return text
 
 
+def rollout_boundary(model, ids, policy):
+    """Detect a newly completed boundary, including patterns split across tokens."""
+    if policy is None or len(ids) < policy["min_tokens"]:
+        return None
+    before = model.decode(ids[:-1])
+    text = model.decode(ids)
+    for pattern in policy["patterns"]:
+        if text.find(pattern, max(0, len(before) - len(pattern) + 1)) >= 0:
+            return pattern
+    return None
+
+
 def instruction(row):
     ending = (
         "Please reason step by step, and put your final answer within \\boxed{}."
@@ -185,7 +197,11 @@ class StreamDecoder:
             if prob >= self.exp["min_candidate_probability"] and token not in self.model.special_ids
         ]
         top_special = observations[0][0] in self.model.special_ids
-        eligible = not top_special and len(items) >= 2
+        entropy = float(-(lp.exp() * lp).nan_to_num().sum())
+        threshold = self.exp.get("min_branch_entropy")
+        eligible = (
+            not top_special and len(items) >= 2 and (threshold is None or entropy >= threshold)
+        )
         return {
             "eligible": eligible,
             "items": items if eligible else [],
@@ -193,7 +209,7 @@ class StreamDecoder:
             "top_probability": observations[0][1],
             "second_probability": observations[1][1],
             "top_is_special": top_special,
-            "entropy": float(-(lp.exp() * lp).sum()),
+            "entropy": entropy,
         }
 
     def sample(self, state, seed):
@@ -296,6 +312,8 @@ class StreamDecoder:
             logprobs.append(lp)
             if token in self.model.eos_ids or (stop_marker and stop_marker.startswith("</")):
                 break
+            if rollout_boundary(self.model, ids, self.exp.get("rollout_early_stop")) is not None:
+                break
         self.model._sync()
         return {
             "ids": ids,
@@ -372,8 +390,6 @@ def memory_text(notes):
 def run_condition(model, store, row, cfg, namespace, arm, log):
     exp = cfg["experiment"]
     validate_budget_forcing(exp)
-    if exp.get("budget_forcing") is not None and arm != "plain_ar":
-        raise ValueError("budget_forcing is only supported for plain_ar")
     max_memory_events = exp.get("max_memory_events")
     min_body = exp.get("min_branch_body_tokens") or 0
     memory_ttl = exp.get("memory_ttl_tokens")
@@ -565,7 +581,9 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 "memory_ids": [],
             }
             candidates = dist["items"] if arm != "reference_only" else dist["items"][:1]
-            rollout_count = min(exp["branch_tokens"], exp["max_output_tokens"] - len(body))
+            rollout_count = min(exp["branch_tokens"], cap - len(body))
+            if forcing and forced_at is None and phase == "thinking":
+                rollout_count = min(rollout_count, forcing["force_at_body_tokens"] - len(body))
             for item in candidates:
                 branch_seed = derived_seed(seed, root_sha, "candidate", item["token_id"])
                 request = {

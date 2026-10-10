@@ -94,6 +94,8 @@ class KnobTests(unittest.TestCase):
             min_branch_body_tokens=0,
             memory_ttl_tokens=None,
             budget_forcing=None,
+            min_branch_entropy=None,
+            rollout_early_stop=None,
         )
         self.assertEqual(self.default_runs(), absent)
 
@@ -362,21 +364,32 @@ class KnobTests(unittest.TestCase):
         path.write_text(original)
         audit(path.parent.parent, partial=True, model=self.model)
 
-    def test_budget_forcing_rejected_for_scanning_arms(self):
+    def test_budget_forcing_supported_for_all_arms(self):
         self.forcing()
         for arm in ("reference_only", "all_futures", "filtered_futures"):
-            with self.assertRaisesRegex(ValueError, "only supported for plain_ar"):
-                run_condition(
-                    self.model, RunStore(self.root / ("bf-" + arm), {}), self.row, self.cfg,
-                    "test", arm, lambda _: None,
+            with (
+                patch.object(StreamDecoder, "candidates", self.eligible),
+                patch.object(StreamDecoder, "sample", lambda *_: (68, -1.0)),
+                patch("lost_tokens.recurrent_memory.compare_rollouts", self.keep),
+            ):
+                result = run_condition(
+                    self.model,
+                    RunStore(self.root / ("bf-" + arm), {}),
+                    self.row,
+                    self.cfg,
+                    "test",
+                    arm,
+                    lambda _: None,
                 )
+            self.assertEqual(result["forced_think_end_at"], 5)
+            self.assertEqual(result["body_ids"][5], 126)
+            self.assertTrue(all(e["body_position"] < 5 for e in result["events"]))
         spec = load_spec()
         spec["experiment"]["budget_forcing"] = {"force_at_body_tokens": 10, "answer_tokens": 5}
         spec["experiment"]["arms"] = ["plain_ar", "filtered_futures"]
         path = self.root / "bf-spec.json"
         path.write_text(json.dumps(spec))
-        with self.assertRaisesRegex(ValueError, "only supported for plain_ar"):
-            load_spec(path)
+        load_spec(path)
         spec["experiment"]["arms"] = ["plain_ar"]
         path.write_text(json.dumps(spec))
         load_spec(path)

@@ -36,6 +36,47 @@ candidate has its own independent GPU cache. This changes data movement, not
 model precision, candidate tokens or inference logic. The default offload
 threshold is 49,000 tokens. Actual capacity depends on the GPU, model, and config.
 
+## Budget forcing entropy gating and sentence boundaries
+
+`configs/bounded-entropy-sentence.json` enables three additions while the packaged
+defaults retain the original behavior. All original candidate, memory, and commit
+rules above still apply.
+
+Before step 2, compute Shannon entropy over the full raw next-token distribution,
+`H = -sum(p * log(p))`, using natural logarithms. Require `H >= 0.65` nats as well
+as at least two ordinary candidates with probability at least 0.20. The entropy
+threshold is `experiment.min_branch_entropy`; absent or `null` disables it.
+No numerical-token exceptions, probability-ratio fallback, or task-specific gates
+are added.
+
+In step 3, `experiment.rollout_early_stop` sets the minimum rollout length and
+boundary strings. The combined method uses 13 tokens and `.\n`, `.\t`, `. `,
+`\n\n`, `\n-`, and `\n*`. Only a boundary newly completed at or after the minimum
+length stops the rollout; a boundary emitted earlier is not reused. Detection
+uses decoded rollout prefixes so a boundary can span tokenizer pieces. EOS and
+reasoning-end markers remain immediate stops. The main continuation is unaffected
+by these boundary rules. There is no entropy-dependent rollout-length adjustment.
+
+Before generating or exploring another thinking token, enforce the body budget.
+`experiment.budget_forcing` reserves a position for a forced `</think>` and a
+maximum number of answer tokens. Each main segment and candidate rollout is
+limited by the remaining thinking budget. At body position 31,743, an open
+thinking trace receives one persisted `</think>` token, leaving 1,024 answer
+tokens within a total of 32,768. If reasoning closes naturally first, no forced
+token is inserted and generation continues under the original body cap. The rule
+supports all four arms; final-answer generation never branches.
+
+The 32K limit counts generated body tokens, including committed selected-rollout
+tokens and the forced marker. Input, injected memory, and unchosen speculative
+tokens have separate budgets. This is not a 32K cap on total model work or context.
+Budget forcing guarantees a transition out of an open thinking trace and bounded
+generation; final-answer completeness and accuracy remain model outcomes.
+
+The atomic ledger records the same parent states, truncated rollout requests,
+forced boundary, exact commits, and per-position seeds on interruption and
+resume. Audit verifies the entropy requirement, each valid early stop, and the
+forcing position in addition to the original invariants.
+
 ## Evaluation semantics
 
 `baseline` maps to `plain_ar`; `ours` maps to `filtered_futures`. Both use the

@@ -2,6 +2,7 @@
 
 import copy
 import json
+import math
 from importlib.resources import files
 from pathlib import Path
 from .recurrent_memory import ARMS, validate_budget_forcing
@@ -65,6 +66,22 @@ def validate_spec(spec):
         if value is not None and (type(value) is not int or value < floor):
             raise ValueError(f"Invalid {key}")
     validate_budget_forcing(exp)
+    entropy = exp.get("min_branch_entropy")
+    if entropy is not None and (
+        type(entropy) not in (int, float) or not math.isfinite(entropy) or entropy < 0
+    ):
+        raise ValueError("Invalid min_branch_entropy")
+    early_stop = exp.get("rollout_early_stop")
+    if early_stop is not None and (
+        not isinstance(early_stop, dict)
+        or set(early_stop) != {"min_tokens", "patterns"}
+        or type(early_stop["min_tokens"]) is not int
+        or not 1 <= early_stop["min_tokens"] <= exp["branch_tokens"]
+        or not isinstance(early_stop["patterns"], list)
+        or not early_stop["patterns"]
+        or any(not isinstance(p, str) or not p for p in early_stop["patterns"])
+    ):
+        raise ValueError("Invalid rollout_early_stop")
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
         raise ValueError("Invalid repetition guard switch")
@@ -99,8 +116,6 @@ def validate_spec(spec):
         raise ValueError("Require compaction hysteresis and room for every event")
     if not exp["arms"] or len(set(exp["arms"])) != len(exp["arms"]) or set(exp["arms"]) - set(ARMS):
         raise ValueError("Invalid arms")
-    if exp.get("budget_forcing") is not None and set(exp["arms"]) != {"plain_ar"}:
-        raise ValueError("budget_forcing is only supported for plain_ar")
     if spec["execution"]["workers"] != 1:
         raise ValueError(
             "One worker per run; use distinct run paths/devices for independent workers"

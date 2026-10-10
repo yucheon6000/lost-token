@@ -18,6 +18,7 @@ from lost_tokens.recurrent_memory import (
     ttl_history,
     emitted_marker,
     fragment_text,
+    rollout_boundary,
 )
 from lost_tokens.protocol import planned_rows
 from lost_tokens.cosine import cosine_matrix, select_distinct
@@ -135,6 +136,11 @@ def audit(run, partial=False, model=None):
                         range(len(body), len(body) + len(out["checks"]))
                     )
                     for index, check in enumerate(out["checks"]):
+                        threshold = exp.get("min_branch_entropy")
+                        if threshold is not None:
+                            assert check["entropy"] >= 0
+                            if check["entropy"] < threshold:
+                                assert not check["eligible"]
                         if check["eligible"]:
                             assert index == len(out["checks"]) - 1 and out["fork"] is not None
                             assert {k: v for k, v in check.items() if k != "body_position"} == out[
@@ -302,9 +308,12 @@ def audit(run, partial=False, model=None):
                         assert preview["seed"] == derived_seed(
                             seed, event["root_sha256"], "candidate", item["token_id"]
                         )
-                        assert record["request"]["count"] == min(
-                            exp["branch_tokens"], exp["max_output_tokens"] - len(body)
-                        )
+                        rollout_count = min(exp["branch_tokens"], cap - len(body))
+                        if forcing and forced_at is None and phase == "thinking":
+                            rollout_count = min(
+                                rollout_count, forcing["force_at_body_tokens"] - len(body)
+                            )
+                        assert record["request"]["count"] == rollout_count
                         assert len(preview["ids"]) <= record["request"]["count"]
                         assert (
                             preview["ids"][0] == item["token_id"]
@@ -319,6 +328,19 @@ def audit(run, partial=False, model=None):
                         ]
                         assert not any(m and m.startswith("</") for m in markers[:-1])
                         assert preview["stop_marker"] == markers[-1]
+                        boundaries = [
+                            rollout_boundary(
+                                model, preview["ids"][: i + 1], exp.get("rollout_early_stop")
+                            )
+                            for i in range(len(preview["ids"]))
+                        ]
+                        assert not any(boundaries[:-1])
+                        if len(preview["ids"]) < rollout_count:
+                            assert (
+                                preview["ids"][-1] in model.eos_ids
+                                or (markers[-1] and markers[-1].startswith("</"))
+                                or boundaries[-1] is not None
+                            )
                         assert preview["text"] == fragment_text(model, preview["ids"])
                         assert (
                             "</think>" not in preview["text"]
