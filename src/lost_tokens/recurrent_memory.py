@@ -151,7 +151,7 @@ def final_response(model, body, row, think_end_id):
     prediction = natural_answer(answer, row)
     correct = (
         (
-            math_correct(prediction, row["gold"])
+            math_correct(row["gold"], prediction)
             if row.get("answer_format") == "math"
             else prediction == row["gold"]
         )
