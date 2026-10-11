@@ -69,7 +69,7 @@ def audit(run, partial=False, model=None):
     started = last_log = time.monotonic()
     plans = planned_rows(spec, split, identity["mode"])
     for namespace, row in plans:
-        base = model.prompt(instruction(row) + row["question"])
+        base = model.prompt(instruction(row, exp) + row["question"])
         seed = derived_seed(exp["seed"], namespace, row["id"])
         for arm in exp["arms"]:
             tag = f"{namespace}/{row['id']}/{arm}"
@@ -292,6 +292,8 @@ def audit(run, partial=False, model=None):
                         if arm == "reference_only"
                         else out["fork"]["items"]
                     )
+                    if exp.get("max_branch_candidates") is not None:
+                        items = items[: exp["max_branch_candidates"]]
                     assert len(items) == len(event["previews"])
                     for item, preview in zip(items, event["previews"]):
                         record = records[tag + f"/event-{len(events)}/candidate-{item['rank']}"]

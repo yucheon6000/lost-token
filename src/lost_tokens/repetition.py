@@ -50,9 +50,11 @@ def memory_markup_summary(text, memory_format=None):
         for line in text.splitlines()
         if re.fullmatch(r"[ \t]*(?:</?possibilities>[ \t]*)+", line)
     )
-    if memory_format == "unchosen_branches":
+    if memory_format in ("unchosen_branches", "original_unchosen"):
         labels = re.compile(
             r"Unchosen reasoning branches:|Unchosen branch \d+:|End of unchosen reasoning branches\."
+            if memory_format == "unchosen_branches"
+            else r"Unchosen:|Original \(chosen\):"
         )
         total += len(labels.findall(text))
         structural += sum(bool(labels.fullmatch(line.strip())) for line in text.splitlines())

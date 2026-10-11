@@ -192,13 +192,13 @@ def raw_rows(work_dir, task, seed):
                 )
 
 
-def normalize(row, tokenizer, prompt_limit):
+def normalize(row, tokenizer, prompt_limit, experiment=None):
     row = dict(row)
 
     def length(value):
         return len(
             tokenizer.apply_chat_template(
-                [{"role": "user", "content": instruction(value) + value["question"]}],
+                [{"role": "user", "content": instruction(value, experiment) + value["question"]}],
                 tokenize=True,
                 add_generation_prompt=True,
                 enable_thinking=True,
@@ -246,6 +246,12 @@ def preparation_identity(spec, task):
         "model": {k: spec["model"][k] for k in ("name", "revision", "enable_thinking")},
         "data": spec["data"],
         "adapter_sha256": file_digest(Path(__file__)),
+        "instruction_sha256": digest(
+            [
+                instruction({"answer_format": answer_format}, spec["experiment"])
+                for answer_format in ("math", "choice")
+            ]
+        ),
     }
 
 
@@ -292,7 +298,9 @@ def prepare(work_dir, spec, benchmarks):
                     raise ValueError("Corrupt normalized row checkpoint")
                 normalized = saved["row"]
             else:
-                normalized = normalize(row, tokenizer, spec["data"]["prompt_limit"])
+                normalized = normalize(
+                    row, tokenizer, spec["data"]["prompt_limit"], spec["experiment"]
+                )
                 atomic_json(
                     cache,
                     {

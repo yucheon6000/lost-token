@@ -21,7 +21,12 @@ from .repetition import repeated_suffix, repetition_summary, memory_markup_summa
 
 
 ARMS = ("plain_ar", "reference_only", "all_futures", "filtered_futures")
-MEMORY_FORMATS = ("possibilities", "unchosen_branches")
+MEMORY_FORMATS = ("possibilities", "unchosen_branches", "original_unchosen")
+BRANCH_CONTEXT = (
+    "During reasoning, you may see continuations explored from the same point.\n"
+    "Unchosen: an alternative that was explored but not selected; it is not a verified fact.\n"
+    "Original (chosen): the continuation currently being followed.\n\n"
+)
 REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
 SENTENCE_PUNCTUATION = re.compile(r"[.!?。！？]+")
 SENTENCE_ABBREVIATION = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|Prof|vs|etc|e\.g|i\.e|a\.m|p\.m)$", re.I)
@@ -103,13 +108,18 @@ def new_sentence_ends(model, ids):
     return len(sentence_starts(after) - sentence_starts(before))
 
 
-def instruction(row):
+def instruction(row, experiment=None):
     ending = (
         "Please reason step by step, and put your final answer within \\boxed{}."
         if row.get("answer_format") == "math"
         else "Please reason step by step. End your final response with 'Final answer: (LETTER)'."
     )
-    return ending + "\n\nProblem:\n"
+    prefix = (
+        BRANCH_CONTEXT
+        if experiment and experiment.get("memory_format") == "original_unchosen"
+        else ""
+    )
+    return prefix + ending + "\n\nProblem:\n"
 
 
 def final_response(model, body, row, think_end_id):
@@ -221,8 +231,7 @@ class StreamDecoder:
         return state
 
     def candidates(self, state):
-        # A probability threshold itself bounds the number of qualifying tokens;
-        # there is no top-2 truncation, lexical filter, ratio gate, or cooldown.
+        # Record all qualifying tokens; rollout count is limited separately.
         lp = state.logits.log_softmax(-1)
         count = min(len(lp), int(1 / self.exp["min_candidate_probability"]) + 1)
         values, indices = self.torch.topk(lp, count)
@@ -443,6 +452,16 @@ def memory_text(notes, memory_format=None):
             flags=re.I,
         )
 
+    if memory_format == "original_unchosen":
+        if not notes:
+            return ""
+        if len(notes) != 1:
+            raise ValueError("original_unchosen requires exactly one unchosen branch")
+        return (
+            "\nUnchosen:\n"
+            + "\n".join("> " + line for line in escape(notes[0]["text"]).split("\n"))
+            + "\n\nOriginal (chosen):\n"
+        )
     if memory_format == "unchosen_branches":
         if not notes:
             return ""
@@ -478,7 +497,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     decoder.check_deadline = getattr(store, "check_deadline", None)
     seed = derived_seed(exp["seed"], namespace, row["id"])
     tag = f"{namespace}/{row['id']}/{arm}"
-    base = model.prompt(instruction(row) + row["question"])
+    base = model.prompt(instruction(row, exp) + row["question"])
     state = decoder.prefill(base)
     prefill = store.call(
         tag + "/prefill", {"ids": base}, lambda: {"cost": decoder.cost(0, len(base), 0)}
@@ -660,6 +679,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 "memory_ids": [],
             }
             candidates = dist["items"] if arm != "reference_only" else dist["items"][:1]
+            if exp.get("max_branch_candidates") is not None:
+                candidates = candidates[: exp["max_branch_candidates"]]
             rollout_count = cap - len(body)
             if exp.get("rollout_sentence_ends") is None:
                 rollout_count = min(exp["branch_tokens"], rollout_count)

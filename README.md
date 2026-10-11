@@ -188,30 +188,45 @@ uv run --frozen lost-tokens run \
   --benchmarks aime25 --gpus 0 --run-name sparse-sentence-aime25
 ```
 
-The sparse profile now uses `experiment.memory_format: "unchosen_branches"`.
-Memory explicitly says the continuations were explored from the same reasoning
-prefix **but were not selected**, and identifies them as unverified hypotheses.
-Each branch has its own heading and quoted payload; an explicit end marker
-separates the alternatives from the selected rollout committed afterwards.
+The sparse profile uses `experiment.memory_format: "original_unchosen"` and
+`max_branch_candidates: 2`. At each eligible fork, explore only the two highest
+probability qualifying candidates: the selected original and one unchosen
+alternative. The reference ablation still explores only the selected original.
+The cosine gate can omit a redundant alternative from memory without changing
+the two previews that were generated.
+
+Define the labels once in the initial user-message instructions, before the
+problem:
 
 ```text
-Unchosen reasoning branches:
-The following continuations were explored from the same reasoning prefix but were not selected. They are alternative hypotheses, not verified facts or the selected continuation.
-
-Unchosen branch 1:
-> First unchosen continuation.
-
-Unchosen branch 2:
-> Another unchosen continuation.
-End of unchosen reasoning branches.
+During reasoning, you may see continuations explored from the same point.
+Unchosen: an alternative that was explored but not selected; it is not a verified fact.
+Original (chosen): the continuation currently being followed.
 ```
 
+Each memory insertion then has only the quoted alternative and short labels:
+
+```text
+Unchosen:
+> An alternative continuation.
+
+Original (chosen):
+The selected continuation.
+```
+
+Only the unchosen text and labels are side input. The selected continuation
+shown above is committed as body tokens after the final label, without duplication.
 Absent/null `memory_format`, or `"possibilities"`, preserves the original tag
-format for previous profiles. Formatting happens after cosine filtering and
-never includes the selected branch in the alternative payload. Audit reconstructs
-the exact formatted bytes and detects generated framing labels. A clearer
-description does not establish that the model uses the alternatives correctly;
-accuracy and net-speed effects still require a new comparison.
+format. `"unchosen_branches"` retains the earlier longer explanation for comparison.
+Formatting happens after cosine filtering; embeddings still receive raw text.
+Audit reconstructs the initial definitions, actual candidate limit, and exact
+memory bytes. Input preparation counts the definitions and binds their hash to
+the prepared-data identity. Re-run `prepare` with the new config before evaluation.
+
+With this config, `baseline` receives the same initial definitions, making it a
+prompt-matched plain-AR control. Use the original packaged defaults for a pure
+baseline without the definitions. Accuracy and net-speed effects of the new
+format still require a new comparison.
 
 ## Data and configuration
 

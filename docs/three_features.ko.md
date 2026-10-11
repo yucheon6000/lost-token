@@ -146,15 +146,39 @@ Windows 호환성 변경은 포함하지 않는다. 독립 캐시, 코사인 필
 `Alternatives (unverified):`처럼 대안임을 자연어로 명시하는 형식은 비교할
 가치가 있지만, 그 형식이 더 높은 정확도를 낸다는 근거는 아직 없다.
 
-새 설정에서는 `memory_format: "unchosen_branches"`를 사용한다. 메모리 첫
-문장은 같은 추론 접두부에서 탐색했지만 선택하지 않은 이어쓰기임을
-명시한다. 다음 문장은 검증된 사실이나 선택된 이어쓰기가 아닌 대안
-가설임을 설명한다. 각 분기를 `Unchosen branch 1:`, `Unchosen branch 2:`로
-구분하고 본문에 `> ` 인용 접두부를 붙인다. 마지막에는
-`End of unchosen reasoning branches.`로 대안 구간의 끝을 표시한다.
+새 설정에서는 `memory_format: "original_unchosen"`,
+`max_branch_candidates: 2`를 사용한다. 분기가 발생하면 조건을 통과한
+후보 중 확률이 가장 높은 original과 그다음 unchosen만 탐색한다.
+original은 기존 argmax 규칙에 따라 실제로 선택하는 분기다. chosen은
+선택 상태이며, 별도의 세 번째 분기가 아니다. `reference_only` 비교군은
+기존대로 original 하나만 탐색한다.
 
-선택된 분기는 이 목록에 들어가지 않으며, 목록 뒤에 원래 토큰을 그대로
-커밋한다. 임베딩 비교는 포맷을 붙이기 전 롤아웃 원문을 사용한다.
-기존 형식은 키를 생략하거나 `null`, `"possibilities"`로 지정하면 재현할
-수 있다. 이 변경은 선택되지 않은 분기라는 의미를 명시하는 것이며,
-모델의 올바른 해석이나 정답률 향상을 보장하지 않는다.
+문제 앞의 초기 안내에서 용어를 한 번 정의한다.
+
+```text
+During reasoning, you may see continuations explored from the same point.
+Unchosen: an alternative that was explored but not selected; it is not a verified fact.
+Original (chosen): the continuation currently being followed.
+```
+
+분기 메모리에는 긴 설명을 반복하지 않는다.
+
+```text
+Unchosen:
+> 선택하지 않은 분기의 내용
+
+Original (chosen):
+실제로 이어갈 선택된 롤아웃
+```
+
+선택된 텍스트는 메모리로 중복 주입하지 않으며, 마지막 라벨 다음에
+원래 토큰을 그대로 본문으로 커밋한다. 코사인 필터가 중복 대안을 제거한
+경우에는 메모리 주입 없이 original만 이어간다. 임베딩 비교는 포맷을
+붙이기 전 원문을 사용한다. 초기 안내는 입력 길이와 준비 캐시 식별자에
+반영한다. 새 설정으로 `prepare`를 다시 실행해야 한다.
+
+같은 설정으로 실행한 plain-AR baseline에도 초기 안내가 들어간다.
+안내 없는 순정 baseline은 기존 패키지 기본 설정으로 실행한다.
+기존 메모리 형식은 키 생략·`null`·`"possibilities"`로, 긴 분기 설명은
+`"unchosen_branches"`로 재현할 수 있다. 이 표현의 이해도와 정답률 효과는
+별도로 검증해야 한다.

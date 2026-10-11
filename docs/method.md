@@ -113,21 +113,38 @@ rollout stop changes the subsequent reasoning trajectory.
 
 ## Explicit unchosen branch memory
 
-The sparse profile uses `experiment.memory_format: "unchosen_branches"`. The
-memory block names the text as unchosen continuations from the same reasoning
-prefix and says they are alternative hypotheses rather than verified facts or
-the selected continuation. Individual branch headings and Markdown quotation
-prefixes separate the payloads, followed by an explicit end marker. Retained
-payload text is preserved apart from quotation prefixes and escaped reasoning
-or memory control tags. The selected rollout is committed verbatim afterwards.
+The sparse profile uses `experiment.memory_format: "original_unchosen"`, with
+`max_branch_candidates: 2`. Eligibility still uses the complete raw distribution.
+Only the two highest probability qualifying candidates are explored at each fork:
+the original, always selected under the existing argmax rule, and one unchosen
+alternative. The original is the method's selected rollout, not a separate third
+branch or a guarantee of matching plain-AR sampling. The reference ablation keeps
+its single-preview semantics. Redundant unchosen text can still be filtered out.
+
+The initial user-message instructions define `Unchosen` as an explored but
+unselected, unverified alternative, and `Original (chosen)` as the continuation
+being followed. Definitions appear once before the problem. Each memory block
+then contains `Unchosen:`, the quoted alternative, and `Original (chosen):`.
+The latter closes the quote block and identifies the exact selected rollout
+committed next as body tokens. Selected text is never duplicated in side memory.
+The alternative payload is preserved apart from quotation prefixes and escaped
+reasoning or memory control tags.
 
 Formatting takes place after semantic filtering, so the embedding encoder still
 receives raw rollout text. Absent/null `memory_format`, or `"possibilities"`, keeps
-the original bytes for older profiles. Audit verifies the reported memory string
-as well as its encoded token IDs. Repetition/markup diagnostics count copied
-unchosen-branch headings only when that format is active; quoted source lines
-are not classified as standalone framing labels. This is explicit contextual
-framing, not an assertion of correct model interpretation or improved accuracy.
+the original bytes for older profiles; `"unchosen_branches"` retains the longer
+per-event explanation. Audit verifies the initial instructions, candidate limit,
+reported memory string and encoded token IDs. Repetition/markup diagnostics count
+copied labels only for the active format; quoted source lines are not classified
+as standalone framing labels.
+
+Preparation includes the definitions in prompt lengths and LongBench context
+reservation. Its identity hashes the instructions so primed and unprimed inputs
+cannot share an incorrectly sized cache. Runtime branch thresholds and rollout
+limits do not affect this prompt identity. A plain-AR arm using the compact
+profile receives the same definitions, whereas the original defaults preserve
+the unprimed baseline. These controls differ and must be reported explicitly.
+Contextual framing does not establish correct interpretation or improved accuracy.
 
 ## Evaluation semantics
 

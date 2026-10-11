@@ -69,6 +69,11 @@ def validate_spec(spec):
     memory_format = exp.get("memory_format")
     if memory_format is not None and memory_format not in MEMORY_FORMATS:
         raise ValueError("Invalid memory_format")
+    candidate_limit = exp.get("max_branch_candidates")
+    if candidate_limit is not None and (type(candidate_limit) is not int or candidate_limit < 2):
+        raise ValueError("Invalid max_branch_candidates")
+    if memory_format == "original_unchosen" and candidate_limit != 2:
+        raise ValueError("original_unchosen requires max_branch_candidates=2")
     entropy = exp.get("min_branch_entropy")
     if entropy is not None and (
         type(entropy) not in (int, float) or not math.isfinite(entropy) or entropy < 0
