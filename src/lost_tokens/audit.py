@@ -412,7 +412,9 @@ def audit(run, partial=False, model=None):
                     assert event["retained_ranks"] == [n["rank"] for n in retained]
                     assert 1 not in event["retained_ranks"]
                     if retained:
-                        side = model.encode(memory_text(retained))
+                        text = memory_text(retained, exp.get("memory_format"))
+                        assert event["memory_text"] == text
+                        side = model.encode(text)
                         assert (
                             side == event["memory_ids"]
                             and len(side) <= exp["max_event_memory_tokens"]
@@ -469,7 +471,9 @@ def audit(run, partial=False, model=None):
             assert result["repetition"] == repetition_summary(
                 body, exp["repetition_guard"]["max_period_tokens"]
             )
-            assert result["memory_markup"] == memory_markup_summary(result["body_text"])
+            assert result["memory_markup"] == memory_markup_summary(
+                result["body_text"], exp.get("memory_format")
+            )
             for key, value in final_response(model, body, row, think_end).items():
                 assert result[key] == value
             for key, value in sum_cost(*costs).items():

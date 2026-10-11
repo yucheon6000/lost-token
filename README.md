@@ -177,7 +177,7 @@ sentence parser.
 
 EOS, a reasoning-end marker, the remaining body/thinking budget, and the worker's
 deadline can stop a rollout before two endings. The independent caches, exact
-selected-rollout commit, memory formatting and cosine rule remain unchanged.
+selected-rollout commit and cosine rule remain unchanged.
 Existing encoder length and event-memory reservations still reject oversized
 alternatives rather than truncating them. The prior configuration and its six-hour
 results remain available separately.
@@ -187,6 +187,31 @@ uv run --frozen lost-tokens run \
   --config configs/sparse-sentence-rollouts.json \
   --benchmarks aime25 --gpus 0 --run-name sparse-sentence-aime25
 ```
+
+The sparse profile now uses `experiment.memory_format: "unchosen_branches"`.
+Memory explicitly says the continuations were explored from the same reasoning
+prefix **but were not selected**, and identifies them as unverified hypotheses.
+Each branch has its own heading and quoted payload; an explicit end marker
+separates the alternatives from the selected rollout committed afterwards.
+
+```text
+Unchosen reasoning branches:
+The following continuations were explored from the same reasoning prefix but were not selected. They are alternative hypotheses, not verified facts or the selected continuation.
+
+Unchosen branch 1:
+> First unchosen continuation.
+
+Unchosen branch 2:
+> Another unchosen continuation.
+End of unchosen reasoning branches.
+```
+
+Absent/null `memory_format`, or `"possibilities"`, preserves the original tag
+format for previous profiles. Formatting happens after cosine filtering and
+never includes the selected branch in the alternative payload. Audit reconstructs
+the exact formatted bytes and detects generated framing labels. A clearer
+description does not establish that the model uses the alternatives correctly;
+accuracy and net-speed effects still require a new comparison.
 
 ## Data and configuration
 

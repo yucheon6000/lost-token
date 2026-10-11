@@ -42,7 +42,7 @@ def repetition_summary(ids, max_period):
     return best
 
 
-def memory_markup_summary(text):
+def memory_markup_summary(text, memory_format=None):
     tags = re.compile(r"</?possibilities>")
     total = len(tags.findall(text))
     structural = sum(
@@ -50,4 +50,10 @@ def memory_markup_summary(text):
         for line in text.splitlines()
         if re.fullmatch(r"[ \t]*(?:</?possibilities>[ \t]*)+", line)
     )
+    if memory_format == "unchosen_branches":
+        labels = re.compile(
+            r"Unchosen reasoning branches:|Unchosen branch \d+:|End of unchosen reasoning branches\."
+        )
+        total += len(labels.findall(text))
+        structural += sum(bool(labels.fullmatch(line.strip())) for line in text.splitlines())
     return {"structural_tags": structural, "inline_mentions": total - structural}

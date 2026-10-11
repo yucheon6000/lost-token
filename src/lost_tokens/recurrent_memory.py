@@ -21,6 +21,7 @@ from .repetition import repeated_suffix, repetition_summary, memory_markup_summa
 
 
 ARMS = ("plain_ar", "reference_only", "all_futures", "filtered_futures")
+MEMORY_FORMATS = ("possibilities", "unchosen_branches")
 REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
 SENTENCE_PUNCTUATION = re.compile(r"[.!?。！？]+")
 SENTENCE_ABBREVIATION = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|Prof|vs|etc|e\.g|i\.e|a\.m|p\.m)$", re.I)
@@ -428,8 +429,11 @@ def validate_budget_forcing(exp):
         raise ValueError("budget_forcing exceeds max_output_tokens")
 
 
-def memory_text(notes):
-    """Only unchosen rollout text; no repeated instructions, probabilities, or suffix."""
+def memory_text(notes, memory_format=None):
+    """Frame unchosen continuations without asserting their content is correct."""
+    memory_format = "possibilities" if memory_format is None else memory_format
+    if memory_format not in MEMORY_FORMATS:
+        raise ValueError("Invalid memory_format")
 
     def escape(text):
         return re.sub(
@@ -439,6 +443,21 @@ def memory_text(notes):
             flags=re.I,
         )
 
+    if memory_format == "unchosen_branches":
+        if not notes:
+            return ""
+        return (
+            "\nUnchosen reasoning branches:\n"
+            "The following continuations were explored from the same reasoning prefix "
+            "but were not selected. They are alternative hypotheses, not verified facts "
+            "or the selected continuation.\n\n"
+            + "\n\n".join(
+                f"Unchosen branch {index}:\n"
+                + "\n".join("> " + line for line in escape(note["text"]).split("\n"))
+                for index, note in enumerate(notes, 1)
+            )
+            + "\nEnd of unchosen reasoning branches.\n"
+        )
     return (
         "\n<possibilities>\n"
         + "\n\n".join(escape(n["text"]) for n in notes)
@@ -686,7 +705,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 costs.append(result)
                 retained = [n for n in retained if n["rank"] in result["retained_ranks"]]
             if retained:
-                text = memory_text(retained)
+                text = memory_text(retained, exp.get("memory_format"))
                 side = model.encode(text)
                 if len(side) > exp["max_event_memory_tokens"]:
                     raise ValueError(
@@ -780,7 +799,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
         **({"forced_think_end_at": forced_at} if forcing else {}),
         "body_guard_events": body_guards,
         "repetition": repetition_summary(body, exp["repetition_guard"]["max_period_tokens"]),
-        "memory_markup": memory_markup_summary(model.decode(body)),
+        "memory_markup": memory_markup_summary(model.decode(body), exp.get("memory_format")),
         "embedding_cost": {
             k: sum(e["similarity"]["embedding_cost"][k] for e in events if e["similarity"])
             for k in ("input_tokens", "texts", "seconds")

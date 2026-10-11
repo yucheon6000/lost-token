@@ -56,7 +56,10 @@ def development_check(cases, spec):
     for arm in spec["experiment"]["arms"]:
         rows = [c["conditions"][arm] for c in cases]
         completion = sum(r["prediction"] is not None for r in rows) / len(rows) if rows else 0.0
-        markup = [memory_markup_summary(r["body_text"]) for r in rows]
+        markup = [
+            memory_markup_summary(r["body_text"], spec["experiment"].get("memory_format"))
+            for r in rows
+        ]
         repeat = [
             repetition_summary(
                 r["body_ids"], spec["experiment"]["repetition_guard"]["max_period_tokens"]

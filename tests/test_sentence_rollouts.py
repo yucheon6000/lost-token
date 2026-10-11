@@ -209,6 +209,7 @@ class SentenceRolloutTests(unittest.TestCase):
         current = load_spec(root / "configs/sparse-sentence-rollouts.json")
         self.assertEqual(current["experiment"]["min_branch_entropy"], 1.0)
         self.assertEqual(current["experiment"].pop("rollout_sentence_ends"), 2)
+        self.assertEqual(current["experiment"].pop("memory_format"), "unchosen_branches")
         previous["experiment"].pop("rollout_early_stop")
         previous["experiment"]["min_branch_entropy"] = 1.0
         self.assertEqual(current, previous)

@@ -111,6 +111,24 @@ never silently truncates an alternative to make it fit. Actual accuracy, event
 count, and net speed require a new paired evaluation: changing the threshold or
 rollout stop changes the subsequent reasoning trajectory.
 
+## Explicit unchosen branch memory
+
+The sparse profile uses `experiment.memory_format: "unchosen_branches"`. The
+memory block names the text as unchosen continuations from the same reasoning
+prefix and says they are alternative hypotheses rather than verified facts or
+the selected continuation. Individual branch headings and Markdown quotation
+prefixes separate the payloads, followed by an explicit end marker. Retained
+payload text is preserved apart from quotation prefixes and escaped reasoning
+or memory control tags. The selected rollout is committed verbatim afterwards.
+
+Formatting takes place after semantic filtering, so the embedding encoder still
+receives raw rollout text. Absent/null `memory_format`, or `"possibilities"`, keeps
+the original bytes for older profiles. Audit verifies the reported memory string
+as well as its encoded token IDs. Repetition/markup diagnostics count copied
+unchosen-branch headings only when that format is active; quoted source lines
+are not classified as standalone framing labels. This is explicit contextual
+framing, not an assertion of correct model interpretation or improved accuracy.
+
 ## Evaluation semantics
 
 `baseline` maps to `plain_ar`; `ours` maps to `filtered_futures`. Both use the

@@ -5,7 +5,7 @@ import json
 import math
 from importlib.resources import files
 from pathlib import Path
-from .recurrent_memory import ARMS, validate_budget_forcing
+from .recurrent_memory import ARMS, MEMORY_FORMATS, validate_budget_forcing
 
 
 def load_spec(path=None):
@@ -66,6 +66,9 @@ def validate_spec(spec):
         if value is not None and (type(value) is not int or value < floor):
             raise ValueError(f"Invalid {key}")
     validate_budget_forcing(exp)
+    memory_format = exp.get("memory_format")
+    if memory_format is not None and memory_format not in MEMORY_FORMATS:
+        raise ValueError("Invalid memory_format")
     entropy = exp.get("min_branch_entropy")
     if entropy is not None and (
         type(entropy) not in (int, float) or not math.isfinite(entropy) or entropy < 0
