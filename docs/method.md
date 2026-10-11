@@ -77,6 +77,40 @@ forced boundary, exact commits, and per-position seeds on interruption and
 resume. Audit verifies the entropy requirement, each valid early stop, and the
 forcing position in addition to the original invariants.
 
+## Rollouts ending after two sentences
+
+The newer `configs/sparse-sentence-rollouts.json` profile uses an entropy threshold
+of 1.0 nats and `experiment.rollout_sentence_ends: 2`, with the prior
+`rollout_early_stop` rule absent. These two stopping rules are mutually exclusive.
+The rollout's request count becomes its remaining body/thinking budget, rather
+than `branch_tokens`. The latter still governs the original token-length mode.
+No minimum number of rollout tokens is required.
+
+Each candidate independently counts sentence endings from its forced first token.
+The first ending can finish a sentence begun in the shared parent. ASCII terminal
+punctuation requires a following whitespace separator, allowing optional closing
+quotes/brackets. A punctuation cluster counts once. This avoids counting decimal
+points before the next digit arrives; common abbreviations and numbered-list
+markers are also excluded. Full-width terminal punctuation needs no separator.
+Counting decodes only a bounded recent token window, avoiding repeatedly decoding
+an arbitrarily long candidate prefix. The window is an implementation detail and
+does not cap generation length.
+
+Each candidate records its `sentence_ends` count. Audit recomputes each increment
+from the saved token prefixes and rejects premature stops or tokens after the
+target has already been reached. EOS and reasoning-end markers remain immediate
+termination conditions. A candidate without two endings can consume at most the
+remaining body budget. Timed workers check their original deadline between tokens
+so a long candidate cannot delay an arm transition indefinitely. An interrupted
+candidate restarts from its last completed parent checkpoint; completed calls
+are replayed unchanged.
+
+The memory encoder's configured input limit and the event-memory reservation
+remain separate safeguards. Exceeding either fails explicitly; sentence mode
+never silently truncates an alternative to make it fit. Actual accuracy, event
+count, and net speed require a new paired evaluation: changing the threshold or
+rollout stop changes the subsequent reasoning trajectory.
+
 ## Evaluation semantics
 
 `baseline` maps to `plain_ar`; `ours` maps to `filtered_futures`. Both use the

@@ -72,6 +72,11 @@ def validate_spec(spec):
     ):
         raise ValueError("Invalid min_branch_entropy")
     early_stop = exp.get("rollout_early_stop")
+    sentences = exp.get("rollout_sentence_ends")
+    if sentences is not None and (type(sentences) is not int or sentences < 1):
+        raise ValueError("Invalid rollout_sentence_ends")
+    if sentences is not None and early_stop is not None:
+        raise ValueError("Choose sentence-count or token/pattern rollout stopping, not both")
     if early_stop is not None and (
         not isinstance(early_stop, dict)
         or set(early_stop) != {"min_tokens", "patterns"}

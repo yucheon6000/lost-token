@@ -158,6 +158,36 @@ The optimization branches' numeric filters, variable anchoring, task gating,
 dynamic rollout budgets, and hardware/platform changes are excluded. See
 [the method contract](docs/method.md) and [한국어 방법론](docs/three_features.ko.md).
 
+### Higher entropy threshold and two sentence endings
+
+[`configs/sparse-sentence-rollouts.json`](configs/sparse-sentence-rollouts.json)
+raises `min_branch_entropy` from 0.65 to **1.0 nats** and replaces the token/pattern
+rollout rule with **`rollout_sentence_ends: 2`**. A fork beginning midway through
+a sentence counts that sentence's ending as its first boundary. There is no
+minimum rollout length or fixed 32/64-token limit in this mode; `branch_tokens`
+continues to configure the original token-length mode only.
+
+ASCII `.`, `!`, and `?` groups count once when followed by whitespace, optionally
+after closing quotes or brackets. This confirmation prevents a pending decimal
+point such as `3.` from being counted before the following `14`. Common English
+abbreviations and numbered-list markers are excluded. Full-width `。`, `！`, and
+`？` groups count without requiring whitespace. Blank lines and backslashes alone
+do not count. This is a deterministic punctuation heuristic, not a grammatical
+sentence parser.
+
+EOS, a reasoning-end marker, the remaining body/thinking budget, and the worker's
+deadline can stop a rollout before two endings. The independent caches, exact
+selected-rollout commit, memory formatting and cosine rule remain unchanged.
+Existing encoder length and event-memory reservations still reject oversized
+alternatives rather than truncating them. The prior configuration and its six-hour
+results remain available separately.
+
+```bash
+uv run --frozen lost-tokens run \
+  --config configs/sparse-sentence-rollouts.json \
+  --benchmarks aime25 --gpus 0 --run-name sparse-sentence-aime25
+```
+
 ## Data and configuration
 
 | CLI name | Dataset | Questions |

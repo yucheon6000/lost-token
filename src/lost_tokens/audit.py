@@ -19,6 +19,7 @@ from lost_tokens.recurrent_memory import (
     emitted_marker,
     fragment_text,
     rollout_boundary,
+    new_sentence_ends,
 )
 from lost_tokens.protocol import planned_rows
 from lost_tokens.cosine import cosine_matrix, select_distinct
@@ -308,7 +309,9 @@ def audit(run, partial=False, model=None):
                         assert preview["seed"] == derived_seed(
                             seed, event["root_sha256"], "candidate", item["token_id"]
                         )
-                        rollout_count = min(exp["branch_tokens"], cap - len(body))
+                        rollout_count = cap - len(body)
+                        if exp.get("rollout_sentence_ends") is None:
+                            rollout_count = min(exp["branch_tokens"], rollout_count)
                         if forcing and forced_at is None and phase == "thinking":
                             rollout_count = min(
                                 rollout_count, forcing["force_at_body_tokens"] - len(body)
@@ -317,7 +320,7 @@ def audit(run, partial=False, model=None):
                         assert len(preview["ids"]) <= record["request"]["count"]
                         assert (
                             preview["ids"][0] == item["token_id"]
-                            and 1 <= len(preview["ids"]) <= exp["branch_tokens"]
+                            and 1 <= len(preview["ids"]) <= rollout_count
                         )
                         assert not any(
                             i in model.eos_ids or i == think_end for i in preview["ids"][:-1]
@@ -335,11 +338,24 @@ def audit(run, partial=False, model=None):
                             for i in range(len(preview["ids"]))
                         ]
                         assert not any(boundaries[:-1])
+                        sentence_limit = exp.get("rollout_sentence_ends")
+                        sentence_ends = 0
+                        if sentence_limit is not None:
+                            for i in range(len(preview["ids"])):
+                                assert sentence_ends < sentence_limit
+                                if i == len(preview["ids"]) - 1 and (
+                                    preview["ids"][i] in model.eos_ids
+                                    or (markers[i] and markers[i].startswith("</"))
+                                ):
+                                    break
+                                sentence_ends += new_sentence_ends(model, preview["ids"][: i + 1])
+                            assert preview["sentence_ends"] == sentence_ends
                         if len(preview["ids"]) < rollout_count:
                             assert (
                                 preview["ids"][-1] in model.eos_ids
                                 or (markers[-1] and markers[-1].startswith("</"))
                                 or boundaries[-1] is not None
+                                or (sentence_limit is not None and sentence_ends >= sentence_limit)
                             )
                         assert preview["text"] == fragment_text(model, preview["ids"])
                         assert (

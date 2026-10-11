@@ -22,6 +22,8 @@ from .repetition import repeated_suffix, repetition_summary, memory_markup_summa
 
 ARMS = ("plain_ar", "reference_only", "all_futures", "filtered_futures")
 REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
+SENTENCE_PUNCTUATION = re.compile(r"[.!?。！？]+")
+SENTENCE_ABBREVIATION = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|Prof|vs|etc|e\.g|i\.e|a\.m|p\.m)$", re.I)
 
 
 def raw_text(model, ids):
@@ -61,6 +63,43 @@ def rollout_boundary(model, ids, policy):
         if text.find(pattern, max(0, len(before) - len(pattern) + 1)) >= 0:
             return pattern
     return None
+
+
+def sentence_starts(text):
+    """Completed punctuation groups; whitespace disambiguates ASCII full stops."""
+    starts = set()
+    for match in SENTENCE_PUNCTUATION.finditer(text):
+        punctuation = match.group()
+        if punctuation == ".":
+            prefix = text[: match.start()]
+            if prefix.endswith("\\") or SENTENCE_ABBREVIATION.search(prefix):
+                continue
+            # A numbered list marker is not the end of its item sentence.
+            if (
+                re.fullmatch(r"[ \t]*\d+", prefix.rsplit("\n", 1)[-1])
+                and match.end() < len(text)
+                and text[match.end()] in " \t"
+            ):
+                continue
+        if any(c in punctuation for c in "。！？"):
+            starts.add(match.start())
+            continue
+        end = match.end()
+        while end < len(text) and text[end] in "\"'”’)]}`":
+            end += 1
+        # Delay until a following separator exists: '3.' may become '3.14'.
+        if end < len(text) and text[end].isspace():
+            starts.add(match.start())
+    return starts
+
+
+def new_sentence_ends(model, ids):
+    """Count only boundaries completed by this token, with bounded decoding work."""
+    if not ids:
+        return 0
+    tail = ids[-64:]
+    before, after = model.decode(tail[:-1]), model.decode(tail)
+    return len(sentence_starts(after) - sentence_starts(before))
 
 
 def instruction(row):
@@ -132,6 +171,7 @@ class StreamState:
 class StreamDecoder:
     def __init__(self, model, exp):
         self.model, self.torch, self.exp = model, model.torch, exp
+        self.check_deadline = None
         self.think_end = model.encode("</think>")
         if len(self.think_end) != 1:
             raise ValueError("Require a single-token thinking boundary")
@@ -286,9 +326,12 @@ class StreamDecoder:
         }
 
     def rollout(self, root, first, seed, count=None):
-        started = time.monotonic()
+        started = last_log = time.monotonic()
+        sentence_limit = self.exp.get("rollout_sentence_ends")
+        if sentence_limit is not None and count is None:
+            raise ValueError("Sentence rollouts require the remaining body budget")
         count = self.exp["branch_tokens"] if count is None else count
-        if not 1 <= count <= self.exp["branch_tokens"]:
+        if count < 1 or (sentence_limit is None and count > self.exp["branch_tokens"]):
             raise ValueError("Invalid rollout length")
         # Both layer objects AND their tensors are copied. A generated sibling
         # cannot mutate root, and its returned cache is never the continuing cache.
@@ -297,7 +340,10 @@ class StreamDecoder:
         )
         ids, logprobs, guard_events = [], [], []
         stop_marker = None
+        sentence_ends = 0
         for index in range(count):
+            if sentence_limit is not None and self.check_deadline is not None:
+                self.check_deadline()
             if index == 0:
                 token = first
                 lp = float(state.logits.log_softmax(-1)[token])
@@ -312,8 +358,20 @@ class StreamDecoder:
             logprobs.append(lp)
             if token in self.model.eos_ids or (stop_marker and stop_marker.startswith("</")):
                 break
-            if rollout_boundary(self.model, ids, self.exp.get("rollout_early_stop")) is not None:
+            if sentence_limit is not None:
+                sentence_ends += new_sentence_ends(self.model, ids)
+                if sentence_ends >= sentence_limit:
+                    break
+            elif rollout_boundary(self.model, ids, self.exp.get("rollout_early_stop")) is not None:
                 break
+            if sentence_limit is not None and (index == 0 or time.monotonic() - last_log >= 15):
+                elapsed = time.monotonic() - started
+                self.model.log(
+                    f"rollout sentences={sentence_ends}/{sentence_limit}; tokens={len(ids)}/{count} "
+                    f"remaining body budget; elapsed={elapsed:.1f}s "
+                    f"ETA(cap)={elapsed / len(ids) * (count - len(ids)):.1f}s"
+                )
+                last_log = time.monotonic()
         self.model._sync()
         return {
             "ids": ids,
@@ -325,6 +383,7 @@ class StreamDecoder:
             "origin_sha256": digest(root.ids),
             "raw_log_probabilities": logprobs,
             "cost": self.cost(len(root.ids), len(ids), len(ids), time.monotonic() - started),
+            **({"sentence_ends": sentence_ends} if sentence_limit is not None else {}),
         }
 
 
@@ -397,6 +456,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     cap = exp["max_output_tokens"]
     forced_at = None
     decoder = StreamDecoder(model, exp)
+    decoder.check_deadline = getattr(store, "check_deadline", None)
     seed = derived_seed(exp["seed"], namespace, row["id"])
     tag = f"{namespace}/{row['id']}/{arm}"
     base = model.prompt(instruction(row) + row["question"])
@@ -581,7 +641,9 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 "memory_ids": [],
             }
             candidates = dist["items"] if arm != "reference_only" else dist["items"][:1]
-            rollout_count = min(exp["branch_tokens"], cap - len(body))
+            rollout_count = cap - len(body)
+            if exp.get("rollout_sentence_ends") is None:
+                rollout_count = min(exp["branch_tokens"], rollout_count)
             if forcing and forced_at is None and phase == "thinking":
                 rollout_count = min(rollout_count, forcing["force_at_body_tokens"] - len(body))
             for item in candidates:

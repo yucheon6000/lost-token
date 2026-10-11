@@ -46,9 +46,12 @@ class CheckpointStore(RunStore):
         self.last_progress = 0.0
         self.initial_checkpoints = len(list((self.path / "checkpoints").glob("*.json")))
 
-    def call(self, *args, **kwargs):
+    def check_deadline(self):
         if self.deadline is not None and time.monotonic() >= self.deadline:
             raise DeadlineReached()
+
+    def call(self, *args, **kwargs):
+        self.check_deadline()
         result = super().call(*args, **kwargs)
         if time.monotonic() - self.last_progress >= 5 or (self.probe and self.calls >= 2):
             atomic_json(
