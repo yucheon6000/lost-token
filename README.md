@@ -182,6 +182,14 @@ Existing encoder length and event-memory reservations still reject oversized
 alternatives rather than truncating them. The prior configuration and its six-hour
 results remain available separately.
 
+The sparse profile raises the encoder input limit to 4,096 tokens and the event
+memory reservation to 8,192 tokens. The earlier 512-token encoder limit failed
+on a valid 565-token two-sentence rollout. Memory capacity is 14,336 tokens so
+the pre-fork compaction trigger remains 6,144 (`capacity - reservation`), with
+the same 4,096-token compaction target. The model context guard is 79,904 tokens,
+covering the configured prompt, output, memory and original-mode branch budgets.
+These are finite resource guards; unusually long alternatives still fail explicitly.
+
 ```bash
 uv run --frozen lost-tokens run \
   --config configs/sparse-sentence-rollouts.json \

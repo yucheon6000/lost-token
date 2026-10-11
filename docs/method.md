@@ -111,6 +111,13 @@ never silently truncates an alternative to make it fit. Actual accuracy, event
 count, and net speed require a new paired evaluation: changing the threshold or
 rollout stop changes the subsequent reasoning trajectory.
 
+The sparse profile uses a 4,096-token encoder limit and 8,192-token event memory
+reservation after reproducing a failure on a 565-token original preview. Its
+14,336-token memory capacity preserves the old 6,144-token compaction trigger
+and 4,096-token compaction target. The context guard increases to 79,904 to cover
+the enlarged reservation. This extends supported inputs without changing cosine
+filtering, truncating text, or changing normal compaction timing.
+
 ## Explicit unchosen branch memory
 
 The sparse profile uses `experiment.memory_format: "original_unchosen"`, with

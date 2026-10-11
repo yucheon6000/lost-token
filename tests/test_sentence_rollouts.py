@@ -213,6 +213,24 @@ class SentenceRolloutTests(unittest.TestCase):
         self.assertEqual(current["experiment"].pop("max_branch_candidates"), 2)
         previous["experiment"].pop("rollout_early_stop")
         previous["experiment"]["min_branch_entropy"] = 1.0
+        self.assertEqual(current["similarity"]["encoder"]["max_tokens"], 4096)
+        previous["similarity"]["encoder"]["max_tokens"] = 4096
+        self.assertEqual(
+            current["experiment"]["memory_capacity_tokens"]
+            - current["experiment"]["max_event_memory_tokens"],
+            previous["experiment"]["memory_capacity_tokens"]
+            - previous["experiment"]["max_event_memory_tokens"],
+        )
+        for key in ("memory_capacity_tokens", "max_event_memory_tokens"):
+            previous["experiment"][key] = current["experiment"][key]
+        self.assertEqual(
+            current["model"]["max_context_tokens"],
+            current["data"]["prompt_limit"]
+            + current["experiment"]["max_output_tokens"]
+            + current["experiment"]["memory_capacity_tokens"]
+            + current["experiment"]["branch_tokens"],
+        )
+        previous["model"]["max_context_tokens"] = current["model"]["max_context_tokens"]
         self.assertEqual(current, previous)
 
 
