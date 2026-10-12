@@ -1,5 +1,8 @@
 # Release verification
 
+This page records the original release checks. For the current sparse profile,
+see [latest changes and pending validation](latest_changes_and_validation.ko.md).
+
 The portable package was checked locally before publication. These checks validate
 installation and execution, not the scientific efficacy of the method.
 

@@ -80,7 +80,8 @@ forcing position in addition to the original invariants.
 ## Rollouts ending after two sentences
 
 The newer `configs/sparse-sentence-rollouts.json` profile uses an entropy threshold
-of 1.0 nats and `experiment.rollout_sentence_ends: 2`, with the prior
+of 1.3 nats, a minimum fork interval of 1,024 body tokens, and
+`experiment.rollout_sentence_ends: 2`, with the prior
 `rollout_early_stop` rule absent. These two stopping rules are mutually exclusive.
 The rollout's request count becomes its remaining body/thinking budget, rather
 than `branch_tokens`. The latter still governs the original token-length mode.
@@ -90,8 +91,11 @@ Each candidate independently counts sentence endings from its forced first token
 The first ending can finish a sentence begun in the shared parent. ASCII terminal
 punctuation requires a following whitespace separator, allowing optional closing
 quotes/brackets. A punctuation cluster counts once. This avoids counting decimal
-points before the next digit arrives; common abbreviations and numbered-list
-markers are also excluded. Full-width terminal punctuation needs no separator.
+points before the next digit arrives; common abbreviations, numbered-list markers,
+and factorial operators are also excluded. An incremental lexical counter ignores
+punctuation inside math and code, retaining state across long spans and seeding
+it from the generated parent when a fork starts inside a formula.
+Full-width terminal punctuation needs no separator.
 Counting decodes only a bounded recent token window, avoiding repeatedly decoding
 an arbitrarily long candidate prefix. The window is an implementation detail and
 does not cap generation length.
@@ -111,12 +115,24 @@ never silently truncates an alternative to make it fit. Actual accuracy, event
 count, and net speed require a new paired evaluation: changing the threshold or
 rollout stop changes the subsequent reasoning trajectory.
 
+In this profile, `similarity.recent_alternatives_window: 4` also checks alternatives
+that passed the within-event filter against the newest four retained alternatives
+still in active memory. Their saved embedding vectors are reused without another
+encoder pass. Similarity at or above the configured 0.85 threshold drops the new
+alternative from memory; Original is committed exactly as generated. Compacted
+or expired memories leave the comparison window. The ledger binds the reference
+events and vectors to the cosine request, and audit reconstructs these decisions.
+This filters memory after candidate generation and imposes no event-count cap.
+The current profile reserves 2,048 answer tokens, forcing an open trace closed at
+body position 30,719. Final-answer sampling blocks recognized reasoning openings
+after natural or forced closure; ordinary prose reasoning remains possible.
+
 The sparse profile uses a 4,096-token encoder limit and 8,192-token event memory
 reservation after reproducing a failure on a 565-token original preview. Its
 14,336-token memory capacity preserves the old 6,144-token compaction trigger
 and 4,096-token compaction target. The context guard increases to 79,904 to cover
-the enlarged reservation. This extends supported inputs without changing cosine
-filtering, truncating text, or changing normal compaction timing.
+the enlarged reservation. These resource guards extend supported inputs without
+truncating text or changing normal compaction timing.
 
 ## Explicit unchosen branch memory
 

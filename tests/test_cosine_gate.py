@@ -5,11 +5,67 @@ from types import SimpleNamespace
 import unittest
 import torch
 
-from lost_tokens.cosine import CosineEncoder, compare_rollouts, cosine_matrix, select_distinct
+from lost_tokens.cosine import (
+    CosineEncoder, compare_rollouts, cosine_matrix, select_distinct,
+    recent_alternatives, select_recent_distinct,
+)
 from lost_tokens.recurrent_memory import memory_text
 
 
 class CosineTests(unittest.TestCase):
+    def test_recent_vectors_are_reused_without_encoding_history(self):
+        calls = []
+
+        class Encoder:
+            def encode(self, texts):
+                calls.append(texts)
+                return [[1.0, 0.0], [0.0, 1.0]], 8
+
+        recent = [{"event": 3, "rank": 2, "embedding": [0.0, 2.0]}]
+        result = compare_rollouts(
+            Encoder(), [{"rank": 1, "text": "Original."}, {"rank": 2, "text": "Alternative."}],
+            0.85, recent=recent,
+        )
+        self.assertEqual(calls, [["Original.", "Alternative."]])
+        self.assertEqual(result["embedding_cost"]["texts"], 2)
+        self.assertEqual(result["retained_ranks"], [])
+        decision = result["recent_decisions"][0]
+        self.assertTrue(decision["drop_alternative"])
+        self.assertEqual(decision["closest_alternative"], {"event": 3, "rank": 2})
+        self.assertEqual(decision["max_cosine"], 1.0)
+
+    def test_novel_alternative_and_empty_recent_window_are_retained(self):
+        for recent in ([], [{"event": 0, "rank": 2, "embedding": [1.0, 0.0]}]):
+            ranks, decisions = select_recent_distinct(
+                [1, 2], [[1.0, 0.0], [0.0, 1.0]], [2], recent, 0.85
+            )
+            self.assertEqual(ranks, [2])
+            self.assertFalse(decisions[0]["drop_alternative"])
+        self.assertEqual(select_recent_distinct([1, 2], [None, None], [], [], 0.85), ([], []))
+
+    def test_recent_threshold_is_inclusive(self):
+        vector = [0.85, math.sqrt(1 - 0.85**2)]
+        score = cosine_matrix([[1.0, 0.0], vector])[0][1]
+        recent = [{"event": 0, "rank": 2, "embedding": [1.0, 0.0]}]
+        self.assertEqual(select_recent_distinct([1, 2], [[0, 1], vector], [2], recent, score)[0], [])
+        self.assertEqual(
+            select_recent_distinct([1, 2], [[0, 1], vector], [2], recent, score + 1e-5)[0], [2]
+        )
+
+    def test_window_contains_only_newest_active_retained_alternatives(self):
+        events = [
+            {"index": i, "retained_ranks": [2], "similarity": {
+                "ranks": [1, 2], "embeddings": [[1.0, 0.0], [0.0, 1.0]],
+            }}
+            for i in range(6)
+        ]
+        recent = recent_alternatives(events, [0, 2, 3, 4, 5], 4)
+        self.assertEqual([r["event"] for r in recent], [2, 3, 4, 5])
+        self.assertEqual(recent_alternatives(events, [], 4), [])
+        self.assertEqual(recent_alternatives(events, [0], 0), [])
+        events[-1]["retained_ranks"] = []
+        self.assertEqual([r["event"] for r in recent_alternatives(events, [0, 5], 4)], [0])
+
     def test_actual_cosine_invariant_to_vector_scale(self):
         self.assertEqual(
             cosine_matrix([[2.0, 0.0], [3.0, 0.0], [0.0, 4.0], [-2.0, 0.0]]),

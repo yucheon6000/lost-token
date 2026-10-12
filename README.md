@@ -7,6 +7,9 @@ it briefly explores plausible continuations, keeps distinct unchosen branches as
 in-context memory, and continues reasoning. This repository compares ordinary
 autoregressive decoding (`baseline`) with recurrent branch memory (`ours`).
 
+Current changes, completed checks, and pending GPU/benchmark validation:
+[최신 변경 사항과 검증 계획](docs/latest_changes_and_validation.ko.md).
+
 ## One-command setup and smoke test
 
 Linux, an NVIDIA GPU, and a compatible NVIDIA driver are required for the GPU
@@ -161,7 +164,8 @@ dynamic rollout budgets, and hardware/platform changes are excluded. See
 ### Higher entropy threshold and two sentence endings
 
 [`configs/sparse-sentence-rollouts.json`](configs/sparse-sentence-rollouts.json)
-raises `min_branch_entropy` from 0.65 to **1.0 nats** and replaces the token/pattern
+raises `min_branch_entropy` from 0.65 to **1.3 nats**, uses a **1,024-body-token**
+minimum fork interval, and replaces the token/pattern
 rollout rule with **`rollout_sentence_ends: 2`**. A fork beginning midway through
 a sentence counts that sentence's ending as its first boundary. There is no
 minimum rollout length or fixed 32/64-token limit in this mode; `branch_tokens`
@@ -170,14 +174,38 @@ continues to configure the original token-length mode only.
 ASCII `.`, `!`, and `?` groups count once when followed by whitespace, optionally
 after closing quotes or brackets. This confirmation prevents a pending decimal
 point such as `3.` from being counted before the following `14`. Common English
-abbreviations and numbered-list markers are excluded. Full-width `。`, `！`, and
+abbreviations, initialisms, numbered-list markers, and mathematical factorials
+such as `26!`, `n!`, or `(n-1)!` are excluded. Punctuation inside `$...$`,
+`$$...$$`, `\(...\)`, `\[...\]`, inline code, and fenced code does not count.
+The incremental counter retains math/code state across long spans and seeds it
+from the generated prefix when a fork starts inside a formula. Full-width `。`, `！`, and
 `？` groups count without requiring whitespace. Blank lines and backslashes alone
 do not count. This is a deterministic punctuation heuristic, not a grammatical
 sentence parser.
 
+The current sparse profile reserves **2,048 answer tokens**: at body position
+**30,719**, an open trace receives one persisted `</think>` token within the
+32,768-token body cap. A short initial instruction requests only the final
+answer after reasoning closes. With budget forcing configured, final-answer
+sampling masks native and text-tokenized `<think>`/`<reasoning>` openings after
+either a natural or forced close. This mode survives checkpoint replay; EOS is
+still allowed and branching stays disabled. It prevents tag-based reasoning
+re-entry, but cannot guarantee that ordinary prose contains no further reasoning
+or that a complete, correct answer fits into 2,048 tokens. The earlier bounded
+profile retains its original 1,024-token reservation.
+
 EOS, a reasoning-end marker, the remaining body/thinking budget, and the worker's
 deadline can stop a rollout before two endings. The independent caches, exact
-selected-rollout commit and cosine rule remain unchanged.
+selected-rollout commit and original within-event cosine rule remain unchanged.
+For `filtered_futures`, `similarity.recent_alternatives_window: 4` additionally
+compares a surviving Unchosen against the newest four alternatives still present
+in memory. Cosine similarity **>= 0.85** discards it from memory. Cached vectors
+are reused; old alternatives are not re-embedded. Expired or compacted memory is
+excluded, and only actually retained alternatives enter the recent window.
+The selected Original still commits verbatim. This filter saves redundant memory
+insertion, not the cost of generating a candidate that has already been explored.
+There is no event-count cap. Omitting the recent window or setting it to zero
+preserves the original within-event-only filter.
 Existing encoder length and event-memory reservations still reject oversized
 alternatives rather than truncating them. The prior configuration and its six-hour
 results remain available separately.

@@ -127,7 +127,8 @@ class CompactBranchContextTests(unittest.TestCase):
         self.configure()
         tokenizer = portable.CharacterTokenizer()
         row = {**self.row, "task": "fixture"}
-        plain = normalize(row, tokenizer, 1024)
+        plain_exp = {**self.cfg["experiment"], "memory_format": "possibilities"}
+        plain = normalize(row, tokenizer, 1024, plain_exp)
         primed = normalize(row, tokenizer, 1024, self.cfg["experiment"])
         self.assertEqual(primed["prompt_tokens"] - plain["prompt_tokens"], len(BRANCH_CONTEXT))
         with self.assertRaises(ValueError):

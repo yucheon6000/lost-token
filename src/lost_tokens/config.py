@@ -110,6 +110,9 @@ def validate_spec(spec):
     similarity = spec["similarity"]
     if not -1 <= similarity["threshold"] <= 1:
         raise ValueError("Invalid cosine threshold")
+    recent_window = similarity.get("recent_alternatives_window", 0)
+    if type(recent_window) is not int or recent_window < 0:
+        raise ValueError("Invalid recent_alternatives_window")
     if (
         similarity["text_scope"] != "rollout_only"
         or similarity["comparison"] != "retained_candidates"

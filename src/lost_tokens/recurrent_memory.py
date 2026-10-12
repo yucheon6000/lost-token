@@ -16,8 +16,9 @@ import time
 from .core import derived_seed, digest, sum_cost
 from .math_scoring import natural_answer
 from .math_scoring import math_correct
-from .cosine import compare_rollouts
+from .cosine import compare_rollouts, recent_alternatives
 from .repetition import repeated_suffix, repetition_summary, memory_markup_summary
+from .sentences import SentenceCounter, sentence_starts
 
 
 ARMS = ("plain_ar", "reference_only", "all_futures", "filtered_futures")
@@ -28,8 +29,6 @@ BRANCH_CONTEXT = (
     "Original (chosen): the continuation currently being followed.\n\n"
 )
 REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
-SENTENCE_PUNCTUATION = re.compile(r"[.!?。！？]+")
-SENTENCE_ABBREVIATION = re.compile(r"\b(?:Mr|Mrs|Ms|Dr|Prof|vs|etc|e\.g|i\.e|a\.m|p\.m)$", re.I)
 
 
 def raw_text(model, ids):
@@ -71,40 +70,17 @@ def rollout_boundary(model, ids, policy):
     return None
 
 
-def sentence_starts(text):
-    """Completed punctuation groups; whitespace disambiguates ASCII full stops."""
-    starts = set()
-    for match in SENTENCE_PUNCTUATION.finditer(text):
-        punctuation = match.group()
-        if punctuation == ".":
-            prefix = text[: match.start()]
-            if prefix.endswith("\\") or SENTENCE_ABBREVIATION.search(prefix):
-                continue
-            # A numbered list marker is not the end of its item sentence.
-            if (
-                re.fullmatch(r"[ \t]*\d+", prefix.rsplit("\n", 1)[-1])
-                and match.end() < len(text)
-                and text[match.end()] in " \t"
-            ):
-                continue
-        if any(c in punctuation for c in "。！？"):
-            starts.add(match.start())
-            continue
-        end = match.end()
-        while end < len(text) and text[end] in "\"'”’)]}`":
-            end += 1
-        # Delay until a following separator exists: '3.' may become '3.14'.
-        if end < len(text) and text[end].isspace():
-            starts.add(match.start())
-    return starts
-
-
-def new_sentence_ends(model, ids):
+def new_sentence_ends(model, ids, counter=None):
     """Count only boundaries completed by this token, with bounded decoding work."""
     if not ids:
         return 0
-    tail = ids[-64:]
+    tail = ids[-64:] if counter is not None else ids
     before, after = model.decode(tail[:-1]), model.decode(tail)
+    if counter is not None:
+        common = 0
+        while common < min(len(before), len(after)) and before[common] == after[common]:
+            common += 1
+        return counter.feed(after[common:], replace=len(before) - common)
     return len(sentence_starts(after) - sentence_starts(before))
 
 
@@ -119,6 +95,8 @@ def instruction(row, experiment=None):
         if experiment and experiment.get("memory_format") == "original_unchosen"
         else ""
     )
+    if experiment and experiment.get("budget_forcing"):
+        ending += " After reasoning closes, give only the final answer without further reasoning."
     return prefix + ending + "\n\nProblem:\n"
 
 
@@ -187,6 +165,12 @@ class StreamDecoder:
         if len(self.think_end) != 1:
             raise ValueError("Require a single-token thinking boundary")
         self.think_end = self.think_end[0]
+        self.final_answer_only = False
+        self.reasoning_open_ids = {
+            ids[0]
+            for marker in ("<think>", "<reasoning>")
+            if len(ids := model.encode(marker)) == 1
+        }
 
     def prefill(self, ids):
         self.model._check(ids)
@@ -268,6 +252,8 @@ class StreamDecoder:
         if guard is not None:
             logits = logits.clone()
             logits[guard["blocked_token"]] = -self.torch.inf
+        if self.final_answer_only:
+            logits = self.answer_logits(state, logits)
         values, indices = self.torch.topk(logits, min(self.exp["top_k"], len(state.logits)))
         probabilities = values.softmax(-1)
         probabilities = probabilities.masked_fill(
@@ -277,6 +263,36 @@ class StreamDecoder:
         index = self.torch.multinomial(probabilities, 1, generator=generator)
         token = int(indices[index].item())
         return token, float(state.logits.log_softmax(-1)[token])
+
+    def answer_logits(self, state, logits):
+        """Mask native and text-tokenized reasoning openings before top-k/top-p.
+
+        Refill top-k after a rejection, preserving the configured sampling rule.
+        Text inspection covers markers split differently from encode(marker).
+        EOS and reasoning-close tokens remain available.
+        """
+        logits = logits.clone()
+        for token in self.reasoning_open_ids:
+            logits[token] = -self.torch.inf
+        tail = state.ids[-32:]
+        before = raw_text(self.model, tail)
+        while True:
+            values, indices = self.torch.topk(logits, min(self.exp["top_k"], len(logits)))
+            if not self.torch.isfinite(values).any():
+                raise ValueError("No valid final-answer token")
+            blocked = []
+            for token, value in zip(indices.tolist(), values.tolist()):
+                if value == -float("inf"):
+                    continue
+                after = raw_text(self.model, tail + [token])
+                if any(
+                    not m.group().startswith("</") and m.end() > len(before)
+                    for m in REASONING_MARKERS.finditer(after)
+                ):
+                    blocked.append(token)
+            if not blocked:
+                return logits
+            logits[blocked] = -self.torch.inf
 
     def loop_guard(self, state):
         guard = repeated_suffix(state.generated_ids, self.exp["repetition_guard"])
@@ -351,6 +367,11 @@ class StreamDecoder:
         ids, logprobs, guard_events = [], [], []
         stop_marker = None
         sentence_ends = 0
+        counter = (
+            SentenceCounter(self.model.decode(root.generated_ids))
+            if sentence_limit is not None
+            else None
+        )
         for index in range(count):
             if sentence_limit is not None and self.check_deadline is not None:
                 self.check_deadline()
@@ -369,7 +390,7 @@ class StreamDecoder:
             if token in self.model.eos_ids or (stop_marker and stop_marker.startswith("</")):
                 break
             if sentence_limit is not None:
-                sentence_ends += new_sentence_ends(self.model, ids)
+                sentence_ends += new_sentence_ends(self.model, ids, counter)
                 if sentence_ends >= sentence_limit:
                     break
             elif rollout_boundary(self.model, ids, self.exp.get("rollout_early_stop")) is not None:
@@ -653,6 +674,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             # exact boundary instead of skipping the rest of a checkpoint chunk.
             count = min(count, next_fork_position - len(body))
             scan = False
+        decoder.final_answer_only = bool(forcing and phase == "final")
         segment = persisted_segment(f"step-{step}/scan", count, scan)
         marker = segment["stop_marker"]
         if marker and marker.startswith("</"):
@@ -715,11 +737,26 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                     "texts": [n["text"] for n in event["previews"]],
                     "similarity_spec": similarity_spec,
                 }
+                recent_window = similarity_spec.get("recent_alternatives_window", 0)
+                recent = (
+                    recent_alternatives(
+                        events,
+                        [h["event"] for h in history if h["kind"] == "memory"],
+                        recent_window,
+                    )
+                    if recent_window
+                    else None
+                )
+                if recent is not None:
+                    request["recent_alternatives"] = recent
                 result = store.call(
                     tag + f"/event-{event_index}/cosine",
                     request,
                     lambda: compare_rollouts(
-                        model.semantic_encoder, event["previews"], similarity_spec["threshold"]
+                        model.semantic_encoder,
+                        event["previews"],
+                        similarity_spec["threshold"],
+                        **({"recent": recent} if recent is not None else {}),
                     ),
                 )
                 event["similarity"] = result

@@ -85,6 +85,14 @@ class SentenceRolloutTests(unittest.TestCase):
         self.assertEqual(self.model.decode(result["ids"]), text)
         self.assertEqual(result["sentence_ends"], 2)
 
+    def test_factorial_does_not_shorten_two_sentence_rollout(self):
+        text = "We use 26! to compute. Done. "
+        self.assertEqual(self.model.decode(self.rollout(text + "TAIL")["ids"]), text)
+
+    def test_math_span_longer_than_decode_window_does_not_end_rollout(self):
+        text = "$" + " x. y! z? " * 12 + "$ First. Second. "
+        self.assertEqual(self.model.decode(self.rollout(text + "TAIL", count=240)["ids"]), text)
+
     def test_numbered_list_prefixes_are_not_sentence_endings(self):
         text = "1. First option.\n2. Second option. "
         result = self.rollout(text + "NEVER_GENERATE")
@@ -207,12 +215,21 @@ class SentenceRolloutTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         previous = load_spec(root / "configs/bounded-entropy-sentence.json")
         current = load_spec(root / "configs/sparse-sentence-rollouts.json")
-        self.assertEqual(current["experiment"]["min_branch_entropy"], 1.0)
+        self.assertEqual(current["experiment"]["min_branch_entropy"], 1.3)
+        self.assertEqual(current["experiment"]["min_branch_interval_tokens"], 1024)
+        self.assertNotIn("max_memory_events", current["experiment"])
+        self.assertEqual(current["similarity"].pop("recent_alternatives_window"), 4)
         self.assertEqual(current["experiment"].pop("rollout_sentence_ends"), 2)
         self.assertEqual(current["experiment"].pop("memory_format"), "original_unchosen")
         self.assertEqual(current["experiment"].pop("max_branch_candidates"), 2)
         previous["experiment"].pop("rollout_early_stop")
-        previous["experiment"]["min_branch_entropy"] = 1.0
+        previous["experiment"]["min_branch_entropy"] = 1.3
+        previous["experiment"]["min_branch_interval_tokens"] = 1024
+        self.assertEqual(
+            current["experiment"]["budget_forcing"],
+            {"force_at_body_tokens": 30719, "answer_tokens": 2048},
+        )
+        previous["experiment"]["budget_forcing"] = current["experiment"]["budget_forcing"]
         self.assertEqual(current["similarity"]["encoder"]["max_tokens"], 4096)
         previous["similarity"]["encoder"]["max_tokens"] = 4096
         self.assertEqual(

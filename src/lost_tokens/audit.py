@@ -20,9 +20,16 @@ from lost_tokens.recurrent_memory import (
     fragment_text,
     rollout_boundary,
     new_sentence_ends,
+    REASONING_MARKERS,
 )
+from lost_tokens.sentences import SentenceCounter
 from lost_tokens.protocol import planned_rows
-from lost_tokens.cosine import cosine_matrix, select_distinct
+from lost_tokens.cosine import (
+    cosine_matrix,
+    select_distinct,
+    recent_alternatives,
+    select_recent_distinct,
+)
 from lost_tokens.repetition import repeated_suffix, repetition_summary, memory_markup_summary
 
 
@@ -127,6 +134,13 @@ def audit(run, partial=False, model=None):
                 ]
                 assert not any(markers[:-1])
                 assert out["stop_marker"] == (markers[-1] if markers else None)
+                if forcing and phase == "final":
+                    before = model.tokenizer.decode(context, skip_special_tokens=False)
+                    after = model.tokenizer.decode(context + out["ids"], skip_special_tokens=False)
+                    assert not any(
+                        not m.group().startswith("</") and m.end() > len(before)
+                        for m in REASONING_MARKERS.finditer(after)
+                    ), "Reasoning reopened during final-answer mode"
                 check_guards(out, body)
                 body_guards.extend(
                     {"body_position": len(body) + g["offset"], **g} for g in out["guard_events"]
@@ -343,6 +357,7 @@ def audit(run, partial=False, model=None):
                         sentence_limit = exp.get("rollout_sentence_ends")
                         sentence_ends = 0
                         if sentence_limit is not None:
+                            counter = SentenceCounter(model.decode(body))
                             for i in range(len(preview["ids"])):
                                 assert sentence_ends < sentence_limit
                                 if i == len(preview["ids"]) - 1 and (
@@ -350,7 +365,9 @@ def audit(run, partial=False, model=None):
                                     or (markers[i] and markers[i].startswith("</"))
                                 ):
                                     break
-                                sentence_ends += new_sentence_ends(model, preview["ids"][: i + 1])
+                                sentence_ends += new_sentence_ends(
+                                    model, preview["ids"][: i + 1], counter
+                                )
                             assert preview["sentence_ends"] == sentence_ends
                         if len(preview["ids"]) < rollout_count:
                             assert (
@@ -371,12 +388,25 @@ def audit(run, partial=False, model=None):
                     if arm == "filtered_futures":
                         gate = event["similarity"]
                         record = records[tag + f"/event-{len(events)}/cosine"]
-                        assert record["request"] == {
+                        recent_window = spec["similarity"].get("recent_alternatives_window", 0)
+                        recent = (
+                            recent_alternatives(
+                                events,
+                                [h["event"] for h in history if h["kind"] == "memory"],
+                                recent_window,
+                            )
+                            if recent_window
+                            else None
+                        )
+                        expected_request = {
                             "root_sha256": event["root_sha256"],
                             "ranks": [n["rank"] for n in event["previews"]],
                             "texts": [n["text"] for n in event["previews"]],
                             "similarity_spec": spec["similarity"],
                         }
+                        if recent is not None:
+                            expected_request["recent_alternatives"] = recent
+                        assert record["request"] == expected_request
                         assert record["result"] == gate and gate["method"] == "embedding_cosine"
                         assert gate["threshold"] == spec["similarity"]["threshold"]
                         assert (
@@ -406,7 +436,14 @@ def audit(run, partial=False, model=None):
                             gate["valid"],
                             gate["threshold"],
                         )
-                        assert ranks == gate["retained_ranks"] and decisions == gate["decisions"]
+                        assert decisions == gate["decisions"]
+                        if recent is not None:
+                            assert gate["recent_alternatives"] == recent
+                            ranks, recent_decisions = select_recent_distinct(
+                                gate["ranks"], gate["embeddings"], ranks, recent, gate["threshold"]
+                            )
+                            assert gate["recent_decisions"] == recent_decisions
+                        assert ranks == gate["retained_ranks"]
                         costs.append(gate)
                         retained = [n for n in retained if n["rank"] in ranks]
                     else:

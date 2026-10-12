@@ -114,7 +114,66 @@ def select_distinct(ranks, matrix, valid, threshold):
     return [ranks[i] for i in retained if i != 0], decisions
 
 
-def compare_rollouts(encoder, notes, threshold):
+def recent_alternatives(events, active_events, window):
+    """Reuse vectors of the newest alternatives still present in memory."""
+    if window == 0:
+        return []
+    active = set(active_events)
+    recent = []
+    for event in reversed(events):
+        if event["index"] not in active:
+            continue
+        gate = event["similarity"]
+        for rank in reversed(event["retained_ranks"]):
+            recent.append(
+                {
+                    "event": event["index"],
+                    "rank": rank,
+                    "embedding": gate["embeddings"][gate["ranks"].index(rank)],
+                }
+            )
+            if len(recent) == window:
+                return list(reversed(recent))
+    return list(reversed(recent))
+
+
+def select_recent_distinct(ranks, embeddings, retained_ranks, recent, threshold):
+    """Filter current alternatives against cached history, without re-encoding."""
+    indices = [ranks.index(rank) for rank in retained_ranks]
+    matrix = (
+        cosine_matrix([embeddings[i] for i in indices] + [r["embedding"] for r in recent])
+        if indices and recent
+        else []
+    )
+    kept, decisions = [], []
+    for position, rank in enumerate(retained_ranks):
+        closest = (
+            max(range(len(recent)), key=lambda j: matrix[position][len(indices) + j])
+            if recent
+            else None
+        )
+        score = matrix[position][len(indices) + closest] if closest is not None else None
+        drop = score is not None and score >= threshold
+        decisions.append(
+            {
+                "rank": rank,
+                "drop_alternative": drop,
+                "reason": "recent_cosine_above_threshold" if drop else "distinct_from_recent",
+                "compared_alternatives": [{"event": r["event"], "rank": r["rank"]} for r in recent],
+                "closest_alternative": (
+                    {"event": recent[closest]["event"], "rank": recent[closest]["rank"]}
+                    if closest is not None
+                    else None
+                ),
+                "max_cosine": score,
+            }
+        )
+        if not drop:
+            kept.append(rank)
+    return kept, decisions
+
+
+def compare_rollouts(encoder, notes, threshold, recent=None):
     started = time.monotonic()
     texts = [n["text"] for n in notes]
     valid = [bool(t.strip()) for t in texts]
@@ -131,6 +190,12 @@ def compare_rollouts(encoder, notes, threshold):
         for b, j in enumerate(indices):
             matrix[i][j] = dense[a][b]
     retained, decisions = select_distinct(ranks, matrix, valid, threshold)
+    extra = {}
+    if recent is not None:
+        retained, recent_decisions = select_recent_distinct(
+            ranks, embeddings, retained, recent, threshold
+        )
+        extra = {"recent_alternatives": recent, "recent_decisions": recent_decisions}
     elapsed = time.monotonic() - started
     return {
         "method": "embedding_cosine",
@@ -142,6 +207,7 @@ def compare_rollouts(encoder, notes, threshold):
         "threshold": threshold,
         "retained_ranks": retained,
         "decisions": decisions,
+        **extra,
         "embedding_cost": {"input_tokens": tokens, "texts": len(indices), "seconds": elapsed},
         # Encoder tokens are reported separately: they are not generator-model tokens.
         "cost": {

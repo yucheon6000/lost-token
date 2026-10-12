@@ -193,6 +193,89 @@ class ThreeFeatureTests(unittest.TestCase):
         self.assertEqual(len(result["events"]), 1)
         self.assertTrue(result["correct"])
 
+    def test_final_answer_mask_blocks_native_opening_and_refills_top_k(self):
+        self.cfg["experiment"]["top_k"] = 2
+        root = self.logits([(1, 0.8), (65, 0.12), (127, 0.08)])
+        self.decoder.final_answer_only = True
+        logits = self.decoder.answer_logits(root, root.logits)
+        self.assertTrue(torch.isneginf(logits[1]))
+        self.assertEqual(set(logits.topk(2).indices.tolist()), {65, 127})
+        for seed in range(10):
+            self.assertIn(self.decoder.sample(root, seed)[0], {65, 127})
+
+    def test_final_answer_mask_blocks_split_text_reasoning_marker(self):
+        root = self.logits([(62, 0.9), (65, 0.05), (127, 0.05)])
+        for prefix in ("<reasoning", "<think"):
+            with self.subTest(prefix=prefix):
+                root.ids = self.model.encode("</think> Final answer: " + prefix)
+                self.decoder.final_answer_only = True
+                logits = self.decoder.answer_logits(root, root.logits)
+                self.assertTrue(torch.isneginf(logits[62]))
+                self.assertFalse(torch.isneginf(logits[127]))
+
+    def test_unbounded_original_sampling_still_allows_native_reasoning_token(self):
+        root = self.logits([(1, 1.0)])
+        self.assertFalse(self.decoder.final_answer_only)
+        self.assertEqual(self.decoder.sample(root, 4)[0], 1)
+
+    def test_final_answer_mask_allows_close_marker_and_rejects_no_valid_token(self):
+        root = self.logits([(126, 0.6), (127, 0.4)])
+        self.decoder.final_answer_only = True
+        self.assertIn(self.decoder.sample(root, 4)[0], {126, 127})
+        root.logits = torch.full((128,), -torch.inf)
+        root.logits[1] = 0
+        with self.assertRaisesRegex(ValueError, "No valid final-answer token"):
+            self.decoder.sample(root, 4)
+
+    def test_final_answer_mask_after_natural_and_forced_close_is_restored_on_resume(self):
+        self.configure()
+        original_sample = StreamDecoder.sample
+
+        natural_close = False
+
+        def attempts_reopening(decoder, state, seed):
+            state.logits = torch.full((128,), -torch.inf)
+            next_token, _ = self.answer_sample(decoder, state, seed)
+            if natural_close and len(state.generated_ids) == 2:
+                next_token = 126
+            state.logits[next_token] = -2.0
+            if 126 in state.generated_ids:
+                state.logits[1] = 0.0
+            return original_sample(decoder, state, seed)
+
+        def run(store):
+            with patch.object(StreamDecoder, "sample", attempts_reopening):
+                return run_condition(
+                    self.model, store, self.row, self.cfg, "test", "plain_ar", lambda _: None
+                )
+
+        for natural_close in (False, True):
+            with self.subTest(natural_close=natural_close):
+                prefix = f"mask-{natural_close}"
+                expected = run(RunStore(self.root / f"{prefix}-expected", {}))
+                self.assertTrue(expected["correct"])
+                self.assertNotIn(1, expected["body_ids"])
+                self.assertEqual(expected["forced_think_end_at"], None if natural_close else 17)
+                for stop in (3, 4, 5):
+                    paused = PausableStore(
+                        self.root / f"{prefix}-resume-{stop}", {}, stop_after_calls=stop
+                    )
+                    with self.assertRaises(RequestedPause):
+                        run(paused)
+                    actual = run(RunStore(paused.path, {}, resume=True))
+                    self.assertEqual(knobs.strip_time(actual), knobs.strip_time(expected))
+
+    def test_audit_rejects_native_reasoning_reopening_after_forcing(self):
+        self.configure()
+
+        def reopen(decoder, state, seed):
+            if 126 in state.generated_ids and state.generated_ids[-1] == 126:
+                return 1, -1.0
+            return self.answer_sample(decoder, state, seed)
+
+        with self.assertRaisesRegex(AssertionError, "Reasoning reopened"):
+            self.audited("plain_ar", [patch.object(StreamDecoder, "sample", reopen)])
+
     def test_combined_method_resumes_at_rollout_commit_and_force_checkpoints(self):
         self.configure()
         expected = self.controlled(RunStore(self.root / "expected", {}), "filtered_futures")
