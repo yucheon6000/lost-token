@@ -33,7 +33,9 @@ class SentenceBoundaryTests(unittest.TestCase):
             r"escaped \. \! \?",
         ):
             with self.subTest(span=span):
-                self.assertEqual(len(sentence_starts(span + " First sentence. Second sentence. ")), 2)
+                self.assertEqual(
+                    len(sentence_starts(span + " First sentence. Second sentence. ")), 2
+                )
 
     def test_every_character_cut_matches_whole_text(self):
         text = 'Dr. X uses $n! = 2. $$x?$$$ and `x! y?`. "Done?!" 次。！？Next. '

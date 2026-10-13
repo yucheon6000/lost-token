@@ -7,7 +7,9 @@ it briefly explores plausible continuations, keeps distinct unchosen branches as
 in-context memory, and continues reasoning. This repository compares ordinary
 autoregressive decoding (`baseline`) with recurrent branch memory (`ours`).
 
-Current changes, completed checks, and pending GPU/benchmark validation:
+Completed experiments, current status, and remaining benchmarks:
+[실험 결과와 진행 상황](docs/experiment_status_20261013.ko.md).
+The earlier implementation and validation plan is preserved in
 [최신 변경 사항과 검증 계획](docs/latest_changes_and_validation.ko.md).
 
 ## One-command setup and smoke test
@@ -19,8 +21,8 @@ space for datasets and experiment checkpoints. `curl` and `git` are needed for
 bootstrapping. No system Python packages or CUDA toolkit installation are needed.
 
 ```bash
-git clone https://github.com/ccho4702/lost-tokens.git
-cd lost-tokens
+git clone --branch feature/sparse-reasoning-v2 --single-branch https://github.com/yucheon6000/lost-token.git
+cd lost-token
 ./scripts/quickstart.sh
 ```
 
@@ -271,8 +273,45 @@ format still require a new comparison.
 | `aime25` | [MathArena AIME 2025](https://huggingface.co/datasets/MathArena/aime_2025) | 30 |
 | `hmmt25` | [MathArena HMMT February 2025](https://huggingface.co/datasets/MathArena/hmmt_feb_2025) | 30 |
 | `gpqa` | [GPQA Main, original public archive](https://github.com/idavidrein/gpqa) | 448 |
+| `mmlu` | [MMLU, all subjects, test split](https://huggingface.co/datasets/cais/mmlu) | 14,042 |
 | `supergpqa` | [SuperGPQA](https://huggingface.co/datasets/m-a-p/SuperGPQA) | 26,529 |
 | `longbench_v2` | [LongBench v2](https://huggingface.co/datasets/zai-org/LongBench-v2) | 503 |
+
+MMLU uses the pinned `all/test` split, preserving its 57 subjects and original
+A/B/C/D order. It is zero-shot generative evaluation: the existing explicit
+`Final answer: (A)` extraction scores the answer. It does not use the training,
+validation or dev splits, five-shot examples, or answer-choice log likelihood.
+`--limit` selects a seeded global subset, not a quota per subject.
+
+```bash
+uv run --frozen lost-tokens setup --benchmarks mmlu \
+  --config configs/plain-ar-baseline.json
+uv run --frozen lost-tokens prepare --benchmarks mmlu \
+  --config configs/sparse-sentence-rollouts.json
+uv run --frozen lost-tokens run --benchmarks mmlu --gpus 0 --limit 100 \
+  --arms baseline --config configs/plain-ar-baseline.json --run-name mmlu-baseline-100
+uv run --frozen lost-tokens run --benchmarks mmlu --gpus 0 --limit 100 \
+  --arms ours --config configs/sparse-sentence-rollouts.json --run-name mmlu-sparse-100
+```
+
+The plain-AR profile disables repetition suppression and has no forcing or branch
+definitions. Use separate configs to compare it with the complete sparse method.
+Omit `--limit` for the full test set; use a fixed `--ids-file` to control coverage.
+
+Reports log paired case time, mean/median latency, body tokens/s and forward-token
+overhead in `report.json` and `report.md`. A positive `slowdown_percent` means
+more time than baseline. Resumed partial cases are excluded from paired timing;
+unknown legacy timing provenance is recorded separately. Parallel phase elapsed
+time includes loading and pauses and excludes final audits.
+
+For separate runs, save both accuracy and speed comparisons offline:
+
+```bash
+uv run --frozen python scripts/compare_runs.py \
+  workspace/outputs/mmlu-baseline-100 workspace/outputs/mmlu-sparse-100 \
+  --baseline workspace/outputs/mmlu-baseline-100:baseline \
+  --output-dir workspace/outputs/mmlu-comparison-100
+```
 
 Dataset revisions, download URLs, and SHA256 hashes are pinned in
 [`datasets.json`](src/lost_tokens/datasets.json). GPQA uses the original authors'

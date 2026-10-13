@@ -51,7 +51,9 @@ class PortableTests(unittest.TestCase):
                 download_file("https://example.invalid", target, sha, lambda _: None)
 
     def test_manifest_has_all_pinned_sources_without_local_directories(self):
-        self.assertEqual(set(sources()), {"aime25", "hmmt25", "gpqa", "longbench_v2", "supergpqa"})
+        self.assertEqual(
+            set(sources()), {"aime25", "hmmt25", "gpqa", "longbench_v2", "supergpqa", "mmlu"}
+        )
         for entry in sources().values():
             self.assertEqual(len(entry["revision"]), 40)
             self.assertNotIn("directory", entry)
@@ -205,9 +207,7 @@ class PortableTests(unittest.TestCase):
             ids_file = Path(folder) / "ids.json"
             ids_file.write_text('["aime25-1"]')
             with self.assertRaises(SystemExit):
-                cli_main(
-                    ["run", "--work-dir", folder, "--limit", "2", "--ids-file", str(ids_file)]
-                )
+                cli_main(["run", "--work-dir", folder, "--limit", "2", "--ids-file", str(ids_file)])
 
     def _make_run(self, folder, arms, rows=None, include_arms_key=True):
         run = Path(folder)
@@ -336,9 +336,15 @@ class PortableTests(unittest.TestCase):
         module = self._load_compare_runs()
         with tempfile.TemporaryDirectory() as folder:
             run = self._make_run(folder, ("ours",), {"ours": {"a": True, "b": True}})
-            atomic_json(run / "workers/ours-worker0/outcomes/aime25/b.json", {
-                "task": "aime25", "id": "b", "finished_epoch": 11, "correct": True,
-            })
+            atomic_json(
+                run / "workers/ours-worker0/outcomes/aime25/b.json",
+                {
+                    "task": "aime25",
+                    "id": "b",
+                    "finished_epoch": 11,
+                    "correct": True,
+                },
+            )
             atomic_json(run / "schedule.json", {"ours": {"deadline_epoch": 10}})
             self.assertEqual(sorted(module.load(run, "ours")), ["aime25/a"])
 

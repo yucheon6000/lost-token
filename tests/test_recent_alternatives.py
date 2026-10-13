@@ -30,8 +30,12 @@ class RecentAlternativeTests(unittest.TestCase):
     def setUp(self):
         base.RecurrentTests.setUp(self)
         self.cfg["experiment"].update(
-            max_output_tokens=32, branch_tokens=4, min_branch_interval_tokens=5,
-            max_branch_candidates=2, memory_format="original_unchosen", min_branch_entropy=1.3,
+            max_output_tokens=32,
+            branch_tokens=4,
+            min_branch_interval_tokens=5,
+            max_branch_candidates=2,
+            memory_format="original_unchosen",
+            min_branch_entropy=1.3,
         )
         self.cfg["similarity"]["recent_alternatives_window"] = 4
         self.model.semantic_encoder = Encoder()
@@ -112,7 +116,9 @@ class RecentAlternativeTests(unittest.TestCase):
             hashes = {p.name: file_digest(p) for p in (paused.path / "checkpoints").glob("*.json")}
             actual = self.run_case(RunStore(paused.path, {}, resume=True))
             self.assertEqual(knobs.strip_time(actual), knobs.strip_time(expected))
-            self.assertTrue(all(file_digest(paused.path / "checkpoints" / n) == h for n, h in hashes.items()))
+            self.assertTrue(
+                all(file_digest(paused.path / "checkpoints" / n) == h for n, h in hashes.items())
+            )
 
     def test_recent_window_config_rejects_invalid_values(self):
         for value in (-1, True, 1.5, "4", None):

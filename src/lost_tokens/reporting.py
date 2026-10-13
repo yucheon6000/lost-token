@@ -5,6 +5,13 @@ from pathlib import Path
 import time
 
 from .core import atomic_json, now
+from .performance import (
+    TIMING_NOTE,
+    performance_markdown,
+    performance_summary,
+    performance_vs_baseline,
+    phase_wall_seconds,
+)
 
 
 DEFAULT_ARMS = ("baseline", "ours")
@@ -110,10 +117,13 @@ def report(run):
         "paired": summarize(outcomes, plan["benchmarks"]),
         "own": {},
         "schedule": schedule,
+        "performance_vs_baseline": performance_vs_baseline(outcomes, plan["benchmarks"]),
+        "phase_wall_seconds": {arm: phase_wall_seconds(run, arm, schedule) for arm in outcomes},
         "limitations": [
             "Common completed sets are completion-selected when a time budget is used.",
             "32K-input LongBench is not a full-context official benchmark score.",
             "Selected-rollout commit changes the main continuation as well as alternative memory.",
+            TIMING_NOTE,
         ],
     }
     arms = plan_arms(plan)
@@ -133,6 +143,7 @@ def report(run):
                 "body_tokens": sum(r["body_tokens"] for r in subset),
                 "fork_events": sum(r["events"] for r in subset),
                 "thinking_complete": sum(r["thinking_complete"] for r in subset),
+                "performance": performance_summary(subset),
             }
     lines = [
         "# Lost Tokens — "
@@ -182,6 +193,14 @@ def report(run):
                     lines.append(f"| {arm} | {task} | 0 | pending | pending | - | - | pending |")
     elif "baseline" not in outcomes:
         lines += ["", "No baseline arm in this run; per-arm accuracy only.", ""]
+    if result["performance_vs_baseline"]:
+        lines += performance_markdown(result["performance_vs_baseline"])
+    lines += [
+        "",
+        "Parallel phase wall seconds (loading included, final audits excluded): "
+        + json.dumps(result["phase_wall_seconds"])
+        + ".",
+    ]
     lines += [
         "",
         "Own completed: " + ", ".join(f"{a} {len(r)}" for a, r in outcomes.items()) + ".",

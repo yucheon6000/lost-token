@@ -136,6 +136,23 @@ def raw_rows(work_dir, task, seed):
                 "answer_format": "math",
                 "problem_type": row["problem_type"],
             }
+    elif task == "mmlu":
+        import pyarrow.parquet as pq
+
+        for index, row in enumerate(
+            pq.read_table(root / "all/test-00000-of-00001.parquet").to_pylist()
+        ):
+            if len(row["choices"]) != 4 or type(row["answer"]) is not int:
+                raise ValueError("MMLU requires four choices and an integer answer index")
+            yield choice_row(
+                task,
+                f"{row['subject']}-{index}",
+                row["question"],
+                row["choices"],
+                row["answer"],
+                subject=row["subject"],
+                split="test",
+            )
     elif task == "supergpqa":
         with (root / "SuperGPQA-all.jsonl").open() as stream:
             for line in stream:
@@ -283,6 +300,7 @@ def prepare(work_dir, spec, benchmarks):
             "gpqa": 448,
             "supergpqa": 26529,
             "longbench_v2": 503,
+            "mmlu": 14042,
         }[task]
         if len(rows) != expected or len({r["id"] for r in rows}) != expected:
             raise ValueError("Unexpected dataset cardinality or duplicate IDs")

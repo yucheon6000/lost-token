@@ -148,7 +148,9 @@ def create_run(
             found += [r["id"] for r in rows[task]]
         missing = wanted - set(found)
         if missing or len(found) != len(ids):
-            raise ValueError("ids missing or ambiguous across benchmarks: " + ", ".join(sorted(missing)))
+            raise ValueError(
+                "ids missing or ambiguous across benchmarks: " + ", ".join(sorted(missing))
+            )
     else:
         for task in rows:
             rows[task] = rows[task][: len(gpu_ids) if smoke else limit]
@@ -307,8 +309,13 @@ def worker(run, name, probe=False):
 
                 def fresh():
                     started = time.monotonic()
+                    previous_hits = store.hits
                     case = run_case(model, store, row, cfg, namespace, log)
-                    case.update(seconds=time.monotonic() - started, finished_epoch=time.time())
+                    case.update(
+                        seconds=time.monotonic() - started,
+                        finished_epoch=time.time(),
+                        timing_checkpoint_hits=store.hits - previous_hits,
+                    )
                     return case
 
                 case = store.call(
@@ -331,8 +338,17 @@ def worker(run, name, probe=False):
                     arm=assignment["arm"],
                     context_truncated=row.get("context_truncated", False),
                 )
+                from .performance import outcome_costs
+
+                outcome.update(outcome_costs(case, result))
                 atomic_json(path / "outcomes" / row["task"] / (row["id"] + ".json"), outcome)
-                log(f"completed {row['id']}: correct={result['correct']}")
+                log(
+                    f"completed {row['id']}: correct={result['correct']}; "
+                    f"seconds={outcome['seconds']:.2f}; body_tokens={outcome['body_tokens']}; "
+                    f"forward_tokens={outcome['forward_tokens']}; "
+                    f"embedding_seconds={outcome['embedding_seconds']:.2f}; "
+                    f"timing_complete={outcome['timing_complete']}"
+                )
             store.status("complete")
         except ProbePause:
             store.status("probe_interrupted")
@@ -460,6 +476,7 @@ def supervise(run):
                 )
                 started = time.time()
                 next_detail = 0
+                last_performance_n = None
                 while True:
                     health = {}
                     for w in assignments:
@@ -533,7 +550,14 @@ def supervise(run):
                         "workers": health,
                         "eta_seconds": eta,
                         "counts": {a: x["all"]["n"] for a, x in result["own"].items()},
+                        "performance_vs_baseline": result["performance_vs_baseline"],
                     }
+                    paired_time = result["performance_vs_baseline"].get(arm, {}).get("all")
+                    if paired_time and paired_time["timed_n"] != last_performance_n:
+                        last_performance_n = paired_time["timed_n"]
+                        change = paired_time["slowdown_percent"]
+                        value = f"{change:+.2f}%" if change is not None else "pending"
+                        log(f"{arm}: paired timing n={last_performance_n}; time change={value}")
                     if time.time() >= next_detail:
                         snapshot["free_bytes"] = shutil.disk_usage(run).free
                         if snapshot["free_bytes"] < settings["minimum_free_bytes"]:

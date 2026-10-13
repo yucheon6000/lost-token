@@ -54,7 +54,7 @@ def main(argv=None):
             sub.add_argument(
                 "--ids-file",
                 type=Path,
-                help="JSON list of ids, or {\"ids\": [...]}; runs exactly those questions",
+                help='JSON list of ids, or {"ids": [...]}; runs exactly those questions',
             )
     for name in ("resume", "report", "status", "audit"):
         sub = commands.add_parser(name)

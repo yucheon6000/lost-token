@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from functools import lru_cache
 
 
 class LocalModel:
@@ -42,6 +43,10 @@ class LocalModel:
             .eval()
         )
         self.model.requires_grad_(False)
+        if config.get("exact_stateless_graphs", False):
+            from .exact_graphs import install
+
+            install(self)
         eos = self.model.generation_config.eos_token_id
         self.eos_ids = set(eos if isinstance(eos, list) else [eos])
         self.special_ids = set(self.tokenizer.all_special_ids)
@@ -51,7 +56,22 @@ class LocalModel:
         return self.tokenizer.encode(text, add_special_tokens=False)
 
     def decode(self, ids: list[int]) -> str:
-        return self.tokenizer.decode(ids, skip_special_tokens=True)
+        return self.decode_tokens(ids, skip_special_tokens=True)
+
+    def decode_tokens(self, ids, skip_special_tokens=False):
+        """Cache bounded token tails without changing tokenizer output."""
+        if not self.cfg.get("exact_cpu_optimizations", False) or len(ids) > 64:
+            return self.tokenizer.decode(ids, skip_special_tokens=skip_special_tokens)
+        if getattr(self, "_decode_tokenizer", None) is not self.tokenizer:
+            tokenizer = self.tokenizer
+
+            @lru_cache(maxsize=256)
+            def decode_tail(tokens, skip_special):
+                return tokenizer.decode(list(tokens), skip_special_tokens=skip_special)
+
+            self._decode_tail = decode_tail
+            self._decode_tokenizer = tokenizer
+        return self._decode_tail(tuple(ids), skip_special_tokens)
 
     def prompt(self, text: str) -> list[int]:
         return self.tokenizer.apply_chat_template(

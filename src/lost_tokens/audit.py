@@ -275,7 +275,9 @@ def audit(run, partial=False, model=None):
                 if phase == "thinking" and not has_reasoning_token:
                     expected_count = 1
                 if forcing and forced_at is None and phase == "thinking":
-                    expected_count = min(expected_count, forcing["force_at_body_tokens"] - len(body))
+                    expected_count = min(
+                        expected_count, forcing["force_at_body_tokens"] - len(body)
+                    )
                 if scan and len(body) < next_fork_position:
                     expected_count = min(expected_count, next_fork_position - len(body))
                     scan = False

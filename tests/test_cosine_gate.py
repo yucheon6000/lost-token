@@ -6,8 +6,12 @@ import unittest
 import torch
 
 from lost_tokens.cosine import (
-    CosineEncoder, compare_rollouts, cosine_matrix, select_distinct,
-    recent_alternatives, select_recent_distinct,
+    CosineEncoder,
+    compare_rollouts,
+    cosine_matrix,
+    select_distinct,
+    recent_alternatives,
+    select_recent_distinct,
 )
 from lost_tokens.recurrent_memory import memory_text
 
@@ -23,8 +27,10 @@ class CosineTests(unittest.TestCase):
 
         recent = [{"event": 3, "rank": 2, "embedding": [0.0, 2.0]}]
         result = compare_rollouts(
-            Encoder(), [{"rank": 1, "text": "Original."}, {"rank": 2, "text": "Alternative."}],
-            0.85, recent=recent,
+            Encoder(),
+            [{"rank": 1, "text": "Original."}, {"rank": 2, "text": "Alternative."}],
+            0.85,
+            recent=recent,
         )
         self.assertEqual(calls, [["Original.", "Alternative."]])
         self.assertEqual(result["embedding_cost"]["texts"], 2)
@@ -47,16 +53,23 @@ class CosineTests(unittest.TestCase):
         vector = [0.85, math.sqrt(1 - 0.85**2)]
         score = cosine_matrix([[1.0, 0.0], vector])[0][1]
         recent = [{"event": 0, "rank": 2, "embedding": [1.0, 0.0]}]
-        self.assertEqual(select_recent_distinct([1, 2], [[0, 1], vector], [2], recent, score)[0], [])
+        self.assertEqual(
+            select_recent_distinct([1, 2], [[0, 1], vector], [2], recent, score)[0], []
+        )
         self.assertEqual(
             select_recent_distinct([1, 2], [[0, 1], vector], [2], recent, score + 1e-5)[0], [2]
         )
 
     def test_window_contains_only_newest_active_retained_alternatives(self):
         events = [
-            {"index": i, "retained_ranks": [2], "similarity": {
-                "ranks": [1, 2], "embeddings": [[1.0, 0.0], [0.0, 1.0]],
-            }}
+            {
+                "index": i,
+                "retained_ranks": [2],
+                "similarity": {
+                    "ranks": [1, 2],
+                    "embeddings": [[1.0, 0.0], [0.0, 1.0]],
+                },
+            }
             for i in range(6)
         ]
         recent = recent_alternatives(events, [0, 2, 3, 4, 5], 4)

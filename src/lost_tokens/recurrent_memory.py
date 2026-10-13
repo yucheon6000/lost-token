@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import copy
 from dataclasses import dataclass, field
+from functools import lru_cache
 import random
 import re
 import time
@@ -32,6 +33,8 @@ REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
 
 
 def raw_text(model, ids):
+    if hasattr(model, "decode_tokens"):
+        return model.decode_tokens(ids, skip_special_tokens=False)
     return model.tokenizer.decode(ids, skip_special_tokens=False)
 
 
@@ -166,10 +169,22 @@ class StreamDecoder:
             raise ValueError("Require a single-token thinking boundary")
         self.think_end = self.think_end[0]
         self.final_answer_only = False
+        self.exact_cpu_optimizations = model.cfg.get("exact_cpu_optimizations", False)
+        self.sampling_generator = None
+        guard_spec = self.exp["repetition_guard"]
+        self.guard_tail_tokens = max(
+            period
+            * max(
+                guard_spec["min_cycles"],
+                (guard_spec["min_span_tokens"] + period - 1) // period,
+            )
+            for period in range(1, guard_spec["max_period_tokens"] + 1)
+        )
+        self.cached_guard = lru_cache(maxsize=1)(
+            lambda tokens: repeated_suffix(list(tokens), guard_spec)
+        )
         self.reasoning_open_ids = {
-            ids[0]
-            for marker in ("<think>", "<reasoning>")
-            if len(ids := model.encode(marker)) == 1
+            ids[0] for marker in ("<think>", "<reasoning>") if len(ids := model.encode(marker)) == 1
         }
 
     def prefill(self, ids):
@@ -259,8 +274,20 @@ class StreamDecoder:
         probabilities = probabilities.masked_fill(
             probabilities.cumsum(-1) - probabilities > self.exp["top_p"], 0
         )
-        generator = self.torch.Generator(device=self.model.device).manual_seed(seed)
+        if self.exact_cpu_optimizations:
+            if self.sampling_generator is None:
+                self.sampling_generator = self.torch.Generator(device=self.model.device)
+            generator = self.sampling_generator.manual_seed(seed)
+        else:
+            generator = self.torch.Generator(device=self.model.device).manual_seed(seed)
         index = self.torch.multinomial(probabilities, 1, generator=generator)
+        if self.exact_cpu_optimizations:
+            selected = indices[index].reshape(())
+            lp = state.logits.log_softmax(-1)[selected]
+            # Float64 exactly represents these integer ids and float32 logprobs.
+            # Transfer both scalars together instead of synchronizing twice.
+            token, probability = self.torch.stack((selected.double(), lp.double())).tolist()
+            return int(token), probability
         token = int(indices[index].item())
         return token, float(state.logits.log_softmax(-1)[token])
 
@@ -295,7 +322,12 @@ class StreamDecoder:
             logits[blocked] = -self.torch.inf
 
     def loop_guard(self, state):
-        guard = repeated_suffix(state.generated_ids, self.exp["repetition_guard"])
+        if not self.exp["repetition_guard"]["enabled"]:
+            return None
+        if self.exact_cpu_optimizations:
+            guard = self.cached_guard(tuple(state.generated_ids[-self.guard_tail_tokens :]))
+        else:
+            guard = repeated_suffix(state.generated_ids, self.exp["repetition_guard"])
         # Never prevent termination; the guard applies only to ordinary continuation.
         if guard and guard["blocked_token"] in self.model.eos_ids | {self.think_end}:
             return None
@@ -435,7 +467,10 @@ def ttl_history(history, events, body_length, ttl):
     """Drop memory blocks whose event began more than ttl body tokens ago; keep all body."""
     kept, removed = [], []
     for block in history:
-        if block["kind"] == "memory" and events[block["event"]]["body_position"] < body_length - ttl:
+        if (
+            block["kind"] == "memory"
+            and events[block["event"]]["body_position"] < body_length - ttl
+        ):
             removed.append(block["event"])
         else:
             kept.append(block)
@@ -616,7 +651,12 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             old_digest = digest(state.ids)
             history, removed = compact_history(history, exp["memory_compact_to_tokens"])
             rebuild(f"/step-{step}/compact", history, removed, old_digest, None)
-        if forcing and forced_at is None and phase == "thinking" and len(body) >= forcing["force_at_body_tokens"]:
+        if (
+            forcing
+            and forced_at is None
+            and phase == "thinking"
+            and len(body) >= forcing["force_at_body_tokens"]
+        ):
             # Budget forcing: one persisted </think> token at the current body position.
             force_request = {
                 "root_sha256": digest(state.ids),

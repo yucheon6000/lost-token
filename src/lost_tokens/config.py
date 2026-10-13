@@ -141,6 +141,10 @@ def validate_spec(spec):
             raise ValueError("Invalid data." + key)
     if spec["model"]["dtype"] not in ("float32", "float16", "bfloat16"):
         raise ValueError("Unsupported model dtype")
+    if type(spec["model"].get("exact_cpu_optimizations", False)) is not bool:
+        raise ValueError("exact_cpu_optimizations must be boolean")
+    if type(spec["model"].get("exact_stateless_graphs", False)) is not bool:
+        raise ValueError("exact_stateless_graphs must be boolean")
     if not 0 < spec["model"]["gpu_memory_fraction"] <= 1:
         raise ValueError("GPU memory fraction must be in (0, 1]")
     if type(spec["model"]["threads"]) is not int or spec["model"]["threads"] < 1:
