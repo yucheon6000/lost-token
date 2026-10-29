@@ -14,13 +14,14 @@ import re
 import time
 
 from .core import derived_seed, digest, sum_cost
-from .math_scoring import natural_answer
-from .math_scoring import math_correct
+from .math_scoring import math_correct, natural_answer
 from .cosine import compare_rollouts
 from .repetition import repeated_suffix, repetition_summary, memory_markup_summary
 
 
-ARMS = ("plain_ar", "reference_only", "all_futures", "filtered_futures")
+ARMS = ("plain_ar", "reference_only", "selected_only", "all_futures", "filtered_futures")
+SELECTION_RULES = ("argmax", "lookahead")
+LOOKAHEAD_STATISTICS = ("mean_logprob", "neg_mean_entropy")
 REASONING_MARKERS = re.compile(r"</?(?:think|reasoning)>")
 
 
@@ -168,8 +169,8 @@ class StreamDecoder:
         return state
 
     def candidates(self, state):
-        # A probability threshold itself bounds the number of qualifying tokens;
-        # there is no top-2 truncation, lexical filter, ratio gate, or cooldown.
+        # Exactly one alternative per fork: the two most probable non-special tokens,
+        # both at or above the threshold. No lexical filter, ratio gate, or cooldown.
         lp = state.logits.log_softmax(-1)
         count = min(len(lp), int(1 / self.exp["min_candidate_probability"]) + 1)
         values, indices = self.torch.topk(lp, count)
@@ -183,7 +184,7 @@ class StreamDecoder:
             }
             for rank, (token, prob) in enumerate(observations)
             if prob >= self.exp["min_candidate_probability"] and token not in self.model.special_ids
-        ]
+        ][:2]
         top_special = observations[0][0] in self.model.special_ids
         eligible = not top_special and len(items) >= 2
         return {
@@ -279,9 +280,10 @@ class StreamDecoder:
         state = StreamState(
             list(root.ids), copy.deepcopy(root.cache), root.logits.clone(), list(root.generated_ids)
         )
-        ids, logprobs, guard_events = [], [], []
+        ids, logprobs, entropies, guard_events = [], [], [], []
         stop_marker = None
         for index in range(count):
+            entropies.append(distribution_entropy(state.logits))
             if index == 0:
                 token = first
                 lp = float(state.logits.log_softmax(-1)[token])
@@ -306,6 +308,7 @@ class StreamDecoder:
             "guard_events": guard_events,
             "origin_sha256": digest(root.ids),
             "raw_log_probabilities": logprobs,
+            "entropies": entropies,
             "cost": self.cost(len(root.ids), len(ids), len(ids), time.monotonic() - started),
         }
 
@@ -327,7 +330,10 @@ def ttl_history(history, events, body_length, ttl):
     """Drop memory blocks whose event began more than ttl body tokens ago; keep all body."""
     kept, removed = [], []
     for block in history:
-        if block["kind"] == "memory" and events[block["event"]]["body_position"] < body_length - ttl:
+        if (
+            block["kind"] == "memory"
+            and events[block["event"]]["body_position"] < body_length - ttl
+        ):
             removed.append(block["event"])
         else:
             kept.append(block)
@@ -351,27 +357,142 @@ def validate_budget_forcing(exp):
         raise ValueError("budget_forcing exceeds max_output_tokens")
 
 
-def memory_text(notes):
-    """Only unchosen rollout text; no repeated instructions, probabilities, or suffix."""
-
-    def escape(text):
-        return re.sub(
-            r"</?(?:possibilities|think|reasoning)>",
-            lambda m: m.group().replace("<", "&lt;").replace(">", "&gt;"),
-            text,
-            flags=re.I,
-        )
-
-    return (
-        "\n<possibilities>\n"
-        + "\n\n".join(escape(n["text"]) for n in notes)
-        + "\n</possibilities>\n"
+def escape_markup(text):
+    return re.sub(
+        r"</?(?:possibilities|think|reasoning)>",
+        lambda m: m.group().replace("<", "&lt;").replace(">", "&gt;"),
+        text,
+        flags=re.I,
     )
+
+
+def memory_text(notes, preamble=None):
+    """Unchosen rollout text only, optionally headed by one fixed framing line.
+
+    No probabilities, ranks or per-event instructions are included. The preamble
+    is a configuration constant, identical for every event of a condition.
+    """
+    head = "\n<possibilities>\n"
+    if preamble:
+        head += escape_markup(preamble.strip()) + "\n\n"
+    return head + "\n\n".join(escape_markup(n["text"]) for n in notes) + "\n</possibilities>\n"
+
+
+def distribution_entropy(logits):
+    lp = logits.log_softmax(-1)
+    return float(-(lp.exp() * lp).sum())
+
+
+def rollout_statistic(preview, statistic):
+    """Length-normalized confidence of the continuation after the forced first token.
+
+    The first token is excluded on purpose: its probability is exactly what the
+    argmax rule already ranks by, and lookahead exists to look past it.
+    """
+    values = (
+        preview["raw_log_probabilities"][1:]
+        if statistic == "mean_logprob"
+        else [-e for e in preview["entropies"][1:]]
+    )
+    if not values:
+        return None
+    return sum(values) / len(values)
+
+
+def select_rollout(previews, exp, eos_ids):
+    """Pure function of recorded rollouts: which candidate is committed.
+
+    argmax keeps rank 1. lookahead flips to the eligible alternative whose
+    continuation statistic beats rank 1 by at least the margin, taking the best
+    such alternative (ties go to the lower rank). A rollout is eligible only if it
+    has at least min_tokens continuation tokens, non-blank text, and did not end
+    thinking or the response; an ineligible reference is never flipped away from.
+    """
+    rule = exp["selection"]
+    if rule == "argmax":
+        return {"rule": "argmax", "selected_rank": 1, "flipped": False, "scores": []}
+    spec = exp["lookahead"]
+    scores = []
+    for preview in previews:
+        continuation = len(preview["ids"]) - 1
+        marker = preview.get("stop_marker")
+        terminal = bool(marker and marker.startswith("</")) or (
+            bool(preview["ids"]) and preview["ids"][-1] in eos_ids
+        )
+        reasons = []
+        if continuation < spec["min_tokens"]:
+            reasons.append("short")
+        if terminal:
+            reasons.append("terminal")
+        if not preview["text"].strip():
+            reasons.append("blank")
+        scores.append(
+            {
+                "rank": preview["rank"],
+                "continuation_tokens": continuation,
+                "value": rollout_statistic(preview, spec["statistic"]),
+                "eligible": not reasons,
+                "reasons": reasons,
+            }
+        )
+    reference = scores[0]
+    selected = reference["rank"]
+    if reference["eligible"]:
+        better = [
+            s
+            for s in scores[1:]
+            if s["eligible"] and s["value"] - reference["value"] >= spec["margin"]
+        ]
+        if better:
+            selected = max(better, key=lambda s: (s["value"], -s["rank"]))["rank"]
+    return {
+        "rule": "lookahead",
+        "statistic": spec["statistic"],
+        "margin": spec["margin"],
+        "min_tokens": spec["min_tokens"],
+        "selected_rank": selected,
+        "flipped": selected != reference["rank"],
+        "scores": scores,
+    }
+
+
+def validate_selection(exp):
+    if exp.get("selection") not in SELECTION_RULES:
+        raise ValueError("selection must be one of " + ", ".join(SELECTION_RULES))
+    spec = exp.get("lookahead")
+    if exp["selection"] == "argmax":
+        if spec is not None:
+            raise ValueError("lookahead settings require selection = lookahead")
+        return
+    if (
+        not isinstance(spec, dict)
+        or set(spec) != {"statistic", "margin", "min_tokens"}
+        or spec["statistic"] not in LOOKAHEAD_STATISTICS
+        or type(spec["margin"]) not in (int, float)
+        or spec["margin"] < 0
+        or type(spec["min_tokens"]) is not int
+        or spec["min_tokens"] < 1
+    ):
+        raise ValueError("Invalid lookahead")
+    if spec["min_tokens"] >= exp["branch_tokens"]:
+        raise ValueError("lookahead.min_tokens must be below branch_tokens")
+
+
+def validate_memory_preamble(exp):
+    preamble = exp.get("memory_preamble")
+    if preamble is None:
+        return
+    if type(preamble) is not str or not preamble.strip():
+        raise ValueError("memory_preamble must be a non-empty string or null")
+    if re.search(r"</?(?:possibilities|think|reasoning)>", preamble, re.I):
+        raise ValueError("memory_preamble must not contain memory or reasoning markers")
 
 
 def run_condition(model, store, row, cfg, namespace, arm, log):
     exp = cfg["experiment"]
     validate_budget_forcing(exp)
+    validate_selection(exp)
+    validate_memory_preamble(exp)
     if exp.get("budget_forcing") is not None and arm != "plain_ar":
         raise ValueError("budget_forcing is only supported for plain_ar")
     max_memory_events = exp.get("max_memory_events")
@@ -481,7 +602,12 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             old_digest = digest(state.ids)
             history, removed = compact_history(history, exp["memory_compact_to_tokens"])
             rebuild(f"/step-{step}/compact", history, removed, old_digest, None)
-        if forcing and forced_at is None and phase == "thinking" and len(body) >= forcing["force_at_body_tokens"]:
+        if (
+            forcing
+            and forced_at is None
+            and phase == "thinking"
+            and len(body) >= forcing["force_at_body_tokens"]
+        ):
             # Budget forcing: one persisted </think> token at the current body position.
             force_request = {
                 "root_sha256": digest(state.ids),
@@ -586,27 +712,36 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 preview = {**preview, "rank": item["rank"], "probability": item["probability"]}
                 event["previews"].append(preview)
                 costs.append(preview)
-            retained = [n for n in event["previews"][1:] if n["text"].strip()]
-            if arm == "filtered_futures":
+            selection = select_rollout(event["previews"], exp, model.eos_ids)
+            event["selection"] = selection
+            event["selected_rank"] = selection["selected_rank"]
+            # The committed reference comes first; every other rollout is a candidate memory.
+            ordered = [n for n in event["previews"] if n["rank"] == selection["selected_rank"]]
+            ordered += [n for n in event["previews"] if n["rank"] != selection["selected_rank"]]
+            chosen_preview = ordered[0]
+            retained = [n for n in ordered[1:] if n["text"].strip()]
+            if arm == "selected_only":
+                retained = []
+            elif arm == "filtered_futures":
                 similarity_spec = cfg["similarity"]
                 request = {
                     "root_sha256": root_sha,
-                    "ranks": [n["rank"] for n in event["previews"]],
-                    "texts": [n["text"] for n in event["previews"]],
+                    "ranks": [n["rank"] for n in ordered],
+                    "texts": [n["text"] for n in ordered],
                     "similarity_spec": similarity_spec,
                 }
                 result = store.call(
                     tag + f"/event-{event_index}/cosine",
                     request,
                     lambda: compare_rollouts(
-                        model.semantic_encoder, event["previews"], similarity_spec["threshold"]
+                        model.semantic_encoder, ordered, similarity_spec["threshold"]
                     ),
                 )
                 event["similarity"] = result
                 costs.append(result)
                 retained = [n for n in retained if n["rank"] in result["retained_ranks"]]
             if retained:
-                text = memory_text(retained)
+                text = memory_text(retained, exp.get("memory_preamble"))
                 side = model.encode(text)
                 if len(side) > exp["max_event_memory_tokens"]:
                     raise ValueError(
@@ -630,13 +765,13 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 costs.append(ingestion)
                 history.append({"kind": "memory", "ids": side, "event": event_index})
             event["continuation_root_sha256"] = digest(state.ids)
-            chosen = event["previews"][0]["ids"]
+            chosen = chosen_preview["ids"]
             # The selected rollout becomes body text verbatim AFTER the alternatives.
             # Its branch KV cannot be reused because the continuing KV includes memory.
             commit_request = {
                 "root_sha256": digest(state.ids),
                 "ids": chosen,
-                "selected_rank": 1,
+                "selected_rank": selection["selected_rank"],
                 "generated_history_sha256": digest(state.generated_ids),
                 "source_root_sha256": root_sha,
                 "body_position": len(body),
@@ -666,9 +801,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             costs.append(committed)
             event["committed_ids"] = committed["ids"]
             event["after_commit_sha256"] = digest(state.ids)
-            if event["previews"][0]["stop_marker"] and event["previews"][0][
-                "stop_marker"
-            ].startswith("</"):
+            if chosen_preview["stop_marker"] and chosen_preview["stop_marker"].startswith("</"):
                 phase = "final"
             store.call(
                 tag + f"/event-{event_index}/complete",

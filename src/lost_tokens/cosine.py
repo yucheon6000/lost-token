@@ -119,8 +119,8 @@ def compare_rollouts(encoder, notes, threshold):
     texts = [n["text"] for n in notes]
     valid = [bool(t.strip()) for t in texts]
     ranks = [n["rank"] for n in notes]
-    if ranks != sorted(set(ranks)) or not ranks or ranks[0] != 1:
-        raise ValueError("Require ordered unique ranks beginning with reference 1")
+    if not ranks or len(set(ranks)) != len(ranks):
+        raise ValueError("Require unique ranks; the first entry is the committed reference")
     indices = [i for i, v in enumerate(valid) if v]
     vectors, tokens = encoder.encode([texts[i] for i in indices]) if indices else ([], 0)
     dense = cosine_matrix(vectors) if vectors else []

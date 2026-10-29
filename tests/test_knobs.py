@@ -1,7 +1,9 @@
 """Experiment knobs A (max_memory_events), B, D (memory TTL) and F (budget forcing).
 
 The defaults-unchanged invariant is pinned by knob_defaults_golden.json, which was
-generated with the code from before the knobs existed.
+generated with the code from before the knobs existed. It was regenerated once when
+rollouts gained an informational "entropies" field and events a "selection" record:
+checkpoint labels/requests and body tokens were verified identical to the original.
 """
 
 import copy
@@ -19,7 +21,9 @@ import test_recurrent_memory as base
 
 def strip_time(value):
     if isinstance(value, dict):
-        return {k: strip_time(v) for k, v in value.items() if k not in ("seconds", "recovery_seconds")}
+        return {
+            k: strip_time(v) for k, v in value.items() if k not in ("seconds", "recovery_seconds")
+        }
     if isinstance(value, list):
         return [strip_time(v) for v in value]
     return value
@@ -27,7 +31,9 @@ def strip_time(value):
 
 def fingerprint(result, store):
     """Identity of a finished condition: every checkpoint label/request plus timing-free result."""
-    saved = [json.loads(p.read_text())["payload"] for p in (store.path / "checkpoints").glob("*.json")]
+    saved = [
+        json.loads(p.read_text())["payload"] for p in (store.path / "checkpoints").glob("*.json")
+    ]
     return {
         "labels_requests": digest(sorted((p["label"], p["request"]) for p in saved)),
         "results": digest(sorted((p["label"], strip_time(p["result"])) for p in saved)),
@@ -74,8 +80,12 @@ class KnobTests(unittest.TestCase):
             max_event_memory_tokens=256,
         )
         out["compaction"] = self.run_fp("d2", lambda s: self.controlled(s))
-        out["plain_real"] = self.run_fp("d3", lambda s: run_condition(
-            self.model, s, self.row, self.cfg, "test", "plain_ar", lambda _: None))
+        out["plain_real"] = self.run_fp(
+            "d3",
+            lambda s: run_condition(
+                self.model, s, self.row, self.cfg, "test", "plain_ar", lambda _: None
+            ),
+        )
         return out
 
     def run_fp(self, name, call):
@@ -122,8 +132,13 @@ class KnobTests(unittest.TestCase):
         ):
             self.cfg["experiment"]["max_memory_events"] = 1
             result = run_condition(
-                self.model, RunStore(self.root / "a-empty", {}), self.row, self.cfg,
-                "test", "filtered_futures", lambda _: None,
+                self.model,
+                RunStore(self.root / "a-empty", {}),
+                self.row,
+                self.cfg,
+                "test",
+                "filtered_futures",
+                lambda _: None,
             )
         self.assertEqual(len(result["events"]), 4)
 
@@ -152,9 +167,7 @@ class KnobTests(unittest.TestCase):
         self.assertTrue(all(c["reason"] == "ttl" for c in result["compactions"]))
         self.assertEqual(result["compactions"][0]["removed_events"], [0])
         self.assertEqual(result["compactions"][0]["body_position"], 5)
-        self.assertEqual(
-            result["compactions"][0]["body_tokens_preserved"], 5
-        )
+        self.assertEqual(result["compactions"][0]["body_tokens_preserved"], 5)
         base_len = len(self.model.prompt(instruction(self.row) + self.row["question"]))
         self.assertEqual(
             result["final_context_length"],
@@ -163,8 +176,10 @@ class KnobTests(unittest.TestCase):
 
     def test_ttl_and_capacity_compactions_are_distinguishable(self):
         shared = dict(
-            memory_capacity_tokens=400, memory_compact_to_tokens=100,
-            max_event_memory_tokens=256, max_output_tokens=40,
+            memory_capacity_tokens=400,
+            memory_compact_to_tokens=100,
+            max_event_memory_tokens=256,
+            max_output_tokens=40,
         )
         ttl = self.memory_run("d-ttl-only", memory_ttl_tokens=7, **shared)
         self.assertTrue(ttl["compactions"])
@@ -250,8 +265,13 @@ class KnobTests(unittest.TestCase):
 
         with patch.object(StreamDecoder, "sample", recording):
             result = run_condition(
-                self.model, RunStore(self.root / "force-seed", {}), self.row, self.cfg,
-                "test", "plain_ar", lambda _: None,
+                self.model,
+                RunStore(self.root / "force-seed", {}),
+                self.row,
+                self.cfg,
+                "test",
+                "plain_ar",
+                lambda _: None,
             )
         self.assertIsNotNone(result["forced_think_end_at"])
         seed = derived_seed(self.cfg["experiment"]["seed"], "test", self.row["id"])
@@ -306,9 +326,7 @@ class KnobTests(unittest.TestCase):
 
     def test_audit_passes_with_forcing(self):
         sample = self.forcing()
-        reviewed, result = self.audited(
-            "plain_ar", [patch.object(StreamDecoder, "sample", sample)]
-        )
+        reviewed, result = self.audited("plain_ar", [patch.object(StreamDecoder, "sample", sample)])
         self.assertEqual(reviewed["completed_conditions"], 1)
         self.assertEqual(result["forced_think_end_at"], 5)
 
@@ -367,8 +385,13 @@ class KnobTests(unittest.TestCase):
         for arm in ("reference_only", "all_futures", "filtered_futures"):
             with self.assertRaisesRegex(ValueError, "only supported for plain_ar"):
                 run_condition(
-                    self.model, RunStore(self.root / ("bf-" + arm), {}), self.row, self.cfg,
-                    "test", arm, lambda _: None,
+                    self.model,
+                    RunStore(self.root / ("bf-" + arm), {}),
+                    self.row,
+                    self.cfg,
+                    "test",
+                    arm,
+                    lambda _: None,
                 )
         spec = load_spec()
         spec["experiment"]["budget_forcing"] = {"force_at_body_tokens": 10, "answer_tokens": 5}
@@ -395,9 +418,13 @@ class KnobTests(unittest.TestCase):
     def test_config_validation_rejects_bad_knobs(self):
         good = {"force_at_body_tokens": 10, "answer_tokens": 5}
         bad = [
-            ("max_memory_events", 0), ("max_memory_events", True), ("max_memory_events", 1.5),
-            ("min_branch_body_tokens", -1), ("min_branch_body_tokens", True),
-            ("memory_ttl_tokens", 0), ("memory_ttl_tokens", "3"),
+            ("max_memory_events", 0),
+            ("max_memory_events", True),
+            ("max_memory_events", 1.5),
+            ("min_branch_body_tokens", -1),
+            ("min_branch_body_tokens", True),
+            ("memory_ttl_tokens", 0),
+            ("memory_ttl_tokens", "3"),
             ("budget_forcing", 5),
             ("budget_forcing", {"force_at_body_tokens": 10}),
             ("budget_forcing", {**good, "extra": 1}),
@@ -415,8 +442,11 @@ class KnobTests(unittest.TestCase):
             with self.assertRaises(ValueError, msg=f"{key}={value!r}"):
                 load_spec(path)
         for key, value in (
-            ("max_memory_events", 1), ("max_memory_events", None), ("min_branch_body_tokens", 0),
-            ("memory_ttl_tokens", 1), ("budget_forcing", None),
+            ("max_memory_events", 1),
+            ("max_memory_events", None),
+            ("min_branch_body_tokens", 0),
+            ("memory_ttl_tokens", 1),
+            ("budget_forcing", None),
             ("budget_forcing", {"force_at_body_tokens": 100, "answer_tokens": 32667}),
         ):
             spec = load_spec()

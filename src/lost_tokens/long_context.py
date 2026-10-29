@@ -1,6 +1,6 @@
 """Exact-dtype parent KV offload for independent long-context candidate rollouts.
 
-The parent temporarily resides on CPU. The original v4 rollout deep-copies it,
+The parent temporarily resides on CPU. The base StreamDecoder rollout deep-copies it,
 and advance moves that independent candidate to GPU before the first forward.
 The parent is restored after the candidate is freed. No KV quantization, prefix
 sharing, token pruning, or model/sampling changes are introduced.
@@ -50,7 +50,7 @@ class LongContextDecoder(StreamDecoder):
 
 
 def install():
-    """Explicit opt-in adapter; original v4 source and completed runs stay frozen."""
+    """Explicit opt-in adapter; the base decoder and completed runs are unchanged."""
     import lost_tokens.recurrent_memory as memory
 
     memory.StreamDecoder = LongContextDecoder

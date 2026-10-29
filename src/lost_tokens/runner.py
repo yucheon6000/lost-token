@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import copy
 import fcntl
-import json
 import os
 from pathlib import Path
 import re
@@ -23,6 +22,7 @@ from .runtime import environment, heartbeat, install_interrupt_handlers
 ARM_CONDITIONS = {
     "baseline": "plain_ar",
     "reference": "reference_only",
+    "selected": "selected_only",
     "all": "all_futures",
     "ours": "filtered_futures",
 }
@@ -145,7 +145,9 @@ def create_run(
             found += [r["id"] for r in rows[task]]
         missing = wanted - set(found)
         if missing or len(found) != len(ids):
-            raise ValueError("ids missing or ambiguous across benchmarks: " + ", ".join(sorted(missing)))
+            raise ValueError(
+                "ids missing or ambiguous across benchmarks: " + ", ".join(sorted(missing))
+            )
     else:
         for task in rows:
             rows[task] = rows[task][: len(gpu_ids) if smoke else limit]

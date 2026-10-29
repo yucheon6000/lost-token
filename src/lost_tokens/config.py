@@ -4,7 +4,12 @@ import copy
 import json
 from importlib.resources import files
 from pathlib import Path
-from .recurrent_memory import ARMS, validate_budget_forcing
+from .recurrent_memory import (
+    ARMS,
+    validate_budget_forcing,
+    validate_memory_preamble,
+    validate_selection,
+)
 
 
 def load_spec(path=None):
@@ -65,6 +70,8 @@ def validate_spec(spec):
         if value is not None and (type(value) is not int or value < floor):
             raise ValueError(f"Invalid {key}")
     validate_budget_forcing(exp)
+    validate_selection(exp)
+    validate_memory_preamble(exp)
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
         raise ValueError("Invalid repetition guard switch")
@@ -75,8 +82,8 @@ def validate_spec(spec):
         raise ValueError("A single occurrence is not repetition")
     if any(k in exp for k in ("equivalence_threshold", "judge_context_tokens", "anchor_tokens")):
         raise ValueError("Obsolete classifier/suffix configuration is not accepted")
-    if exp["selection"] != "argmax" or exp["commit"] != "selected_rollout":
-        raise ValueError("Unsupported selection/commit rule")
+    if exp["commit"] != "selected_rollout":
+        raise ValueError("Unsupported commit rule")
     similarity = spec["similarity"]
     if not -1 <= similarity["threshold"] <= 1:
         raise ValueError("Invalid cosine threshold")

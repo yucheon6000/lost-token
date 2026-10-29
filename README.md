@@ -3,9 +3,10 @@
 **Reusing Unchosen Reasoning Branches as In-Context Memory**
 
 Lost Tokens is a training-free decoding method. While a model is inside `<think>`,
-it briefly explores plausible continuations, keeps distinct unchosen branches as
-in-context memory, and continues reasoning. This repository compares ordinary
-autoregressive decoding (`baseline`) with recurrent branch memory (`ours`).
+at positions where two next tokens are both plausible it rolls both out for a few
+dozen tokens, commits the rollout whose continuation is more confident, and keeps
+the other one in its context as an unchosen possibility. This repository compares
+ordinary autoregressive decoding (`baseline`) with that method (`ours`).
 
 ## One-command setup and smoke test
 
@@ -82,11 +83,20 @@ not rerun. Start a new run name to change the experiment.
 
 ## Ablation arms and seeds
 
-`run --arms` selects which arms to run, sequentially in the given order. Names:
-`baseline` (plain_ar), `reference` (reference_only), `all` (all_futures) and
-`ours` (filtered_futures). The default is `baseline ours`. When `baseline` is in
-the run, the report adds a paired table (common n, wins, losses, difference pp)
-for every other arm; without `baseline` it reports per-arm accuracy only.
+`run --arms` selects which arms to run, sequentially in the given order. The
+default is `baseline ours`. The other arms are `ours` with one component removed:
+
+| Arm | Rolled out | Committed | Inserted into context |
+|---|---|---|---|
+| `baseline` (plain_ar) | nothing | sampled tokens | nothing |
+| `reference` (reference_only) | rank 1 only | rank 1 | nothing |
+| `selected` (selected_only) | both | selected rollout | nothing |
+| `all` (all_futures) | both | selected rollout | the other rollout, unfiltered |
+| `ours` (filtered_futures) | both | selected rollout | the other rollout if not near-duplicate |
+
+When `baseline` is in the run, the report adds a paired table (common n, wins,
+losses, difference pp) for every other arm; without `baseline` it reports
+per-arm accuracy only.
 
 ```bash
 uv run --frozen lost-tokens run --benchmarks aime25 --gpus 0,1 \
@@ -112,12 +122,27 @@ python scripts/compare_runs.py RUN_A RUN_B --baseline RUN_A:baseline
 
 ### Experiment knobs
 
-Optional `experiment` keys (absent or `null` = off, behavior unchanged):
-`max_memory_events`, `min_branch_body_tokens`, `memory_ttl_tokens` and
-`budget_forcing` (`{"force_at_body_tokens", "answer_tokens"}`). `budget_forcing`
-is only supported for the `plain_ar` arm; combining it with any scanning arm
-(or listing one in `experiment.arms`) raises
-`ValueError("budget_forcing is only supported for plain_ar")`.
+Method keys in `experiment` (defaults in [`default.json`](src/lost_tokens/default.json)):
+
+- `branch_tokens` (64): rollout length including the forced first token.
+- `selection`: `"lookahead"` (default) or `"argmax"`. Lookahead scores each rollout
+  by its continuation after the forced first token, with `lookahead.statistic`
+  either `mean_logprob` (mean raw log-probability of the sampled tokens) or
+  `neg_mean_entropy` (negative mean next-token entropy). The alternative is
+  committed instead of rank 1 when its score is better by at least
+  `lookahead.margin` nats per token (0.1) and it has at least
+  `lookahead.min_tokens` continuation tokens (16), non-blank text and did not end
+  thinking or the response. Otherwise rank 1 is committed. `"argmax"` always
+  commits rank 1 and requires `lookahead: null`.
+- `memory_preamble`: one fixed line written at the top of every `<possibilities>`
+  block, or `null` for none. It is escaped like rollout text and audited with it.
+- `min_candidate_probability` (0.20), `min_branch_interval_tokens` (256) and the
+  `similarity.threshold` (0.85) control when a fork happens and when the
+  alternative is inserted.
+
+Optional keys that are off when absent or `null`: `max_memory_events`,
+`min_branch_body_tokens`, `memory_ttl_tokens` and `budget_forcing`
+(`{"force_at_body_tokens", "answer_tokens"}`, `plain_ar` only).
 
 ## Data and configuration
 
@@ -152,12 +177,14 @@ context head and tail while preserving the full question and options; this is a
 32K-input evaluation, not the full-context official benchmark. Other datasets
 must fit the input cap or preparation fails rather than silently truncating them.
 
-The original method uses **32-token candidate rollouts**, **256 generated tokens
-between branch points**, candidate probability **≥0.20**, and cosine threshold
-**0.85**. Each candidate has an independent KV cache. Only distinct unchosen
-branches enter memory; the highest-probability candidate is committed verbatim
-after that memory. Memory compaction removes old memory blocks, preserving the
-generated body. Branching stops once reasoning ends. See [the protocol](docs/method.md).
+The method forks where the two most probable next tokens both have raw
+probability **≥0.20**, at most once per **256 generated tokens**. Both candidates
+get an independent KV cache and a **64-token rollout**. The rollout with the more
+confident continuation is committed (lookahead, margin 0.1 nats per token); the
+other is inserted into the context just before the commit unless its cosine
+similarity to the committed rollout is **≥0.85**. Inserted blocks are compacted
+away when they exceed 8,192 tokens; generated tokens are never removed. Branching
+stops once reasoning ends. See [the protocol](docs/method.md).
 
 All generated files are relative to `--work-dir` (default `./workspace`). Use
 `--model-cache` to share an existing Hugging Face cache; no source edits are needed
@@ -173,11 +200,17 @@ workspace/
   logs/           # controller/worker logs and health snapshots
 ```
 
-## Results and verification
+## Results
 
 Exploratory results through September 22, 2026, using
-**Qwen3-4B-Thinking-2507**. Each row compares the same questions completed by both
-arms; accuracy includes correct/total counts. Differences are percentage points.
+**Qwen3-4B-Thinking-2507** and the **previous protocol**: 32-token rollouts, every
+candidate with probability ≥0.20 rolled out, rank 1 always committed, no preamble.
+To reproduce that protocol with the current code, set `branch_tokens: 32`,
+`selection: "argmax"`, `lookahead: null` and `memory_preamble: null`; the current
+code still rolls out only one alternative, so results will not be identical. No
+results with the current defaults have been recorded yet. Each row compares the
+same questions completed by both arms; accuracy includes correct/total counts.
+Differences are percentage points.
 
 | Benchmark | Baseline | Ours | Difference |
 |---|---:|---:|---:|
@@ -196,19 +229,6 @@ four-GPU budget per arm: baseline completed 183 SuperGPQA questions and ours 108
 the table uses their 108 common questions. The pooled row is question-weighted,
 not a benchmark-average score or an equal-compute comparison.
 
-Earlier evaluation (separate run; these three datasets are not included in the
-current download CLI):
-
-| Benchmark | Baseline | Ours | Difference |
-|---|---:|---:|---:|
-| GSM8K | 95.59% (130/136) | **96.32% (131/136)** | +0.74 |
-| MATH500 | 98.51% (132/134) | 98.51% (132/134) | 0.00 |
-| MMLU-Pro | 69.40% (93/134) | 69.40% (93/134) | 0.00 |
-| **Pooled questions** | **87.87% (355/404)** | **88.12% (356/404)** | **+0.25** |
-
-The earlier run allocated 16 GPU-hours per arm. These are single-seed,
-completion-selected exploratory results, not evidence of statistical significance.
-
 Reports compare **common completed questions**, with per-task accuracy, wins/losses,
 completion counts, and runtime. Time-censored subsets can favor quickly completed
 questions; they are not full-dataset scores. Selected-rollout commit changes the
@@ -224,6 +244,3 @@ replay, memory compaction, numeric/choice scoring, dataset adapters, paired
 reporting and deadlines. The `smoke` command adds real-model GPU and resume tests.
 Run it on each new machine before a long evaluation. Python dependencies are
 locked; GPU kernels and hardware can still introduce nondeterminism.
-
-See [release verification](docs/verification.md) for the installation, portability,
-GPU recovery, and audit checks performed on this implementation.

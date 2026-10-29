@@ -15,11 +15,10 @@ from lost_tokens.recurrent_memory import (
     compact_history,
     final_response,
     run_condition,
-    memory_text,
 )
 from lost_tokens.protocol import PausableStore, RequestedPause, development_check
 from lost_tokens.config import load_spec
-from lost_tokens.cosine import compare_rollouts, cosine_matrix
+from lost_tokens.cosine import compare_rollouts
 import tiny_model as test_online
 
 
@@ -60,6 +59,9 @@ class RecurrentTests(unittest.TestCase):
             max_event_memory_tokens=512,
             min_candidate_probability=0.05,
             min_branch_interval_tokens=0,
+            selection="argmax",
+            lookahead=None,
+            memory_preamble=None,
         )
         self.row = {
             "id": "cpu",
@@ -253,13 +255,21 @@ class RecurrentTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_spec(path)
 
-    def test_threshold_keeps_more_than_top_two_and_operators(self):
+    def test_fork_keeps_exactly_the_top_two_above_threshold(self):
         root = self.decoder.prefill([65])
         root.logits = torch.full((128,), -100.0)
         for token, p in [(65, 0.5), (66, 0.2), (43, 0.15), (67, 0.1), (68, 0.049), (69, 0.001)]:
             root.logits[token] = torch.log(torch.tensor(p))
         dist = self.decoder.candidates(root)
-        self.assertEqual([i["token_id"] for i in dist["items"]], [65, 66, 43, 67])
+        self.assertEqual([i["token_id"] for i in dist["items"]], [65, 66])
+        self.assertEqual([i["rank"] for i in dist["items"]], [1, 2])
+        # A special second token is skipped; the next qualifying token becomes rank 2.
+        root.logits[126] = torch.log(torch.tensor(0.3))
+        self.assertEqual([i["token_id"] for i in self.decoder.candidates(root)["items"]], [65, 66])
+        # Only one qualifying token: no fork.
+        for token in (66, 43, 67, 68):
+            root.logits[token] = torch.log(torch.tensor(0.01))
+        self.assertFalse(self.decoder.candidates(root)["eligible"])
         root.logits[126] = 10.0
         self.assertFalse(self.decoder.candidates(root)["eligible"])
 

@@ -7,19 +7,25 @@ reasoning-memory protocol used in the project's experiments.
 1. Generate normally inside the model's reasoning region. Require at least one
    generated reasoning token and the configured minimum distance from the last
    branch point. Never intervene in the final-answer region.
-2. At an eligible position, include all non-special tokens whose raw next-token
-   probability is at least 0.20. Require at least two candidates. If the most
-   probable token is special, do not fork. This is independent of the sampling
-   top-k/top-p filter.
+2. At an eligible position, take the two most probable non-special tokens whose
+   raw next-token probability is at least 0.20: one reference and exactly one
+   alternative. If fewer than two qualify, or the most probable token is special,
+   do not fork. This is independent of the sampling top-k/top-p filter.
 3. Clone the same parent KV state independently for each candidate, force its
-   first token, and continue for at most 32 tokens including that first token.
-   Stop at EOS or the reasoning-end marker. Seeds are derived from the case,
+   first token, and continue for at most 64 tokens including that first token.
+   Stop at EOS or the reasoning-end marker. Record each token's raw log-probability
+   and the next-token distribution entropy. Seeds are derived from the case,
    position and candidate identity; checkpoint segment boundaries do not change
    token sampling.
-4. Select the highest-probability candidate. Embed only the rollout texts with
-   Qwen3-Embedding-0.6B. Greedily discard alternatives whose cosine similarity is
-   at least 0.85 to the selected branch or an already retained alternative.
-5. Insert retained **unchosen** rollout text inside a `<possibilities>` block.
+4. Select the rollout to commit. By default (`selection: lookahead`) compare the
+   two continuations after the forced first token by mean log-probability; commit
+   the alternative only if it is better by at least 0.1 nats per token, has at
+   least 16 continuation tokens, non-blank text, and did not end thinking or the
+   response. Otherwise, and always with `selection: argmax`, commit rank 1. Embed
+   only the rollout texts with Qwen3-Embedding-0.6B and discard the unchosen
+   rollout if its cosine similarity to the committed one is at least 0.85.
+5. Insert retained **unchosen** rollout text inside a `<possibilities>` block,
+   headed by the fixed `memory_preamble` line when one is configured.
    Then commit the selected rollout's exact generated tokens. Memory is a set of
    unverified possibilities, not a collection of independent confirmations.
 6. Continue and repeat. The default minimum branch interval is 256 generated body
@@ -65,8 +71,3 @@ Larger rollouts therefore change more than the content of alternative memory.
   own completed counts and paired accuracy on the common completed set. Completion
   selection, unequal benchmark sizes, one seed and numerical nondeterminism limit
   what those scores establish.
-
-The historical machine-specific launch scripts are intentionally absent. The
-portable CLI uses the same inference algorithm with configurable storage, devices,
-dataset subsets and time budgets. Historical predictions and checkpoint directories
-are preserved outside the public repository.

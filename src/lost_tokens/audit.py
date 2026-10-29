@@ -15,6 +15,7 @@ from lost_tokens.recurrent_memory import (
     instruction,
     memory_text,
     reasoning_phase,
+    select_rollout,
     ttl_history,
     emitted_marker,
     fragment_text,
@@ -254,7 +255,9 @@ def audit(run, partial=False, model=None):
                 if phase == "thinking" and not has_reasoning_token:
                     expected_count = 1
                 if forcing and forced_at is None and phase == "thinking":
-                    expected_count = min(expected_count, forcing["force_at_body_tokens"] - len(body))
+                    expected_count = min(
+                        expected_count, forcing["force_at_body_tokens"] - len(body)
+                    )
                 if scan and len(body) < next_fork_position:
                     expected_count = min(expected_count, next_fork_position - len(body))
                     scan = False
@@ -324,17 +327,26 @@ def audit(run, partial=False, model=None):
                             "</think>" not in preview["text"]
                             and "</reasoning>" not in preview["text"]
                         )
+                        assert len(preview["entropies"]) == len(preview["ids"])
                         check_guards(preview, body, forced_first=True)
                         costs.append(preview)
-                    assert event["selected_rank"] == 1
-                    retained = [n for n in event["previews"][1:] if n["text"].strip()]
+                    selection = select_rollout(event["previews"], exp, model.eos_ids)
+                    assert event["selection"] == selection
+                    selected = selection["selected_rank"]
+                    assert event["selected_rank"] == selected
+                    ordered = [n for n in event["previews"] if n["rank"] == selected]
+                    ordered += [n for n in event["previews"] if n["rank"] != selected]
+                    chosen_preview = ordered[0]
+                    retained = [n for n in ordered[1:] if n["text"].strip()]
+                    if arm == "selected_only":
+                        retained = []
                     if arm == "filtered_futures":
                         gate = event["similarity"]
                         record = records[tag + f"/event-{len(events)}/cosine"]
                         assert record["request"] == {
                             "root_sha256": event["root_sha256"],
-                            "ranks": [n["rank"] for n in event["previews"]],
-                            "texts": [n["text"] for n in event["previews"]],
+                            "ranks": [n["rank"] for n in ordered],
+                            "texts": [n["text"] for n in ordered],
                             "similarity_spec": spec["similarity"],
                         }
                         assert record["result"] == gate and gate["method"] == "embedding_cosine"
@@ -372,9 +384,9 @@ def audit(run, partial=False, model=None):
                     else:
                         assert event["similarity"] is None
                     assert event["retained_ranks"] == [n["rank"] for n in retained]
-                    assert 1 not in event["retained_ranks"]
+                    assert selected not in event["retained_ranks"]
                     if retained:
-                        side = model.encode(memory_text(retained))
+                        side = model.encode(memory_text(retained, exp.get("memory_preamble")))
                         assert (
                             side == event["memory_ids"]
                             and len(side) <= exp["max_event_memory_tokens"]
@@ -394,13 +406,13 @@ def audit(run, partial=False, model=None):
                     commit = record["result"]
                     assert record["request"] == {
                         "root_sha256": digest(context),
-                        "ids": event["previews"][0]["ids"],
-                        "selected_rank": 1,
+                        "ids": chosen_preview["ids"],
+                        "selected_rank": selected,
                         "source_root_sha256": event["root_sha256"],
                         "body_position": len(body),
                         "generated_history_sha256": digest(body),
                     }
-                    assert commit["ids"] == event["committed_ids"] == event["previews"][0]["ids"]
+                    assert commit["ids"] == event["committed_ids"] == chosen_preview["ids"]
                     assert (
                         commit["cost"]["input_tokens"] == len(commit["ids"])
                         and commit["cost"]["output_tokens"] == 0
@@ -411,7 +423,7 @@ def audit(run, partial=False, model=None):
                     history.append({"kind": "body", "ids": commit["ids"]})
                     costs.append(commit)
                     assert event["after_commit_sha256"] == digest(context)
-                    marker = event["previews"][0]["stop_marker"]
+                    marker = chosen_preview["stop_marker"]
                     if marker and marker.startswith("</"):
                         phase = "final"
                     events.append(event)
@@ -487,6 +499,7 @@ def audit(run, partial=False, model=None):
             "minimum body-token fork interval and exact scan restart boundary",
             "same pre-injection root for every candidate",
             "only unchosen alternatives in memory",
+            "selection rule recomputed from recorded rollout statistics",
             "selected rollout committed verbatim after memory",
             "cosine matrix recomputed from vectors",
             "no intervention after thinking ends",

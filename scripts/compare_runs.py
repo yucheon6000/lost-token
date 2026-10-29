@@ -60,7 +60,9 @@ def compare(base, other):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawTextHelpFormatter
+    )
     parser.add_argument("runs", nargs="+", type=Path)
     parser.add_argument("--arms", nargs="+", help="Arm names to compare (default: all found)")
     parser.add_argument("--baseline", help="RUN[:ARM]; default first run, arm baseline")
@@ -72,7 +74,9 @@ def main(argv=None):
         base_run, base_arm = args.runs[0], "baseline"
     base = load(base_run, base_arm)
     print(f"Baseline: {base_run} [{base_arm}] ({len(base)} cases)\n")
-    print("| Run | Arm | Common n | Baseline | Arm acc | Wins | Losses | Diff pp | Think done (base/arm) |")
+    print(
+        "| Run | Arm | Common n | Baseline | Arm acc | Wins | Losses | Diff pp | Think done (base/arm) |"
+    )
     print("|---|---|---:|---:|---:|---:|---:|---:|---:|")
     details = []
     for run in args.runs:
