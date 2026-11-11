@@ -8,6 +8,7 @@ import json
 from importlib.resources import files
 from pathlib import Path
 import random
+import re
 import time
 import urllib.error
 import urllib.request
@@ -136,6 +137,45 @@ def raw_rows(work_dir, task, seed):
                 "answer_format": "math",
                 "problem_type": row["problem_type"],
             }
+    elif task == "gsm8k":
+        import pyarrow.parquet as pq
+
+        path = root / "main/test-00000-of-00001.parquet"
+        for index, row in enumerate(pq.read_table(path).to_pylist()):
+            _, marker, answer = row["answer"].rpartition("####")
+            answer = answer.strip()
+            if not marker or not re.fullmatch(r"[+-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?", answer):
+                raise ValueError("GSM8K requires a numeric final answer after ####")
+            yield {
+                "id": f"{task}-test-{index}",
+                "task": task,
+                "question": row["question"],
+                "gold": answer.replace(",", ""),
+                "choices": [],
+                "answer_format": "math",
+                "split": "test",
+            }
+    elif task == "math500":
+        with (root / "test.jsonl").open() as stream:
+            for line in stream:
+                row = json.loads(line)
+                if not all(
+                    isinstance(row[k], str) and row[k].strip()
+                    for k in ("unique_id", "problem", "answer")
+                ):
+                    raise ValueError("MATH500 requires a stable ID, problem, and final answer")
+                yield {
+                    "id": f"{task}-{row['unique_id'].replace('/', '-')}",
+                    "task": task,
+                    "question": row["problem"],
+                    "gold": row["answer"],
+                    "choices": [],
+                    "answer_format": "math",
+                    "split": "test",
+                    "subject": row["subject"],
+                    "level": row["level"],
+                    "source_id": row["unique_id"],
+                }
     elif task == "mmlu":
         import pyarrow.parquet as pq
 
@@ -301,6 +341,8 @@ def prepare(work_dir, spec, benchmarks):
             "supergpqa": 26529,
             "longbench_v2": 503,
             "mmlu": 14042,
+            "gsm8k": 1319,
+            "math500": 500,
         }[task]
         if len(rows) != expected or len({r["id"] for r in rows}) != expected:
             raise ValueError("Unexpected dataset cardinality or duplicate IDs")

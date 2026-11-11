@@ -2,6 +2,9 @@
 
 The defaults-unchanged invariant is pinned by knob_defaults_golden.json, which was
 generated with the code from before the knobs existed.
+The plain_real sampling fixture was refreshed against unchanged decoding code
+when the pinned runtime moved to PyTorch 2.8.0 for Blackwell support. The
+controlled and compaction fixtures retain their original historical values.
 """
 
 import copy

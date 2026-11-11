@@ -272,10 +272,29 @@ format still require a new comparison.
 |---|---|---:|
 | `aime25` | [MathArena AIME 2025](https://huggingface.co/datasets/MathArena/aime_2025) | 30 |
 | `hmmt25` | [MathArena HMMT February 2025](https://huggingface.co/datasets/MathArena/hmmt_feb_2025) | 30 |
+| `gsm8k` | [GSM8K, main test split](https://huggingface.co/datasets/openai/gsm8k) | 1,319 |
+| `math500` | [MATH-500, test split](https://huggingface.co/datasets/HuggingFaceH4/MATH-500) | 500 |
 | `gpqa` | [GPQA Main, original public archive](https://github.com/idavidrein/gpqa) | 448 |
 | `mmlu` | [MMLU, all subjects, test split](https://huggingface.co/datasets/cais/mmlu) | 14,042 |
 | `supergpqa` | [SuperGPQA](https://huggingface.co/datasets/m-a-p/SuperGPQA) | 26,529 |
 | `longbench_v2` | [LongBench v2](https://huggingface.co/datasets/zai-org/LongBench-v2) | 503 |
+
+GSM8K uses only the `main/test` split, with the numeric gold answer extracted
+after `####`. MATH500 uses all 500 test problems and preserves the provided
+mathematical answers. Neither adapter includes reference solutions in prompts.
+Both use the existing boxed-answer extraction and Math-Verify scoring, the same
+seeded shuffle and per-case seeds, and the configured input/output limits.
+
+```bash
+uv run --frozen lost-tokens setup --benchmarks gsm8k math500 \
+  --config configs/plain-ar-baseline.json
+uv run --frozen lost-tokens run --benchmarks gsm8k math500 \
+  --config configs/plain-ar-baseline.json --arms baseline \
+  --gpus 0,1,2,3,4,5,6,7 --run-name gsm8k-math500-baseline
+```
+
+Choose the available GPU indices for your machine. Omit `--limit` for the full
+datasets; add it for a deterministic per-benchmark subset.
 
 MMLU uses the pinned `all/test` split, preserving its 57 subjects and original
 A/B/C/D order. It is zero-shot generative evaluation: the existing explicit
@@ -381,8 +400,8 @@ four-GPU budget per arm: baseline completed 183 SuperGPQA questions and ours 108
 the table uses their 108 common questions. The pooled row is question-weighted,
 not a benchmark-average score or an equal-compute comparison.
 
-Earlier evaluation (separate run; these three datasets are not included in the
-current download CLI):
+Earlier evaluation (separate run; MMLU-Pro is not included in the current
+download CLI, and these results are not new runs of the current adapters):
 
 | Benchmark | Baseline | Ours | Difference |
 |---|---:|---:|---:|

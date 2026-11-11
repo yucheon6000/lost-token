@@ -52,7 +52,8 @@ class PortableTests(unittest.TestCase):
 
     def test_manifest_has_all_pinned_sources_without_local_directories(self):
         self.assertEqual(
-            set(sources()), {"aime25", "hmmt25", "gpqa", "longbench_v2", "supergpqa", "mmlu"}
+            set(sources()),
+            {"aime25", "hmmt25", "gpqa", "longbench_v2", "supergpqa", "mmlu", "gsm8k", "math500"},
         )
         for entry in sources().values():
             self.assertEqual(len(entry["revision"]), 40)
