@@ -1,0 +1,57 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "2304",
+          "id": "hmmt25-14",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 159,
+          "question": "Sophie is at $(0,0)$ on a coordinate grid and would like to get to $(3,3)$. If Sophie is at $(x, y)$, in a single step she can move to one of $(x+1, y),(x, y+1),(x-1, y+1)$, or $(x+1, y-1)$. She cannot revisit any points along her path, and neither her $x$-coordinate nor her $y$-coordinate can ever be less than $0$ or greater than 3. Compute the number of ways for Sophie to reach $(3,3)$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "63",
+          "id": "hmmt25-22",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 111,
+          "question": "In a two-dimensional cave with a parallel floor and ceiling, two stalactites of lengths $16$ and $36$ hang perpendicularly from the ceiling, while two stalagmites of heights $25$ and $49$ grow perpendicularly from the ground. If the tips of these four structures form the vertices of a square in some order, compute the height of the cave.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "9\\sqrt{15}",
+          "id": "hmmt25-26",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 114,
+          "question": "Trapezoid $A B C D$, with $A B \\| C D$, has side lengths $A B=11, B C=8, C D=19$, and $D A=4$. Compute the area of the convex quadrilateral whose vertices are the circumcenters of $\\triangle A B C, \\triangle B C D$, $\\triangle C D A$, and $\\triangle D A B$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "890",
+          "id": "hmmt25-5",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 114,
+          "question": "Let $\\mathcal{S}$ be the set of all nonconstant monic polynomials $P$ with integer coefficients satisfying $P(\\sqrt{3}+\\sqrt{2})=$ $P(\\sqrt{3}-\\sqrt{2})$. If $Q$ is an element of $\\mathcal{S}$ with minimal degree, compute the only possible value of $Q(10)-Q(0)$.",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

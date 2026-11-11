@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T21:20:51.100463+00:00",
+  "counts": {
+    "baseline": 256
+  },
+  "epoch": 1793308851.1004703,
+  "eta_seconds": 61925.81882960305,
+  "free_bytes": 7059308544,
+  "gpu_csv": "0, 10078 MiB, 96 %\n1, 12358 MiB, 98 %\n2, 9918 MiB, 94 %\n3, 9918 MiB, 96 %\n4, 9998 MiB, 96 %\n5, 10000 MiB, 95 %\n6, 10378 MiB, 92 %\n7, 9398 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 0.015327930450439453,
+      "checkpoints": {
+        "checkpoint_count": 1051,
+        "epoch": 1793308851.0433822,
+        "new": 1051,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T21:20:18.144678+00:00",
+        "case_id": "mmlu-nutrition-9585",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9258.91015625,
+          "peak_cuda_reserved_mib": 9370.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 3.4595563411712646,
+      "checkpoints": {
+        "checkpoint_count": 952,
+        "epoch": 1793308847.5991926,
+        "new": 952,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T21:14:54.531889+00:00",
+        "case_id": "mmlu-conceptual_physics-1599",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8555.14453125,
+          "peak_cuda_reserved_mib": 8670.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 2.7710464000701904,
+      "checkpoints": {
+        "checkpoint_count": 984,
+        "epoch": 1793308848.2877362,
+        "new": 984,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:20:41.332374+00:00",
+        "case_id": "mmlu-professional_psychology-12935",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 3.1564512252807617,
+      "checkpoints": {
+        "checkpoint_count": 1047,
+        "epoch": 1793308847.902364,
+        "new": 1047,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:20:42.488169+00:00",
+        "case_id": "mmlu-elementary_mathematics-2417",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.173775911331177,
+      "checkpoints": {
+        "checkpoint_count": 1030,
+        "epoch": 1793308845.8850698,
+        "new": 1030,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:20:28.268787+00:00",
+        "case_id": "mmlu-high_school_geography-3483",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9167.232421875,
+          "peak_cuda_reserved_mib": 9290.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 5.220691919326782,
+      "checkpoints": {
+        "checkpoint_count": 1001,
+        "epoch": 1793308845.8381844,
+        "new": 1001,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:20:37.606477+00:00",
+        "case_id": "mmlu-sociology-13428",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9179.921875,
+          "peak_cuda_reserved_mib": 9292.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 5.243506193161011,
+      "checkpoints": {
+        "checkpoint_count": 976,
+        "epoch": 1793308845.8153994,
+        "new": 976,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:20:49.715176+00:00",
+        "case_id": "mmlu-high_school_world_history-5976",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9546.205078125,
+          "peak_cuda_reserved_mib": 9670.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 3.4485368728637695,
+      "checkpoints": {
+        "checkpoint_count": 1061,
+        "epoch": 1793308847.6103985,
+        "new": 1061,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:20:31.377560+00:00",
+        "case_id": "mmlu-professional_psychology-12803",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8564.697265625,
+          "peak_cuda_reserved_mib": 8690.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

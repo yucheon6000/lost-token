@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T22:30:53.514419+00:00",
+  "counts": {
+    "baseline": 1252
+  },
+  "epoch": 1793313053.5144315,
+  "eta_seconds": 55658.70146302173,
+  "free_bytes": 6649139200,
+  "gpu_csv": "0, 10078 MiB, 94 %\n1, 13238 MiB, 97 %\n2, 10000 MiB, 96 %\n3, 10658 MiB, 97 %\n4, 10020 MiB, 96 %\n5, 10000 MiB, 95 %\n6, 10380 MiB, 97 %\n7, 10198 MiB, 94 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 5.092730760574341,
+      "checkpoints": {
+        "checkpoint_count": 4666,
+        "epoch": 1793313048.3463721,
+        "new": 4666,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T22:30:48.363316+00:00",
+        "case_id": "mmlu-high_school_psychology-4965",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9258.91015625,
+          "peak_cuda_reserved_mib": 9370.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.813824892044067,
+      "checkpoints": {
+        "checkpoint_count": 4429,
+        "epoch": 1793313048.6253228,
+        "new": 4429,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T22:30:02.340857+00:00",
+        "case_id": "mmlu-virology-13718",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.978515625,
+          "peak_cuda_reserved_mib": 12530.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.558176279067993,
+      "checkpoints": {
+        "checkpoint_count": 4602,
+        "epoch": 1793313047.8810089,
+        "new": 4602,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T22:30:22.971003+00:00",
+        "case_id": "mmlu-econometrics-1862",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9172.080078125,
+          "peak_cuda_reserved_mib": 9292.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 4.746367454528809,
+      "checkpoints": {
+        "checkpoint_count": 4696,
+        "epoch": 1793313048.692855,
+        "new": 4696,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T22:29:57.055687+00:00",
+        "case_id": "mmlu-professional_law-10771",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9815.25,
+          "peak_cuda_reserved_mib": 9950.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 1.837444543838501,
+      "checkpoints": {
+        "checkpoint_count": 4652,
+        "epoch": 1793313051.6018112,
+        "new": 4652,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T22:30:29.827577+00:00",
+        "case_id": "mmlu-college_physics-1469",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9197.31640625,
+          "peak_cuda_reserved_mib": 9312.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 5.144150018692017,
+      "checkpoints": {
+        "checkpoint_count": 4701,
+        "epoch": 1793313048.2951365,
+        "new": 4701,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T22:30:40.045588+00:00",
+        "case_id": "mmlu-philosophy-9818",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9179.921875,
+          "peak_cuda_reserved_mib": 9292.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 5.381805896759033,
+      "checkpoints": {
+        "checkpoint_count": 4587,
+        "epoch": 1793313048.0575116,
+        "new": 4587,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T22:29:37.923570+00:00",
+        "case_id": "mmlu-high_school_statistics-5598",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9546.205078125,
+          "peak_cuda_reserved_mib": 9672.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 3.138991355895996,
+      "checkpoints": {
+        "checkpoint_count": 4713,
+        "epoch": 1793313050.3003578,
+        "new": 4713,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T22:30:47.575731+00:00",
+        "case_id": "mmlu-logical_fallacies-6719",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9352.7265625,
+          "peak_cuda_reserved_mib": 9490.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

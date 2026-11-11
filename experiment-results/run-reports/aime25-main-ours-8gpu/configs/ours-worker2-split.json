@@ -1,0 +1,58 @@
+{
+  "tasks": {
+    "aime25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "468",
+          "id": "aime25-16",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 127,
+          "question": "Six points $A, B, C, D, E$ and $F$ lie in a straight line in that order. Suppose that $G$ is a point not on the line and that $AC = 26$, $BD = 22$, $CE = 31$, $DF = 33$, $AF = 73$, $CG = 40$, and $DG = 30$. Find the area of $\\triangle BGE$.",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "279",
+          "id": "aime25-5",
+          "problem_type": [
+            "Combinatorics",
+            "Number Theory"
+          ],
+          "prompt_tokens": 106,
+          "question": "There are $8!= 40320$ eight-digit positive integers that use each of the digits 1, 2, 3, 4, 5, 6, 7, 8 exactly once. Let N be the number of these integers that are divisible by $22$. Find the difference between $N$ and 2025.",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "237",
+          "id": "aime25-22",
+          "problem_type": [
+            "Number Theory"
+          ],
+          "prompt_tokens": 118,
+          "question": "Let $A$ be the set of positive integer divisors of $2025$. Let $B$ be a randomly selected subset of $A$. The probability that $B$ is a nonempty set with the property that the least common multiple of its elements is $2025$ is $\\frac{m}{n}$, where $m$ and $n$ are relatively prime positive integers. Find $m + n$.",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "16",
+          "id": "aime25-3",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 139,
+          "question": "The 9 members of a baseball team went to an ice-cream parlor after their game. Each player had a singlescoop cone of chocolate, vanilla, or strawberry ice cream. At least one player chose each flavor, and the number of players who chose chocolate was greater than the number of players who chose vanilla, which was greater than the number of players who chose strawberry. Let $N$ be the number of different assignments of flavors to players that meet these conditions. Find the remainder when $N$ is divided by $1000.$",
+          "task": "aime25"
+        }
+      ]
+    }
+  }
+}

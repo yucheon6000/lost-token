@@ -1,0 +1,579 @@
+2026-11-01T01:04:01.657379+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 273.83it/s]
+2026-11-01T01:04:03.893417+00:00 condition start evaluation/gsm8k/gsm8k-test-648/plain_ar
+2026-11-01T01:04:04.261546+00:00 gsm8k-test-648 plain_ar: body=1/32768; events=0; injections=0; context=100; elapsed=0.1s ETA(cap)=4471.9s
+2026-11-01T01:04:19.320008+00:00 gsm8k-test-648 plain_ar: body=1409/32768; events=0; injections=0; context=1508; elapsed=15.2s ETA(cap)=338.2s
+2026-11-01T01:04:24.688075+00:00 completed gsm8k-test-648: correct=True; seconds=20.79; body_tokens=1888; forward_tokens=1987; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:04:24.688587+00:00 condition start evaluation/gsm8k/gsm8k-test-1127/plain_ar
+2026-11-01T01:04:24.715220+00:00 gsm8k-test-1127 plain_ar: body=1/32768; events=0; injections=0; context=115; elapsed=0.0s ETA(cap)=443.7s
+2026-11-01T01:04:39.753471+00:00 gsm8k-test-1127 plain_ar: body=1409/32768; events=0; injections=0; context=1523; elapsed=15.1s ETA(cap)=335.0s
+2026-11-01T01:04:53.765012+00:00 completed gsm8k-test-1127: correct=True; seconds=29.07; body_tokens=2693; forward_tokens=2807; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:04:53.765523+00:00 condition start evaluation/gsm8k/gsm8k-test-639/plain_ar
+2026-11-01T01:04:53.804605+00:00 gsm8k-test-639 plain_ar: body=1/32768; events=0; injections=0; context=76; elapsed=0.0s ETA(cap)=399.7s
+2026-11-01T01:04:59.684205+00:00 completed gsm8k-test-639: correct=True; seconds=5.92; body_tokens=555; forward_tokens=630; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:04:59.684667+00:00 condition start evaluation/gsm8k/gsm8k-test-1090/plain_ar
+2026-11-01T01:04:59.709664+00:00 gsm8k-test-1090 plain_ar: body=1/32768; events=0; injections=0; context=98; elapsed=0.0s ETA(cap)=436.6s
+2026-11-01T01:05:08.817745+00:00 completed gsm8k-test-1090: correct=True; seconds=9.13; body_tokens=861; forward_tokens=958; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:05:08.818208+00:00 condition start evaluation/gsm8k/gsm8k-test-819/plain_ar
+2026-11-01T01:05:08.843009+00:00 gsm8k-test-819 plain_ar: body=1/32768; events=0; injections=0; context=86; elapsed=0.0s ETA(cap)=420.0s
+2026-11-01T01:05:20.602363+00:00 completed gsm8k-test-819: correct=True; seconds=11.78; body_tokens=1112; forward_tokens=1197; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:05:20.602814+00:00 condition start evaluation/gsm8k/gsm8k-test-124/plain_ar
+2026-11-01T01:05:20.627773+00:00 gsm8k-test-124 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=436.0s
+2026-11-01T01:05:30.427285+00:00 completed gsm8k-test-124: correct=True; seconds=9.82; body_tokens=926; forward_tokens=1024; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:05:30.427718+00:00 condition start evaluation/gsm8k/gsm8k-test-75/plain_ar
+2026-11-01T01:05:30.453363+00:00 gsm8k-test-75 plain_ar: body=1/32768; events=0; injections=0; context=95; elapsed=0.0s ETA(cap)=459.5s
+2026-11-01T01:05:46.738948+00:00 gsm8k-test-75 plain_ar: body=1537/32768; events=0; injections=0; context=1631; elapsed=16.3s ETA(cap)=331.2s
+2026-11-01T01:06:01.937154+00:00 gsm8k-test-75 plain_ar: body=2943/32768; events=0; injections=0; context=3037; elapsed=31.5s ETA(cap)=319.2s
+2026-11-01T01:06:03.771868+00:00 completed gsm8k-test-75: correct=True; seconds=33.34; body_tokens=3107; forward_tokens=3201; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:06:03.772369+00:00 condition start evaluation/gsm8k/gsm8k-test-373/plain_ar
+2026-11-01T01:06:03.797140+00:00 gsm8k-test-373 plain_ar: body=1/32768; events=0; injections=0; context=88; elapsed=0.0s ETA(cap)=419.7s
+2026-11-01T01:06:20.111898+00:00 gsm8k-test-373 plain_ar: body=1537/32768; events=0; injections=0; context=1624; elapsed=16.3s ETA(cap)=331.8s
+2026-11-01T01:06:30.619936+00:00 completed gsm8k-test-373: correct=True; seconds=26.85; body_tokens=2514; forward_tokens=2601; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:06:30.620434+00:00 condition start evaluation/gsm8k/gsm8k-test-743/plain_ar
+2026-11-01T01:06:30.646239+00:00 gsm8k-test-743 plain_ar: body=1/32768; events=0; injections=0; context=97; elapsed=0.0s ETA(cap)=453.5s
+2026-11-01T01:06:46.730713+00:00 gsm8k-test-743 plain_ar: body=1515/32768; events=0; injections=0; context=1611; elapsed=16.1s ETA(cap)=332.1s
+2026-11-01T01:06:47.046622+00:00 completed gsm8k-test-743: correct=True; seconds=16.42; body_tokens=1544; forward_tokens=1640; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:06:47.047087+00:00 condition start evaluation/gsm8k/gsm8k-test-394/plain_ar
+2026-11-01T01:06:47.071356+00:00 gsm8k-test-394 plain_ar: body=1/32768; events=0; injections=0; context=72; elapsed=0.0s ETA(cap)=414.5s
+2026-11-01T01:07:03.385454+00:00 gsm8k-test-394 plain_ar: body=1537/32768; events=0; injections=0; context=1608; elapsed=16.3s ETA(cap)=331.8s
+2026-11-01T01:07:13.950005+00:00 completed gsm8k-test-394: correct=True; seconds=26.90; body_tokens=2519; forward_tokens=2590; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:07:13.950509+00:00 condition start evaluation/gsm8k/gsm8k-test-1050/plain_ar
+2026-11-01T01:07:13.975224+00:00 gsm8k-test-1050 plain_ar: body=1/32768; events=0; injections=0; context=75; elapsed=0.0s ETA(cap)=418.7s
+2026-11-01T01:07:30.288292+00:00 gsm8k-test-1050 plain_ar: body=1537/32768; events=0; injections=0; context=1611; elapsed=16.3s ETA(cap)=331.7s
+2026-11-01T01:07:37.259234+00:00 completed gsm8k-test-1050: correct=True; seconds=23.31; body_tokens=2187; forward_tokens=2261; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:07:37.259677+00:00 condition start evaluation/gsm8k/gsm8k-test-732/plain_ar
+2026-11-01T01:07:37.284395+00:00 gsm8k-test-732 plain_ar: body=1/32768; events=0; injections=0; context=86; elapsed=0.0s ETA(cap)=425.2s
+2026-11-01T01:07:49.039336+00:00 completed gsm8k-test-732: correct=True; seconds=11.78; body_tokens=1107; forward_tokens=1192; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:07:49.039791+00:00 condition start evaluation/gsm8k/gsm8k-test-310/plain_ar
+2026-11-01T01:07:49.065003+00:00 gsm8k-test-310 plain_ar: body=1/32768; events=0; injections=0; context=128; elapsed=0.0s ETA(cap)=441.9s
+2026-11-01T01:08:04.450801+00:00 gsm8k-test-310 plain_ar: body=1450/32768; events=0; injections=0; context=1577; elapsed=15.4s ETA(cap)=332.6s
+2026-11-01T01:08:09.382529+00:00 completed gsm8k-test-310: correct=True; seconds=20.34; body_tokens=1911; forward_tokens=2038; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:08:09.382983+00:00 condition start evaluation/gsm8k/gsm8k-test-167/plain_ar
+2026-11-01T01:08:09.406887+00:00 gsm8k-test-167 plain_ar: body=1/32768; events=0; injections=0; context=59; elapsed=0.0s ETA(cap)=401.4s
+2026-11-01T01:08:18.253443+00:00 completed gsm8k-test-167: correct=True; seconds=8.87; body_tokens=833; forward_tokens=891; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:08:18.253872+00:00 condition start evaluation/gsm8k/gsm8k-test-1237/plain_ar
+2026-11-01T01:08:18.278105+00:00 gsm8k-test-1237 plain_ar: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=412.0s
+2026-11-01T01:08:27.856631+00:00 completed gsm8k-test-1237: correct=True; seconds=9.60; body_tokens=905; forward_tokens=974; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:08:27.857065+00:00 condition start evaluation/gsm8k/gsm8k-test-1158/plain_ar
+2026-11-01T01:08:27.882068+00:00 gsm8k-test-1158 plain_ar: body=1/32768; events=0; injections=0; context=106; elapsed=0.0s ETA(cap)=439.1s
+2026-11-01T01:08:44.197392+00:00 gsm8k-test-1158 plain_ar: body=1537/32768; events=0; injections=0; context=1642; elapsed=16.3s ETA(cap)=331.8s
+2026-11-01T01:08:51.568481+00:00 completed gsm8k-test-1158: correct=True; seconds=23.71; body_tokens=2224; forward_tokens=2329; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:08:51.568927+00:00 condition start evaluation/gsm8k/gsm8k-test-572/plain_ar
+2026-11-01T01:08:51.593947+00:00 gsm8k-test-572 plain_ar: body=1/32768; events=0; injections=0; context=100; elapsed=0.0s ETA(cap)=436.9s
+2026-11-01T01:09:06.563370+00:00 completed gsm8k-test-572: correct=True; seconds=14.99; body_tokens=1410; forward_tokens=1509; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:09:06.563792+00:00 condition start evaluation/gsm8k/gsm8k-test-377/plain_ar
+2026-11-01T01:09:06.588871+00:00 gsm8k-test-377 plain_ar: body=1/32768; events=0; injections=0; context=104; elapsed=0.0s ETA(cap)=443.4s
+2026-11-01T01:09:17.263092+00:00 completed gsm8k-test-377: correct=True; seconds=10.70; body_tokens=1006; forward_tokens=1109; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:09:17.263510+00:00 condition start evaluation/gsm8k/gsm8k-test-1260/plain_ar
+2026-11-01T01:09:17.288512+00:00 gsm8k-test-1260 plain_ar: body=1/32768; events=0; injections=0; context=111; elapsed=0.0s ETA(cap)=440.5s
+2026-11-01T01:09:25.993856+00:00 completed gsm8k-test-1260: correct=True; seconds=8.73; body_tokens=820; forward_tokens=930; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:09:25.994291+00:00 condition start evaluation/gsm8k/gsm8k-test-1201/plain_ar
+2026-11-01T01:09:26.018493+00:00 gsm8k-test-1201 plain_ar: body=1/32768; events=0; injections=0; context=76; elapsed=0.0s ETA(cap)=415.5s
+2026-11-01T01:09:38.119287+00:00 completed gsm8k-test-1201: correct=True; seconds=12.12; body_tokens=1141; forward_tokens=1216; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:09:38.119703+00:00 condition start evaluation/gsm8k/gsm8k-test-54/plain_ar
+2026-11-01T01:09:38.144668+00:00 gsm8k-test-54 plain_ar: body=1/32768; events=0; injections=0; context=111; elapsed=0.0s ETA(cap)=442.1s
+2026-11-01T01:09:53.801868+00:00 gsm8k-test-54 plain_ar: body=1475/32768; events=0; injections=0; context=1585; elapsed=15.7s ETA(cap)=332.5s
+2026-11-01T01:09:56.198123+00:00 completed gsm8k-test-54: correct=True; seconds=18.08; body_tokens=1699; forward_tokens=1809; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:09:56.198574+00:00 condition start evaluation/gsm8k/gsm8k-test-1023/plain_ar
+2026-11-01T01:09:56.222859+00:00 gsm8k-test-1023 plain_ar: body=1/32768; events=0; injections=0; context=68; elapsed=0.0s ETA(cap)=411.5s
+2026-11-01T01:10:02.155043+00:00 completed gsm8k-test-1023: correct=True; seconds=5.96; body_tokens=558; forward_tokens=625; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:10:02.155478+00:00 condition start evaluation/gsm8k/gsm8k-test-859/plain_ar
+2026-11-01T01:10:02.179911+00:00 gsm8k-test-859 plain_ar: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=416.6s
+2026-11-01T01:10:11.441066+00:00 completed gsm8k-test-859: correct=True; seconds=9.28; body_tokens=872; forward_tokens=954; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:10:11.441509+00:00 condition start evaluation/gsm8k/gsm8k-test-479/plain_ar
+2026-11-01T01:10:11.466454+00:00 gsm8k-test-479 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=439.7s
+2026-11-01T01:10:27.785145+00:00 gsm8k-test-479 plain_ar: body=1537/32768; events=0; injections=0; context=1635; elapsed=16.3s ETA(cap)=331.9s
+2026-11-01T01:10:32.357534+00:00 completed gsm8k-test-479: correct=True; seconds=20.91; body_tokens=1964; forward_tokens=2062; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:10:32.357992+00:00 condition start evaluation/gsm8k/gsm8k-test-217/plain_ar
+2026-11-01T01:10:32.381758+00:00 gsm8k-test-217 plain_ar: body=1/32768; events=0; injections=0; context=62; elapsed=0.0s ETA(cap)=401.0s
+2026-11-01T01:10:39.508890+00:00 completed gsm8k-test-217: correct=True; seconds=7.15; body_tokens=670; forward_tokens=731; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:10:39.509325+00:00 condition start evaluation/gsm8k/gsm8k-test-283/plain_ar
+2026-11-01T01:10:39.534455+00:00 gsm8k-test-283 plain_ar: body=1/32768; events=0; injections=0; context=121; elapsed=0.0s ETA(cap)=439.3s
+2026-11-01T01:10:55.876807+00:00 gsm8k-test-283 plain_ar: body=1537/32768; events=0; injections=0; context=1657; elapsed=16.4s ETA(cap)=332.3s
+2026-11-01T01:11:11.117665+00:00 gsm8k-test-283 plain_ar: body=2945/32768; events=0; injections=0; context=3065; elapsed=31.6s ETA(cap)=320.0s
+2026-11-01T01:11:15.176419+00:00 completed gsm8k-test-283: correct=True; seconds=35.66; body_tokens=3308; forward_tokens=3428; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:11:15.176860+00:00 condition start evaluation/gsm8k/gsm8k-test-448/plain_ar
+2026-11-01T01:11:15.202703+00:00 gsm8k-test-448 plain_ar: body=1/32768; events=0; injections=0; context=97; elapsed=0.0s ETA(cap)=462.4s
+2026-11-01T01:11:31.397836+00:00 gsm8k-test-448 plain_ar: body=1526/32768; events=0; injections=0; context=1622; elapsed=16.2s ETA(cap)=331.9s
+2026-11-01T01:11:33.922506+00:00 completed gsm8k-test-448: correct=True; seconds=18.74; body_tokens=1762; forward_tokens=1858; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:11:33.922951+00:00 condition start evaluation/gsm8k/gsm8k-test-1287/plain_ar
+2026-11-01T01:11:33.947570+00:00 gsm8k-test-1287 plain_ar: body=1/32768; events=0; injections=0; context=87; elapsed=0.0s ETA(cap)=419.7s
+2026-11-01T01:11:45.386456+00:00 completed gsm8k-test-1287: correct=True; seconds=11.46; body_tokens=1078; forward_tokens=1164; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:11:45.386900+00:00 condition start evaluation/gsm8k/gsm8k-test-1114/plain_ar
+2026-11-01T01:11:45.411138+00:00 gsm8k-test-1114 plain_ar: body=1/32768; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=413.0s
+2026-11-01T01:12:01.747080+00:00 gsm8k-test-1114 plain_ar: body=1537/32768; events=0; injections=0; context=1605; elapsed=16.3s ETA(cap)=332.2s
+2026-11-01T01:12:03.759670+00:00 completed gsm8k-test-1114: correct=True; seconds=18.37; body_tokens=1725; forward_tokens=1793; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:12:03.760088+00:00 condition start evaluation/gsm8k/gsm8k-test-375/plain_ar
+2026-11-01T01:12:03.784453+00:00 gsm8k-test-375 plain_ar: body=1/32768; events=0; injections=0; context=80; elapsed=0.0s ETA(cap)=418.5s
+2026-11-01T01:12:09.015428+00:00 completed gsm8k-test-375: correct=True; seconds=5.25; body_tokens=490; forward_tokens=569; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:12:09.015920+00:00 condition start evaluation/gsm8k/gsm8k-test-256/plain_ar
+2026-11-01T01:12:09.041039+00:00 gsm8k-test-256 plain_ar: body=1/32768; events=0; injections=0; context=84; elapsed=0.0s ETA(cap)=423.8s
+2026-11-01T01:12:21.637707+00:00 completed gsm8k-test-256: correct=True; seconds=12.62; body_tokens=1178; forward_tokens=1261; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:12:21.638189+00:00 condition start evaluation/gsm8k/gsm8k-test-627/plain_ar
+2026-11-01T01:12:21.662633+00:00 gsm8k-test-627 plain_ar: body=1/32768; events=0; injections=0; context=74; elapsed=0.0s ETA(cap)=417.5s
+2026-11-01T01:12:34.321849+00:00 completed gsm8k-test-627: correct=True; seconds=12.68; body_tokens=1190; forward_tokens=1263; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:12:34.322290+00:00 condition start evaluation/gsm8k/gsm8k-test-585/plain_ar
+2026-11-01T01:12:34.347228+00:00 gsm8k-test-585 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=439.4s
+2026-11-01T01:12:47.208668+00:00 completed gsm8k-test-585: correct=True; seconds=12.89; body_tokens=1211; forward_tokens=1309; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:12:47.209104+00:00 condition start evaluation/gsm8k/gsm8k-test-542/plain_ar
+2026-11-01T01:12:47.233549+00:00 gsm8k-test-542 plain_ar: body=1/32768; events=0; injections=0; context=85; elapsed=0.0s ETA(cap)=421.6s
+2026-11-01T01:13:01.994237+00:00 completed gsm8k-test-542: correct=True; seconds=14.78; body_tokens=1389; forward_tokens=1473; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:01.994675+00:00 condition start evaluation/gsm8k/gsm8k-test-1010/plain_ar
+2026-11-01T01:13:02.019616+00:00 gsm8k-test-1010 plain_ar: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=437.8s
+2026-11-01T01:13:10.894251+00:00 completed gsm8k-test-1010: correct=True; seconds=8.90; body_tokens=834; forward_tokens=926; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:10.894677+00:00 condition start evaluation/gsm8k/gsm8k-test-477/plain_ar
+2026-11-01T01:13:10.918891+00:00 gsm8k-test-477 plain_ar: body=1/32768; events=0; injections=0; context=75; elapsed=0.0s ETA(cap)=415.9s
+2026-11-01T01:13:20.814217+00:00 completed gsm8k-test-477: correct=True; seconds=9.92; body_tokens=930; forward_tokens=1004; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:20.814646+00:00 condition start evaluation/gsm8k/gsm8k-test-404/plain_ar
+2026-11-01T01:13:20.838856+00:00 gsm8k-test-404 plain_ar: body=1/32768; events=0; injections=0; context=71; elapsed=0.0s ETA(cap)=415.1s
+2026-11-01T01:13:36.383987+00:00 gsm8k-test-404 plain_ar: body=1464/32768; events=0; injections=0; context=1534; elapsed=15.6s ETA(cap)=332.7s
+2026-11-01T01:13:38.746192+00:00 completed gsm8k-test-404: correct=True; seconds=17.93; body_tokens=1685; forward_tokens=1755; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:38.746637+00:00 condition start evaluation/gsm8k/gsm8k-test-868/plain_ar
+2026-11-01T01:13:38.771619+00:00 gsm8k-test-868 plain_ar: body=1/32768; events=0; injections=0; context=114; elapsed=0.0s ETA(cap)=438.8s
+2026-11-01T01:13:48.281841+00:00 completed gsm8k-test-868: correct=True; seconds=9.53; body_tokens=895; forward_tokens=1008; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:48.282284+00:00 condition start evaluation/gsm8k/gsm8k-test-788/plain_ar
+2026-11-01T01:13:48.306594+00:00 gsm8k-test-788 plain_ar: body=1/32768; events=0; injections=0; context=80; elapsed=0.0s ETA(cap)=420.8s
+2026-11-01T01:13:57.873229+00:00 completed gsm8k-test-788: correct=True; seconds=9.59; body_tokens=900; forward_tokens=979; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:13:57.873667+00:00 condition start evaluation/gsm8k/gsm8k-test-137/plain_ar
+2026-11-01T01:13:57.898493+00:00 gsm8k-test-137 plain_ar: body=1/32768; events=0; injections=0; context=104; elapsed=0.0s ETA(cap)=438.9s
+2026-11-01T01:14:13.547930+00:00 gsm8k-test-137 plain_ar: body=1473/32768; events=0; injections=0; context=1576; elapsed=15.7s ETA(cap)=332.8s
+2026-11-01T01:14:14.310810+00:00 completed gsm8k-test-137: correct=True; seconds=16.44; body_tokens=1544; forward_tokens=1647; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:14:14.311259+00:00 condition start evaluation/gsm8k/gsm8k-test-1279/plain_ar
+2026-11-01T01:14:14.336381+00:00 gsm8k-test-1279 plain_ar: body=1/32768; events=0; injections=0; context=108; elapsed=0.0s ETA(cap)=439.3s
+2026-11-01T01:14:26.012678+00:00 completed gsm8k-test-1279: correct=True; seconds=11.70; body_tokens=1099; forward_tokens=1206; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:14:26.013134+00:00 condition start evaluation/gsm8k/gsm8k-test-24/plain_ar
+2026-11-01T01:14:26.037323+00:00 gsm8k-test-24 plain_ar: body=1/32768; events=0; injections=0; context=68; elapsed=0.0s ETA(cap)=413.6s
+2026-11-01T01:14:38.658300+00:00 completed gsm8k-test-24: correct=True; seconds=12.64; body_tokens=1187; forward_tokens=1254; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:14:38.658735+00:00 condition start evaluation/gsm8k/gsm8k-test-933/plain_ar
+2026-11-01T01:14:38.684344+00:00 gsm8k-test-933 plain_ar: body=1/32768; events=0; injections=0; context=95; elapsed=0.0s ETA(cap)=460.2s
+2026-11-01T01:14:46.619543+00:00 completed gsm8k-test-933: correct=True; seconds=7.96; body_tokens=746; forward_tokens=840; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:14:46.619972+00:00 condition start evaluation/gsm8k/gsm8k-test-1051/plain_ar
+2026-11-01T01:14:46.644412+00:00 gsm8k-test-1051 plain_ar: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=427.1s
+2026-11-01T01:14:53.424329+00:00 completed gsm8k-test-1051: correct=True; seconds=6.80; body_tokens=637; forward_tokens=702; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:14:53.424761+00:00 condition start evaluation/gsm8k/gsm8k-test-553/plain_ar
+2026-11-01T01:14:53.449861+00:00 gsm8k-test-553 plain_ar: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=438.1s
+2026-11-01T01:15:00.440444+00:00 completed gsm8k-test-553: correct=True; seconds=7.01; body_tokens=657; forward_tokens=758; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:15:00.440875+00:00 condition start evaluation/gsm8k/gsm8k-test-357/plain_ar
+2026-11-01T01:15:00.465806+00:00 gsm8k-test-357 plain_ar: body=1/32768; events=0; injections=0; context=112; elapsed=0.0s ETA(cap)=437.0s
+2026-11-01T01:15:16.805806+00:00 gsm8k-test-357 plain_ar: body=1537/32768; events=0; injections=0; context=1648; elapsed=16.4s ETA(cap)=332.3s
+2026-11-01T01:15:27.859472+00:00 completed gsm8k-test-357: correct=True; seconds=27.42; body_tokens=2563; forward_tokens=2674; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:15:27.859915+00:00 condition start evaluation/gsm8k/gsm8k-test-253/plain_ar
+2026-11-01T01:15:27.884549+00:00 gsm8k-test-253 plain_ar: body=1/32768; events=0; injections=0; context=67; elapsed=0.0s ETA(cap)=423.3s
+2026-11-01T01:15:32.829499+00:00 completed gsm8k-test-253: correct=True; seconds=4.97; body_tokens=464; forward_tokens=530; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:15:32.829932+00:00 condition start evaluation/gsm8k/gsm8k-test-304/plain_ar
+2026-11-01T01:15:32.854577+00:00 gsm8k-test-304 plain_ar: body=1/32768; events=0; injections=0; context=88; elapsed=0.0s ETA(cap)=423.2s
+2026-11-01T01:15:49.190428+00:00 gsm8k-test-304 plain_ar: body=1537/32768; events=0; injections=0; context=1624; elapsed=16.3s ETA(cap)=332.2s
+2026-11-01T01:16:04.416429+00:00 gsm8k-test-304 plain_ar: body=2945/32768; events=0; injections=0; context=3032; elapsed=31.6s ETA(cap)=319.7s
+2026-11-01T01:16:18.056664+00:00 completed gsm8k-test-304: correct=True; seconds=45.22; body_tokens=4159; forward_tokens=4246; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:16:18.057149+00:00 condition start evaluation/gsm8k/gsm8k-test-650/plain_ar
+2026-11-01T01:16:18.082622+00:00 gsm8k-test-650 plain_ar: body=1/32768; events=0; injections=0; context=127; elapsed=0.0s ETA(cap)=443.2s
+2026-11-01T01:16:31.248263+00:00 completed gsm8k-test-650: correct=True; seconds=13.19; body_tokens=1239; forward_tokens=1365; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:16:31.248712+00:00 condition start evaluation/gsm8k/gsm8k-test-1046/plain_ar
+2026-11-01T01:16:31.273159+00:00 gsm8k-test-1046 plain_ar: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=414.3s
+2026-11-01T01:16:47.604255+00:00 gsm8k-test-1046 plain_ar: body=1537/32768; events=0; injections=0; context=1602; elapsed=16.3s ETA(cap)=332.1s
+2026-11-01T01:17:02.707685+00:00 gsm8k-test-1046 plain_ar: body=2935/32768; events=0; injections=0; context=3000; elapsed=31.4s ETA(cap)=319.6s
+2026-11-01T01:17:02.761846+00:00 completed gsm8k-test-1046: correct=True; seconds=31.51; body_tokens=2939; forward_tokens=3004; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:17:02.762296+00:00 condition start evaluation/gsm8k/gsm8k-test-145/plain_ar
+2026-11-01T01:17:02.786699+00:00 gsm8k-test-145 plain_ar: body=1/32768; events=0; injections=0; context=77; elapsed=0.0s ETA(cap)=417.4s
+2026-11-01T01:17:17.788760+00:00 completed gsm8k-test-145: correct=True; seconds=15.02; body_tokens=1411; forward_tokens=1487; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:17:17.789189+00:00 condition start evaluation/gsm8k/gsm8k-test-214/plain_ar
+2026-11-01T01:17:17.814212+00:00 gsm8k-test-214 plain_ar: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=437.5s
+2026-11-01T01:17:34.165400+00:00 gsm8k-test-214 plain_ar: body=1537/32768; events=0; injections=0; context=1627; elapsed=16.4s ETA(cap)=332.5s
+2026-11-01T01:17:49.395249+00:00 gsm8k-test-214 plain_ar: body=2945/32768; events=0; injections=0; context=3035; elapsed=31.6s ETA(cap)=319.9s
+2026-11-01T01:18:04.548223+00:00 gsm8k-test-214 plain_ar: body=4293/32768; events=0; injections=0; context=4383; elapsed=46.7s ETA(cap)=310.1s
+2026-11-01T01:18:07.870176+00:00 completed gsm8k-test-214: correct=True; seconds=50.08; body_tokens=4583; forward_tokens=4673; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:18:07.870675+00:00 condition start evaluation/gsm8k/gsm8k-test-1212/plain_ar
+2026-11-01T01:18:07.896532+00:00 gsm8k-test-1212 plain_ar: body=1/32768; events=0; injections=0; context=94; elapsed=0.0s ETA(cap)=457.6s
+2026-11-01T01:18:21.600008+00:00 completed gsm8k-test-1212: correct=True; seconds=13.73; body_tokens=1289; forward_tokens=1382; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:18:21.600454+00:00 condition start evaluation/gsm8k/gsm8k-test-1185/plain_ar
+2026-11-01T01:18:21.624893+00:00 gsm8k-test-1185 plain_ar: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=419.4s
+2026-11-01T01:18:33.514702+00:00 completed gsm8k-test-1185: correct=True; seconds=11.91; body_tokens=1117; forward_tokens=1199; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:18:33.515123+00:00 condition start evaluation/gsm8k/gsm8k-test-631/plain_ar
+2026-11-01T01:18:33.539951+00:00 gsm8k-test-631 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=435.4s
+2026-11-01T01:18:47.014863+00:00 completed gsm8k-test-631: correct=True; seconds=13.50; body_tokens=1269; forward_tokens=1367; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:18:47.015342+00:00 condition start evaluation/gsm8k/gsm8k-test-498/plain_ar
+2026-11-01T01:18:47.039913+00:00 gsm8k-test-498 plain_ar: body=1/32768; events=0; injections=0; context=82; elapsed=0.0s ETA(cap)=419.2s
+2026-11-01T01:18:55.124719+00:00 completed gsm8k-test-498: correct=True; seconds=8.11; body_tokens=761; forward_tokens=842; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:18:55.125144+00:00 condition start evaluation/gsm8k/gsm8k-test-1220/plain_ar
+2026-11-01T01:18:55.149311+00:00 gsm8k-test-1220 plain_ar: body=1/32768; events=0; injections=0; context=74; elapsed=0.0s ETA(cap)=416.0s
+2026-11-01T01:19:09.954287+00:00 completed gsm8k-test-1220: correct=True; seconds=14.83; body_tokens=1393; forward_tokens=1466; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:19:09.954716+00:00 condition start evaluation/gsm8k/gsm8k-test-754/plain_ar
+2026-11-01T01:19:09.985001+00:00 gsm8k-test-754 plain_ar: body=1/32768; events=0; injections=0; context=134; elapsed=0.0s ETA(cap)=534.7s
+2026-11-01T01:19:26.302552+00:00 gsm8k-test-754 plain_ar: body=1537/32768; events=0; injections=0; context=1670; elapsed=16.3s ETA(cap)=331.9s
+2026-11-01T01:19:41.546597+00:00 gsm8k-test-754 plain_ar: body=2945/32768; events=0; injections=0; context=3078; elapsed=31.6s ETA(cap)=319.8s
+2026-11-01T01:19:57.391313+00:00 gsm8k-test-754 plain_ar: body=4353/32768; events=0; injections=0; context=4486; elapsed=47.4s ETA(cap)=309.6s
+2026-11-01T01:20:13.658408+00:00 gsm8k-test-754 plain_ar: body=5761/32768; events=0; injections=0; context=5894; elapsed=63.7s ETA(cap)=298.6s
+2026-11-01T01:20:25.647954+00:00 completed gsm8k-test-754: correct=True; seconds=75.69; body_tokens=6779; forward_tokens=6912; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:20:25.648471+00:00 condition start evaluation/gsm8k/gsm8k-test-127/plain_ar
+2026-11-01T01:20:25.672375+00:00 gsm8k-test-127 plain_ar: body=1/32768; events=0; injections=0; context=64; elapsed=0.0s ETA(cap)=398.4s
+2026-11-01T01:20:30.537881+00:00 completed gsm8k-test-127: correct=True; seconds=4.89; body_tokens=457; forward_tokens=520; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:20:30.538341+00:00 condition start evaluation/gsm8k/gsm8k-test-676/plain_ar
+2026-11-01T01:20:30.563045+00:00 gsm8k-test-676 plain_ar: body=1/32768; events=0; injections=0; context=88; elapsed=0.0s ETA(cap)=420.9s
+2026-11-01T01:20:45.436622+00:00 completed gsm8k-test-676: correct=True; seconds=14.90; body_tokens=1400; forward_tokens=1487; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:20:45.437079+00:00 condition start evaluation/gsm8k/gsm8k-test-413/plain_ar
+2026-11-01T01:20:45.462124+00:00 gsm8k-test-413 plain_ar: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=435.8s
+2026-11-01T01:21:01.789356+00:00 gsm8k-test-413 plain_ar: body=1537/32768; events=0; injections=0; context=1627; elapsed=16.3s ETA(cap)=332.0s
+2026-11-01T01:21:08.121074+00:00 completed gsm8k-test-413: correct=True; seconds=22.68; body_tokens=2127; forward_tokens=2217; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:21:08.121526+00:00 condition start evaluation/gsm8k/gsm8k-test-149/plain_ar
+2026-11-01T01:21:08.146103+00:00 gsm8k-test-149 plain_ar: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=419.3s
+2026-11-01T01:21:15.069531+00:00 completed gsm8k-test-149: correct=True; seconds=6.95; body_tokens=649; forward_tokens=718; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:21:15.069958+00:00 condition start evaluation/gsm8k/gsm8k-test-661/plain_ar
+2026-11-01T01:21:15.095129+00:00 gsm8k-test-661 plain_ar: body=1/32768; events=0; injections=0; context=120; elapsed=0.0s ETA(cap)=442.7s
+2026-11-01T01:21:24.308313+00:00 completed gsm8k-test-661: correct=True; seconds=9.24; body_tokens=865; forward_tokens=984; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:21:24.308742+00:00 condition start evaluation/gsm8k/gsm8k-test-70/plain_ar
+2026-11-01T01:21:24.333180+00:00 gsm8k-test-70 plain_ar: body=1/32768; events=0; injections=0; context=82; elapsed=0.0s ETA(cap)=420.6s
+2026-11-01T01:21:39.562486+00:00 gsm8k-test-70 plain_ar: body=1432/32768; events=0; injections=0; context=1513; elapsed=15.2s ETA(cap)=333.5s
+2026-11-01T01:21:42.107819+00:00 completed gsm8k-test-70: correct=True; seconds=17.80; body_tokens=1670; forward_tokens=1751; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:21:42.108264+00:00 condition start evaluation/gsm8k/gsm8k-test-1059/plain_ar
+2026-11-01T01:21:42.132808+00:00 gsm8k-test-1059 plain_ar: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=424.9s
+2026-11-01T01:21:57.780120+00:00 gsm8k-test-1059 plain_ar: body=1470/32768; events=0; injections=0; context=1535; elapsed=15.7s ETA(cap)=333.4s
+2026-11-01T01:22:01.224921+00:00 completed gsm8k-test-1059: correct=False; seconds=19.12; body_tokens=1792; forward_tokens=1857; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:01.225377+00:00 condition start evaluation/gsm8k/gsm8k-test-84/plain_ar
+2026-11-01T01:22:01.248869+00:00 gsm8k-test-84 plain_ar: body=1/32768; events=0; injections=0; context=53; elapsed=0.0s ETA(cap)=393.6s
+2026-11-01T01:22:10.945867+00:00 completed gsm8k-test-84: correct=True; seconds=9.72; body_tokens=911; forward_tokens=963; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:10.946322+00:00 condition start evaluation/gsm8k/gsm8k-test-1150/plain_ar
+2026-11-01T01:22:10.969904+00:00 gsm8k-test-1150 plain_ar: body=1/32768; events=0; injections=0; context=64; elapsed=0.0s ETA(cap)=402.4s
+2026-11-01T01:22:14.946514+00:00 completed gsm8k-test-1150: correct=True; seconds=4.00; body_tokens=373; forward_tokens=436; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:14.946925+00:00 condition start evaluation/gsm8k/gsm8k-test-969/plain_ar
+2026-11-01T01:22:14.971269+00:00 gsm8k-test-969 plain_ar: body=1/32768; events=0; injections=0; context=78; elapsed=0.0s ETA(cap)=419.7s
+2026-11-01T01:22:26.232061+00:00 completed gsm8k-test-969: correct=True; seconds=11.28; body_tokens=1057; forward_tokens=1134; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:26.232493+00:00 condition start evaluation/gsm8k/gsm8k-test-569/plain_ar
+2026-11-01T01:22:26.258178+00:00 gsm8k-test-569 plain_ar: body=1/32768; events=0; injections=0; context=96; elapsed=0.0s ETA(cap)=457.0s
+2026-11-01T01:22:34.966006+00:00 completed gsm8k-test-569: correct=True; seconds=8.73; body_tokens=818; forward_tokens=913; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:34.966436+00:00 condition start evaluation/gsm8k/gsm8k-test-228/plain_ar
+2026-11-01T01:22:34.990792+00:00 gsm8k-test-228 plain_ar: body=1/32768; events=0; injections=0; context=84; elapsed=0.0s ETA(cap)=421.0s
+2026-11-01T01:22:44.302988+00:00 completed gsm8k-test-228: correct=True; seconds=9.34; body_tokens=875; forward_tokens=958; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:44.303427+00:00 condition start evaluation/gsm8k/gsm8k-test-1177/plain_ar
+2026-11-01T01:22:44.327593+00:00 gsm8k-test-1177 plain_ar: body=1/32768; events=0; injections=0; context=72; elapsed=0.0s ETA(cap)=415.0s
+2026-11-01T01:22:52.808157+00:00 completed gsm8k-test-1177: correct=True; seconds=8.50; body_tokens=796; forward_tokens=867; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:22:52.808591+00:00 condition start evaluation/gsm8k/gsm8k-test-266/plain_ar
+2026-11-01T01:22:52.833636+00:00 gsm8k-test-266 plain_ar: body=1/32768; events=0; injections=0; context=111; elapsed=0.0s ETA(cap)=439.4s
+2026-11-01T01:23:09.179775+00:00 gsm8k-test-266 plain_ar: body=1537/32768; events=0; injections=0; context=1647; elapsed=16.4s ETA(cap)=332.4s
+2026-11-01T01:23:24.424872+00:00 gsm8k-test-266 plain_ar: body=2945/32768; events=0; injections=0; context=3055; elapsed=31.6s ETA(cap)=320.0s
+2026-11-01T01:23:31.121434+00:00 completed gsm8k-test-266: correct=True; seconds=38.31; body_tokens=3543; forward_tokens=3653; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:23:31.121880+00:00 condition start evaluation/gsm8k/gsm8k-test-1112/plain_ar
+2026-11-01T01:23:31.146283+00:00 gsm8k-test-1112 plain_ar: body=1/32768; events=0; injections=0; context=68; elapsed=0.0s ETA(cap)=413.1s
+2026-11-01T01:23:46.151978+00:00 gsm8k-test-1112 plain_ar: body=1409/32768; events=0; injections=0; context=1476; elapsed=15.0s ETA(cap)=334.3s
+2026-11-01T01:23:55.929061+00:00 completed gsm8k-test-1112: correct=True; seconds=24.81; body_tokens=2320; forward_tokens=2387; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:23:55.929528+00:00 condition start evaluation/gsm8k/gsm8k-test-323/plain_ar
+2026-11-01T01:23:55.954934+00:00 gsm8k-test-323 plain_ar: body=1/32768; events=0; injections=0; context=111; elapsed=0.0s ETA(cap)=445.6s
+2026-11-01T01:24:12.308553+00:00 gsm8k-test-323 plain_ar: body=1537/32768; events=0; injections=0; context=1647; elapsed=16.4s ETA(cap)=332.6s
+2026-11-01T01:24:21.049387+00:00 completed gsm8k-test-323: correct=True; seconds=25.12; body_tokens=2350; forward_tokens=2460; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:24:21.049833+00:00 condition start evaluation/gsm8k/gsm8k-test-579/plain_ar
+2026-11-01T01:24:21.073612+00:00 gsm8k-test-579 plain_ar: body=1/32768; events=0; injections=0; context=55; elapsed=0.0s ETA(cap)=400.7s
+2026-11-01T01:24:28.147174+00:00 completed gsm8k-test-579: correct=True; seconds=7.10; body_tokens=663; forward_tokens=717; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:24:28.147624+00:00 condition start evaluation/gsm8k/gsm8k-test-1267/plain_ar
+2026-11-01T01:24:28.172127+00:00 gsm8k-test-1267 plain_ar: body=1/32768; events=0; injections=0; context=67; elapsed=0.0s ETA(cap)=425.1s
+2026-11-01T01:24:42.424156+00:00 completed gsm8k-test-1267: correct=True; seconds=14.28; body_tokens=1339; forward_tokens=1405; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:24:42.424580+00:00 condition start evaluation/gsm8k/gsm8k-test-1081/plain_ar
+2026-11-01T01:24:42.448886+00:00 gsm8k-test-1081 plain_ar: body=1/32768; events=0; injections=0; context=78; elapsed=0.0s ETA(cap)=419.4s
+2026-11-01T01:24:49.783563+00:00 completed gsm8k-test-1081: correct=True; seconds=7.36; body_tokens=688; forward_tokens=765; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:24:49.783982+00:00 condition start evaluation/gsm8k/gsm8k-test-780/plain_ar
+2026-11-01T01:24:49.812935+00:00 gsm8k-test-780 plain_ar: body=1/32768; events=0; injections=0; context=141; elapsed=0.0s ETA(cap)=558.5s
+2026-11-01T01:25:06.170798+00:00 gsm8k-test-780 plain_ar: body=1537/32768; events=0; injections=0; context=1677; elapsed=16.4s ETA(cap)=332.7s
+2026-11-01T01:25:21.428870+00:00 gsm8k-test-780 plain_ar: body=2945/32768; events=0; injections=0; context=3085; elapsed=31.6s ETA(cap)=320.3s
+2026-11-01T01:25:29.433892+00:00 completed gsm8k-test-780: correct=True; seconds=39.65; body_tokens=3659; forward_tokens=3799; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:25:29.434345+00:00 condition start evaluation/gsm8k/gsm8k-test-644/plain_ar
+2026-11-01T01:25:29.458636+00:00 gsm8k-test-644 plain_ar: body=1/32768; events=0; injections=0; context=80; elapsed=0.0s ETA(cap)=418.1s
+2026-11-01T01:25:37.314465+00:00 completed gsm8k-test-644: correct=True; seconds=7.88; body_tokens=738; forward_tokens=817; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:25:37.314876+00:00 condition start evaluation/gsm8k/gsm8k-test-906/plain_ar
+2026-11-01T01:25:37.339248+00:00 gsm8k-test-906 plain_ar: body=1/32768; events=0; injections=0; context=82; elapsed=0.0s ETA(cap)=422.7s
+2026-11-01T01:25:48.178147+00:00 completed gsm8k-test-906: correct=False; seconds=10.86; body_tokens=1017; forward_tokens=1098; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:25:48.178577+00:00 condition start evaluation/gsm8k/gsm8k-test-633/plain_ar
+2026-11-01T01:25:48.202845+00:00 gsm8k-test-633 plain_ar: body=1/32768; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=411.8s
+2026-11-01T01:26:00.801330+00:00 completed gsm8k-test-633: correct=True; seconds=12.62; body_tokens=1183; forward_tokens=1251; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:26:00.801752+00:00 condition start evaluation/gsm8k/gsm8k-test-337/plain_ar
+2026-11-01T01:26:00.825519+00:00 gsm8k-test-337 plain_ar: body=1/32768; events=0; injections=0; context=65; elapsed=0.0s ETA(cap)=402.6s
+2026-11-01T01:26:17.157411+00:00 gsm8k-test-337 plain_ar: body=1537/32768; events=0; injections=0; context=1601; elapsed=16.3s ETA(cap)=332.1s
+2026-11-01T01:26:25.271289+00:00 completed gsm8k-test-337: correct=True; seconds=24.47; body_tokens=2293; forward_tokens=2357; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:26:25.271760+00:00 condition start evaluation/gsm8k/gsm8k-test-89/plain_ar
+2026-11-01T01:26:25.296418+00:00 gsm8k-test-89 plain_ar: body=1/32768; events=0; injections=0; context=79; elapsed=0.0s ETA(cap)=420.7s
+2026-11-01T01:26:41.513136+00:00 gsm8k-test-89 plain_ar: body=1527/32768; events=0; injections=0; context=1605; elapsed=16.2s ETA(cap)=332.0s
+2026-11-01T01:26:44.595733+00:00 completed gsm8k-test-89: correct=True; seconds=19.32; body_tokens=1815; forward_tokens=1893; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:26:44.596183+00:00 condition start evaluation/gsm8k/gsm8k-test-408/plain_ar
+2026-11-01T01:26:44.621301+00:00 gsm8k-test-408 plain_ar: body=1/32768; events=0; injections=0; context=112; elapsed=0.0s ETA(cap)=440.2s
+2026-11-01T01:27:00.074366+00:00 gsm8k-test-408 plain_ar: body=1454/32768; events=0; injections=0; context=1565; elapsed=15.5s ETA(cap)=333.1s
+2026-11-01T01:27:00.985860+00:00 completed gsm8k-test-408: correct=True; seconds=16.39; body_tokens=1539; forward_tokens=1650; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:27:00.986309+00:00 condition start evaluation/gsm8k/gsm8k-test-201/plain_ar
+2026-11-01T01:27:01.011179+00:00 gsm8k-test-201 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=435.0s
+2026-11-01T01:27:17.334243+00:00 gsm8k-test-201 plain_ar: body=1537/32768; events=0; injections=0; context=1635; elapsed=16.3s ETA(cap)=331.9s
+2026-11-01T01:27:28.893371+00:00 completed gsm8k-test-201: correct=True; seconds=27.90; body_tokens=2610; forward_tokens=2708; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:27:28.893833+00:00 condition start evaluation/gsm8k/gsm8k-test-858/plain_ar
+2026-11-01T01:27:28.917611+00:00 gsm8k-test-858 plain_ar: body=1/32768; events=0; injections=0; context=56; elapsed=0.0s ETA(cap)=400.3s
+2026-11-01T01:27:45.235801+00:00 gsm8k-test-858 plain_ar: body=1537/32768; events=0; injections=0; context=1592; elapsed=16.3s ETA(cap)=331.8s
+2026-11-01T01:27:53.788478+00:00 completed gsm8k-test-858: correct=True; seconds=24.89; body_tokens=2334; forward_tokens=2389; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:27:53.788922+00:00 condition start evaluation/gsm8k/gsm8k-test-990/plain_ar
+2026-11-01T01:27:53.814032+00:00 gsm8k-test-990 plain_ar: body=1/32768; events=0; injections=0; context=117; elapsed=0.0s ETA(cap)=436.1s
+2026-11-01T01:28:09.062583+00:00 gsm8k-test-990 plain_ar: body=1436/32768; events=0; injections=0; context=1552; elapsed=15.3s ETA(cap)=333.0s
+2026-11-01T01:28:09.441423+00:00 completed gsm8k-test-990: correct=True; seconds=15.65; body_tokens=1471; forward_tokens=1587; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:09.441852+00:00 condition start evaluation/gsm8k/gsm8k-test-358/plain_ar
+2026-11-01T01:28:09.466390+00:00 gsm8k-test-358 plain_ar: body=1/32768; events=0; injections=0; context=88; elapsed=0.0s ETA(cap)=419.6s
+2026-11-01T01:28:20.446804+00:00 completed gsm8k-test-358: correct=True; seconds=11.00; body_tokens=1034; forward_tokens=1121; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:20.447233+00:00 condition start evaluation/gsm8k/gsm8k-test-487/plain_ar
+2026-11-01T01:28:20.471621+00:00 gsm8k-test-487 plain_ar: body=1/32768; events=0; injections=0; context=84; elapsed=0.0s ETA(cap)=423.3s
+2026-11-01T01:28:28.146187+00:00 completed gsm8k-test-487: correct=True; seconds=7.70; body_tokens=722; forward_tokens=805; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:28.146608+00:00 condition start evaluation/gsm8k/gsm8k-test-1286/plain_ar
+2026-11-01T01:28:28.170712+00:00 gsm8k-test-1286 plain_ar: body=1/32768; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=412.1s
+2026-11-01T01:28:36.760082+00:00 completed gsm8k-test-1286: correct=True; seconds=8.61; body_tokens=808; forward_tokens=876; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:36.760520+00:00 condition start evaluation/gsm8k/gsm8k-test-495/plain_ar
+2026-11-01T01:28:36.784860+00:00 gsm8k-test-495 plain_ar: body=1/32768; events=0; injections=0; context=79; elapsed=0.0s ETA(cap)=414.6s
+2026-11-01T01:28:47.814468+00:00 completed gsm8k-test-495: correct=True; seconds=11.05; body_tokens=1037; forward_tokens=1115; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:47.814899+00:00 condition start evaluation/gsm8k/gsm8k-test-355/plain_ar
+2026-11-01T01:28:47.839759+00:00 gsm8k-test-355 plain_ar: body=1/32768; events=0; injections=0; context=90; elapsed=0.0s ETA(cap)=436.1s
+2026-11-01T01:28:56.468630+00:00 completed gsm8k-test-355: correct=True; seconds=8.65; body_tokens=811; forward_tokens=900; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:28:56.469049+00:00 condition start evaluation/gsm8k/gsm8k-test-320/plain_ar
+2026-11-01T01:28:56.493374+00:00 gsm8k-test-320 plain_ar: body=1/32768; events=0; injections=0; context=79; elapsed=0.0s ETA(cap)=417.9s
+2026-11-01T01:29:11.639915+00:00 gsm8k-test-320 plain_ar: body=1426/32768; events=0; injections=0; context=1504; elapsed=15.2s ETA(cap)=333.2s
+2026-11-01T01:29:11.644678+00:00 completed gsm8k-test-320: correct=True; seconds=15.17; body_tokens=1426; forward_tokens=1504; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:29:11.645113+00:00 condition start evaluation/gsm8k/gsm8k-test-762/plain_ar
+2026-11-01T01:29:11.669522+00:00 gsm8k-test-762 plain_ar: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=419.4s
+2026-11-01T01:29:17.537722+00:00 completed gsm8k-test-762: correct=True; seconds=5.89; body_tokens=551; forward_tokens=633; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:29:17.538174+00:00 condition start evaluation/gsm8k/gsm8k-test-340/plain_ar
+2026-11-01T01:29:17.567625+00:00 gsm8k-test-340 plain_ar: body=1/32768; events=0; injections=0; context=152; elapsed=0.0s ETA(cap)=565.6s
+2026-11-01T01:29:33.919914+00:00 gsm8k-test-340 plain_ar: body=1537/32768; events=0; injections=0; context=1688; elapsed=16.4s ETA(cap)=332.6s
+2026-11-01T01:29:42.308836+00:00 completed gsm8k-test-340: correct=True; seconds=24.77; body_tokens=2311; forward_tokens=2462; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:29:42.309360+00:00 condition start evaluation/gsm8k/gsm8k-test-837/plain_ar
+2026-11-01T01:29:42.339049+00:00 gsm8k-test-837 plain_ar: body=1/32768; events=0; injections=0; context=155; elapsed=0.0s ETA(cap)=570.2s
+2026-11-01T01:29:56.612646+00:00 completed gsm8k-test-837: correct=True; seconds=14.30; body_tokens=1343; forward_tokens=1497; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:29:56.613117+00:00 condition start evaluation/gsm8k/gsm8k-test-207/plain_ar
+2026-11-01T01:29:56.637658+00:00 gsm8k-test-207 plain_ar: body=1/32768; events=0; injections=0; context=85; elapsed=0.0s ETA(cap)=419.4s
+2026-11-01T01:30:06.104839+00:00 completed gsm8k-test-207: correct=True; seconds=9.49; body_tokens=891; forward_tokens=975; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:30:06.105292+00:00 condition start evaluation/gsm8k/gsm8k-test-1312/plain_ar
+2026-11-01T01:30:06.129595+00:00 gsm8k-test-1312 plain_ar: body=1/32768; events=0; injections=0; context=77; elapsed=0.0s ETA(cap)=417.0s
+2026-11-01T01:30:22.461443+00:00 gsm8k-test-1312 plain_ar: body=1537/32768; events=0; injections=0; context=1613; elapsed=16.3s ETA(cap)=332.1s
+2026-11-01T01:30:30.891402+00:00 completed gsm8k-test-1312: correct=True; seconds=24.78; body_tokens=2322; forward_tokens=2398; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:30:30.891878+00:00 condition start evaluation/gsm8k/gsm8k-test-806/plain_ar
+2026-11-01T01:30:30.916996+00:00 gsm8k-test-806 plain_ar: body=1/32768; events=0; injections=0; context=106; elapsed=0.0s ETA(cap)=436.9s
+2026-11-01T01:30:46.237134+00:00 gsm8k-test-806 plain_ar: body=1441/32768; events=0; injections=0; context=1546; elapsed=15.3s ETA(cap)=333.3s
+2026-11-01T01:30:50.022836+00:00 completed gsm8k-test-806: correct=True; seconds=19.13; body_tokens=1795; forward_tokens=1900; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:30:50.023278+00:00 condition start evaluation/gsm8k/gsm8k-test-790/plain_ar
+2026-11-01T01:30:50.048215+00:00 gsm8k-test-790 plain_ar: body=1/32768; events=0; injections=0; context=106; elapsed=0.0s ETA(cap)=436.0s
+2026-11-01T01:31:06.385383+00:00 gsm8k-test-790 plain_ar: body=1537/32768; events=0; injections=0; context=1642; elapsed=16.4s ETA(cap)=332.2s
+2026-11-01T01:31:12.272047+00:00 completed gsm8k-test-790: correct=True; seconds=22.25; body_tokens=2086; forward_tokens=2191; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:31:12.272520+00:00 condition start evaluation/gsm8k/gsm8k-test-431/plain_ar
+2026-11-01T01:31:12.297392+00:00 gsm8k-test-431 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=435.4s
+2026-11-01T01:31:17.485320+00:00 completed gsm8k-test-431: correct=True; seconds=5.21; body_tokens=487; forward_tokens=585; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:31:17.485736+00:00 condition start evaluation/gsm8k/gsm8k-test-391/plain_ar
+2026-11-01T01:31:17.509927+00:00 gsm8k-test-391 plain_ar: body=1/32768; events=0; injections=0; context=73; elapsed=0.0s ETA(cap)=414.4s
+2026-11-01T01:31:26.689259+00:00 completed gsm8k-test-391: correct=True; seconds=9.20; body_tokens=863; forward_tokens=935; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:31:26.689689+00:00 condition start evaluation/gsm8k/gsm8k-test-593/plain_ar
+2026-11-01T01:31:26.714053+00:00 gsm8k-test-593 plain_ar: body=1/32768; events=0; injections=0; context=84; elapsed=0.0s ETA(cap)=419.8s
+2026-11-01T01:31:42.367507+00:00 gsm8k-test-593 plain_ar: body=1473/32768; events=0; injections=0; context=1556; elapsed=15.7s ETA(cap)=332.8s
+2026-11-01T01:31:44.198193+00:00 completed gsm8k-test-593: correct=True; seconds=17.51; body_tokens=1644; forward_tokens=1727; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:31:44.198633+00:00 condition start evaluation/gsm8k/gsm8k-test-129/plain_ar
+2026-11-01T01:31:44.223603+00:00 gsm8k-test-129 plain_ar: body=1/32768; events=0; injections=0; context=92; elapsed=0.0s ETA(cap)=435.5s
+2026-11-01T01:32:00.454889+00:00 gsm8k-test-129 plain_ar: body=1528/32768; events=0; injections=0; context=1619; elapsed=16.2s ETA(cap)=332.1s
+2026-11-01T01:32:00.610326+00:00 completed gsm8k-test-129: correct=True; seconds=16.41; body_tokens=1542; forward_tokens=1633; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:32:00.610784+00:00 condition start evaluation/gsm8k/gsm8k-test-986/plain_ar
+2026-11-01T01:32:00.635690+00:00 gsm8k-test-986 plain_ar: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=436.5s
+2026-11-01T01:32:10.160155+00:00 completed gsm8k-test-986: correct=True; seconds=9.55; body_tokens=896; forward_tokens=994; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:32:10.160589+00:00 condition start evaluation/gsm8k/gsm8k-test-530/plain_ar
+2026-11-01T01:32:10.185438+00:00 gsm8k-test-530 plain_ar: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=435.8s
+2026-11-01T01:32:26.495828+00:00 gsm8k-test-530 plain_ar: body=1537/32768; events=0; injections=0; context=1638; elapsed=16.3s ETA(cap)=331.7s
+2026-11-01T01:32:32.283888+00:00 completed gsm8k-test-530: correct=True; seconds=22.12; body_tokens=2077; forward_tokens=2178; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:32:32.284385+00:00 condition start evaluation/gsm8k/gsm8k-test-444/plain_ar
+2026-11-01T01:32:32.308766+00:00 gsm8k-test-444 plain_ar: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=415.7s
+2026-11-01T01:32:42.227394+00:00 completed gsm8k-test-444: correct=True; seconds=9.94; body_tokens=931; forward_tokens=1000; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:32:42.227837+00:00 condition start evaluation/gsm8k/gsm8k-test-978/plain_ar
+2026-11-01T01:32:42.251608+00:00 gsm8k-test-978 plain_ar: body=1/32768; events=0; injections=0; context=62; elapsed=0.0s ETA(cap)=403.4s
+2026-11-01T01:32:53.022330+00:00 completed gsm8k-test-978: correct=True; seconds=10.79; body_tokens=1012; forward_tokens=1073; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:32:53.022788+00:00 condition start evaluation/gsm8k/gsm8k-test-619/plain_ar
+2026-11-01T01:32:53.047267+00:00 gsm8k-test-619 plain_ar: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=419.1s
+2026-11-01T01:33:04.410947+00:00 completed gsm8k-test-619: correct=True; seconds=11.39; body_tokens=1068; forward_tokens=1150; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:33:04.411402+00:00 condition start evaluation/gsm8k/gsm8k-test-864/plain_ar
+2026-11-01T01:33:04.436368+00:00 gsm8k-test-864 plain_ar: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=437.5s
+2026-11-01T01:33:12.945155+00:00 completed gsm8k-test-864: correct=True; seconds=8.53; body_tokens=799; forward_tokens=891; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:33:12.945590+00:00 condition start evaluation/gsm8k/gsm8k-test-342/plain_ar
+2026-11-01T01:33:12.970514+00:00 gsm8k-test-342 plain_ar: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=436.1s
+2026-11-01T01:33:29.263955+00:00 gsm8k-test-342 plain_ar: body=1531/32768; events=0; injections=0; context=1621; elapsed=16.3s ETA(cap)=332.7s
+2026-11-01T01:33:31.170978+00:00 completed gsm8k-test-342: correct=True; seconds=18.22; body_tokens=1709; forward_tokens=1799; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:33:31.171429+00:00 condition start evaluation/gsm8k/gsm8k-test-61/plain_ar
+2026-11-01T01:33:31.196327+00:00 gsm8k-test-61 plain_ar: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=436.9s
+2026-11-01T01:33:39.769905+00:00 completed gsm8k-test-61: correct=True; seconds=8.60; body_tokens=806; forward_tokens=896; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:33:39.770336+00:00 condition start evaluation/gsm8k/gsm8k-test-1086/plain_ar
+2026-11-01T01:33:39.799487+00:00 gsm8k-test-1086 plain_ar: body=1/32768; events=0; injections=0; context=149; elapsed=0.0s ETA(cap)=565.2s
+2026-11-01T01:33:55.734275+00:00 gsm8k-test-1086 plain_ar: body=1497/32768; events=0; injections=0; context=1645; elapsed=16.0s ETA(cap)=333.2s
+2026-11-01T01:33:59.654468+00:00 completed gsm8k-test-1086: correct=True; seconds=19.88; body_tokens=1863; forward_tokens=2011; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:33:59.654911+00:00 condition start evaluation/gsm8k/gsm8k-test-532/plain_ar
+2026-11-01T01:33:59.679104+00:00 gsm8k-test-532 plain_ar: body=1/32768; events=0; injections=0; context=71; elapsed=0.0s ETA(cap)=410.9s
+2026-11-01T01:34:15.715088+00:00 gsm8k-test-532 plain_ar: body=1507/32768; events=0; injections=0; context=1577; elapsed=16.0s ETA(cap)=332.9s
+2026-11-01T01:34:19.194328+00:00 completed gsm8k-test-532: correct=True; seconds=19.54; body_tokens=1832; forward_tokens=1902; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:34:19.194757+00:00 condition start evaluation/gsm8k/gsm8k-test-958/plain_ar
+2026-11-01T01:34:19.219777+00:00 gsm8k-test-958 plain_ar: body=1/32768; events=0; injections=0; context=89; elapsed=0.0s ETA(cap)=439.9s
+2026-11-01T01:34:26.599384+00:00 completed gsm8k-test-958: correct=True; seconds=7.40; body_tokens=692; forward_tokens=780; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:34:26.599803+00:00 condition start evaluation/gsm8k/gsm8k-test-419/plain_ar
+2026-11-01T01:34:26.628672+00:00 gsm8k-test-419 plain_ar: body=1/32768; events=0; injections=0; context=142; elapsed=0.0s ETA(cap)=557.9s
+2026-11-01T01:34:40.513612+00:00 completed gsm8k-test-419: correct=True; seconds=13.91; body_tokens=1305; forward_tokens=1446; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:34:40.514044+00:00 condition start evaluation/gsm8k/gsm8k-test-750/plain_ar
+2026-11-01T01:34:40.538725+00:00 gsm8k-test-750 plain_ar: body=1/32768; events=0; injections=0; context=87; elapsed=0.0s ETA(cap)=421.0s
+2026-11-01T01:34:55.555380+00:00 gsm8k-test-750 plain_ar: body=1409/32768; events=0; injections=0; context=1495; elapsed=15.0s ETA(cap)=334.5s
+2026-11-01T01:34:58.958395+00:00 completed gsm8k-test-750: correct=True; seconds=18.44; body_tokens=1727; forward_tokens=1813; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:34:58.958821+00:00 condition start evaluation/gsm8k/gsm8k-test-297/plain_ar
+2026-11-01T01:34:58.983868+00:00 gsm8k-test-297 plain_ar: body=1/32768; events=0; injections=0; context=107; elapsed=0.0s ETA(cap)=438.0s
+2026-11-01T01:35:13.834948+00:00 completed gsm8k-test-297: correct=True; seconds=14.87; body_tokens=1399; forward_tokens=1505; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:35:13.835413+00:00 condition start evaluation/gsm8k/gsm8k-test-967/plain_ar
+2026-11-01T01:35:13.859888+00:00 gsm8k-test-967 plain_ar: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=417.2s
+2026-11-01T01:35:26.734551+00:00 completed gsm8k-test-967: correct=True; seconds=12.90; body_tokens=1213; forward_tokens=1282; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:35:26.735001+00:00 condition start evaluation/gsm8k/gsm8k-test-1140/plain_ar
+2026-11-01T01:35:26.759540+00:00 gsm8k-test-1140 plain_ar: body=1/32768; events=0; injections=0; context=78; elapsed=0.0s ETA(cap)=421.1s
+2026-11-01T01:35:43.064527+00:00 gsm8k-test-1140 plain_ar: body=1537/32768; events=0; injections=0; context=1614; elapsed=16.3s ETA(cap)=331.6s
+2026-11-01T01:35:58.281650+00:00 gsm8k-test-1140 plain_ar: body=2945/32768; events=0; injections=0; context=3022; elapsed=31.5s ETA(cap)=319.3s
+2026-11-01T01:36:14.633142+00:00 gsm8k-test-1140 plain_ar: body=4399/32768; events=0; injections=0; context=4476; elapsed=47.9s ETA(cap)=308.8s
+2026-11-01T01:36:15.513442+00:00 completed gsm8k-test-1140: correct=True; seconds=48.78; body_tokens=4475; forward_tokens=4552; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:36:15.513909+00:00 condition start evaluation/gsm8k/gsm8k-test-259/plain_ar
+2026-11-01T01:36:15.538188+00:00 gsm8k-test-259 plain_ar: body=1/32768; events=0; injections=0; context=68; elapsed=0.0s ETA(cap)=411.1s
+2026-11-01T01:36:29.741917+00:00 completed gsm8k-test-259: correct=True; seconds=14.23; body_tokens=1342; forward_tokens=1409; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:36:29.742362+00:00 condition start evaluation/gsm8k/gsm8k-test-1088/plain_ar
+2026-11-01T01:36:29.767229+00:00 gsm8k-test-1088 plain_ar: body=1/32768; events=0; injections=0; context=107; elapsed=0.0s ETA(cap)=436.0s
+2026-11-01T01:36:46.060501+00:00 gsm8k-test-1088 plain_ar: body=1537/32768; events=0; injections=0; context=1643; elapsed=16.3s ETA(cap)=331.3s
+2026-11-01T01:37:01.286433+00:00 gsm8k-test-1088 plain_ar: body=2945/32768; events=0; injections=0; context=3051; elapsed=31.5s ETA(cap)=319.3s
+2026-11-01T01:37:16.295650+00:00 gsm8k-test-1088 plain_ar: body=4280/32768; events=0; injections=0; context=4386; elapsed=46.5s ETA(cap)=309.8s
+2026-11-01T01:37:17.172675+00:00 completed gsm8k-test-1088: correct=True; seconds=47.43; body_tokens=4356; forward_tokens=4462; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:37:17.173176+00:00 condition start evaluation/gsm8k/gsm8k-test-816/plain_ar
+2026-11-01T01:37:17.197000+00:00 gsm8k-test-816 plain_ar: body=1/32768; events=0; injections=0; context=65; elapsed=0.0s ETA(cap)=407.3s
+2026-11-01T01:37:23.593833+00:00 completed gsm8k-test-816: correct=True; seconds=6.42; body_tokens=602; forward_tokens=666; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:37:23.594262+00:00 condition start evaluation/gsm8k/gsm8k-test-500/plain_ar
+2026-11-01T01:37:23.618692+00:00 gsm8k-test-500 plain_ar: body=1/32768; events=0; injections=0; context=67; elapsed=0.0s ETA(cap)=426.5s
+2026-11-01T01:37:34.086400+00:00 completed gsm8k-test-500: correct=True; seconds=10.49; body_tokens=987; forward_tokens=1053; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:37:34.086832+00:00 condition start evaluation/gsm8k/gsm8k-test-1230/plain_ar
+2026-11-01T01:37:34.111971+00:00 gsm8k-test-1230 plain_ar: body=1/32768; events=0; injections=0; context=127; elapsed=0.0s ETA(cap)=443.7s
+2026-11-01T01:37:44.168852+00:00 completed gsm8k-test-1230: correct=True; seconds=10.08; body_tokens=948; forward_tokens=1074; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:37:44.169296+00:00 condition start evaluation/gsm8k/gsm8k-test-834/plain_ar
+2026-11-01T01:37:44.193511+00:00 gsm8k-test-834 plain_ar: body=1/32768; events=0; injections=0; context=76; elapsed=0.0s ETA(cap)=416.4s
+2026-11-01T01:37:53.116265+00:00 completed gsm8k-test-834: correct=True; seconds=8.95; body_tokens=841; forward_tokens=916; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:37:53.116735+00:00 condition start evaluation/gsm8k/gsm8k-test-245/plain_ar
+2026-11-01T01:37:53.142244+00:00 gsm8k-test-245 plain_ar: body=1/32768; events=0; injections=0; context=94; elapsed=0.0s ETA(cap)=460.5s
+2026-11-01T01:38:09.461197+00:00 gsm8k-test-245 plain_ar: body=1537/32768; events=0; injections=0; context=1630; elapsed=16.3s ETA(cap)=331.9s
+2026-11-01T01:38:24.649572+00:00 gsm8k-test-245 plain_ar: body=2941/32768; events=0; injections=0; context=3034; elapsed=31.5s ETA(cap)=319.7s
+2026-11-01T01:38:29.254904+00:00 completed gsm8k-test-245: correct=True; seconds=36.14; body_tokens=3353; forward_tokens=3446; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:38:29.255366+00:00 condition start evaluation/gsm8k/gsm8k-test-1222/plain_ar
+2026-11-01T01:38:29.279642+00:00 gsm8k-test-1222 plain_ar: body=1/32768; events=0; injections=0; context=75; elapsed=0.0s ETA(cap)=416.3s
+2026-11-01T01:38:33.658909+00:00 completed gsm8k-test-1222: correct=True; seconds=4.40; body_tokens=412; forward_tokens=486; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:38:33.659356+00:00 condition start evaluation/gsm8k/gsm8k-test-1111/plain_ar
+2026-11-01T01:38:33.683867+00:00 gsm8k-test-1111 plain_ar: body=1/32768; events=0; injections=0; context=85; elapsed=0.0s ETA(cap)=421.2s
+2026-11-01T01:38:43.337624+00:00 completed gsm8k-test-1111: correct=True; seconds=9.68; body_tokens=910; forward_tokens=994; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:38:43.338053+00:00 condition start evaluation/gsm8k/gsm8k-test-428/plain_ar
+2026-11-01T01:38:43.363128+00:00 gsm8k-test-428 plain_ar: body=1/32768; events=0; injections=0; context=101; elapsed=0.0s ETA(cap)=440.5s
+2026-11-01T01:38:59.687770+00:00 gsm8k-test-428 plain_ar: body=1537/32768; events=0; injections=0; context=1637; elapsed=16.3s ETA(cap)=332.0s
+2026-11-01T01:39:14.926671+00:00 gsm8k-test-428 plain_ar: body=2945/32768; events=0; injections=0; context=3045; elapsed=31.6s ETA(cap)=319.8s
+2026-11-01T01:39:23.568711+00:00 completed gsm8k-test-428: correct=True; seconds=40.23; body_tokens=3716; forward_tokens=3816; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:39:23.569182+00:00 condition start evaluation/gsm8k/gsm8k-test-409/plain_ar
+2026-11-01T01:39:23.594377+00:00 gsm8k-test-409 plain_ar: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=439.5s
+2026-11-01T01:39:39.898225+00:00 gsm8k-test-409 plain_ar: body=1537/32768; events=0; injections=0; context=1638; elapsed=16.3s ETA(cap)=331.6s
+2026-11-01T01:39:52.052298+00:00 completed gsm8k-test-409: correct=True; seconds=28.48; body_tokens=2664; forward_tokens=2765; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:39:52.052788+00:00 condition start evaluation/gsm8k/gsm8k-test-33/plain_ar
+2026-11-01T01:39:52.076792+00:00 gsm8k-test-33 plain_ar: body=1/32768; events=0; injections=0; context=60; elapsed=0.0s ETA(cap)=402.3s
+2026-11-01T01:40:01.440732+00:00 completed gsm8k-test-33: correct=True; seconds=9.39; body_tokens=882; forward_tokens=941; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:40:01.441173+00:00 condition start evaluation/gsm8k/gsm8k-test-755/plain_ar
+2026-11-01T01:40:01.465419+00:00 gsm8k-test-755 plain_ar: body=1/32768; events=0; injections=0; context=77; elapsed=0.0s ETA(cap)=414.2s
+2026-11-01T01:40:10.548855+00:00 completed gsm8k-test-755: correct=True; seconds=9.11; body_tokens=856; forward_tokens=932; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:40:10.549293+00:00 condition start evaluation/gsm8k/gsm8k-test-983/plain_ar
+2026-11-01T01:40:10.573132+00:00 gsm8k-test-983 plain_ar: body=1/32768; events=0; injections=0; context=61; elapsed=0.0s ETA(cap)=404.1s
+2026-11-01T01:40:20.137541+00:00 completed gsm8k-test-983: correct=True; seconds=9.59; body_tokens=901; forward_tokens=961; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:40:20.137972+00:00 condition start evaluation/gsm8k/gsm8k-test-152/plain_ar
+2026-11-01T01:40:20.162148+00:00 gsm8k-test-152 plain_ar: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=413.4s
+2026-11-01T01:40:27.063028+00:00 completed gsm8k-test-152: correct=True; seconds=6.92; body_tokens=651; forward_tokens=720; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:40:27.063464+00:00 condition start evaluation/gsm8k/gsm8k-test-40/plain_ar
+2026-11-01T01:40:27.087612+00:00 gsm8k-test-40 plain_ar: body=1/32768; events=0; injections=0; context=73; elapsed=0.0s ETA(cap)=411.8s
+2026-11-01T01:40:43.362987+00:00 gsm8k-test-40 plain_ar: body=1537/32768; events=0; injections=0; context=1609; elapsed=16.3s ETA(cap)=331.0s
+2026-11-01T01:40:58.572780+00:00 gsm8k-test-40 plain_ar: body=2945/32768; events=0; injections=0; context=3017; elapsed=31.5s ETA(cap)=319.0s
+2026-11-01T01:41:14.399593+00:00 gsm8k-test-40 plain_ar: body=4353/32768; events=0; injections=0; context=4425; elapsed=47.3s ETA(cap)=308.9s
+2026-11-01T01:41:22.117346+00:00 completed gsm8k-test-40: correct=True; seconds=55.05; body_tokens=5025; forward_tokens=5097; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:41:22.117828+00:00 condition start evaluation/gsm8k/gsm8k-test-482/plain_ar
+2026-11-01T01:41:22.142869+00:00 gsm8k-test-482 plain_ar: body=1/32768; events=0; injections=0; context=98; elapsed=0.0s ETA(cap)=434.2s
+2026-11-01T01:41:29.013286+00:00 completed gsm8k-test-482: correct=True; seconds=6.89; body_tokens=647; forward_tokens=744; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:41:29.013734+00:00 condition start evaluation/gsm8k/gsm8k-test-512/plain_ar
+2026-11-01T01:41:29.038282+00:00 gsm8k-test-512 plain_ar: body=1/32768; events=0; injections=0; context=82; elapsed=0.0s ETA(cap)=420.5s
+2026-11-01T01:41:36.050795+00:00 completed gsm8k-test-512: correct=True; seconds=7.04; body_tokens=661; forward_tokens=742; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:41:36.051235+00:00 condition start evaluation/gsm8k/gsm8k-test-840/plain_ar
+2026-11-01T01:41:36.076114+00:00 gsm8k-test-840 plain_ar: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=441.2s
+2026-11-01T01:41:49.406485+00:00 completed gsm8k-test-840: correct=True; seconds=13.35; body_tokens=1258; forward_tokens=1350; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:41:49.406916+00:00 condition start evaluation/gsm8k/gsm8k-test-290/plain_ar
+2026-11-01T01:41:49.431758+00:00 gsm8k-test-290 plain_ar: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=438.3s
+2026-11-01T01:42:00.157855+00:00 completed gsm8k-test-290: correct=True; seconds=10.75; body_tokens=1011; forward_tokens=1103; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:42:00.158311+00:00 condition start evaluation/gsm8k/gsm8k-test-907/plain_ar
+2026-11-01T01:42:00.182160+00:00 gsm8k-test-907 plain_ar: body=1/32768; events=0; injections=0; context=61; elapsed=0.0s ETA(cap)=405.7s
+2026-11-01T01:42:08.884970+00:00 completed gsm8k-test-907: correct=True; seconds=8.73; body_tokens=820; forward_tokens=880; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:42:08.885431+00:00 condition start evaluation/gsm8k/gsm8k-test-952/plain_ar
+2026-11-01T01:42:08.909628+00:00 gsm8k-test-952 plain_ar: body=1/32768; events=0; injections=0; context=74; elapsed=0.0s ETA(cap)=415.1s
+2026-11-01T01:42:23.266789+00:00 completed gsm8k-test-952: correct=False; seconds=14.38; body_tokens=1354; forward_tokens=1427; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:42:23.267236+00:00 condition start evaluation/gsm8k/gsm8k-test-193/plain_ar
+2026-11-01T01:42:23.296477+00:00 gsm8k-test-193 plain_ar: body=1/32768; events=0; injections=0; context=150; elapsed=0.0s ETA(cap)=566.7s
+2026-11-01T01:42:36.982314+00:00 completed gsm8k-test-193: correct=True; seconds=13.71; body_tokens=1289; forward_tokens=1438; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:42:36.982767+00:00 condition start evaluation/gsm8k/gsm8k-test-1207/plain_ar
+2026-11-01T01:42:37.007605+00:00 gsm8k-test-1207 plain_ar: body=1/32768; events=0; injections=0; context=101; elapsed=0.0s ETA(cap)=437.4s
+2026-11-01T01:42:46.595405+00:00 completed gsm8k-test-1207: correct=True; seconds=9.61; body_tokens=905; forward_tokens=1005; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:42:46.595845+00:00 condition start evaluation/gsm8k/gsm8k-test-19/plain_ar
+2026-11-01T01:42:46.621429+00:00 gsm8k-test-19 plain_ar: body=1/32768; events=0; injections=0; context=94; elapsed=0.0s ETA(cap)=457.8s
+2026-11-01T01:43:02.927543+00:00 gsm8k-test-19 plain_ar: body=1537/32768; events=0; injections=0; context=1630; elapsed=16.3s ETA(cap)=331.6s
+2026-11-01T01:43:09.278565+00:00 completed gsm8k-test-19: correct=True; seconds=22.68; body_tokens=2129; forward_tokens=2222; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:43:09.279024+00:00 condition start evaluation/gsm8k/gsm8k-test-39/plain_ar
+2026-11-01T01:43:09.303996+00:00 gsm8k-test-39 plain_ar: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=439.0s
+2026-11-01T01:43:25.601194+00:00 gsm8k-test-39 plain_ar: body=1537/32768; events=0; injections=0; context=1638; elapsed=16.3s ETA(cap)=331.4s
+2026-11-01T01:43:37.172314+00:00 completed gsm8k-test-39: correct=True; seconds=27.89; body_tokens=2611; forward_tokens=2712; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:43:37.172743+00:00 condition start evaluation/gsm8k/gsm8k-test-447/plain_ar
+2026-11-01T01:43:37.197085+00:00 gsm8k-test-447 plain_ar: body=1/32768; events=0; injections=0; context=78; elapsed=0.0s ETA(cap)=419.3s
+2026-11-01T01:43:47.643393+00:00 completed gsm8k-test-447: correct=True; seconds=10.47; body_tokens=986; forward_tokens=1063; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:43:47.643856+00:00 condition start evaluation/gsm8k/gsm8k-test-567/plain_ar
+2026-11-01T01:43:47.668975+00:00 gsm8k-test-567 plain_ar: body=1/32768; events=0; injections=0; context=122; elapsed=0.0s ETA(cap)=440.1s
+2026-11-01T01:44:03.980022+00:00 gsm8k-test-567 plain_ar: body=1537/32768; events=0; injections=0; context=1658; elapsed=16.3s ETA(cap)=331.7s
+2026-11-01T01:44:19.225493+00:00 gsm8k-test-567 plain_ar: body=2945/32768; events=0; injections=0; context=3066; elapsed=31.6s ETA(cap)=319.7s
+2026-11-01T01:44:26.495161+00:00 completed gsm8k-test-567: correct=True; seconds=38.85; body_tokens=3594; forward_tokens=3715; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:44:26.495619+00:00 condition start evaluation/gsm8k/gsm8k-test-27/plain_ar
+2026-11-01T01:44:26.520095+00:00 gsm8k-test-27 plain_ar: body=1/32768; events=0; injections=0; context=88; elapsed=0.0s ETA(cap)=421.1s
+2026-11-01T01:44:37.473757+00:00 completed gsm8k-test-27: correct=True; seconds=10.98; body_tokens=1032; forward_tokens=1119; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:44:37.474193+00:00 condition start evaluation/gsm8k/gsm8k-test-769/plain_ar
+2026-11-01T01:44:37.499669+00:00 gsm8k-test-769 plain_ar: body=1/32768; events=0; injections=0; context=96; elapsed=0.0s ETA(cap)=459.7s
+2026-11-01T01:44:49.852372+00:00 completed gsm8k-test-769: correct=True; seconds=12.38; body_tokens=1164; forward_tokens=1259; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:44:49.852819+00:00 condition start evaluation/gsm8k/gsm8k-test-720/plain_ar
+2026-11-01T01:44:49.876985+00:00 gsm8k-test-720 plain_ar: body=1/32768; events=0; injections=0; context=73; elapsed=0.0s ETA(cap)=414.2s
+2026-11-01T01:44:57.370639+00:00 completed gsm8k-test-720: correct=True; seconds=7.52; body_tokens=705; forward_tokens=777; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:44:57.371092+00:00 condition start evaluation/gsm8k/gsm8k-test-1041/plain_ar
+2026-11-01T01:44:57.395830+00:00 gsm8k-test-1041 plain_ar: body=1/32768; events=0; injections=0; context=89; elapsed=0.0s ETA(cap)=434.0s
+2026-11-01T01:45:04.309259+00:00 completed gsm8k-test-1041: correct=True; seconds=6.94; body_tokens=650; forward_tokens=738; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:45:04.309709+00:00 condition start evaluation/gsm8k/gsm8k-test-1257/plain_ar
+2026-11-01T01:45:04.334315+00:00 gsm8k-test-1257 plain_ar: body=1/32768; events=0; injections=0; context=82; elapsed=0.0s ETA(cap)=419.1s
+2026-11-01T01:45:08.668390+00:00 completed gsm8k-test-1257: correct=True; seconds=4.36; body_tokens=407; forward_tokens=488; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:45:08.668814+00:00 condition start evaluation/gsm8k/gsm8k-test-908/plain_ar
+2026-11-01T01:45:08.692455+00:00 gsm8k-test-908 plain_ar: body=1/32768; events=0; injections=0; context=65; elapsed=0.0s ETA(cap)=396.4s
+2026-11-01T01:45:15.527159+00:00 completed gsm8k-test-908: correct=True; seconds=6.86; body_tokens=642; forward_tokens=706; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:45:15.527594+00:00 condition start evaluation/gsm8k/gsm8k-test-1249/plain_ar
+2026-11-01T01:45:15.556540+00:00 gsm8k-test-1249 plain_ar: body=1/32768; events=0; injections=0; context=140; elapsed=0.0s ETA(cap)=560.8s
+2026-11-01T01:45:31.535791+00:00 gsm8k-test-1249 plain_ar: body=1505/32768; events=0; injections=0; context=1644; elapsed=16.0s ETA(cap)=332.3s
+2026-11-01T01:45:34.855607+00:00 completed gsm8k-test-1249: correct=True; seconds=19.33; body_tokens=1815; forward_tokens=1954; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:45:34.856051+00:00 condition start evaluation/gsm8k/gsm8k-test-827/plain_ar
+2026-11-01T01:45:34.881131+00:00 gsm8k-test-827 plain_ar: body=1/32768; events=0; injections=0; context=114; elapsed=0.0s ETA(cap)=438.2s
+2026-11-01T01:45:51.203753+00:00 gsm8k-test-827 plain_ar: body=1537/32768; events=0; injections=0; context=1650; elapsed=16.3s ETA(cap)=331.9s
+2026-11-01T01:46:01.661237+00:00 completed gsm8k-test-827: correct=True; seconds=26.80; body_tokens=2508; forward_tokens=2621; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:01.661716+00:00 condition start evaluation/gsm8k/gsm8k-test-148/plain_ar
+2026-11-01T01:46:01.687633+00:00 gsm8k-test-148 plain_ar: body=1/32768; events=0; injections=0; context=96; elapsed=0.0s ETA(cap)=460.7s
+2026-11-01T01:46:09.328928+00:00 completed gsm8k-test-148: correct=True; seconds=7.67; body_tokens=721; forward_tokens=816; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:09.329374+00:00 condition start evaluation/gsm8k/gsm8k-test-794/plain_ar
+2026-11-01T01:46:09.353644+00:00 gsm8k-test-794 plain_ar: body=1/32768; events=0; injections=0; context=72; elapsed=0.0s ETA(cap)=412.8s
+2026-11-01T01:46:18.762956+00:00 completed gsm8k-test-794: correct=True; seconds=9.43; body_tokens=881; forward_tokens=952; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:18.763464+00:00 condition start evaluation/gsm8k/gsm8k-test-913/plain_ar
+2026-11-01T01:46:18.788478+00:00 gsm8k-test-913 plain_ar: body=1/32768; events=0; injections=0; context=101; elapsed=0.0s ETA(cap)=435.5s
+2026-11-01T01:46:27.727311+00:00 completed gsm8k-test-913: correct=True; seconds=8.96; body_tokens=841; forward_tokens=941; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:27.727801+00:00 condition start evaluation/gsm8k/gsm8k-test-1221/plain_ar
+2026-11-01T01:46:27.752791+00:00 gsm8k-test-1221 plain_ar: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=434.4s
+2026-11-01T01:46:40.852081+00:00 completed gsm8k-test-1221: correct=True; seconds=13.12; body_tokens=1236; forward_tokens=1337; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:40.852586+00:00 condition start evaluation/gsm8k/gsm8k-test-734/plain_ar
+2026-11-01T01:46:40.878403+00:00 gsm8k-test-734 plain_ar: body=1/32768; events=0; injections=0; context=96; elapsed=0.0s ETA(cap)=459.0s
+2026-11-01T01:46:55.334038+00:00 completed gsm8k-test-734: correct=True; seconds=14.48; body_tokens=1360; forward_tokens=1455; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:46:55.334484+00:00 condition start evaluation/gsm8k/gsm8k-test-1084/plain_ar
+2026-11-01T01:46:55.358658+00:00 gsm8k-test-1084 plain_ar: body=1/32768; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=413.2s
+2026-11-01T01:47:10.596367+00:00 gsm8k-test-1084 plain_ar: body=1437/32768; events=0; injections=0; context=1505; elapsed=15.3s ETA(cap)=332.5s
+2026-11-01T01:47:11.594039+00:00 completed gsm8k-test-1084: correct=False; seconds=16.26; body_tokens=1530; forward_tokens=1598; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:47:11.594481+00:00 condition start evaluation/gsm8k/gsm8k-test-909/plain_ar
+2026-11-01T01:47:11.618872+00:00 gsm8k-test-909 plain_ar: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=424.3s
+2026-11-01T01:47:26.770452+00:00 gsm8k-test-909 plain_ar: body=1428/32768; events=0; injections=0; context=1493; elapsed=15.2s ETA(cap)=332.8s
+2026-11-01T01:47:26.775847+00:00 completed gsm8k-test-909: correct=True; seconds=15.18; body_tokens=1428; forward_tokens=1493; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:47:26.776309+00:00 condition start evaluation/gsm8k/gsm8k-test-1097/plain_ar
+2026-11-01T01:47:26.800760+00:00 gsm8k-test-1097 plain_ar: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=421.2s
+2026-11-01T01:47:43.094873+00:00 gsm8k-test-1097 plain_ar: body=1537/32768; events=0; injections=0; context=1619; elapsed=16.3s ETA(cap)=331.3s
+2026-11-01T01:47:58.325530+00:00 gsm8k-test-1097 plain_ar: body=2945/32768; events=0; injections=0; context=3027; elapsed=31.5s ETA(cap)=319.4s
+2026-11-01T01:48:14.498585+00:00 gsm8k-test-1097 plain_ar: body=4382/32768; events=0; injections=0; context=4464; elapsed=47.7s ETA(cap)=309.1s
+2026-11-01T01:48:17.379212+00:00 completed gsm8k-test-1097: correct=True; seconds=50.60; body_tokens=4633; forward_tokens=4715; embedding_seconds=0.00; timing_complete=True
+2026-11-01T01:48:17.379665+00:00 condition start evaluation/gsm8k/gsm8k-test-740/plain_ar
+2026-11-01T01:48:17.404692+00:00 gsm8k-test-740 plain_ar: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=436.1s
+2026-11-01T01:48:28.597420+00:00 completed gsm8k-test-740: correct=True; seconds=11.22; body_tokens=1054; forward_tokens=1144; embedding_seconds=0.00; timing_complete=True

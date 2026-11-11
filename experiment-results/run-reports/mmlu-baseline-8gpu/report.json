@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-31T22:07:00.611632+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory.",
+    "Case seconds include generation, auxiliary work and case-level overhead, but exclude model loading and final audits. They sum worker time, not parallel elapsed wall time. Resumed partial cases are excluded from paired timing; legacy timing provenance may be unknown. Different output lengths affect tokens/s. Forward tokens are logical work, not GPU FLOPs."
+  ],
+  "own": {
+    "baseline": {
+      "all": {
+        "accuracy": 0.809428856288278,
+        "body_tokens": 43307845,
+        "correct": 11366,
+        "fork_events": 0,
+        "n": 14042,
+        "performance": {
+          "body_tokens": 43207298,
+          "body_tokens_per_second": 90.52295439945857,
+          "case_seconds": 477307.6429800929,
+          "mean_case_seconds": 34.03991178006653,
+          "median_case_seconds": 26.583701900904998,
+          "n": 14042,
+          "resumed_excluded_n": 20,
+          "timed_n": 14022,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 14039
+      },
+      "mmlu": {
+        "accuracy": 0.809428856288278,
+        "body_tokens": 43307845,
+        "correct": 11366,
+        "fork_events": 0,
+        "n": 14042,
+        "performance": {
+          "body_tokens": 43207298,
+          "body_tokens_per_second": 90.52295439945857,
+          "case_seconds": 477307.6429800929,
+          "mean_case_seconds": 34.03991178006653,
+          "median_case_seconds": 26.583701900904998,
+          "n": 14042,
+          "resumed_excluded_n": 20,
+          "timed_n": 14022,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 14039
+      }
+    }
+  },
+  "paired": {
+    "all": {
+      "accuracy": {
+        "baseline": 0.809428856288278
+      },
+      "correct": {
+        "baseline": 11366
+      },
+      "n": 14042
+    },
+    "mmlu": {
+      "accuracy": {
+        "baseline": 0.809428856288278
+      },
+      "correct": {
+        "baseline": 11366
+      },
+      "n": 14042
+    }
+  },
+  "performance_vs_baseline": {},
+  "phase_wall_seconds": {
+    "baseline": 175734.0211570263
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793307640.284587
+    }
+  },
+  "smoke": false,
+  "vs_baseline": {}
+}

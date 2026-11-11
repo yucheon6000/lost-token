@@ -1,0 +1,471 @@
+run,task,arm,id,expected_answer,model_answer,failure_kind,thinking_complete,body_tokens
+aime25-main-baseline-8gpu,aime25,baseline,aime25-20,336,,no extracted final answer,False,32768
+aime25-main-baseline-8gpu,aime25,baseline,aime25-15,735,,no extracted final answer,False,32768
+aime25-main-baseline-8gpu,aime25,baseline,aime25-24,149,145,wrong extracted answer,True,24654
+aime25-main-baseline-8gpu,aime25,baseline,aime25-28,248,,no extracted final answer,False,32768
+aime25-main-baseline-8gpu,aime25,baseline,aime25-14,60,,no extracted final answer,False,32768
+aime25-main-baseline-8gpu,aime25,baseline,aime25-13,204,,no extracted final answer,False,32768
+aime25-main-ours-8gpu,aime25,ours,aime25-30,240,,no extracted final answer,False,32768
+aime25-main-ours-8gpu,aime25,ours,aime25-15,735,147,wrong extracted answer,True,23719
+aime25-main-ours-8gpu,aime25,ours,aime25-9,62,,no extracted final answer,False,32768
+aime25-main-ours-8gpu,aime25,ours,aime25-14,60,63,wrong extracted answer,True,31188
+aime25-main-ours-8gpu,aime25,ours,aime25-13,204,,no extracted final answer,False,32768
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec0Y0PY1lx8aZPZh,D,A,wrong extracted answer,True,12495
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec42yAdAZnQgoibP,C,D,wrong extracted answer,True,9884
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec6DU0HQcUBaVwHD,B,A,wrong extracted answer,True,11126
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec8CavTqDWHF8KJj,C,D,wrong extracted answer,True,2537
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recAYkd96NNuNl1Ei,B,A,wrong extracted answer,True,5873
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recCg6VIPmIj5aQ2x,B,A,wrong extracted answer,True,10780
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recNu3MXkvWUzHZr9,A,,no extracted final answer,True,10109
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recOkA2zsy4GSMD9R,C,B,wrong extracted answer,True,19688
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUAzHaz2w1b1Ih8,D,C,wrong extracted answer,True,6372
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUIKopRfOBy6lOx,A,,no extracted final answer,True,20392
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUOePh79cp4T2Bg,A,D,wrong extracted answer,True,10511
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recV1dB3itJjvXzLx,A,D,wrong extracted answer,True,6612
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recWgLWFncNSime5A,C,B,wrong extracted answer,True,15296
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYI852ugl1pFhAv,A,C,wrong extracted answer,True,6710
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZ8cm5DvTme4AI4,A,B,wrong extracted answer,True,7690
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZWeueB7lSPR6wN,C,B,wrong extracted answer,True,10615
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reccc0j9BzteLsAB5,C,D,wrong extracted answer,True,12099
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recclFbsjbaiVVnnV,C,B,wrong extracted answer,True,14295
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rechgQucGlrnt8KRV,B,,no extracted final answer,True,5922
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recihePFulRgNKsIn,B,D,wrong extracted answer,True,8443
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reckEnrOPFT9Ru7tW,B,A,wrong extracted answer,True,14661
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recmP8wLov7D0Npq6,A,B,wrong extracted answer,True,11609
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recooG6bivTUJpDBz,A,B,wrong extracted answer,True,11405
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recrHBEJJoDTV05JR,A,C,wrong extracted answer,True,16190
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recrNbtgTNoabJJi6,D,B,wrong extracted answer,True,12204
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recs3PLPUEMiqg4P8,A,D,wrong extracted answer,True,17102
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recsOrgoWMrLoY31T,A,B,wrong extracted answer,True,14255
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recsibPli53Ona88K,D,B,wrong extracted answer,True,5317
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reczUoM8JsxU6pYxr,A,C,wrong extracted answer,True,9064
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec1Ey0Fnt2RhnsmU,D,A,wrong extracted answer,True,8632
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec4J0X5OLsY61yQm,D,,no extracted final answer,True,10960
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recJZ3QEfRKjYw9a7,D,A,wrong extracted answer,True,14620
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recK9F5aqdaybl8bb,B,C,wrong extracted answer,True,12321
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recO3hvCWRGiG0odN,B,,no extracted final answer,True,13608
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recTQMrJxdpZhDCBk,B,C,wrong extracted answer,True,17960
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recTns0XOb6qlewR9,B,,no extracted final answer,True,14086
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recWSIn23pglAdv4f,C,B,wrong extracted answer,True,16187
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZqmTknlPHIG2Ud,A,C,wrong extracted answer,True,5304
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recakFKZioXUuldcd,D,A,wrong extracted answer,True,11925
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recj7NQlHcKW1rRME,D,B,wrong extracted answer,True,5155
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recjP3AhnRaZ44JIR,B,C,wrong extracted answer,True,18242
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recjqhQe22OY2P2H0,D,,no extracted final answer,True,3915
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recnTTKdBzfuoZ7w7,B,D,wrong extracted answer,True,19024
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recoKZlD5PwM9zbk6,A,D,wrong extracted answer,True,9720
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recr71WEmXEEMzRgq,A,,no extracted final answer,True,8765
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recrbsjWWBqkjFmS2,D,B,wrong extracted answer,True,2988
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rectkWWgfYZ4ZsJIN,D,,no extracted final answer,True,10379
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rectlyG9pCAAuWhoB,D,A,wrong extracted answer,True,11018
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recuyeuT5rQ6qDt8F,C,B,wrong extracted answer,True,13328
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recwhMjaIdnLkGTgN,C,B,wrong extracted answer,True,8231
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec0LlchAeJwY28ZY,B,D,wrong extracted answer,True,11511
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec1BjNQici8oD53a,D,C,wrong extracted answer,True,9808
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec47oNPXudlTIk4y,A,B,wrong extracted answer,True,8079
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec5UhR77onQftbyk,B,A,wrong extracted answer,True,9566
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec6sE2CRtD4drtHg,D,,no extracted final answer,True,10556
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recBeOYL2vJeESmQ5,C,D,wrong extracted answer,True,5561
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recGFNRVl1qBZGwyU,B,A,wrong extracted answer,True,10687
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recHDth5xRxp73oig,C,D,wrong extracted answer,True,9471
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recIm3gjvmPQiEZih,D,C,wrong extracted answer,True,12930
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recJxK8wQDqG7ESSh,C,,no extracted final answer,True,7998
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recKeCj07mR2qOvCH,D,B,wrong extracted answer,True,4388
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recOj90oKbiyjLcBd,A,,no extracted final answer,True,11361
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recQEFX6mtMj6XQvA,C,,no extracted final answer,True,11635
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZdZxsN0AxDx0pB,C,A,wrong extracted answer,True,9551
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recfVza57C5sOngtR,A,,no extracted final answer,True,3972
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recg02EmYPFs5srwA,D,B,wrong extracted answer,True,5643
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recgXxEgllSGEpELP,D,C,wrong extracted answer,True,14409
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recigLZFBov8HBmLt,A,,no extracted final answer,True,14103
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reckDfAxmtIGb9keo,C,,no extracted final answer,True,15993
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reckoUYCML0XkjPZD,B,D,wrong extracted answer,True,12487
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reclyy1tNCYpnp0UW,D,B,wrong extracted answer,True,6501
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recmzeT93BlfOcNzr,C,B,wrong extracted answer,True,10974
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recnjViFrqlZNL3fY,C,A,wrong extracted answer,True,8991
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recp4pRVAOeNYM1hc,C,A,wrong extracted answer,True,4366
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recr3VHM4zYf6dMFY,D,B,wrong extracted answer,True,12312
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recr6XgkQQXYycWDm,C,B,wrong extracted answer,True,4873
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recw5EQAukB4ep12V,D,,no extracted final answer,True,6713
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec2fsnzUuvNtUYK8,B,,no extracted final answer,True,9522
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec3VinRRdXScdEMI,D,A,wrong extracted answer,True,5407
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recBtVK8rBVtIlXDq,A,C,wrong extracted answer,True,10508
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recDytVnNYZe2HuUU,D,,no extracted final answer,True,8389
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recF89DhiduLI4cNl,B,A,wrong extracted answer,True,7465
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recG0sothgt3COU4K,D,,no extracted final answer,True,11990
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUdj6ZqNvWNlRKq,D,A,wrong extracted answer,True,13884
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYA3LPsCvF1fTMI,B,D,wrong extracted answer,True,9100
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYE7Rss564wKABO,B,C,wrong extracted answer,True,4634
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZSGUkn56v9kEp1,C,B,wrong extracted answer,True,13291
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZt4x514UQNnsgy,C,D,wrong extracted answer,True,12429
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reccVBrYdwsB84fGy,C,A,wrong extracted answer,True,9492
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-receo3UUzRvWCqyfA,B,D,wrong extracted answer,True,11457
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recfsHcxGI288m9ZB,D,B,wrong extracted answer,True,10742
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rech8ob03J69QNAxU,B,C,wrong extracted answer,True,10183
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rechKl68Uc6H7vU0N,D,,no extracted final answer,True,17158
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rechxBmTTAWysQUYs,D,C,wrong extracted answer,True,11752
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reck4G4xxv3YnpbtQ,A,C,wrong extracted answer,True,11361
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reclx98uq6gUM42UR,B,,no extracted final answer,True,5325
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recoOD3zBJsXtLjBv,D,B,wrong extracted answer,True,12002
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recoyQGj2M3vLkpbk,C,D,wrong extracted answer,True,12332
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recuzuROrJQs1qQvR,C,B,wrong extracted answer,True,10855
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recya83GDvr1UYwEp,C,B,wrong extracted answer,True,15845
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec2UlKqC6RFHdcro,A,,no extracted final answer,True,9312
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec2xN0SZSiyfKb4E,B,C,wrong extracted answer,True,13456
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec9ubQihAh6g9bft,C,B,wrong extracted answer,True,5290
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recG1ljJQcVy6CbSl,B,,no extracted final answer,True,6835
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recGhzQ1AsM0pBO0a,B,,no extracted final answer,True,15167
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recJtBNF0wTwJS1eC,A,D,wrong extracted answer,True,6723
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recKtFwQZd4n2RZCk,B,D,wrong extracted answer,True,10864
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recN4DY9Q5V03glmQ,B,,no extracted final answer,True,19392
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recNAiPUKOulQbKVP,A,,no extracted final answer,True,7188
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recOKE5XNz2i1eDEm,D,C,wrong extracted answer,True,5725
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recQ0eDZk1sxnKVqh,D,C,wrong extracted answer,True,2473
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recR15XgGZlVy6kdJ,D,,no extracted final answer,True,15156
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUZuPWogSLnPBaw,C,A,wrong extracted answer,True,6327
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recWrxK7TzlOf9cSB,D,B,wrong extracted answer,True,11692
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZFq7Xrv9643qdd,D,,no extracted final answer,True,11967
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recb4cGsC6BJUCU3V,D,C,wrong extracted answer,True,12235
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recbMrWKlgp9uWgUK,D,B,wrong extracted answer,True,11497
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recftca7pyp2TCeAG,B,D,wrong extracted answer,True,2619
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reciMW2VYi4jClmxk,A,B,wrong extracted answer,True,11279
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reckwNMHJYPkcbXNZ,B,D,wrong extracted answer,True,9731
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recmwwQJnx7ll7bqL,D,,no extracted final answer,True,4243
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recn3NhOhqAPLda16,C,A,wrong extracted answer,True,12905
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recuXwnZ1Nq5uRiu3,C,A,wrong extracted answer,True,12808
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recxAsuTcMtvUUa7Y,C,A,wrong extracted answer,True,3750
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec0wsMJZgWo7ICJm,C,B,wrong extracted answer,True,6988
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec0yTRmO1o1xCA6H,B,D,wrong extracted answer,True,4164
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec1AAE9RApPLqeqt,D,C,wrong extracted answer,True,13581
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec2ZTsqazBZ3LTWZ,D,A,wrong extracted answer,True,12715
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec44cTEfuCXCkHVs,A,,no extracted final answer,True,15511
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recBGxVySx1pkrO1i,B,A,wrong extracted answer,True,14685
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recEOfvRabVkK4MTg,B,C,wrong extracted answer,True,5493
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recGGT3pm4I7J2GXy,A,D,wrong extracted answer,True,7318
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recGee5m84dg5FZkc,A,B,wrong extracted answer,True,12658
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recMicVBcqy1xM1jq,A,B,wrong extracted answer,True,7673
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recNPa63g37t1COiO,B,A,wrong extracted answer,True,9678
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recPSTGXK3P39yNYT,C,,no extracted final answer,True,5382
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recQiVCk4JA9236Nw,C,D,wrong extracted answer,True,3266
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recTKiWOdpVoUYQ2v,A,C,wrong extracted answer,True,10167
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUBgVlkKzcRPDdK,B,D,wrong extracted answer,True,7511
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYG3SqTUBlu7jvf,B,,no extracted final answer,True,14140
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recaeEWE23avuB6do,D,,no extracted final answer,True,12413
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recf6ayQmL1SxKbvW,C,D,wrong extracted answer,True,3475
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recks5wKHpwzraAyO,A,B,wrong extracted answer,True,5155
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recmI7EiLv72PxmYK,C,,no extracted final answer,True,7378
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reco8WSc71p8zAv4q,B,A,wrong extracted answer,True,18085
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recqcypy0BOtxk1Vr,A,D,wrong extracted answer,True,7790
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recuIk9Y5lMFea9vK,A,B,wrong extracted answer,True,4884
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec0OlNe6zQJU1ps4,A,B,wrong extracted answer,True,6670
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec1oj2DveQWl9Rpw,C,,no extracted final answer,True,10828
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec8nshandHARTkrg,A,D,wrong extracted answer,True,11814
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recA1i5ZAh0Uzclxp,B,C,wrong extracted answer,True,15313
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recDDxpS9s8cwkqfq,C,D,wrong extracted answer,True,8846
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recEmTBhx2hgw6tPQ,B,D,wrong extracted answer,True,9720
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recFperaY3GpdU6oG,D,B,wrong extracted answer,True,14802
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recNfEV6AjS2ZFn5W,C,B,wrong extracted answer,True,16607
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recOEBk1oclk8qChi,A,,no extracted final answer,True,10855
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUc29lMDBEvurYo,B,D,wrong extracted answer,True,19010
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recX9sU1D7BxJNXyI,B,D,wrong extracted answer,True,13501
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recXlt6DeL8i1eeTO,D,B,wrong extracted answer,True,6901
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYbzsr1pnDeSiEi,C,B,wrong extracted answer,True,18523
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reca44yABeO2fx7UB,B,C,wrong extracted answer,True,10741
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recbjh3mzGhAqPUhl,A,C,wrong extracted answer,True,12055
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reccGBrJaZk9DWZxk,C,D,wrong extracted answer,True,16235
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reciOUAwJv4qTlXxs,D,A,wrong extracted answer,True,3558
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reclHtd90GlPQJHXg,D,,no extracted final answer,True,7466
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reclLfdRGRmiI6CO5,D,C,wrong extracted answer,True,11087
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recqGD3fxPCI59vPQ,D,,no extracted final answer,True,6154
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recqqFgbShO7tyavI,D,,no extracted final answer,True,12877
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recuhnGik8v2nOK3g,B,C,wrong extracted answer,True,9990
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recvBj7jG98Moe76N,A,B,wrong extracted answer,True,12861
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recvI8InxQBeMZR0J,A,D,wrong extracted answer,True,6411
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reczjcMtrB1YGS2fO,C,B,wrong extracted answer,True,7166
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec055vn3qEqKHHTc,A,C,wrong extracted answer,True,6833
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec06pnAkLOr2t2mp,A,,no extracted final answer,True,7619
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec2mwDP38Ocj5kO9,C,B,wrong extracted answer,True,7525
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-rec7qmSnbud4FHSqL,C,B,wrong extracted answer,True,6032
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recDj2Y2BbtV02Wv5,D,C,wrong extracted answer,True,7017
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recEO0cONj7M4p94J,A,D,wrong extracted answer,True,7292
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recG5Bc2ipyC4JwZN,C,D,wrong extracted answer,True,5723
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recH879YiAi6dLCSy,A,B,wrong extracted answer,True,9339
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recH8lrIXfvsjKMv2,B,D,wrong extracted answer,True,11623
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recK3Xnphg6jVxIHv,D,,no extracted final answer,True,8267
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recNGovj5Pv0yxbfx,C,B,wrong extracted answer,True,4276
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recQM36StGVD7wwP2,C,A,wrong extracted answer,True,10301
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recQWH5bK8Z9btsrr,C,D,wrong extracted answer,True,13475
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recSl0g9xnRRB2e0L,A,C,wrong extracted answer,True,15426
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recTVnk0jyigx3o9P,D,C,wrong extracted answer,True,9597
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recUu8izzZlaTKwVD,A,C,wrong extracted answer,True,10965
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recVEXvhYxAhELVqB,D,B,wrong extracted answer,True,15371
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recVvpD8miVjmmyfe,B,A,wrong extracted answer,True,18854
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recWSaYTSv3l4D0HY,A,D,wrong extracted answer,True,3911
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recYCMJWH7IpcdqwE,A,D,wrong extracted answer,True,14945
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recZZpGHxfDeYd0XV,D,A,wrong extracted answer,True,11534
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recb80OwMgNnceA9t,B,A,wrong extracted answer,True,9633
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recfTlTMjZBuOducT,B,C,wrong extracted answer,True,19211
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reckyB637GAnW0uRM,D,B,wrong extracted answer,True,10048
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recsPlJ0dQUiWr1fh,D,C,wrong extracted answer,True,4658
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recsfV2VlPdl7SLR6,C,D,wrong extracted answer,True,15275
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-recvZlMbpPz0yLDle,C,B,wrong extracted answer,True,15428
+gpqa-main-baseline-8gpu,gpqa,baseline,gpqa-reczQ4I0VpENdMtIj,B,D,wrong extracted answer,True,7161
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec0Y0PY1lx8aZPZh,D,C,wrong extracted answer,True,12437
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec42yAdAZnQgoibP,C,D,wrong extracted answer,True,10024
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec6DU0HQcUBaVwHD,B,D,wrong extracted answer,True,6161
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec8CavTqDWHF8KJj,C,D,wrong extracted answer,True,2662
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recAYkd96NNuNl1Ei,B,A,wrong extracted answer,True,4948
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recC9TQpdpRVRFzXO,C,,no extracted final answer,True,2911
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recCg6VIPmIj5aQ2x,B,C,wrong extracted answer,True,9414
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recHNRejvl3n0Fr7C,C,,no extracted final answer,True,9911
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUAzHaz2w1b1Ih8,D,C,wrong extracted answer,True,4832
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUIKopRfOBy6lOx,A,,no extracted final answer,True,15810
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUOePh79cp4T2Bg,A,D,wrong extracted answer,True,8841
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recWgLWFncNSime5A,C,B,wrong extracted answer,True,10990
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recYI852ugl1pFhAv,A,C,wrong extracted answer,True,6428
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZ8cm5DvTme4AI4,A,B,wrong extracted answer,True,6613
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZWeueB7lSPR6wN,C,B,wrong extracted answer,True,10425
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reccc0j9BzteLsAB5,C,D,wrong extracted answer,True,11644
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recclFbsjbaiVVnnV,C,,no extracted final answer,True,10910
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recihePFulRgNKsIn,B,D,wrong extracted answer,True,7116
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recmP8wLov7D0Npq6,A,B,wrong extracted answer,True,9460
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recooG6bivTUJpDBz,A,B,wrong extracted answer,True,8854
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recrHBEJJoDTV05JR,A,B,wrong extracted answer,True,13829
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recrNbtgTNoabJJi6,D,B,wrong extracted answer,True,8629
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recs3PLPUEMiqg4P8,A,D,wrong extracted answer,True,14253
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recsOrgoWMrLoY31T,A,B,wrong extracted answer,True,13267
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recsibPli53Ona88K,D,B,wrong extracted answer,True,4400
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reczUoM8JsxU6pYxr,A,D,wrong extracted answer,True,8724
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec4J0X5OLsY61yQm,D,C,wrong extracted answer,True,8862
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recINSFEYLCyyd08m,C,,no extracted final answer,True,10528
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recJZ3QEfRKjYw9a7,D,A,wrong extracted answer,True,8722
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recK9F5aqdaybl8bb,B,D,wrong extracted answer,True,9579
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recMGSnbWcPCIgYTN,D,C,wrong extracted answer,True,9183
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recO3hvCWRGiG0odN,B,D,wrong extracted answer,True,12450
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recTQMrJxdpZhDCBk,B,C,wrong extracted answer,True,14702
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recTns0XOb6qlewR9,B,,no extracted final answer,True,13572
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recWSIn23pglAdv4f,C,D,wrong extracted answer,True,10459
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZqmTknlPHIG2Ud,A,D,wrong extracted answer,True,5540
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recakFKZioXUuldcd,D,A,wrong extracted answer,True,9363
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recgCB0HSVt2IslDN,C,A,wrong extracted answer,True,10618
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reciHTTRFPWrbhWXA,A,,no extracted final answer,True,4963
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recj7NQlHcKW1rRME,D,B,wrong extracted answer,True,8770
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recl1UtgTVKishAq4,B,,no extracted final answer,True,10338
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recnTTKdBzfuoZ7w7,B,A,wrong extracted answer,True,24577
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recnawZPumSCLMVgp,A,B,wrong extracted answer,True,11906
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recoKZlD5PwM9zbk6,A,D,wrong extracted answer,True,6866
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recpJmTOXx6T48nDJ,D,,no extracted final answer,True,6116
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recrbsjWWBqkjFmS2,D,B,wrong extracted answer,True,3541
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rectkWWgfYZ4ZsJIN,D,B,wrong extracted answer,True,9321
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rectlyG9pCAAuWhoB,D,B,wrong extracted answer,True,9521
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recuyeuT5rQ6qDt8F,C,B,wrong extracted answer,True,12547
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recwhMjaIdnLkGTgN,C,B,wrong extracted answer,True,6259
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recxWirvTOyWz2zja,A,,no extracted final answer,True,7085
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec0LlchAeJwY28ZY,B,D,wrong extracted answer,True,16750
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec1BjNQici8oD53a,D,,no extracted final answer,True,11202
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec47oNPXudlTIk4y,A,B,wrong extracted answer,True,8534
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec5UhR77onQftbyk,B,A,wrong extracted answer,True,8633
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recBeOYL2vJeESmQ5,C,A,wrong extracted answer,True,4893
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recBhnXrUyTJ6WHIR,A,B,wrong extracted answer,True,7273
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recD8oX1KevFbl7bL,B,D,wrong extracted answer,True,15453
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recGFNRVl1qBZGwyU,B,D,wrong extracted answer,True,10919
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recHDth5xRxp73oig,C,D,wrong extracted answer,True,4265
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recIm3gjvmPQiEZih,D,B,wrong extracted answer,True,10748
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recKeCj07mR2qOvCH,D,B,wrong extracted answer,True,4679
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recOj90oKbiyjLcBd,A,,no extracted final answer,True,11573
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZ13cwgDQf9jRd9,D,B,wrong extracted answer,True,12767
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZdZxsN0AxDx0pB,C,A,wrong extracted answer,True,8355
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recbWK7TxyPMNhPIb,D,B,wrong extracted answer,True,7140
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recgXxEgllSGEpELP,D,C,wrong extracted answer,True,11850
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recigLZFBov8HBmLt,A,C,wrong extracted answer,True,12355
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recjJ54TXc04enRkZ,B,D,wrong extracted answer,True,11705
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reckoUYCML0XkjPZD,B,D,wrong extracted answer,True,9473
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reclyy1tNCYpnp0UW,D,B,wrong extracted answer,True,6979
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recmzeT93BlfOcNzr,C,B,wrong extracted answer,True,8587
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recnjViFrqlZNL3fY,C,A,wrong extracted answer,True,7162
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recoiTJPGUmzAkief,C,,no extracted final answer,True,6670
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recp4pRVAOeNYM1hc,C,A,wrong extracted answer,True,4388
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recr3VHM4zYf6dMFY,D,B,wrong extracted answer,True,9328
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recr6XgkQQXYycWDm,C,B,wrong extracted answer,True,6362
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec2fsnzUuvNtUYK8,B,C,wrong extracted answer,True,7744
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec3VinRRdXScdEMI,D,A,wrong extracted answer,True,5211
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recBtVK8rBVtIlXDq,A,B,wrong extracted answer,True,6370
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recF89DhiduLI4cNl,B,A,wrong extracted answer,True,5517
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recG0sothgt3COU4K,D,B,wrong extracted answer,True,10791
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recLAgwx9vbgB5EHk,B,A,wrong extracted answer,True,9264
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUdj6ZqNvWNlRKq,D,A,wrong extracted answer,True,12294
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recYA3LPsCvF1fTMI,B,C,wrong extracted answer,True,9703
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recYE7Rss564wKABO,B,C,wrong extracted answer,True,5837
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZSGUkn56v9kEp1,C,B,wrong extracted answer,True,11460
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZt4x514UQNnsgy,C,D,wrong extracted answer,True,8709
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recc4ENraOoV1KODF,C,B,wrong extracted answer,True,20148
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reccVBrYdwsB84fGy,C,A,wrong extracted answer,True,10254
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-receo3UUzRvWCqyfA,B,D,wrong extracted answer,True,9278
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recf4iXKY773NYRFw,D,,no extracted final answer,True,9983
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recfsHcxGI288m9ZB,D,A,wrong extracted answer,True,10579
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recguj40XQkQq1l7Q,B,,no extracted final answer,True,4735
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rechxBmTTAWysQUYs,D,C,wrong extracted answer,True,8943
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reciuppdQde4FGX1z,A,,no extracted final answer,True,8764
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reck4G4xxv3YnpbtQ,A,C,wrong extracted answer,True,10535
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recoOD3zBJsXtLjBv,D,B,wrong extracted answer,True,7070
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recuzuROrJQs1qQvR,C,B,wrong extracted answer,True,8950
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recya83GDvr1UYwEp,C,D,wrong extracted answer,True,12652
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec2x0OAFHVNGxCgA,B,,no extracted final answer,True,11259
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec63khLVM4kK3sW3,B,A,wrong extracted answer,True,12222
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recIlghoOw5VbY4Zh,A,B,wrong extracted answer,True,9038
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recJtBNF0wTwJS1eC,A,D,wrong extracted answer,True,8073
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recKtFwQZd4n2RZCk,B,,no extracted final answer,True,10825
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recL9MFV5zmdlle5T,D,,no extracted final answer,True,8089
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recN4DY9Q5V03glmQ,B,D,wrong extracted answer,True,12811
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recQ0eDZk1sxnKVqh,D,C,wrong extracted answer,True,2171
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recR15XgGZlVy6kdJ,D,C,wrong extracted answer,True,10797
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZFq7Xrv9643qdd,D,A,wrong extracted answer,True,8816
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recb4cGsC6BJUCU3V,D,C,wrong extracted answer,True,11568
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recbMrWKlgp9uWgUK,D,A,wrong extracted answer,True,9484
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recftca7pyp2TCeAG,B,D,wrong extracted answer,True,1708
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reciMW2VYi4jClmxk,A,B,wrong extracted answer,True,8282
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recm7S5Gq7FWCgaHZ,A,B,wrong extracted answer,True,11594
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recn3NhOhqAPLda16,C,,no extracted final answer,True,9573
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recuXwnZ1Nq5uRiu3,C,A,wrong extracted answer,True,7697
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recxAsuTcMtvUUa7Y,C,A,wrong extracted answer,True,2915
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec0wsMJZgWo7ICJm,C,B,wrong extracted answer,True,6086
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec0yTRmO1o1xCA6H,B,D,wrong extracted answer,True,4023
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec1AAE9RApPLqeqt,D,C,wrong extracted answer,True,12486
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec44cTEfuCXCkHVs,A,D,wrong extracted answer,True,7720
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recBXlqrZUCR897It,C,D,wrong extracted answer,True,10834
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recEOfvRabVkK4MTg,B,C,wrong extracted answer,True,5098
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recEitMlu2rOnMmkn,D,C,wrong extracted answer,True,9293
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recFaL6j8UMhutXrc,D,C,wrong extracted answer,True,14756
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recGGT3pm4I7J2GXy,A,B,wrong extracted answer,True,3490
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recGee5m84dg5FZkc,A,D,wrong extracted answer,True,9148
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recK3b4oZYRiKNVaA,A,,no extracted final answer,True,6788
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recNPa63g37t1COiO,B,A,wrong extracted answer,True,7894
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recOKwCrRbyEWoYKe,B,D,wrong extracted answer,True,15556
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recPzW1WqRnPs57D6,B,,no extracted final answer,True,7799
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recQiVCk4JA9236Nw,C,D,wrong extracted answer,True,3603
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recTKiWOdpVoUYQ2v,A,C,wrong extracted answer,True,8631
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUBgVlkKzcRPDdK,B,A,wrong extracted answer,True,6175
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recYG3SqTUBlu7jvf,B,,no extracted final answer,True,13486
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recaeEWE23avuB6do,D,C,wrong extracted answer,True,12352
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recf6ayQmL1SxKbvW,C,D,wrong extracted answer,True,3314
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reckl6PkaEMWM50yZ,C,A,wrong extracted answer,True,12149
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recks5wKHpwzraAyO,A,B,wrong extracted answer,True,4930
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recmI7EiLv72PxmYK,C,,no extracted final answer,True,6456
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reco8WSc71p8zAv4q,B,A,wrong extracted answer,True,11806
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recqP4J5FzKIlQyB9,B,A,wrong extracted answer,True,12492
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recqcypy0BOtxk1Vr,A,D,wrong extracted answer,True,5027
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recuIk9Y5lMFea9vK,A,B,wrong extracted answer,True,5642
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec0OlNe6zQJU1ps4,A,B,wrong extracted answer,True,12518
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec1oj2DveQWl9Rpw,C,A,wrong extracted answer,True,7407
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec8nshandHARTkrg,A,C,wrong extracted answer,True,9153
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recA1i5ZAh0Uzclxp,B,D,wrong extracted answer,True,12342
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recDDxpS9s8cwkqfq,C,,no extracted final answer,True,6349
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recEmTBhx2hgw6tPQ,B,D,wrong extracted answer,True,7965
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recFperaY3GpdU6oG,D,B,wrong extracted answer,True,9306
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recIIMmhxoNeJkgye,B,,no extracted final answer,True,10865
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recLrRirj7iXoB0rU,B,A,wrong extracted answer,True,10735
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recNfEV6AjS2ZFn5W,C,B,wrong extracted answer,True,10483
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recOEBk1oclk8qChi,A,C,wrong extracted answer,True,7825
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recRnD2tQcPDMDxWY,C,,no extracted final answer,True,6283
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUc29lMDBEvurYo,B,,no extracted final answer,True,12261
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recX9sU1D7BxJNXyI,B,C,wrong extracted answer,True,7379
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recXlt6DeL8i1eeTO,D,C,wrong extracted answer,True,3320
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recYbzsr1pnDeSiEi,C,,no extracted final answer,True,14186
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reca44yABeO2fx7UB,B,C,wrong extracted answer,True,11851
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recbjh3mzGhAqPUhl,A,C,wrong extracted answer,True,12439
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reccGBrJaZk9DWZxk,C,B,wrong extracted answer,True,12610
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reccrAgUClrIVaBYa,C,A,wrong extracted answer,True,10912
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reciOUAwJv4qTlXxs,D,A,wrong extracted answer,True,3626
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-reclLfdRGRmiI6CO5,D,C,wrong extracted answer,True,12471
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recn7hU0fpZBOb9eo,B,D,wrong extracted answer,True,12822
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recqqFgbShO7tyavI,D,A,wrong extracted answer,True,8684
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recuhnGik8v2nOK3g,B,C,wrong extracted answer,True,10994
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recvBj7jG98Moe76N,A,B,wrong extracted answer,True,10790
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recvI8InxQBeMZR0J,A,D,wrong extracted answer,True,6005
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recwlwlcPvXVNPmvl,C,,no extracted final answer,True,5224
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec055vn3qEqKHHTc,A,D,wrong extracted answer,True,7465
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec06pnAkLOr2t2mp,A,,no extracted final answer,True,5516
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec2mwDP38Ocj5kO9,C,,no extracted final answer,True,5059
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec5rjeLsEq5Fg7Oj,A,C,wrong extracted answer,True,8081
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-rec7qmSnbud4FHSqL,C,B,wrong extracted answer,True,4893
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recCU7eV1ixcXGCHm,D,A,wrong extracted answer,True,13207
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recDj2Y2BbtV02Wv5,D,C,wrong extracted answer,True,7155
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recEO0cONj7M4p94J,A,D,wrong extracted answer,True,6407
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recG5Bc2ipyC4JwZN,C,D,wrong extracted answer,True,7993
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recH879YiAi6dLCSy,A,,no extracted final answer,True,7492
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recH8lrIXfvsjKMv2,B,D,wrong extracted answer,True,9788
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recIIUynGGpsGEYuo,D,,no extracted final answer,True,4615
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recNGovj5Pv0yxbfx,C,A,wrong extracted answer,True,5759
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recQM36StGVD7wwP2,C,A,wrong extracted answer,True,11373
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recQWH5bK8Z9btsrr,C,D,wrong extracted answer,True,10041
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recSl0g9xnRRB2e0L,A,B,wrong extracted answer,True,12125
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recTVnk0jyigx3o9P,D,C,wrong extracted answer,True,8866
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUVWz7kU1KFTc5G,D,B,wrong extracted answer,True,7457
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recUu8izzZlaTKwVD,A,C,wrong extracted answer,True,11488
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recVEXvhYxAhELVqB,D,A,wrong extracted answer,True,13943
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recVvpD8miVjmmyfe,B,C,wrong extracted answer,True,12843
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recWSaYTSv3l4D0HY,A,D,wrong extracted answer,True,3272
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recXvQ6gWAmyakrpD,B,,no extracted final answer,True,5327
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recZZpGHxfDeYd0XV,D,A,wrong extracted answer,True,14523
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recb2M22zaD3tL6Qc,D,A,wrong extracted answer,True,15143
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recqhfI2AdHd6MVew,C,D,wrong extracted answer,True,13504
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recsPlJ0dQUiWr1fh,D,C,wrong extracted answer,True,3760
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recsfV2VlPdl7SLR6,C,D,wrong extracted answer,True,12997
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recvZlMbpPz0yLDle,C,B,wrong extracted answer,True,12371
+gpqa-main-ours-8gpu,gpqa,ours,gpqa-recySCwROqoVpo0UG,A,D,wrong extracted answer,True,10307
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-16,6300,,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-17,2^{25} \cdot 26!,,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-7,\frac{9 \sqrt{23}}{23},,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-18,\frac{2025}{101},1825,wrong extracted answer,True,21866
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-13,105,,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-24,20,100,wrong extracted answer,True,30512
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-19,\frac{4}{9},\dfrac{2}{3},wrong extracted answer,True,30019
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-30,\sqrt{\frac{95}{24}},66,wrong extracted answer,True,31334
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-14,2304,,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-25,\sqrt{23}-2 \sqrt{3},,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-29,14+4\sqrt{37},,no extracted final answer,False,32768
+hmmt25-main-baseline-8gpu,hmmt25,baseline,hmmt25-20,\frac{448}{3},56,wrong extracted answer,True,29998
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-16,6300,,no extracted final answer,False,32768
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-17,2^{25} \cdot 26!,,no extracted final answer,False,32768
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-7,\frac{9 \sqrt{23}}{23},\frac{15}{8},wrong extracted answer,True,25795
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-15,200,202,wrong extracted answer,True,21055
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-18,\frac{2025}{101},1825,wrong extracted answer,True,26786
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-3,\frac{1}{576},576,wrong extracted answer,True,23050
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-13,105,4,wrong extracted answer,True,29261
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-24,20,100,wrong extracted answer,True,29226
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-11,56,8,wrong extracted answer,True,25010
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-19,\frac{4}{9},\dfrac{1}{5},wrong extracted answer,True,26556
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-30,\sqrt{\frac{95}{24}},12,wrong extracted answer,True,31644
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-6,\frac{1311}{2017},\dfrac{1}{2017},wrong extracted answer,True,24814
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-14,2304,12,wrong extracted answer,True,30129
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-25,\sqrt{23}-2 \sqrt{3},,no extracted final answer,False,32768
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-29,14+4\sqrt{37},,no extracted final answer,False,32768
+hmmt25-main-ours-8gpu,hmmt25,ours,hmmt25-20,\frac{448}{3},56,wrong extracted answer,True,23655
+math500-main-baseline-8gpu,math500,baseline,math500-test-geometry-465.json,120,150,wrong extracted answer,True,19049
+math500-main-baseline-8gpu,math500,baseline,math500-test-prealgebra-1646.json,80,130,wrong extracted answer,True,12587
+math500-main-baseline-8gpu,math500,baseline,math500-test-intermediate_algebra-1510.json,0,,no extracted final answer,True,32768
+math500-main-baseline-8gpu,math500,baseline,math500-test-precalculus-1056.json,288 \pi,x^2 + y^2 + z^2 \leq 36,wrong extracted answer,True,17324
+math500-main-baseline-8gpu,math500,baseline,math500-test-prealgebra-874.json,116,154,wrong extracted answer,True,22301
+math500-main-baseline-8gpu,math500,baseline,math500-test-intermediate_algebra-1454.json,70 \sqrt{2},,no extracted final answer,False,32768
+math500-main-baseline-8gpu,math500,baseline,math500-test-intermediate_algebra-2022.json,64,,no extracted final answer,True,32768
+math500-main-baseline-8gpu,math500,baseline,math500-test-geometry-434.json,28,118,wrong extracted answer,True,15695
+math500-main-baseline-8gpu,math500,baseline,math500-test-geometry-880.json,2\sqrt{113},,no extracted final answer,False,32768
+math500-main-baseline-8gpu,math500,baseline,math500-test-prealgebra-1865.json,12,12^{\text{th}},wrong extracted answer,True,4010
+math500-main-baseline-8gpu,math500,baseline,math500-test-prealgebra-914.json,75^\circ,105,wrong extracted answer,True,28813
+math500-main-baseline-8gpu,math500,baseline,math500-test-counting_and_probability-765.json,110,115,wrong extracted answer,True,8978
+math500-main-baseline-8gpu,math500,baseline,math500-test-intermediate_algebra-428.json,"3, 5, 7",7,wrong extracted answer,True,3743
+math500-main-baseline-8gpu,math500,baseline,math500-test-prealgebra-1128.json,64,48,wrong extracted answer,True,9202
+math500-main-baseline-8gpu,math500,baseline,math500-test-precalculus-768.json,3 \pm 2 \sqrt{2},"-3 - 2\sqrt{2}, -3 + 2\sqrt{2}, 3 - 2\sqrt{2}, 3 + 2\sqrt{2}",wrong extracted answer,True,18078
+math500-main-ours-8gpu,math500,ours,math500-test-geometry-465.json,120,150,wrong extracted answer,True,15331
+math500-main-ours-8gpu,math500,ours,math500-test-geometry-826.json,1\frac{4}{5},2\frac{3}{11},wrong extracted answer,True,28739
+math500-main-ours-8gpu,math500,ours,math500-test-prealgebra-1646.json,80,130,wrong extracted answer,True,11485
+math500-main-ours-8gpu,math500,ours,math500-test-geometry-711.json,1+2\sqrt{3},,no extracted final answer,False,32768
+math500-main-ours-8gpu,math500,ours,math500-test-prealgebra-874.json,116,154,wrong extracted answer,True,15591
+math500-main-ours-8gpu,math500,ours,math500-test-precalculus-625.json,\begin{pmatrix} 16/49 \\ 48/49 \\ 24/49 \end{pmatrix},\dfrac{8}{7},wrong extracted answer,True,4886
+math500-main-ours-8gpu,math500,ours,math500-test-precalculus-801.json,55^\circ,60,wrong extracted answer,True,28021
+math500-main-ours-8gpu,math500,ours,math500-test-geometry-434.json,28,62,wrong extracted answer,True,22166
+math500-main-ours-8gpu,math500,ours,math500-test-geometry-880.json,2\sqrt{113},2\sqrt{34},wrong extracted answer,True,24825
+math500-main-ours-8gpu,math500,ours,math500-test-prealgebra-1865.json,12,12^{\text{th}},wrong extracted answer,True,5172
+math500-main-ours-8gpu,math500,ours,math500-test-prealgebra-914.json,75^\circ,105,wrong extracted answer,True,22925
+math500-main-ours-8gpu,math500,ours,math500-test-counting_and_probability-765.json,110,115,wrong extracted answer,True,8266
+math500-main-ours-8gpu,math500,ours,math500-test-precalculus-768.json,3 \pm 2 \sqrt{2},"-3 - 2\sqrt{2},\ -3 + 2\sqrt{2},\ 3 - 2\sqrt{2},\ 3 + 2\sqrt{2}",wrong extracted answer,True,18038

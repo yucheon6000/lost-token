@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T21:30:53.236917+00:00",
+  "counts": {
+    "baseline": 413
+  },
+  "epoch": 1793309453.2369242,
+  "eta_seconds": 59127.653232860204,
+  "free_bytes": 6999957504,
+  "gpu_csv": "0, 10078 MiB, 95 %\n1, 13238 MiB, 96 %\n2, 9918 MiB, 96 %\n3, 9918 MiB, 93 %\n4, 9998 MiB, 97 %\n5, 10000 MiB, 96 %\n6, 10378 MiB, 96 %\n7, 10198 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 1.2044117450714111,
+      "checkpoints": {
+        "checkpoint_count": 1608,
+        "epoch": 1793309451.9861321,
+        "new": 1608,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T21:30:46.553199+00:00",
+        "case_id": "mmlu-professional_law-11743",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9258.91015625,
+          "peak_cuda_reserved_mib": 9370.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 1.3324306011199951,
+      "checkpoints": {
+        "checkpoint_count": 1432,
+        "epoch": 1793309451.8581536,
+        "new": 1432,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T21:30:31.221181+00:00",
+        "case_id": "mmlu-professional_law-11721",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.978515625,
+          "peak_cuda_reserved_mib": 12530.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 2.754056930541992,
+      "checkpoints": {
+        "checkpoint_count": 1507,
+        "epoch": 1793309450.4365606,
+        "new": 1507,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:30:37.938652+00:00",
+        "case_id": "mmlu-college_physics-1438",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 1.7948787212371826,
+      "checkpoints": {
+        "checkpoint_count": 1596,
+        "epoch": 1793309451.3957725,
+        "new": 1596,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:30:48.672419+00:00",
+        "case_id": "mmlu-miscellaneous-7393",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 1.0124356746673584,
+      "checkpoints": {
+        "checkpoint_count": 1564,
+        "epoch": 1793309452.1782453,
+        "new": 1564,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:29:45.428631+00:00",
+        "case_id": "mmlu-professional_law-11441",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9167.232421875,
+          "peak_cuda_reserved_mib": 9290.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.33246302604675293,
+      "checkpoints": {
+        "checkpoint_count": 1564,
+        "epoch": 1793309452.8582456,
+        "new": 1564,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:30:25.454704+00:00",
+        "case_id": "mmlu-moral_scenarios-9230",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9179.921875,
+          "peak_cuda_reserved_mib": 9292.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 4.900214195251465,
+      "checkpoints": {
+        "checkpoint_count": 1476,
+        "epoch": 1793309448.290523,
+        "new": 1476,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:30:27.701007+00:00",
+        "case_id": "mmlu-professional_medicine-12329",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9546.205078125,
+          "peak_cuda_reserved_mib": 9670.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.583132266998291,
+      "checkpoints": {
+        "checkpoint_count": 1589,
+        "epoch": 1793309450.6076336,
+        "new": 1589,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:30:27.559790+00:00",
+        "case_id": "mmlu-global_facts-2607",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9352.7265625,
+          "peak_cuda_reserved_mib": 9490.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

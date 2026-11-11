@@ -1,0 +1,45 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\sqrt{23}-2 \\sqrt{3}",
+          "id": "hmmt25-25",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 121,
+          "question": "Let $\\triangle A B C$ be an equilateral triangle with side length $6$. Let $P$ be a point inside triangle $\\triangle A B C$ such that $\\angle B P C=120^{\\circ}$. The circle with diameter $\\overline{A P}$ meets the circumcircle of $\\triangle A B C$ again at $X \\neq A$. Given that $A X=5$, compute $X P$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "14+4\\sqrt{37}",
+          "id": "hmmt25-29",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 109,
+          "question": "Let $A B C D$ be a rectangle with $B C=24$. Point $X$ lies inside the rectangle such that $\\angle A X B=90^{\\circ}$. Given that triangles $\\triangle A X D$ and $\\triangle B X C$ are both acute and have circumradii $13$ and $15$, respectively, compute $A B$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "1-\\frac{2}{\\pi}",
+          "id": "hmmt25-8",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 127,
+          "question": "Define $\\operatorname{sgn}(x)$ to be $1$ when $x$ is positive, $-1$ when $x$ is negative, and $0$ when $x$ is $0$. Compute\n\n$$\n\\sum_{n=1}^{\\infty} \\frac{\\operatorname{sgn}\\left(\\sin \\left(2^{n}\\right)\\right)}{2^{n}}\n$$\n(The arguments to sin are in radians.)",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-31T04:49:14.486410+00:00",
+  "counts": {
+    "baseline": 11718
+  },
+  "epoch": 1793422154.4864254,
+  "eta_seconds": 11571.9926867942,
+  "free_bytes": 272681451520,
+  "gpu_csv": "0, 9878 MiB, 95 %\n1, 9958 MiB, 88 %\n2, 9518 MiB, 95 %\n3, 9558 MiB, 96 %\n4, 10360 MiB, 97 %\n5, 10040 MiB, 90 %\n6, 9840 MiB, 96 %\n7, 9798 MiB, 97 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.1162993907928467,
+      "checkpoints": {
+        "checkpoint_count": 43142,
+        "epoch": 1793422151.9368339,
+        "new": 736,
+        "reused": 1546
+      },
+      "exit_code": null,
+      "pid": 3237307,
+      "status": {
+        "at": "2026-10-31T04:49:05.108974+00:00",
+        "case_id": "mmlu-professional_psychology-12604",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9046.75390625,
+          "peak_cuda_reserved_mib": 9170.0,
+          "peak_rss_mib": 4974.49609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 0.21222519874572754,
+      "checkpoints": {
+        "checkpoint_count": 42179,
+        "epoch": 1793422153.8409524,
+        "new": 733,
+        "reused": 1402
+      },
+      "exit_code": null,
+      "pid": 3237308,
+      "status": {
+        "at": "2026-10-31T04:49:12.362253+00:00",
+        "case_id": "mmlu-professional_law-12059",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9134.58203125,
+          "peak_cuda_reserved_mib": 9250.0,
+          "peak_rss_mib": 4972.359375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 1.4766769409179688,
+      "checkpoints": {
+        "checkpoint_count": 42306,
+        "epoch": 1793422152.5765328,
+        "new": 747,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237309,
+      "status": {
+        "at": "2026-10-31T04:49:07.059716+00:00",
+        "case_id": "mmlu-professional_law-11899",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8698.0078125,
+          "peak_cuda_reserved_mib": 8810.0,
+          "peak_rss_mib": 4972.09765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 4.952603101730347,
+      "checkpoints": {
+        "checkpoint_count": 43030,
+        "epoch": 1793422149.1006415,
+        "new": 764,
+        "reused": 1464
+      },
+      "exit_code": null,
+      "pid": 3237310,
+      "status": {
+        "at": "2026-10-31T04:48:30.712318+00:00",
+        "case_id": "mmlu-professional_psychology-12495",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8725.810546875,
+          "peak_cuda_reserved_mib": 8848.0,
+          "peak_rss_mib": 4973.02734375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 3.006498098373413,
+      "checkpoints": {
+        "checkpoint_count": 42733,
+        "epoch": 1793422151.0467792,
+        "new": 703,
+        "reused": 1469
+      },
+      "exit_code": null,
+      "pid": 3237311,
+      "status": {
+        "at": "2026-10-31T04:47:42.448311+00:00",
+        "case_id": "mmlu-professional_law-10937",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9518.259765625,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4972.84765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 3.295423984527588,
+      "checkpoints": {
+        "checkpoint_count": 42625,
+        "epoch": 1793422150.7578835,
+        "new": 752,
+        "reused": 1450
+      },
+      "exit_code": null,
+      "pid": 3237312,
+      "status": {
+        "at": "2026-10-31T04:49:07.847796+00:00",
+        "case_id": "mmlu-abstract_algebra-10",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9195.890625,
+          "peak_cuda_reserved_mib": 9332.0,
+          "peak_rss_mib": 4973.8984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 2.248889446258545,
+      "checkpoints": {
+        "checkpoint_count": 42244,
+        "epoch": 1793422151.8044493,
+        "new": 780,
+        "reused": 1437
+      },
+      "exit_code": null,
+      "pid": 3237313,
+      "status": {
+        "at": "2026-10-31T04:48:37.149365+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-4052",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8990.435546875,
+          "peak_cuda_reserved_mib": 9132.0,
+          "peak_rss_mib": 4970.640625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 4.865024089813232,
+      "checkpoints": {
+        "checkpoint_count": 42986,
+        "epoch": 1793422149.1883457,
+        "new": 750,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237314,
+      "status": {
+        "at": "2026-10-31T04:48:09.795375+00:00",
+        "case_id": "mmlu-professional_law-11246",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8977.4609375,
+          "peak_cuda_reserved_mib": 9090.0,
+          "peak_rss_mib": 4971.5234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{1311}{2017}",
+          "id": "hmmt25-6",
+          "problem_type": [
+            "Number Theory"
+          ],
+          "prompt_tokens": 84,
+          "question": "Let $r$ be the remainder when $2017^{2025!}-1$ is divided by 2025!. Compute $\\frac{r}{2025!}$. (Note that $2017$ is prime.)",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{4}{9}",
+          "id": "hmmt25-19",
+          "problem_type": [
+            "Combinatorics",
+            "Geometry"
+          ],
+          "prompt_tokens": 66,
+          "question": "Two points are selected independently and uniformly at random inside a regular hexagon. Compute the probability that a line passing through both of the points intersects a pair of opposite edges of the hexagon.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\sqrt{\\frac{95}{24}}",
+          "id": "hmmt25-30",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 91,
+          "question": "A plane $\\mathcal{P}$ intersects a rectangular prism at a hexagon which has side lengths $45,66,63,55,54$, and 77, in that order. Compute the distance from the center of the rectangular prism to $\\mathcal{P}$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "56",
+          "id": "hmmt25-11",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 87,
+          "question": "Compute the number of ways to arrange the numbers $1,2,3,4,5,6$, and $7$ around a circle such that the product of every pair of adjacent numbers on the circle is at most 20. (Rotations and reflections count as different arrangements.)",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

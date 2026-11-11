@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-31T06:04:45.569627+00:00",
+  "counts": {
+    "baseline": 12743
+  },
+  "epoch": 1793426685.5696425,
+  "eta_seconds": 7912.736540199798,
+  "free_bytes": 269391151104,
+  "gpu_csv": "0, 50308 MiB, 100 %\n1, 51650 MiB, 100 %\n2, 10640 MiB, 96 %\n3, 11158 MiB, 96 %\n4, 10360 MiB, 95 %\n5, 10360 MiB, 93 %\n6, 10960 MiB, 96 %\n7, 10620 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 1.497648000717163,
+      "checkpoints": {
+        "checkpoint_count": 46847,
+        "epoch": 1793426683.5839345,
+        "new": 4441,
+        "reused": 1546
+      },
+      "exit_code": null,
+      "pid": 3237307,
+      "status": {
+        "at": "2026-10-31T06:04:07.655642+00:00",
+        "case_id": "mmlu-clinical_knowledge-602",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9046.75390625,
+          "peak_cuda_reserved_mib": 9172.0,
+          "peak_rss_mib": 4974.49609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 3.695641040802002,
+      "checkpoints": {
+        "checkpoint_count": 45585,
+        "epoch": 1793426681.3859868,
+        "new": 4139,
+        "reused": 1402
+      },
+      "exit_code": null,
+      "pid": 3237308,
+      "status": {
+        "at": "2026-10-31T06:04:33.005741+00:00",
+        "case_id": "mmlu-professional_law-11055",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10167.1328125,
+          "peak_cuda_reserved_mib": 10312.0,
+          "peak_rss_mib": 4972.359375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.994909763336182,
+      "checkpoints": {
+        "checkpoint_count": 46089,
+        "epoch": 1793426679.0867507,
+        "new": 4530,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237309,
+      "status": {
+        "at": "2026-10-31T06:04:29.442171+00:00",
+        "case_id": "mmlu-high_school_biology-2763",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9808.9765625,
+          "peak_cuda_reserved_mib": 9932.0,
+          "peak_rss_mib": 4972.09765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 1.1972496509552002,
+      "checkpoints": {
+        "checkpoint_count": 46830,
+        "epoch": 1793426683.8844447,
+        "new": 4564,
+        "reused": 1464
+      },
+      "exit_code": null,
+      "pid": 3237310,
+      "status": {
+        "at": "2026-10-31T06:03:59.775394+00:00",
+        "case_id": "mmlu-professional_law-11396",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10283.904296875,
+          "peak_cuda_reserved_mib": 10450.0,
+          "peak_rss_mib": 4973.02734375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.0165088176727295,
+      "checkpoints": {
+        "checkpoint_count": 46565,
+        "epoch": 1793426680.0652165,
+        "new": 4535,
+        "reused": 1469
+      },
+      "exit_code": null,
+      "pid": 3237311,
+      "status": {
+        "at": "2026-10-31T06:04:15.825782+00:00",
+        "case_id": "mmlu-high_school_mathematics-4454",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9518.259765625,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4972.84765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.8967759609222412,
+      "checkpoints": {
+        "checkpoint_count": 46387,
+        "epoch": 1793426684.1849806,
+        "new": 4514,
+        "reused": 1450
+      },
+      "exit_code": null,
+      "pid": 3237312,
+      "status": {
+        "at": "2026-10-31T06:04:18.255076+00:00",
+        "case_id": "mmlu-anatomy-143",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9499.296875,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4973.8984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 1.135080099105835,
+      "checkpoints": {
+        "checkpoint_count": 46113,
+        "epoch": 1793426683.9467092,
+        "new": 4649,
+        "reused": 1437
+      },
+      "exit_code": null,
+      "pid": 3237313,
+      "status": {
+        "at": "2026-10-31T06:03:41.403593+00:00",
+        "case_id": "mmlu-college_physics-1404",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10087.431640625,
+          "peak_cuda_reserved_mib": 10252.0,
+          "peak_rss_mib": 4970.640625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 3.085460662841797,
+      "checkpoints": {
+        "checkpoint_count": 46886,
+        "epoch": 1793426681.9963622,
+        "new": 4650,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237314,
+      "status": {
+        "at": "2026-10-31T06:04:32.496407+00:00",
+        "case_id": "mmlu-professional_law-11735",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9782.029296875,
+          "peak_cuda_reserved_mib": 9912.0,
+          "peak_rss_mib": 4971.5234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T21:10:49.122613+00:00",
+  "counts": {
+    "baseline": 137
+  },
+  "epoch": 1793308249.1226206,
+  "eta_seconds": 58816.55608079927,
+  "free_bytes": 7115177984,
+  "gpu_csv": "0, 9978 MiB, 96 %\n1, 9218 MiB, 96 %\n2, 9916 MiB, 94 %\n3, 9918 MiB, 96 %\n4, 9298 MiB, 96 %\n5, 9778 MiB, 95 %\n6, 9438 MiB, 96 %\n7, 9398 MiB, 95 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.269347906112671,
+      "checkpoints": {
+        "checkpoint_count": 527,
+        "epoch": 1793308246.8145142,
+        "new": 527,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T21:10:40.039681+00:00",
+        "case_id": "mmlu-professional_law-11303",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9154.400390625,
+          "peak_cuda_reserved_mib": 9270.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.577131509780884,
+      "checkpoints": {
+        "checkpoint_count": 526,
+        "epoch": 1793308244.5067718,
+        "new": 526,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T21:10:11.256174+00:00",
+        "case_id": "mmlu-high_school_computer_science-3206",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8410.712890625,
+          "peak_cuda_reserved_mib": 8510.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 0.8236887454986572,
+      "checkpoints": {
+        "checkpoint_count": 495,
+        "epoch": 1793308248.2602506,
+        "new": 495,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:10:41.288629+00:00",
+        "case_id": "mmlu-miscellaneous-7558",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9208.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 0.7128362655639648,
+      "checkpoints": {
+        "checkpoint_count": 534,
+        "epoch": 1793308248.3711329,
+        "new": 534,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:10:26.606802+00:00",
+        "case_id": "mmlu-professional_law-11871",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 0.34438657760620117,
+      "checkpoints": {
+        "checkpoint_count": 529,
+        "epoch": 1793308248.7396114,
+        "new": 529,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:10:33.843894+00:00",
+        "case_id": "mmlu-virology-13761",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8484.283203125,
+          "peak_cuda_reserved_mib": 8590.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 4.963787794113159,
+      "checkpoints": {
+        "checkpoint_count": 489,
+        "epoch": 1793308244.1202407,
+        "new": 489,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:10:37.249744+00:00",
+        "case_id": "mmlu-professional_medicine-12239",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8956.64453125,
+          "peak_cuda_reserved_mib": 9070.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 3.729098081588745,
+      "checkpoints": {
+        "checkpoint_count": 495,
+        "epoch": 1793308245.354964,
+        "new": 495,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:09:36.799766+00:00",
+        "case_id": "mmlu-high_school_microeconomics-4701",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8545.734375,
+          "peak_cuda_reserved_mib": 8650.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.8289642333984375,
+      "checkpoints": {
+        "checkpoint_count": 542,
+        "epoch": 1793308246.2551272,
+        "new": 542,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:10:32.775356+00:00",
+        "case_id": "mmlu-international_law-6557",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8564.697265625,
+          "peak_cuda_reserved_mib": 8690.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T21:25:52.172589+00:00",
+  "counts": {
+    "baseline": 342
+  },
+  "epoch": 1793309152.172599,
+  "eta_seconds": 60057.12373316123,
+  "free_bytes": 7029374976,
+  "gpu_csv": "0, 10078 MiB, 96 %\n1, 13238 MiB, 93 %\n2, 9918 MiB, 92 %\n3, 9918 MiB, 96 %\n4, 9998 MiB, 96 %\n5, 10000 MiB, 95 %\n6, 10378 MiB, 96 %\n7, 9398 MiB, 93 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 3.343167304992676,
+      "checkpoints": {
+        "checkpoint_count": 1326,
+        "epoch": 1793309148.7837117,
+        "new": 1326,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T21:25:39.298432+00:00",
+        "case_id": "mmlu-high_school_world_history-5996",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9258.91015625,
+          "peak_cuda_reserved_mib": 9370.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 3.5497238636016846,
+      "checkpoints": {
+        "checkpoint_count": 1171,
+        "epoch": 1793309148.5772002,
+        "new": 1171,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T21:25:43.039078+00:00",
+        "case_id": "mmlu-elementary_mathematics-2240",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.978515625,
+          "peak_cuda_reserved_mib": 12530.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.734570741653442,
+      "checkpoints": {
+        "checkpoint_count": 1242,
+        "epoch": 1793309146.3923929,
+        "new": 1242,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:25:50.765942+00:00",
+        "case_id": "mmlu-moral_scenarios-9154",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 3.676882266998291,
+      "checkpoints": {
+        "checkpoint_count": 1330,
+        "epoch": 1793309148.4501154,
+        "new": 1330,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:25:28.072718+00:00",
+        "case_id": "mmlu-professional_law-11214",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9210.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 2.651947259902954,
+      "checkpoints": {
+        "checkpoint_count": 1306,
+        "epoch": 1793309149.4750788,
+        "new": 1306,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:25:33.280336+00:00",
+        "case_id": "mmlu-virology-13846",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9167.232421875,
+          "peak_cuda_reserved_mib": 9290.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 4.00817084312439,
+      "checkpoints": {
+        "checkpoint_count": 1290,
+        "epoch": 1793309148.118891,
+        "new": 1290,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:25:38.497489+00:00",
+        "case_id": "mmlu-high_school_physics-4759",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9179.921875,
+          "peak_cuda_reserved_mib": 9292.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 4.022653341293335,
+      "checkpoints": {
+        "checkpoint_count": 1236,
+        "epoch": 1793309148.1044388,
+        "new": 1236,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:25:20.299563+00:00",
+        "case_id": "mmlu-professional_law-11571",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9546.205078125,
+          "peak_cuda_reserved_mib": 9670.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.8611862659454346,
+      "checkpoints": {
+        "checkpoint_count": 1336,
+        "epoch": 1793309149.2659364,
+        "new": 1336,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:25:49.272281+00:00",
+        "case_id": "mmlu-high_school_statistics-5637",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8564.697265625,
+          "peak_cuda_reserved_mib": 8690.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

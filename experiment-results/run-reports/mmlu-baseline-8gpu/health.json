@@ -1,0 +1,204 @@
+{
+  "at": "2026-10-31T06:19:59.605250+00:00",
+  "counts": {
+    "baseline": 12934
+  },
+  "epoch": 1793427599.6052656,
+  "eta_seconds": 7587.35716476421,
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 0.30316901206970215,
+      "checkpoints": {
+        "checkpoint_count": 47231,
+        "epoch": 1793427598.8040361,
+        "new": 4825,
+        "reused": 1546
+      },
+      "exit_code": null,
+      "pid": 3237307,
+      "status": {
+        "at": "2026-10-31T06:18:59.559002+00:00",
+        "case_id": "mmlu-professional_law-11526",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9046.75390625,
+          "peak_cuda_reserved_mib": 9172.0,
+          "peak_rss_mib": 4974.49609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 2.305049419403076,
+      "checkpoints": {
+        "checkpoint_count": 45944,
+        "epoch": 1793427596.8022037,
+        "new": 4498,
+        "reused": 1402
+      },
+      "exit_code": null,
+      "pid": 3237308,
+      "status": {
+        "at": "2026-10-31T06:18:53.802383+00:00",
+        "case_id": "mmlu-high_school_microeconomics-4720",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10167.1328125,
+          "peak_cuda_reserved_mib": 10312.0,
+          "peak_rss_mib": 4972.359375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.6063151359558105,
+      "checkpoints": {
+        "checkpoint_count": 46865,
+        "epoch": 1793427593.5009735,
+        "new": 5306,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237309,
+      "status": {
+        "at": "2026-10-31T06:19:30.009161+00:00",
+        "case_id": "mmlu-professional_law-12128",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9808.9765625,
+          "peak_cuda_reserved_mib": 9932.0,
+          "peak_rss_mib": 4972.09765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 1.5317904949188232,
+      "checkpoints": {
+        "checkpoint_count": 47633,
+        "epoch": 1793427597.5755346,
+        "new": 5367,
+        "reused": 1464
+      },
+      "exit_code": null,
+      "pid": 3237310,
+      "status": {
+        "at": "2026-10-31T06:19:36.242356+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-3841",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10283.904296875,
+          "peak_cuda_reserved_mib": 10450.0,
+          "peak_rss_mib": 4973.02734375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 0.6534321308135986,
+      "checkpoints": {
+        "checkpoint_count": 47330,
+        "epoch": 1793427598.45393,
+        "new": 5300,
+        "reused": 1469
+      },
+      "exit_code": null,
+      "pid": 3237311,
+      "status": {
+        "at": "2026-10-31T06:19:51.280101+00:00",
+        "case_id": "mmlu-moral_scenarios-8692",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9518.259765625,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4972.84765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 1.1946923732757568,
+      "checkpoints": {
+        "checkpoint_count": 47157,
+        "epoch": 1793427597.9127038,
+        "new": 5284,
+        "reused": 1450
+      },
+      "exit_code": null,
+      "pid": 3237312,
+      "status": {
+        "at": "2026-10-31T06:19:03.188641+00:00",
+        "case_id": "mmlu-business_ethics-467",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9499.296875,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4973.8984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 4.962020397186279,
+      "checkpoints": {
+        "checkpoint_count": 46898,
+        "epoch": 1793427594.1454124,
+        "new": 5434,
+        "reused": 1437
+      },
+      "exit_code": null,
+      "pid": 3237313,
+      "status": {
+        "at": "2026-10-31T06:19:58.755799+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-4150",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10087.431640625,
+          "peak_cuda_reserved_mib": 10252.0,
+          "peak_rss_mib": 4970.640625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 5.216079950332642,
+      "checkpoints": {
+        "checkpoint_count": 47675,
+        "epoch": 1793427593.8913875,
+        "new": 5439,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237314,
+      "status": {
+        "at": "2026-10-31T06:19:56.917709+00:00",
+        "case_id": "mmlu-human_sexuality-6432",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9782.029296875,
+          "peak_cuda_reserved_mib": 9912.0,
+          "peak_rss_mib": 4971.5234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

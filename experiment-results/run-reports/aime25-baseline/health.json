@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-29T15:51:55.098225+00:00",
+  "counts": {
+    "baseline": 0
+  },
+  "epoch": 1793289115.0982304,
+  "eta_seconds": 9000,
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 1.2132062911987305,
+      "checkpoints": {
+        "checkpoint_count": 42,
+        "epoch": 1793289113.8839245,
+        "new": 42,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3041539,
+      "status": {
+        "at": "2026-10-29T15:50:55.701830+00:00",
+        "case_id": "aime25-26",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4971.46484375
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    }
+  }
+}

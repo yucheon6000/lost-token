@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-31T05:04:41.305925+00:00",
+  "counts": {
+    "baseline": 11936
+  },
+  "epoch": 1793423081.3059397,
+  "eta_seconds": 10594.06515633366,
+  "free_bytes": 272590446592,
+  "gpu_csv": "0, 9878 MiB, 93 %\n1, 9960 MiB, 92 %\n2, 10078 MiB, 97 %\n3, 10058 MiB, 93 %\n4, 10360 MiB, 91 %\n5, 10040 MiB, 88 %\n6, 10100 MiB, 96 %\n7, 10620 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 1.820021629333496,
+      "checkpoints": {
+        "checkpoint_count": 43967,
+        "epoch": 1793423079.0381067,
+        "new": 1561,
+        "reused": 1546
+      },
+      "exit_code": null,
+      "pid": 3237307,
+      "status": {
+        "at": "2026-10-31T05:04:39.322623+00:00",
+        "case_id": "mmlu-virology-13809",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9046.75390625,
+          "peak_cuda_reserved_mib": 9170.0,
+          "peak_rss_mib": 4974.49609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.537091493606567,
+      "checkpoints": {
+        "checkpoint_count": 42960,
+        "epoch": 1793423076.3210778,
+        "new": 1514,
+        "reused": 1402
+      },
+      "exit_code": null,
+      "pid": 3237308,
+      "status": {
+        "at": "2026-10-31T05:04:16.112617+00:00",
+        "case_id": "mmlu-moral_scenarios-9340",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9134.58203125,
+          "peak_cuda_reserved_mib": 9252.0,
+          "peak_rss_mib": 4972.359375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 2.1687700748443604,
+      "checkpoints": {
+        "checkpoint_count": 43070,
+        "epoch": 1793423078.689431,
+        "new": 1511,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237309,
+      "status": {
+        "at": "2026-10-31T05:03:49.450150+00:00",
+        "case_id": "mmlu-high_school_mathematics-4475",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9253.4921875,
+          "peak_cuda_reserved_mib": 9370.0,
+          "peak_rss_mib": 4972.09765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 1.0099244117736816,
+      "checkpoints": {
+        "checkpoint_count": 43863,
+        "epoch": 1793423079.8483107,
+        "new": 1597,
+        "reused": 1464
+      },
+      "exit_code": null,
+      "pid": 3237310,
+      "status": {
+        "at": "2026-10-31T05:04:17.018898+00:00",
+        "case_id": "mmlu-high_school_psychology-5277",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9212.572265625,
+          "peak_cuda_reserved_mib": 9350.0,
+          "peak_rss_mib": 4973.02734375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.200421333312988,
+      "checkpoints": {
+        "checkpoint_count": 43509,
+        "epoch": 1793423075.6578476,
+        "new": 1479,
+        "reused": 1469
+      },
+      "exit_code": null,
+      "pid": 3237311,
+      "status": {
+        "at": "2026-10-31T05:04:35.663145+00:00",
+        "case_id": "mmlu-high_school_chemistry-3107",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9518.259765625,
+          "peak_cuda_reserved_mib": 9652.0,
+          "peak_rss_mib": 4972.84765625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.06611752510070801,
+      "checkpoints": {
+        "checkpoint_count": 43371,
+        "epoch": 1793423080.792182,
+        "new": 1498,
+        "reused": 1450
+      },
+      "exit_code": null,
+      "pid": 3237312,
+      "status": {
+        "at": "2026-10-31T05:04:37.880274+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-4116",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9195.890625,
+          "peak_cuda_reserved_mib": 9332.0,
+          "peak_rss_mib": 4973.8984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 1.9665968418121338,
+      "checkpoints": {
+        "checkpoint_count": 43011,
+        "epoch": 1793423078.8917344,
+        "new": 1547,
+        "reused": 1437
+      },
+      "exit_code": null,
+      "pid": 3237313,
+      "status": {
+        "at": "2026-10-31T05:03:55.644288+00:00",
+        "case_id": "mmlu-moral_scenarios-8958",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9251.923828125,
+          "peak_cuda_reserved_mib": 9392.0,
+          "peak_rss_mib": 4970.640625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.258697986602783,
+      "checkpoints": {
+        "checkpoint_count": 43771,
+        "epoch": 1793423078.5996656,
+        "new": 1535,
+        "reused": 1479
+      },
+      "exit_code": null,
+      "pid": 3237314,
+      "status": {
+        "at": "2026-10-31T05:04:25.060694+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-4170",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9782.029296875,
+          "peak_cuda_reserved_mib": 9912.0,
+          "peak_rss_mib": 4971.5234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

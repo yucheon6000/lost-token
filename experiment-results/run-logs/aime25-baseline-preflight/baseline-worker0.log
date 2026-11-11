@@ -1,0 +1,88 @@
+/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py:235: UserWarning: 
+NVIDIA RTX PRO 6000 Blackwell Server Edition with CUDA capability sm_120 is not compatible with the current PyTorch installation.
+The current PyTorch install supports CUDA capabilities sm_50 sm_60 sm_70 sm_75 sm_80 sm_86 sm_90.
+If you want to use the NVIDIA RTX PRO 6000 Blackwell Server Edition GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
+
+  warnings.warn(
+2026-10-29T15:29:58.572214+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 241.03it/s]
+2026-10-29T15:30:00.384889+00:00 condition start smoke/aime25/aime25-26/plain_ar
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user04/lost-token/src/lost_tokens/__main__.py", line 3, in <module>
+    main()
+  File "/home/user04/lost-token/src/lost_tokens/cli.py", line 72, in main
+    raise SystemExit(worker(args.run, args.worker, args.probe))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 321, in worker
+    case = store.call(
+           ^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 55, in call
+    result = super().call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/core.py", line 92, in call
+    result = function()
+             ^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 313, in fresh
+    case = run_case(model, store, row, cfg, namespace, log)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/recurrent_memory.py", line 917, in run_case
+    conditions[arm] = store.call(
+                      ^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 55, in call
+    result = super().call(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/core.py", line 92, in call
+    result = function()
+             ^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/recurrent_memory.py", line 920, in <lambda>
+    lambda arm=arm: run_condition(model, store, row, cfg, namespace, arm, log),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/recurrent_memory.py", line 557, in run_condition
+    state = decoder.prefill(base)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/recurrent_memory.py", line 196, in prefill
+    out = self.model.model(
+          ^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 480, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 371, in forward
+    inputs_embeds = self.embed_tokens(input_ids)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/modules/sparse.py", line 190, in forward
+    return F.embedding(
+           ^^^^^^^^^^^^
+  File "/home/user04/lost-token/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2551, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

@@ -1,0 +1,290 @@
+{
+  "at": "2026-10-29T15:49:02.554511+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory.",
+    "Case seconds include generation, auxiliary work and case-level overhead, but exclude model loading and final audits. They sum worker time, not parallel elapsed wall time. Resumed partial cases are excluded from paired timing; legacy timing provenance may be unknown. Different output lengths affect tokens/s. Forward tokens are logical work, not GPU FLOPs."
+  ],
+  "own": {
+    "baseline": {
+      "aime25": {
+        "accuracy": 0.0,
+        "body_tokens": 256,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 1,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 1,
+          "resumed_excluded_n": 1,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      },
+      "all": {
+        "accuracy": 0.0,
+        "body_tokens": 256,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 1,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 1,
+          "resumed_excluded_n": 1,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      }
+    },
+    "ours": {
+      "aime25": {
+        "accuracy": 0.0,
+        "body_tokens": 256,
+        "correct": 0,
+        "fork_events": 1,
+        "n": 1,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 1,
+          "resumed_excluded_n": 1,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      },
+      "all": {
+        "accuracy": 0.0,
+        "body_tokens": 256,
+        "correct": 0,
+        "fork_events": 1,
+        "n": 1,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 1,
+          "resumed_excluded_n": 1,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      }
+    }
+  },
+  "paired": {
+    "aime25": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 1,
+      "wins": 0
+    },
+    "all": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 1,
+      "wins": 0
+    }
+  },
+  "performance_vs_baseline": {
+    "ours": {
+      "aime25": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": 64,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": 0.2578856791369617,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": 404,
+            "baseline_total": 340,
+            "change_percent": 18.823529411764707,
+            "n": 1,
+            "ratio": 1.188235294117647
+          },
+          "generator_seconds": {
+            "arm_total": 4.058157768798992,
+            "baseline_total": 3.1021898391190916,
+            "change_percent": 30.815906803155556,
+            "n": 1,
+            "ratio": 1.3081590680315556
+          },
+          "memory_insertions": {
+            "arm_total": 0,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": 0.04551987606100738,
+            "baseline_total": 0.04647459299303591,
+            "change_percent": -2.0542771233555412,
+            "n": 1,
+            "ratio": 0.9794572287664446
+          }
+        },
+        "n": 1,
+        "resumed_excluded_n": 1,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      },
+      "all": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": 64,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": 0.2578856791369617,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": 404,
+            "baseline_total": 340,
+            "change_percent": 18.823529411764707,
+            "n": 1,
+            "ratio": 1.188235294117647
+          },
+          "generator_seconds": {
+            "arm_total": 4.058157768798992,
+            "baseline_total": 3.1021898391190916,
+            "change_percent": 30.815906803155556,
+            "n": 1,
+            "ratio": 1.3081590680315556
+          },
+          "memory_insertions": {
+            "arm_total": 0,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": 0.04551987606100738,
+            "baseline_total": 0.04647459299303591,
+            "change_percent": -2.0542771233555412,
+            "n": 1,
+            "ratio": 0.9794572287664446
+          }
+        },
+        "n": 1,
+        "resumed_excluded_n": 1,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      }
+    }
+  },
+  "phase_wall_seconds": {
+    "baseline": 33.13319277763367,
+    "ours": 33.11023783683777
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793288874.9329093
+    },
+    "ours": {
+      "deadline_epoch": null,
+      "start_epoch": 1793288908.0663252
+    }
+  },
+  "smoke": true
+}

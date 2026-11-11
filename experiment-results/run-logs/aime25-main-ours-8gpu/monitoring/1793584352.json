@@ -1,0 +1,160 @@
+{
+  "at": "2026-11-02T01:52:32.614928+00:00",
+  "counts": {
+    "ours": 25
+  },
+  "epoch": 1793584352.6149328,
+  "eta_seconds": 782.5368266493268,
+  "free_bytes": 329719087104,
+  "gpu_csv": "0, 20824 MiB, 98 %\n1, 14 MiB, 0 %\n2, 14 MiB, 0 %\n3, 19534 MiB, 96 %\n4, 18022 MiB, 97 %\n5, 14 MiB, 0 %\n6, 14 MiB, 0 %\n7, 14 MiB, 0 %\n",
+  "phase": "ours",
+  "workers": {
+    "ours-worker0": {
+      "checkpoint_age_seconds": 2.091928482055664,
+      "checkpoints": {
+        "checkpoint_count": 2114,
+        "epoch": 1793584350.5203102,
+        "new": 2114,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3712506,
+      "status": {
+        "at": "2026-11-02T01:48:37.424321+00:00",
+        "case_id": "aime25-29",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 18472.06787109375,
+          "peak_cuda_reserved_mib": 20116.0,
+          "peak_rss_mib": 4960.97265625
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "ours-worker1": {
+      "checkpoint_age_seconds": 60.28988218307495,
+      "checkpoints": {
+        "checkpoint_count": 2171,
+        "epoch": 1793584292.3223991,
+        "new": 2171,
+        "reused": 0
+      },
+      "exit_code": 0,
+      "pid": 3712507,
+      "status": {
+        "at": "2026-11-02T01:51:32.765832+00:00",
+        "state": "complete"
+      }
+    },
+    "ours-worker2": {
+      "checkpoint_age_seconds": 590.6947588920593,
+      "checkpoints": {
+        "checkpoint_count": 1449,
+        "epoch": 1793583761.9175563,
+        "new": 1449,
+        "reused": 0
+      },
+      "exit_code": 0,
+      "pid": 3712508,
+      "status": {
+        "at": "2026-11-02T01:42:45.436049+00:00",
+        "state": "complete"
+      }
+    },
+    "ours-worker3": {
+      "checkpoint_age_seconds": 1.8108351230621338,
+      "checkpoints": {
+        "checkpoint_count": 2109,
+        "epoch": 1793584350.8015223,
+        "new": 2109,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3712509,
+      "status": {
+        "at": "2026-11-02T01:46:57.225955+00:00",
+        "case_id": "aime25-28",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 18226.70849609375,
+          "peak_cuda_reserved_mib": 18826.0,
+          "peak_rss_mib": 4958.9765625
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "ours-worker4": {
+      "checkpoint_age_seconds": 4.593740463256836,
+      "checkpoints": {
+        "checkpoint_count": 2203,
+        "epoch": 1793584348.0186543,
+        "new": 2203,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3712510,
+      "status": {
+        "at": "2026-11-02T01:48:18.873641+00:00",
+        "case_id": "aime25-14",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 16770.19482421875,
+          "peak_cuda_reserved_mib": 17314.0,
+          "peak_rss_mib": 4964.53515625
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "ours-worker5": {
+      "checkpoint_age_seconds": 567.2368347644806,
+      "checkpoints": {
+        "checkpoint_count": 1429,
+        "epoch": 1793583785.3755934,
+        "new": 1429,
+        "reused": 0
+      },
+      "exit_code": 0,
+      "pid": 3712511,
+      "status": {
+        "at": "2026-11-02T01:43:07.032268+00:00",
+        "state": "complete"
+      }
+    },
+    "ours-worker6": {
+      "checkpoint_age_seconds": 18.455204725265503,
+      "checkpoints": {
+        "checkpoint_count": 2053,
+        "epoch": 1793584334.1572988,
+        "new": 2053,
+        "reused": 0
+      },
+      "exit_code": 0,
+      "pid": 3712512,
+      "status": {
+        "at": "2026-11-02T01:52:18.260942+00:00",
+        "state": "complete"
+      }
+    },
+    "ours-worker7": {
+      "checkpoint_age_seconds": 173.3832221031189,
+      "checkpoints": {
+        "checkpoint_count": 1884,
+        "epoch": 1793584179.2293108,
+        "new": 1884,
+        "reused": 0
+      },
+      "exit_code": 0,
+      "pid": 3712513,
+      "status": {
+        "at": "2026-11-02T01:49:41.283104+00:00",
+        "state": "complete"
+      }
+    }
+  }
+}

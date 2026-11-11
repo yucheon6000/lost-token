@@ -1,0 +1,643 @@
+2026-11-02T15:10:33.879813+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 247.09it/s]
+2026-11-02T15:10:36.176496+00:00 loading embedding model
+2026-11-02T15:10:36.776443+00:00 condition start evaluation/gpqa/gpqa-recZ13cwgDQf9jRd9/filtered_futures
+2026-11-02T15:10:37.132321+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=1/32768; events=0; injections=0; context=240; elapsed=0.1s ETA(cap)=4398.2s
+2026-11-02T15:10:54.278411+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=839/32768; events=4; injections=1; context=1181; elapsed=17.3s ETA(cap)=657.6s
+2026-11-02T15:11:10.104757+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=1739/32768; events=7; injections=3; context=2287; elapsed=33.1s ETA(cap)=590.7s
+2026-11-02T15:11:25.497814+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=2579/32768; events=10; injections=6; context=3435; elapsed=48.5s ETA(cap)=567.7s
+2026-11-02T15:11:43.292539+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=3439/32768; events=14; injections=9; context=4603; elapsed=66.3s ETA(cap)=565.4s
+2026-11-02T15:11:59.612134+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=4336/32768; events=17; injections=10; context=5602; elapsed=82.6s ETA(cap)=541.7s
+2026-11-02T15:12:14.782252+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=5113/32768; events=20; injections=13; context=6687; elapsed=97.8s ETA(cap)=528.9s
+2026-11-02T15:12:30.246458+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=5891/32768; events=23; injections=16; context=7774; elapsed=113.2s ETA(cap)=516.7s
+2026-11-02T15:12:46.226788+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=6686/32768; events=26; injections=19; context=8877; elapsed=129.2s ETA(cap)=504.1s
+2026-11-02T15:13:02.195923+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=7472/32768; events=29; injections=21; context=9867; elapsed=145.2s ETA(cap)=491.6s
+2026-11-02T15:13:18.290205+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=8246/32768; events=32; injections=24; context=10949; elapsed=161.3s ETA(cap)=479.7s
+2026-11-02T15:13:34.636034+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=9019/32768; events=35; injections=27; context=12031; elapsed=177.6s ETA(cap)=467.8s
+2026-11-02T15:13:51.220105+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=9796/32768; events=38; injections=28; context=12911; elapsed=194.2s ETA(cap)=455.5s
+2026-11-02T15:14:06.491828+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=10441/32768; events=41; injections=31; context=13865; elapsed=209.5s ETA(cap)=448.0s
+2026-11-02T15:14:23.741721+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=11217/32768; events=44; injections=34; context=14949; elapsed=226.7s ETA(cap)=435.6s
+2026-11-02T15:14:39.706002+00:00 gpqa-recZ13cwgDQf9jRd9 filtered_futures: body=12227/32768; events=45; injections=35; context=16062; elapsed=242.7s ETA(cap)=407.7s
+2026-11-02T15:14:47.563269+00:00 completed gpqa-recZ13cwgDQf9jRd9: correct=False
+2026-11-02T15:14:47.563828+00:00 condition start evaluation/gpqa/gpqa-reczzzihL7btBH7RO/filtered_futures
+2026-11-02T15:14:47.605745+00:00 gpqa-reczzzihL7btBH7RO filtered_futures: body=1/32768; events=0; injections=0; context=283; elapsed=0.0s ETA(cap)=397.9s
+2026-11-02T15:15:04.691039+00:00 gpqa-reczzzihL7btBH7RO filtered_futures: body=840/32768; events=4; injections=2; context=1328; elapsed=17.1s ETA(cap)=649.9s
+2026-11-02T15:15:20.632037+00:00 gpqa-reczzzihL7btBH7RO filtered_futures: body=1744/32768; events=7; injections=3; context=2335; elapsed=33.0s ETA(cap)=587.7s
+2026-11-02T15:15:35.879773+00:00 gpqa-reczzzihL7btBH7RO filtered_futures: body=2589/32768; events=10; injections=5; context=3386; elapsed=48.3s ETA(cap)=562.9s
+2026-11-02T15:15:53.138241+00:00 gpqa-reczzzihL7btBH7RO filtered_futures: body=3427/32768; events=14; injections=8; context=4533; elapsed=65.5s ETA(cap)=561.2s
+2026-11-02T15:16:03.822537+00:00 completed gpqa-reczzzihL7btBH7RO: correct=True
+2026-11-02T15:16:03.823061+00:00 condition start evaluation/gpqa/gpqa-recBhnXrUyTJ6WHIR/filtered_futures
+2026-11-02T15:16:03.849776+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=1/32768; events=0; injections=0; context=204; elapsed=0.0s ETA(cap)=434.4s
+2026-11-02T15:16:21.054437+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=853/32768; events=4; injections=3; context=1364; elapsed=17.2s ETA(cap)=644.2s
+2026-11-02T15:16:36.994762+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=1760/32768; events=7; injections=6; context=2580; elapsed=33.2s ETA(cap)=584.2s
+2026-11-02T15:16:52.124806+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=2593/32768; events=10; injections=8; context=3619; elapsed=48.3s ETA(cap)=561.9s
+2026-11-02T15:17:09.396239+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=3428/32768; events=14; injections=10; context=4659; elapsed=65.6s ETA(cap)=561.1s
+2026-11-02T15:17:24.490694+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=4205/32768; events=17; injections=13; context=5745; elapsed=80.7s ETA(cap)=547.9s
+2026-11-02T15:17:39.694713+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=4983/32768; events=20; injections=15; context=6729; elapsed=95.9s ETA(cap)=534.5s
+2026-11-02T15:17:55.349912+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=5786/32768; events=23; injections=16; context=7635; elapsed=111.5s ETA(cap)=520.0s
+2026-11-02T15:18:10.925925+00:00 gpqa-recBhnXrUyTJ6WHIR filtered_futures: body=6565/32768; events=26; injections=17; context=8517; elapsed=127.1s ETA(cap)=507.3s
+2026-11-02T15:18:19.864716+00:00 completed gpqa-recBhnXrUyTJ6WHIR: correct=False
+2026-11-02T15:18:19.865239+00:00 condition start evaluation/gpqa/gpqa-rec5UhR77onQftbyk/filtered_futures
+2026-11-02T15:18:19.906393+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=1/32768; events=0; injections=0; context=135; elapsed=0.0s ETA(cap)=510.4s
+2026-11-02T15:18:37.424460+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=871/32768; events=4; injections=1; context=1108; elapsed=17.5s ETA(cap)=642.1s
+2026-11-02T15:18:53.379710+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=1780/32768; events=7; injections=3; context=2223; elapsed=33.5s ETA(cap)=583.0s
+2026-11-02T15:19:08.739760+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=2643/32768; events=10; injections=3; context=3086; elapsed=48.8s ETA(cap)=556.8s
+2026-11-02T15:19:26.192574+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=3503/32768; events=14; injections=6; context=4255; elapsed=66.3s ETA(cap)=553.9s
+2026-11-02T15:19:42.480703+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=4408/32768; events=17; injections=7; context=5263; elapsed=82.6s ETA(cap)=531.4s
+2026-11-02T15:19:57.558655+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=5186/32768; events=20; injections=9; context=6247; elapsed=97.7s ETA(cap)=519.5s
+2026-11-02T15:20:12.981897+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=5980/32768; events=23; injections=10; context=7144; elapsed=113.1s ETA(cap)=506.6s
+2026-11-02T15:20:28.500415+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=6755/32768; events=26; injections=13; context=8226; elapsed=128.6s ETA(cap)=495.3s
+2026-11-02T15:20:44.275815+00:00 gpqa-rec5UhR77onQftbyk filtered_futures: body=7530/32768; events=29; injections=15; context=9207; elapsed=144.4s ETA(cap)=483.9s
+2026-11-02T15:20:58.297552+00:00 completed gpqa-rec5UhR77onQftbyk: correct=False
+2026-11-02T15:20:58.298156+00:00 condition start evaluation/gpqa/gpqa-recLSALHT675vkEwE/filtered_futures
+2026-11-02T15:20:58.325020+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=1/32768; events=0; injections=0; context=230; elapsed=0.0s ETA(cap)=436.1s
+2026-11-02T15:21:15.474310+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=852/32768; events=4; injections=3; context=1389; elapsed=17.2s ETA(cap)=642.9s
+2026-11-02T15:21:31.558065+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=1769/32768; events=7; injections=6; context=2615; elapsed=33.2s ETA(cap)=582.6s
+2026-11-02T15:21:46.794099+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=2604/32768; events=10; injections=8; context=3656; elapsed=48.5s ETA(cap)=561.6s
+2026-11-02T15:22:01.956680+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=3422/32768; events=13; injections=10; context=4680; elapsed=63.6s ETA(cap)=545.8s
+2026-11-02T15:22:19.517825+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=4261/32768; events=17; injections=11; context=5622; elapsed=81.2s ETA(cap)=543.3s
+2026-11-02T15:22:34.679693+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=5037/32768; events=20; injections=14; context=6707; elapsed=96.4s ETA(cap)=530.5s
+2026-11-02T15:22:50.153186+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=5819/32768; events=23; injections=17; context=7798; elapsed=111.8s ETA(cap)=518.0s
+2026-11-02T15:23:06.309777+00:00 gpqa-recLSALHT675vkEwE filtered_futures: body=6847/32768; events=25; injections=19; context=8986; elapsed=128.0s ETA(cap)=484.6s
+2026-11-02T15:23:10.034265+00:00 completed gpqa-recLSALHT675vkEwE: correct=True
+2026-11-02T15:23:10.034820+00:00 condition start evaluation/gpqa/gpqa-recQEFX6mtMj6XQvA/filtered_futures
+2026-11-02T15:23:10.065237+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=1/32768; events=0; injections=0; context=144; elapsed=0.0s ETA(cap)=556.5s
+2026-11-02T15:23:27.339971+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=858/32768; events=4; injections=3; context=1310; elapsed=17.3s ETA(cap)=643.1s
+2026-11-02T15:23:43.248010+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=1759/32768; events=7; injections=6; context=2520; elapsed=33.2s ETA(cap)=585.3s
+2026-11-02T15:23:58.452829+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=2601/32768; events=10; injections=8; context=3568; elapsed=48.4s ETA(cap)=561.4s
+2026-11-02T15:24:15.840969+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=3442/32768; events=14; injections=12; context=4820; elapsed=65.8s ETA(cap)=560.6s
+2026-11-02T15:24:30.843399+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=4214/32768; events=17; injections=14; context=5798; elapsed=80.8s ETA(cap)=547.5s
+2026-11-02T15:24:46.137996+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=4997/32768; events=20; injections=16; context=6787; elapsed=96.1s ETA(cap)=534.0s
+2026-11-02T15:25:01.631214+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=5783/32768; events=23; injections=18; context=7777; elapsed=111.6s ETA(cap)=520.7s
+2026-11-02T15:25:17.928428+00:00 gpqa-recQEFX6mtMj6XQvA filtered_futures: body=6759/32768; events=26; injections=19; context=8856; elapsed=127.9s ETA(cap)=492.1s
+2026-11-02T15:25:24.393953+00:00 completed gpqa-recQEFX6mtMj6XQvA: correct=True
+2026-11-02T15:25:24.394526+00:00 condition start evaluation/gpqa/gpqa-recywRj5a8EEjj2Ib/filtered_futures
+2026-11-02T15:25:24.421358+00:00 gpqa-recywRj5a8EEjj2Ib filtered_futures: body=1/32768; events=0; injections=0; context=208; elapsed=0.0s ETA(cap)=433.5s
+2026-11-02T15:25:41.566982+00:00 gpqa-recywRj5a8EEjj2Ib filtered_futures: body=855/32768; events=4; injections=2; context=1267; elapsed=17.2s ETA(cap)=640.5s
+2026-11-02T15:25:57.518678+00:00 gpqa-recywRj5a8EEjj2Ib filtered_futures: body=1771/32768; events=7; injections=4; context=2389; elapsed=33.1s ETA(cap)=579.5s
+2026-11-02T15:26:13.192168+00:00 gpqa-recywRj5a8EEjj2Ib filtered_futures: body=2658/32768; events=10; injections=5; context=3378; elapsed=48.8s ETA(cap)=552.6s
+2026-11-02T15:26:28.877803+00:00 gpqa-recywRj5a8EEjj2Ib filtered_futures: body=3528/32768; events=13; injections=7; context=4454; elapsed=64.5s ETA(cap)=534.3s
+2026-11-02T15:26:43.657337+00:00 completed gpqa-recywRj5a8EEjj2Ib: correct=True
+2026-11-02T15:26:43.657865+00:00 condition start evaluation/gpqa/gpqa-rec47oNPXudlTIk4y/filtered_futures
+2026-11-02T15:26:43.698783+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=1/32768; events=0; injections=0; context=262; elapsed=0.0s ETA(cap)=391.7s
+2026-11-02T15:27:00.628233+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=838/32768; events=4; injections=0; context=1099; elapsed=16.9s ETA(cap)=645.5s
+2026-11-02T15:27:16.600108+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=1748/32768; events=7; injections=2; context=2213; elapsed=32.9s ETA(cap)=584.1s
+2026-11-02T15:27:31.802115+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=2585/32768; events=10; injections=4; context=3254; elapsed=48.1s ETA(cap)=561.8s
+2026-11-02T15:27:49.001197+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=3417/32768; events=14; injections=8; context=4498; elapsed=65.3s ETA(cap)=561.0s
+2026-11-02T15:28:05.359755+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=4315/32768; events=17; injections=11; context=5705; elapsed=81.7s ETA(cap)=538.5s
+2026-11-02T15:28:20.657467+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=5093/32768; events=20; injections=14; context=6792; elapsed=97.0s ETA(cap)=526.9s
+2026-11-02T15:28:36.067068+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=5868/32768; events=23; injections=16; context=7772; elapsed=112.4s ETA(cap)=515.2s
+2026-11-02T15:28:51.633861+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=6639/32768; events=26; injections=19; context=8852; elapsed=127.9s ETA(cap)=503.6s
+2026-11-02T15:29:07.453971+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=7418/32768; events=29; injections=20; context=9734; elapsed=143.8s ETA(cap)=491.3s
+2026-11-02T15:29:22.684561+00:00 gpqa-rec47oNPXudlTIk4y filtered_futures: body=8534/32768; events=30; injections=21; context=10923; elapsed=159.0s ETA(cap)=451.5s
+2026-11-02T15:29:22.893902+00:00 completed gpqa-rec47oNPXudlTIk4y: correct=False
+2026-11-02T15:29:22.894461+00:00 condition start evaluation/gpqa/gpqa-rec0LlchAeJwY28ZY/filtered_futures
+2026-11-02T15:29:22.921447+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=1/32768; events=0; injections=0; context=220; elapsed=0.0s ETA(cap)=437.5s
+2026-11-02T15:29:40.434319+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=877/32768; events=4; injections=4; context=1508; elapsed=17.5s ETA(cap)=637.3s
+2026-11-02T15:29:56.358049+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=1778/32768; events=7; injections=6; context=2615; elapsed=33.4s ETA(cap)=583.0s
+2026-11-02T15:30:11.542203+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=2614/32768; events=10; injections=9; context=3758; elapsed=48.6s ETA(cap)=561.0s
+2026-11-02T15:30:29.236772+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=3479/32768; events=14; injections=12; context=4932; elapsed=66.3s ETA(cap)=558.4s
+2026-11-02T15:30:45.743323+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=4378/32768; events=17; injections=14; context=6037; elapsed=82.8s ETA(cap)=537.2s
+2026-11-02T15:31:01.036221+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=5153/32768; events=20; injections=16; context=7017; elapsed=98.1s ETA(cap)=525.9s
+2026-11-02T15:31:16.425242+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=5930/32768; events=23; injections=17; context=7897; elapsed=113.5s ETA(cap)=513.8s
+2026-11-02T15:31:31.993467+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=6707/32768; events=26; injections=18; context=8776; elapsed=129.1s ETA(cap)=501.6s
+2026-11-02T15:31:47.993696+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=7497/32768; events=29; injections=20; context=9772; elapsed=145.1s ETA(cap)=489.1s
+2026-11-02T15:32:04.171759+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=8283/32768; events=32; injections=22; context=10764; elapsed=161.3s ETA(cap)=476.7s
+2026-11-02T15:32:19.911700+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=9016/32768; events=35; injections=24; context=11703; elapsed=177.0s ETA(cap)=466.3s
+2026-11-02T15:32:37.332217+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=9857/32768; events=38; injections=26; context=12749; elapsed=194.4s ETA(cap)=451.9s
+2026-11-02T15:32:54.517511+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=10659/32768; events=41; injections=28; context=13757; elapsed=211.6s ETA(cap)=438.9s
+2026-11-02T15:33:11.525478+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=11429/32768; events=44; injections=30; context=14733; elapsed=228.6s ETA(cap)=426.8s
+2026-11-02T15:33:28.931331+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=12209/32768; events=47; injections=31; context=15615; elapsed=246.0s ETA(cap)=414.3s
+2026-11-02T15:33:46.563832+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=12983/32768; events=50; injections=33; context=16595; elapsed=263.7s ETA(cap)=401.8s
+2026-11-02T15:34:04.770904+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=13785/32768; events=53; injections=35; context=17603; elapsed=281.9s ETA(cap)=388.1s
+2026-11-02T15:34:23.346830+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=14588/32768; events=56; injections=37; context=18611; elapsed=300.4s ETA(cap)=374.4s
+2026-11-02T15:34:40.099993+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=15404/32768; events=58; injections=38; context=19529; elapsed=317.2s ETA(cap)=357.6s
+2026-11-02T15:34:55.357657+00:00 gpqa-rec0LlchAeJwY28ZY filtered_futures: body=16428/32768; events=58; injections=38; context=20553; elapsed=332.4s ETA(cap)=330.7s
+2026-11-02T15:35:00.625474+00:00 completed gpqa-rec0LlchAeJwY28ZY: correct=False
+2026-11-02T15:35:00.626053+00:00 condition start evaluation/gpqa/gpqa-reckDfAxmtIGb9keo/filtered_futures
+2026-11-02T15:35:00.656023+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=1/32768; events=0; injections=0; context=124; elapsed=0.0s ETA(cap)=485.7s
+2026-11-02T15:35:18.050377+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=870/32768; events=4; injections=2; context=1198; elapsed=17.4s ETA(cap)=638.3s
+2026-11-02T15:35:33.936162+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=1779/32768; events=7; injections=3; context=2210; elapsed=33.3s ETA(cap)=580.0s
+2026-11-02T15:35:49.204791+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=2629/32768; events=10; injections=5; context=3265; elapsed=48.6s ETA(cap)=556.7s
+2026-11-02T15:36:05.849884+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=3576/32768; events=13; injections=6; context=4314; elapsed=65.2s ETA(cap)=532.3s
+2026-11-02T15:36:21.281897+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=4398/32768; events=16; injections=9; context=5444; elapsed=80.6s ETA(cap)=520.2s
+2026-11-02T15:36:36.692004+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=5202/32768; events=19; injections=9; context=6248; elapsed=96.1s ETA(cap)=509.0s
+2026-11-02T15:36:52.667355+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=6031/32768; events=22; injections=10; context=7180; elapsed=112.0s ETA(cap)=496.6s
+2026-11-02T15:37:08.337915+00:00 gpqa-reckDfAxmtIGb9keo filtered_futures: body=7321/32768; events=22; injections=10; context=8470; elapsed=127.7s ETA(cap)=443.9s
+2026-11-02T15:37:08.513891+00:00 completed gpqa-reckDfAxmtIGb9keo: correct=True
+2026-11-02T15:37:08.514474+00:00 condition start evaluation/gpqa/gpqa-recReg13iV2HwJTaA/filtered_futures
+2026-11-02T15:37:08.541761+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=1/32768; events=0; injections=0; context=222; elapsed=0.0s ETA(cap)=430.4s
+2026-11-02T15:37:25.709880+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=853/32768; events=4; injections=2; context=1279; elapsed=17.2s ETA(cap)=642.8s
+2026-11-02T15:37:40.863889+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=1688/32768; events=7; injections=4; context=2320; elapsed=32.3s ETA(cap)=595.4s
+2026-11-02T15:37:56.749004+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=2588/32768; events=10; injections=5; context=3323; elapsed=48.2s ETA(cap)=562.3s
+2026-11-02T15:38:11.820418+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=3406/32768; events=13; injections=6; context=4244; elapsed=63.3s ETA(cap)=545.6s
+2026-11-02T15:38:27.429415+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=4250/32768; events=16; injections=8; context=5294; elapsed=78.9s ETA(cap)=529.4s
+2026-11-02T15:38:43.851673+00:00 gpqa-recReg13iV2HwJTaA filtered_futures: body=5327/32768; events=18; injections=10; context=6577; elapsed=95.3s ETA(cap)=491.0s
+2026-11-02T15:38:45.153689+00:00 completed gpqa-recReg13iV2HwJTaA: correct=True
+2026-11-02T15:38:45.154244+00:00 condition start evaluation/gpqa/gpqa-recjgMJaMxz4ESDF2/filtered_futures
+2026-11-02T15:38:45.181030+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=1/32768; events=0; injections=0; context=210; elapsed=0.0s ETA(cap)=436.1s
+2026-11-02T15:39:02.367622+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=852/32768; events=4; injections=3; context=1370; elapsed=17.2s ETA(cap)=644.3s
+2026-11-02T15:39:18.311390+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=1757/32768; events=7; injections=5; context=2480; elapsed=33.1s ETA(cap)=585.0s
+2026-11-02T15:39:33.642073+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=2607/32768; events=10; injections=8; context=3638; elapsed=48.5s ETA(cap)=560.8s
+2026-11-02T15:39:51.005668+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=3448/32768; events=14; injections=11; context=4787; elapsed=65.8s ETA(cap)=559.9s
+2026-11-02T15:40:06.057855+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=4224/32768; events=17; injections=14; context=5872; elapsed=80.9s ETA(cap)=546.6s
+2026-11-02T15:40:21.263887+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=4994/32768; events=20; injections=16; context=6848; elapsed=96.1s ETA(cap)=534.4s
+2026-11-02T15:40:37.458487+00:00 gpqa-recjgMJaMxz4ESDF2 filtered_futures: body=6000/32768; events=22; injections=18; context=8060; elapsed=112.3s ETA(cap)=501.0s
+2026-11-02T15:40:44.536900+00:00 completed gpqa-recjgMJaMxz4ESDF2: correct=True
+2026-11-02T15:40:44.537468+00:00 condition start evaluation/gpqa/gpqa-recoiTJPGUmzAkief/filtered_futures
+2026-11-02T15:40:44.579073+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=1/32768; events=0; injections=0; context=311; elapsed=0.0s ETA(cap)=395.5s
+2026-11-02T15:41:01.864946+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=866/32768; events=4; injections=0; context=1176; elapsed=17.3s ETA(cap)=637.2s
+2026-11-02T15:41:17.714379+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=1770/32768; events=7; injections=2; context=2286; elapsed=33.1s ETA(cap)=580.5s
+2026-11-02T15:41:32.945031+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=2618/32768; events=10; injections=3; context=3237; elapsed=48.4s ETA(cap)=557.1s
+2026-11-02T15:41:50.575045+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=3497/32768; events=14; injections=4; context=4219; elapsed=66.0s ETA(cap)=552.5s
+2026-11-02T15:42:06.824132+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=4398/32768; events=17; injections=5; context=5223; elapsed=82.3s ETA(cap)=530.6s
+2026-11-02T15:42:22.520391+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=5232/32768; events=20; injections=6; context=6160; elapsed=98.0s ETA(cap)=515.5s
+2026-11-02T15:42:38.425906+00:00 gpqa-recoiTJPGUmzAkief filtered_futures: body=6232/32768; events=22; injections=7; context=7263; elapsed=113.9s ETA(cap)=484.8s
+2026-11-02T15:42:43.883415+00:00 completed gpqa-recoiTJPGUmzAkief: correct=False
+2026-11-02T15:42:43.883960+00:00 condition start evaluation/gpqa/gpqa-recSBcGLPatKb3Ygu/filtered_futures
+2026-11-02T15:42:43.915193+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=1/32768; events=0; injections=0; context=154; elapsed=0.0s ETA(cap)=577.0s
+2026-11-02T15:43:01.304754+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=859/32768; events=4; injections=3; context=1321; elapsed=17.4s ETA(cap)=646.6s
+2026-11-02T15:43:17.128118+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=1762/32768; events=7; injections=4; context=2327; elapsed=33.2s ETA(cap)=584.8s
+2026-11-02T15:43:32.208835+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=2599/32768; events=10; injections=5; context=3267; elapsed=48.3s ETA(cap)=560.8s
+2026-11-02T15:43:49.603247+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=3450/32768; events=14; injections=7; context=4323; elapsed=65.7s ETA(cap)=558.4s
+2026-11-02T15:44:04.692051+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=4241/32768; events=17; injections=8; context=5216; elapsed=80.8s ETA(cap)=543.5s
+2026-11-02T15:44:20.687749+00:00 gpqa-recSBcGLPatKb3Ygu filtered_futures: body=5116/32768; events=20; injections=11; context=6399; elapsed=96.8s ETA(cap)=523.2s
+2026-11-02T15:44:27.962799+00:00 completed gpqa-recSBcGLPatKb3Ygu: correct=True
+2026-11-02T15:44:27.963353+00:00 condition start evaluation/gpqa/gpqa-recr6XgkQQXYycWDm/filtered_futures
+2026-11-02T15:44:27.989813+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=1/32768; events=0; injections=0; context=114; elapsed=0.0s ETA(cap)=444.3s
+2026-11-02T15:44:45.054756+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=847/32768; events=4; injections=1; context=1063; elapsed=17.1s ETA(cap)=643.6s
+2026-11-02T15:45:00.918792+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=1749/32768; events=7; injections=4; context=2273; elapsed=32.9s ETA(cap)=584.2s
+2026-11-02T15:45:16.312165+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=2601/32768; events=10; injections=6; context=3330; elapsed=48.3s ETA(cap)=560.6s
+2026-11-02T15:45:33.795899+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=3457/32768; events=14; injections=9; context=4494; elapsed=65.8s ETA(cap)=558.1s
+2026-11-02T15:45:50.147790+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=4357/32768; events=17; injections=11; context=5600; elapsed=82.2s ETA(cap)=535.8s
+2026-11-02T15:46:05.381098+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=5136/32768; events=20; injections=13; context=6584; elapsed=97.4s ETA(cap)=524.0s
+2026-11-02T15:46:21.109448+00:00 gpqa-recr6XgkQQXYycWDm filtered_futures: body=6106/32768; events=22; injections=14; context=7656; elapsed=113.1s ETA(cap)=494.0s
+2026-11-02T15:46:24.375827+00:00 completed gpqa-recr6XgkQQXYycWDm: correct=False
+2026-11-02T15:46:24.376420+00:00 condition start evaluation/gpqa/gpqa-recbWK7TxyPMNhPIb/filtered_futures
+2026-11-02T15:46:24.418662+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=1/32768; events=0; injections=0; context=343; elapsed=0.0s ETA(cap)=407.4s
+2026-11-02T15:46:41.944685+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=885/32768; events=4; injections=2; context=1432; elapsed=17.5s ETA(cap)=631.8s
+2026-11-02T15:46:57.796979+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=1788/32768; events=7; injections=4; context=2540; elapsed=33.4s ETA(cap)=578.5s
+2026-11-02T15:47:13.191842+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=2643/32768; events=10; injections=6; context=3601; elapsed=48.8s ETA(cap)=556.1s
+2026-11-02T15:47:28.350128+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=3464/32768; events=13; injections=7; context=4525; elapsed=63.9s ETA(cap)=540.9s
+2026-11-02T15:47:43.367022+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=4251/32768; events=16; injections=9; context=5518; elapsed=79.0s ETA(cap)=529.7s
+2026-11-02T15:47:58.781423+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=5052/32768; events=19; injections=11; context=6525; elapsed=94.4s ETA(cap)=517.8s
+2026-11-02T15:48:14.111751+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=5828/32768; events=22; injections=12; context=7404; elapsed=109.7s ETA(cap)=507.1s
+2026-11-02T15:48:29.832569+00:00 gpqa-recbWK7TxyPMNhPIb filtered_futures: body=6609/32768; events=25; injections=15; context=8493; elapsed=125.4s ETA(cap)=496.4s
+2026-11-02T15:48:38.589218+00:00 completed gpqa-recbWK7TxyPMNhPIb: correct=False
+2026-11-02T15:48:38.589768+00:00 condition start evaluation/gpqa/gpqa-rec1BjNQici8oD53a/filtered_futures
+2026-11-02T15:48:38.617837+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=1/32768; events=0; injections=0; context=250; elapsed=0.0s ETA(cap)=455.7s
+2026-11-02T15:48:55.707155+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=848/32768; events=4; injections=1; context=1200; elapsed=17.1s ETA(cap)=643.8s
+2026-11-02T15:49:11.508149+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=1746/32768; events=7; injections=3; context=2304; elapsed=32.9s ETA(cap)=584.6s
+2026-11-02T15:49:26.927673+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=2598/32768; events=10; injections=5; context=3362; elapsed=48.3s ETA(cap)=561.2s
+2026-11-02T15:49:44.458535+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=3457/32768; events=14; injections=8; context=4530; elapsed=65.9s ETA(cap)=558.4s
+2026-11-02T15:49:59.479962+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=4240/32768; events=17; injections=11; context=5621; elapsed=80.9s ETA(cap)=544.2s
+2026-11-02T15:50:14.756287+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=5028/32768; events=20; injections=13; context=6614; elapsed=96.2s ETA(cap)=530.5s
+2026-11-02T15:50:30.288951+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=5822/32768; events=23; injections=14; context=7511; elapsed=111.7s ETA(cap)=516.9s
+2026-11-02T15:50:45.718748+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=6593/32768; events=26; injections=15; context=8385; elapsed=127.1s ETA(cap)=504.7s
+2026-11-02T15:51:01.429294+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=7370/32768; events=29; injections=16; context=9265; elapsed=142.8s ETA(cap)=492.2s
+2026-11-02T15:51:17.568940+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=8157/32768; events=32; injections=19; context=10359; elapsed=159.0s ETA(cap)=479.6s
+2026-11-02T15:51:34.134951+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=8957/32768; events=35; injections=22; context=11466; elapsed=175.5s ETA(cap)=466.6s
+2026-11-02T15:51:50.802227+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=9751/32768; events=38; injections=23; context=12361; elapsed=192.2s ETA(cap)=453.7s
+2026-11-02T15:52:07.225035+00:00 gpqa-rec1BjNQici8oD53a filtered_futures: body=10971/32768; events=39; injections=24; context=13624; elapsed=208.6s ETA(cap)=414.5s
+2026-11-02T15:52:10.601737+00:00 completed gpqa-rec1BjNQici8oD53a: correct=False
+2026-11-02T15:52:10.602301+00:00 condition start evaluation/gpqa/gpqa-reccOKzFNmyqeJ6ry/filtered_futures
+2026-11-02T15:52:10.629447+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=1/32768; events=0; injections=0; context=206; elapsed=0.0s ETA(cap)=426.9s
+2026-11-02T15:52:28.097036+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=869/32768; events=4; injections=1; context=1176; elapsed=17.5s ETA(cap)=641.7s
+2026-11-02T15:52:43.904241+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=1768/32768; events=7; injections=4; context=2383; elapsed=33.3s ETA(cap)=583.7s
+2026-11-02T15:52:59.057138+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=2602/32768; events=10; injections=6; context=3422; elapsed=48.4s ETA(cap)=561.6s
+2026-11-02T15:53:16.458710+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=3438/32768; events=14; injections=10; context=4668; elapsed=65.8s ETA(cap)=561.7s
+2026-11-02T15:53:32.928491+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=4344/32768; events=17; injections=12; context=5779; elapsed=82.3s ETA(cap)=538.6s
+2026-11-02T15:53:48.153016+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=5122/32768; events=20; injections=15; context=6866; elapsed=97.5s ETA(cap)=526.5s
+2026-11-02T15:54:03.687405+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=5906/32768; events=23; injections=18; context=7958; elapsed=113.1s ETA(cap)=514.3s
+2026-11-02T15:54:19.506939+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=6693/32768; events=26; injections=21; context=9054; elapsed=128.9s ETA(cap)=502.1s
+2026-11-02T15:54:35.110535+00:00 gpqa-reccOKzFNmyqeJ6ry filtered_futures: body=7780/32768; events=27; injections=21; context=10141; elapsed=144.5s ETA(cap)=464.1s
+2026-11-02T15:54:36.907625+00:00 completed gpqa-reccOKzFNmyqeJ6ry: correct=True
+2026-11-02T15:54:36.908235+00:00 condition start evaluation/gpqa/gpqa-recD8oX1KevFbl7bL/filtered_futures
+2026-11-02T15:54:36.954070+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=1/32768; events=0; injections=0; context=387; elapsed=0.0s ETA(cap)=532.5s
+2026-11-02T15:54:53.164912+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=931/32768; events=3; injections=2; context=1523; elapsed=16.2s ETA(cap)=554.9s
+2026-11-02T15:55:08.825795+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=1815/32768; events=6; injections=3; context=2510; elapsed=31.9s ETA(cap)=543.8s
+2026-11-02T15:55:24.226864+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=2665/32768; events=9; injections=6; context=3667; elapsed=47.3s ETA(cap)=534.2s
+2026-11-02T15:55:39.810045+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=3509/32768; events=12; injections=9; context=4819; elapsed=62.9s ETA(cap)=524.2s
+2026-11-02T15:55:55.309390+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=4320/32768; events=15; injections=11; context=5836; elapsed=78.4s ETA(cap)=516.1s
+2026-11-02T15:56:11.179115+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=5151/32768; events=18; injections=13; context=6873; elapsed=94.2s ETA(cap)=505.3s
+2026-11-02T15:56:26.763512+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=5939/32768; events=21; injections=16; context=7967; elapsed=109.8s ETA(cap)=496.1s
+2026-11-02T15:56:42.534447+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=6723/32768; events=24; injections=18; context=8957; elapsed=125.6s ETA(cap)=486.6s
+2026-11-02T15:56:59.623870+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=7584/32768; events=27; injections=20; context=10024; elapsed=142.7s ETA(cap)=473.8s
+2026-11-02T15:57:15.984993+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=8378/32768; events=30; injections=22; context=11023; elapsed=159.0s ETA(cap)=463.0s
+2026-11-02T15:57:32.431117+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=9161/32768; events=33; injections=24; context=12012; elapsed=175.5s ETA(cap)=452.2s
+2026-11-02T15:57:49.030659+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=9934/32768; events=36; injections=26; context=12990; elapsed=192.1s ETA(cap)=441.5s
+2026-11-02T15:58:06.072957+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=10715/32768; events=39; injections=29; context=14079; elapsed=209.1s ETA(cap)=430.4s
+2026-11-02T15:58:23.507410+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=11504/32768; events=42; injections=32; context=15175; elapsed=226.6s ETA(cap)=418.8s
+2026-11-02T15:58:41.305358+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=12299/32768; events=45; injections=35; context=16279; elapsed=244.4s ETA(cap)=406.7s
+2026-11-02T15:58:59.216566+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=13081/32768; events=48; injections=38; context=17370; elapsed=262.3s ETA(cap)=394.7s
+2026-11-02T15:59:14.230008+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=13808/32768; events=50; injections=39; context=18200; elapsed=277.3s ETA(cap)=380.8s
+2026-11-02T15:59:29.788734+00:00 gpqa-recD8oX1KevFbl7bL filtered_futures: body=14750/32768; events=51; injections=39; context=19142; elapsed=292.9s ETA(cap)=357.7s
+2026-11-02T15:59:40.560926+00:00 completed gpqa-recD8oX1KevFbl7bL: correct=False
+2026-11-02T15:59:40.561533+00:00 condition start evaluation/gpqa/gpqa-recGFNRVl1qBZGwyU/filtered_futures
+2026-11-02T15:59:40.592787+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=1/32768; events=0; injections=0; context=147; elapsed=0.0s ETA(cap)=546.2s
+2026-11-02T15:59:57.774552+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=842/32768; events=4; injections=2; context=1194; elapsed=17.2s ETA(cap)=652.1s
+2026-11-02T16:00:13.637265+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=1745/32768; events=7; injections=4; context=2303; elapsed=33.1s ETA(cap)=587.8s
+2026-11-02T16:00:28.784235+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=2578/32768; events=10; injections=7; context=3444; elapsed=48.2s ETA(cap)=564.5s
+2026-11-02T16:00:46.296076+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=3425/32768; events=14; injections=9; context=4496; elapsed=65.7s ETA(cap)=563.0s
+2026-11-02T16:01:02.782882+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=4335/32768; events=17; injections=11; context=5612; elapsed=82.2s ETA(cap)=539.2s
+2026-11-02T16:01:18.095246+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=5122/32768; events=20; injections=14; context=6708; elapsed=97.5s ETA(cap)=526.4s
+2026-11-02T16:01:34.044297+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=5945/32768; events=23; injections=16; context=7736; elapsed=113.5s ETA(cap)=512.0s
+2026-11-02T16:01:49.666409+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=6724/32768; events=26; injections=18; context=8720; elapsed=129.1s ETA(cap)=500.0s
+2026-11-02T16:02:05.731033+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=7524/32768; events=29; injections=19; context=9623; elapsed=145.2s ETA(cap)=487.0s
+2026-11-02T16:02:21.763974+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=8301/32768; events=32; injections=21; context=10606; elapsed=161.2s ETA(cap)=475.1s
+2026-11-02T16:02:37.324173+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=9018/32768; events=35; injections=24; context=11631; elapsed=176.7s ETA(cap)=465.5s
+2026-11-02T16:02:53.455675+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=9786/32768; events=38; injections=25; context=12501; elapsed=192.9s ETA(cap)=453.0s
+2026-11-02T16:03:08.462730+00:00 gpqa-recGFNRVl1qBZGwyU filtered_futures: body=10919/32768; events=38; injections=25; context=13634; elapsed=207.9s ETA(cap)=416.0s
+2026-11-02T16:03:08.739843+00:00 completed gpqa-recGFNRVl1qBZGwyU: correct=False
+2026-11-02T16:03:08.740446+00:00 condition start evaluation/gpqa/gpqa-rec0VuKUjt1SZ7NYv/filtered_futures
+2026-11-02T16:03:08.771440+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=1/32768; events=0; injections=0; context=148; elapsed=0.0s ETA(cap)=551.4s
+2026-11-02T16:03:26.251548+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=865/32768; events=4; injections=4; context=1424; elapsed=17.5s ETA(cap)=645.3s
+2026-11-02T16:03:42.361932+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=1788/32768; events=7; injections=5; context=2449; elapsed=33.6s ETA(cap)=582.3s
+2026-11-02T16:03:57.510311+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=2623/32768; events=10; injections=7; context=3490; elapsed=48.8s ETA(cap)=560.3s
+2026-11-02T16:04:14.996470+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=3468/32768; events=14; injections=11; context=4747; elapsed=66.2s ETA(cap)=559.7s
+2026-11-02T16:04:31.490919+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=4373/32768; events=17; injections=11; context=5652; elapsed=82.7s ETA(cap)=537.2s
+2026-11-02T16:04:46.760563+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=5162/32768; events=20; injections=12; context=6544; elapsed=98.0s ETA(cap)=524.1s
+2026-11-02T16:05:02.263943+00:00 gpqa-rec0VuKUjt1SZ7NYv filtered_futures: body=6287/32768; events=21; injections=12; context=7669; elapsed=113.5s ETA(cap)=478.1s
+2026-11-02T16:05:03.681076+00:00 completed gpqa-rec0VuKUjt1SZ7NYv: correct=True
+2026-11-02T16:05:03.681658+00:00 condition start evaluation/gpqa/gpqa-recQiWOxhkXRz9NVE/filtered_futures
+2026-11-02T16:05:03.712914+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=1/32768; events=0; injections=0; context=149; elapsed=0.0s ETA(cap)=570.7s
+2026-11-02T16:05:20.832824+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=849/32768; events=4; injections=2; context=1203; elapsed=17.1s ETA(cap)=644.3s
+2026-11-02T16:05:36.652889+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=1750/32768; events=7; injections=4; context=2310; elapsed=33.0s ETA(cap)=584.2s
+2026-11-02T16:05:51.887305+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=2594/32768; events=10; injections=7; context=3463; elapsed=48.2s ETA(cap)=560.6s
+2026-11-02T16:06:09.301540+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=3437/32768; events=14; injections=11; context=4717; elapsed=65.6s ETA(cap)=559.9s
+2026-11-02T16:06:25.720250+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=4334/32768; events=17; injections=14; context=5922; elapsed=82.0s ETA(cap)=538.1s
+2026-11-02T16:06:40.909939+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=5107/32768; events=20; injections=17; context=7004; elapsed=97.2s ETA(cap)=526.5s
+2026-11-02T16:06:56.312003+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=5883/32768; events=23; injections=18; context=7882; elapsed=112.6s ETA(cap)=514.7s
+2026-11-02T16:07:11.970322+00:00 gpqa-recQiWOxhkXRz9NVE filtered_futures: body=6655/32768; events=26; injections=20; context=8860; elapsed=128.3s ETA(cap)=503.3s
+2026-11-02T16:07:27.053030+00:00 completed gpqa-recQiWOxhkXRz9NVE: correct=True
+2026-11-02T16:07:27.053576+00:00 condition start evaluation/gpqa/gpqa-recPIzpnuYpB4yvmp/filtered_futures
+2026-11-02T16:07:27.094504+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=1/32768; events=0; injections=0; context=262; elapsed=0.0s ETA(cap)=398.1s
+2026-11-02T16:07:44.279315+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=854/32768; events=4; injections=3; context=1424; elapsed=17.2s ETA(cap)=642.7s
+2026-11-02T16:07:59.735183+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=1716/32768; events=7; injections=4; context=2388; elapsed=32.7s ETA(cap)=590.9s
+2026-11-02T16:08:14.878110+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=2545/32768; events=10; injections=5; context=3320; elapsed=47.8s ETA(cap)=567.6s
+2026-11-02T16:08:29.936972+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=3358/32768; events=13; injections=7; context=4338; elapsed=62.9s ETA(cap)=550.5s
+2026-11-02T16:08:46.370693+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=4269/32768; events=16; injections=9; context=5454; elapsed=79.3s ETA(cap)=529.3s
+2026-11-02T16:09:02.506434+00:00 gpqa-recPIzpnuYpB4yvmp filtered_futures: body=5467/32768; events=17; injections=9; context=6652; elapsed=95.4s ETA(cap)=476.5s
+2026-11-02T16:09:04.516551+00:00 completed gpqa-recPIzpnuYpB4yvmp: correct=True
+2026-11-02T16:09:04.517127+00:00 condition start evaluation/gpqa/gpqa-recOj90oKbiyjLcBd/filtered_futures
+2026-11-02T16:09:04.558624+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=1/32768; events=0; injections=0; context=337; elapsed=0.0s ETA(cap)=417.0s
+2026-11-02T16:09:21.690091+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=846/32768; events=4; injections=3; context=1491; elapsed=17.1s ETA(cap)=646.9s
+2026-11-02T16:09:37.667035+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=1758/32768; events=7; injections=5; context=2608; elapsed=33.1s ETA(cap)=584.2s
+2026-11-02T16:09:52.949528+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=2605/32768; events=10; injections=7; context=3661; elapsed=48.4s ETA(cap)=560.5s
+2026-11-02T16:10:10.485615+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=3459/32768; events=14; injections=10; context=4824; elapsed=65.9s ETA(cap)=558.7s
+2026-11-02T16:10:26.895301+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=4360/32768; events=17; injections=11; context=5828; elapsed=82.3s ETA(cap)=536.6s
+2026-11-02T16:10:42.180140+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=5138/32768; events=20; injections=14; context=6915; elapsed=97.6s ETA(cap)=525.0s
+2026-11-02T16:10:57.798377+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=5921/32768; events=23; injections=17; context=8007; elapsed=113.3s ETA(cap)=513.5s
+2026-11-02T16:11:13.426780+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=6693/32768; events=26; injections=20; context=9088; elapsed=128.9s ETA(cap)=502.1s
+2026-11-02T16:11:29.350028+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=7468/32768; events=29; injections=23; context=10172; elapsed=144.8s ETA(cap)=490.6s
+2026-11-02T16:11:45.566558+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=8249/32768; events=32; injections=24; context=11056; elapsed=161.0s ETA(cap)=478.6s
+2026-11-02T16:12:02.141155+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=9030/32768; events=35; injections=27; context=12146; elapsed=177.6s ETA(cap)=466.9s
+2026-11-02T16:12:17.407479+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=9695/32768; events=38; injections=30; context=13120; elapsed=192.9s ETA(cap)=459.0s
+2026-11-02T16:12:34.045238+00:00 gpqa-recOj90oKbiyjLcBd filtered_futures: body=10618/32768; events=40; injections=30; context=14043; elapsed=209.5s ETA(cap)=437.0s
+2026-11-02T16:12:47.289265+00:00 completed gpqa-recOj90oKbiyjLcBd: correct=False
+2026-11-02T16:12:47.289828+00:00 condition start evaluation/gpqa/gpqa-rec90hpebagUgiRpS/filtered_futures
+2026-11-02T16:12:47.332675+00:00 gpqa-rec90hpebagUgiRpS filtered_futures: body=1/32768; events=0; injections=0; context=372; elapsed=0.0s ETA(cap)=425.3s
+2026-11-02T16:13:04.526894+00:00 gpqa-rec90hpebagUgiRpS filtered_futures: body=857/32768; events=4; injections=1; context=1330; elapsed=17.2s ETA(cap)=640.7s
+2026-11-02T16:13:20.347328+00:00 gpqa-rec90hpebagUgiRpS filtered_futures: body=1757/32768; events=7; injections=3; context=2436; elapsed=33.0s ETA(cap)=582.9s
+2026-11-02T16:13:35.437413+00:00 gpqa-rec90hpebagUgiRpS filtered_futures: body=2587/32768; events=10; injections=5; context=3472; elapsed=48.1s ETA(cap)=561.4s
+2026-11-02T16:13:51.659128+00:00 gpqa-rec90hpebagUgiRpS filtered_futures: body=3501/32768; events=13; injections=7; context=4592; elapsed=64.3s ETA(cap)=537.9s
+2026-11-02T16:13:58.811453+00:00 completed gpqa-rec90hpebagUgiRpS: correct=True
+2026-11-02T16:13:58.811993+00:00 condition start evaluation/gpqa/gpqa-recZqUs2jwJYgDIeh/filtered_futures
+2026-11-02T16:13:58.853506+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=1/32768; events=0; injections=0; context=343; elapsed=0.0s ETA(cap)=409.1s
+2026-11-02T16:14:15.909663+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=844/32768; events=4; injections=1; context=1289; elapsed=17.1s ETA(cap)=645.6s
+2026-11-02T16:14:32.322267+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=1776/32768; events=7; injections=3; context=2427; elapsed=33.5s ETA(cap)=584.3s
+2026-11-02T16:14:47.643597+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=2621/32768; events=10; injections=6; context=3581; elapsed=48.8s ETA(cap)=561.3s
+2026-11-02T16:15:05.024331+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=3464/32768; events=14; injections=9; context=4732; elapsed=66.2s ETA(cap)=559.9s
+2026-11-02T16:15:21.513435+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=4368/32768; events=17; injections=11; context=5842; elapsed=82.7s ETA(cap)=537.5s
+2026-11-02T16:15:36.842385+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=5151/32768; events=20; injections=12; context=6728; elapsed=98.0s ETA(cap)=525.4s
+2026-11-02T16:15:52.949271+00:00 gpqa-recZqUs2jwJYgDIeh filtered_futures: body=6321/32768; events=21; injections=12; context=7898; elapsed=114.1s ETA(cap)=477.4s
+2026-11-02T16:15:53.103480+00:00 completed gpqa-recZqUs2jwJYgDIeh: correct=True
+2026-11-02T16:15:53.104036+00:00 condition start evaluation/gpqa/gpqa-recg02EmYPFs5srwA/filtered_futures
+2026-11-02T16:15:53.145564+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=1/32768; events=0; injections=0; context=305; elapsed=0.0s ETA(cap)=398.8s
+2026-11-02T16:16:10.364913+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=852/32768; events=4; injections=4; context=1566; elapsed=17.2s ETA(cap)=645.5s
+2026-11-02T16:16:26.272128+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=1758/32768; events=7; injections=4; context=2472; elapsed=33.1s ETA(cap)=584.5s
+2026-11-02T16:16:41.432612+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=2598/32768; events=10; injections=5; context=3415; elapsed=48.3s ETA(cap)=560.9s
+2026-11-02T16:16:58.714120+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=3436/32768; events=14; injections=8; context=4561; elapsed=65.6s ETA(cap)=559.8s
+2026-11-02T16:17:15.081616+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=4333/32768; events=17; injections=11; context=5767; elapsed=81.9s ETA(cap)=537.8s
+2026-11-02T16:17:30.216755+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=5107/32768; events=20; injections=13; context=6746; elapsed=97.1s ETA(cap)=525.8s
+2026-11-02T16:17:45.603554+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=5881/32768; events=23; injections=16; context=7829; elapsed=112.5s ETA(cap)=514.2s
+2026-11-02T16:18:01.278121+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=6662/32768; events=26; injections=18; context=8816; elapsed=128.1s ETA(cap)=502.2s
+2026-11-02T16:18:17.260205+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=7439/32768; events=29; injections=21; context=9901; elapsed=144.1s ETA(cap)=490.7s
+2026-11-02T16:18:32.996338+00:00 gpqa-recg02EmYPFs5srwA filtered_futures: body=8349/32768; events=31; injections=22; context=10913; elapsed=159.9s ETA(cap)=467.6s
+2026-11-02T16:18:40.353525+00:00 completed gpqa-recg02EmYPFs5srwA: correct=True
+2026-11-02T16:18:40.354094+00:00 condition start evaluation/gpqa/gpqa-reccVFW11Elovnf8T/filtered_futures
+2026-11-02T16:18:40.396747+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=1/32768; events=0; injections=0; context=423; elapsed=0.0s ETA(cap)=417.5s
+2026-11-02T16:18:57.451830+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=842/32768; events=4; injections=3; context=1573; elapsed=17.1s ETA(cap)=647.2s
+2026-11-02T16:19:13.251558+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=1740/32768; events=7; injections=3; context=2471; elapsed=32.9s ETA(cap)=586.1s
+2026-11-02T16:19:28.515238+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=2577/32768; events=10; injections=5; context=3514; elapsed=48.1s ETA(cap)=563.9s
+2026-11-02T16:19:45.879535+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=3419/32768; events=14; injections=8; context=4665; elapsed=65.5s ETA(cap)=562.2s
+2026-11-02T16:20:02.226227+00:00 gpqa-reccVFW11Elovnf8T filtered_futures: body=4407/32768; events=17; injections=9; context=5756; elapsed=81.8s ETA(cap)=526.7s
+2026-11-02T16:20:10.936681+00:00 completed gpqa-reccVFW11Elovnf8T: correct=True
+2026-11-02T16:20:10.937229+00:00 condition start evaluation/gpqa/gpqa-recw5EQAukB4ep12V/filtered_futures
+2026-11-02T16:20:10.963728+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=1/32768; events=0; injections=0; context=193; elapsed=0.0s ETA(cap)=430.4s
+2026-11-02T16:20:28.156020+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=852/32768; events=4; injections=3; context=1353; elapsed=17.2s ETA(cap)=644.5s
+2026-11-02T16:20:44.206758+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=1764/32768; events=7; injections=5; context=2470; elapsed=33.3s ETA(cap)=584.5s
+2026-11-02T16:20:59.530763+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=2611/32768; events=10; injections=7; context=3522; elapsed=48.6s ETA(cap)=561.1s
+2026-11-02T16:21:14.584331+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=3418/32768; events=13; injections=10; context=4637; elapsed=63.6s ETA(cap)=546.4s
+2026-11-02T16:21:32.227210+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=4259/32768; events=17; injections=12; context=5682; elapsed=81.3s ETA(cap)=544.1s
+2026-11-02T16:21:47.764146+00:00 gpqa-recw5EQAukB4ep12V filtered_futures: body=5233/32768; events=19; injections=12; context=6656; elapsed=96.8s ETA(cap)=509.4s
+2026-11-02T16:21:54.996311+00:00 completed gpqa-recw5EQAukB4ep12V: correct=True
+2026-11-02T16:21:54.996837+00:00 condition start evaluation/gpqa/gpqa-recafnH3RRnMBXEb1/filtered_futures
+2026-11-02T16:21:55.024797+00:00 gpqa-recafnH3RRnMBXEb1 filtered_futures: body=1/32768; events=0; injections=0; context=256; elapsed=0.0s ETA(cap)=460.3s
+2026-11-02T16:22:12.212077+00:00 gpqa-recafnH3RRnMBXEb1 filtered_futures: body=850/32768; events=4; injections=1; context=1207; elapsed=17.2s ETA(cap)=645.9s
+2026-11-02T16:22:27.651094+00:00 gpqa-recafnH3RRnMBXEb1 filtered_futures: body=1833/32768; events=7; injections=3; context=2396; elapsed=32.6s ETA(cap)=550.9s
+2026-11-02T16:22:35.350916+00:00 completed gpqa-recafnH3RRnMBXEb1: correct=True
+2026-11-02T16:22:35.351456+00:00 condition start evaluation/gpqa/gpqa-recHDth5xRxp73oig/filtered_futures
+2026-11-02T16:22:35.377271+00:00 gpqa-recHDth5xRxp73oig filtered_futures: body=1/32768; events=0; injections=0; context=163; elapsed=0.0s ETA(cap)=419.8s
+2026-11-02T16:22:52.342092+00:00 gpqa-recHDth5xRxp73oig filtered_futures: body=834/32768; events=4; injections=0; context=996; elapsed=17.0s ETA(cap)=650.1s
+2026-11-02T16:23:08.231895+00:00 gpqa-recHDth5xRxp73oig filtered_futures: body=1736/32768; events=7; injections=0; context=1898; elapsed=32.9s ETA(cap)=587.5s
+2026-11-02T16:23:23.438513+00:00 gpqa-recHDth5xRxp73oig filtered_futures: body=2582/32768; events=10; injections=0; context=2744; elapsed=48.1s ETA(cap)=562.0s
+2026-11-02T16:23:40.580405+00:00 gpqa-recHDth5xRxp73oig filtered_futures: body=3420/32768; events=14; injections=3; context=3891; elapsed=65.2s ETA(cap)=559.6s
+2026-11-02T16:23:50.399951+00:00 completed gpqa-recHDth5xRxp73oig: correct=False
+2026-11-02T16:23:50.400486+00:00 condition start evaluation/gpqa/gpqa-recHVUd2DkoKfedJZ/filtered_futures
+2026-11-02T16:23:50.441937+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=1/32768; events=0; injections=0; context=287; elapsed=0.0s ETA(cap)=393.7s
+2026-11-02T16:24:07.501778+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=840/32768; events=4; injections=0; context=1126; elapsed=17.1s ETA(cap)=648.9s
+2026-11-02T16:24:23.369953+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=1742/32768; events=7; injections=1; context=2131; elapsed=32.9s ETA(cap)=586.7s
+2026-11-02T16:24:38.653172+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=2593/32768; events=10; injections=3; context=3188; elapsed=48.2s ETA(cap)=561.2s
+2026-11-02T16:24:56.104029+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=3454/32768; events=14; injections=5; context=4255; elapsed=65.7s ETA(cap)=557.4s
+2026-11-02T16:25:12.556861+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=4375/32768; events=17; injections=5; context=5176; elapsed=82.1s ETA(cap)=533.0s
+2026-11-02T16:25:27.595178+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=5153/32768; events=20; injections=6; context=6056; elapsed=97.2s ETA(cap)=520.7s
+2026-11-02T16:25:43.028370+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=5947/32768; events=23; injections=8; context=7056; elapsed=112.6s ETA(cap)=507.8s
+2026-11-02T16:25:58.483803+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=6722/32768; events=26; injections=11; context=8139; elapsed=128.1s ETA(cap)=496.2s
+2026-11-02T16:26:14.255899+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=7506/32768; events=29; injections=13; context=9129; elapsed=143.8s ETA(cap)=484.1s
+2026-11-02T16:26:30.184153+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=8285/32768; events=32; injections=15; context=10113; elapsed=159.8s ETA(cap)=472.1s
+2026-11-02T16:26:46.583396+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=9074/32768; events=35; injections=18; context=11209; elapsed=176.2s ETA(cap)=460.0s
+2026-11-02T16:27:03.110432+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=9852/32768; events=38; injections=20; context=12191; elapsed=192.7s ETA(cap)=448.2s
+2026-11-02T16:27:18.188545+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=10506/32768; events=41; injections=22; context=13050; elapsed=207.8s ETA(cap)=440.2s
+2026-11-02T16:27:35.192208+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=11287/32768; events=44; injections=24; context=14036; elapsed=224.8s ETA(cap)=427.8s
+2026-11-02T16:27:52.458598+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=12064/32768; events=47; injections=26; context=15019; elapsed=242.0s ETA(cap)=415.4s
+2026-11-02T16:28:08.005203+00:00 gpqa-recHVUd2DkoKfedJZ filtered_futures: body=13056/32768; events=48; injections=27; context=16114; elapsed=257.6s ETA(cap)=388.9s
+2026-11-02T16:28:11.089405+00:00 completed gpqa-recHVUd2DkoKfedJZ: correct=True
+2026-11-02T16:28:11.089997+00:00 condition start evaluation/gpqa/gpqa-recnjViFrqlZNL3fY/filtered_futures
+2026-11-02T16:28:11.117043+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=1/32768; events=0; injections=0; context=113; elapsed=0.0s ETA(cap)=426.5s
+2026-11-02T16:28:28.395404+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=856/32768; events=4; injections=3; context=1277; elapsed=17.3s ETA(cap)=644.6s
+2026-11-02T16:28:44.352689+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=1767/32768; events=7; injections=5; context=2393; elapsed=33.2s ETA(cap)=583.3s
+2026-11-02T16:28:59.519448+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=2602/32768; events=10; injections=7; context=3434; elapsed=48.4s ETA(cap)=561.3s
+2026-11-02T16:29:16.928381+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=3445/32768; events=14; injections=9; context=4483; elapsed=65.8s ETA(cap)=560.3s
+2026-11-02T16:29:33.366040+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=4350/32768; events=17; injections=12; context=5697; elapsed=82.3s ETA(cap)=537.4s
+2026-11-02T16:29:48.596942+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=5134/32768; events=20; injections=14; context=6686; elapsed=97.5s ETA(cap)=524.8s
+2026-11-02T16:30:04.220885+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=5926/32768; events=23; injections=16; context=7684; elapsed=113.1s ETA(cap)=512.4s
+2026-11-02T16:30:20.584390+00:00 gpqa-recnjViFrqlZNL3fY filtered_futures: body=6924/32768; events=25; injections=18; context=8886; elapsed=129.5s ETA(cap)=483.3s
+2026-11-02T16:30:23.712198+00:00 completed gpqa-recnjViFrqlZNL3fY: correct=False
+2026-11-02T16:30:23.712784+00:00 condition start evaluation/gpqa/gpqa-recZdZxsN0AxDx0pB/filtered_futures
+2026-11-02T16:30:23.755623+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=1/32768; events=0; injections=0; context=382; elapsed=0.0s ETA(cap)=432.8s
+2026-11-02T16:30:41.782954+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=926/32768; events=4; injections=2; context=1512; elapsed=18.0s ETA(cap)=620.4s
+2026-11-02T16:30:57.817607+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=1840/32768; events=7; injections=5; context=2735; elapsed=34.1s ETA(cap)=572.8s
+2026-11-02T16:31:13.121139+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=2683/32768; events=10; injections=8; context=3886; elapsed=49.4s ETA(cap)=553.7s
+2026-11-02T16:31:31.209209+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=3575/32768; events=14; injections=12; context=5188; elapsed=67.5s ETA(cap)=550.9s
+2026-11-02T16:31:47.696359+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=4476/32768; events=17; injections=13; context=6192; elapsed=84.0s ETA(cap)=530.7s
+2026-11-02T16:32:02.910482+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=5253/32768; events=20; injections=14; context=7072; elapsed=99.2s ETA(cap)=519.4s
+2026-11-02T16:32:18.621407+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=6051/32768; events=23; injections=16; context=8075; elapsed=114.9s ETA(cap)=507.2s
+2026-11-02T16:32:34.453294+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=6836/32768; events=26; injections=19; context=9168; elapsed=130.7s ETA(cap)=495.8s
+2026-11-02T16:32:50.068772+00:00 gpqa-recZdZxsN0AxDx0pB filtered_futures: body=7577/32768; events=29; injections=22; context=10217; elapsed=146.3s ETA(cap)=486.5s
+2026-11-02T16:33:00.157445+00:00 completed gpqa-recZdZxsN0AxDx0pB: correct=False
+2026-11-02T16:33:00.158041+00:00 condition start evaluation/gpqa/gpqa-recr5Un4bVj4cRnAP/filtered_futures
+2026-11-02T16:33:00.199469+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=1/32768; events=0; injections=0; context=296; elapsed=0.0s ETA(cap)=397.8s
+2026-11-02T16:33:17.225648+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=838/32768; events=4; injections=2; context=1339; elapsed=17.0s ETA(cap)=649.2s
+2026-11-02T16:33:33.131323+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=1746/32768; events=7; injections=3; context=2350; elapsed=32.9s ETA(cap)=585.3s
+2026-11-02T16:33:48.346171+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=2584/32768; events=10; injections=4; context=3291; elapsed=48.2s ETA(cap)=562.5s
+2026-11-02T16:34:03.370849+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=3391/32768; events=13; injections=5; context=4201; elapsed=63.2s ETA(cap)=547.4s
+2026-11-02T16:34:19.093442+00:00 gpqa-recr5Un4bVj4cRnAP filtered_futures: body=4249/32768; events=16; injections=6; context=5162; elapsed=78.9s ETA(cap)=529.6s
+2026-11-02T16:34:30.078836+00:00 completed gpqa-recr5Un4bVj4cRnAP: correct=True
+2026-11-02T16:34:30.079405+00:00 condition start evaluation/gpqa/gpqa-recBeOYL2vJeESmQ5/filtered_futures
+2026-11-02T16:34:30.120579+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=1/32768; events=0; injections=0; context=294; elapsed=0.0s ETA(cap)=399.2s
+2026-11-02T16:34:47.412885+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=862/32768; events=4; injections=2; context=1361; elapsed=17.3s ETA(cap)=640.5s
+2026-11-02T16:35:03.331509+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=1766/32768; events=7; injections=5; context=2574; elapsed=33.2s ETA(cap)=583.2s
+2026-11-02T16:35:18.555302+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=2604/32768; events=10; injections=8; context=3721; elapsed=48.4s ETA(cap)=561.2s
+2026-11-02T16:35:36.062635+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=3450/32768; events=14; injections=12; context=4977; elapsed=66.0s ETA(cap)=560.5s
+2026-11-02T16:35:51.295048+00:00 gpqa-recBeOYL2vJeESmQ5 filtered_futures: body=4245/32768; events=17; injections=14; context=5978; elapsed=81.2s ETA(cap)=545.5s
+2026-11-02T16:35:59.109754+00:00 completed gpqa-recBeOYL2vJeESmQ5: correct=False
+2026-11-02T16:35:59.110279+00:00 condition start evaluation/gpqa/gpqa-recTs7qzfJs6kfLUK/filtered_futures
+2026-11-02T16:35:59.169134+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=1/32768; events=0; injections=0; context=623; elapsed=0.0s ETA(cap)=453.2s
+2026-11-02T16:36:14.427815+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=852/32768; events=3; injections=1; context=1577; elapsed=15.3s ETA(cap)=572.1s
+2026-11-02T16:36:29.861700+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=1709/32768; events=6; injections=3; context=2639; elapsed=30.7s ETA(cap)=558.1s
+2026-11-02T16:36:46.052777+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=2613/32768; events=9; injections=6; context=3851; elapsed=46.9s ETA(cap)=541.2s
+2026-11-02T16:37:01.905590+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=3644/32768; events=11; injections=7; context=4985; elapsed=62.8s ETA(cap)=501.5s
+2026-11-02T16:37:17.507498+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=4464/32768; events=14; injections=10; context=6112; elapsed=78.4s ETA(cap)=496.8s
+2026-11-02T16:37:32.864327+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=5241/32768; events=17; injections=13; context=7198; elapsed=93.7s ETA(cap)=492.2s
+2026-11-02T16:37:48.556359+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=6025/32768; events=20; injections=15; context=8188; elapsed=109.4s ETA(cap)=485.6s
+2026-11-02T16:38:04.783464+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=7000/32768; events=22; injections=16; context=9266; elapsed=125.6s ETA(cap)=462.5s
+2026-11-02T16:38:22.376653+00:00 gpqa-recTs7qzfJs6kfLUK filtered_futures: body=7900/32768; events=25; injections=19; context=10475; elapsed=143.2s ETA(cap)=450.8s
+2026-11-02T16:38:33.444549+00:00 completed gpqa-recTs7qzfJs6kfLUK: correct=True
+2026-11-02T16:38:33.445129+00:00 condition start evaluation/gpqa/gpqa-recmzeT93BlfOcNzr/filtered_futures
+2026-11-02T16:38:33.472906+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=1/32768; events=0; injections=0; context=245; elapsed=0.0s ETA(cap)=439.9s
+2026-11-02T16:38:50.567977+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=846/32768; events=4; injections=2; context=1296; elapsed=17.1s ETA(cap)=645.6s
+2026-11-02T16:39:06.544914+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=1750/32768; events=7; injections=5; context=2509; elapsed=33.1s ETA(cap)=586.4s
+2026-11-02T16:39:21.828156+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=2590/32768; events=10; injections=8; context=3658; elapsed=48.4s ETA(cap)=563.6s
+2026-11-02T16:39:39.087156+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=3423/32768; events=14; injections=11; context=4799; elapsed=65.6s ETA(cap)=562.6s
+2026-11-02T16:39:55.484854+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=4324/32768; events=17; injections=12; context=5802; elapsed=82.0s ETA(cap)=539.6s
+2026-11-02T16:40:10.653791+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=5095/32768; events=20; injections=13; context=6676; elapsed=97.2s ETA(cap)=527.9s
+2026-11-02T16:40:25.943103+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=5867/32768; events=23; injections=14; context=7550; elapsed=112.5s ETA(cap)=515.8s
+2026-11-02T16:40:41.496723+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=6641/32768; events=26; injections=17; context=8633; elapsed=128.0s ETA(cap)=503.7s
+2026-11-02T16:40:57.214285+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=7413/32768; events=29; injections=19; context=9611; elapsed=143.8s ETA(cap)=491.7s
+2026-11-02T16:41:13.723218+00:00 gpqa-recmzeT93BlfOcNzr filtered_futures: body=8560/32768; events=30; injections=19; context=10758; elapsed=160.3s ETA(cap)=453.2s
+2026-11-02T16:41:14.280139+00:00 completed gpqa-recmzeT93BlfOcNzr: correct=False
+2026-11-02T16:41:14.280721+00:00 condition start evaluation/gpqa/gpqa-rec527dNeEtWJrYNl/filtered_futures
+2026-11-02T16:41:14.311143+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=1/32768; events=0; injections=0; context=132; elapsed=0.0s ETA(cap)=541.0s
+2026-11-02T16:41:31.804183+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=881/32768; events=4; injections=3; context=1320; elapsed=17.5s ETA(cap)=633.7s
+2026-11-02T16:41:47.829978+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=1796/32768; events=7; injections=6; context=2544; elapsed=33.5s ETA(cap)=578.3s
+2026-11-02T16:42:03.039611+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=2634/32768; events=10; injections=9; context=3690; elapsed=48.7s ETA(cap)=557.7s
+2026-11-02T16:42:20.352614+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=3468/32768; events=14; injections=12; context=4833; elapsed=66.1s ETA(cap)=558.1s
+2026-11-02T16:42:36.815260+00:00 gpqa-rec527dNeEtWJrYNl filtered_futures: body=4366/32768; events=17; injections=15; context=6040; elapsed=82.5s ETA(cap)=536.8s
+2026-11-02T16:42:51.203638+00:00 completed gpqa-rec527dNeEtWJrYNl: correct=True
+2026-11-02T16:42:51.204172+00:00 condition start evaluation/gpqa/gpqa-reclyy1tNCYpnp0UW/filtered_futures
+2026-11-02T16:42:51.230800+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=1/32768; events=0; injections=0; context=185; elapsed=0.0s ETA(cap)=438.3s
+2026-11-02T16:43:08.718210+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=870/32768; events=4; injections=2; context=1259; elapsed=17.5s ETA(cap)=641.7s
+2026-11-02T16:43:25.078874+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=1816/32768; events=7; injections=4; context=2410; elapsed=33.9s ETA(cap)=577.1s
+2026-11-02T16:43:40.154160+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=2643/32768; events=10; injections=6; context=3442; elapsed=48.9s ETA(cap)=557.8s
+2026-11-02T16:43:55.730548+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=3495/32768; events=13; injections=7; context=4397; elapsed=64.5s ETA(cap)=540.3s
+2026-11-02T16:44:11.009113+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=4305/32768; events=16; injections=8; context=5310; elapsed=79.8s ETA(cap)=527.6s
+2026-11-02T16:44:26.692530+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=5131/32768; events=19; injections=10; context=6340; elapsed=95.5s ETA(cap)=514.3s
+2026-11-02T16:44:42.216657+00:00 gpqa-reclyy1tNCYpnp0UW filtered_futures: body=5928/32768; events=22; injections=12; context=7343; elapsed=111.0s ETA(cap)=502.6s
+2026-11-02T16:44:57.159918+00:00 completed gpqa-reclyy1tNCYpnp0UW: correct=False
+2026-11-02T16:44:57.160505+00:00 condition start evaluation/gpqa/gpqa-recgXxEgllSGEpELP/filtered_futures
+2026-11-02T16:44:57.204202+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=1/32768; events=0; injections=0; context=499; elapsed=0.0s ETA(cap)=447.0s
+2026-11-02T16:45:14.449859+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=862/32768; events=4; injections=1; context=1463; elapsed=17.3s ETA(cap)=638.8s
+2026-11-02T16:45:30.354969+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=1771/32768; events=7; injections=2; context=2475; elapsed=33.2s ETA(cap)=580.5s
+2026-11-02T16:45:45.571152+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=2613/32768; events=10; injections=4; context=3522; elapsed=48.4s ETA(cap)=558.3s
+2026-11-02T16:46:02.918495+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=3455/32768; events=14; injections=7; context=4672; elapsed=65.7s ETA(cap)=557.7s
+2026-11-02T16:46:19.300625+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=4356/32768; events=17; injections=8; context=5676; elapsed=82.1s ETA(cap)=535.6s
+2026-11-02T16:46:34.620005+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=5145/32768; events=20; injections=9; context=6567; elapsed=97.4s ETA(cap)=523.1s
+2026-11-02T16:46:50.090286+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=5933/32768; events=23; injections=9; context=7355; elapsed=112.9s ETA(cap)=510.6s
+2026-11-02T16:47:05.554904+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=6710/32768; events=26; injections=10; context=8235; elapsed=128.4s ETA(cap)=498.5s
+2026-11-02T16:47:21.243176+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=7481/32768; events=29; injections=13; context=9314; elapsed=144.1s ETA(cap)=486.9s
+2026-11-02T16:47:37.425609+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=8272/32768; events=32; injections=14; context=10207; elapsed=160.2s ETA(cap)=474.5s
+2026-11-02T16:47:53.750802+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=9061/32768; events=35; injections=15; context=11099; elapsed=176.6s ETA(cap)=461.9s
+2026-11-02T16:48:10.331950+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=9852/32768; events=38; injections=17; context=12096; elapsed=193.1s ETA(cap)=449.3s
+2026-11-02T16:48:26.883559+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=10620/32768; events=41; injections=19; context=13070; elapsed=209.7s ETA(cap)=437.3s
+2026-11-02T16:48:42.380045+00:00 gpqa-recgXxEgllSGEpELP filtered_futures: body=11779/32768; events=41; injections=19; context=14229; elapsed=225.2s ETA(cap)=401.3s
+2026-11-02T16:48:43.630838+00:00 completed gpqa-recgXxEgllSGEpELP: correct=False
+2026-11-02T16:48:43.631420+00:00 condition start evaluation/gpqa/gpqa-recIm3gjvmPQiEZih/filtered_futures
+2026-11-02T16:48:43.673391+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=1/32768; events=0; injections=0; context=299; elapsed=0.0s ETA(cap)=401.4s
+2026-11-02T16:49:00.679820+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=840/32768; events=4; injections=3; context=1445; elapsed=17.0s ETA(cap)=646.9s
+2026-11-02T16:49:17.009477+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=1782/32768; events=7; injections=6; context=2696; elapsed=33.3s ETA(cap)=579.9s
+2026-11-02T16:49:32.336251+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=2631/32768; events=10; injections=8; context=3750; elapsed=48.7s ETA(cap)=557.6s
+2026-11-02T16:49:49.717848+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=3467/32768; events=14; injections=12; context=4996; elapsed=66.1s ETA(cap)=558.3s
+2026-11-02T16:50:04.734147+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=4243/32768; events=17; injections=14; context=5978; elapsed=81.1s ETA(cap)=545.0s
+2026-11-02T16:50:20.068197+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=5023/32768; events=20; injections=16; context=6963; elapsed=96.4s ETA(cap)=532.5s
+2026-11-02T16:50:35.480506+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=5794/32768; events=23; injections=18; context=7940; elapsed=111.8s ETA(cap)=520.6s
+2026-11-02T16:50:51.204897+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=6581/32768; events=26; injections=19; context=8830; elapsed=127.5s ETA(cap)=507.5s
+2026-11-02T16:51:07.033698+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=7356/32768; events=29; injections=21; context=9811; elapsed=143.4s ETA(cap)=495.3s
+2026-11-02T16:51:23.453410+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=8147/32768; events=32; injections=24; context=10911; elapsed=159.8s ETA(cap)=482.9s
+2026-11-02T16:51:39.817685+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=8922/32768; events=35; injections=26; context=11891; elapsed=176.2s ETA(cap)=470.8s
+2026-11-02T16:51:56.399427+00:00 gpqa-recIm3gjvmPQiEZih filtered_futures: body=9692/32768; events=38; injections=29; context=12970; elapsed=192.7s ETA(cap)=458.9s
+2026-11-02T16:52:10.754944+00:00 completed gpqa-recIm3gjvmPQiEZih: correct=False
+2026-11-02T16:52:10.755544+00:00 condition start evaluation/gpqa/gpqa-recfVza57C5sOngtR/filtered_futures
+2026-11-02T16:52:10.786743+00:00 gpqa-recfVza57C5sOngtR filtered_futures: body=1/32768; events=0; injections=0; context=145; elapsed=0.0s ETA(cap)=547.4s
+2026-11-02T16:52:27.767714+00:00 gpqa-recfVza57C5sOngtR filtered_futures: body=837/32768; events=4; injections=1; context=1083; elapsed=17.0s ETA(cap)=648.5s
+2026-11-02T16:52:43.570160+00:00 gpqa-recfVza57C5sOngtR filtered_futures: body=1736/32768; events=7; injections=3; context=2188; elapsed=32.8s ETA(cap)=586.3s
+2026-11-02T16:52:58.705055+00:00 gpqa-recfVza57C5sOngtR filtered_futures: body=2573/32768; events=10; injections=5; context=3231; elapsed=47.9s ETA(cap)=562.5s
+2026-11-02T16:53:07.979924+00:00 completed gpqa-recfVza57C5sOngtR: correct=True
+2026-11-02T16:53:07.980460+00:00 condition start evaluation/gpqa/gpqa-recIgdTGiUZLCejXx/filtered_futures
+2026-11-02T16:53:08.006379+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=1/32768; events=0; injections=0; context=105; elapsed=0.0s ETA(cap)=435.0s
+2026-11-02T16:53:25.403216+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=869/32768; events=4; injections=2; context=1179; elapsed=17.4s ETA(cap)=639.1s
+2026-11-02T16:53:41.357126+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=1770/32768; events=7; injections=5; context=2387; elapsed=33.4s ETA(cap)=584.3s
+2026-11-02T16:53:56.813820+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=2627/32768; events=10; injections=6; context=3346; elapsed=48.8s ETA(cap)=560.1s
+2026-11-02T16:54:11.986552+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=3456/32768; events=13; injections=6; context=4175; elapsed=64.0s ETA(cap)=542.8s
+2026-11-02T16:54:27.269726+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=4269/32768; events=16; injections=9; context=5295; elapsed=79.3s ETA(cap)=529.2s
+2026-11-02T16:54:42.591720+00:00 gpqa-recIgdTGiUZLCejXx filtered_futures: body=5059/32768; events=19; injections=12; context=6393; elapsed=94.6s ETA(cap)=518.1s
+2026-11-02T16:54:53.241050+00:00 completed gpqa-recIgdTGiUZLCejXx: correct=True
+2026-11-02T16:54:53.241620+00:00 condition start evaluation/gpqa/gpqa-recr3VHM4zYf6dMFY/filtered_futures
+2026-11-02T16:54:53.282893+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=1/32768; events=0; injections=0; context=278; elapsed=0.0s ETA(cap)=396.0s
+2026-11-02T16:55:10.430401+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=845/32768; events=4; injections=2; context=1328; elapsed=17.2s ETA(cap)=648.3s
+2026-11-02T16:55:26.346139+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=1748/32768; events=7; injections=5; context=2540; elapsed=33.1s ETA(cap)=587.0s
+2026-11-02T16:55:41.613050+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=2589/32768; events=10; injections=8; context=3690; elapsed=48.3s ETA(cap)=563.5s
+2026-11-02T16:55:59.073826+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=3435/32768; events=14; injections=11; context=4845; elapsed=65.8s ETA(cap)=561.9s
+2026-11-02T16:56:15.467086+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=4334/32768; events=17; injections=12; context=5847; elapsed=82.2s ETA(cap)=539.3s
+2026-11-02T16:56:30.594339+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=5109/32768; events=20; injections=13; context=6725; elapsed=97.3s ETA(cap)=526.9s
+2026-11-02T16:56:46.211469+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=5902/32768; events=23; injections=16; context=7826; elapsed=112.9s ETA(cap)=514.1s
+2026-11-02T16:57:02.107524+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=6702/32768; events=26; injections=18; context=8832; elapsed=128.8s ETA(cap)=501.1s
+2026-11-02T16:57:17.885738+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=7476/32768; events=29; injections=19; context=9709; elapsed=144.6s ETA(cap)=489.2s
+2026-11-02T16:57:33.585086+00:00 gpqa-recr3VHM4zYf6dMFY filtered_futures: body=8214/32768; events=32; injections=22; context=10756; elapsed=160.3s ETA(cap)=479.2s
+2026-11-02T16:57:48.114544+00:00 completed gpqa-recr3VHM4zYf6dMFY: correct=False
+2026-11-02T16:57:48.115146+00:00 condition start evaluation/gpqa/gpqa-reckoUYCML0XkjPZD/filtered_futures
+2026-11-02T16:57:48.174241+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=1/32768; events=0; injections=0; context=602; elapsed=0.0s ETA(cap)=450.5s
+2026-11-02T16:58:05.313642+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=851/32768; events=4; injections=2; context=1658; elapsed=17.2s ETA(cap)=643.3s
+2026-11-02T16:58:21.208732+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=1755/32768; events=7; injections=4; context=2768; elapsed=33.0s ETA(cap)=584.0s
+2026-11-02T16:58:36.563307+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=2600/32768; events=10; injections=5; context=3716; elapsed=48.4s ETA(cap)=561.6s
+2026-11-02T16:58:54.675325+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=3499/32768; events=14; injections=8; context=4923; elapsed=66.5s ETA(cap)=556.4s
+2026-11-02T16:59:09.997210+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=4302/32768; events=17; injections=10; context=5932; elapsed=81.8s ETA(cap)=541.5s
+2026-11-02T16:59:25.358293+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=5095/32768; events=20; injections=11; context=6828; elapsed=97.2s ETA(cap)=527.9s
+2026-11-02T16:59:40.769647+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=5877/32768; events=23; injections=12; context=7712; elapsed=112.6s ETA(cap)=515.3s
+2026-11-02T16:59:56.426007+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=6660/32768; events=26; injections=14; context=8701; elapsed=128.3s ETA(cap)=502.8s
+2026-11-02T17:00:12.412321+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=7447/32768; events=29; injections=17; context=9796; elapsed=144.3s ETA(cap)=490.5s
+2026-11-02T17:00:28.542972+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=8225/32768; events=32; injections=20; context=10883; elapsed=160.4s ETA(cap)=478.6s
+2026-11-02T17:00:44.610215+00:00 gpqa-reckoUYCML0XkjPZD filtered_futures: body=9473/32768; events=32; injections=20; context=12131; elapsed=176.4s ETA(cap)=433.9s
+2026-11-02T17:00:44.842527+00:00 completed gpqa-reckoUYCML0XkjPZD: correct=False
+2026-11-02T17:00:44.843128+00:00 condition start evaluation/gpqa/gpqa-recnsAVZoGayGIj3g/filtered_futures
+2026-11-02T17:00:44.884608+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=1/32768; events=0; injections=0; context=275; elapsed=0.0s ETA(cap)=398.7s
+2026-11-02T17:01:02.233556+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=869/32768; events=4; injections=2; context=1347; elapsed=17.4s ETA(cap)=637.3s
+2026-11-02T17:01:18.081764+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=1767/32768; events=7; injections=3; context=2348; elapsed=33.2s ETA(cap)=582.6s
+2026-11-02T17:01:33.326877+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=2605/32768; events=10; injections=6; context=3495; elapsed=48.5s ETA(cap)=561.0s
+2026-11-02T17:01:50.626964+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=3447/32768; events=14; injections=8; context=4542; elapsed=65.8s ETA(cap)=559.3s
+2026-11-02T17:02:07.053787+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=4347/32768; events=17; injections=11; context=5750; elapsed=82.2s ETA(cap)=537.3s
+2026-11-02T17:02:22.275784+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=5118/32768; events=20; injections=14; context=6829; elapsed=97.4s ETA(cap)=526.2s
+2026-11-02T17:02:37.759673+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=5907/32768; events=23; injections=14; context=7618; elapsed=112.9s ETA(cap)=513.3s
+2026-11-02T17:02:53.381421+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=6690/32768; events=26; injections=16; context=8607; elapsed=128.5s ETA(cap)=500.9s
+2026-11-02T17:03:09.266665+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=7471/32768; events=29; injections=19; context=9696; elapsed=144.4s ETA(cap)=488.9s
+2026-11-02T17:03:25.174577+00:00 gpqa-recnsAVZoGayGIj3g filtered_futures: body=8245/32768; events=32; injections=19; context=10470; elapsed=160.3s ETA(cap)=476.8s
+2026-11-02T17:03:40.375762+00:00 completed gpqa-recnsAVZoGayGIj3g: correct=True
+2026-11-02T17:03:40.376336+00:00 condition start evaluation/gpqa/gpqa-recKeCj07mR2qOvCH/filtered_futures
+2026-11-02T17:03:40.406677+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=1/32768; events=0; injections=0; context=139; elapsed=0.0s ETA(cap)=535.0s
+2026-11-02T17:03:57.666816+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=861/32768; events=4; injections=2; context=1203; elapsed=17.3s ETA(cap)=640.2s
+2026-11-02T17:04:13.725840+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=1785/32768; events=7; injections=2; context=2127; elapsed=33.3s ETA(cap)=578.6s
+2026-11-02T17:04:28.891326+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=2626/32768; events=10; injections=3; context=3071; elapsed=48.5s ETA(cap)=556.7s
+2026-11-02T17:04:46.185349+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=3471/32768; events=14; injections=6; context=4225; elapsed=65.8s ETA(cap)=555.3s
+2026-11-02T17:05:01.561089+00:00 gpqa-recKeCj07mR2qOvCH filtered_futures: body=4288/32768; events=17; injections=8; context=5248; elapsed=81.2s ETA(cap)=539.1s
+2026-11-02T17:05:06.278420+00:00 completed gpqa-recKeCj07mR2qOvCH: correct=False
+2026-11-02T17:05:06.278933+00:00 condition start evaluation/gpqa/gpqa-rec6sE2CRtD4drtHg/filtered_futures
+2026-11-02T17:05:06.354726+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=1/32768; events=0; injections=0; context=893; elapsed=0.0s ETA(cap)=484.3s
+2026-11-02T17:05:23.559880+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=852/32768; events=4; injections=3; context=2052; elapsed=17.2s ETA(cap)=645.1s
+2026-11-02T17:05:39.435617+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=1757/32768; events=7; injections=5; context=3162; elapsed=33.1s ETA(cap)=584.1s
+2026-11-02T17:05:54.817955+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=2600/32768; events=10; injections=7; context=4210; elapsed=48.5s ETA(cap)=562.5s
+2026-11-02T17:06:12.548743+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=3449/32768; events=14; injections=10; context=5366; elapsed=66.2s ETA(cap)=562.8s
+2026-11-02T17:06:27.555561+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=4219/32768; events=17; injections=12; context=6342; elapsed=81.2s ETA(cap)=549.6s
+2026-11-02T17:06:42.892194+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=4996/32768; events=20; injections=15; context=7426; elapsed=96.6s ETA(cap)=536.7s
+2026-11-02T17:06:58.868199+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=5805/32768; events=23; injections=18; context=8544; elapsed=112.5s ETA(cap)=522.7s
+2026-11-02T17:07:14.771329+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=6588/32768; events=26; injections=21; context=9635; elapsed=128.4s ETA(cap)=510.4s
+2026-11-02T17:07:30.933937+00:00 gpqa-rec6sE2CRtD4drtHg filtered_futures: body=7581/32768; events=28; injections=23; context=10825; elapsed=144.6s ETA(cap)=480.4s
+2026-11-02T17:07:44.752333+00:00 completed gpqa-rec6sE2CRtD4drtHg: correct=True
+2026-11-02T17:07:44.752894+00:00 condition start evaluation/gpqa/gpqa-recsFK6wqE0dBoy4N/filtered_futures
+2026-11-02T17:07:44.783488+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=1/32768; events=0; injections=0; context=140; elapsed=0.0s ETA(cap)=549.1s
+2026-11-02T17:08:01.900011+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=838/32768; events=4; injections=2; context=1183; elapsed=17.1s ETA(cap)=652.8s
+2026-11-02T17:08:17.840577+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=1743/32768; events=7; injections=4; context=2294; elapsed=33.1s ETA(cap)=588.7s
+2026-11-02T17:08:32.921713+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=2578/32768; events=10; injections=5; context=3232; elapsed=48.2s ETA(cap)=563.9s
+2026-11-02T17:08:50.477734+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=3433/32768; events=14; injections=9; context=4499; elapsed=65.7s ETA(cap)=561.5s
+2026-11-02T17:09:05.571469+00:00 gpqa-recsFK6wqE0dBoy4N filtered_futures: body=4214/32768; events=17; injections=12; context=5589; elapsed=80.8s ETA(cap)=547.5s
+2026-11-02T17:09:16.842856+00:00 completed gpqa-recsFK6wqE0dBoy4N: correct=True
+2026-11-02T17:09:16.843417+00:00 condition start evaluation/gpqa/gpqa-recjJ54TXc04enRkZ/filtered_futures
+2026-11-02T17:09:16.870715+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=1/32768; events=0; injections=0; context=252; elapsed=0.0s ETA(cap)=447.7s
+2026-11-02T17:09:34.018261+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=844/32768; events=4; injections=2; context=1301; elapsed=17.2s ETA(cap)=649.1s
+2026-11-02T17:09:49.937602+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=1744/32768; events=7; injections=5; context=2510; elapsed=33.1s ETA(cap)=588.5s
+2026-11-02T17:10:05.068086+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=2577/32768; events=10; injections=6; context=3446; elapsed=48.2s ETA(cap)=564.8s
+2026-11-02T17:10:22.589789+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=3431/32768; events=14; injections=10; context=4712; elapsed=65.7s ETA(cap)=562.1s
+2026-11-02T17:10:39.026747+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=4334/32768; events=17; injections=12; context=5820; elapsed=82.2s ETA(cap)=539.1s
+2026-11-02T17:10:54.590218+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=5139/32768; events=20; injections=15; context=6933; elapsed=97.7s ETA(cap)=525.4s
+2026-11-02T17:11:10.022390+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=5914/32768; events=23; injections=18; context=8015; elapsed=113.2s ETA(cap)=513.9s
+2026-11-02T17:11:25.722789+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=6691/32768; events=26; injections=21; context=9100; elapsed=128.9s ETA(cap)=502.2s
+2026-11-02T17:11:41.852069+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=7481/32768; events=29; injections=23; context=10096; elapsed=145.0s ETA(cap)=490.1s
+2026-11-02T17:11:58.199307+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=8266/32768; events=32; injections=25; context=11087; elapsed=161.3s ETA(cap)=478.2s
+2026-11-02T17:12:14.604816+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=9044/32768; events=35; injections=27; context=12071; elapsed=177.7s ETA(cap)=466.3s
+2026-11-02T17:12:29.725774+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=9699/32768; events=38; injections=30; context=13034; elapsed=192.9s ETA(cap)=458.7s
+2026-11-02T17:12:46.242375+00:00 gpqa-recjJ54TXc04enRkZ filtered_futures: body=10793/32768; events=39; injections=31; context=14205; elapsed=209.4s ETA(cap)=426.3s
+2026-11-02T17:12:58.928847+00:00 completed gpqa-recjJ54TXc04enRkZ: correct=False
+2026-11-02T17:12:58.929426+00:00 condition start evaluation/gpqa/gpqa-recigLZFBov8HBmLt/filtered_futures
+2026-11-02T17:12:58.956700+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=1/32768; events=0; injections=0; context=206; elapsed=0.0s ETA(cap)=422.9s
+2026-11-02T17:13:16.580475+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=876/32768; events=4; injections=1; context=1183; elapsed=17.6s ETA(cap)=642.1s
+2026-11-02T17:13:32.509764+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=1781/32768; events=7; injections=3; context=2293; elapsed=33.6s ETA(cap)=584.0s
+2026-11-02T17:13:47.804715+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=2624/32768; events=10; injections=6; context=3444; elapsed=48.9s ETA(cap)=561.3s
+2026-11-02T17:14:05.493255+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=3488/32768; events=14; injections=8; context=4513; elapsed=66.5s ETA(cap)=558.6s
+2026-11-02T17:14:20.688130+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=4284/32768; events=17; injections=11; context=5617; elapsed=81.7s ETA(cap)=543.5s
+2026-11-02T17:14:35.954542+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=5066/32768; events=20; injections=14; context=6708; elapsed=97.0s ETA(cap)=530.5s
+2026-11-02T17:14:51.216625+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=5839/32768; events=23; injections=14; context=7481; elapsed=112.3s ETA(cap)=517.8s
+2026-11-02T17:15:07.778502+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=6684/32768; events=26; injections=17; context=8635; elapsed=128.8s ETA(cap)=502.8s
+2026-11-02T17:15:23.607206+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=7459/32768; events=29; injections=19; context=9616; elapsed=144.7s ETA(cap)=490.9s
+2026-11-02T17:15:39.684430+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=8235/32768; events=32; injections=22; context=10699; elapsed=160.7s ETA(cap)=478.9s
+2026-11-02T17:15:55.977034+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=9013/32768; events=35; injections=24; context=11683; elapsed=177.0s ETA(cap)=466.6s
+2026-11-02T17:16:12.537900+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=9786/32768; events=38; injections=27; context=12764; elapsed=193.6s ETA(cap)=454.6s
+2026-11-02T17:16:29.396404+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=10559/32768; events=41; injections=30; context=13844; elapsed=210.5s ETA(cap)=442.7s
+2026-11-02T17:16:46.446303+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=11330/32768; events=44; injections=32; context=14821; elapsed=227.5s ETA(cap)=430.5s
+2026-11-02T17:17:01.498830+00:00 gpqa-recigLZFBov8HBmLt filtered_futures: body=12355/32768; events=45; injections=32; context=15846; elapsed=242.6s ETA(cap)=400.8s
+2026-11-02T17:17:01.819520+00:00 completed gpqa-recigLZFBov8HBmLt: correct=False
+2026-11-02T17:17:01.820101+00:00 condition start evaluation/gpqa/gpqa-recKcjTwONILZqHAX/filtered_futures
+2026-11-02T17:17:01.847136+00:00 gpqa-recKcjTwONILZqHAX filtered_futures: body=1/32768; events=0; injections=0; context=185; elapsed=0.0s ETA(cap)=411.2s
+2026-11-02T17:17:18.964673+00:00 gpqa-recKcjTwONILZqHAX filtered_futures: body=845/32768; events=4; injections=3; context=1338; elapsed=17.1s ETA(cap)=647.2s
+2026-11-02T17:17:34.864081+00:00 gpqa-recKcjTwONILZqHAX filtered_futures: body=1750/32768; events=7; injections=5; context=2449; elapsed=33.0s ETA(cap)=585.4s
+2026-11-02T17:17:41.606178+00:00 completed gpqa-recKcjTwONILZqHAX: correct=True
+2026-11-02T17:17:41.606696+00:00 condition start evaluation/gpqa/gpqa-recCeQdxhSfJJFGeE/filtered_futures
+2026-11-02T17:17:41.632757+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=1/32768; events=0; injections=0; context=113; elapsed=0.0s ETA(cap)=438.9s
+2026-11-02T17:17:58.999871+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=853/32768; events=4; injections=2; context=1171; elapsed=17.4s ETA(cap)=650.3s
+2026-11-02T17:18:14.984616+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=1765/32768; events=7; injections=4; context=2287; elapsed=33.4s ETA(cap)=586.1s
+2026-11-02T17:18:30.343606+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=2610/32768; events=10; injections=6; context=3338; elapsed=48.7s ETA(cap)=563.0s
+2026-11-02T17:18:47.657964+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=3445/32768; events=14; injections=9; context=4482; elapsed=66.0s ETA(cap)=562.1s
+2026-11-02T17:19:02.716232+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=4225/32768; events=17; injections=12; context=5571; elapsed=81.1s ETA(cap)=547.9s
+2026-11-02T17:19:17.924095+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=5007/32768; events=20; injections=14; context=6559; elapsed=96.3s ETA(cap)=534.0s
+2026-11-02T17:19:33.161223+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=5778/32768; events=23; injections=15; context=7433; elapsed=111.5s ETA(cap)=521.0s
+2026-11-02T17:19:48.578724+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=6547/32768; events=26; injections=17; context=8408; elapsed=127.0s ETA(cap)=508.5s
+2026-11-02T17:20:04.309277+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=7323/32768; events=29; injections=19; context=9390; elapsed=142.7s ETA(cap)=495.8s
+2026-11-02T17:20:20.189513+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=8097/32768; events=32; injections=20; context=10267; elapsed=158.6s ETA(cap)=483.2s
+2026-11-02T17:20:36.404054+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=8877/32768; events=35; injections=22; context=11253; elapsed=174.8s ETA(cap)=470.4s
+2026-11-02T17:20:52.931223+00:00 gpqa-recCeQdxhSfJJFGeE filtered_futures: body=9657/32768; events=38; injections=25; context=12342; elapsed=191.3s ETA(cap)=457.8s
+2026-11-02T17:21:04.910433+00:00 completed gpqa-recCeQdxhSfJJFGeE: correct=True
+2026-11-02T17:21:04.910977+00:00 condition start evaluation/gpqa/gpqa-recp4pRVAOeNYM1hc/filtered_futures
+2026-11-02T17:21:04.938043+00:00 gpqa-recp4pRVAOeNYM1hc filtered_futures: body=1/32768; events=0; injections=0; context=182; elapsed=0.0s ETA(cap)=421.4s
+2026-11-02T17:21:22.211459+00:00 gpqa-recp4pRVAOeNYM1hc filtered_futures: body=860/32768; events=4; injections=2; context=1247; elapsed=17.3s ETA(cap)=641.4s
+2026-11-02T17:21:38.109589+00:00 gpqa-recp4pRVAOeNYM1hc filtered_futures: body=1767/32768; events=7; injections=4; context=2359; elapsed=33.2s ETA(cap)=582.2s
+2026-11-02T17:21:53.370661+00:00 gpqa-recp4pRVAOeNYM1hc filtered_futures: body=2611/32768; events=10; injections=7; context=3512; elapsed=48.4s ETA(cap)=559.5s
+2026-11-02T17:22:10.705879+00:00 gpqa-recp4pRVAOeNYM1hc filtered_futures: body=3451/32768; events=14; injections=10; context=4659; elapsed=65.8s ETA(cap)=558.8s
+2026-11-02T17:22:21.743944+00:00 completed gpqa-recp4pRVAOeNYM1hc: correct=False
+2026-11-02T17:22:21.744466+00:00 condition start evaluation/gpqa/gpqa-recJxK8wQDqG7ESSh/filtered_futures
+2026-11-02T17:22:21.774070+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=1/32768; events=0; injections=0; context=132; elapsed=0.0s ETA(cap)=547.6s
+2026-11-02T17:22:39.420357+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=888/32768; events=4; injections=2; context=1224; elapsed=17.7s ETA(cap)=634.1s
+2026-11-02T17:22:55.237942+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=1788/32768; events=7; injections=2; context=2124; elapsed=33.5s ETA(cap)=580.1s
+2026-11-02T17:23:10.365888+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=2624/32768; events=10; injections=3; context=3063; elapsed=48.6s ETA(cap)=558.4s
+2026-11-02T17:23:28.084158+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=3506/32768; events=14; injections=6; context=4254; elapsed=66.3s ETA(cap)=553.6s
+2026-11-02T17:23:44.305483+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=4405/32768; events=17; injections=7; context=5256; elapsed=82.5s ETA(cap)=531.5s
+2026-11-02T17:23:59.743299+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=5212/32768; events=20; injections=9; context=6269; elapsed=98.0s ETA(cap)=518.1s
+2026-11-02T17:24:15.820934+00:00 gpqa-recJxK8wQDqG7ESSh filtered_futures: body=6051/32768; events=23; injections=11; context=7314; elapsed=114.1s ETA(cap)=503.6s
+2026-11-02T17:24:27.075257+00:00 completed gpqa-recJxK8wQDqG7ESSh: correct=True

@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T21:05:48.206286+00:00",
+  "counts": {
+    "baseline": 74
+  },
+  "epoch": 1793307948.206294,
+  "eta_seconds": 54273.940742923056,
+  "free_bytes": 7144407040,
+  "gpu_csv": "0, 8978 MiB, 96 %\n1, 9216 MiB, 96 %\n2, 9916 MiB, 93 %\n3, 9318 MiB, 96 %\n4, 9298 MiB, 94 %\n5, 9778 MiB, 95 %\n6, 9358 MiB, 96 %\n7, 9298 MiB, 95 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 1.7994112968444824,
+      "checkpoints": {
+        "checkpoint_count": 280,
+        "epoch": 1793307946.3693278,
+        "new": 280,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-29T21:05:20.505126+00:00",
+        "case_id": "mmlu-machine_learning-6936",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8159.775390625,
+          "peak_cuda_reserved_mib": 8270.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 0.029955387115478516,
+      "checkpoints": {
+        "checkpoint_count": 269,
+        "epoch": 1793307948.1388314,
+        "new": 269,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-29T21:05:48.112763+00:00",
+        "case_id": "mmlu-electrical_engineering-1929",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8402.728515625,
+          "peak_cuda_reserved_mib": 8508.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 0.9726991653442383,
+      "checkpoints": {
+        "checkpoint_count": 247,
+        "epoch": 1793307947.1961262,
+        "new": 247,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:05:43.001779+00:00",
+        "case_id": "mmlu-miscellaneous-8093",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9091.380859375,
+          "peak_cuda_reserved_mib": 9208.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 5.553640842437744,
+      "checkpoints": {
+        "checkpoint_count": 275,
+        "epoch": 1793307942.615223,
+        "new": 275,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:05:35.864818+00:00",
+        "case_id": "mmlu-electrical_engineering-2011",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8503.388671875,
+          "peak_cuda_reserved_mib": 8610.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 0.502655029296875,
+      "checkpoints": {
+        "checkpoint_count": 259,
+        "epoch": 1793307947.6662436,
+        "new": 259,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:05:43.584087+00:00",
+        "case_id": "mmlu-prehistory-10272",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8484.283203125,
+          "peak_cuda_reserved_mib": 8590.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 3.782855749130249,
+      "checkpoints": {
+        "checkpoint_count": 245,
+        "epoch": 1793307944.3860748,
+        "new": 245,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:05:36.131484+00:00",
+        "case_id": "mmlu-miscellaneous-8004",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8956.64453125,
+          "peak_cuda_reserved_mib": 9070.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 1.547569990158081,
+      "checkpoints": {
+        "checkpoint_count": 251,
+        "epoch": 1793307946.6213884,
+        "new": 251,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:05:08.207043+00:00",
+        "case_id": "mmlu-miscellaneous-8018",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8545.734375,
+          "peak_cuda_reserved_mib": 8650.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.436311960220337,
+      "checkpoints": {
+        "checkpoint_count": 280,
+        "epoch": 1793307945.7326772,
+        "new": 280,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:05:36.261451+00:00",
+        "case_id": "mmlu-anatomy-165",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 8467.458984375,
+          "peak_cuda_reserved_mib": 8590.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

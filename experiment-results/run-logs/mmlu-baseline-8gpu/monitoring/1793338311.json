@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-30T05:31:51.164016+00:00",
+  "counts": {
+    "baseline": 7259
+  },
+  "epoch": 1793338311.1640368,
+  "eta_seconds": 29716.38102092355,
+  "free_bytes": 4154413056,
+  "gpu_csv": "0, 10600 MiB, 97 %\n1, 13240 MiB, 92 %\n2, 10940 MiB, 94 %\n3, 11180 MiB, 96 %\n4, 10740 MiB, 95 %\n5, 10960 MiB, 94 %\n6, 13240 MiB, 96 %\n7, 11400 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 0.5368132591247559,
+      "checkpoints": {
+        "checkpoint_count": 26726,
+        "epoch": 1793338310.3419406,
+        "new": 26726,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-30T05:30:19.055553+00:00",
+        "case_id": "mmlu-professional_law-10805",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9759.787109375,
+          "peak_cuda_reserved_mib": 9892.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 2.8953194618225098,
+      "checkpoints": {
+        "checkpoint_count": 26034,
+        "epoch": 1793338307.9834774,
+        "new": 26034,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-30T05:31:49.141327+00:00",
+        "case_id": "mmlu-moral_scenarios-8936",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.978515625,
+          "peak_cuda_reserved_mib": 12532.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 4.369901418685913,
+      "checkpoints": {
+        "checkpoint_count": 26160,
+        "epoch": 1793338306.5089333,
+        "new": 26160,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-30T05:31:42.326856+00:00",
+        "case_id": "mmlu-jurisprudence-6590",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10094.98828125,
+          "peak_cuda_reserved_mib": 10232.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 6.238534450531006,
+      "checkpoints": {
+        "checkpoint_count": 26501,
+        "epoch": 1793338304.640334,
+        "new": 26501,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-30T05:31:37.906413+00:00",
+        "case_id": "mmlu-miscellaneous-7854",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10332.666015625,
+          "peak_cuda_reserved_mib": 10472.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 3.170689582824707,
+      "checkpoints": {
+        "checkpoint_count": 26449,
+        "epoch": 1793338307.7082095,
+        "new": 26449,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-30T05:31:43.591626+00:00",
+        "case_id": "mmlu-high_school_chemistry-3105",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9909.06640625,
+          "peak_cuda_reserved_mib": 10032.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 3.5772955417633057,
+      "checkpoints": {
+        "checkpoint_count": 26553,
+        "epoch": 1793338307.3016324,
+        "new": 26553,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-30T05:31:41.769201+00:00",
+        "case_id": "mmlu-college_biology-843",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10125.072265625,
+          "peak_cuda_reserved_mib": 10252.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 0.32662415504455566,
+      "checkpoints": {
+        "checkpoint_count": 26096,
+        "epoch": 1793338310.5523334,
+        "new": 26096,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-30T05:31:31.102092+00:00",
+        "case_id": "mmlu-professional_law-11013",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.8359375,
+          "peak_cuda_reserved_mib": 12532.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 3.919722318649292,
+      "checkpoints": {
+        "checkpoint_count": 26527,
+        "epoch": 1793338306.9592683,
+        "new": 26527,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-30T05:31:36.170295+00:00",
+        "case_id": "mmlu-high_school_psychology-5268",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10520.15625,
+          "peak_cuda_reserved_mib": 10692.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

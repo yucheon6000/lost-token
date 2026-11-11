@@ -1,0 +1,34 @@
+{
+  "audit_script_sha256": "1aeece0ab7c96e9b1e85425ea340e738cf781a86ccf5734f77ab8aa088f27389",
+  "case_sha256": {
+    "cases/smoke/aime25/aime25-26.json": "55061376739aad6957b81c1842373f6182f292f34a294e9594453a03738b1a45"
+  },
+  "checkpoint_sha256": {
+    "330db68e909393f0c9892318e634c67dc5760d511af5f46957873b6ec6515a73.json": "38c164056d9dd7ed71da0a11152c8b981ff7df72ae2fde25d780a4be42aaa210",
+    "3a28405d3b123772e74e4889598fb8b525819fab81b5f11b3bf5e32185486c4b.json": "47dfc6161b5dee36cb8fa4eb8211d7f59378a76365dd89a522056ffb637876f1",
+    "492ce4d5bf796f5c126492e00abb129218d0c3b7f4f9c53925692e64d835494f.json": "18f1dce879d0ab06cd2d55adcaf95d2d7d9140399a4febf8bac0b6b4599fc199",
+    "90a92ed9bc08421bc9e5eb1ad4ff683d1ae964d772b46f0edf0cca46895748a5.json": "ea34fb744210663bf09228eb7876500bee684ec2e4e6d84829f4f602879ec60d",
+    "90fdab508b77cb58fa6c6c3f5efb8b55e27df806dc86aa1be9891fb740b26ca9.json": "ba60e6d08a78a03608c293a1019ccf5a1c34985809a85413b55db6fbc41e3869",
+    "f6929b27d9e89eb8592b9ae3fa237adcb6ec77b30599ca3b31b3ea53bff1304a.json": "3cb9049941177e05d30b55de9c9567452bb2615fc5df01be139f3f28755e815e"
+  },
+  "checkpoints": 6,
+  "checks": [
+    "source/split/checkpoint hashes",
+    "all eligible scan positions and declared candidates",
+    "minimum body-token fork interval and exact scan restart boundary",
+    "same pre-injection root for every candidate",
+    "only unchosen alternatives in memory",
+    "selected rollout committed verbatim after memory",
+    "cosine matrix recomputed from vectors",
+    "no intervention after thinking ends",
+    "main body preserved across memory compaction",
+    "generated-only repetition history and every blocked cycle token",
+    "separate final-response scoring",
+    "policy cost sums and replay ledgers"
+  ],
+  "completed_cases": 1,
+  "completed_conditions": 1,
+  "events": 0,
+  "partial": false,
+  "run": "/home/user04/lost-token/workspace/outputs/aime25-blackwell-preflight/workers/baseline-worker0"
+}

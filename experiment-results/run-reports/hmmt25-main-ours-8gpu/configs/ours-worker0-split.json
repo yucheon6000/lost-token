@@ -1,0 +1,57 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "2^{25} \\cdot 26!",
+          "id": "hmmt25-17",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 118,
+          "question": "Compute the number of ways to arrange $3$ copies of each of the $26$ lowercase letters of the English alphabet such that for any two distinct letters $x_{1}$ and $x_{2}$, the number of $x_{2}$ 's between the first and second occurrences of $x_{1}$ equals the number of $x_{2}$ 's between the second and third occurrences of $x_{1}$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "3375",
+          "id": "hmmt25-2",
+          "problem_type": [
+            "Number Theory"
+          ],
+          "prompt_tokens": 124,
+          "question": "Mark writes the expression $\\sqrt{\\underline{a b c d}}$ on the board, where $\\underline{a b c d}$ is a four-digit number and $a \\neq 0$. Derek, a toddler, decides to move the $a$, changing Mark's expression to $a \\sqrt{\\underline{b c d}}$. Surprisingly, these two expressions are equal. Compute the only possible four-digit number $\\underline{a b c d}$.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "6300",
+          "id": "hmmt25-16",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 90,
+          "question": "Compute the number of ways to pick two rectangles in a $5 \\times 5$ grid of squares such that the edges of the rectangles lie on the lines of the grid and the rectangles do not overlap at their interiors, edges, or vertices. The order in which the rectangles are chosen does not matter.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{9 \\sqrt{23}}{23}",
+          "id": "hmmt25-7",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 113,
+          "question": "There exists a unique triple $(a, b, c)$ of positive real numbers that satisfies the equations\n$$\n2\\left(a^{2}+1\\right)=3\\left(b^{2}+1\\right)=4\\left(c^{2}+1\\right) \\quad \\text { and } \\quad a b+b c+c a=1\n$$\n\nCompute $a+b+c$.",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

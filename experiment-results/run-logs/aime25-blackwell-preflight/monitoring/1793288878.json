@@ -1,0 +1,175 @@
+{
+  "at": "2026-10-29T15:47:57.938347+00:00",
+  "counts": {
+    "baseline": 0,
+    "ours": 0
+  },
+  "epoch": 1793288877.9383519,
+  "eta_seconds": 300,
+  "free_bytes": 2596696064,
+  "gpu_csv": "0, 572 MiB, 0 %\n1, 14 MiB, 0 %\n2, 14 MiB, 0 %\n3, 14 MiB, 0 %\n4, 14 MiB, 0 %\n5, 14 MiB, 0 %\n6, 14 MiB, 0 %\n7, 14 MiB, 0 %\n",
+  "performance_vs_baseline": {
+    "ours": {
+      "aime25": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "generator_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "memory_insertions": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          }
+        },
+        "n": 0,
+        "resumed_excluded_n": 0,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      },
+      "all": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "generator_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "memory_insertions": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          }
+        },
+        "n": 0,
+        "resumed_excluded_n": 0,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      }
+    }
+  },
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.0011043548583984,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3040655,
+      "status": {}
+    }
+  }
+}

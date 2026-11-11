@@ -1,0 +1,68 @@
+{
+  "protocol": "recurrent-reasoning-memory-v4",
+  "model": {
+    "cuda_allocator_config": "expandable_segments:True",
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "enable_thinking": true,
+    "gpu_memory_fraction": 0.95,
+    "local_files_only": true,
+    "max_context_tokens": 73760,
+    "name": "Qwen/Qwen3-4B-Thinking-2507",
+    "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "rollout_cache_offload_threshold_tokens": 49000,
+    "threads": 4
+  },
+  "experiment": {
+    "arms": [
+      "plain_ar",
+      "filtered_futures"
+    ],
+    "branch_tokens": 32,
+    "checkpoint_body_tokens": 128,
+    "commit": "selected_rollout",
+    "max_event_memory_tokens": 2048,
+    "max_output_tokens": 32768,
+    "memory_capacity_tokens": 8192,
+    "memory_compact_to_tokens": 4096,
+    "min_branch_interval_tokens": 256,
+    "min_candidate_probability": 0.2,
+    "prefill_chunk_tokens": 256,
+    "repetition_guard": {
+      "enabled": true,
+      "max_period_tokens": 32,
+      "min_cycles": 4,
+      "min_span_tokens": 64
+    },
+    "seed": 95021,
+    "selection": "argmax",
+    "temperature": 0.6,
+    "top_k": 20,
+    "top_p": 0.95
+  },
+  "similarity": {
+    "comparison": "retained_candidates",
+    "encoder": {
+      "batch_size": 8,
+      "device": "cpu",
+      "dtype": "float32",
+      "local_files_only": true,
+      "max_tokens": 512,
+      "name": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+    },
+    "text_scope": "rollout_only",
+    "threshold": 0.85
+  },
+  "execution": {
+    "development_cases_per_task": 2,
+    "max_development_structural_memory_tags": 0,
+    "min_development_answer_completion": 0.9,
+    "repetition_failure_span_tokens": 256,
+    "workers": 1
+  },
+  "data": {
+    "prompt_limit": 32768,
+    "shuffle_seed": 20260921
+  }
+}
