@@ -4,6 +4,9 @@ The defaults-unchanged invariant is pinned by knob_defaults_golden.json, which w
 generated with the code from before the knobs existed. It was regenerated once when
 rollouts gained an informational "entropies" field and events a "selection" record:
 checkpoint labels/requests and body tokens were verified identical to the original.
+The fixtures were subsequently refreshed against unchanged main decoding code
+under PyTorch 2.8.0, whose sampling and recorded floating-point values can differ
+from PyTorch 2.6.0. They remain strict checkpoints for the pinned runtime.
 """
 
 import copy

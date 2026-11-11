@@ -47,6 +47,25 @@ If the bootstrap installed a local `uv`, use `.tools/uv` in place of `uv`.
 
 ## Run an evaluation
 
+The default configuration matches the main method: repetition suppression is
+enabled for both baseline and ours. The baseline samples normally without branch
+memory; ours uses lookahead selection, 64-token rollouts and the memory preamble.
+Both arms use the same model, prompts, seeds and output limits. PyTorch 2.8.0
+provides CUDA 12.8 support for Blackwell GPUs. Math scoring passes the dataset
+reference first and the extracted model answer second.
+
+For a baseline matched to these defaults, omit any older plain-AR configuration
+that disables repetition suppression:
+
+```bash
+uv run --frozen lost-tokens setup --benchmarks mmlu gsm8k math500
+uv run --frozen lost-tokens run --benchmarks mmlu gsm8k math500 \
+  --arms baseline --gpus 0 --run-name main-matched-baseline
+```
+
+Select the available GPU indices for your allocation. Start a fresh run name;
+earlier suppression-disabled results and checkpoints remain separate experiments.
+
 ```bash
 # Download and prepare any subset, or use --benchmarks all.
 uv run --frozen lost-tokens setup --benchmarks aime25 supergpqa
@@ -150,9 +169,19 @@ Optional keys that are off when absent or `null`: `max_memory_events`,
 |---|---|---:|
 | `aime25` | [MathArena AIME 2025](https://huggingface.co/datasets/MathArena/aime_2025) | 30 |
 | `hmmt25` | [MathArena HMMT February 2025](https://huggingface.co/datasets/MathArena/hmmt_feb_2025) | 30 |
+| `mmlu` | [MMLU, all subjects, test split](https://huggingface.co/datasets/cais/mmlu) | 14,042 |
+| `gsm8k` | [GSM8K, main test split](https://huggingface.co/datasets/openai/gsm8k) | 1,319 |
+| `math500` | [MATH-500, test split](https://huggingface.co/datasets/HuggingFaceH4/MATH-500) | 500 |
 | `gpqa` | [GPQA Main, original public archive](https://github.com/idavidrein/gpqa) | 448 |
 | `supergpqa` | [SuperGPQA](https://huggingface.co/datasets/m-a-p/SuperGPQA) | 26,529 |
 | `longbench_v2` | [LongBench v2](https://huggingface.co/datasets/zai-org/LongBench-v2) | 503 |
+
+MMLU is zero-shot across all 57 test subjects, preserving original choice order.
+GSM8K uses only `main/test`, extracting the numeric reference after `####`.
+MATH500 preserves the provided final mathematical answer and subject metadata.
+Reference solutions are excluded from prompts. Math tasks use boxed-answer
+extraction and Math-Verify; choice tasks use explicit final-answer extraction.
+Training and dev examples are not used for these evaluations.
 
 Dataset revisions, download URLs, and SHA256 hashes are pinned in
 [`datasets.json`](src/lost_tokens/datasets.json). GPQA uses the original authors'
