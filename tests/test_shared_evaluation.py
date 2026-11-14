@@ -9,6 +9,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from lost_tokens.config import load_spec
+from lost_tokens.config import runtime_spec
 from lost_tokens.core import digest, file_digest
 from lost_tokens.data import sources
 
@@ -26,6 +27,60 @@ shared = script("shared_eval")
 
 
 class SharedEvaluationTests(unittest.TestCase):
+    def test_local_submission_exports_and_validates_in_separate_hub(self):
+        hub_spec = importlib.util.spec_from_file_location(
+            "hub_results", shared.SHARED_ROOT / "tools/results.py"
+        )
+        hub = importlib.util.module_from_spec(hub_spec)
+        hub_spec.loader.exec_module(hub)
+        with tempfile.TemporaryDirectory() as folder:
+            work = Path(folder)
+            run = work / "outputs" / "run"
+            run.mkdir(parents=True)
+            (run / "report.json").write_text(
+                json.dumps(
+                    {
+                        "own": {
+                            "baseline": {"aime25": {"correct": 24, "n": 30}},
+                            "ours": {"aime25": {"correct": 25, "n": 30}},
+                        }
+                    }
+                )
+            )
+            (run / "status.json").write_text(
+                json.dumps({"state": "complete", "audits_passed": True})
+            )
+            study = {
+                "branch": "tester-2026-11-15",
+                "code_commit": "a" * 40,
+                "shared_commit": "b" * 40,
+                "cohort_version": "shared-v1",
+                "cohort_manifest_sha256": file_digest(shared.COHORT / "manifest.json"),
+                "spec": runtime_spec(load_spec(shared.REPO / "configs/vllm-argmax.json"), work),
+                "source": shared.source_fingerprint(),
+                "runs": {"aime25": "run"},
+                "benchmarks": ["aime25"],
+                "counts": {"aime25": 30},
+                "hypothesis": "test",
+                "method_description": "test method",
+                "environment": {"gpu_count": 1, "gpus": [{"name": "test GPU"}]},
+            }
+            output = work / "local-submission"
+            shared.export_reports(study, work, output)
+            metadata = json.loads((output / "submission.json").read_text())
+            self.assertEqual(metadata["rows"][0]["ours"]["correct"], 25)
+            self.assertEqual(metadata["code_commit"], "a" * 40)
+            self.assertNotIn(str(work), (output / "study-plan.json").read_text())
+            import shutil
+
+            destination = work / "hub" / "experiment-results" / study["branch"]
+            shutil.copytree(output, destination)
+            shutil.copytree(shared.COHORT, work / "hub/evaluation/subsets/shared-v1")
+            hub.validate(destination, work / "hub")
+            md, table = hub.build(work / "hub")
+            self.assertIn("83.33% (25/30)", md)
+            self.assertIn("80.00% (24/30)", md)
+
     def test_environment_records_exact_selected_devices_and_omits_secrets(self):
         spec = load_spec()
         with (
@@ -63,6 +118,8 @@ class SharedEvaluationTests(unittest.TestCase):
                 "0",
                 "--config",
                 str(shared.REPO / "configs/vllm-argmax.json"),
+                "--shared-root",
+                str(shared.SHARED_ROOT.resolve()),
                 "--benchmarks",
                 "gsm8k",
                 "aime25",
@@ -97,7 +154,11 @@ class SharedEvaluationTests(unittest.TestCase):
                 patch.object(
                     shared.subprocess,
                     "check_output",
-                    side_effect=lambda cmd, **kw: "tester-2026-11-15"
+                    side_effect=lambda cmd, **kw: (
+                        "tester-2026-11-15"
+                        if cmd[:2] == ["git", "branch"]
+                        else ("" if cmd[:2] == ["git", "status"] else "a" * 40)
+                    )
                     if cmd[0] == "git"
                     else "GPU inventory",
                 ),

@@ -1,8 +1,9 @@
 # Lost Tokens
 
-공동 실험 시작: [CLAUDE.md](CLAUDE.md) → [공통 실험 가이드](docs/EXPERIMENT_GUIDE.md).
-고정 평가 범위는 GPQA 전체, MATH500 50%, MMLU 25%이며 문제 ID를 저장소에 고정했습니다.
-최근 결과: [changho-2026-11-15](experiment-results/changho-2026-11-15/summary.md).
+이 브랜치는 개인 코드·설정 전용입니다. [CLAUDE.md](CLAUDE.md)에서 시작하세요.
+[공통 가이드·고정 ID](https://github.com/yucheon6000/lost-token/tree/shared-evaluation)와
+[전체 결과 비교표](https://github.com/yucheon6000/lost-token/blob/shared-evaluation/experiment-results/README.md)는
+`shared-evaluation` 브랜치에서 관리합니다. 결과는 개인 브랜치에 commit하지 않습니다.
 
 **Reusing Unchosen Reasoning Branches as In-Context Memory**
 
@@ -263,38 +264,11 @@ workspace/
 
 ## Results
 
-Exploratory results through September 22, 2026, using
-**Qwen3-4B-Thinking-2507** and the **previous protocol**: 32-token rollouts, every
-candidate with probability ≥0.20 rolled out, rank 1 always committed, no preamble.
-To reproduce that protocol with the current code, set `branch_tokens: 32`,
-`selection: "argmax"`, `lookahead: null` and `memory_preamble: null`; the current
-code still rolls out only one alternative, so results will not be identical.
-This historical table predates the [latest vLLM pilot](experiment-results/changho-2026-11-15/summary.md).
-Use the [shared guide](docs/EXPERIMENT_GUIDE.md) and its fixed cohorts for new studies. Each historical row compares the
-same questions completed by both arms; accuracy includes correct/total counts.
-Differences are percentage points.
+All measured results and historical tables live on the
+[shared comparison branch](https://github.com/yucheon6000/lost-token/blob/shared-evaluation/experiment-results/README.md).
+Personal branches keep implementation/settings only. See CLAUDE.md for submission instructions.
 
-| Benchmark | Baseline | Ours | Difference |
-|---|---:|---:|---:|
-| LongBench v2 | **44.86% (48/107)** | 42.06% (45/107) | -2.80 |
-| HMMT25 | 43.33% (13/30) | **56.67% (17/30)** | +13.33 |
-| GPQA Main | 50.00% (53/106) | **51.89% (55/106)** | +1.89 |
-| AIME25 | 70.00% (21/30) | **76.67% (23/30)** | +6.67 |
-| SuperGPQA | 41.67% (45/108) | **42.59% (46/108)** | +0.93 |
-| **Pooled questions** | **47.24% (180/381)** | **48.82% (186/381)** | **+1.57** |
-
-These runs used 32K input/output caps. HMMT25 and AIME25 cover all 30 questions
-each; the other rows are partial evaluations. LongBench v2 uses truncated context.
-LongBench v2/HMMT25/GPQA include an additional ours run to complete the shared
-cohort, so their compute budgets are unequal. AIME25/SuperGPQA shared a three-hour,
-four-GPU budget per arm: baseline completed 183 SuperGPQA questions and ours 108;
-the table uses their 108 common questions. The pooled row is question-weighted,
-not a benchmark-average score or an equal-compute comparison.
-
-Reports compare **common completed questions**, with per-task accuracy, wins/losses,
-completion counts, and runtime. Time-censored subsets can favor quickly completed
-questions; they are not full-dataset scores. Selected-rollout commit changes the
-main continuation too, so baseline vs ours is not a memory-only ablation.
+## Validation
 
 ```bash
 uv run --frozen python -m unittest discover -s tests -v

@@ -18,7 +18,8 @@ from lost_tokens.data import download_datasets, download_models, load_prepared, 
 
 
 REPO = Path(__file__).resolve().parents[1]
-COHORT = REPO / "evaluation/subsets/shared-v1"
+SHARED_ROOT = REPO / ".shared-evaluation"
+COHORT = SHARED_ROOT / "evaluation/subsets/shared-v1"
 
 
 def verify_cohort(work, spec, tasks, cohort=COHORT):
@@ -207,6 +208,9 @@ def export_reports(study, work, output):
         "",
         study["method_description"],
         "",
+        f"Code branch: `{study['branch']}`; commit: `{study.get('code_commit', 'not recorded')}`.",
+        f"Canonical shared checkout commit: `{study.get('shared_commit', 'not recorded')}`.",
+        "",
         "Baseline is plain_ar; ours is filtered_futures. Both use the same backend, model,",
         "prompts, frozen IDs, per-case seeds, repetition guard and output budget.",
         "",
@@ -234,6 +238,68 @@ def export_reports(study, work, output):
     ]
     (output / "method.md").write_text("\n".join(method))
     atomic_json(output / "study-plan.json", public_study(study))
+    rows = []
+    for task in study.get("benchmarks", list(study["runs"])):
+        run = work / "outputs" / study["runs"][task]
+        report_path, status_path = run / "report.json", run / "status.json"
+        report = json.loads(report_path.read_text()) if report_path.exists() else {}
+        status = json.loads(status_path.read_text()) if status_path.exists() else {}
+        scores = {}
+        for arm in ("baseline", "ours"):
+            score = report.get("own", {}).get(arm, {}).get(task, {})
+            scores[arm] = {"n": score.get("n", 0), "correct": score.get("correct", 0)}
+        rows.append(
+            {
+                "dataset": task,
+                "n_required": study["counts"][task],
+                "method": "filtered_futures/" + study["spec"]["experiment"]["selection"],
+                "baseline": scores["baseline"],
+                "ours": scores["ours"],
+                "audits_passed": bool(status.get("audits_passed")),
+                "gpu_count": study.get("environment", {}).get("gpu_count"),
+                "gpu_model": "; ".join(
+                    sorted({g["name"] for g in study.get("environment", {}).get("gpus", [])})
+                ),
+            }
+        )
+    atomic_json(
+        output / "submission.json",
+        {
+            "id": study["branch"],
+            "code_branch": study["branch"],
+            "code_commit": study.get("code_commit"),
+            "cohort_version": study["cohort_version"],
+            "cohort_manifest_sha256": study["cohort_manifest_sha256"],
+            "scope": "shared",
+            "model": study["spec"]["model"]["name"],
+            "model_revision": study["spec"]["model"]["revision"],
+            "backend": study["spec"]["model"].get("backend"),
+            "dtype": study["spec"]["model"]["dtype"],
+            "scorer_sha256": digest(
+                {
+                    key: study["source"].get(key)
+                    for key in ("lost_tokens/core.py", "lost_tokens/math_scoring.py")
+                }
+            ),
+            "evaluation_settings_sha256": digest(
+                {
+                    "prompt_limit": study["spec"]["data"]["prompt_limit"],
+                    **{
+                        key: study["spec"]["experiment"][key]
+                        for key in (
+                            "max_output_tokens",
+                            "temperature",
+                            "top_k",
+                            "top_p",
+                            "repetition_guard",
+                        )
+                    },
+                }
+            ),
+            "seed": study["spec"]["experiment"]["seed"],
+            "rows": rows,
+        },
+    )
 
 
 def public_study(study):
@@ -251,6 +317,12 @@ def main():
     parser.add_argument("--date", default=datetime.now().astimezone().date().isoformat())
     parser.add_argument("--work-dir", type=Path, default=Path("workspace"))
     parser.add_argument("--model-cache", type=Path)
+    parser.add_argument(
+        "--shared-root",
+        type=Path,
+        default=SHARED_ROOT,
+        help="Read-only shared-evaluation checkout containing the frozen cohort",
+    )
     parser.add_argument("--config", type=Path, default=REPO / "configs/vllm-argmax.json")
     parser.add_argument(
         "--gpus", default="0", help="Explicit visible GPU indices; defaults to one GPU"
@@ -261,17 +333,23 @@ def main():
     parser.add_argument("--method-description")
     parser.add_argument("--hypothesis")
     args = parser.parse_args()
+    shared_root = args.shared_root.resolve()
+    cohort = shared_root / "evaluation/subsets/shared-v1"
+    if not (cohort / "manifest.json").exists():
+        parser.error(
+            "Fetch shared-evaluation into .shared-evaluation (or pass --shared-root); see CLAUDE.md"
+        )
     branch = f"{args.name}-{args.date}"
     if not re.fullmatch(r"[a-z0-9][a-z0-9_-]*-\d{4}-\d{2}-\d{2}", branch):
         parser.error("Expected {name}-{YYYY-MM-DD} using an ASCII name")
     tasks = list(dict.fromkeys(args.benchmarks))
-    known = json.loads((COHORT / "manifest.json").read_text())["datasets"]
+    known = json.loads((cohort / "manifest.json").read_text())["datasets"]
     if not tasks or any(task not in known for task in tasks):
         parser.error("Only the six shared-v1 benchmark tasks are allowed")
     work = args.work_dir.resolve()
     spec = runtime_spec(load_spec(args.config), work, args.model_cache)
     plan_path = work / "shared-studies" / branch / "study-plan.json"
-    output = REPO / "experiment-results" / branch
+    output = plan_path.parent / "submission"
     if args.action == "report":
         study = json.loads(plan_path.read_text())
         export_reports(study, work, output)
@@ -280,7 +358,7 @@ def main():
         download_datasets(work, tasks)
         download_models(spec)
         prepare(work, spec, tasks)
-    manifest = verify_cohort(work, spec, tasks)
+    manifest = verify_cohort(work, spec, tasks, cohort)
     print(
         "Verified fixed cohorts:",
         {task: manifest["datasets"][task]["n"] for task in tasks},
@@ -309,7 +387,7 @@ def main():
             or study["source"] != source_fingerprint()
             or study["gpus"] != args.gpus
             or study.get("benchmarks", list(study["runs"])) != tasks
-            or study["cohort_manifest_sha256"] != file_digest(COHORT / "manifest.json")
+            or study["cohort_manifest_sha256"] != file_digest(cohort / "manifest.json")
         ):
             parser.error(
                 "Frozen study changed; restore original source/config/environment or use a new branch/date"
@@ -323,10 +401,34 @@ def main():
     else:
         if not args.method_description or not args.hypothesis:
             parser.error("New studies require --method-description and --hypothesis")
+        dirty = subprocess.check_output(
+            [
+                "git",
+                "status",
+                "--porcelain",
+                "--untracked-files=all",
+                "--",
+                "src",
+                "configs",
+                "scripts",
+                "pyproject.toml",
+                "uv.lock",
+            ],
+            cwd=REPO,
+            text=True,
+        ).strip()
+        if dirty:
+            parser.error("Commit the personal implementation/settings before starting a new study")
         study = {
             "branch": branch,
             "cohort_version": manifest["version"],
-            "cohort_manifest_sha256": file_digest(COHORT / "manifest.json"),
+            "cohort_manifest_sha256": file_digest(cohort / "manifest.json"),
+            "shared_commit": subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=shared_root, text=True
+            ).strip(),
+            "code_commit": subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=REPO, text=True
+            ).strip(),
             "spec": spec,
             "source": source_fingerprint(),
             "gpus": args.gpus,
@@ -361,7 +463,7 @@ def main():
                 "--run-name",
                 run_name,
                 "--ids-file",
-                str(COHORT / f"{task}.json"),
+                str(cohort / f"{task}.json"),
             ]
             if args.model_cache:
                 command += ["--model-cache", str(args.model_cache.resolve())]
