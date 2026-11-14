@@ -1,5 +1,9 @@
 # Lost Tokens
 
+공동 실험 시작: [CLAUDE.md](CLAUDE.md) → [공통 실험 가이드](docs/EXPERIMENT_GUIDE.md).
+고정 평가 범위는 GPQA 전체, MATH500 50%, MMLU 25%이며 문제 ID를 저장소에 고정했습니다.
+최근 결과: [changho-2026-11-15](experiment-results/changho-2026-11-15/summary.md).
+
 **Reusing Unchosen Reasoning Branches as In-Context Memory**
 
 Lost Tokens is a training-free decoding method. While a model is inside `<think>`,
@@ -46,6 +50,34 @@ uv run --frozen lost-tokens smoke --benchmarks aime25 --gpus 0
 If the bootstrap installed a local `uv`, use `.tools/uv` in place of `uv`.
 
 ## Run an evaluation
+
+### Batched vLLM backend
+
+Use `--config configs/vllm-argmax.json` for rank-1 selection with alternative
+memory, or `--config configs/vllm-lookahead.json` for the lookahead control.
+Both retain the 64-token rollouts, raw probability threshold, repetition guard,
+memory preamble and 32K output cap. For example:
+
+```bash
+uv sync --frozen
+uv run --frozen lost-tokens setup --config configs/vllm-argmax.json --benchmarks hmmt25
+uv run --frozen lost-tokens run --config configs/vllm-argmax.json \
+  --benchmarks hmmt25 --arms ours --gpus 0,1,2,3,4,5,6,7 --run-name hmmt-argmax-vllm
+```
+
+Each GPU owns one model and batches up to eight independent cases. The backend
+pins vLLM 0.10.2 V0 with a version-specific internal logits hook so branching
+stops before sampling and uses the original per-position RNG seeds. It does not
+support arbitrary vLLM upgrades or tensor parallelism. Backend/runtime identity
+is checkpoint-bound; Transformers checkpoints cannot be resumed with vLLM.
+The ledger's forward-token costs remain logical protocol work, not physical
+vLLM GPU work. Concurrent case times overlap and include batch waiting: compare
+phase wall time or aggregate generation intervals, not summed case time.
+
+GPU smoke tests verify both plain decoding and branch-memory audits. Exact
+tokens need not match Transformers because kernels and batching differ; compare
+argmax and lookahead using the same backend. To share cached models, supply
+`--model-cache` explicitly. Original Transformers defaults remain available.
 
 The default configuration matches the main method: repetition suppression is
 enabled for both baseline and ours. The baseline samples normally without branch
@@ -236,8 +268,9 @@ Exploratory results through September 22, 2026, using
 candidate with probability ≥0.20 rolled out, rank 1 always committed, no preamble.
 To reproduce that protocol with the current code, set `branch_tokens: 32`,
 `selection: "argmax"`, `lookahead: null` and `memory_preamble: null`; the current
-code still rolls out only one alternative, so results will not be identical. No
-results with the current defaults have been recorded yet. Each row compares the
+code still rolls out only one alternative, so results will not be identical.
+This historical table predates the [latest vLLM pilot](experiment-results/changho-2026-11-15/summary.md).
+Use the [shared guide](docs/EXPERIMENT_GUIDE.md) and its fixed cohorts for new studies. Each historical row compares the
 same questions completed by both arms; accuracy includes correct/total counts.
 Differences are percentage points.
 

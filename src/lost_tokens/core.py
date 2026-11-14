@@ -44,7 +44,11 @@ def atomic_json(path: Path, value) -> None:
 def extract_choice(text: str, choices: list[str]) -> str | None:
     """Accept an explicitly marked option; do not infer it from scratch reasoning."""
     matches = list(
-        re.finditer(r"Final answer\s*:\s*(?:\*\*)?\s*\(?([A-Z])\)?(?![A-Za-z0-9])", text, re.I)
+        re.finditer(
+            r"Final answer(?:\*\*|__)?\s*:\s*(?:\*\*|__)?\s*\(?([A-Z])\)?(?![A-Za-z0-9])",
+            text,
+            re.I,
+        )
     )
     if not matches:
         return None

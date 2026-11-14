@@ -34,6 +34,14 @@ def runtime_spec(spec, work_dir, model_cache=None):
 
 
 def validate_spec(spec):
+    backend = spec["model"].get("backend", "transformers")
+    if backend not in ("transformers", "vllm"):
+        raise ValueError("Unknown model backend")
+    if backend == "vllm":
+        for key in ("vllm_batch_size", "vllm_batch_tokens"):
+            value = spec["model"].get(key, 8 if key == "vllm_batch_size" else 4096)
+            if type(value) is not int or value < 1:
+                raise ValueError(f"Invalid {key}")
     if spec.get("protocol") != "recurrent-reasoning-memory-v4":
         raise ValueError("Wrong protocol")
     if spec["model"].get("enable_thinking") is not True:

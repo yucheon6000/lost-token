@@ -254,7 +254,14 @@ def worker(run, name, probe=False):
     from .long_context import install
     from .recurrent_memory import run_case
 
-    install()
+    use_vllm = cfg["model"].get("backend", "transformers") == "vllm"
+    if use_vllm:
+        from .vllm_backend import VLLMModel, install as install_vllm
+
+        LocalModel = VLLMModel
+        install_vllm()
+    else:
+        install()
     path = run / "workers" / name
     path.parent.mkdir(exist_ok=True)
     identity = {
@@ -282,9 +289,13 @@ def worker(run, name, probe=False):
             if file_digest(dest) != plan["source"][relative]:
                 raise ValueError("Changed provenance")
         install_interrupt_handlers()
+        import threading
+
+        log_lock = threading.Lock()
 
         def log(message):
-            print(now(), message, flush=True)
+            with log_lock:
+                print(now(), message, flush=True)
 
         try:
             with heartbeat("loading generator", log):
@@ -293,7 +304,9 @@ def worker(run, name, probe=False):
                 with heartbeat("loading embedding model", log):
                     model.semantic_encoder = CosineEncoder(cfg["similarity"]["encoder"])
             rows = planned_rows(cfg, split, identity["mode"])
-            for namespace, row in rows:
+
+            def process_case(item):
+                namespace, row = item
                 model._check(
                     [0] * row["prompt_tokens"],
                     cfg["experiment"]["max_output_tokens"]
@@ -330,8 +343,23 @@ def worker(run, name, probe=False):
                     arm=assignment["arm"],
                     context_truncated=row.get("context_truncated", False),
                 )
+                if use_vllm:
+                    outcome["timing_semantics"] = "concurrent_case_elapsed_including_batch_wait"
                 atomic_json(path / "outcomes" / row["task"] / (row["id"] + ".json"), outcome)
                 log(f"completed {row['id']}: correct={result['correct']}")
+
+            if use_vllm:
+                from concurrent.futures import ThreadPoolExecutor
+
+                concurrent_cases = 1 if probe else cfg["model"].get("vllm_batch_size", 8)
+                try:
+                    with ThreadPoolExecutor(max_workers=concurrent_cases) as pool:
+                        list(pool.map(process_case, rows))
+                finally:
+                    model.close()
+            else:
+                for item in rows:
+                    process_case(item)
             store.status("complete")
         except ProbePause:
             store.status("probe_interrupted")

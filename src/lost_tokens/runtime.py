@@ -57,7 +57,8 @@ def environment():
         "platform": platform.platform(),
         "packages": {
             name: importlib.metadata.version(name)
-            for name in ("torch", "transformers", "huggingface-hub", "tokenizers", "numpy")
+            for name in ("torch", "transformers", "huggingface-hub", "tokenizers", "numpy", "vllm")
+            if importlib.metadata.packages_distributions().get(name.replace("-", "_"))
         },
         "cuda_runtime": torch.version.cuda,
         "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,

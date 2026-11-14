@@ -1,5 +1,9 @@
 # Lost Tokens repository
 
+- For shared experiments, read `CLAUDE.md` and `docs/EXPERIMENT_GUIDE.md`.
+  Use the committed `evaluation/subsets/shared-v1/` IDs; never redraw per-user subsets.
+  Push only to `{name}-{YYYY-MM-DD}` and include baseline.md, ours.md and method.md.
+
 - Use `uv sync --frozen` and `uv run --frozen`; never install into system Python.
 - The public implementation is under `src/lost_tokens/`. Keep protocol defaults in
   `default.json`, dataset revisions/URLs/hashes in `datasets.json`.

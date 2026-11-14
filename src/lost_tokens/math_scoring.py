@@ -1,7 +1,14 @@
 """Explicit boxed-answer extraction and version-locked Math-Verify scoring."""
 
 from functools import lru_cache
+from concurrent.futures import ProcessPoolExecutor
+import multiprocessing
 import re
+import threading
+
+
+_scoring_pool = None
+_scoring_pool_lock = threading.Lock()
 
 
 def boxed_answer(text):
@@ -42,6 +49,17 @@ def parsed_answer(answer):
 def math_correct(gold, prediction):
     if prediction is None:
         return False
+    if threading.current_thread() is not threading.main_thread():
+        # Math-Verify uses SIGALRM for bounded parsing/verification. A spawned
+        # process executes it on its main thread, without disabling the timeouts
+        # or forking a process that already owns a CUDA context.
+        global _scoring_pool
+        with _scoring_pool_lock:
+            if _scoring_pool is None:
+                _scoring_pool = ProcessPoolExecutor(
+                    max_workers=1, mp_context=multiprocessing.get_context("spawn")
+                )
+        return _scoring_pool.submit(math_correct, gold, prediction).result()
     from math_verify import verify
 
     return bool(
@@ -59,8 +77,23 @@ def math_correct(gold, prediction):
 def natural_answer(text, row):
     from .core import extract_choice
 
-    return (
-        boxed_answer(text)
-        if row.get("answer_format") == "math"
-        else extract_choice(text, row["choices"])
-    )
+    if row.get("answer_format") != "math":
+        return extract_choice(text, row["choices"])
+    answer = boxed_answer(text)
+    # A grade is an ordinal label, not a symbolic exponent. Restrict this
+    # normalization to questions explicitly asking which/what grade.
+    if answer and re.search(r"\b(?:which|what)\s+grade\b", row.get("question", ""), re.I):
+        ordinal = re.fullmatch(
+            r"(\d+)(?:\^\{\\(?:text|mathrm)\{(st|nd|rd|th)\}\}|(st|nd|rd|th))",
+            answer,
+        )
+        if ordinal:
+            number = int(ordinal[1])
+            suffix = (
+                "th"
+                if 10 <= number % 100 <= 20
+                else {1: "st", 2: "nd", 3: "rd"}.get(number % 10, "th")
+            )
+            if (ordinal[2] or ordinal[3]) == suffix:
+                return ordinal[1]
+    return answer
