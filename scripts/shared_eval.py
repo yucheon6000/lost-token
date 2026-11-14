@@ -15,11 +15,54 @@ import sys
 from lost_tokens.config import load_spec, runtime_spec
 from lost_tokens.core import atomic_json, digest, file_digest, source_fingerprint
 from lost_tokens.data import download_datasets, download_models, load_prepared, prepare, sources
+from lost_tokens import frozen_baseline
 
 
 REPO = Path(__file__).resolve().parents[1]
 SHARED_ROOT = REPO / ".shared-evaluation"
 COHORT = SHARED_ROOT / "evaluation/subsets/shared-v1"
+
+
+def load_profile(shared_root, name):
+    if name is None:
+        return None, shared_root / "evaluation/subsets/shared-v1"
+    profiles = json.loads((shared_root / "evaluation/profiles.json").read_text())["profiles"]
+    if name not in profiles:
+        raise ValueError("Unknown hardware profile: " + name)
+    profile = profiles[name]
+    version = profile["cohort_version"]
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", version):
+        raise ValueError("Invalid registered cohort version")
+    cohort = shared_root / "evaluation/subsets" / version
+    if file_digest(cohort / "manifest.json") != profile["cohort_manifest_sha256"]:
+        raise ValueError("Registered cohort manifest changed")
+    if json.loads((cohort / "manifest.json").read_text())["version"] != version:
+        raise ValueError("Registered cohort version differs")
+    return profile, cohort
+
+
+def task_specs(spec, tasks, profile):
+    result = {}
+    for task in tasks:
+        cfg = json.loads(json.dumps(spec))
+        if profile:
+            cfg["model"]["vllm_batch_size"] = profile["batch_size_by_task"].get(
+                task, profile["batch_size_per_gpu"]
+            )
+        result[task] = cfg
+    return result
+
+
+def verify_hardware(profile, environment):
+    if profile is None:
+        return
+    if environment["gpu_count"] != profile["gpu_count"]:
+        raise ValueError("GPU count differs from the selected hardware profile")
+    names = [gpu["name"] for gpu in environment["gpus"]]
+    if len(names) != profile["gpu_count"] or any(
+        profile["gpu_name_contains"].casefold() not in name.casefold() for name in names
+    ):
+        raise ValueError("GPU model differs from the selected hardware profile")
 
 
 def verify_cohort(work, spec, tasks, cohort=COHORT):
@@ -139,6 +182,22 @@ def collect_environment(gpus, spec):
 
 def export_reports(study, work, output):
     output.mkdir(parents=True, exist_ok=True)
+    reference = None
+    descriptor = study.get("baseline_reference")
+    reference_path = output / "baseline-reference.json"
+    if descriptor:
+        if file_digest(Path(descriptor["path"])) != descriptor["file_sha256"]:
+            raise ValueError("Frozen baseline reference file changed")
+        reference = frozen_baseline.read_reference(
+            descriptor["path"], frozen_baseline.conditions(study)
+        )
+        if reference_path.exists():
+            if frozen_baseline.read_reference(reference_path) != reference:
+                raise ValueError("Refusing to replace the saved baseline reference")
+        else:
+            atomic_json(reference_path, reference)
+    elif "baseline" in study.get("arms", ["baseline", "ours"]):
+        reference = frozen_baseline.freeze(study, work, reference_path)
     if "environment" in study:
         atomic_json(output / "environment.json", study["environment"])
     for arm in ("baseline", "ours"):
@@ -146,18 +205,29 @@ def export_reports(study, work, output):
             f"# {arm}: {study['branch']}",
             "",
             f"Cohort: `{study['cohort_version']}`",
+            f"Hardware profile: `{study.get('hardware_profile') or 'legacy'}`",
             "",
             "Environment: [environment.json](environment.json): GPU model/count/IDs, driver/CUDA, packages, precision and batching.",
             "",
             "| Dataset | Correct / completed | Required n | Accuracy | Phase wall (s) | Run state |",
             "|---|---:|---:|---:|---:|---|",
         ]
+        if reference:
+            lines += [
+                "",
+                f"Frozen AR baseline: `{reference['sha256']}`; original code commit: "
+                f"`{reference['payload']['origin']['code_commit']}`.",
+                "Baseline times are the original measurement; reuse does not launch AR again.",
+                "",
+            ]
         for task in study.get("benchmarks", list(study["runs"])):
             run_name = study["runs"][task]
             run = work / "outputs" / run_name
             report_path = run / "report.json"
             report = json.loads(report_path.read_text()) if report_path.exists() else {}
             score = report.get("own", {}).get(arm, {}).get(task, {})
+            if reference and arm == "baseline":
+                score = frozen_baseline.score(reference, task)
             n, correct = score.get("n", 0), score.get("correct", 0)
             status_path = run / "status.json"
             status = (
@@ -173,6 +243,10 @@ def export_reports(study, work, output):
                 end = json.loads(end_path.read_text())
                 if arm in schedule and "at" in end:
                     phase_seconds = f"{datetime.fromisoformat(end['at']).timestamp() - schedule[arm]['start_epoch']:.1f}"
+            if reference and arm == "baseline":
+                phase_seconds = (
+                    f"{reference['payload']['origin']['tasks'][task]['phase_seconds']:.1f}"
+                )
             lines.append(
                 f"| {task} | {correct}/{n} | {study['counts'][task]} | {accuracy} | {phase_seconds} | {status['state']} |"
             )
@@ -190,6 +264,29 @@ def export_reports(study, work, output):
                         "identity_sha256": file_digest(identity),
                     }
                 atomic_json(dest / "worker-environments.json", workers)
+                if reference and "ours" in report.get("own", {}):
+                    atomic_json(
+                        dest / "comparison.json", frozen_baseline.compare(reference, run, task)
+                    )
+        if reference and arm == "ours":
+            lines += [
+                "",
+                "## Paired against the same frozen AR baseline",
+                "",
+                "| Dataset | Common n | Baseline correct | Ours correct | Delta pp | Wins / losses |",
+                "|---|---:|---:|---:|---:|---:|",
+            ]
+            for task, name in study["runs"].items():
+                run = work / "outputs" / name
+                if not (run / "plan.json").exists():
+                    continue
+                paired = frozen_baseline.compare(reference, run, task)
+                delta = paired["difference_pp"]
+                delta_text = f"{delta:+.2f}" if delta is not None else "pending"
+                lines.append(
+                    f"| {task} | {paired['n']} | {paired['baseline_correct']} | "
+                    f"{paired['correct']} | {delta_text} | {paired['wins']} / {paired['losses']} |"
+                )
         lines += [
             "",
             "Incomplete runs and samples are not full-dataset accuracy.",
@@ -215,6 +312,8 @@ def export_reports(study, work, output):
         "prompts, frozen IDs, per-case seeds, repetition guard and output budget.",
         "",
         f"Cohort manifest SHA256: `{study['cohort_manifest_sha256']}`",
+        f"Hardware profile: `{study.get('hardware_profile') or 'legacy'}`.",
+        "Task-specific resolved configs (including batch size) are in study-plan.json/task_specs.",
         "",
         "## Frozen configuration",
         "",
@@ -229,6 +328,17 @@ def export_reports(study, work, output):
         "```",
         "",
     ]
+    if reference:
+        method += [
+            "## Fixed baseline",
+            "",
+            f"Reference SHA256: `{reference['sha256']}`; original baseline branch: "
+            f"`{reference['payload']['origin']['branch']}`; code commit: "
+            f"`{reference['payload']['origin']['code_commit']}`.",
+            "This immutable AR reference is reused across ours variants. Its outcomes are not",
+            "copied into inference checkpoints. See baseline-reference.json for IDs, outcomes and provenance.",
+            "",
+        ]
     method += [
         "## Environment",
         "",
@@ -248,6 +358,8 @@ def export_reports(study, work, output):
         for arm in ("baseline", "ours"):
             score = report.get("own", {}).get(arm, {}).get(task, {})
             scores[arm] = {"n": score.get("n", 0), "correct": score.get("correct", 0)}
+        if reference:
+            scores["baseline"] = frozen_baseline.score(reference, task)
         rows.append(
             {
                 "dataset": task,
@@ -260,6 +372,9 @@ def export_reports(study, work, output):
                 "gpu_model": "; ".join(
                     sorted({g["name"] for g in study.get("environment", {}).get("gpus", [])})
                 ),
+                "batch_size_per_gpu": study.get("task_specs", {})
+                .get(task, study["spec"])["model"]
+                .get("vllm_batch_size", 8),
             }
         )
     atomic_json(
@@ -269,8 +384,10 @@ def export_reports(study, work, output):
             "code_branch": study["branch"],
             "code_commit": study.get("code_commit"),
             "cohort_version": study["cohort_version"],
+            "hardware_profile": study.get("hardware_profile"),
             "cohort_manifest_sha256": study["cohort_manifest_sha256"],
             "scope": "shared",
+            "baseline_reference_sha256": reference["sha256"] if reference else None,
             "model": study["spec"]["model"]["name"],
             "model_revision": study["spec"]["model"]["revision"],
             "backend": study["spec"]["model"].get("backend"),
@@ -304,9 +421,12 @@ def export_reports(study, work, output):
 
 def public_study(study):
     result = json.loads(json.dumps(study))
-    result["spec"]["model"]["cache_dir"] = "<MODEL_CACHE>"
-    result["spec"]["similarity"]["encoder"]["cache_dir"] = "<MODEL_CACHE>"
+    for spec in [result["spec"], *result.get("task_specs", {}).values()]:
+        spec["model"]["cache_dir"] = "<MODEL_CACHE>"
+        spec["similarity"]["encoder"]["cache_dir"] = "<MODEL_CACHE>"
     result["runtime_paths_redacted"] = True
+    if result.get("baseline_reference"):
+        result["baseline_reference"]["path"] = "<FROZEN_BASELINE_REFERENCE>"
     return result
 
 
@@ -317,6 +437,15 @@ def main():
     parser.add_argument("--date", default=datetime.now().astimezone().date().isoformat())
     parser.add_argument("--work-dir", type=Path, default=Path("workspace"))
     parser.add_argument("--model-cache", type=Path)
+    parser.add_argument(
+        "--arms", nargs="+", choices=("baseline", "ours"), default=["baseline", "ours"]
+    )
+    parser.add_argument(
+        "--baseline-ref",
+        type=Path,
+        help="Immutable baseline-reference.json from your first study; use with --arms ours",
+    )
+    parser.add_argument("--profile", help="Registered hardware profile: l40s-4gpu or pro6000-8gpu")
     parser.add_argument(
         "--shared-root",
         type=Path,
@@ -334,7 +463,10 @@ def main():
     parser.add_argument("--hypothesis")
     args = parser.parse_args()
     shared_root = args.shared_root.resolve()
-    cohort = shared_root / "evaluation/subsets/shared-v1"
+    try:
+        profile, cohort = load_profile(shared_root, args.profile)
+    except (ValueError, FileNotFoundError) as exc:
+        parser.error(str(exc))
     if not (cohort / "manifest.json").exists():
         parser.error(
             "Fetch shared-evaluation into .shared-evaluation (or pass --shared-root); see CLAUDE.md"
@@ -345,11 +477,12 @@ def main():
     tasks = list(dict.fromkeys(args.benchmarks))
     known = json.loads((cohort / "manifest.json").read_text())["datasets"]
     if not tasks or any(task not in known for task in tasks):
-        parser.error("Only the six shared-v1 benchmark tasks are allowed")
+        parser.error("Only tasks in the selected frozen cohort are allowed")
     work = args.work_dir.resolve()
     spec = runtime_spec(load_spec(args.config), work, args.model_cache)
     plan_path = work / "shared-studies" / branch / "study-plan.json"
     output = plan_path.parent / "submission"
+    resolved_specs = task_specs(spec, tasks, profile)
     if args.action == "report":
         study = json.loads(plan_path.read_text())
         export_reports(study, work, output)
@@ -366,13 +499,19 @@ def main():
     )
     if args.action != "run":
         return
+    if args.baseline_ref and args.arms != ["ours"]:
+        parser.error("--baseline-ref requires --arms ours; baseline must not be rerun")
+    if args.arms == ["ours"] and not args.baseline_ref:
+        parser.error("Ours-only studies require your frozen --baseline-ref")
+    if args.profile is None and not plan_path.exists():
+        parser.error("New studies require --profile l40s-4gpu or --profile pro6000-8gpu")
     actual_branch = subprocess.check_output(
         ["git", "branch", "--show-current"], cwd=REPO, text=True
     ).strip()
     if actual_branch != branch:
         parser.error(f"Checkout {branch} before running; current branch is {actual_branch}")
     if spec["model"].get("backend") != "vllm" or spec["experiment"]["seed"] != 95021:
-        parser.error("Shared-v1 requires vLLM and experiment.seed=95021")
+        parser.error("Shared evaluation requires vLLM and experiment.seed=95021")
     gpu_rows = subprocess.check_output(
         ["nvidia-smi", "--query-gpu=index,name,memory.used,utilization.gpu", "--format=csv"],
         text=True,
@@ -380,6 +519,42 @@ def main():
     print(gpu_rows, flush=True)
     require_free_gpus(args.gpus)
     launch_environment = collect_environment(args.gpus, spec)
+    try:
+        verify_hardware(profile, launch_environment)
+    except ValueError as exc:
+        parser.error(str(exc))
+    if profile:
+        launch_environment["hardware_profile"] = args.profile
+        launch_environment["execution"]["batch_size_by_task"] = {
+            task: cfg["model"]["vllm_batch_size"] for task, cfg in resolved_specs.items()
+        }
+    baseline_reference = None
+    if args.baseline_ref:
+        path = args.baseline_ref.resolve()
+        expected = frozen_baseline.conditions(
+            {
+                "spec": spec,
+                "task_specs": resolved_specs,
+                "cohort_version": manifest["version"],
+                "cohort_manifest_sha256": file_digest(cohort / "manifest.json"),
+                "hardware_profile": args.profile,
+                "source": source_fingerprint(),
+                "environment": launch_environment,
+            }
+        )
+        try:
+            reference = frozen_baseline.read_reference(path, expected)
+            if any(
+                reference["payload"]["counts"].get(t) != manifest["datasets"][t]["n"] for t in tasks
+            ):
+                raise ValueError("Frozen baseline lacks required tasks or cohort sizes")
+        except (ValueError, FileNotFoundError) as exc:
+            parser.error(str(exc))
+        baseline_reference = {
+            "path": str(path),
+            "file_sha256": file_digest(path),
+            "sha256": reference["sha256"],
+        }
     if plan_path.exists():
         study = json.loads(plan_path.read_text())
         if (
@@ -388,6 +563,11 @@ def main():
             or study["gpus"] != args.gpus
             or study.get("benchmarks", list(study["runs"])) != tasks
             or study["cohort_manifest_sha256"] != file_digest(cohort / "manifest.json")
+            or study.get("hardware_profile") != args.profile
+            or study.get("profile_definition") != profile
+            or ("task_specs" in study and study["task_specs"] != resolved_specs)
+            or study.get("arms", ["baseline", "ours"]) != args.arms
+            or study.get("baseline_reference") != baseline_reference
         ):
             parser.error(
                 "Frozen study changed; restore original source/config/environment or use a new branch/date"
@@ -430,6 +610,11 @@ def main():
                 ["git", "rev-parse", "HEAD"], cwd=REPO, text=True
             ).strip(),
             "spec": spec,
+            "hardware_profile": args.profile,
+            "profile_definition": profile,
+            "task_specs": resolved_specs,
+            "arms": args.arms,
+            "baseline_reference": baseline_reference,
             "source": source_fingerprint(),
             "gpus": args.gpus,
             "benchmarks": tasks,
@@ -437,10 +622,19 @@ def main():
             "hypothesis": args.hypothesis,
             "environment": launch_environment,
             "counts": {task: manifest["datasets"][task]["n"] for task in tasks},
-            "runs": {task: f"{branch}-shared-v1-{task}" for task in tasks},
+            "runs": {task: f"{branch}-{manifest['version']}-{task}" for task in tasks},
         }
         atomic_json(plan_path, study)
     for task in study["benchmarks"]:
+        task_config = args.config.resolve()
+        if "task_specs" in study:
+            task_config = plan_path.parent / "task-configs" / f"{task}.json"
+            expected = study["task_specs"][task]
+            if task_config.exists():
+                if json.loads(task_config.read_text()) != expected:
+                    parser.error("Frozen task config changed: " + task)
+            else:
+                atomic_json(task_config, expected)
         run_name = study["runs"][task]
         run = work / "outputs" / run_name
         command = [sys.executable, "-u", "-m", "lost_tokens"]
@@ -450,7 +644,7 @@ def main():
             command += [
                 "run",
                 "--config",
-                str(args.config.resolve()),
+                str(task_config),
                 "--work-dir",
                 str(work),
                 "--benchmarks",
@@ -458,8 +652,7 @@ def main():
                 "--gpus",
                 args.gpus,
                 "--arms",
-                "baseline",
-                "ours",
+                *study.get("arms", ["baseline", "ours"]),
                 "--run-name",
                 run_name,
                 "--ids-file",

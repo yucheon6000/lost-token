@@ -1,7 +1,8 @@
 # Lost Tokens repository
 
 - For shared experiments, read `CLAUDE.md` and the canonical guide on `shared-evaluation`.
-  Use that branch's fixed `evaluation/subsets/shared-v1/` IDs; never redraw them.
+  Read docs/EVALUATION_PROFILES.md and docs/BASELINE_REUSE.md there. Use the exact registered IDs: l40s-4gpu -> l40s-2h-v1; pro6000-8gpu -> unchanged shared-v1. Never redraw them.
+  Each person freezes their own AR baseline once per comparison family, then uses --arms ours --baseline-ref for subsequent methods. Preserve reference hash/original commit and paired comparisons.
   Personal `{name}-{YYYY-MM-DD}` branches contain code/settings/tests only.
   Publish baseline.md, ours.md, method.md and environment.json to `shared-evaluation`
   under `experiment-results/{name}-{date}/`, and regenerate its comparison index.
