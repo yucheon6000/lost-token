@@ -14,7 +14,9 @@ GPU 프로필이 다르면 같은 사람도 프로필마다 별도 baseline을 �
 ```bash
 git fetch origin
 git switch -c MYNAME-base-l40s-YYYY-MM-DD origin/ch-2026-11-15
-# .shared-evaluation은 공용 shared-evaluation checkout, .venv는 개인 환경으로 준비한다.
+git worktree add --detach .shared-evaluation origin/shared-evaluation
+# 이미 공용 worktree가 있으면 위 add는 생략하고 현재 브랜치/내용을 먼저 확인한다.
+# .venv는 개인 환경으로 준비한다.
 uv sync --frozen
 uv run --frozen python scripts/shared_eval.py prepare --profile l40s-4gpu \
   --name MYNAME-base-l40s --date YYYY-MM-DD --work-dir workspace

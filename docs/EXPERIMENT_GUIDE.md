@@ -201,6 +201,7 @@ workspace/shared-studies/{name}-{date}/submission/
 # 공용 브랜치: 위 산출물만 복사해서 제출
 experiment-results/{name}-{date}/
   baseline.md
+  baseline-reference.json
   ours.md
   method.md
   environment.json
