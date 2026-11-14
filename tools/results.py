@@ -27,7 +27,7 @@ def validate(folder, root=ROOT):
         r"[a-z0-9][a-z0-9_-]*-\d{4}-\d{2}-\d{2}", item["id"]
     ):
         raise ValueError("Submission ID must equal its {name}-{date} directory")
-    if item["code_branch"] != item["id"] or not re.fullmatch(
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]*-\d{4}-\d{2}-\d{2}", item["code_branch"]) or not re.fullmatch(
         r"[0-9a-f]{40}", item["code_commit"] or ""
     ):
         raise ValueError("A personal code branch and immutable code commit are required")
@@ -46,6 +46,23 @@ def validate(folder, root=ROOT):
             or hashlib.sha256(path.read_bytes()).hexdigest() != item["cohort_manifest_sha256"]
         ):
             raise ValueError("Shared submission uses a different frozen manifest")
+    elif item["scope"] == "full":
+        path = folder / "cohort-manifest.json"
+        manifest = json.loads(path.read_text())
+        if (
+            manifest["version"] != item["cohort_version"]
+            or hashlib.sha256(path.read_bytes()).hexdigest() != item["cohort_manifest_sha256"]
+        ):
+            raise ValueError("Full-cohort manifest identity differs")
+        for entry in manifest["datasets"].values():
+            ids = entry["ids"]
+            if (
+                entry["n"] != entry["full_n"]
+                or len(ids) != entry["n"]
+                or len(set(ids)) != len(ids)
+                or digest(ids) != entry["ids_sha256"]
+            ):
+                raise ValueError("Full-cohort coverage or ID digest differs")
     elif item["scope"] != "historical-ablation":
         raise ValueError("Unknown scope")
     profile = None
@@ -146,10 +163,10 @@ def validate(folder, root=ROOT):
             ):
                 raise ValueError("Invalid measured score")
         if (
-            item["scope"] == "shared"
+            item["scope"] in ("shared", "full")
             and row["n_required"] != manifest["datasets"][row["dataset"]]["n"]
         ):
-            raise ValueError("Sample count differs from shared cohort")
+            raise ValueError("Sample count differs from cohort")
         if reference:
             task = row["dataset"]
             outcomes = reference["payload"]["outcomes"][task]
@@ -216,7 +233,7 @@ def build(root):
             s["dtype"],
             s["scorer_sha256"],
             s["evaluation_settings_sha256"],
-            s.get("hardware_profile") or "legacy",
+            s.get("hardware_profile") or ("full-cohort" if s["scope"] == "full" else "legacy"),
         )
 
     groups = sorted({group(s) for s in submissions})
@@ -247,10 +264,12 @@ def build(root):
                 a and b and a["n"] == b["n"] == row["n_required"] and row.get("audits_passed")
             )
             status = (
-                "완료"
-                if complete
+                "baseline 완료 · ours 미측정"
+                if a and not b and a["n"] == row["n_required"] and row.get("audits_passed")
                 else (
-                    "ablation·AR 미측정" if s["scope"] == "historical-ablation" else "부분/미완료"
+                    "완료" if complete else (
+                        "ablation·AR 미측정" if s["scope"] == "historical-ablation" and not a else "부분/미완료"
+                    )
                 )
             )
             link = f"[{s['id']}]({s['id']}/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/{s['code_commit']})"

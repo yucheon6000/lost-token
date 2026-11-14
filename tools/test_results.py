@@ -79,6 +79,50 @@ class ResultTests(unittest.TestCase):
     def test_render_is_deterministic(self):
         self.assertEqual(build(self.root), build(self.root))
 
+    def full_baseline(self):
+        ids = [f"aime25-{i}" for i in range(30)]
+        manifest = {"version": "full-v1", "datasets": {"aime25": {
+            "n": 30, "full_n": 30, "ids": ids, "ids_sha256": digest(ids)
+        }}}
+        path = self.folder / "cohort-manifest.json"
+        path.write_text(json.dumps(manifest))
+        self.item.update(scope="full", cohort_version="full-v1",
+                         cohort_manifest_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                         code_branch="tester-code-2026-11-15")
+        self.item["rows"][0].update(method="plain_ar", baseline={"n": 30, "correct": 18}, ours=None)
+        self.write()
+        return manifest, path
+
+    def test_full_baseline_has_truthful_branch_and_completion_status(self):
+        self.full_baseline()
+        validate(self.folder, self.root)
+        md, table = build(self.root)
+        self.assertIn("baseline 완료 · ours 미측정", md)
+        self.assertNotIn("ablation·AR 미측정", md)
+        self.assertIn("60.00% (18/30)", md)
+        self.assertIn("full-v1", table)
+
+    def test_full_cohort_rejects_wrong_hash_coverage_duplicate_and_count(self):
+        manifest, path = self.full_baseline()
+        original = copy.deepcopy(manifest)
+        path.write_text(path.read_text() + " ")
+        with self.assertRaises(ValueError):
+            validate(self.folder, self.root)
+        for field, value in (("n", 29), ("full_n", 31), ("ids", ["duplicate"] * 30), ("ids_sha256", "f" * 64)):
+            bad = copy.deepcopy(original)
+            bad["datasets"]["aime25"][field] = value
+            path.write_text(json.dumps(bad))
+            self.item["cohort_manifest_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+            self.write()
+            with self.assertRaises(ValueError):
+                validate(self.folder, self.root)
+        path.write_text(json.dumps(original))
+        self.item["cohort_manifest_sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        self.item["rows"][0]["n_required"] = 31
+        self.write()
+        with self.assertRaises(ValueError):
+            validate(self.folder, self.root)
+
     def shared_profile(self):
         manifest = {"version": "test-v1", "datasets": {"aime25": {"n": 30}}}
         path = self.root / "evaluation/subsets/test-v1/manifest.json"
