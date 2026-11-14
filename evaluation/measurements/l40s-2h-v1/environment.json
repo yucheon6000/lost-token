@@ -1,0 +1,80 @@
+{
+  "recorded_at": "2026-11-15T05:06:09.910192+09:00",
+  "capture_scope": "before study launch",
+  "gpu_count": 4,
+  "gpu_cli_indices": "0,1,2,3",
+  "physical_gpu_indices": [
+    "0",
+    "1",
+    "2",
+    "3"
+  ],
+  "gpus": [
+    {
+      "physical_index": "0",
+      "name": "NVIDIA L40S",
+      "uuid": "GPU-c069d943-3bf9-5a18-6e9c-4e8f47bf27b5",
+      "memory_total_mib": 46068,
+      "driver_version": "580.178.04"
+    },
+    {
+      "physical_index": "1",
+      "name": "NVIDIA L40S",
+      "uuid": "GPU-664e1f9a-f2da-a2a6-d4b0-036ef311ba1c",
+      "memory_total_mib": 46068,
+      "driver_version": "580.178.04"
+    },
+    {
+      "physical_index": "2",
+      "name": "NVIDIA L40S",
+      "uuid": "GPU-3499dbe8-b4f5-9318-5b15-30fad743dfb9",
+      "memory_total_mib": 46068,
+      "driver_version": "580.178.04"
+    },
+    {
+      "physical_index": "3",
+      "name": "NVIDIA L40S",
+      "uuid": "GPU-e5d53a90-3110-a224-9bce-1bcc5a2851d1",
+      "memory_total_mib": 46068,
+      "driver_version": "580.178.04"
+    }
+  ],
+  "runtime": {
+    "python": "3.12.3",
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.8.0",
+      "transformers": "4.57.1",
+      "huggingface-hub": "0.36.2",
+      "tokenizers": "0.22.2",
+      "numpy": "2.2.6",
+      "vllm": "0.10.2"
+    },
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA L40S"
+  },
+  "cpu_logical_count": 64,
+  "runtime_scope": "launcher; worker-specific execution environments are exported separately",
+  "scoring_packages": {
+    "math-verify": "0.9.0",
+    "sympy": "1.14.0"
+  },
+  "cpu_architecture": "x86_64",
+  "host_ram_bytes": 540720058368,
+  "environment_variables": {
+    "CUDA_VISIBLE_DEVICES": null,
+    "VLLM_USE_V1": null,
+    "OMP_NUM_THREADS": null
+  },
+  "execution": {
+    "backend": "vllm",
+    "dtype": "bfloat16",
+    "model": "Qwen/Qwen3-4B-Thinking-2507",
+    "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "tensor_parallel_size": 1,
+    "gpu_workers": 4,
+    "max_concurrent_cases_per_gpu": 8,
+    "vllm_batch_tokens": 4096,
+    "gpu_memory_fraction": 0.85
+  }
+}

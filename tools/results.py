@@ -12,6 +12,12 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = ("baseline.md", "ours.md", "method.md", "environment.json", "submission.json")
 
 
+def digest(value):
+    return hashlib.sha256(
+        json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False).encode()
+    ).hexdigest()
+
+
 def validate(folder, root=ROOT):
     for name in REQUIRED:
         if not (folder / name).is_file() or not (folder / name).stat().st_size:
@@ -30,7 +36,10 @@ def validate(folder, root=ROOT):
     ):
         raise ValueError("Cohort version and manifest SHA256 are required")
     if item["scope"] == "shared":
-        path = root / "evaluation/subsets/shared-v1/manifest.json"
+        version = item["cohort_version"]
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", version):
+            raise ValueError("Invalid cohort version")
+        path = root / "evaluation/subsets" / version / "manifest.json"
         manifest = json.loads(path.read_text())
         if (
             item["cohort_version"] != manifest["version"]
@@ -39,12 +48,73 @@ def validate(folder, root=ROOT):
             raise ValueError("Shared submission uses a different frozen manifest")
     elif item["scope"] != "historical-ablation":
         raise ValueError("Unknown scope")
+    profile = None
+    profile_name = item.get("hardware_profile")
+    if profile_name:
+        profiles = json.loads((root / "evaluation/profiles.json").read_text())["profiles"]
+        if profile_name not in profiles:
+            raise ValueError("Unknown hardware profile")
+        profile = profiles[profile_name]
+        if (
+            item["scope"] != "shared"
+            or profile["cohort_version"] != item["cohort_version"]
+            or profile["cohort_manifest_sha256"] != item["cohort_manifest_sha256"]
+        ):
+            raise ValueError("Hardware profile and frozen cohort differ")
+    elif item["scope"] == "shared" and item["cohort_version"] != "shared-v1":
+        raise ValueError("New hardware cohorts require hardware_profile")
     if not item.get("backend") or not item.get("dtype") or type(item.get("seed")) is not int:
         raise ValueError("Backend, precision and seed are required")
     if not re.fullmatch(r"[0-9a-f]{64}", item.get("scorer_sha256", "")):
         raise ValueError("Scoring identity is required")
     if not re.fullmatch(r"[0-9a-f]{64}", item.get("evaluation_settings_sha256", "")):
         raise ValueError("Evaluation settings identity is required")
+    reference = None
+    if item.get("baseline_reference_sha256"):
+        reference = json.loads((folder / "baseline-reference.json").read_text())
+        payload = reference["payload"]
+        if (
+            reference["sha256"] != digest(payload)
+            or reference["sha256"] != item["baseline_reference_sha256"]
+            or payload["conditions"]["cohort_manifest_sha256"] != item["cohort_manifest_sha256"]
+            or payload["conditions"]["hardware_profile"] != item.get("hardware_profile")
+        ):
+            raise ValueError("Frozen baseline hash/cohort/profile differs")
+        conditions = payload["conditions"]
+        if (
+            any(
+                conditions["model"][key] != item[target]
+                for key, target in (
+                    ("name", "model"),
+                    ("revision", "model_revision"),
+                    ("backend", "backend"),
+                    ("dtype", "dtype"),
+                )
+            )
+            or conditions["decoding"]["seed"] != item["seed"]
+        ):
+            raise ValueError("Frozen baseline model/runtime/seed differs")
+        scorer = {
+            key: conditions["scoring_and_seed_sources"].get(key)
+            for key in ("lost_tokens/core.py", "lost_tokens/math_scoring.py")
+        }
+        if digest(scorer) != item["scorer_sha256"]:
+            raise ValueError("Frozen baseline scorer differs")
+        settings = {
+            "prompt_limit": conditions["data"]["prompt_limit"],
+            **{
+                key: conditions["decoding"][key]
+                for key in (
+                    "max_output_tokens",
+                    "temperature",
+                    "top_k",
+                    "top_p",
+                    "repetition_guard",
+                )
+            },
+        }
+        if digest(settings) != item["evaluation_settings_sha256"]:
+            raise ValueError("Frozen baseline evaluation settings differ")
     seen = set()
     for row in item["rows"]:
         key = (row["dataset"], row["method"])
@@ -55,6 +125,16 @@ def validate(folder, root=ROOT):
             raise ValueError("Invalid required sample count")
         if type(row["gpu_count"]) is not int or row["gpu_count"] <= 0 or not row["gpu_model"]:
             raise ValueError("GPU model and actual GPU count are required")
+        if profile and (
+            row["gpu_count"] != profile["gpu_count"]
+            or any(
+                profile["gpu_name_contains"].casefold() not in name.casefold()
+                for name in row["gpu_model"].split(";")
+            )
+            or row.get("batch_size_per_gpu")
+            != profile["batch_size_by_task"].get(row["dataset"], profile["batch_size_per_gpu"])
+        ):
+            raise ValueError("GPU model/count or task batch differs from hardware profile")
         for arm in ("baseline", "ours"):
             score = row.get(arm)
             if score is None:
@@ -70,6 +150,16 @@ def validate(folder, root=ROOT):
             and row["n_required"] != manifest["datasets"][row["dataset"]]["n"]
         ):
             raise ValueError("Sample count differs from shared cohort")
+        if reference:
+            task = row["dataset"]
+            outcomes = reference["payload"]["outcomes"][task]
+            if (
+                len(outcomes) != row["n_required"]
+                or len({r["id"] for r in outcomes}) != row["n_required"]
+                or row["baseline"]
+                != {"n": len(outcomes), "correct": sum(bool(r["correct"]) for r in outcomes)}
+            ):
+                raise ValueError("Reported baseline differs from the immutable AR outcomes")
     return item
 
 
@@ -90,13 +180,16 @@ def build(root):
         "정본 브랜치: `shared-evaluation`. 개인 브랜치는 코드·설정만 보관한다.",
         "",
         "동일 cohort/모델/backend/seed/채점 조건에서만 방법 간 차이를 해석한다.",
-        "pilot과 새 shared-v1은 분리한다. 미측정 baseline은 다른 방법/과거 점수로 채우지 않는다.",
+        "L40S 4 GPU/l40s-2h-v1, PRO 6000 8 GPU/shared-v1, 과거 pilot은 분리한다.",
+        "[고정 서브셋·하드웨어 프로필](../docs/EVALUATION_PROFILES.md). 미측정 baseline은 다른 방법/과거 점수로 채우지 않는다.",
         "",
     ]
     fields = [
         "submission",
         "cohort",
         "cohort_sha256",
+        "hardware_profile",
+        "baseline_reference_sha256",
         "dataset",
         "method",
         "n_required",
@@ -123,15 +216,17 @@ def build(root):
             s["dtype"],
             s["scorer_sha256"],
             s["evaluation_settings_sha256"],
+            s.get("hardware_profile") or "legacy",
         )
 
     groups = sorted({group(s) for s in submissions})
     for identity in groups:
-        cohort, sha, model, revision, backend, seed, dtype, scorer, evaluation = identity
+        cohort, sha, model, revision, backend, seed, dtype, scorer, evaluation, profile = identity
         lines += [
             f"## {cohort}",
             "",
             f"Manifest SHA256: `{sha}`",
+            f"Hardware profile: `{profile}`",
             "",
             f"Model: `{model}@{revision}` · backend `{backend}` · seed `{seed}` · `{dtype}`",
             "",
@@ -168,6 +263,8 @@ def build(root):
                     "submission": s["id"],
                     "cohort": cohort,
                     "cohort_sha256": sha,
+                    "hardware_profile": profile,
+                    "baseline_reference_sha256": s.get("baseline_reference_sha256") or "",
                     "dataset": row["dataset"],
                     "method": row["method"],
                     "n_required": row["n_required"],

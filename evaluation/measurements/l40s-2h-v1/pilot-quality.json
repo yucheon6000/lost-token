@@ -1,0 +1,215 @@
+{
+  "scope": "Short throughput pilot only, not accuracy on the adopted fixed cohort. Completion-selected small samples; no improvement conclusion.",
+  "rows": {
+    "aime25": {
+      "own": {
+        "baseline": {
+          "accuracy": null,
+          "body_tokens": 0,
+          "correct": 0,
+          "fork_events": 0,
+          "n": 0,
+          "thinking_complete": 0
+        },
+        "ours": {
+          "accuracy": null,
+          "body_tokens": 0,
+          "correct": 0,
+          "fork_events": 0,
+          "n": 0,
+          "thinking_complete": 0
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": null,
+          "ours": null
+        },
+        "correct": {
+          "baseline": 0,
+          "ours": 0
+        },
+        "difference_pp": null,
+        "losses": 0,
+        "n": 0,
+        "wins": 0
+      },
+      "source_report_sha256": "58118d632b9720dc13ae66c3ed5cb1dc94c47f667765313c6b8913601a27a69c"
+    },
+    "hmmt25": {
+      "own": {
+        "baseline": {
+          "accuracy": null,
+          "body_tokens": 0,
+          "correct": 0,
+          "fork_events": 0,
+          "n": 0,
+          "thinking_complete": 0
+        },
+        "ours": {
+          "accuracy": null,
+          "body_tokens": 0,
+          "correct": 0,
+          "fork_events": 0,
+          "n": 0,
+          "thinking_complete": 0
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": null,
+          "ours": null
+        },
+        "correct": {
+          "baseline": 0,
+          "ours": 0
+        },
+        "difference_pp": null,
+        "losses": 0,
+        "n": 0,
+        "wins": 0
+      },
+      "source_report_sha256": "1b24815313e1a054cd139cae4536cd12773d0a9256c93facae57a4434cd8a820"
+    },
+    "gpqa": {
+      "own": {
+        "baseline": {
+          "accuracy": 0.6666666666666666,
+          "body_tokens": 8335,
+          "correct": 2,
+          "fork_events": 0,
+          "n": 3,
+          "thinking_complete": 3
+        },
+        "ours": {
+          "accuracy": 0.6666666666666666,
+          "body_tokens": 6569,
+          "correct": 2,
+          "fork_events": 20,
+          "n": 3,
+          "thinking_complete": 3
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": 0.6666666666666666,
+          "ours": 0.6666666666666666
+        },
+        "correct": {
+          "baseline": 2,
+          "ours": 2
+        },
+        "difference_pp": 0.0,
+        "losses": 0,
+        "n": 3,
+        "wins": 0
+      },
+      "source_report_sha256": "7982c1ecfbf6542312fcb8f088dfb9d17867cdf64123efd0904d05c2c86a6c1c"
+    },
+    "math500": {
+      "own": {
+        "baseline": {
+          "accuracy": 1.0,
+          "body_tokens": 22904,
+          "correct": 8,
+          "fork_events": 0,
+          "n": 8,
+          "thinking_complete": 8
+        },
+        "ours": {
+          "accuracy": 1.0,
+          "body_tokens": 11160,
+          "correct": 5,
+          "fork_events": 32,
+          "n": 5,
+          "thinking_complete": 5
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": 1.0,
+          "ours": 1.0
+        },
+        "correct": {
+          "baseline": 5,
+          "ours": 5
+        },
+        "difference_pp": 0.0,
+        "losses": 0,
+        "n": 5,
+        "wins": 0
+      },
+      "source_report_sha256": "62a2e6ef8b14892e2c61c1b3546c97f0af896336b1f109eff2b3c998b06b7994"
+    },
+    "gsm8k": {
+      "own": {
+        "baseline": {
+          "accuracy": 0.9574468085106383,
+          "body_tokens": 52950,
+          "correct": 45,
+          "fork_events": 0,
+          "n": 47,
+          "thinking_complete": 47
+        },
+        "ours": {
+          "accuracy": 0.9629629629629629,
+          "body_tokens": 27672,
+          "correct": 26,
+          "fork_events": 88,
+          "n": 27,
+          "thinking_complete": 27
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": 0.9629629629629629,
+          "ours": 0.9629629629629629
+        },
+        "correct": {
+          "baseline": 26,
+          "ours": 26
+        },
+        "difference_pp": 0.0,
+        "losses": 0,
+        "n": 27,
+        "wins": 0
+      },
+      "source_report_sha256": "21f3bce2756f51a0b57f88e44fb9afbba96b8eb62edfdffa35f3c5f33ad0e001"
+    },
+    "mmlu": {
+      "own": {
+        "baseline": {
+          "accuracy": 0.8823529411764706,
+          "body_tokens": 46919,
+          "correct": 15,
+          "fork_events": 0,
+          "n": 17,
+          "thinking_complete": 17
+        },
+        "ours": {
+          "accuracy": 0.8181818181818182,
+          "body_tokens": 25463,
+          "correct": 9,
+          "fork_events": 84,
+          "n": 11,
+          "thinking_complete": 11
+        }
+      },
+      "paired_common_completed": {
+        "accuracy": {
+          "baseline": 0.8181818181818182,
+          "ours": 0.8181818181818182
+        },
+        "correct": {
+          "baseline": 9,
+          "ours": 9
+        },
+        "difference_pp": 0.0,
+        "losses": 0,
+        "n": 11,
+        "wins": 0
+      },
+      "source_report_sha256": "083c2a9fcebfceecef6af70d5ad077e5c24e52955c27e6159d4255525b6accc4"
+    }
+  }
+}

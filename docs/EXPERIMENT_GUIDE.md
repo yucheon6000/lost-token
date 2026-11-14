@@ -1,14 +1,14 @@
 # Lost Tokens 공통 실험 가이드
 
 이 문서는 여러 사람이 Claude/Codex로 같은 문제를 평가하고 결과를 공유하기 위한 실행 규약이다.
-Claude는 이 문서와 루트 `CLAUDE.md`, `AGENTS.md`를 먼저 읽는다.
+Claude/Codex는 이 문서, [하드웨어별 필수 프로필](EVALUATION_PROFILES.md), 루트 `CLAUDE.md`, `AGENTS.md`를 먼저 읽는다.
 사용자의 명시적 지시가 우선하며, 단순 문서·상태 요청을 실험 실행으로 확대하지 않는다.
 
 ## 1. 진행 방법
 
 1. `git status`와 현재 브랜치를 확인한다. 다른 사람의 변경을 지우거나 임의로 stash하지 않는다.
 2. 실행 코드 checkout에서 개인 브랜치 `{name}-{date}`를 만든다. 처음에는
-   `origin/changho-2026-11-15`의 검증된 실행 코드를 사용할 수 있다. 공용 허브는 실행 코드가 없다.
+   `origin/ch-2026-11-15`의 두 프로필 지원 실행 코드를 사용한다. 공용 허브는 실행 코드가 없다.
    이름은 사용자의 이름/별칭, 날짜는 `YYYY-MM-DD` 형식의 작업 시작일이다.
    날짜가 바뀌어도 재개 중인 브랜치/실험 이름은 바꾸지 않는다.
 3. 변경 전 `temp/snapshots/`에 원본을 보존한다. 방법론은 한 요소씩 바꿔 비교한다.
@@ -17,9 +17,13 @@ Claude는 이 문서와 루트 `CLAUDE.md`, `AGENTS.md`를 먼저 읽는다.
 6. CPU 테스트를 실행하고, GPU 여유와 다른 사용자의 프로세스를 확인한다.
 7. GPU/디코딩 변경이면 **최종 답이 실제로 추출되고 채점되는** 소규모 GPU 검증을 먼저 한다.
    토큰 cap으로 정답이 없는 smoke만 통과한 것으로 채점 경로까지 검증했다고 보고하지 않는다.
-8. 같은 backend/config/ID/seed/output budget으로 baseline과 ours를 순서대로 실행한다.
+8. 각 작업자는 같은 backend/config/ID/seed/output budget으로 **baseline을 1회 완료해 동결**한다.
+   이후 방법 A/B/C는 같은 reference에 대해 **ours만** 실행한다. 다음 작업자도 본인 baseline부터 1회 측정한다.
+   [필수 baseline 동결·재사용 절차](BASELINE_REUSE.md)를 따른다.
    일반적으로 GPU당 독립 모델 1개, vLLM case batch 최대 8개를 사용한다.
-   GPU 8개를 확보했다면 `--gpus 0,1,2,3,4,5,6,7`을 사용한다. 다른 작업의 GPU는 쓰거나 종료하지 않는다.
+   L40S는 `--profile l40s-4gpu --gpus 0,1,2,3`, PRO 6000은
+   `--profile pro6000-8gpu --gpus 0,1,2,3,4,5,6,7`을 사용한다.
+   L40S AIME/HMMT의 batch=4는 wrapper가 자동 적용한다. 다른 작업의 GPU는 쓰거나 종료하지 않는다.
 9. 모든 완료 실행의 audit를 확인하고 결과 문서 세 개를 작성한다.
 10. 코드·설정·테스트는 개인 브랜치로 push한다. 결과 폴더는 공용 `shared-evaluation`으로
     별도 제출하고, 통합 비교표를 갱신해 다른 사람의 기존 결과와 함께 보여준다.
@@ -32,25 +36,32 @@ Claude는 이 문서와 루트 `CLAUDE.md`, `AGENTS.md`를 먼저 읽는다.
 
 ```bash
 git fetch origin
-git switch -c MYNAME-YYYY-MM-DD origin/changho-2026-11-15
+git switch -c MYNAME-YYYY-MM-DD origin/ch-2026-11-15
 git worktree add --detach .shared-evaluation origin/shared-evaluation
 uv sync --frozen
-uv run --frozen python scripts/shared_eval.py prepare \
+uv run --frozen python scripts/shared_eval.py prepare --profile l40s-4gpu \
   --name MYNAME --date YYYY-MM-DD --work-dir workspace
-uv run --frozen python scripts/shared_eval.py check \
+uv run --frozen python scripts/shared_eval.py check --profile l40s-4gpu \
   --name MYNAME --date YYYY-MM-DD --work-dir workspace
 uv run --frozen python -m unittest discover -s tests -v
-uv run --frozen python scripts/shared_eval.py run \
+uv run --frozen python scripts/shared_eval.py run --profile l40s-4gpu \
   --name MYNAME --date YYYY-MM-DD --work-dir workspace \
-  --config configs/vllm-argmax.json --gpus 0,1,2,3,4,5,6,7 \
-  --method-description 'rank-1 고정 선택과 대안 추론 메모리 삽입' \
-  --hypothesis 'confidence 기반 lookahead 선택을 제거하면 수학 추론 오류가 줄어든다'
+  --config configs/vllm-argmax.json --gpus 0,1,2,3 --arms baseline \
+  --method-description '일반 AR baseline 1회 측정 및 동결' \
+  --hypothesis '후속 ours 변형은 이 작업자의 고정 baseline과 비교한다'
 ```
+
+위 예시는 L40S **4장** 기준이다. PRO 6000 **8장**에서는 모든 prepare/check/run의
+`--profile`을 `pro6000-8gpu`, run의 `--gpus`를 `0,1,2,3,4,5,6,7`로 바꾼다.
+프로필마다 별도 개인 브랜치/작업 ID를 쓰며 실행 도중 프로필을 바꿔 resume하지 않는다.
 
 `prepare`는 pinned 데이터/모델을 내려받고 정규화한다. 기존 모델 캐시가 있으면
 모든 명령에 `--model-cache /path/to/shared/model-cache`를 동일하게 전달한다.
 공유 모델 캐시는 읽기 재사용하고, 실행 출력과 `.venv`는 작업자별로 분리한다.
-`run`은 데이터셋별 baseline/ours를 실행하고 `workspace/shared-studies/{name}-{date}/submission/`에
+`run --arms baseline`은 baseline을 한 번 실행하고, 전체 완료/audit 후 `baseline-reference.json`을 동결한다.
+후속 새 개인 브랜치에서는 `run --arms ours --baseline-ref <이 파일>`로 ours만 실행한다.
+[복사 가능한 전체 명령](BASELINE_REUSE.md)을 따른다.
+`run`은 요청한 arm을 데이터셋별로 실행하고 `workspace/shared-studies/{name}-{date}/submission/`에
 결과 문서·환경·submission.json을 만든다. 이 폴더는 개인 브랜치에 commit하지 않는다.
 다른 공용 checkout을 사용하면 `--shared-root /path/to/shared-checkout`을 전달한다.
 일부 데이터셋만 실행하려면 `--benchmarks aime25 hmmt25`처럼 명시하고 부분 결과라고 보고한다.
@@ -61,17 +72,22 @@ uv run --frozen python scripts/shared_eval.py run \
 
 ## 2. 데이터셋과 공통 고정 서브셋
 
-**정본은 `shared-evaluation` 브랜치의 `evaluation/subsets/shared-v1/*.json` 문제 ID 목록이다.**
-비율만 같게 새로 추첨하는 것은 허용하지 않는다. 모두 동일 파일을 사용한다.
+**모든 작업자는 선택한 하드웨어 프로필의 정본 ID 목록을 그대로 사용한다.**
+선택은 `evaluation/profiles.json`을 따른다. 비율/문제 수만 맞춘 재추첨, 각자 만든 ID 파일,
+`--limit` 대체는 허용하지 않는다. [상세 프로필·실측 근거](EVALUATION_PROFILES.md).
 
-| CLI 이름 | 데이터셋/원본 split | 전체 n | 공통 평가 n | 평가 범위 | 고정 ID 파일 |
-|---|---|---:|---:|---|---|
-| `aime25` | MathArena AIME 2025 | 30 | 30 | 전체 | `aime25.json` |
-| `hmmt25` | MathArena HMMT February 2025 | 30 | 30 | 전체 | `hmmt25.json` |
-| `gsm8k` | OpenAI GSM8K `main/test` | 1,319 | 1,319 | 전체 | `gsm8k.json` |
-| `gpqa` | GPQA **Main**, 공개 archive | 448 | 448 | **전체** | `gpqa.json` |
-| `math500` | HuggingFaceH4 MATH-500 `test` | 500 | 250 | **50%** | `math500.json` |
-| `mmlu` | cais/MMLU 57과목 `test` | 14,042 | 3,511 | **25%, 올림** | `mmlu.json` |
+| CLI 이름 | 전체 n | L40S 4 GPU: `l40s-2h-v1` | PRO 6000 8 GPU: 기존 `shared-v1` | L40S batch/GPU |
+|---|---:|---:|---:|---:|
+| `aime25` | 30 | **30** | 30 | **4** |
+| `hmmt25` | 30 | **25** | 30 | **4** |
+| `gsm8k` | 1,319 | **1,319** | 1,319 | 8 |
+| `gpqa` | 448 | **90** | 448 | 8 |
+| `math500` | 500 | **125** | 250 | 8 |
+| `mmlu` | 14,042 | **550** | 3,511 | 8 |
+
+정본 경로는 `evaluation/subsets/{cohort}/*.json`이다. 기존 `shared-v1` 파일은 변경하지 않았다.
+L40S는 baseline+ours **합계** 데이터셋당 약 2시간을 목표로 정한 추정 규모다.
+시간 보장을 위해 문제/생성 토큰을 임의로 잘라서는 안 된다. PRO 6000은 기존 평가 범위를 유지한다.
 
 - GPQA Main과 Diamond는 다르다. 여기서는 Diamond로 대체하지 않는다.
 - AIME/HMMT는 upstream parquet가 `train` 이름이더라도 이 저장소의 평가 문제 전체다.
@@ -79,9 +95,10 @@ uv run --frozen python scripts/shared_eval.py run \
 - 정답/참고 해설을 prompt에 넣지 않는다. 정답은 채점에만 사용한다.
 - MATH500은 `(subject, level)`, MMLU는 `subject`로 층화했다.
 - 층별 개수는 largest-remainder 방식으로 배분하고, 층 안에서는
-  `SHA256("lost-tokens/shared-v1/{task}/{id}")` 순서로 고정했다.
+  부모 정본은 `SHA256("lost-tokens/shared-v1/{task}/{id}")`, L40S는 부모 ID 내부에서
+  `SHA256("lost-tokens/l40s-2h-v1/{task}/{id}")` 순서로 고정했다.
   정답·모델 출력·이전 실험 성공 여부는 추출에 사용하지 않았다.
-- MMLU `ceil(14042 × .25) = 3511`로 정했다. 정확한 과목별 수는 manifest에 기록돼 있다.
+- PRO 6000의 MMLU는 `ceil(14042 × .25) = 3511`이며 L40S는 그중 550개다. 정확한 과목별 수는 manifest에 기록돼 있다.
 - manifest는 ID 파일 SHA256, 정규화된 선택 행 해시, dataset revision/source 정의,
   adapter hash, tokenizer/model revision, 데이터 설정을 포함한다.
 - 일상 실험에서 `freeze_shared_subsets.py`를 다시 실행하지 않는다. 변경은 합의 후
@@ -89,14 +106,18 @@ uv run --frozen python scripts/shared_eval.py run \
 - `--limit`, 각자 만든 `random.sample`, 과거 5% pilot ID 파일로 대체하지 않는다.
 - SuperGPQA/LongBench v2는 현재 공통 필수 평가 범위에 포함하지 않는다.
 
-직접 CLI를 사용하는 경우에도 반드시 동일 ID 파일을 전달한다.
+직접 CLI를 사용하는 경우에도 반드시 동일 ID 파일을 전달한다. 아래는 ours-only 예시이며,
+고정 baseline과의 자동 비교·제출 문서 생성은 `shared_eval.py --arms ours --baseline-ref ...`를 권장한다.
 
 ```bash
 uv run --frozen lost-tokens run --config configs/vllm-argmax.json \
-  --benchmarks math500 --arms baseline ours --gpus 0,1,2,3,4,5,6,7 \
-  --ids-file .shared-evaluation/evaluation/subsets/shared-v1/math500.json \
-  --run-name MYNAME-YYYY-MM-DD-shared-v1-math500
+  --benchmarks math500 --arms ours --gpus 0,1,2,3 \
+  --ids-file .shared-evaluation/evaluation/subsets/l40s-2h-v1/math500.json \
+  --run-name MYNAME-YYYY-MM-DD-l40s-2h-v1-math500
 ```
+
+L40S의 AIME/HMMT는 위 직접 CLI 예시의 batch=8 config를 그대로 쓰지 않고,
+`shared_eval.py --profile l40s-4gpu`로 task별 batch=4를 적용한다.
 
 ## 3. 비교 조건과 기록해야 할 방법론
 
@@ -119,6 +140,7 @@ uv run --frozen lost-tokens run --config configs/vllm-argmax.json \
 ## 4. Resume와 실패 처리
 
 `shared_eval.py run`에 **동일한 인자와 작업 시작일**을 다시 전달하면 기존 study와 run을 재개한다.
+기존 실행을 재개할 때는 `--arms`와 `--baseline-ref`도 원래 값 그대로 전달한다.
 이미 완료된 arm/문제/모델 호출은 재사용하며 진행 중 저장되지 않은 호출만 다시 계산한다.
 작업자는 같은 work-dir, 모델 cache, 코드, config, runtime을 유지해야 한다.
 
@@ -187,14 +209,15 @@ experiment-results/{name}-{date}/
   reports/...
 ```
 
-- baseline.md: 일반 AR correct/n, 정확도, 시간, 조건, audit/출처.
+- baseline.md: 작업자가 최초 측정해 동결한 일반 AR correct/n, 정확도, 원래 실측 시간, reference hash/원본 commit/조건/audit.
+- baseline-reference.json: 이후 ours 변형들이 그대로 재사용하는 봉인된 문제별 결과. baseline 재실행/덮어쓰기 금지.
 - ours.md: 제안 방법 correct/n, baseline 차이, 가능하면 paired wins/losses.
 - method.md: 가설, 실제 구현, 개인 code branch와 **code commit**, config, source/cohort hash, 한계.
 - environment.json: 앞 절의 실제 GPU 종류/장수/번호와 전체 runtime 설정.
-- submission.json: 통합 비교표를 만드는 기계 판독 metadata. 수치는 artifact에서 계산한다.
+- submission.json: hardware_profile, cohort/manifest hash, task별 batch 및 통합 비교표용 metadata. 수치는 artifact에서 계산한다.
 
 일부/실패/미측정은 그대로 표시한다. 미측정 baseline을 lookahead나 다른 backend/과거 점수로 대체하지 않는다.
-새 공통 평가와 과거 pilot은 cohort가 다르므로 분리한다. 비교표는 cohort/모델/revision/backend/seed/정밀도/채점 hash별로 그룹화한다.
+L40S/l40s-2h-v1, PRO 6000/shared-v1, 과거 pilot은 cohort와 하드웨어 프로필이 다르므로 분리한다. 비교표는 cohort/모델/revision/backend/seed/정밀도/채점 hash별로 그룹화한다.
 원본 모델/데이터/환경/대규모 추론 checkpoint·비밀정보는 올리지 않는다.
 과거 결과에 포함된 source-snapshot/provenance는 동결된 재현 증거이며 이 허브에서 수정/개발하지 않는다.
 

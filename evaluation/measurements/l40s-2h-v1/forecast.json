@@ -1,0 +1,358 @@
+{
+  "budget_scope": "7200 seconds per dataset, baseline + ours combined, 4 L40S GPUs; not GPU-hours",
+  "cautions": [
+    "Capacity estimate, not a guaranteed deadline or measured 2-hour run.",
+    "Length/model and 4-GPU scaling uncertainty remain despite explicit reserves.",
+    "AIME/HMMT batch 4 is required for this forecast; batch 8 has a sharp long-context slowdown.",
+    "all_cap_maximum_n is the stricter fallback if every question is assumed to generate 32768 tokens in both arms."
+  ],
+  "method": "Current GPU body throughput calibrated with measured inverse-throughput vs context curves. Right-censored length modeling uses actual completed/partial current pilot traces. Long-math AR lengths conservatively use full cap, while ours borrows same-model historical lengths stretched 20%. Other low-completion ours pilots borrow effective <=8 historical length observations. Historical GPU timings and accuracies are never used.",
+  "rows": [
+    {
+      "all_cap_maximum_n": 24,
+      "all_questions_hit_32768_planned_seconds": 8765.558275920252,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 308.242065460046,
+          "length_model": {
+            "method": "full 32768-token cap for uncompleted AR questions; no fabricated baseline length"
+          },
+          "mean_forecast_body_tokens": 32768.0,
+          "mean_load_setup_seconds": 21.85401201248169,
+          "mean_seconds_per_case_per_gpu": 308.2420654600459,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 178.76310046677344,
+          "observed_token_weighted_context": 2469.266009306448,
+          "runtime_to_probe_cost_multiplier": 1.205608884051944,
+          "sample_completed": 0,
+          "sample_started": 4,
+          "sample_unfinished": 4
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 498.23282598886766,
+          "length_model": {
+            "current_completed": 0,
+            "historical_n": 30,
+            "method": "same-model/seed/vLLM historical argmax output lengths, increased by 20%, capped at 32768"
+          },
+          "mean_forecast_body_tokens": 22197.6,
+          "mean_load_setup_seconds": 41.54910898208618,
+          "mean_seconds_per_case_per_gpu": 298.95769982769355,
+          "modeled_memory_growth_tokens_per_body_token": 0.21420420871100118,
+          "observed_body_tokens_per_second_per_gpu": 125.43721509794243,
+          "observed_token_weighted_context": 1691.0782229070364,
+          "runtime_to_probe_cost_multiplier": 1.7862373719351876,
+          "sample_completed": 0,
+          "sample_started": 4,
+          "sample_unfinished": 4
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 151.79994132193485,
+      "batch_size_per_gpu": 4,
+      "dataset": "aime25",
+      "expected_phase_seconds_without_reserve": 4553.998239658045,
+      "fixed_reserve_seconds": 600,
+      "full_n": 30,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 6747.897623538362,
+      "raw_maximum_n": 32,
+      "recommended_n": 30,
+      "shared_v1_n": 30
+    },
+    {
+      "all_cap_maximum_n": 22,
+      "all_questions_hit_32768_planned_seconds": 7782.486328292347,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 307.63456715113534,
+          "length_model": {
+            "method": "full 32768-token cap for uncompleted AR questions; no fabricated baseline length"
+          },
+          "mean_forecast_body_tokens": 32768.0,
+          "mean_load_setup_seconds": 21.460439205169678,
+          "mean_seconds_per_case_per_gpu": 307.6345671511353,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 179.17123602955346,
+          "observed_token_weighted_context": 2409.5628686912823,
+          "runtime_to_probe_cost_multiplier": 1.2063912644400812,
+          "sample_completed": 0,
+          "sample_started": 4,
+          "sample_unfinished": 4
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 543.6230717575872,
+          "length_model": {
+            "current_completed": 0,
+            "historical_n": 30,
+            "method": "same-model/seed/vLLM historical argmax output lengths, increased by 20%, capped at 32768"
+          },
+          "mean_forecast_body_tokens": 25607.760000000002,
+          "mean_load_setup_seconds": 42.09455633163452,
+          "mean_seconds_per_case_per_gpu": 393.5537492928408,
+          "modeled_memory_growth_tokens_per_body_token": 0.25279835721967125,
+          "observed_body_tokens_per_second_per_gpu": 116.1846624123085,
+          "observed_token_weighted_context": 1581.402129490213,
+          "runtime_to_probe_cost_multiplier": 1.9393206826388476,
+          "sample_completed": 0,
+          "sample_started": 4,
+          "sample_unfinished": 4
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 175.29707911099402,
+      "batch_size_per_gpu": 4,
+      "dataset": "hmmt25",
+      "expected_phase_seconds_without_reserve": 4382.4269777748505,
+      "fixed_reserve_seconds": 600,
+      "full_n": 30,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 6516.276419996048,
+      "raw_maximum_n": 27,
+      "recommended_n": 25,
+      "shared_v1_n": 30
+    },
+    {
+      "all_cap_maximum_n": 13,
+      "all_questions_hit_32768_planned_seconds": 44125.14752312809,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 426.57056937014175,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 3,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 9.25189647534651,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 1.1026889892051566
+          },
+          "mean_forecast_body_tokens": 13982.589175231844,
+          "mean_load_setup_seconds": 25.86682915687561,
+          "mean_seconds_per_case_per_gpu": 126.33965100162172,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 204.6725734378406,
+          "observed_token_weighted_context": 3375.024240465417,
+          "runtime_to_probe_cost_multiplier": 1.5740128707226688,
+          "sample_completed": 3,
+          "sample_started": 11,
+          "sample_unfinished": 8
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 1006.3560980579434,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 3,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 8.675986410885045,
+            "ours_historical_prior_effective_n": 5,
+            "sigma": 0.6804311844882401
+          },
+          "mean_forecast_body_tokens": 7336.159674786621,
+          "mean_load_setup_seconds": 43.79819130897522,
+          "mean_seconds_per_case_per_gpu": 72.04140436659328,
+          "modeled_memory_growth_tokens_per_body_token": 0.23444830576154452,
+          "observed_body_tokens_per_second_per_gpu": 146.9514679463249,
+          "observed_token_weighted_context": 2693.1366957527334,
+          "runtime_to_probe_cost_multiplier": 2.308322819608234,
+          "sample_completed": 3,
+          "sample_started": 11,
+          "sample_unfinished": 8
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 49.595263842053754,
+      "batch_size_per_gpu": 8,
+      "dataset": "gpqa",
+      "expected_phase_seconds_without_reserve": 4463.573745784838,
+      "fixed_reserve_seconds": 600,
+      "full_n": 448,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 6625.824556809532,
+      "raw_maximum_n": 98,
+      "recommended_n": 90,
+      "shared_v1_n": 448
+    },
+    {
+      "all_cap_maximum_n": 12,
+      "all_questions_hit_32768_planned_seconds": 64688.89368904268,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 417.55667072210076,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 8,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 8.501555047754433,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 0.9891689297023037
+          },
+          "mean_forecast_body_tokens": 7514.716165805665,
+          "mean_load_setup_seconds": 26.048485279083252,
+          "mean_seconds_per_case_per_gpu": 50.77332418512634,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 218.7075517727845,
+          "observed_token_weighted_context": 2624.2035344601677,
+          "runtime_to_probe_cost_multiplier": 1.5593265563630792,
+          "sample_completed": 8,
+          "sample_started": 16,
+          "sample_unfinished": 8
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 1101.587475981133,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 5,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 8.460254841794988,
+            "ours_historical_prior_effective_n": 3,
+            "sigma": 0.9618432620234533
+          },
+          "mean_forecast_body_tokens": 7124.384556282184,
+          "mean_load_setup_seconds": 43.85972332954407,
+          "mean_seconds_per_case_per_gpu": 94.76165848027266,
+          "modeled_memory_growth_tokens_per_body_token": 0.2,
+          "observed_body_tokens_per_second_per_gpu": 137.63976482990705,
+          "observed_token_weighted_context": 2064.30165127344,
+          "runtime_to_probe_cost_multiplier": 2.5909752209996584,
+          "sample_completed": 5,
+          "sample_started": 13,
+          "sample_unfinished": 8
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 36.38374566634975,
+      "batch_size_per_gpu": 8,
+      "dataset": "math500",
+      "expected_phase_seconds_without_reserve": 4547.968208293719,
+      "fixed_reserve_seconds": 600,
+      "full_n": 500,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 6739.757081196521,
+      "raw_maximum_n": 134,
+      "recommended_n": 125,
+      "shared_v1_n": 250
+    },
+    {
+      "all_cap_maximum_n": 11,
+      "all_questions_hit_32768_planned_seconds": 766138.2561670083,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 493.8715632992497,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 47,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 6.96557238271281,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 0.46543940758671404
+          },
+          "mean_forecast_body_tokens": 1180.4968465067527,
+          "mean_load_setup_seconds": 22.079427242279053,
+          "mean_seconds_per_case_per_gpu": 5.482047454008185,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 214.54631254458357,
+          "observed_token_weighted_context": 863.7424558960074,
+          "runtime_to_probe_cost_multiplier": 1.842780022237582,
+          "sample_completed": 47,
+          "sample_started": 55,
+          "sample_unfinished": 8
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 1225.811150691727,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 27,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 6.952837742779101,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 0.5027392529300198
+          },
+          "mean_forecast_body_tokens": 1186.7423677563079,
+          "mean_load_setup_seconds": 42.06016230583191,
+          "mean_seconds_per_case_per_gpu": 8.761745670838916,
+          "modeled_memory_growth_tokens_per_body_token": 0.2,
+          "observed_body_tokens_per_second_per_gpu": 137.29040948943037,
+          "observed_token_weighted_context": 854.2199404427464,
+          "runtime_to_probe_cost_multiplier": 2.882230542996708,
+          "sample_completed": 27,
+          "sample_started": 35,
+          "sample_unfinished": 8
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 3.5609482812117754,
+      "batch_size_per_gpu": 8,
+      "dataset": "gsm8k",
+      "expected_phase_seconds_without_reserve": 4696.890782918332,
+      "fixed_reserve_seconds": 600,
+      "full_n": 1319,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 6940.802556939749,
+      "raw_maximum_n": 1372,
+      "recommended_n": 1319,
+      "shared_v1_n": 1319
+    },
+    {
+      "all_cap_maximum_n": 12,
+      "all_questions_hit_32768_planned_seconds": 295477.6334120827,
+      "arms": {
+        "baseline": {
+          "cap_32768_seconds_per_case_per_gpu": 446.8872546527784,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 17,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 7.921478467156666,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 0.5351983338818125
+          },
+          "mean_forecast_body_tokens": 3179.272895945194,
+          "mean_load_setup_seconds": 22.343820095062256,
+          "mean_seconds_per_case_per_gpu": 15.017472031331362,
+          "modeled_memory_growth_tokens_per_body_token": 0,
+          "observed_body_tokens_per_second_per_gpu": 220.98832026988538,
+          "observed_token_weighted_context": 1713.0730527334301,
+          "runtime_to_probe_cost_multiplier": 1.6613821525710295,
+          "sample_completed": 17,
+          "sample_started": 25,
+          "sample_unfinished": 8
+        },
+        "ours": {
+          "cap_32768_seconds_per_case_per_gpu": 1141.6791206311686,
+          "length_model": {
+            "baseline_prior": "weak distribution-shape prior only; mean fitted to current AR data",
+            "censored_n": 8,
+            "completed_n": 11,
+            "method": "lognormal fit with right-censored token lengths; outputs capped at 32768",
+            "mu": 7.775264276579524,
+            "ours_historical_prior_effective_n": 0,
+            "sigma": 0.45690537766529543
+          },
+          "mean_forecast_body_tokens": 2642.4354315925134,
+          "mean_load_setup_seconds": 42.596872091293335,
+          "mean_seconds_per_case_per_gpu": 19.71780372869695,
+          "modeled_memory_growth_tokens_per_body_token": 0.21091805635125463,
+          "observed_body_tokens_per_second_per_gpu": 138.22360694240822,
+          "observed_token_weighted_context": 1727.9309849730967,
+          "runtime_to_probe_cost_multiplier": 2.652862718558712,
+          "sample_completed": 11,
+          "sample_started": 19,
+          "sample_unfinished": 8
+        }
+      },
+      "baseline_plus_ours_seconds_per_question_on_4gpu": 8.683818940007079,
+      "batch_size_per_gpu": 8,
+      "dataset": "mmlu",
+      "expected_phase_seconds_without_reserve": 4776.100417003893,
+      "fixed_reserve_seconds": 600,
+      "full_n": 14042,
+      "multiplicative_reserve": 1.35,
+      "planned_seconds_including_reserves": 7047.735562955257,
+      "raw_maximum_n": 562,
+      "recommended_n": 550,
+      "shared_v1_n": 3511
+    }
+  ]
+}

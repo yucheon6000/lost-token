@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "profiles": {
+    "l40s-4gpu": {
+      "description": "L40S 4 GPUs: measured per-dataset baseline+ours two-hour planning budget",
+      "cohort_version": "l40s-2h-v1",
+      "gpu_count": 4,
+      "gpu_name_contains": "L40S",
+      "batch_size_per_gpu": 8,
+      "batch_size_by_task": {
+        "aime25": 4,
+        "hmmt25": 4
+      },
+      "budget_seconds_per_dataset": 7200,
+      "budget_scope": "baseline + filtered_futures/argmax combined; forecast, not a guaranteed timeout",
+      "cohort_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba"
+    },
+    "pro6000-8gpu": {
+      "description": "Original RTX PRO 6000 Blackwell 8 GPUs: unchanged shared-v1 cohort",
+      "cohort_version": "shared-v1",
+      "gpu_count": 8,
+      "gpu_name_contains": "RTX PRO 6000 Blackwell",
+      "batch_size_per_gpu": 8,
+      "batch_size_by_task": {},
+      "budget_seconds_per_dataset": null,
+      "budget_scope": "Original full fixed cohort; no two-hour runtime claim",
+      "cohort_manifest_sha256": "978ce5fe9ad30bf6edd6636d7ce88fe39b3bd367e397989f10de29cec07171f3"
+    }
+  }
+}

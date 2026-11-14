@@ -3,11 +3,13 @@
 정본 브랜치: `shared-evaluation`. 개인 브랜치는 코드·설정만 보관한다.
 
 동일 cohort/모델/backend/seed/채점 조건에서만 방법 간 차이를 해석한다.
-pilot과 새 shared-v1은 분리한다. 미측정 baseline은 다른 방법/과거 점수로 채우지 않는다.
+L40S 4 GPU/l40s-2h-v1, PRO 6000 8 GPU/shared-v1, 과거 pilot은 분리한다.
+[고정 서브셋·하드웨어 프로필](../docs/EVALUATION_PROFILES.md). 미측정 baseline은 다른 방법/과거 점수로 채우지 않는다.
 
 ## pilot-2026-11-14
 
 Manifest SHA256: `a8d0f0ea62237aaae2a1634deea3210d20c50d1d8768759afda6f6cd60f2c801`
+Hardware profile: `legacy`
 
 Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm-v0-0.10.2` · seed `95021` · `bfloat16`
 

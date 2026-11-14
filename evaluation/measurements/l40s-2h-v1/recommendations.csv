@@ -1,0 +1,7 @@
+dataset,subset_n,full_n,parent_shared_v1_n,gpu_count,batch_per_gpu,baseline_body_tokens_per_second_per_gpu,ours_body_tokens_per_second_per_gpu,projected_minutes_including_reserves,baseline_completed_sample,ours_completed_sample,all_32k_both_arms_maximum_n,ids_file
+aime25,30,30,30,4,4,178.76,125.44,112.5,0,0,24,subsets/l40s-2h-v1/aime25.json
+hmmt25,25,30,30,4,4,179.17,116.18,108.6,0,0,22,subsets/l40s-2h-v1/hmmt25.json
+gpqa,90,448,448,4,8,204.67,146.95,110.4,3,3,13,subsets/l40s-2h-v1/gpqa.json
+math500,125,500,250,4,8,218.71,137.64,112.3,8,5,12,subsets/l40s-2h-v1/math500.json
+gsm8k,1319,1319,1319,4,8,214.55,137.29,115.7,47,27,11,subsets/l40s-2h-v1/gsm8k.json
+mmlu,550,14042,3511,4,8,220.99,138.22,117.5,17,11,12,subsets/l40s-2h-v1/mmlu.json
