@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-01T01:58:25.428887+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory.",
+    "Case seconds include generation, auxiliary work and case-level overhead, but exclude model loading and final audits. They sum worker time, not parallel elapsed wall time. Resumed partial cases are excluded from paired timing; legacy timing provenance may be unknown. Different output lengths affect tokens/s. Forward tokens are logical work, not GPU FLOPs."
+  ],
+  "own": {
+    "baseline": {
+      "all": {
+        "accuracy": 0.9552691432903715,
+        "body_tokens": 2036026,
+        "correct": 1260,
+        "fork_events": 0,
+        "n": 1319,
+        "performance": {
+          "body_tokens": 2036026,
+          "body_tokens_per_second": 90.65498152862834,
+          "case_seconds": 22459.063646238064,
+          "mean_case_seconds": 17.02734165749664,
+          "median_case_seconds": 12.145349180093035,
+          "n": 1319,
+          "resumed_excluded_n": 0,
+          "timed_n": 1319,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 1319
+      },
+      "gsm8k": {
+        "accuracy": 0.9552691432903715,
+        "body_tokens": 2036026,
+        "correct": 1260,
+        "fork_events": 0,
+        "n": 1319,
+        "performance": {
+          "body_tokens": 2036026,
+          "body_tokens_per_second": 90.65498152862834,
+          "case_seconds": 22459.063646238064,
+          "mean_case_seconds": 17.02734165749664,
+          "median_case_seconds": 12.145349180093035,
+          "n": 1319,
+          "resumed_excluded_n": 0,
+          "timed_n": 1319,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 1319
+      }
+    }
+  },
+  "paired": {
+    "all": {
+      "accuracy": {
+        "baseline": 0.9552691432903715
+      },
+      "correct": {
+        "baseline": 1260
+      },
+      "n": 1319
+    },
+    "gsm8k": {
+      "accuracy": {
+        "baseline": 0.9552691432903715
+      },
+      "correct": {
+        "baseline": 1260
+      },
+      "n": 1319
+    }
+  },
+  "performance_vs_baseline": {},
+  "phase_wall_seconds": {
+    "baseline": 3222.976560354233
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793495037.2153387
+    }
+  },
+  "smoke": false,
+  "vs_baseline": {}
+}

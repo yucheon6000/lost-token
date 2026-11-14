@@ -1,0 +1,181 @@
+{
+  "at": "2026-10-29T15:49:01.175861+00:00",
+  "counts": {
+    "baseline": 1,
+    "ours": 1
+  },
+  "epoch": 1793288941.1758666,
+  "eta_seconds": 0,
+  "performance_vs_baseline": {
+    "ours": {
+      "aime25": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": 64,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": 0.2578856791369617,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": 404,
+            "baseline_total": 340,
+            "change_percent": 18.823529411764707,
+            "n": 1,
+            "ratio": 1.188235294117647
+          },
+          "generator_seconds": {
+            "arm_total": 4.058157768798992,
+            "baseline_total": 3.1021898391190916,
+            "change_percent": 30.815906803155556,
+            "n": 1,
+            "ratio": 1.3081590680315556
+          },
+          "memory_insertions": {
+            "arm_total": 0,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": 0.04551987606100738,
+            "baseline_total": 0.04647459299303591,
+            "change_percent": -2.0542771233555412,
+            "n": 1,
+            "ratio": 0.9794572287664446
+          }
+        },
+        "n": 1,
+        "resumed_excluded_n": 1,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      },
+      "all": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": 64,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": 0.2578856791369617,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": 404,
+            "baseline_total": 340,
+            "change_percent": 18.823529411764707,
+            "n": 1,
+            "ratio": 1.188235294117647
+          },
+          "generator_seconds": {
+            "arm_total": 4.058157768798992,
+            "baseline_total": 3.1021898391190916,
+            "change_percent": 30.815906803155556,
+            "n": 1,
+            "ratio": 1.3081590680315556
+          },
+          "memory_insertions": {
+            "arm_total": 0,
+            "baseline_total": 0,
+            "change_percent": null,
+            "n": 1,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": 0.04551987606100738,
+            "baseline_total": 0.04647459299303591,
+            "change_percent": -2.0542771233555412,
+            "n": 1,
+            "ratio": 0.9794572287664446
+          }
+        },
+        "n": 1,
+        "resumed_excluded_n": 1,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      }
+    }
+  },
+  "phase": "ours",
+  "workers": {
+    "ours-worker0": {
+      "checkpoint_age_seconds": 11.53470778465271,
+      "checkpoints": {
+        "checkpoint_count": 2,
+        "epoch": 1793288929.6394846,
+        "new": 0,
+        "reused": 1
+      },
+      "exit_code": 0,
+      "pid": 3040855,
+      "status": {
+        "at": "2026-10-29T15:48:53.624361+00:00",
+        "state": "complete"
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-29T17:53:57.161353+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory.",
+    "Case seconds include generation, auxiliary work and case-level overhead, but exclude model loading and final audits. They sum worker time, not parallel elapsed wall time. Resumed partial cases are excluded from paired timing; legacy timing provenance may be unknown. Different output lengths affect tokens/s. Forward tokens are logical work, not GPU FLOPs."
+  ],
+  "own": {
+    "baseline": {
+      "all": {
+        "accuracy": 0.6,
+        "body_tokens": 742689,
+        "correct": 18,
+        "fork_events": 0,
+        "n": 30,
+        "performance": {
+          "body_tokens": 742689,
+          "body_tokens_per_second": 73.95256429112726,
+          "case_seconds": 10042.775488842744,
+          "mean_case_seconds": 334.7591829614248,
+          "median_case_seconds": 362.5631063518813,
+          "n": 30,
+          "resumed_excluded_n": 0,
+          "timed_n": 30,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 23
+      },
+      "hmmt25": {
+        "accuracy": 0.6,
+        "body_tokens": 742689,
+        "correct": 18,
+        "fork_events": 0,
+        "n": 30,
+        "performance": {
+          "body_tokens": 742689,
+          "body_tokens_per_second": 73.95256429112726,
+          "case_seconds": 10042.775488842744,
+          "mean_case_seconds": 334.7591829614248,
+          "median_case_seconds": 362.5631063518813,
+          "n": 30,
+          "resumed_excluded_n": 0,
+          "timed_n": 30,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 23
+      }
+    }
+  },
+  "paired": {
+    "all": {
+      "accuracy": {
+        "baseline": 0.6
+      },
+      "correct": {
+        "baseline": 18
+      },
+      "n": 30
+    },
+    "hmmt25": {
+      "accuracy": {
+        "baseline": 0.6
+      },
+      "correct": {
+        "baseline": 18
+      },
+      "n": 30
+    }
+  },
+  "performance_vs_baseline": {},
+  "phase_wall_seconds": {
+    "baseline": 1507.9302711486816
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793294889.3451688
+    }
+  },
+  "smoke": false,
+  "vs_baseline": {}
+}

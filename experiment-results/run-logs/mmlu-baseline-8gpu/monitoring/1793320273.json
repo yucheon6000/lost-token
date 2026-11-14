@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-30T00:31:13.217670+00:00",
+  "counts": {
+    "baseline": 2946
+  },
+  "epoch": 1793320273.2176878,
+  "eta_seconds": 48383.61399470311,
+  "free_bytes": 5935808512,
+  "gpu_csv": "0, 10220 MiB, 97 %\n1, 13240 MiB, 96 %\n2, 10040 MiB, 95 %\n3, 10660 MiB, 97 %\n4, 10060 MiB, 96 %\n5, 10960 MiB, 95 %\n6, 10380 MiB, 91 %\n7, 11400 MiB, 96 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.514577627182007,
+      "checkpoints": {
+        "checkpoint_count": 10986,
+        "epoch": 1793320270.5751698,
+        "new": 10986,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {
+        "at": "2026-10-30T00:29:19.688884+00:00",
+        "case_id": "mmlu-professional_law-10729",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9396.783203125,
+          "peak_cuda_reserved_mib": 9512.0,
+          "peak_rss_mib": 4971.3984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.789303302764893,
+      "checkpoints": {
+        "checkpoint_count": 10570,
+        "epoch": 1793320268.3004878,
+        "new": 10570,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {
+        "at": "2026-10-30T00:30:39.142010+00:00",
+        "case_id": "mmlu-moral_scenarios-9005",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12362.978515625,
+          "peak_cuda_reserved_mib": 12532.0,
+          "peak_rss_mib": 4972.99609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 1.4037952423095703,
+      "checkpoints": {
+        "checkpoint_count": 10817,
+        "epoch": 1793320271.6860318,
+        "new": 10817,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-30T00:30:53.686451+00:00",
+        "case_id": "mmlu-professional_law-11348",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9210.71875,
+          "peak_cuda_reserved_mib": 9332.0,
+          "peak_rss_mib": 4968.39453125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 5.889884948730469,
+      "checkpoints": {
+        "checkpoint_count": 10809,
+        "epoch": 1793320267.1999762,
+        "new": 10809,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-30T00:29:48.560915+00:00",
+        "case_id": "mmlu-econometrics-1909",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9815.25,
+          "peak_cuda_reserved_mib": 9952.0,
+          "peak_rss_mib": 4969.0234375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.5169358253479,
+      "checkpoints": {
+        "checkpoint_count": 10915,
+        "epoch": 1793320267.572956,
+        "new": 10915,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-30T00:30:40.275875+00:00",
+        "case_id": "mmlu-econometrics-1878",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9228.3984375,
+          "peak_cuda_reserved_mib": 9352.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 3.689764976501465,
+      "checkpoints": {
+        "checkpoint_count": 10912,
+        "epoch": 1793320269.4001584,
+        "new": 10912,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-30T00:31:01.138292+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-3966",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10125.072265625,
+          "peak_cuda_reserved_mib": 10252.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 4.031546115875244,
+      "checkpoints": {
+        "checkpoint_count": 10693,
+        "epoch": 1793320269.0584066,
+        "new": 10693,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-30T00:31:09.942765+00:00",
+        "case_id": "mmlu-international_law-6504",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9546.205078125,
+          "peak_cuda_reserved_mib": 9672.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.2086756229400635,
+      "checkpoints": {
+        "checkpoint_count": 10952,
+        "epoch": 1793320270.8813064,
+        "new": 10952,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-30T00:30:32.343725+00:00",
+        "case_id": "mmlu-professional_accounting-10536",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10520.15625,
+          "peak_cuda_reserved_mib": 10692.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

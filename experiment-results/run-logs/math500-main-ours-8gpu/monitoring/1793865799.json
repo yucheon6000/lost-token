@@ -1,0 +1,142 @@
+{
+  "at": "2026-11-05T08:03:18.952199+00:00",
+  "counts": {
+    "ours": 0
+  },
+  "epoch": 1793865798.9522054,
+  "eta_seconds": 18900,
+  "free_bytes": 821845942272,
+  "gpu_csv": "0, 8480 MiB, 72 %\n1, 8436 MiB, 87 %\n2, 8446 MiB, 14 %\n3, 8452 MiB, 93 %\n4, 8428 MiB, 2 %\n5, 8476 MiB, 75 %\n6, 8430 MiB, 82 %\n7, 8428 MiB, 94 %\n",
+  "phase": "ours",
+  "workers": {
+    "ours-worker0": {
+      "checkpoint_age_seconds": 2.0015323162078857,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 85705,
+      "status": {}
+    },
+    "ours-worker1": {
+      "checkpoint_age_seconds": 4.002490043640137,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 85706,
+      "status": {
+        "at": "2026-11-05T08:03:15.215270+00:00",
+        "state": "started"
+      }
+    },
+    "ours-worker2": {
+      "checkpoint_age_seconds": 5.003007888793945,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 85707,
+      "status": {
+        "at": "2026-11-05T08:03:15.703623+00:00",
+        "state": "started"
+      }
+    },
+    "ours-worker3": {
+      "checkpoint_age_seconds": 0.013482809066772461,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793865798.3354297,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 85708,
+      "status": {
+        "at": "2026-11-05T08:03:15.411417+00:00",
+        "state": "started"
+      }
+    },
+    "ours-worker4": {
+      "checkpoint_age_seconds": 0.18761491775512695,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793865798.7619576,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 85709,
+      "status": {
+        "at": "2026-11-05T08:03:15.702409+00:00",
+        "state": "started"
+      }
+    },
+    "ours-worker5": {
+      "checkpoint_age_seconds": 0.21315503120422363,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793865798.736497,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 85710,
+      "status": {
+        "at": "2026-11-05T08:03:18.512609+00:00",
+        "case_id": "math500-test-geometry-248.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4953.26953125
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "ours-worker6": {
+      "checkpoint_age_seconds": 0.2653820514678955,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793865798.6843114,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 85711,
+      "status": {
+        "at": "2026-11-05T08:03:18.470805+00:00",
+        "case_id": "math500-test-prealgebra-1353.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4953.87890625
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "ours-worker7": {
+      "checkpoint_age_seconds": 0.3216080665588379,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793865798.6281226,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 85712,
+      "status": {
+        "at": "2026-11-05T08:03:18.405264+00:00",
+        "case_id": "math500-test-algebra-791.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4949.328125
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    }
+  }
+}

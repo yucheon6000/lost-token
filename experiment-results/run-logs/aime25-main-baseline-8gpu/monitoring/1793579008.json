@@ -1,0 +1,205 @@
+{
+  "at": "2026-11-02T00:23:28.812428+00:00",
+  "counts": {
+    "baseline": 12
+  },
+  "epoch": 1793579008.8124332,
+  "eta_seconds": 763.9339204148273,
+  "free_bytes": 330665930752,
+  "gpu_csv": "0, 12354 MiB, 98 %\n1, 12078 MiB, 97 %\n2, 10558 MiB, 97 %\n3, 12314 MiB, 98 %\n4, 12198 MiB, 97 %\n5, 12716 MiB, 97 %\n6, 12356 MiB, 97 %\n7, 13234 MiB, 97 %\n",
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 0.9920041561126709,
+      "checkpoints": {
+        "checkpoint_count": 368,
+        "epoch": 1793579007.8184435,
+        "new": 368,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710617,
+      "status": {
+        "at": "2026-11-02T00:17:32.296322+00:00",
+        "case_id": "aime25-30",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10470.681640625,
+          "peak_cuda_reserved_mib": 10606.0,
+          "peak_rss_mib": 4960.84375
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 1.8996350765228271,
+      "checkpoints": {
+        "checkpoint_count": 367,
+        "epoch": 1793579006.9108534,
+        "new": 367,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710618,
+      "status": {
+        "at": "2026-11-02T00:18:52.765936+00:00",
+        "case_id": "aime25-15",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11212.943359375,
+          "peak_cuda_reserved_mib": 11370.0,
+          "peak_rss_mib": 4959.21875
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 1.770519495010376,
+      "checkpoints": {
+        "checkpoint_count": 400,
+        "epoch": 1793579007.0399988,
+        "new": 400,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710619,
+      "status": {
+        "at": "2026-11-02T00:20:42.480345+00:00",
+        "case_id": "aime25-3",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9714.732421875,
+          "peak_cuda_reserved_mib": 9850.0,
+          "peak_rss_mib": 4963.46875
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 4.589016437530518,
+      "checkpoints": {
+        "checkpoint_count": 364,
+        "epoch": 1793579004.221529,
+        "new": 364,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710620,
+      "status": {
+        "at": "2026-11-02T00:17:40.237216+00:00",
+        "case_id": "aime25-11",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10539.404296875,
+          "peak_cuda_reserved_mib": 10666.0,
+          "peak_rss_mib": 4964.0
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.695206880569458,
+      "checkpoints": {
+        "checkpoint_count": 365,
+        "epoch": 1793579003.1153693,
+        "new": 365,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710621,
+      "status": {
+        "at": "2026-11-02T00:18:59.899335+00:00",
+        "case_id": "aime25-12",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11294.212890625,
+          "peak_cuda_reserved_mib": 11490.0,
+          "peak_rss_mib": 4964.53125
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 3.3586997985839844,
+      "checkpoints": {
+        "checkpoint_count": 372,
+        "epoch": 1793579005.4519048,
+        "new": 372,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710622,
+      "status": {
+        "at": "2026-11-02T00:22:26.238167+00:00",
+        "case_id": "aime25-6",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11791.3828125,
+          "peak_cuda_reserved_mib": 12008.0,
+          "peak_rss_mib": 4959.49609375
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 4.571396589279175,
+      "checkpoints": {
+        "checkpoint_count": 379,
+        "epoch": 1793579004.2392352,
+        "new": 379,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710623,
+      "status": {
+        "at": "2026-11-02T00:21:11.014108+00:00",
+        "case_id": "aime25-23",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11499.09765625,
+          "peak_cuda_reserved_mib": 11648.0,
+          "peak_rss_mib": 4964.22265625
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.026062250137329,
+      "checkpoints": {
+        "checkpoint_count": 350,
+        "epoch": 1793579006.7845986,
+        "new": 350,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3710624,
+      "status": {
+        "at": "2026-11-02T00:21:15.161782+00:00",
+        "case_id": "aime25-4",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12368.25390625,
+          "peak_cuda_reserved_mib": 12526.0,
+          "peak_rss_mib": 4961.6328125
+        },
+        "state": "running",
+        "task": "aime25"
+      }
+    }
+  }
+}

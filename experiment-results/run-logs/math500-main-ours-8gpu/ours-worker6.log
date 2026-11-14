@@ -1,0 +1,543 @@
+2026-11-05T08:03:15.711078+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 270.87it/s]
+2026-11-05T08:03:17.888868+00:00 loading embedding model
+2026-11-05T08:03:18.471703+00:00 condition start evaluation/math500/math500-test-prealgebra-1353.json/filtered_futures
+2026-11-05T08:03:18.822451+00:00 math500-test-prealgebra-1353.json filtered_futures: body=1/32768; events=0; injections=0; context=94; elapsed=0.1s ETA(cap)=4512.3s
+2026-11-05T08:03:35.997293+00:00 math500-test-prealgebra-1353.json filtered_futures: body=907/32768; events=4; injections=1; context=1102; elapsed=17.3s ETA(cap)=608.2s
+2026-11-05T08:03:51.581516+00:00 math500-test-prealgebra-1353.json filtered_futures: body=1829/32768; events=7; injections=2; context=2127; elapsed=32.9s ETA(cap)=556.5s
+2026-11-05T08:04:06.868830+00:00 math500-test-prealgebra-1353.json filtered_futures: body=2685/32768; events=10; injections=4; context=3189; elapsed=48.2s ETA(cap)=539.9s
+2026-11-05T08:04:24.406307+00:00 math500-test-prealgebra-1353.json filtered_futures: body=3537/32768; events=14; injections=6; context=4246; elapsed=65.7s ETA(cap)=543.1s
+2026-11-05T08:04:40.819616+00:00 math500-test-prealgebra-1353.json filtered_futures: body=4448/32768; events=17; injections=8; context=5361; elapsed=82.1s ETA(cap)=522.9s
+2026-11-05T08:04:56.022197+00:00 math500-test-prealgebra-1353.json filtered_futures: body=5245/32768; events=20; injections=10; context=6363; elapsed=97.3s ETA(cap)=510.8s
+2026-11-05T08:05:11.646011+00:00 math500-test-prealgebra-1353.json filtered_futures: body=6061/32768; events=23; injections=11; context=7282; elapsed=113.0s ETA(cap)=497.7s
+2026-11-05T08:05:17.982601+00:00 completed math500-test-prealgebra-1353.json: correct=True
+2026-11-05T08:05:17.983157+00:00 condition start evaluation/math500/math500-test-prealgebra-1973.json/filtered_futures
+2026-11-05T08:05:18.008289+00:00 math500-test-prealgebra-1973.json filtered_futures: body=1/32768; events=0; injections=0; context=53; elapsed=0.0s ETA(cap)=393.2s
+2026-11-05T08:05:29.322370+00:00 completed math500-test-prealgebra-1973.json: correct=True
+2026-11-05T08:05:29.322875+00:00 condition start evaluation/math500/math500-test-algebra-1787.json/filtered_futures
+2026-11-05T08:05:29.361154+00:00 math500-test-algebra-1787.json filtered_futures: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=407.4s
+2026-11-05T08:05:44.592111+00:00 math500-test-algebra-1787.json filtered_futures: body=798/32768; events=4; injections=1; context=990; elapsed=15.2s ETA(cap)=610.7s
+2026-11-05T08:05:48.048767+00:00 completed math500-test-algebra-1787.json: correct=True
+2026-11-05T08:05:48.049317+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-1354.json/filtered_futures
+2026-11-05T08:05:48.074643+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=1/32768; events=0; injections=0; context=99; elapsed=0.0s ETA(cap)=435.2s
+2026-11-05T08:06:05.241708+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=920/32768; events=4; injections=1; context=1121; elapsed=17.2s ETA(cap)=594.7s
+2026-11-05T08:06:20.724111+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=1846/32768; events=7; injections=3; context=2253; elapsed=32.7s ETA(cap)=547.1s
+2026-11-05T08:06:36.238666+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=2747/32768; events=10; injections=5; context=3359; elapsed=48.2s ETA(cap)=526.5s
+2026-11-05T08:06:53.545538+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=3615/32768; events=14; injections=5; context=4227; elapsed=65.5s ETA(cap)=528.1s
+2026-11-05T08:07:08.660003+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=4426/32768; events=17; injections=7; context=5244; elapsed=80.6s ETA(cap)=516.1s
+2026-11-05T08:07:25.135852+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=5332/32768; events=20; injections=8; context=6253; elapsed=97.1s ETA(cap)=499.5s
+2026-11-05T08:07:40.445094+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=6123/32768; events=23; injections=10; context=7249; elapsed=112.4s ETA(cap)=489.1s
+2026-11-05T08:07:55.713947+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=6899/32768; events=26; injections=11; context=8128; elapsed=127.7s ETA(cap)=478.7s
+2026-11-05T08:08:11.457673+00:00 math500-test-intermediate_algebra-1354.json filtered_futures: body=7689/32768; events=29; injections=14; context=9226; elapsed=143.4s ETA(cap)=467.7s
+2026-11-05T08:08:21.800076+00:00 completed math500-test-intermediate_algebra-1354.json: correct=True
+2026-11-05T08:08:21.800642+00:00 condition start evaluation/math500/math500-test-geometry-802.json/filtered_futures
+2026-11-05T08:08:21.825641+00:00 math500-test-geometry-802.json filtered_futures: body=1/32768; events=0; injections=0; context=55; elapsed=0.0s ETA(cap)=399.0s
+2026-11-05T08:08:38.136823+00:00 math500-test-geometry-802.json filtered_futures: body=1012/32768; events=3; injections=2; context=1271; elapsed=16.3s ETA(cap)=512.2s
+2026-11-05T08:08:39.984767+00:00 completed math500-test-geometry-802.json: correct=True
+2026-11-05T08:08:39.985274+00:00 condition start evaluation/math500/math500-test-number_theory-1172.json/filtered_futures
+2026-11-05T08:08:40.011022+00:00 math500-test-number_theory-1172.json filtered_futures: body=1/32768; events=0; injections=0; context=123; elapsed=0.0s ETA(cap)=442.9s
+2026-11-05T08:08:56.722304+00:00 math500-test-number_theory-1172.json filtered_futures: body=874/32768; events=4; injections=1; context=1099; elapsed=16.7s ETA(cap)=610.3s
+2026-11-05T08:09:12.221488+00:00 math500-test-number_theory-1172.json filtered_futures: body=1801/32768; events=7; injections=3; context=2230; elapsed=32.2s ETA(cap)=554.1s
+2026-11-05T08:09:29.491028+00:00 math500-test-number_theory-1172.json filtered_futures: body=2701/32768; events=11; injections=5; context=3336; elapsed=49.5s ETA(cap)=551.0s
+2026-11-05T08:09:45.366201+00:00 math500-test-number_theory-1172.json filtered_futures: body=3609/32768; events=14; injections=5; context=4244; elapsed=65.4s ETA(cap)=528.1s
+2026-11-05T08:09:57.793007+00:00 completed math500-test-number_theory-1172.json: correct=True
+2026-11-05T08:09:57.793544+00:00 condition start evaluation/math500/math500-test-precalculus-190.json/filtered_futures
+2026-11-05T08:09:57.819259+00:00 math500-test-precalculus-190.json filtered_futures: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=448.0s
+2026-11-05T08:10:14.866035+00:00 math500-test-precalculus-190.json filtered_futures: body=900/32768; events=4; injections=2; context=1196; elapsed=17.1s ETA(cap)=604.1s
+2026-11-05T08:10:30.119882+00:00 math500-test-precalculus-190.json filtered_futures: body=1809/32768; events=7; injections=4; context=2311; elapsed=32.3s ETA(cap)=553.0s
+2026-11-05T08:10:45.422626+00:00 math500-test-precalculus-190.json filtered_futures: body=2695/32768; events=10; injections=5; context=3299; elapsed=47.6s ETA(cap)=531.3s
+2026-11-05T08:11:02.981279+00:00 math500-test-precalculus-190.json filtered_futures: body=3576/32768; events=14; injections=6; context=4283; elapsed=65.2s ETA(cap)=532.0s
+2026-11-05T08:11:19.234577+00:00 math500-test-precalculus-190.json filtered_futures: body=4456/32768; events=17; injections=8; context=5368; elapsed=81.4s ETA(cap)=517.4s
+2026-11-05T08:11:34.473939+00:00 math500-test-precalculus-190.json filtered_futures: body=5235/32768; events=20; injections=8; context=6147; elapsed=96.7s ETA(cap)=508.4s
+2026-11-05T08:11:49.964332+00:00 math500-test-precalculus-190.json filtered_futures: body=6018/32768; events=23; injections=10; context=7135; elapsed=112.2s ETA(cap)=498.5s
+2026-11-05T08:12:07.057001+00:00 math500-test-precalculus-190.json filtered_futures: body=6934/32768; events=26; injections=11; context=8154; elapsed=129.3s ETA(cap)=481.6s
+2026-11-05T08:12:22.663210+00:00 math500-test-precalculus-190.json filtered_futures: body=7724/32768; events=29; injections=11; context=8944; elapsed=144.9s ETA(cap)=469.7s
+2026-11-05T08:12:38.866887+00:00 math500-test-precalculus-190.json filtered_futures: body=8535/32768; events=32; injections=13; context=9961; elapsed=161.1s ETA(cap)=457.3s
+2026-11-05T08:12:56.487090+00:00 math500-test-precalculus-190.json filtered_futures: body=9435/32768; events=35; injections=15; context=11067; elapsed=178.7s ETA(cap)=441.9s
+2026-11-05T08:13:13.163768+00:00 math500-test-precalculus-190.json filtered_futures: body=10247/32768; events=38; injections=16; context=11982; elapsed=195.4s ETA(cap)=429.4s
+2026-11-05T08:13:30.724002+00:00 math500-test-precalculus-190.json filtered_futures: body=11102/32768; events=41; injections=18; context=13043; elapsed=212.9s ETA(cap)=415.5s
+2026-11-05T08:13:47.954864+00:00 math500-test-precalculus-190.json filtered_futures: body=11915/32768; events=44; injections=19; context=13959; elapsed=230.1s ETA(cap)=402.8s
+2026-11-05T08:14:04.142004+00:00 math500-test-precalculus-190.json filtered_futures: body=12948/32768; events=45; injections=19; context=14992; elapsed=246.3s ETA(cap)=377.1s
+2026-11-05T08:14:05.263155+00:00 completed math500-test-precalculus-190.json: correct=True
+2026-11-05T08:14:05.263756+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-591.json/filtered_futures
+2026-11-05T08:14:05.289681+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=1/32768; events=0; injections=0; context=78; elapsed=0.0s ETA(cap)=416.1s
+2026-11-05T08:14:22.132073+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=881/32768; events=4; injections=2; context=1162; elapsed=16.9s ETA(cap)=610.1s
+2026-11-05T08:14:38.495543+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=1861/32768; events=7; injections=4; context=2347; elapsed=33.2s ETA(cap)=551.7s
+2026-11-05T08:14:53.568647+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=2702/32768; events=10; injections=4; context=3188; elapsed=48.3s ETA(cap)=537.4s
+2026-11-05T08:15:11.548191+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=3587/32768; events=14; injections=7; context=4382; elapsed=66.3s ETA(cap)=539.1s
+2026-11-05T08:15:26.672242+00:00 math500-test-intermediate_algebra-591.json filtered_futures: body=4373/32768; events=17; injections=7; context=5168; elapsed=81.4s ETA(cap)=528.5s
+2026-11-05T08:15:35.688635+00:00 completed math500-test-intermediate_algebra-591.json: correct=True
+2026-11-05T08:15:35.689228+00:00 condition start evaluation/math500/math500-test-number_theory-1185.json/filtered_futures
+2026-11-05T08:15:35.715219+00:00 math500-test-number_theory-1185.json filtered_futures: body=1/32768; events=0; injections=0; context=92; elapsed=0.0s ETA(cap)=445.6s
+2026-11-05T08:15:52.479391+00:00 math500-test-number_theory-1185.json filtered_futures: body=875/32768; events=4; injections=2; context=1172; elapsed=16.8s ETA(cap)=611.5s
+2026-11-05T08:16:07.994002+00:00 math500-test-number_theory-1185.json filtered_futures: body=1785/32768; events=7; injections=5; context=2391; elapsed=32.3s ETA(cap)=560.5s
+2026-11-05T08:16:23.305150+00:00 math500-test-number_theory-1185.json filtered_futures: body=2635/32768; events=10; injections=7; context=3446; elapsed=47.6s ETA(cap)=544.4s
+2026-11-05T08:16:40.882618+00:00 math500-test-number_theory-1185.json filtered_futures: body=3481/32768; events=14; injections=8; context=4395; elapsed=65.2s ETA(cap)=548.4s
+2026-11-05T08:16:56.067507+00:00 math500-test-number_theory-1185.json filtered_futures: body=4265/32768; events=17; injections=10; context=5383; elapsed=80.4s ETA(cap)=537.1s
+2026-11-05T08:17:11.267560+00:00 math500-test-number_theory-1185.json filtered_futures: body=5037/32768; events=20; injections=12; context=6360; elapsed=95.6s ETA(cap)=526.1s
+2026-11-05T08:17:26.902138+00:00 math500-test-number_theory-1185.json filtered_futures: body=5827/32768; events=23; injections=14; context=7356; elapsed=111.2s ETA(cap)=514.1s
+2026-11-05T08:17:42.536920+00:00 math500-test-number_theory-1185.json filtered_futures: body=6600/32768; events=26; injections=15; context=8232; elapsed=126.8s ETA(cap)=502.9s
+2026-11-05T08:17:58.465959+00:00 math500-test-number_theory-1185.json filtered_futures: body=7374/32768; events=29; injections=18; context=9313; elapsed=142.8s ETA(cap)=491.6s
+2026-11-05T08:18:14.638137+00:00 math500-test-number_theory-1185.json filtered_futures: body=8161/32768; events=32; injections=18; context=10100; elapsed=158.9s ETA(cap)=479.2s
+2026-11-05T08:18:30.122694+00:00 math500-test-number_theory-1185.json filtered_futures: body=9216/32768; events=33; injections=18; context=11155; elapsed=174.4s ETA(cap)=445.7s
+2026-11-05T08:18:30.830069+00:00 completed math500-test-number_theory-1185.json: correct=True
+2026-11-05T08:18:30.830642+00:00 condition start evaluation/math500/math500-test-algebra-1349.json/filtered_futures
+2026-11-05T08:18:30.874832+00:00 math500-test-algebra-1349.json filtered_futures: body=1/32768; events=0; injections=0; context=368; elapsed=0.0s ETA(cap)=440.6s
+2026-11-05T08:18:47.378740+00:00 math500-test-algebra-1349.json filtered_futures: body=859/32768; events=4; injections=3; context=1533; elapsed=16.5s ETA(cap)=613.6s
+2026-11-05T08:19:02.856133+00:00 math500-test-algebra-1349.json filtered_futures: body=1790/32768; events=7; injections=3; context=2464; elapsed=32.0s ETA(cap)=553.7s
+2026-11-05T08:19:18.282966+00:00 math500-test-algebra-1349.json filtered_futures: body=2674/32768; events=10; injections=5; context=3552; elapsed=47.4s ETA(cap)=533.7s
+2026-11-05T08:19:33.149097+00:00 completed math500-test-algebra-1349.json: correct=True
+2026-11-05T08:19:33.149635+00:00 condition start evaluation/math500/math500-test-counting_and_probability-1009.json/filtered_futures
+2026-11-05T08:19:33.175417+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=441.9s
+2026-11-05T08:19:50.259511+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=911/32768; events=4; injections=1; context=1106; elapsed=17.1s ETA(cap)=597.9s
+2026-11-05T08:20:05.593118+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=1830/32768; events=7; injections=3; context=2231; elapsed=32.4s ETA(cap)=548.3s
+2026-11-05T08:20:23.136838+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=2741/32768; events=11; injections=6; context=3450; elapsed=50.0s ETA(cap)=547.5s
+2026-11-05T08:20:39.294603+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=3660/32768; events=14; injections=8; context=4574; elapsed=66.1s ETA(cap)=526.0s
+2026-11-05T08:20:55.323389+00:00 math500-test-counting_and_probability-1009.json filtered_futures: body=4542/32768; events=17; injections=11; context=5764; elapsed=82.2s ETA(cap)=510.6s
+2026-11-05T08:21:03.715402+00:00 completed math500-test-counting_and_probability-1009.json: correct=True
+2026-11-05T08:21:03.715987+00:00 condition start evaluation/math500/math500-test-number_theory-838.json/filtered_futures
+2026-11-05T08:21:03.742476+00:00 math500-test-number_theory-838.json filtered_futures: body=1/32768; events=0; injections=0; context=94; elapsed=0.0s ETA(cap)=454.8s
+2026-11-05T08:21:20.688086+00:00 math500-test-number_theory-838.json filtered_futures: body=897/32768; events=4; injections=3; context=1297; elapsed=17.0s ETA(cap)=602.6s
+2026-11-05T08:21:35.821873+00:00 math500-test-number_theory-838.json filtered_futures: body=1796/32768; events=7; injections=4; context=2298; elapsed=32.1s ETA(cap)=553.4s
+2026-11-05T08:21:51.130813+00:00 math500-test-number_theory-838.json filtered_futures: body=2681/32768; events=10; injections=5; context=3286; elapsed=47.4s ETA(cap)=532.0s
+2026-11-05T08:22:06.254617+00:00 math500-test-number_theory-838.json filtered_futures: body=3512/32768; events=13; injections=6; context=4220; elapsed=62.5s ETA(cap)=520.9s
+2026-11-05T08:22:23.791636+00:00 math500-test-number_theory-838.json filtered_futures: body=4372/32768; events=17; injections=6; context=5080; elapsed=80.1s ETA(cap)=520.0s
+2026-11-05T08:22:39.249291+00:00 math500-test-number_theory-838.json filtered_futures: body=5199/32768; events=20; injections=7; context=6010; elapsed=95.5s ETA(cap)=506.5s
+2026-11-05T08:22:55.762634+00:00 math500-test-number_theory-838.json filtered_futures: body=6104/32768; events=23; injections=7; context=6915; elapsed=112.0s ETA(cap)=489.4s
+2026-11-05T08:23:12.070263+00:00 math500-test-number_theory-838.json filtered_futures: body=7015/32768; events=26; injections=8; context=7929; elapsed=128.3s ETA(cap)=471.2s
+2026-11-05T08:23:24.387367+00:00 completed math500-test-number_theory-838.json: correct=True
+2026-11-05T08:23:24.387928+00:00 condition start evaluation/math500/math500-test-counting_and_probability-894.json/filtered_futures
+2026-11-05T08:23:24.418159+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=1/32768; events=0; injections=0; context=136; elapsed=0.0s ETA(cap)=550.4s
+2026-11-05T08:23:41.165671+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=879/32768; events=4; injections=2; context=1219; elapsed=16.8s ETA(cap)=608.2s
+2026-11-05T08:23:56.415861+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=1790/32768; events=7; injections=3; context=2233; elapsed=32.0s ETA(cap)=554.0s
+2026-11-05T08:24:13.993753+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=2699/32768; events=11; injections=7; context=3554; elapsed=49.6s ETA(cap)=552.5s
+2026-11-05T08:24:30.048420+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=3604/32768; events=14; injections=10; context=4767; elapsed=65.6s ETA(cap)=531.2s
+2026-11-05T08:24:45.607936+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=4442/32768; events=17; injections=13; context=5913; elapsed=81.2s ETA(cap)=517.8s
+2026-11-05T08:25:00.653100+00:00 math500-test-counting_and_probability-894.json filtered_futures: body=5219/32768; events=20; injections=15; context=6895; elapsed=96.3s ETA(cap)=508.1s
+2026-11-05T08:25:09.421640+00:00 completed math500-test-counting_and_probability-894.json: correct=True
+2026-11-05T08:25:09.422206+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-47.json/filtered_futures
+2026-11-05T08:25:09.448320+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=1/32768; events=0; injections=0; context=98; elapsed=0.0s ETA(cap)=437.6s
+2026-11-05T08:25:26.122452+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=865/32768; events=4; injections=2; context=1167; elapsed=16.7s ETA(cap)=615.5s
+2026-11-05T08:25:41.441172+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=1781/32768; events=7; injections=4; context=2289; elapsed=32.0s ETA(cap)=556.9s
+2026-11-05T08:25:58.908747+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=2700/32768; events=11; injections=5; context=3311; elapsed=49.5s ETA(cap)=551.0s
+2026-11-05T08:26:15.029453+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=3623/32768; events=14; injections=7; context=4438; elapsed=65.6s ETA(cap)=527.7s
+2026-11-05T08:26:30.666216+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=4475/32768; events=17; injections=9; context=5496; elapsed=81.2s ETA(cap)=513.6s
+2026-11-05T08:26:46.126250+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=5287/32768; events=20; injections=11; context=6513; elapsed=96.7s ETA(cap)=502.6s
+2026-11-05T08:27:01.269185+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=6058/32768; events=23; injections=12; context=7387; elapsed=111.8s ETA(cap)=493.1s
+2026-11-05T08:27:16.537086+00:00 math500-test-intermediate_algebra-47.json filtered_futures: body=6831/32768; events=26; injections=13; context=8263; elapsed=127.1s ETA(cap)=482.6s
+2026-11-05T08:27:25.786322+00:00 completed math500-test-intermediate_algebra-47.json: correct=True
+2026-11-05T08:27:25.786880+00:00 condition start evaluation/math500/math500-test-algebra-425.json/filtered_futures
+2026-11-05T08:27:25.811858+00:00 math500-test-algebra-425.json filtered_futures: body=1/32768; events=0; injections=0; context=58; elapsed=0.0s ETA(cap)=401.6s
+2026-11-05T08:27:38.526354+00:00 completed math500-test-algebra-425.json: correct=True
+2026-11-05T08:27:38.526909+00:00 condition start evaluation/math500/math500-test-number_theory-978.json/filtered_futures
+2026-11-05T08:27:38.551145+00:00 math500-test-number_theory-978.json filtered_futures: body=1/32768; events=0; injections=0; context=63; elapsed=0.0s ETA(cap)=403.2s
+2026-11-05T08:27:55.597901+00:00 math500-test-number_theory-978.json filtered_futures: body=897/32768; events=4; injections=1; context=1062; elapsed=17.1s ETA(cap)=606.1s
+2026-11-05T08:28:10.836319+00:00 math500-test-number_theory-978.json filtered_futures: body=1802/32768; events=7; injections=4; context=2275; elapsed=32.3s ETA(cap)=555.0s
+2026-11-05T08:28:28.274726+00:00 math500-test-number_theory-978.json filtered_futures: body=2719/32768; events=11; injections=5; context=3294; elapsed=49.7s ETA(cap)=549.7s
+2026-11-05T08:28:44.115089+00:00 math500-test-number_theory-978.json filtered_futures: body=3622/32768; events=14; injections=6; context=4300; elapsed=65.6s ETA(cap)=527.7s
+2026-11-05T08:28:59.847761+00:00 math500-test-number_theory-978.json filtered_futures: body=4482/32768; events=17; injections=8; context=5365; elapsed=81.3s ETA(cap)=513.1s
+2026-11-05T08:29:17.764896+00:00 math500-test-number_theory-978.json filtered_futures: body=5343/32768; events=21; injections=10; context=6430; elapsed=99.2s ETA(cap)=509.3s
+2026-11-05T08:29:26.407450+00:00 completed math500-test-number_theory-978.json: correct=True
+2026-11-05T08:29:26.407978+00:00 condition start evaluation/math500/math500-test-algebra-972.json/filtered_futures
+2026-11-05T08:29:26.432695+00:00 math500-test-algebra-972.json filtered_futures: body=1/32768; events=0; injections=0; context=61; elapsed=0.0s ETA(cap)=406.1s
+2026-11-05T08:29:43.401217+00:00 math500-test-algebra-972.json filtered_futures: body=898/32768; events=4; injections=0; context=958; elapsed=17.0s ETA(cap)=602.7s
+2026-11-05T08:29:58.544436+00:00 math500-test-algebra-972.json filtered_futures: body=1800/32768; events=7; injections=0; context=1860; elapsed=32.1s ETA(cap)=552.7s
+2026-11-05T08:30:13.583765+00:00 math500-test-algebra-972.json filtered_futures: body=2675/32768; events=10; injections=0; context=2735; elapsed=47.2s ETA(cap)=530.6s
+2026-11-05T08:30:31.083917+00:00 math500-test-algebra-972.json filtered_futures: body=3568/32768; events=14; injections=2; context=3833; elapsed=64.7s ETA(cap)=529.2s
+2026-11-05T08:30:47.312254+00:00 math500-test-algebra-972.json filtered_futures: body=4488/32768; events=17; injections=4; context=4958; elapsed=80.9s ETA(cap)=509.7s
+2026-11-05T08:31:03.484780+00:00 math500-test-algebra-972.json filtered_futures: body=5372/32768; events=20; injections=5; context=5945; elapsed=97.1s ETA(cap)=495.0s
+2026-11-05T08:31:09.497492+00:00 completed math500-test-algebra-972.json: correct=True
+2026-11-05T08:31:09.498053+00:00 condition start evaluation/math500/math500-test-algebra-892.json/filtered_futures
+2026-11-05T08:31:09.524331+00:00 math500-test-algebra-892.json filtered_futures: body=1/32768; events=0; injections=0; context=116; elapsed=0.0s ETA(cap)=445.0s
+2026-11-05T08:31:26.349993+00:00 math500-test-algebra-892.json filtered_futures: body=884/32768; events=4; injections=3; context=1308; elapsed=16.8s ETA(cap)=607.4s
+2026-11-05T08:31:41.767385+00:00 math500-test-algebra-892.json filtered_futures: body=1800/32768; events=7; injections=4; context=2327; elapsed=32.3s ETA(cap)=555.0s
+2026-11-05T08:31:59.246640+00:00 math500-test-algebra-892.json filtered_futures: body=2710/32768; events=11; injections=6; context=3442; elapsed=49.7s ETA(cap)=551.6s
+2026-11-05T08:32:15.129265+00:00 math500-test-algebra-892.json filtered_futures: body=3609/32768; events=14; injections=8; context=4546; elapsed=65.6s ETA(cap)=530.2s
+2026-11-05T08:32:30.729571+00:00 math500-test-algebra-892.json filtered_futures: body=4456/32768; events=17; injections=10; context=5598; elapsed=81.2s ETA(cap)=516.0s
+2026-11-05T08:32:45.802123+00:00 math500-test-algebra-892.json filtered_futures: body=5239/32768; events=20; injections=11; context=6484; elapsed=96.3s ETA(cap)=506.0s
+2026-11-05T08:33:00.920685+00:00 math500-test-algebra-892.json filtered_futures: body=6013/32768; events=23; injections=12; context=7360; elapsed=111.4s ETA(cap)=495.7s
+2026-11-05T08:33:16.240897+00:00 math500-test-algebra-892.json filtered_futures: body=6786/32768; events=26; injections=14; context=8338; elapsed=126.7s ETA(cap)=485.2s
+2026-11-05T08:33:32.023522+00:00 math500-test-algebra-892.json filtered_futures: body=7577/32768; events=29; injections=16; context=9334; elapsed=142.5s ETA(cap)=473.8s
+2026-11-05T08:33:48.556319+00:00 math500-test-algebra-892.json filtered_futures: body=8408/32768; events=32; injections=18; context=10370; elapsed=159.0s ETA(cap)=460.8s
+2026-11-05T08:34:04.917728+00:00 math500-test-algebra-892.json filtered_futures: body=9203/32768; events=35; injections=19; context=11268; elapsed=175.4s ETA(cap)=449.1s
+2026-11-05T08:34:19.955854+00:00 math500-test-algebra-892.json filtered_futures: body=9872/32768; events=38; injections=22; context=12246; elapsed=190.4s ETA(cap)=441.7s
+2026-11-05T08:34:35.990353+00:00 math500-test-algebra-892.json filtered_futures: body=10874/32768; events=40; injections=22; context=13248; elapsed=206.5s ETA(cap)=415.7s
+2026-11-05T08:34:45.751759+00:00 completed math500-test-algebra-892.json: correct=True
+2026-11-05T08:34:45.752292+00:00 condition start evaluation/math500/math500-test-prealgebra-2037.json/filtered_futures
+2026-11-05T08:34:45.777840+00:00 math500-test-prealgebra-2037.json filtered_futures: body=1/32768; events=0; injections=0; context=83; elapsed=0.0s ETA(cap)=406.9s
+2026-11-05T08:35:02.290285+00:00 math500-test-prealgebra-2037.json filtered_futures: body=859/32768; events=4; injections=3; context=1249; elapsed=16.5s ETA(cap)=613.8s
+2026-11-05T08:35:10.494800+00:00 completed math500-test-prealgebra-2037.json: correct=True
+2026-11-05T08:35:10.495354+00:00 condition start evaluation/math500/math500-test-number_theory-483.json/filtered_futures
+2026-11-05T08:35:10.520692+00:00 math500-test-number_theory-483.json filtered_futures: body=1/32768; events=0; injections=0; context=93; elapsed=0.0s ETA(cap)=436.8s
+2026-11-05T08:35:27.772985+00:00 math500-test-number_theory-483.json filtered_futures: body=919/32768; events=4; injections=0; context=1011; elapsed=17.3s ETA(cap)=598.4s
+2026-11-05T08:35:43.387081+00:00 math500-test-number_theory-483.json filtered_futures: body=1865/32768; events=7; injections=2; context=2162; elapsed=32.9s ETA(cap)=544.8s
+2026-11-05T08:36:00.910957+00:00 math500-test-number_theory-483.json filtered_futures: body=2785/32768; events=11; injections=5; context=3391; elapsed=50.4s ETA(cap)=542.6s
+2026-11-05T08:36:16.945286+00:00 math500-test-number_theory-483.json filtered_futures: body=3703/32768; events=14; injections=6; context=4411; elapsed=66.4s ETA(cap)=521.5s
+2026-11-05T08:36:32.693148+00:00 math500-test-number_theory-483.json filtered_futures: body=4563/32768; events=17; injections=9; context=5579; elapsed=82.2s ETA(cap)=508.0s
+2026-11-05T08:36:47.799813+00:00 math500-test-number_theory-483.json filtered_futures: body=5342/32768; events=20; injections=11; context=6563; elapsed=97.3s ETA(cap)=499.5s
+2026-11-05T08:37:03.522380+00:00 math500-test-number_theory-483.json filtered_futures: body=6145/32768; events=23; injections=12; context=7469; elapsed=113.0s ETA(cap)=489.6s
+2026-11-05T08:37:19.158328+00:00 math500-test-number_theory-483.json filtered_futures: body=6927/32768; events=26; injections=14; context=8457; elapsed=128.7s ETA(cap)=479.9s
+2026-11-05T08:37:35.298460+00:00 math500-test-number_theory-483.json filtered_futures: body=7729/32768; events=29; injections=16; context=9464; elapsed=144.8s ETA(cap)=469.1s
+2026-11-05T08:37:51.908982+00:00 math500-test-number_theory-483.json filtered_futures: body=8551/32768; events=32; injections=17; context=10389; elapsed=161.4s ETA(cap)=457.1s
+2026-11-05T08:38:07.153709+00:00 completed math500-test-number_theory-483.json: correct=True
+2026-11-05T08:38:07.154272+00:00 condition start evaluation/math500/math500-test-counting_and_probability-119.json/filtered_futures
+2026-11-05T08:38:07.179341+00:00 math500-test-counting_and_probability-119.json filtered_futures: body=1/32768; events=0; injections=0; context=62; elapsed=0.0s ETA(cap)=399.6s
+2026-11-05T08:38:24.329377+00:00 math500-test-counting_and_probability-119.json filtered_futures: body=916/32768; events=4; injections=0; context=977; elapsed=17.2s ETA(cap)=596.8s
+2026-11-05T08:38:39.727487+00:00 math500-test-counting_and_probability-119.json filtered_futures: body=1837/32768; events=7; injections=0; context=1898; elapsed=32.6s ETA(cap)=548.2s
+2026-11-05T08:38:51.576803+00:00 completed math500-test-counting_and_probability-119.json: correct=True
+2026-11-05T08:38:51.577369+00:00 condition start evaluation/math500/math500-test-counting_and_probability-737.json/filtered_futures
+2026-11-05T08:38:51.601925+00:00 math500-test-counting_and_probability-737.json filtered_futures: body=1/32768; events=0; injections=0; context=64; elapsed=0.0s ETA(cap)=408.9s
+2026-11-05T08:39:07.908248+00:00 math500-test-counting_and_probability-737.json filtered_futures: body=845/32768; events=4; injections=0; context=908; elapsed=16.3s ETA(cap)=616.5s
+2026-11-05T08:39:20.864232+00:00 completed math500-test-counting_and_probability-737.json: correct=True
+2026-11-05T08:39:20.864846+00:00 condition start evaluation/math500/math500-test-geometry-846.json/filtered_futures
+2026-11-05T08:39:20.907530+00:00 math500-test-geometry-846.json filtered_futures: body=1/32768; events=0; injections=0; context=275; elapsed=0.0s ETA(cap)=410.0s
+2026-11-05T08:39:37.963368+00:00 math500-test-geometry-846.json filtered_futures: body=906/32768; events=4; injections=1; context=1283; elapsed=17.1s ETA(cap)=600.3s
+2026-11-05T08:39:53.343969+00:00 math500-test-geometry-846.json filtered_futures: body=1821/32768; events=7; injections=3; context=2404; elapsed=32.4s ETA(cap)=551.5s
+2026-11-05T08:40:10.834903+00:00 math500-test-geometry-846.json filtered_futures: body=2729/32768; events=11; injections=5; context=3518; elapsed=49.9s ETA(cap)=549.7s
+2026-11-05T08:40:26.728611+00:00 math500-test-geometry-846.json filtered_futures: body=3635/32768; events=14; injections=5; context=4424; elapsed=65.8s ETA(cap)=527.6s
+2026-11-05T08:40:42.192454+00:00 math500-test-geometry-846.json filtered_futures: body=4467/32768; events=17; injections=7; context=5462; elapsed=81.3s ETA(cap)=515.1s
+2026-11-05T08:40:57.264855+00:00 math500-test-geometry-846.json filtered_futures: body=5253/32768; events=20; injections=8; context=6351; elapsed=96.4s ETA(cap)=504.8s
+2026-11-05T08:41:12.799699+00:00 math500-test-geometry-846.json filtered_futures: body=6048/32768; events=23; injections=11; context=7454; elapsed=111.9s ETA(cap)=494.4s
+2026-11-05T08:41:28.438342+00:00 math500-test-geometry-846.json filtered_futures: body=6831/32768; events=26; injections=14; context=8545; elapsed=127.5s ETA(cap)=484.3s
+2026-11-05T08:41:44.378992+00:00 math500-test-geometry-846.json filtered_futures: body=7633/32768; events=29; injections=14; context=9347; elapsed=143.5s ETA(cap)=472.5s
+2026-11-05T08:42:00.421620+00:00 math500-test-geometry-846.json filtered_futures: body=8425/32768; events=32; injections=15; context=10242; elapsed=159.5s ETA(cap)=460.9s
+2026-11-05T08:42:16.564229+00:00 math500-test-geometry-846.json filtered_futures: body=9216/32768; events=35; injections=16; context=11135; elapsed=175.7s ETA(cap)=448.9s
+2026-11-05T08:42:32.905085+00:00 math500-test-geometry-846.json filtered_futures: body=9999/32768; events=38; injections=18; context=12124; elapsed=192.0s ETA(cap)=437.2s
+2026-11-05T08:42:43.409335+00:00 completed math500-test-geometry-846.json: correct=True
+2026-11-05T08:42:43.409908+00:00 condition start evaluation/math500/math500-test-prealgebra-1930.json/filtered_futures
+2026-11-05T08:42:43.450105+00:00 math500-test-prealgebra-1930.json filtered_futures: body=1/32768; events=0; injections=0; context=261; elapsed=0.0s ETA(cap)=380.0s
+2026-11-05T08:43:00.248828+00:00 math500-test-prealgebra-1930.json filtered_futures: body=876/32768; events=4; injections=3; context=1444; elapsed=16.8s ETA(cap)=612.0s
+2026-11-05T08:43:16.201343+00:00 math500-test-prealgebra-1930.json filtered_futures: body=1825/32768; events=7; injections=5; context=2599; elapsed=32.8s ETA(cap)=555.5s
+2026-11-05T08:43:31.410831+00:00 math500-test-prealgebra-1930.json filtered_futures: body=2653/32768; events=10; injections=7; context=3632; elapsed=48.0s ETA(cap)=544.5s
+2026-11-05T08:43:46.462377+00:00 math500-test-prealgebra-1930.json filtered_futures: body=3443/32768; events=13; injections=8; context=4524; elapsed=63.0s ETA(cap)=536.8s
+2026-11-05T08:44:03.568241+00:00 math500-test-prealgebra-1930.json filtered_futures: body=4363/32768; events=16; injections=9; context=5547; elapsed=80.1s ETA(cap)=521.7s
+2026-11-05T08:44:19.227950+00:00 math500-test-prealgebra-1930.json filtered_futures: body=5160/32768; events=19; injections=11; context=6549; elapsed=95.8s ETA(cap)=512.5s
+2026-11-05T08:44:34.724230+00:00 math500-test-prealgebra-1930.json filtered_futures: body=5937/32768; events=22; injections=12; context=7429; elapsed=111.3s ETA(cap)=502.9s
+2026-11-05T08:44:42.916528+00:00 completed math500-test-prealgebra-1930.json: correct=True
+2026-11-05T08:44:42.917102+00:00 condition start evaluation/math500/math500-test-precalculus-675.json/filtered_futures
+2026-11-05T08:44:42.947168+00:00 math500-test-precalculus-675.json filtered_futures: body=1/32768; events=0; injections=0; context=134; elapsed=0.0s ETA(cap)=556.4s
+2026-11-05T08:45:00.386926+00:00 math500-test-precalculus-675.json filtered_futures: body=884/32768; events=4; injections=1; context=1120; elapsed=17.5s ETA(cap)=629.6s
+2026-11-05T08:45:16.092310+00:00 math500-test-precalculus-675.json filtered_futures: body=1824/32768; events=7; injections=3; context=2264; elapsed=33.2s ETA(cap)=562.6s
+2026-11-05T08:45:31.474508+00:00 math500-test-precalculus-675.json filtered_futures: body=2707/32768; events=10; injections=5; context=3351; elapsed=48.5s ETA(cap)=539.1s
+2026-11-05T08:45:47.443599+00:00 math500-test-precalculus-675.json filtered_futures: body=3607/32768; events=13; injections=6; context=4353; elapsed=64.5s ETA(cap)=521.6s
+2026-11-05T08:46:02.990745+00:00 math500-test-precalculus-675.json filtered_futures: body=4458/32768; events=16; injections=7; context=5307; elapsed=80.1s ETA(cap)=508.4s
+2026-11-05T08:46:18.278951+00:00 math500-test-precalculus-675.json filtered_futures: body=5434/32768; events=18; injections=8; context=6386; elapsed=95.3s ETA(cap)=479.6s
+2026-11-05T08:46:24.492658+00:00 completed math500-test-precalculus-675.json: correct=True
+2026-11-05T08:46:24.493216+00:00 condition start evaluation/math500/math500-test-algebra-2735.json/filtered_futures
+2026-11-05T08:46:24.517805+00:00 math500-test-algebra-2735.json filtered_futures: body=1/32768; events=0; injections=0; context=59; elapsed=0.0s ETA(cap)=406.9s
+2026-11-05T08:46:41.849226+00:00 math500-test-algebra-2735.json filtered_futures: body=923/32768; events=4; injections=2; context=1187; elapsed=17.3s ETA(cap)=598.4s
+2026-11-05T08:46:52.459913+00:00 completed math500-test-algebra-2735.json: correct=True
+2026-11-05T08:46:52.460445+00:00 condition start evaluation/math500/math500-test-algebra-2264.json/filtered_futures
+2026-11-05T08:46:52.486180+00:00 math500-test-algebra-2264.json filtered_futures: body=1/32768; events=0; injections=0; context=98; elapsed=0.0s ETA(cap)=444.1s
+2026-11-05T08:47:09.806075+00:00 math500-test-algebra-2264.json filtered_futures: body=936/32768; events=4; injections=0; context=1033; elapsed=17.3s ETA(cap)=589.5s
+2026-11-05T08:47:26.030566+00:00 math500-test-algebra-2264.json filtered_futures: body=1991/32768; events=7; injections=3; context=2370; elapsed=33.6s ETA(cap)=518.7s
+2026-11-05T08:47:31.311776+00:00 completed math500-test-algebra-2264.json: correct=True
+2026-11-05T08:47:31.312284+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-1806.json/filtered_futures
+2026-11-05T08:47:31.337289+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=1/32768; events=0; injections=0; context=72; elapsed=0.0s ETA(cap)=421.7s
+2026-11-05T08:47:48.854310+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=931/32768; events=4; injections=2; context=1207; elapsed=17.5s ETA(cap)=599.5s
+2026-11-05T08:48:04.254881+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=1837/32768; events=7; injections=2; context=2113; elapsed=32.9s ETA(cap)=554.5s
+2026-11-05T08:48:22.104050+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=2759/32768; events=11; injections=4; context=3241; elapsed=50.8s ETA(cap)=552.3s
+2026-11-05T08:48:37.688417+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=3616/32768; events=14; injections=5; context=4201; elapsed=66.4s ETA(cap)=535.0s
+2026-11-05T08:48:54.016212+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=4521/32768; events=17; injections=7; context=5311; elapsed=82.7s ETA(cap)=516.7s
+2026-11-05T08:49:10.174793+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=5390/32768; events=20; injections=7; context=6180; elapsed=98.9s ETA(cap)=502.1s
+2026-11-05T08:49:25.711363+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=6205/32768; events=23; injections=8; context=7097; elapsed=114.4s ETA(cap)=489.7s
+2026-11-05T08:49:41.296317+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=7002/32768; events=26; injections=9; context=7996; elapsed=130.0s ETA(cap)=478.3s
+2026-11-05T08:49:57.330398+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=7810/32768; events=29; injections=11; context=9010; elapsed=146.0s ETA(cap)=466.6s
+2026-11-05T08:50:13.531130+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=8613/32768; events=32; injections=14; context=10122; elapsed=162.2s ETA(cap)=454.9s
+2026-11-05T08:50:29.553431+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=9394/32768; events=35; injections=15; context=11006; elapsed=178.2s ETA(cap)=443.5s
+2026-11-05T08:50:45.763763+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=10170/32768; events=38; injections=17; context=11986; elapsed=194.4s ETA(cap)=432.0s
+2026-11-05T08:51:02.230509+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=10950/32768; events=41; injections=17; context=12766; elapsed=210.9s ETA(cap)=420.2s
+2026-11-05T08:51:19.304124+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=11753/32768; events=44; injections=18; context=13672; elapsed=228.0s ETA(cap)=407.6s
+2026-11-05T08:51:36.372159+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=12535/32768; events=47; injections=20; context=14659; elapsed=245.0s ETA(cap)=395.5s
+2026-11-05T08:51:53.737239+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=13323/32768; events=50; injections=22; context=15653; elapsed=262.4s ETA(cap)=383.0s
+2026-11-05T08:52:11.856970+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=14149/32768; events=53; injections=23; context=16582; elapsed=280.5s ETA(cap)=369.2s
+2026-11-05T08:52:27.143732+00:00 math500-test-intermediate_algebra-1806.json filtered_futures: body=15075/32768; events=54; injections=24; context=17611; elapsed=295.8s ETA(cap)=347.2s
+2026-11-05T08:52:39.082302+00:00 completed math500-test-intermediate_algebra-1806.json: correct=True
+2026-11-05T08:52:39.082878+00:00 condition start evaluation/math500/math500-test-algebra-2277.json/filtered_futures
+2026-11-05T08:52:39.109688+00:00 math500-test-algebra-2277.json filtered_futures: body=1/32768; events=0; injections=0; context=115; elapsed=0.0s ETA(cap)=433.4s
+2026-11-05T08:52:56.523939+00:00 math500-test-algebra-2277.json filtered_futures: body=934/32768; events=4; injections=3; context=1356; elapsed=17.4s ETA(cap)=594.0s
+2026-11-05T08:53:11.769401+00:00 math500-test-algebra-2277.json filtered_futures: body=1843/32768; events=7; injections=4; context=2367; elapsed=32.7s ETA(cap)=548.2s
+2026-11-05T08:53:27.066041+00:00 math500-test-algebra-2277.json filtered_futures: body=2719/32768; events=10; injections=7; context=3551; elapsed=48.0s ETA(cap)=530.1s
+2026-11-05T08:53:44.305327+00:00 math500-test-algebra-2277.json filtered_futures: body=3568/32768; events=14; injections=9; context=4606; elapsed=65.2s ETA(cap)=533.7s
+2026-11-05T08:54:00.651502+00:00 math500-test-algebra-2277.json filtered_futures: body=4472/32768; events=17; injections=11; context=5716; elapsed=81.6s ETA(cap)=516.0s
+2026-11-05T08:54:15.964257+00:00 math500-test-algebra-2277.json filtered_futures: body=5273/32768; events=20; injections=13; context=6722; elapsed=96.9s ETA(cap)=505.1s
+2026-11-05T08:54:31.842285+00:00 math500-test-algebra-2277.json filtered_futures: body=6126/32768; events=23; injections=15; context=7758; elapsed=112.7s ETA(cap)=490.3s
+2026-11-05T08:54:38.754731+00:00 completed math500-test-algebra-2277.json: correct=True
+2026-11-05T08:54:38.755304+00:00 condition start evaluation/math500/math500-test-geometry-561.json/filtered_futures
+2026-11-05T08:54:38.781003+00:00 math500-test-geometry-561.json filtered_futures: body=1/32768; events=0; injections=0; context=80; elapsed=0.0s ETA(cap)=414.3s
+2026-11-05T08:54:55.552947+00:00 math500-test-geometry-561.json filtered_futures: body=881/32768; events=4; injections=2; context=1165; elapsed=16.8s ETA(cap)=607.5s
+2026-11-05T08:55:11.156423+00:00 math500-test-geometry-561.json filtered_futures: body=1816/32768; events=7; injections=5; context=2409; elapsed=32.4s ETA(cap)=552.0s
+2026-11-05T08:55:26.673992+00:00 math500-test-geometry-561.json filtered_futures: body=2715/32768; events=10; injections=7; context=3513; elapsed=47.9s ETA(cap)=530.3s
+2026-11-05T08:55:42.165918+00:00 math500-test-geometry-561.json filtered_futures: body=3577/32768; events=13; injections=9; context=4581; elapsed=63.4s ETA(cap)=517.4s
+2026-11-05T08:55:57.194255+00:00 math500-test-geometry-561.json filtered_futures: body=4380/32768; events=16; injections=10; context=5486; elapsed=78.4s ETA(cap)=508.3s
+2026-11-05T08:56:12.787677+00:00 math500-test-geometry-561.json filtered_futures: body=5204/32768; events=19; injections=12; context=6516; elapsed=94.0s ETA(cap)=498.0s
+2026-11-05T08:56:27.995267+00:00 math500-test-geometry-561.json filtered_futures: body=5977/32768; events=22; injections=15; context=7598; elapsed=109.2s ETA(cap)=489.6s
+2026-11-05T08:56:43.326175+00:00 math500-test-geometry-561.json filtered_futures: body=6751/32768; events=25; injections=16; context=8475; elapsed=124.6s ETA(cap)=480.0s
+2026-11-05T08:56:58.842042+00:00 math500-test-geometry-561.json filtered_futures: body=7520/32768; events=28; injections=18; context=9449; elapsed=140.1s ETA(cap)=470.3s
+2026-11-05T08:57:16.100246+00:00 math500-test-geometry-561.json filtered_futures: body=8405/32768; events=31; injections=18; context=10334; elapsed=157.3s ETA(cap)=456.0s
+2026-11-05T08:57:31.704847+00:00 math500-test-geometry-561.json filtered_futures: body=9301/32768; events=33; injections=19; context=11333; elapsed=172.9s ETA(cap)=436.3s
+2026-11-05T08:57:49.159259+00:00 math500-test-geometry-561.json filtered_futures: body=10173/32768; events=36; injections=19; context=12205; elapsed=190.4s ETA(cap)=422.9s
+2026-11-05T08:58:07.319445+00:00 math500-test-geometry-561.json filtered_futures: body=11064/32768; events=39; injections=22; context=13405; elapsed=208.6s ETA(cap)=409.1s
+2026-11-05T08:58:24.337230+00:00 math500-test-geometry-561.json filtered_futures: body=11851/32768; events=42; injections=24; context=14398; elapsed=225.6s ETA(cap)=398.1s
+2026-11-05T08:58:41.409645+00:00 math500-test-geometry-561.json filtered_futures: body=12626/32768; events=45; injections=25; context=15276; elapsed=242.6s ETA(cap)=387.1s
+2026-11-05T08:58:58.885612+00:00 math500-test-geometry-561.json filtered_futures: body=13401/32768; events=48; injections=28; context=16360; elapsed=260.1s ETA(cap)=375.9s
+2026-11-05T08:59:15.209812+00:00 math500-test-geometry-561.json filtered_futures: body=14238/32768; events=50; injections=30; context=17403; elapsed=276.4s ETA(cap)=359.8s
+2026-11-05T08:59:34.010801+00:00 math500-test-geometry-561.json filtered_futures: body=15068/32768; events=53; injections=32; context=18439; elapsed=295.2s ETA(cap)=346.8s
+2026-11-05T08:59:49.914169+00:00 math500-test-geometry-561.json filtered_futures: body=15840/32768; events=55; injections=33; context=19313; elapsed=311.1s ETA(cap)=332.5s
+2026-11-05T09:00:05.865322+00:00 math500-test-geometry-561.json filtered_futures: body=16446/32768; events=58; injections=33; context=19919; elapsed=327.1s ETA(cap)=324.6s
+2026-11-05T09:00:21.901283+00:00 math500-test-geometry-561.json filtered_futures: body=17200/32768; events=60; injections=34; context=20776; elapsed=343.1s ETA(cap)=310.6s
+2026-11-05T09:00:37.555832+00:00 math500-test-geometry-561.json filtered_futures: body=17912/32768; events=62; injections=36; context=21694; elapsed=358.8s ETA(cap)=297.6s
+2026-11-05T09:00:53.927559+00:00 math500-test-geometry-561.json filtered_futures: body=18492/32768; events=65; injections=39; context=22582; elapsed=375.2s ETA(cap)=289.6s
+2026-11-05T09:01:08.935179+00:00 math500-test-geometry-561.json filtered_futures: body=19137/32768; events=67; injections=40; context=23330; elapsed=390.2s ETA(cap)=277.9s
+2026-11-05T09:01:26.897645+00:00 math500-test-geometry-561.json filtered_futures: body=19799/32768; events=70; injections=41; context=24095; elapsed=408.1s ETA(cap)=267.3s
+2026-11-05T09:01:42.414019+00:00 math500-test-geometry-561.json filtered_futures: body=20445/32768; events=72; injections=42; context=24844; elapsed=423.6s ETA(cap)=255.3s
+2026-11-05T09:02:00.906035+00:00 math500-test-geometry-561.json filtered_futures: body=21102/32768; events=75; injections=44; context=25706; elapsed=442.1s ETA(cap)=244.4s
+2026-11-05T09:02:16.715390+00:00 math500-test-geometry-561.json filtered_futures: body=21745/32768; events=77; injections=44; context=26349; elapsed=457.9s ETA(cap)=232.1s
+2026-11-05T09:02:33.310403+00:00 math500-test-geometry-561.json filtered_futures: body=22411/32768; events=79; injections=45; context=27118; elapsed=474.5s ETA(cap)=219.3s
+2026-11-05T09:02:49.809651+00:00 math500-test-geometry-561.json filtered_futures: body=23056/32768; events=81; injections=46; context=27866; elapsed=491.0s ETA(cap)=206.8s
+2026-11-05T09:03:05.276559+00:00 math500-test-geometry-561.json filtered_futures: body=23632/32768; events=83; injections=47; context=28545; elapsed=506.5s ETA(cap)=195.8s
+2026-11-05T09:03:21.701955+00:00 math500-test-geometry-561.json filtered_futures: body=24242/32768; events=85; injections=49; context=29360; elapsed=522.9s ETA(cap)=183.9s
+2026-11-05T09:03:38.886899+00:00 math500-test-geometry-561.json filtered_futures: body=24887/32768; events=87; injections=50; context=30107; elapsed=540.1s ETA(cap)=171.0s
+2026-11-05T09:03:54.395158+00:00 math500-test-geometry-561.json filtered_futures: body=25424/32768; events=89; injections=52; context=30850; elapsed=555.6s ETA(cap)=160.5s
+2026-11-05T09:04:10.008037+00:00 math500-test-geometry-561.json filtered_futures: body=25962/32768; events=91; injections=53; context=31490; elapsed=571.2s ETA(cap)=149.8s
+2026-11-05T09:04:20.793140+00:00 completed math500-test-geometry-561.json: correct=True
+2026-11-05T09:04:20.793905+00:00 condition start evaluation/math500/math500-test-prealgebra-1423.json/filtered_futures
+2026-11-05T09:04:20.820627+00:00 math500-test-prealgebra-1423.json filtered_futures: body=1/32768; events=0; injections=0; context=72; elapsed=0.0s ETA(cap)=414.7s
+2026-11-05T09:04:37.266469+00:00 math500-test-prealgebra-1423.json filtered_futures: body=841/32768; events=4; injections=3; context=1220; elapsed=16.5s ETA(cap)=624.8s
+2026-11-05T09:04:42.029407+00:00 completed math500-test-prealgebra-1423.json: correct=True
+2026-11-05T09:04:42.029932+00:00 condition start evaluation/math500/math500-test-algebra-1960.json/filtered_futures
+2026-11-05T09:04:42.054985+00:00 math500-test-algebra-1960.json filtered_futures: body=1/32768; events=0; injections=0; context=67; elapsed=0.0s ETA(cap)=421.8s
+2026-11-05T09:04:58.705029+00:00 math500-test-algebra-1960.json filtered_futures: body=872/32768; events=4; injections=2; context=1143; elapsed=16.7s ETA(cap)=609.5s
+2026-11-05T09:05:10.339581+00:00 completed math500-test-algebra-1960.json: correct=True
+2026-11-05T09:05:10.340134+00:00 condition start evaluation/math500/math500-test-counting_and_probability-25149.json/filtered_futures
+2026-11-05T09:05:10.365262+00:00 math500-test-counting_and_probability-25149.json filtered_futures: body=1/32768; events=0; injections=0; context=79; elapsed=0.0s ETA(cap)=420.3s
+2026-11-05T09:05:27.337551+00:00 math500-test-counting_and_probability-25149.json filtered_futures: body=891/32768; events=4; injections=3; context=1277; elapsed=17.0s ETA(cap)=607.7s
+2026-11-05T09:05:43.240893+00:00 math500-test-counting_and_probability-25149.json filtered_futures: body=1849/32768; events=7; injections=4; context=2338; elapsed=32.9s ETA(cap)=550.0s
+2026-11-05T09:05:58.772353+00:00 math500-test-counting_and_probability-25149.json filtered_futures: body=2745/32768; events=10; injections=7; context=3540; elapsed=48.4s ETA(cap)=529.6s
+2026-11-05T09:06:03.206179+00:00 completed math500-test-counting_and_probability-25149.json: correct=True
+2026-11-05T09:06:03.206727+00:00 condition start evaluation/math500/math500-test-prealgebra-1298.json/filtered_futures
+2026-11-05T09:06:03.231038+00:00 math500-test-prealgebra-1298.json filtered_futures: body=1/32768; events=0; injections=0; context=54; elapsed=0.0s ETA(cap)=406.7s
+2026-11-05T09:06:18.164078+00:00 completed math500-test-prealgebra-1298.json: correct=True
+2026-11-05T09:06:18.164577+00:00 condition start evaluation/math500/math500-test-algebra-634.json/filtered_futures
+2026-11-05T09:06:18.189282+00:00 math500-test-algebra-634.json filtered_futures: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=419.9s
+2026-11-05T09:06:33.276651+00:00 math500-test-algebra-634.json filtered_futures: body=897/32768; events=3; injections=0; context=962; elapsed=15.1s ETA(cap)=536.5s
+2026-11-05T09:06:50.814778+00:00 math500-test-algebra-634.json filtered_futures: body=1849/32768; events=7; injections=0; context=1914; elapsed=32.6s ETA(cap)=545.8s
+2026-11-05T09:07:02.751413+00:00 completed math500-test-algebra-634.json: correct=True
+2026-11-05T09:07:02.751920+00:00 condition start evaluation/math500/math500-test-algebra-276.json/filtered_futures
+2026-11-05T09:07:02.776829+00:00 math500-test-algebra-276.json filtered_futures: body=1/32768; events=0; injections=0; context=75; elapsed=0.0s ETA(cap)=422.3s
+2026-11-05T09:07:19.441750+00:00 math500-test-algebra-276.json filtered_futures: body=873/32768; events=4; injections=1; context=1049; elapsed=16.7s ETA(cap)=609.3s
+2026-11-05T09:07:35.018366+00:00 math500-test-algebra-276.json filtered_futures: body=1819/32768; events=7; injections=1; context=1995; elapsed=32.3s ETA(cap)=548.8s
+2026-11-05T09:07:52.551874+00:00 math500-test-algebra-276.json filtered_futures: body=2738/32768; events=11; injections=5; context=3324; elapsed=49.8s ETA(cap)=546.1s
+2026-11-05T09:08:03.655354+00:00 completed math500-test-algebra-276.json: correct=True
+2026-11-05T09:08:03.655890+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-1014.json/filtered_futures
+2026-11-05T09:08:03.680975+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=1/32768; events=0; injections=0; context=66; elapsed=0.0s ETA(cap)=431.8s
+2026-11-05T09:08:20.803158+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=916/32768; events=4; injections=1; context=1083; elapsed=17.1s ETA(cap)=595.8s
+2026-11-05T09:08:36.785367+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=1889/32768; events=7; injections=4; context=2365; elapsed=33.1s ETA(cap)=541.4s
+2026-11-05T09:08:54.411210+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=2813/32768; events=11; injections=6; context=3494; elapsed=50.7s ETA(cap)=540.4s
+2026-11-05T09:09:10.510952+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=3729/32768; events=14; injections=8; context=4616; elapsed=66.8s ETA(cap)=520.5s
+2026-11-05T09:09:26.067153+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=4577/32768; events=17; injections=9; context=5567; elapsed=82.4s ETA(cap)=507.5s
+2026-11-05T09:09:41.252624+00:00 math500-test-intermediate_algebra-1014.json filtered_futures: body=5367/32768; events=20; injections=11; context=6562; elapsed=97.6s ETA(cap)=498.2s
+2026-11-05T09:09:54.888646+00:00 completed math500-test-intermediate_algebra-1014.json: correct=True
+2026-11-05T09:09:54.889197+00:00 condition start evaluation/math500/math500-test-precalculus-24313.json/filtered_futures
+2026-11-05T09:09:54.913767+00:00 math500-test-precalculus-24313.json filtered_futures: body=1/32768; events=0; injections=0; context=56; elapsed=0.0s ETA(cap)=407.5s
+2026-11-05T09:10:12.130504+00:00 math500-test-precalculus-24313.json filtered_futures: body=922/32768; events=4; injections=0; context=977; elapsed=17.2s ETA(cap)=595.1s
+2026-11-05T09:10:27.592241+00:00 math500-test-precalculus-24313.json filtered_futures: body=1855/32768; events=7; injections=1; context=2012; elapsed=32.7s ETA(cap)=544.8s
+2026-11-05T09:10:36.374804+00:00 completed math500-test-precalculus-24313.json: correct=True
+2026-11-05T09:10:36.375387+00:00 condition start evaluation/math500/math500-test-number_theory-417.json/filtered_futures
+2026-11-05T09:10:36.399157+00:00 math500-test-number_theory-417.json filtered_futures: body=1/32768; events=0; injections=0; context=48; elapsed=0.0s ETA(cap)=385.3s
+2026-11-05T09:10:53.146561+00:00 math500-test-number_theory-417.json filtered_futures: body=869/32768; events=4; injections=3; context=1225; elapsed=16.8s ETA(cap)=615.2s
+2026-11-05T09:11:08.626994+00:00 math500-test-number_theory-417.json filtered_futures: body=1801/32768; events=7; injections=4; context=2259; elapsed=32.2s ETA(cap)=554.3s
+2026-11-05T09:11:26.259105+00:00 math500-test-number_theory-417.json filtered_futures: body=2725/32768; events=11; injections=7; context=3492; elapsed=49.9s ETA(cap)=549.8s
+2026-11-05T09:11:41.642815+00:00 math500-test-number_theory-417.json filtered_futures: body=3577/32768; events=14; injections=9; context=4550; elapsed=65.3s ETA(cap)=532.5s
+2026-11-05T09:11:56.691003+00:00 math500-test-number_theory-417.json filtered_futures: body=4529/32768; events=16; injections=10; context=5605; elapsed=80.3s ETA(cap)=500.7s
+2026-11-05T09:12:11.820092+00:00 math500-test-number_theory-417.json filtered_futures: body=5316/32768; events=19; injections=12; context=6597; elapsed=95.4s ETA(cap)=492.8s
+2026-11-05T09:12:27.105152+00:00 math500-test-number_theory-417.json filtered_futures: body=6101/32768; events=22; injections=14; context=7587; elapsed=110.7s ETA(cap)=483.9s
+2026-11-05T09:12:42.663853+00:00 math500-test-number_theory-417.json filtered_futures: body=6889/32768; events=25; injections=16; context=8580; elapsed=126.3s ETA(cap)=474.4s
+2026-11-05T09:12:58.501273+00:00 math500-test-number_theory-417.json filtered_futures: body=7681/32768; events=28; injections=16; context=9372; elapsed=142.1s ETA(cap)=464.2s
+2026-11-05T09:13:14.531396+00:00 math500-test-number_theory-417.json filtered_futures: body=8476/32768; events=31; injections=17; context=10269; elapsed=158.1s ETA(cap)=453.2s
+2026-11-05T09:13:30.794178+00:00 math500-test-number_theory-417.json filtered_futures: body=9274/32768; events=34; injections=18; context=11170; elapsed=174.4s ETA(cap)=441.8s
+2026-11-05T09:13:45.883620+00:00 math500-test-number_theory-417.json filtered_futures: body=10131/32768; events=36; injections=18; context=12027; elapsed=189.5s ETA(cap)=423.4s
+2026-11-05T09:13:56.109707+00:00 completed math500-test-number_theory-417.json: correct=True
+2026-11-05T09:13:56.110319+00:00 condition start evaluation/math500/math500-test-algebra-1143.json/filtered_futures
+2026-11-05T09:13:56.136138+00:00 math500-test-algebra-1143.json filtered_futures: body=1/32768; events=0; injections=0; context=71; elapsed=0.0s ETA(cap)=406.1s
+2026-11-05T09:14:13.003156+00:00 math500-test-algebra-1143.json filtered_futures: body=895/32768; events=4; injections=1; context=1068; elapsed=16.9s ETA(cap)=601.1s
+2026-11-05T09:14:28.450858+00:00 math500-test-algebra-1143.json filtered_futures: body=1821/32768; events=7; injections=3; context=2200; elapsed=32.3s ETA(cap)=549.4s
+2026-11-05T09:14:43.630120+00:00 math500-test-algebra-1143.json filtered_futures: body=2690/32768; events=10; injections=5; context=3275; elapsed=47.5s ETA(cap)=531.2s
+2026-11-05T09:14:59.232131+00:00 math500-test-algebra-1143.json filtered_futures: body=3567/32768; events=13; injections=8; context=4460; elapsed=63.1s ETA(cap)=516.6s
+2026-11-05T09:15:02.515673+00:00 completed math500-test-algebra-1143.json: correct=True
+2026-11-05T09:15:02.516224+00:00 condition start evaluation/math500/math500-test-counting_and_probability-377.json/filtered_futures
+2026-11-05T09:15:02.541322+00:00 math500-test-counting_and_probability-377.json filtered_futures: body=1/32768; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=418.2s
+2026-11-05T09:15:19.066182+00:00 math500-test-counting_and_probability-377.json filtered_futures: body=864/32768; events=4; injections=2; context=1136; elapsed=16.5s ETA(cap)=610.7s
+2026-11-05T09:15:34.506739+00:00 math500-test-counting_and_probability-377.json filtered_futures: body=1788/32768; events=7; injections=4; context=2265; elapsed=32.0s ETA(cap)=554.1s
+2026-11-05T09:15:49.358424+00:00 completed math500-test-counting_and_probability-377.json: correct=True
+2026-11-05T09:15:49.358957+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-2015.json/filtered_futures
+2026-11-05T09:15:49.388477+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=1/32768; events=0; injections=0; context=139; elapsed=0.0s ETA(cap)=561.5s
+2026-11-05T09:16:06.220852+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=890/32768; events=4; injections=1; context=1131; elapsed=16.8s ETA(cap)=603.5s
+2026-11-05T09:16:21.451330+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=1801/32768; events=7; injections=2; context=2145; elapsed=32.1s ETA(cap)=551.6s
+2026-11-05T09:16:39.338085+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=2754/32768; events=11; injections=3; context=3201; elapsed=50.0s ETA(cap)=544.6s
+2026-11-05T09:16:55.719127+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=3698/32768; events=14; injections=6; context=4452; elapsed=66.3s ETA(cap)=521.6s
+2026-11-05T09:17:11.287589+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=4544/32768; events=17; injections=7; context=5400; elapsed=81.9s ETA(cap)=508.8s
+2026-11-05T09:17:26.748091+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=5357/32768; events=20; injections=9; context=6419; elapsed=97.4s ETA(cap)=498.3s
+2026-11-05T09:17:41.912087+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=6138/32768; events=23; injections=10; context=7303; elapsed=112.5s ETA(cap)=488.3s
+2026-11-05T09:17:57.372772+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=6919/32768; events=26; injections=13; context=8392; elapsed=128.0s ETA(cap)=478.2s
+2026-11-05T09:18:13.326327+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=7716/32768; events=29; injections=16; context=9498; elapsed=144.0s ETA(cap)=467.4s
+2026-11-05T09:18:29.523298+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=8519/32768; events=32; injections=17; context=10404; elapsed=160.2s ETA(cap)=455.9s
+2026-11-05T09:18:45.434506+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=9281/32768; events=35; injections=19; context=11372; elapsed=176.1s ETA(cap)=445.6s
+2026-11-05T09:19:02.142816+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=10090/32768; events=38; injections=20; context=12284; elapsed=192.8s ETA(cap)=433.3s
+2026-11-05T09:19:20.493126+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=11002/32768; events=41; injections=21; context=13299; elapsed=211.1s ETA(cap)=417.7s
+2026-11-05T09:19:37.324814+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=11782/32768; events=44; injections=22; context=14182; elapsed=228.0s ETA(cap)=406.0s
+2026-11-05T09:19:54.731355+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=12578/32768; events=47; injections=24; context=15182; elapsed=245.4s ETA(cap)=393.8s
+2026-11-05T09:20:12.713116+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=13395/32768; events=50; injections=26; context=16204; elapsed=263.3s ETA(cap)=380.9s
+2026-11-05T09:20:28.128101+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=14182/32768; events=52; injections=26; context=16991; elapsed=278.8s ETA(cap)=365.3s
+2026-11-05T09:20:45.953161+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=14961/32768; events=55; injections=27; context=17873; elapsed=296.6s ETA(cap)=353.0s
+2026-11-05T09:21:01.233299+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=15694/32768; events=57; injections=29; context=18812; elapsed=311.9s ETA(cap)=339.3s
+2026-11-05T09:21:17.352444+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=16306/32768; events=60; injections=32; context=19732; elapsed=328.0s ETA(cap)=331.1s
+2026-11-05T09:21:32.581893+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=17014/32768; events=62; injections=33; context=20543; elapsed=343.2s ETA(cap)=317.8s
+2026-11-05T09:21:48.844658+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=17620/32768; events=65; injections=34; context=21252; elapsed=359.5s ETA(cap)=309.0s
+2026-11-05T09:22:04.649586+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=18337/32768; events=67; injections=35; context=22072; elapsed=375.3s ETA(cap)=295.3s
+2026-11-05T09:22:22.077609+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=18990/32768; events=70; injections=36; context=22828; elapsed=392.7s ETA(cap)=284.9s
+2026-11-05T09:22:37.862799+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=19672/32768; events=72; injections=38; context=23715; elapsed=408.5s ETA(cap)=271.9s
+2026-11-05T09:22:56.421080+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=20354/32768; events=75; injections=40; context=24602; elapsed=427.0s ETA(cap)=260.5s
+2026-11-05T09:23:12.743510+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=21044/32768; events=77; injections=41; context=25395; elapsed=443.4s ETA(cap)=247.0s
+2026-11-05T09:23:31.404061+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=21699/32768; events=80; injections=43; context=26255; elapsed=462.0s ETA(cap)=235.7s
+2026-11-05T09:23:46.671657+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=22283/32768; events=82; injections=45; context=27045; elapsed=477.3s ETA(cap)=224.6s
+2026-11-05T09:24:03.108580+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=22930/32768; events=84; injections=46; context=27794; elapsed=493.7s ETA(cap)=211.8s
+2026-11-05T09:24:18.867206+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=23525/32768; events=86; injections=47; context=28492; elapsed=509.5s ETA(cap)=200.2s
+2026-11-05T09:24:37.684698+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=24133/32768; events=89; injections=47; context=29100; elapsed=528.3s ETA(cap)=189.0s
+2026-11-05T09:24:54.777434+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=24773/32768; events=91; injections=49; context=29945; elapsed=545.4s ETA(cap)=176.0s
+2026-11-05T09:25:09.849444+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=25289/32768; events=93; injections=51; context=30667; elapsed=560.5s ETA(cap)=165.8s
+2026-11-05T09:25:25.161667+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=25809/32768; events=95; injections=52; context=31290; elapsed=575.8s ETA(cap)=155.3s
+2026-11-05T09:25:41.120811+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=26357/32768; events=97; injections=53; context=31941; elapsed=591.7s ETA(cap)=143.9s
+2026-11-05T09:25:56.936570+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=26884/32768; events=99; injections=55; context=32674; elapsed=607.6s ETA(cap)=133.0s
+2026-11-05T09:26:12.826755+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=27416/32768; events=101; injections=55; context=33206; elapsed=623.5s ETA(cap)=121.7s
+2026-11-05T09:26:29.514984+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=27966/32768; events=103; injections=57; context=33961; elapsed=640.1s ETA(cap)=109.9s
+2026-11-05T09:26:45.839637+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=28489/32768; events=105; injections=59; context=34689; elapsed=656.5s ETA(cap)=98.6s
+2026-11-05T09:27:08.827136+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=28931/32768; events=107; injections=60; context=33075; elapsed=679.5s ETA(cap)=90.1s
+2026-11-05T09:27:26.041820+00:00 math500-test-intermediate_algebra-2015.json filtered_futures: body=29827/32768; events=107; injections=60; context=33971; elapsed=696.7s ETA(cap)=68.7s
+2026-11-05T09:27:32.613252+00:00 completed math500-test-intermediate_algebra-2015.json: correct=True
+2026-11-05T09:27:32.613888+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-1300.json/filtered_futures
+2026-11-05T09:27:32.640402+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=421.7s
+2026-11-05T09:27:48.263119+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=943/32768; events=3; injections=1; context=1147; elapsed=15.6s ETA(cap)=527.7s
+2026-11-05T09:28:05.636526+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=1862/32768; events=7; injections=3; context=2272; elapsed=33.0s ETA(cap)=547.9s
+2026-11-05T09:28:21.363618+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=2788/32768; events=10; injections=3; context=3198; elapsed=48.7s ETA(cap)=524.1s
+2026-11-05T09:28:36.447263+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=3625/32768; events=13; injections=5; context=4239; elapsed=63.8s ETA(cap)=513.1s
+2026-11-05T09:28:54.319265+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=4516/32768; events=17; injections=6; context=5233; elapsed=81.7s ETA(cap)=511.1s
+2026-11-05T09:29:10.202889+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=5369/32768; events=20; injections=7; context=6188; elapsed=97.6s ETA(cap)=497.9s
+2026-11-05T09:29:25.975093+00:00 math500-test-intermediate_algebra-1300.json filtered_futures: body=6362/32768; events=22; injections=9; context=7387; elapsed=113.3s ETA(cap)=470.5s
+2026-11-05T09:29:34.191228+00:00 completed math500-test-intermediate_algebra-1300.json: correct=True
+2026-11-05T09:29:34.191796+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-2152.json/filtered_futures
+2026-11-05T09:29:34.218362+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=1/32768; events=0; injections=0; context=122; elapsed=0.0s ETA(cap)=442.2s
+2026-11-05T09:29:51.376952+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=918/32768; events=4; injections=4; context=1450; elapsed=17.2s ETA(cap)=595.8s
+2026-11-05T09:30:07.024785+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=1862/32768; events=7; injections=6; context=2599; elapsed=32.8s ETA(cap)=544.8s
+2026-11-05T09:30:22.322315+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=2737/32768; events=10; injections=8; context=3680; elapsed=48.1s ETA(cap)=528.0s
+2026-11-05T09:30:37.382493+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=3556/32768; events=13; injections=11; context=4806; elapsed=63.2s ETA(cap)=519.0s
+2026-11-05T09:30:52.987543+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=4395/32768; events=16; injections=12; context=5748; elapsed=78.8s ETA(cap)=508.6s
+2026-11-05T09:31:08.726215+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=5236/32768; events=19; injections=13; context=6691; elapsed=94.5s ETA(cap)=497.0s
+2026-11-05T09:31:24.473889+00:00 math500-test-intermediate_algebra-2152.json filtered_futures: body=6057/32768; events=22; injections=15; context=7717; elapsed=110.3s ETA(cap)=486.3s
+2026-11-05T09:31:36.891992+00:00 completed math500-test-intermediate_algebra-2152.json: correct=True
+2026-11-05T09:31:36.892543+00:00 condition start evaluation/math500/math500-test-prealgebra-1317.json/filtered_futures
+2026-11-05T09:31:36.916993+00:00 math500-test-prealgebra-1317.json filtered_futures: body=1/32768; events=0; injections=0; context=54; elapsed=0.0s ETA(cap)=400.3s
+2026-11-05T09:31:48.318071+00:00 completed math500-test-prealgebra-1317.json: correct=True
+2026-11-05T09:31:48.318569+00:00 condition start evaluation/math500/math500-test-precalculus-1289.json/filtered_futures
+2026-11-05T09:31:48.343007+00:00 math500-test-precalculus-1289.json filtered_futures: body=1/32768; events=0; injections=0; context=76; elapsed=0.0s ETA(cap)=413.4s
+2026-11-05T09:32:04.931210+00:00 math500-test-precalculus-1289.json filtered_futures: body=866/32768; events=4; injections=0; context=941; elapsed=16.6s ETA(cap)=611.5s
+2026-11-05T09:32:08.195870+00:00 completed math500-test-precalculus-1289.json: correct=True
+2026-11-05T09:32:08.196361+00:00 condition start evaluation/math500/math500-test-geometry-1108.json/filtered_futures
+2026-11-05T09:32:08.221808+00:00 math500-test-geometry-1108.json filtered_futures: body=1/32768; events=0; injections=0; context=91; elapsed=0.0s ETA(cap)=440.9s
+2026-11-05T09:32:25.035364+00:00 math500-test-geometry-1108.json filtered_futures: body=888/32768; events=4; injections=3; context=1287; elapsed=16.8s ETA(cap)=604.1s
+2026-11-05T09:32:40.302253+00:00 math500-test-geometry-1108.json filtered_futures: body=1799/32768; events=7; injections=4; context=2301; elapsed=32.1s ETA(cap)=552.5s
+2026-11-05T09:32:57.780982+00:00 math500-test-geometry-1108.json filtered_futures: body=2699/32768; events=11; injections=7; context=3510; elapsed=49.6s ETA(cap)=552.3s
+2026-11-05T09:33:13.791426+00:00 math500-test-geometry-1108.json filtered_futures: body=3775/32768; events=13; injections=8; context=4689; elapsed=65.6s ETA(cap)=503.7s
+2026-11-05T09:33:13.906944+00:00 completed math500-test-geometry-1108.json: correct=True
+2026-11-05T09:33:13.907476+00:00 condition start evaluation/math500/math500-test-prealgebra-951.json/filtered_futures
+2026-11-05T09:33:13.931943+00:00 math500-test-prealgebra-951.json filtered_futures: body=1/32768; events=0; injections=0; context=59; elapsed=0.0s ETA(cap)=403.9s
+2026-11-05T09:33:31.232906+00:00 math500-test-prealgebra-951.json filtered_futures: body=928/32768; events=4; injections=0; context=986; elapsed=17.3s ETA(cap)=594.0s
+2026-11-05T09:33:35.907744+00:00 completed math500-test-prealgebra-951.json: correct=True
+2026-11-05T09:33:35.908230+00:00 condition start evaluation/math500/math500-test-number_theory-864.json/filtered_futures
+2026-11-05T09:33:35.932219+00:00 math500-test-number_theory-864.json filtered_futures: body=1/32768; events=0; injections=0; context=52; elapsed=0.0s ETA(cap)=404.4s
+2026-11-05T09:33:52.537754+00:00 math500-test-number_theory-864.json filtered_futures: body=872/32768; events=4; injections=0; context=923; elapsed=16.6s ETA(cap)=607.8s
+2026-11-05T09:34:07.548449+00:00 completed math500-test-number_theory-864.json: correct=True
+2026-11-05T09:34:07.548957+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-1063.json/filtered_futures
+2026-11-05T09:34:07.574584+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=1/32768; events=0; injections=0; context=102; elapsed=0.0s ETA(cap)=447.9s
+2026-11-05T09:34:24.633639+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=905/32768; events=4; injections=3; context=1314; elapsed=17.1s ETA(cap)=601.1s
+2026-11-05T09:34:39.992549+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=1819/32768; events=7; injections=3; context=2228; elapsed=32.4s ETA(cap)=551.8s
+2026-11-05T09:34:55.419682+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=2719/32768; events=10; injections=4; context=3231; elapsed=47.9s ETA(cap)=528.9s
+2026-11-05T09:35:13.167077+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=3627/32768; events=14; injections=5; context=4241; elapsed=65.6s ETA(cap)=527.1s
+2026-11-05T09:35:29.393934+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=4546/32768; events=17; injections=5; context=5160; elapsed=81.8s ETA(cap)=508.0s
+2026-11-05T09:35:45.037723+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=5386/32768; events=20; injections=5; context=6000; elapsed=97.5s ETA(cap)=495.6s
+2026-11-05T09:36:00.407168+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=6185/32768; events=23; injections=7; context=7005; elapsed=112.8s ETA(cap)=485.0s
+2026-11-05T09:36:15.862701+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=6978/32768; events=26; injections=9; context=8004; elapsed=128.3s ETA(cap)=474.2s
+2026-11-05T09:36:31.640777+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=7777/32768; events=29; injections=11; context=9009; elapsed=144.1s ETA(cap)=463.0s
+2026-11-05T09:36:47.474801+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=8555/32768; events=32; injections=13; context=9993; elapsed=159.9s ETA(cap)=452.6s
+2026-11-05T09:37:02.677950+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=9273/32768; events=35; injections=14; context=10813; elapsed=175.1s ETA(cap)=443.7s
+2026-11-05T09:37:19.052816+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=10062/32768; events=38; injections=17; context=11911; elapsed=191.5s ETA(cap)=432.1s
+2026-11-05T09:37:36.546141+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=10915/32768; events=41; injections=19; context=12969; elapsed=209.0s ETA(cap)=418.4s
+2026-11-05T09:37:52.681985+00:00 math500-test-intermediate_algebra-1063.json filtered_futures: body=11970/32768; events=42; injections=20; context=14126; elapsed=225.1s ETA(cap)=391.2s
+2026-11-05T09:37:58.015487+00:00 completed math500-test-intermediate_algebra-1063.json: correct=True
+2026-11-05T09:37:58.016041+00:00 condition start evaluation/math500/math500-test-algebra-2157.json/filtered_futures
+2026-11-05T09:37:58.040885+00:00 math500-test-algebra-2157.json filtered_futures: body=1/32768; events=0; injections=0; context=54; elapsed=0.0s ETA(cap)=387.0s
+2026-11-05T09:38:13.516116+00:00 math500-test-algebra-2157.json filtered_futures: body=966/32768; events=3; injections=2; context=1189; elapsed=15.5s ETA(cap)=509.9s
+2026-11-05T09:38:14.066434+00:00 completed math500-test-algebra-2157.json: correct=True
+2026-11-05T09:38:14.066955+00:00 condition start evaluation/math500/math500-test-algebra-2232.json/filtered_futures
+2026-11-05T09:38:14.090860+00:00 math500-test-algebra-2232.json filtered_futures: body=1/32768; events=0; injections=0; context=58; elapsed=0.0s ETA(cap)=399.7s
+2026-11-05T09:38:29.096418+00:00 math500-test-algebra-2232.json filtered_futures: body=885/32768; events=3; injections=0; context=942; elapsed=15.0s ETA(cap)=541.0s
+2026-11-05T09:38:31.884544+00:00 completed math500-test-algebra-2232.json: correct=True
+2026-11-05T09:38:31.885034+00:00 condition start evaluation/math500/math500-test-algebra-2680.json/filtered_futures
+2026-11-05T09:38:31.908676+00:00 math500-test-algebra-2680.json filtered_futures: body=1/32768; events=0; injections=0; context=52; elapsed=0.0s ETA(cap)=392.8s
+2026-11-05T09:38:42.904872+00:00 completed math500-test-algebra-2680.json: correct=True
+2026-11-05T09:38:42.905365+00:00 condition start evaluation/math500/math500-test-prealgebra-1995.json/filtered_futures
+2026-11-05T09:38:42.929655+00:00 math500-test-prealgebra-1995.json filtered_futures: body=1/32768; events=0; injections=0; context=57; elapsed=0.0s ETA(cap)=412.0s
+2026-11-05T09:38:59.803748+00:00 math500-test-prealgebra-1995.json filtered_futures: body=886/32768; events=4; injections=0; context=942; elapsed=16.9s ETA(cap)=607.7s
+2026-11-05T09:39:15.119512+00:00 math500-test-prealgebra-1995.json filtered_futures: body=1793/32768; events=7; injections=1; context=1951; elapsed=32.2s ETA(cap)=556.3s
+2026-11-05T09:39:19.841955+00:00 completed math500-test-prealgebra-1995.json: correct=True
+2026-11-05T09:39:19.842513+00:00 condition start evaluation/math500/math500-test-algebra-1553.json/filtered_futures
+2026-11-05T09:39:19.868627+00:00 math500-test-algebra-1553.json filtered_futures: body=1/32768; events=0; injections=0; context=126; elapsed=0.0s ETA(cap)=452.1s
+2026-11-05T09:39:36.811347+00:00 math500-test-algebra-1553.json filtered_futures: body=890/32768; events=4; injections=1; context=1118; elapsed=17.0s ETA(cap)=607.3s
+2026-11-05T09:39:52.229971+00:00 math500-test-algebra-1553.json filtered_futures: body=1812/32768; events=7; injections=3; context=2246; elapsed=32.4s ETA(cap)=553.1s
+2026-11-05T09:40:09.769017+00:00 math500-test-algebra-1553.json filtered_futures: body=2727/32768; events=11; injections=6; context=3470; elapsed=49.9s ETA(cap)=549.9s
+2026-11-05T09:40:19.891019+00:00 completed math500-test-algebra-1553.json: correct=True
+2026-11-05T09:40:19.891561+00:00 condition start evaluation/math500/math500-test-geometry-1097.json/filtered_futures
+2026-11-05T09:40:19.916596+00:00 math500-test-geometry-1097.json filtered_futures: body=1/32768; events=0; injections=0; context=70; elapsed=0.0s ETA(cap)=420.6s
+2026-11-05T09:40:36.449397+00:00 math500-test-geometry-1097.json filtered_futures: body=861/32768; events=4; injections=0; context=930; elapsed=16.5s ETA(cap)=613.1s
+2026-11-05T09:40:52.061518+00:00 math500-test-geometry-1097.json filtered_futures: body=1801/32768; events=7; injections=2; context=2075; elapsed=32.2s ETA(cap)=552.9s
+2026-11-05T09:40:57.868008+00:00 completed math500-test-geometry-1097.json: correct=True
+2026-11-05T09:40:57.868524+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-2046.json/filtered_futures
+2026-11-05T09:40:57.892523+00:00 math500-test-intermediate_algebra-2046.json filtered_futures: body=1/32768; events=0; injections=0; context=52; elapsed=0.0s ETA(cap)=404.0s
+2026-11-05T09:41:14.440865+00:00 math500-test-intermediate_algebra-2046.json filtered_futures: body=857/32768; events=4; injections=1; context=1010; elapsed=16.6s ETA(cap)=616.6s
+2026-11-05T09:41:30.780084+00:00 math500-test-intermediate_algebra-2046.json filtered_futures: body=2034/32768; events=6; injections=3; context=2392; elapsed=32.9s ETA(cap)=497.1s
+2026-11-05T09:41:31.617579+00:00 completed math500-test-intermediate_algebra-2046.json: correct=True
+2026-11-05T09:41:31.618038+00:00 condition start evaluation/math500/math500-test-prealgebra-65.json/filtered_futures
+2026-11-05T09:41:31.642276+00:00 math500-test-prealgebra-65.json filtered_futures: body=1/32768; events=0; injections=0; context=64; elapsed=0.0s ETA(cap)=408.8s
+2026-11-05T09:41:48.640438+00:00 math500-test-prealgebra-65.json filtered_futures: body=900/32768; events=4; injections=1; context=1065; elapsed=17.0s ETA(cap)=602.3s
+2026-11-05T09:42:04.015529+00:00 math500-test-prealgebra-65.json filtered_futures: body=1817/32768; events=7; injections=2; context=2084; elapsed=32.4s ETA(cap)=551.7s
+2026-11-05T09:42:21.591944+00:00 math500-test-prealgebra-65.json filtered_futures: body=2724/32768; events=11; injections=4; context=3197; elapsed=50.0s ETA(cap)=551.1s
+2026-11-05T09:42:37.941163+00:00 math500-test-prealgebra-65.json filtered_futures: body=3662/32768; events=14; injections=5; context=4238; elapsed=66.3s ETA(cap)=527.1s
+2026-11-05T09:42:52.586193+00:00 completed math500-test-prealgebra-65.json: correct=True
+2026-11-05T09:42:52.586717+00:00 condition start evaluation/math500/math500-test-algebra-1796.json/filtered_futures
+2026-11-05T09:42:52.611345+00:00 math500-test-algebra-1796.json filtered_futures: body=1/32768; events=0; injections=0; context=64; elapsed=0.0s ETA(cap)=408.8s
+2026-11-05T09:43:09.897618+00:00 math500-test-algebra-1796.json filtered_futures: body=927/32768; events=4; injections=2; context=1195; elapsed=17.3s ETA(cap)=594.2s
+2026-11-05T09:43:25.262181+00:00 math500-test-algebra-1796.json filtered_futures: body=1839/32768; events=7; injections=4; context=2313; elapsed=32.7s ETA(cap)=549.3s
+2026-11-05T09:43:40.675607+00:00 math500-test-algebra-1796.json filtered_futures: body=2782/32768; events=10; injections=4; context=3256; elapsed=48.1s ETA(cap)=518.2s
+2026-11-05T09:43:42.315984+00:00 completed math500-test-algebra-1796.json: correct=True
+2026-11-05T09:43:42.316467+00:00 condition start evaluation/math500/math500-test-intermediate_algebra-190.json/filtered_futures
+2026-11-05T09:43:42.341534+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=1/32768; events=0; injections=0; context=76; elapsed=0.0s ETA(cap)=423.0s
+2026-11-05T09:43:59.210948+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=885/32768; events=4; injections=0; context=960; elapsed=16.9s ETA(cap)=608.2s
+2026-11-05T09:44:14.571231+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=1801/32768; events=7; injections=2; context=2081; elapsed=32.2s ETA(cap)=554.4s
+2026-11-05T09:44:32.185489+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=2734/32768; events=11; injections=5; context=3321; elapsed=49.9s ETA(cap)=547.7s
+2026-11-05T09:44:48.295738+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=3657/32768; events=14; injections=6; context=4347; elapsed=66.0s ETA(cap)=525.1s
+2026-11-05T09:45:03.649411+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=4491/32768; events=17; injections=6; context=5181; elapsed=81.3s ETA(cap)=512.0s
+2026-11-05T09:45:21.313884+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=5344/32768; events=21; injections=7; context=6136; elapsed=99.0s ETA(cap)=508.0s
+2026-11-05T09:45:37.789274+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=6246/32768; events=24; injections=7; context=7038; elapsed=115.5s ETA(cap)=490.3s
+2026-11-05T09:45:53.144657+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=7031/32768; events=27; injections=9; context=8029; elapsed=130.8s ETA(cap)=478.9s
+2026-11-05T09:46:08.592544+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=7812/32768; events=30; injections=9; context=8810; elapsed=146.3s ETA(cap)=467.3s
+2026-11-05T09:46:24.511926+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=8613/32768; events=33; injections=10; context=9713; elapsed=162.2s ETA(cap)=454.8s
+2026-11-05T09:46:41.037282+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=9434/32768; events=36; injections=12; context=10739; elapsed=178.7s ETA(cap)=442.0s
+2026-11-05T09:46:57.490977+00:00 math500-test-intermediate_algebra-190.json filtered_futures: body=10311/32768; events=39; injections=14; context=11791; elapsed=195.2s ETA(cap)=425.1s
+2026-11-05T09:47:06.811048+00:00 completed math500-test-intermediate_algebra-190.json: correct=True
+2026-11-05T09:47:06.811625+00:00 condition start evaluation/math500/math500-test-prealgebra-1203.json/filtered_futures
+2026-11-05T09:47:06.837213+00:00 math500-test-prealgebra-1203.json filtered_futures: body=1/32768; events=0; injections=0; context=68; elapsed=0.0s ETA(cap)=406.8s
+2026-11-05T09:47:22.590478+00:00 math500-test-prealgebra-1203.json filtered_futures: body=957/32768; events=3; injections=0; context=1024; elapsed=15.8s ETA(cap)=524.1s
+2026-11-05T09:47:22.617100+00:00 completed math500-test-prealgebra-1203.json: correct=True
+2026-11-05T09:47:22.617590+00:00 condition start evaluation/math500/math500-test-algebra-1255.json/filtered_futures
+2026-11-05T09:47:22.641190+00:00 math500-test-algebra-1255.json filtered_futures: body=1/32768; events=0; injections=0; context=37; elapsed=0.0s ETA(cap)=387.0s
+2026-11-05T09:47:35.842724+00:00 completed math500-test-algebra-1255.json: correct=True

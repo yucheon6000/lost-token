@@ -1,0 +1,40 @@
+{
+  "audit_script_sha256": "1aeece0ab7c96e9b1e85425ea340e738cf781a86ccf5734f77ab8aa088f27389",
+  "case_sha256": {
+    "cases/smoke/aime25/aime25-26.json": "36ecd23b0b7f27aecae08b1dae8aec88a1fe4a074b3a5e89f497a05bf9a85cb7"
+  },
+  "checkpoint_sha256": {
+    "14183efe14061f5451cca7b92388edd9c81106b1d5ad9235692c77998b5dc673.json": "485e0f447b3f4ff062a48f01e2150ce3397456c4746f7ad97e358cba02194bde",
+    "35a7f78861509b088a06698ba7a1c64220576f7e6b7b62aef1163a3cd023bc68.json": "db18c16313354ac41015513f5c1f6f12c1115c8ebc7eaf9698b05e9a015550c9",
+    "49b9dd6e263e3e1d104e98c0fbabfa132320c4de019565e054f880d7a731cc69.json": "4f1e6a0de24e9530bc217c23e3f44e434aaf3c052dfafdc9adf211de4c251003",
+    "82dbac43e11c63398a026194e6f5838ece6e39b8fff400fcb01505ffe3c9233c.json": "8ac1fa0d1d7c2eeda442bb846b3f05f0bf576c243f6b9e83b9b1c194e3189ff1",
+    "8c621899a5e73d25e79dff8435599333e8e56d59ecea2372a14f4aa3cc969d39.json": "7b6a22b381901479798c0e3cf9fcc51b37c77e8c7df3decb55ec0ef3c8057a8b",
+    "9571149f5b4ad315c94f51dec3eea59493931d90da508fa342ec333be1dab9e4.json": "b2bc73a5eb06e512c12b56a9f2cb513984439408b744c407380f0e04e44faf57",
+    "a5541cd648bc6ec9a1093eee9bb01a0185202312f3f8ed2630361bdb0d0deaf1.json": "7d3cc36818a97afe2035d953192378d3732a43a7ff4e2062c47fd8e3ce1b72f8",
+    "c09393d5d3a0c91b236076287cd28d28182e1ae92852621ae1668ca19b0c24d9.json": "2fd23f89cd908de0f9e5053c8202ca009d2c770338266ecdb20832fa223c61a8",
+    "c0970c9ada54fa8ee2780fe121a7006ccbf30302159ed83182e6f58900fb99e4.json": "bd78bc77d1f15c76dff89485b542cef51864be1afe8fbb4c1d9528f566084efb",
+    "d292bc021ba71d6cab723ceb681f906aae004738a8052b1369945f4e17b5ef74.json": "a7f0797e1aeab5321466de64d86828ddd8dcd5b952df212cfaa0f18de87ea93f",
+    "d39de53bf236c938147e90c9f2a79d27557696dd6b35a0198d2258e3e123b54f.json": "35c0603f698cd151d1721a38b92c0db78ee1c4b6c06b4ab59492d10123d3c3ec",
+    "e4e69d7ba78781c004fd9726e70076eb1933026900f407ee723f6f7260da5ae0.json": "5b3bd4032ce37aa4603211e7517cd5e3f374cff8e293db8691ed14d8f7c262c1"
+  },
+  "checkpoints": 12,
+  "checks": [
+    "source/split/checkpoint hashes",
+    "all eligible scan positions and declared candidates",
+    "minimum body-token fork interval and exact scan restart boundary",
+    "same pre-injection root for every candidate",
+    "only unchosen alternatives in memory",
+    "selected rollout committed verbatim after memory",
+    "cosine matrix recomputed from vectors",
+    "no intervention after thinking ends",
+    "main body preserved across memory compaction",
+    "generated-only repetition history and every blocked cycle token",
+    "separate final-response scoring",
+    "policy cost sums and replay ledgers"
+  ],
+  "completed_cases": 1,
+  "completed_conditions": 1,
+  "events": 1,
+  "partial": false,
+  "run": "/home/user04/lost-token/workspace/outputs/aime25-blackwell-preflight/workers/ours-worker0"
+}

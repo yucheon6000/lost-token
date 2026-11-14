@@ -1,0 +1,286 @@
+{
+  "at": "2026-10-29T15:29:59.483363+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory.",
+    "Case seconds include generation, auxiliary work and case-level overhead, but exclude model loading and final audits. They sum worker time, not parallel elapsed wall time. Resumed partial cases are excluded from paired timing; legacy timing provenance may be unknown. Different output lengths affect tokens/s. Forward tokens are logical work, not GPU FLOPs."
+  ],
+  "own": {
+    "baseline": {
+      "aime25": {
+        "accuracy": null,
+        "body_tokens": 0,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 0,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      },
+      "all": {
+        "accuracy": null,
+        "body_tokens": 0,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 0,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      }
+    },
+    "ours": {
+      "aime25": {
+        "accuracy": null,
+        "body_tokens": 0,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 0,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      },
+      "all": {
+        "accuracy": null,
+        "body_tokens": 0,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 0,
+        "performance": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "thinking_complete": 0
+      }
+    }
+  },
+  "paired": {
+    "aime25": {
+      "accuracy": {
+        "baseline": null,
+        "ours": null
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": null,
+      "losses": 0,
+      "n": 0,
+      "wins": 0
+    },
+    "all": {
+      "accuracy": {
+        "baseline": null,
+        "ours": null
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": null,
+      "losses": 0,
+      "n": 0,
+      "wins": 0
+    }
+  },
+  "performance_vs_baseline": {
+    "ours": {
+      "aime25": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "generator_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "memory_insertions": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          }
+        },
+        "n": 0,
+        "resumed_excluded_n": 0,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      },
+      "all": {
+        "arm": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "baseline": {
+          "body_tokens": null,
+          "body_tokens_per_second": null,
+          "case_seconds": null,
+          "mean_case_seconds": null,
+          "median_case_seconds": null,
+          "n": 0,
+          "resumed_excluded_n": 0,
+          "timed_n": 0,
+          "timing_unknown_n": 0
+        },
+        "costs": {
+          "candidate_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "embedding_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "forward_tokens": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "generator_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "memory_insertions": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          },
+          "recovery_seconds": {
+            "arm_total": null,
+            "baseline_total": null,
+            "change_percent": null,
+            "n": 0,
+            "ratio": null
+          }
+        },
+        "n": 0,
+        "resumed_excluded_n": 0,
+        "slowdown_percent": null,
+        "throughput_change_percent": null,
+        "throughput_ratio": null,
+        "time_ratio": null,
+        "timed_n": 0
+      }
+    }
+  },
+  "phase_wall_seconds": {
+    "baseline": null,
+    "ours": null
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793287796.47976
+    }
+  },
+  "smoke": true
+}

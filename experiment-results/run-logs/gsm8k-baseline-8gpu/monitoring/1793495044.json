@@ -1,0 +1,149 @@
+{
+  "at": "2026-11-01T01:04:04.227100+00:00",
+  "counts": {
+    "baseline": 0
+  },
+  "epoch": 1793495044.227106,
+  "eta_seconds": 49500,
+  "free_bytes": 338528145408,
+  "gpu_csv": "0, 8430 MiB, 95 %\n1, 8426 MiB, 1 %\n2, 8426 MiB, 13 %\n3, 8424 MiB, 1 %\n4, 8430 MiB, 0 %\n5, 8440 MiB, 88 %\n6, 8434 MiB, 7 %\n7, 8424 MiB, 7 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.0011489391326904,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3527676,
+      "status": {}
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.002030372619629,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3527677,
+      "status": {}
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.002600193023682,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3527678,
+      "status": {
+        "at": "2026-11-01T01:04:01.652828+00:00",
+        "state": "started"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 0.08523392677307129,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793495044.1383288,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3527679,
+      "status": {
+        "at": "2026-11-01T01:04:01.658943+00:00",
+        "state": "started"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 0.09904217720031738,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793495044.12459,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3527680,
+      "status": {
+        "at": "2026-11-01T01:04:03.892217+00:00",
+        "case_id": "gsm8k-test-648",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4959.625
+        },
+        "state": "running",
+        "task": "gsm8k"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.6387536525726318,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793495043.5849235,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3527681,
+      "status": {
+        "at": "2026-11-01T01:04:03.349578+00:00",
+        "case_id": "gsm8k-test-522",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4959.1640625
+        },
+        "state": "running",
+        "task": "gsm8k"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 0.16117167472839355,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793495044.0625403,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3527682,
+      "status": {
+        "at": "2026-11-01T01:04:03.816865+00:00",
+        "case_id": "gsm8k-test-751",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4959.4765625
+        },
+        "state": "running",
+        "task": "gsm8k"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 0.07603073120117188,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793495044.1477144,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3527683,
+      "status": {
+        "at": "2026-11-01T01:04:03.912189+00:00",
+        "case_id": "gsm8k-test-1241",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4953.66796875
+        },
+        "state": "running",
+        "task": "gsm8k"
+      }
+    }
+  }
+}

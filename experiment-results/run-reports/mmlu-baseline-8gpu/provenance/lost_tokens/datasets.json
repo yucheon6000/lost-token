@@ -1,0 +1,83 @@
+{
+  "longbench_v2": {
+    "task": "longbench_v2",
+    "repo": "zai-org/LongBench-v2",
+    "revision": "2b48e494f2c7a2f0af81aae178e05c7e1dde0fe9",
+    "files": {
+      "README.md": "9fdd1a3ebe86507253c124a18e9f78c898ce6341c12990af17ab868b8f600c35",
+      "data.json": "15d61c22d92c96900b3c4948b6aeea218d3214b676a65df48e7b8555604c7fe2"
+    },
+    "url_prefix": "https://huggingface.co/datasets/zai-org/LongBench-v2/resolve/2b48e494f2c7a2f0af81aae178e05c7e1dde0fe9/"
+  },
+  "supergpqa": {
+    "task": "supergpqa",
+    "repo": "m-a-p/SuperGPQA",
+    "revision": "4430d4458112c7d4497fdcf94d7cc223313d6acf",
+    "files": {
+      "README.md": "0d670692d5f36a066d67c10741d160a5fcf0c2cb97f22c8dc8f453ac930b083a",
+      "SuperGPQA-all.jsonl": "28b998e70205ee95e540317b5adc06a06552a3961fb50b153df126b833f7a910"
+    },
+    "url_prefix": "https://huggingface.co/datasets/m-a-p/SuperGPQA/resolve/4430d4458112c7d4497fdcf94d7cc223313d6acf/"
+  },
+  "hmmt25": {
+    "task": "hmmt25",
+    "repo": "MathArena/hmmt_feb_2025",
+    "revision": "6fdc4277120810ff75aa22d2d5489b91f7a262a1",
+    "files": {
+      "README.md": "c40c205cdcca35b5188a8809bd9cd200612d4d7f1f23bf88e8806efd083b072a",
+      "data/train-00000-of-00001.parquet": "ccca64d248b89dc0765e40b893fe4ebeab242226a4336027d95d256886a3d5f2"
+    },
+    "url_prefix": "https://huggingface.co/datasets/MathArena/hmmt_feb_2025/resolve/6fdc4277120810ff75aa22d2d5489b91f7a262a1/"
+  },
+  "gpqa": {
+    "task": "gpqa",
+    "repo": "https://github.com/idavidrein/gpqa",
+    "revision": "56686c06f5e19865c153de0fdb11be3890014df7",
+    "files": {
+      "dataset.zip": "461ae7329f15a3e35f8184d2dac24b990f34fdf12f366ca4062d8e6638cd08dc",
+      "README.md": "0be2cf410fecf82fb811f02e2314ecc5a19decc1515014498e59bae4680d4d81"
+    },
+    "url_prefix": "https://raw.githubusercontent.com/idavidrein/gpqa/56686c06f5e19865c153de0fdb11be3890014df7/",
+    "public_archive_password": "deserted-untie-orchid"
+  },
+  "mmlu": {
+    "task": "mmlu",
+    "repo": "cais/mmlu",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "files": {
+      "README.md": "665eef35ecd8a89037c1e4f1e1a0d7fd4c154edc04c81cea5634ace2d3e96953",
+      "all/test-00000-of-00001.parquet": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7"
+    },
+    "url_prefix": "https://huggingface.co/datasets/cais/mmlu/resolve/c30699e8356da336a370243923dbaf21066bb9fe/"
+  },
+  "aime25": {
+    "files": {
+      "README.md": "c0538c503517a198662a8575adda395b2dfc2abe3f76f74c1a4ef952a69debaa",
+      "data/train-00000-of-00001.parquet": "9f9066ff48ad2e31f9bf1b1ac6d5e80693195f987985f2859f89dd25ffa51c2d"
+    },
+    "revision": "c94da77eb22bbd6439e62a323bec18493a421302",
+    "task": "aime25",
+    "repo": "MathArena/aime_2025",
+    "url_prefix": "https://huggingface.co/datasets/MathArena/aime_2025/resolve/c94da77eb22bbd6439e62a323bec18493a421302/"
+  },
+  "gsm8k": {
+    "task": "gsm8k",
+    "repo": "openai/gsm8k",
+    "revision": "740312add88f781978c0658806c59bc2815b9866",
+    "files": {
+      "README.md": "a17e882503578c9e324560630e31017617714ee025c87cf4fea6fd916895f3c1",
+      "main/test-00000-of-00001.parquet": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"
+    },
+    "url_prefix": "https://huggingface.co/datasets/openai/gsm8k/resolve/740312add88f781978c0658806c59bc2815b9866/"
+  },
+  "math500": {
+    "task": "math500",
+    "repo": "HuggingFaceH4/MATH-500",
+    "revision": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+    "files": {
+      "README.md": "5d32f78943f75423da61419c5bb98cee964d5a29183b11a5294f661fb96f69f7",
+      "test.jsonl": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
+    },
+    "url_prefix": "https://huggingface.co/datasets/HuggingFaceH4/MATH-500/resolve/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be/"
+  }
+}

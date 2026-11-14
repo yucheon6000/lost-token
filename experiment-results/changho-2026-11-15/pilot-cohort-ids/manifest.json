@@ -1,0 +1,30 @@
+{
+  "scope": "historical pilot; NOT shared-v1",
+  "selection": "First ceil(5%) rows of the previously seeded prepared order; full cohorts for AIME/HMMT/GSM8K",
+  "ids": {
+    "aime25-ids.json": {
+      "n": 30,
+      "sha256": "0222a9005f290256366bb14c135d01e8ed4ddcc4198a8247b192c70241fecccb"
+    },
+    "gpqa-ids.json": {
+      "n": 23,
+      "sha256": "88e7a1601de1633793f80931167423e21305a1988e87dfaeeffb892308992567"
+    },
+    "gsm8k-ids.json": {
+      "n": 1319,
+      "sha256": "35e3d917a7170c94afc8ee5794bf66c2947ff102a20055a5af17b5b8819765a5"
+    },
+    "hmmt25-ids.json": {
+      "n": 30,
+      "sha256": "2a2d3f155920d77cb240c8bed502d0353e3283cf086ac03c1f1d746afe05d24e"
+    },
+    "math500-ids.json": {
+      "n": 25,
+      "sha256": "3ad518798c0089ca58d383b715bd7b50bf513b9057e5339ffcb1b9cd649e2b28"
+    },
+    "mmlu-ids.json": {
+      "n": 703,
+      "sha256": "82d0e77450a4566fc30d158117f2cf57941c2d4fb04886cba46e0cbfa47c7e58"
+    }
+  }
+}

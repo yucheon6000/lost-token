@@ -1,0 +1,57 @@
+{
+  "tasks": {
+    "aime25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "81",
+          "id": "aime25-10",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 323,
+          "question": "The $27$ cells of a $3 \\times 9$ grid are filled in using the numbers $1$ through $9$ so that each row contains $9$ different numbers, and each of the three $3 \\times 3$ blocks heavily outlined in the example below contains $9$ different numbers, as in the first three rows of a Sudoku puzzle.\n\n\\[\n\\begin{array}{|c|c|c||c|c|c||c|c|c|}\n\\hline\n4 & 2 & 8 & 9 & 6 & 3 & 1 & 7 & 5 \\\\\n\\hline\n3 & 7 & 9 & 5 & 2 & 1 & 6 & 8 & 4 \\\\\n\\hline\n5 & 6 & 1 & 8 & 4 & 7 & 9 & 2 & 3 \\\\\n\\hline\n\\end{array}\n\\]\nThe number of different ways to fill such a grid can be written as $p^a \\cdot q^b \\cdot r^c \\cdot s^d$ where $p$, $q$, $r$, and $s$ are distinct prime numbers and $a$, $b$, $c$, $d$ are positive integers. Find $p \\cdot a + q \\cdot b + r \\cdot c + s \\cdot d$.",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "510",
+          "id": "aime25-12",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 138,
+          "question": "The set of points in $3$-dimensional coordinate space that lie in the plane $x+y+z=75$ whose coordinates satisfy the inequalities\n$$x-yz<y-zx<z-xy$$\nforms three disjoint convex regions. Exactly one of those regions has finite area. The area of this finite region can be expressed in the form $a\\sqrt{b},$ where $a$ and $b$ are positive integers and $b$ is not divisible by the square of any prime. Find $a+b.$",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "77",
+          "id": "aime25-8",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 140,
+          "question": "Let $k$ be a real number such that the system\n\\begin{align*} |25+20i-z|&=5\\\\ |z-4-k|&=|z-3i-k| \\\\ \\end{align*}\nhas exactly one complex solution $z$. The sum of all possible values of $k$ can be written as $\\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m+n.$ Here $i=\\sqrt{-1}.$",
+          "task": "aime25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "60",
+          "id": "aime25-14",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 160,
+          "question": "Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$, and $\\angle B=\\angle E=60^{\\circ}$. For each point $X$ in the plane, define $f(X)=AX+BX+CX+DX+EX$. The least possible value of $f(X)$ can be expressed as $m+n\\sqrt{p}$, where $m$ and $n$ are positive integers and $p$ is not divisible by the square of any prime. Find $m+n+p$.",
+          "task": "aime25"
+        }
+      ]
+    }
+  }
+}

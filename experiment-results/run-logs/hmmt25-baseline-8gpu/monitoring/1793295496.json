@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-29T17:38:16.656729+00:00",
+  "counts": {
+    "baseline": 9
+  },
+  "epoch": 1793295496.6567342,
+  "eta_seconds": 932.8041378094349,
+  "free_bytes": 2477256704,
+  "gpu_csv": "0, 13238 MiB, 96 %\n1, 12394 MiB, 97 %\n2, 12096 MiB, 97 %\n3, 12974 MiB, 98 %\n4, 12216 MiB, 98 %\n5, 13236 MiB, 97 %\n6, 13236 MiB, 97 %\n7, 12496 MiB, 98 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 4.7102344036102295,
+      "checkpoints": {
+        "checkpoint_count": 358,
+        "epoch": 1793295491.9445817,
+        "new": 358,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065097,
+      "status": {
+        "at": "2026-10-29T17:37:39.012978+00:00",
+        "case_id": "hmmt25-16",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12369.822265625,
+          "peak_cuda_reserved_mib": 12530.0,
+          "peak_rss_mib": 4966.61328125
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 0.20383024215698242,
+      "checkpoints": {
+        "checkpoint_count": 367,
+        "epoch": 1793295496.4510257,
+        "new": 367,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065098,
+      "status": {
+        "at": "2026-10-29T17:34:17.160543+00:00",
+        "case_id": "hmmt25-10",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11533.173828125,
+          "peak_cuda_reserved_mib": 11686.0,
+          "peak_rss_mib": 4970.81640625
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 4.668215751647949,
+      "checkpoints": {
+        "checkpoint_count": 364,
+        "epoch": 1793295491.98667,
+        "new": 364,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065099,
+      "status": {
+        "at": "2026-10-29T17:32:52.723394+00:00",
+        "case_id": "hmmt25-3",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10764.107421875,
+          "peak_cuda_reserved_mib": 10946.0,
+          "peak_rss_mib": 4970.26171875
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 3.8765039443969727,
+      "checkpoints": {
+        "checkpoint_count": 356,
+        "epoch": 1793295492.77841,
+        "new": 356,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065100,
+      "status": {
+        "at": "2026-10-29T17:31:09.500007+00:00",
+        "case_id": "hmmt25-24",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9741.537109375,
+          "peak_cuda_reserved_mib": 9866.0,
+          "peak_rss_mib": 4970.69921875
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 5.993783473968506,
+      "checkpoints": {
+        "checkpoint_count": 366,
+        "epoch": 1793295490.6611576,
+        "new": 366,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065101,
+      "status": {
+        "at": "2026-10-29T17:32:37.244436+00:00",
+        "case_id": "hmmt25-19",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10637.35546875,
+          "peak_cuda_reserved_mib": 10766.0,
+          "peak_rss_mib": 4969.15234375
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 4.623960256576538,
+      "checkpoints": {
+        "checkpoint_count": 350,
+        "epoch": 1793295492.0310082,
+        "new": 350,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065102,
+      "status": {
+        "at": "2026-10-29T17:36:01.534001+00:00",
+        "case_id": "hmmt25-22",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12375.66796875,
+          "peak_cuda_reserved_mib": 12528.0,
+          "peak_rss_mib": 4968.01953125
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 0.5051026344299316,
+      "checkpoints": {
+        "checkpoint_count": 350,
+        "epoch": 1793295496.1498954,
+        "new": 350,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065103,
+      "status": {
+        "at": "2026-10-29T17:36:03.331221+00:00",
+        "case_id": "hmmt25-29",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 12370.25,
+          "peak_cuda_reserved_mib": 12526.0,
+          "peak_rss_mib": 4968.70703125
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 2.033778190612793,
+      "checkpoints": {
+        "checkpoint_count": 365,
+        "epoch": 1793295494.621249,
+        "new": 365,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3065104,
+      "status": {
+        "at": "2026-10-29T17:32:03.633139+00:00",
+        "case_id": "hmmt25-20",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10314.130859375,
+          "peak_cuda_reserved_mib": 10446.0,
+          "peak_rss_mib": 4968.453125
+        },
+        "state": "running",
+        "task": "hmmt25"
+      }
+    }
+  }
+}

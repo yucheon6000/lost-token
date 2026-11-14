@@ -1,0 +1,149 @@
+{
+  "at": "2026-10-29T21:00:47.329891+00:00",
+  "counts": {
+    "baseline": 0
+  },
+  "epoch": 1793307647.3299022,
+  "eta_seconds": 526800,
+  "free_bytes": 7175122944,
+  "gpu_csv": "0, 8444 MiB, 94 %\n1, 8440 MiB, 18 %\n2, 8442 MiB, 51 %\n3, 8436 MiB, 5 %\n4, 8426 MiB, 11 %\n5, 8440 MiB, 12 %\n6, 8432 MiB, 93 %\n7, 8464 MiB, 95 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.0011179447174072,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3074383,
+      "status": {}
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 4.00208306312561,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3074384,
+      "status": {}
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 5.002838373184204,
+      "checkpoints": {},
+      "exit_code": null,
+      "pid": 3074385,
+      "status": {
+        "at": "2026-10-29T21:00:44.711536+00:00",
+        "state": "started"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 0.20834779739379883,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793307647.085222,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074386,
+      "status": {
+        "at": "2026-10-29T21:00:44.702799+00:00",
+        "state": "started"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 0.11234545707702637,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793307647.1812963,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074387,
+      "status": {
+        "at": "2026-10-29T21:00:46.952480+00:00",
+        "case_id": "mmlu-high_school_macroeconomics-4013",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4974.24609375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.14994120597839355,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793307647.1437411,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074388,
+      "status": {
+        "at": "2026-10-29T21:00:46.928127+00:00",
+        "case_id": "mmlu-high_school_computer_science-3209",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4972.25390625
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 0.6172182559967041,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793307646.6765018,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074389,
+      "status": {
+        "at": "2026-10-29T21:00:46.428634+00:00",
+        "case_id": "mmlu-medical_genetics-7288",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4969.33984375
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 0.9508247375488281,
+      "checkpoints": {
+        "checkpoint_count": 1,
+        "epoch": 1793307646.3429296,
+        "new": 1,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3074390,
+      "status": {
+        "at": "2026-10-29T21:00:46.125451+00:00",
+        "case_id": "mmlu-professional_law-11199",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 7672.26708984375,
+          "peak_cuda_reserved_mib": 7682.0,
+          "peak_rss_mib": 4970.1953125
+        },
+        "state": "running",
+        "task": "mmlu"
+      }
+    }
+  }
+}

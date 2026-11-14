@@ -1,0 +1,14 @@
+2026-11-02T00:09:06.033368+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 276.49it/s]
+2026-11-02T00:09:07.754241+00:00 condition start smoke/gsm8k/gsm8k-test-141/plain_ar
+2026-11-02T00:09:23.146253+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 270.23it/s]
+2026-11-02T00:09:24.836482+00:00 condition start smoke/gsm8k/gsm8k-test-141/plain_ar
+2026-11-02T00:09:25.130498+00:00 gsm8k-test-141 plain_ar: body=1/512; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=25.4s
+2026-11-02T00:09:30.959387+00:00 completed gsm8k-test-141: correct=False
+2026-11-02T00:09:30.959868+00:00 condition start smoke/math500/math500-test-geometry-465.json/plain_ar
+2026-11-02T00:09:31.008141+00:00 math500-test-geometry-465.json plain_ar: body=1/512; events=0; injections=0; context=303; elapsed=0.0s ETA(cap)=6.1s
+2026-11-02T00:09:36.742102+00:00 completed math500-test-geometry-465.json: correct=False
+2026-11-02T00:09:36.742529+00:00 condition start smoke/mmlu/mmlu-professional_accounting-10502/plain_ar
+2026-11-02T00:09:36.768944+00:00 mmlu-professional_accounting-10502 plain_ar: body=1/512; events=0; injections=0; context=179; elapsed=0.0s ETA(cap)=6.8s
+2026-11-02T00:09:42.487482+00:00 completed mmlu-professional_accounting-10502: correct=False

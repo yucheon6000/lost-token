@@ -1,0 +1,4 @@
+# Preserve frozen historical artifacts byte-for-byte, including original line endings.
+experiment-results/run-reports/** -whitespace
+experiment-results/run-logs/** -whitespace
+experiment-results/incorrect-answers/** -whitespace

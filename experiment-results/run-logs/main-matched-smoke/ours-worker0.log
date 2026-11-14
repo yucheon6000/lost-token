@@ -1,0 +1,16 @@
+2026-11-02T00:09:54.104920+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 272.45it/s]
+2026-11-02T00:09:55.796326+00:00 loading embedding model
+2026-11-02T00:09:56.502782+00:00 condition start smoke/gsm8k/gsm8k-test-141/filtered_futures
+2026-11-02T00:10:11.255742+00:00 loading generator
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 272.27it/s]
+2026-11-02T00:10:12.939445+00:00 loading embedding model
+2026-11-02T00:10:13.511122+00:00 condition start smoke/gsm8k/gsm8k-test-141/filtered_futures
+2026-11-02T00:10:13.789721+00:00 gsm8k-test-141 filtered_futures: body=1/512; events=0; injections=0; context=69; elapsed=0.0s ETA(cap)=24.2s
+2026-11-02T00:10:23.525678+00:00 completed gsm8k-test-141: correct=False
+2026-11-02T00:10:23.526242+00:00 condition start smoke/math500/math500-test-geometry-465.json/filtered_futures
+2026-11-02T00:10:23.572587+00:00 math500-test-geometry-465.json filtered_futures: body=1/512; events=0; injections=0; context=303; elapsed=0.0s ETA(cap)=6.2s
+2026-11-02T00:10:33.293786+00:00 completed math500-test-geometry-465.json: correct=False
+2026-11-02T00:10:33.294305+00:00 condition start smoke/mmlu/mmlu-professional_accounting-10502/filtered_futures
+2026-11-02T00:10:33.320921+00:00 mmlu-professional_accounting-10502 filtered_futures: body=1/512; events=0; injections=0; context=179; elapsed=0.0s ETA(cap)=6.8s
+2026-11-02T00:10:42.976924+00:00 completed mmlu-professional_accounting-10502: correct=False

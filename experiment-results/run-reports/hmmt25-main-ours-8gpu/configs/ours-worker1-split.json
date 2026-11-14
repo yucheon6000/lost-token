@@ -1,0 +1,57 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "200",
+          "id": "hmmt25-15",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 120,
+          "question": "In an $11 \\times 11$ grid of cells, each pair of edge-adjacent cells is connected by a door. Karthik wants to walk a path in this grid. He can start in any cell, but he must end in the same cell he started in, and he cannot go through any door more than once (not even in opposite directions). Compute the maximum number of doors he can go through in such a path.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{-1+\\sqrt{17}}{2}, \\frac{-1-\\sqrt{17}}{2}",
+          "id": "hmmt25-10",
+          "problem_type": [
+            "Algebra"
+          ],
+          "prompt_tokens": 117,
+          "question": "Let $a, b$, and $c$ be pairwise distinct complex numbers such that\n$$\na^{2}=b+6, \\quad b^{2}=c+6, \\quad \\text { and } \\quad c^{2}=a+6\n$$\n\nCompute the two possible values of $a+b+c$. In your answer, list the two values in a comma-separated list of two valid \\LaTeX expressions.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{2025}{101}",
+          "id": "hmmt25-18",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 193,
+          "question": "Albert writes $2025$ numbers $a_{1}, \\ldots, a_{2025}$ in a circle on a blackboard. Initially, each of the numbers is uniformly and independently sampled at random from the interval $[0,1]$. Then, each second, he \\emph{simultaneously} replaces $a_{i}$ with $\\max \\left(a_{i-1}, a_{i}, a_{i+1}\\right)$ for all $i=1,2, \\ldots, 2025$ (where $a_{0}=a_{2025}$ and $a_{2026}=a_{1}$ ). Compute the expected value of the number of distinct values remaining after $100$ seconds.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "26",
+          "id": "hmmt25-21",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 109,
+          "question": "Equilateral triangles $\\triangle A B C$ and $\\triangle D E F$ are drawn such that points $B, E, F$, and $C$ lie on a line in this order, and point $D$ lies inside triangle $\\triangle A B C$. If $B E=14, E F=15$, and $F C=16$, compute $A D$.",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

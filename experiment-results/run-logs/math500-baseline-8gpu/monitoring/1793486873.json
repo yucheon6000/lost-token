@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-31T22:47:53.622188+00:00",
+  "counts": {
+    "baseline": 153
+  },
+  "epoch": 1793486873.6221924,
+  "eta_seconds": 3576.8807004530927,
+  "free_bytes": 338812002304,
+  "gpu_csv": "0, 11318 MiB, 93 %\n1, 12538 MiB, 93 %\n2, 11738 MiB, 97 %\n3, 10918 MiB, 96 %\n4, 10738 MiB, 97 %\n5, 12678 MiB, 97 %\n6, 10438 MiB, 97 %\n7, 11378 MiB, 97 %\n",
+  "performance_vs_baseline": {},
+  "phase": "baseline",
+  "workers": {
+    "baseline-worker0": {
+      "checkpoint_age_seconds": 2.466097354888916,
+      "checkpoints": {
+        "checkpoint_count": 1108,
+        "epoch": 1793486871.1494038,
+        "new": 1108,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474633,
+      "status": {
+        "at": "2026-10-31T22:47:52.678296+00:00",
+        "case_id": "math500-test-algebra-2102.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10440.02734375,
+          "peak_cuda_reserved_mib": 10610.0,
+          "peak_rss_mib": 4960.80078125
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker1": {
+      "checkpoint_age_seconds": 2.812166213989258,
+      "checkpoints": {
+        "checkpoint_count": 1050,
+        "epoch": 1793486870.8033786,
+        "new": 1050,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474634,
+      "status": {
+        "at": "2026-10-31T22:47:42.414425+00:00",
+        "case_id": "math500-test-precalculus-927.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11668.337890625,
+          "peak_cuda_reserved_mib": 11830.0,
+          "peak_rss_mib": 4956.8828125
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker2": {
+      "checkpoint_age_seconds": 4.606727361679077,
+      "checkpoints": {
+        "checkpoint_count": 1045,
+        "epoch": 1793486869.008848,
+        "new": 1045,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474635,
+      "status": {
+        "at": "2026-10-31T22:46:29.565194+00:00",
+        "case_id": "math500-test-geometry-172.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10896.84765625,
+          "peak_cuda_reserved_mib": 11030.0,
+          "peak_rss_mib": 4955.96484375
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker3": {
+      "checkpoint_age_seconds": 4.799725770950317,
+      "checkpoints": {
+        "checkpoint_count": 1135,
+        "epoch": 1793486868.815881,
+        "new": 1135,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474636,
+      "status": {
+        "at": "2026-10-31T22:46:57.134552+00:00",
+        "case_id": "math500-test-algebra-2700.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10071.748046875,
+          "peak_cuda_reserved_mib": 10210.0,
+          "peak_rss_mib": 4952.9765625
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker4": {
+      "checkpoint_age_seconds": 4.126667737960815,
+      "checkpoints": {
+        "checkpoint_count": 1125,
+        "epoch": 1793486869.4889674,
+        "new": 1125,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474637,
+      "status": {
+        "at": "2026-10-31T22:44:47.171001+00:00",
+        "case_id": "math500-test-geometry-434.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9900.796875,
+          "peak_cuda_reserved_mib": 10030.0,
+          "peak_rss_mib": 4957.265625
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker5": {
+      "checkpoint_age_seconds": 0.3224914073944092,
+      "checkpoints": {
+        "checkpoint_count": 1065,
+        "epoch": 1793486873.2931716,
+        "new": 1065,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474638,
+      "status": {
+        "at": "2026-10-31T22:46:20.744178+00:00",
+        "case_id": "math500-test-intermediate_algebra-1197.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 11816.19140625,
+          "peak_cuda_reserved_mib": 11970.0,
+          "peak_rss_mib": 4956.8671875
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker6": {
+      "checkpoint_age_seconds": 5.642794370651245,
+      "checkpoints": {
+        "checkpoint_count": 1138,
+        "epoch": 1793486867.9728959,
+        "new": 1138,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474639,
+      "status": {
+        "at": "2026-10-31T22:46:46.948385+00:00",
+        "case_id": "math500-test-geometry-846.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 9612.7890625,
+          "peak_cuda_reserved_mib": 9730.0,
+          "peak_rss_mib": 4957.953125
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    },
+    "baseline-worker7": {
+      "checkpoint_age_seconds": 3.312347650527954,
+      "checkpoints": {
+        "checkpoint_count": 1065,
+        "epoch": 1793486870.3033721,
+        "new": 1065,
+        "reused": 0
+      },
+      "exit_code": null,
+      "pid": 3474640,
+      "status": {
+        "at": "2026-10-31T22:46:01.091595+00:00",
+        "case_id": "math500-test-precalculus-768.json",
+        "resources": {
+          "device": "cuda:0",
+          "parameters": 4022468096,
+          "peak_cuda_allocated_mib": 10531.5625,
+          "peak_cuda_reserved_mib": 10670.0,
+          "peak_rss_mib": 4954.66796875
+        },
+        "state": "running",
+        "task": "math500"
+      }
+    }
+  }
+}

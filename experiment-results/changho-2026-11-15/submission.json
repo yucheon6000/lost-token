@@ -1,0 +1,173 @@
+{
+  "id": "changho-2026-11-15",
+  "code_branch": "changho-2026-11-15",
+  "code_commit": "f1c410b5c248248b8dee91bccf561cf7d911d0e9",
+  "cohort_version": "pilot-2026-11-14",
+  "cohort_manifest_sha256": "a8d0f0ea62237aaae2a1634deea3210d20c50d1d8768759afda6f6cd60f2c801",
+  "scope": "historical-ablation",
+  "backend": "vllm-v0-0.10.2",
+  "model": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "seed": 95021,
+  "rows": [
+    {
+      "dataset": "hmmt25",
+      "method": "filtered_futures/argmax",
+      "n_required": 30,
+      "baseline": null,
+      "ours": {
+        "n": 30,
+        "correct": 18
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "hmmt25",
+      "method": "filtered_futures/lookahead",
+      "n_required": 30,
+      "baseline": null,
+      "ours": {
+        "n": 30,
+        "correct": 17
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "aime25",
+      "method": "filtered_futures/argmax",
+      "n_required": 30,
+      "baseline": null,
+      "ours": {
+        "n": 30,
+        "correct": 24
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "aime25",
+      "method": "filtered_futures/lookahead",
+      "n_required": 30,
+      "baseline": null,
+      "ours": {
+        "n": 30,
+        "correct": 21
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "gpqa",
+      "method": "filtered_futures/argmax",
+      "n_required": 23,
+      "baseline": null,
+      "ours": {
+        "n": 23,
+        "correct": 11
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "gpqa",
+      "method": "filtered_futures/lookahead",
+      "n_required": 23,
+      "baseline": null,
+      "ours": {
+        "n": 23,
+        "correct": 11
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "math500",
+      "method": "filtered_futures/argmax",
+      "n_required": 25,
+      "baseline": null,
+      "ours": {
+        "n": 25,
+        "correct": 23
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "math500",
+      "method": "filtered_futures/lookahead",
+      "n_required": 25,
+      "baseline": null,
+      "ours": {
+        "n": 25,
+        "correct": 23
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "mmlu",
+      "method": "filtered_futures/argmax",
+      "n_required": 703,
+      "baseline": null,
+      "ours": {
+        "n": 703,
+        "correct": 554
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "mmlu",
+      "method": "filtered_futures/lookahead",
+      "n_required": 703,
+      "baseline": null,
+      "ours": {
+        "n": 703,
+        "correct": 558
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "gsm8k",
+      "method": "filtered_futures/argmax",
+      "n_required": 1319,
+      "baseline": null,
+      "ours": {
+        "n": 1319,
+        "correct": 1261
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    },
+    {
+      "dataset": "gsm8k",
+      "method": "filtered_futures/lookahead",
+      "n_required": 1319,
+      "baseline": null,
+      "ours": {
+        "n": 1319,
+        "correct": 1257
+      },
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "audits_passed": true
+    }
+  ],
+  "dtype": "bfloat16",
+  "scorer_sha256": "8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a",
+  "evaluation_settings_sha256": "36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032"
+}

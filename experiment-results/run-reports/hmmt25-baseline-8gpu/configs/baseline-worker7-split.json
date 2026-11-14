@@ -1,0 +1,45 @@
+{
+  "tasks": {
+    "hmmt25": {
+      "development": [],
+      "evaluation": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{7}{18}",
+          "id": "hmmt25-27",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 127,
+          "question": "Point $P$ is inside triangle $\\triangle A B C$ such that $\\angle A B P=\\angle A C P$. Given that $A B=6, A C=8, B C=7$, and $\\frac{B P}{P C}=\\frac{1}{2}$, compute $\\frac{[B P C]}{[A B C]}$.\n(Here, $[X Y Z]$ denotes the area of $\\triangle X Y Z$ ).",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\frac{448}{3}",
+          "id": "hmmt25-20",
+          "problem_type": [
+            "Combinatorics"
+          ],
+          "prompt_tokens": 142,
+          "question": "The circumference of a circle is divided into $45$ arcs, each of length $1$. Initially, there are $15$ snakes, each of length $1$, occupying every third arc. Every second, each snake independently moves either one arc left or one arc right, each with probability $\\frac{1}{2}$. If two snakes ever touch, they merge to form a single snake occupying the arcs of both of the previous snakes, and the merged snake moves as one snake. Compute the expected number of seconds until there is only one snake left.",
+          "task": "hmmt25"
+        },
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "\\sqrt{6}",
+          "id": "hmmt25-28",
+          "problem_type": [
+            "Geometry"
+          ],
+          "prompt_tokens": 135,
+          "question": "Let $A B C D$ be an isosceles trapezoid such that $C D>A B=4$. Let $E$ be a point on line $C D$ such that $D E=2$ and $D$ lies between $E$ and $C$. Let $M$ be the midpoint of $\\overline{A E}$. Given that points $A, B, C, D$, and $M$ lie on a circle with radius $5$, compute $M D$.",
+          "task": "hmmt25"
+        }
+      ]
+    }
+  }
+}

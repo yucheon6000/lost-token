@@ -1,0 +1,147 @@
+{
+  "at": "2026-11-02T00:10:56.698430+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory."
+  ],
+  "own": {
+    "baseline": {
+      "all": {
+        "accuracy": 0.0,
+        "body_tokens": 1536,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 3,
+        "thinking_complete": 0
+      },
+      "gsm8k": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 1,
+        "thinking_complete": 0
+      },
+      "math500": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 1,
+        "thinking_complete": 0
+      },
+      "mmlu": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 0,
+        "n": 1,
+        "thinking_complete": 0
+      }
+    },
+    "ours": {
+      "all": {
+        "accuracy": 0.0,
+        "body_tokens": 1536,
+        "correct": 0,
+        "fork_events": 6,
+        "n": 3,
+        "thinking_complete": 0
+      },
+      "gsm8k": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 2,
+        "n": 1,
+        "thinking_complete": 0
+      },
+      "math500": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 2,
+        "n": 1,
+        "thinking_complete": 0
+      },
+      "mmlu": {
+        "accuracy": 0.0,
+        "body_tokens": 512,
+        "correct": 0,
+        "fork_events": 2,
+        "n": 1,
+        "thinking_complete": 0
+      }
+    }
+  },
+  "paired": {
+    "all": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 3,
+      "wins": 0
+    },
+    "gsm8k": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 1,
+      "wins": 0
+    },
+    "math500": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 1,
+      "wins": 0
+    },
+    "mmlu": {
+      "accuracy": {
+        "baseline": 0.0,
+        "ours": 0.0
+      },
+      "correct": {
+        "baseline": 0,
+        "ours": 0
+      },
+      "difference_pp": 0.0,
+      "losses": 0,
+      "n": 1,
+      "wins": 0
+    }
+  },
+  "schedule": {
+    "baseline": {
+      "deadline_epoch": null,
+      "start_epoch": 1793578143.9453998
+    },
+    "ours": {
+      "deadline_epoch": null,
+      "start_epoch": 1793578192.0996099
+    }
+  },
+  "smoke": true
+}

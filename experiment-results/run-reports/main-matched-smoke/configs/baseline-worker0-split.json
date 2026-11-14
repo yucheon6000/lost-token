@@ -1,0 +1,58 @@
+{
+  "tasks": {
+    "gsm8k": {
+      "development": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "400",
+          "id": "gsm8k-test-141",
+          "prompt_tokens": 68,
+          "question": "There are 700 bees in a hive. There are twice as many worker bees as baby bees, and there are twice as many babies as queens.  How many worker bees are there?",
+          "split": "test",
+          "task": "gsm8k"
+        }
+      ],
+      "evaluation": []
+    },
+    "math500": {
+      "development": [
+        {
+          "answer_format": "math",
+          "choices": [],
+          "gold": "120",
+          "id": "math500-test-geometry-465.json",
+          "level": 4,
+          "prompt_tokens": 302,
+          "question": "In the diagram, two circles, each with center $D$, have radii of $1$ and $2$. The total area of the shaded region is $\\frac5{12}$ of the area of the larger circle. How many degrees are in the measure of (the smaller) $\\angle ADC$?\n[asy]\nsize(4cm);\ndefaultpen(linewidth(0.75));\nreal adc = 100;\npair d = (0, 0); pair a = 2 * dir(100); pair c = (2, 0);\npath inner = arc(d, a/2, c/2, CW);\n\npath outer = arc(d, c, a, CCW);\nguide region1 = (a--a/2)..inner..(c/2--c)..outer..cycle;\nguide region2 = arc(d, a/2, c/2, CCW)..(c/2--d--a/2)..cycle;\nfill(region1, gray(0.75));\nfill(region2, gray(0.75));\ndraw(unitcircle); draw(scale(2) * unitcircle);\ndraw(a--d--c);\nlabel(\"$A$\", a, N); label(\"$C$\", c, E); label(\"$D$\", d, NE);\n[/asy]",
+          "source_id": "test/geometry/465.json",
+          "split": "test",
+          "subject": "Geometry",
+          "task": "math500"
+        }
+      ],
+      "evaluation": []
+    },
+    "mmlu": {
+      "development": [
+        {
+          "answer_format": "choice",
+          "choices": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "gold": "C",
+          "id": "mmlu-professional_accounting-10502",
+          "prompt_tokens": 178,
+          "question": "An entity engaged an accountant to review its financial statements in accordance with Statements on Standards for Accounting and Review Services. The accountant determined that the entity maintained its accounts on a comprehensive basis of accounting other than generally accepted accounting principles (GAAP). In this situation, the accountant most likely would have taken which of the following actions?\n\n(A) Withdrawn from the engagement because the entity has not been following GAAP.\n(B) Advised management to make the adjustments necessary for the account balances to conform with GAAP.\n(C) Modified the review report to reflect the fact that the financial statements were presented on another comprehensive basis of accounting.\n(D) Requested that management justify the use of the other comprehensive basis of accounting in the management representation letter.",
+          "split": "test",
+          "subject": "professional_accounting",
+          "task": "mmlu"
+        }
+      ],
+      "evaluation": []
+    }
+  }
+}

@@ -1,0 +1,36 @@
+Verified README.md
+Verified train-00000-of-00001.parquet
+Download/verify model Qwen/Qwen3-4B-Thinking-2507 @ 768f209d9ea81521153ed38c47d515654e938aea
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 4426.71it/s]
+Download/verify model Qwen/Qwen3-Embedding-0.6B @ 97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 5636.75it/s]
+Verified prepared aime25
+Run: /home/user04/lost-token/workspace/outputs/aime25-baseline-preflight
+2026-10-29T15:29:59.623326+00:00 baseline: completed={'baseline': 0, 'ours': 0}; ETA=5.0 min
+Traceback (most recent call last):
+  File "/home/user04/lost-token/.venv/bin/lost-tokens", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/cli.py", line 121, in main
+    supervise(run)
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 496, in supervise
+    raise RuntimeError(f"{name} exited {code}; see {log_dir}")
+RuntimeError: baseline-worker0 exited 1; see /home/user04/lost-token/workspace/logs/aime25-baseline-preflight
+PIPELINE_EXIT_CODE=1
+Run: /home/user04/lost-token/workspace/outputs/aime25-baseline
+2026-10-29T15:50:55.091069+00:00 baseline: completed={'baseline': 0}; ETA=150.0 min
+2026-10-29T15:51:10.093241+00:00 baseline: completed={'baseline': 0}; ETA=150.0 min
+2026-10-29T15:51:25.095037+00:00 baseline: completed={'baseline': 0}; ETA=150.0 min
+2026-10-29T15:51:40.096799+00:00 baseline: completed={'baseline': 0}; ETA=150.0 min
+2026-10-29T15:51:55.098701+00:00 baseline: completed={'baseline': 0}; ETA=150.0 min
+Traceback (most recent call last):
+  File "/home/user04/lost-token/.venv/bin/lost-tokens", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/user04/lost-token/src/lost_tokens/cli.py", line 121, in main
+    supervise(run)
+  File "/home/user04/lost-token/src/lost_tokens/runner.py", line 597, in supervise
+    time.sleep(settings["poll_seconds"])
+  File "/home/user04/lost-token/src/lost_tokens/runtime.py", line 26, in interrupt
+    raise KeyboardInterrupt(f"signal {signum}")
+KeyboardInterrupt: signal 15
