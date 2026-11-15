@@ -6,6 +6,24 @@
 L40S 4 GPU/l40s-2h-v1, PRO 6000 8 GPU/shared-v1, 과거 pilot은 분리한다.
 [고정 서브셋·하드웨어 프로필](../docs/EVALUATION_PROFILES.md). 미측정 baseline은 다른 방법/과거 점수로 채우지 않는다.
 
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95021` · `bfloat16`
+
+Scorer: `8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 70.00% (21/30) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+| gpqa | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 57.37% (257/448) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+| gsm8k | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 95.38% (1258/1319) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+| hmmt25 | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 50.00% (15/30) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+| math500 | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 97.80% (489/500) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+| mmlu | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 81.10% (11388/14042) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+
 ## pilot-2026-11-14
 
 Manifest SHA256: `a8d0f0ea62237aaae2a1634deea3210d20c50d1d8768759afda6f6cd60f2c801`
