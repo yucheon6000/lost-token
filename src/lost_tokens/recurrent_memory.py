@@ -341,20 +341,47 @@ def ttl_history(history, events, body_length, ttl):
 
 
 def validate_budget_forcing(exp):
+    for key in ("budget_forcing", "ours_budget_forcing"):
+        forcing = exp.get(key)
+        if forcing is None:
+            continue
+        if (
+            not isinstance(forcing, dict)
+            or set(forcing) != {"force_at_body_tokens", "answer_tokens"}
+            or type(forcing["force_at_body_tokens"]) is not int
+            or forcing["force_at_body_tokens"] < 1
+            or type(forcing["answer_tokens"]) is not int
+            or forcing["answer_tokens"] < 0
+        ):
+            raise ValueError(f"Invalid {key}")
+        if (
+            forcing["force_at_body_tokens"] + 1 + forcing["answer_tokens"]
+            > exp["max_output_tokens"]
+        ):
+            raise ValueError(f"{key} exceeds max_output_tokens")
+    ours = exp.get("ours_budget_forcing")
+    if ours is not None:
+        if exp.get("budget_forcing") is not None:
+            raise ValueError("Use either budget_forcing or ours_budget_forcing")
+        branch_cap = exp.get("max_branch_body_tokens")
+        if (
+            type(branch_cap) is not int
+            or branch_cap < 1
+            or branch_cap + exp["branch_tokens"] - 1 > ours["force_at_body_tokens"]
+        ):
+            raise ValueError(
+                "ours_budget_forcing requires all full rollouts to finish before forcing"
+            )
+
+
+def budget_forcing_for_arm(exp, arm):
+    """Keep AR forcing separate from the opt-in filtered_futures answer reserve."""
     forcing = exp.get("budget_forcing")
-    if forcing is None:
-        return
-    if (
-        not isinstance(forcing, dict)
-        or set(forcing) != {"force_at_body_tokens", "answer_tokens"}
-        or type(forcing["force_at_body_tokens"]) is not int
-        or forcing["force_at_body_tokens"] < 1
-        or type(forcing["answer_tokens"]) is not int
-        or forcing["answer_tokens"] < 0
-    ):
-        raise ValueError("Invalid budget_forcing")
-    if forcing["force_at_body_tokens"] + 1 + forcing["answer_tokens"] > exp["max_output_tokens"]:
-        raise ValueError("budget_forcing exceeds max_output_tokens")
+    if forcing is not None:
+        if arm != "plain_ar":
+            raise ValueError("budget_forcing is only supported for plain_ar")
+        return forcing
+    return exp.get("ours_budget_forcing") if arm == "filtered_futures" else None
 
 
 def escape_markup(text):
@@ -514,13 +541,11 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     validate_budget_forcing(exp)
     validate_selection(exp)
     validate_memory_preamble(exp)
-    if exp.get("budget_forcing") is not None and arm != "plain_ar":
-        raise ValueError("budget_forcing is only supported for plain_ar")
     max_memory_events = exp.get("max_memory_events")
     min_body = exp.get("min_branch_body_tokens") or 0
     max_body = exp.get("max_branch_body_tokens")
     memory_ttl = exp.get("memory_ttl_tokens")
-    forcing = exp.get("budget_forcing")
+    forcing = budget_forcing_for_arm(exp, arm)
     cap = exp["max_output_tokens"]
     forced_at = None
     decoder = StreamDecoder(model, exp)
@@ -630,6 +655,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             and phase == "thinking"
             and len(body) >= forcing["force_at_body_tokens"]
         ):
+            if len(body) != forcing["force_at_body_tokens"]:
+                raise ValueError("Budget forcing boundary crossed; refusing to lose answer reserve")
             # Budget forcing: one persisted </think> token at the current body position.
             force_request = {
                 "root_sha256": digest(state.ids),

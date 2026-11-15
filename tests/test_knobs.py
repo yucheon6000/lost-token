@@ -107,6 +107,7 @@ class KnobTests(unittest.TestCase):
             min_branch_body_tokens=0,
             memory_ttl_tokens=None,
             budget_forcing=None,
+            ours_budget_forcing=None,
         )
         self.assertEqual(self.default_runs(), absent)
 
@@ -303,6 +304,152 @@ class KnobTests(unittest.TestCase):
             )
 
     # ---- audit --------------------------------------------------------------
+    def ours_forcing(self, text=None):
+        self.cfg["experiment"].update(
+            max_output_tokens=16,
+            max_branch_body_tokens=4,
+            ours_budget_forcing={"force_at_body_tokens": 5, "answer_tokens": 9},
+        )
+        return self.scripted(text if text is not None else "DDDDD" + chr(126) + self.ANSWER)
+
+    def ours_patches(self, sample):
+        class Encoder:
+            def encode(self, texts):
+                return [[float(i == j) for j in range(len(texts))] for i in range(len(texts))], sum(
+                    map(len, texts)
+                )
+
+        return [
+            patch.object(StreamDecoder, "candidates", self.eligible),
+            patch.object(StreamDecoder, "sample", sample),
+            patch.object(self.model, "semantic_encoder", Encoder()),
+        ]
+
+    def ours_run(self, store, sample):
+        from contextlib import ExitStack
+
+        with ExitStack() as stack:
+            for patcher in self.ours_patches(sample):
+                stack.enter_context(patcher)
+            return run_condition(
+                self.model, store, self.row, self.cfg, "test", "filtered_futures", lambda _: None
+            )
+
+    def test_ours_reserves_answer_and_audits_full_selected_rollouts(self):
+        sample = self.ours_forcing()
+        reviewed, result = self.audited("filtered_futures", self.ours_patches(sample))
+        self.assertEqual(reviewed["completed_conditions"], 1)
+        self.assertEqual(result["forced_think_end_at"], 5)
+        self.assertEqual(result["body_ids"][5], 126)
+        self.assertEqual(len(result["body_ids"]), 15)
+        self.assertEqual(result["prediction"], "2")
+        self.assertTrue(result["correct"])
+        self.assertEqual([e["body_position"] for e in result["events"]], [1, 3])
+        for event in result["events"]:
+            selected = next(p for p in event["previews"] if p["rank"] == event["selected_rank"])
+            self.assertEqual(event["committed_ids"], selected["ids"])
+            self.assertEqual(len(selected["ids"]), 2)
+            self.assertTrue(event["memory_ids"])
+
+    def test_ours_natural_thinking_end_is_not_forced(self):
+        sample = self.ours_forcing(text="ab" + chr(126) + self.ANSWER)
+        expected = self.ours_run(RunStore(self.root / "natural-reserve", {}), sample)
+        self.assertIsNone(expected["forced_think_end_at"])
+        self.assertTrue(expected["correct"])
+        self.cfg["experiment"].pop("ours_budget_forcing")
+        original = self.ours_run(RunStore(self.root / "natural-original", {}), sample)
+        expected.pop("forced_think_end_at")
+        self.assertEqual(strip_time(expected), strip_time(original))
+
+    def test_ours_forcing_recovers_missing_answer_under_same_body_cap(self):
+        self.ours_forcing()
+
+        def answer_after_close(decoder, state, seed):
+            if 126 in state.generated_ids:
+                index = len(state.generated_ids) - state.generated_ids.index(126) - 1
+                if index < len(self.ANSWER):
+                    return ord(self.ANSWER[index]), -1.0
+            return 68, -1.0
+
+        reserved = self.ours_run(RunStore(self.root / "recovered", {}), answer_after_close)
+        self.cfg["experiment"].pop("ours_budget_forcing")
+        original = self.ours_run(RunStore(self.root / "unclosed", {}), answer_after_close)
+        self.assertFalse(original["thinking_complete"])
+        self.assertIsNone(original["prediction"])
+        self.assertEqual(len(original["body_ids"]), 16)
+        self.assertEqual(reserved["prediction"], "2")
+        self.assertTrue(reserved["correct"])
+        self.assertLessEqual(len(reserved["body_ids"]), 16)
+
+    def test_ours_forcing_leaves_ar_and_other_ablation_checkpoints_identical(self):
+        sample = self.ours_forcing()
+        self.cfg["experiment"].pop("ours_budget_forcing")
+        for arm in ("plain_ar", "all_futures"):
+            original = self.run_fp(arm + "-old", lambda s: self.plain(s, sample, arm=arm))
+            self.cfg["experiment"]["ours_budget_forcing"] = {
+                "force_at_body_tokens": 5,
+                "answer_tokens": 9,
+            }
+            current = self.run_fp(arm + "-new", lambda s: self.plain(s, sample, arm=arm))
+            self.assertEqual(original, current)
+            self.cfg["experiment"].pop("ours_budget_forcing")
+
+    def test_ours_forcing_resume_preserves_tokens_memory_and_saved_calls(self):
+        sample = self.ours_forcing()
+        expected = self.ours_run(RunStore(self.root / "ours-expected", {}), sample)
+        for stop in (1, 5, 12, 20, 28, 36):
+            paused = PausableStore(self.root / f"ours-resume-{stop}", {}, stop_after_calls=stop)
+            try:
+                self.ours_run(paused, sample)
+            except RequestedPause:
+                pass
+            hashes = {p.name: file_digest(p) for p in (paused.path / "checkpoints").glob("*.json")}
+            actual = self.ours_run(RunStore(paused.path, {}, resume=True), sample)
+            self.assertEqual(strip_time(actual), strip_time(expected))
+            self.assertTrue(
+                all(
+                    file_digest(paused.path / "checkpoints" / n) == sha for n, sha in hashes.items()
+                )
+            )
+
+    def test_ours_forcing_audit_rejects_false_closure_position(self):
+        from lost_tokens.audit import audit
+
+        sample = self.ours_forcing()
+        self.audited("filtered_futures", self.ours_patches(sample))
+        run = self.root / "audit-filtered_futures"
+        path = next(
+            p
+            for p in (run / "checkpoints").glob("*.json")
+            if json.loads(p.read_text())["payload"]["label"].endswith("/filtered_futures/complete")
+        )
+        item = json.loads(path.read_text())
+        item["payload"]["result"]["forced_think_end_at"] = 6
+        item["sha256"] = digest(item["payload"])
+        atomic_json(path, item)
+        with self.assertRaises(AssertionError):
+            audit(run, partial=True, model=self.model)
+
+    def test_ours_forcing_rejects_overflow_and_rollout_boundary_conflicts(self):
+        from lost_tokens.recurrent_memory import validate_budget_forcing
+
+        self.ours_forcing()
+        original = copy.deepcopy(self.cfg["experiment"])
+        for key, value in (
+            ("ours_budget_forcing", {"force_at_body_tokens": 5, "answer_tokens": 11}),
+            ("ours_budget_forcing", {"force_at_body_tokens": True, "answer_tokens": 9}),
+            ("ours_budget_forcing", {"force_at_body_tokens": 5, "answer_tokens": -1}),
+            ("ours_budget_forcing", {"force_at_body_tokens": 5}),
+            ("max_branch_body_tokens", None),
+            ("max_branch_body_tokens", 5),
+            ("budget_forcing", {"force_at_body_tokens": 5, "answer_tokens": 9}),
+        ):
+            with self.subTest(key=key, value=value):
+                exp = copy.deepcopy(original)
+                exp[key] = value
+                with self.assertRaises(ValueError):
+                    validate_budget_forcing(exp)
+
     def audited(self, arm, patches):
         from lost_tokens.audit import audit
 

@@ -10,6 +10,7 @@ from transformers import AutoTokenizer, GenerationConfig
 
 from lost_tokens.core import atomic_json, derived_seed, digest, file_digest, sum_cost
 from lost_tokens.recurrent_memory import (
+    budget_forcing_for_arm,
     compact_history,
     final_response,
     instruction,
@@ -87,7 +88,7 @@ def audit(run, partial=False, model=None):
             step = 0
             compactions = []
             body_guards = []
-            forcing = exp.get("budget_forcing")
+            forcing = budget_forcing_for_arm(exp, arm)
             max_memory_events = exp.get("max_memory_events")
             min_body = exp.get("min_branch_body_tokens") or 0
             max_body = exp.get("max_branch_body_tokens")
@@ -220,6 +221,7 @@ def audit(run, partial=False, model=None):
                     and phase == "thinking"
                     and len(body) >= forcing["force_at_body_tokens"]
                 ):
+                    assert len(body) == forcing["force_at_body_tokens"]
                     record = records[force_label]
                     assert record["request"] == {
                         "root_sha256": digest(context),

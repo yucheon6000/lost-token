@@ -196,6 +196,18 @@ Optional keys that are off when absent or `null`: `max_memory_events`,
 `min_branch_body_tokens`, `memory_ttl_tokens` and `budget_forcing`
 (`{"force_at_body_tokens", "answer_tokens"}`, `plain_ar` only).
 
+`ours_budget_forcing` accepts the same two fields but applies only to
+`filtered_futures` (Ours), leaving AR and the other ablation arms unchanged.
+Use `configs/vllm-ours-answer-reserve.json` to retain the improved Ours method
+while reserving the final 2,048 body tokens: at position 30,720, if thinking is
+still open, insert one `</think>` token and generate up to 2,047 answer tokens.
+The total body cap stays 32,768; natural earlier endings are left alone.
+The branch cap must leave room for every selected rollout to finish before this
+boundary. The original rollout is always committed verbatim. Do not combine
+this option with AR `budget_forcing`. Forced closure is recorded and audited;
+measure extracted answers and accuracy rather than treating an inserted thinking
+end marker as evidence of a correct solution.
+
 ## Data and configuration
 
 | CLI name | Dataset | Questions |
