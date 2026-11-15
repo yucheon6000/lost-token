@@ -292,6 +292,48 @@ class LookaheadRunTests(unittest.TestCase):
         self.assertEqual(len(result["events"]), 2)
         self.assertEqual(reviewed["events"], 2)
 
+    def test_branch_cap_stops_a_scan_that_crosses_the_boundary(self):
+        self.lookahead(max_branch_body_tokens=5, max_output_tokens=12, checkpoint_body_tokens=8)
+
+        def delayed(decoder, state):
+            dist = self.eligible(decoder, state)
+            if len(state.generated_ids) < 6:
+                return {**dist, "eligible": False, "items": []}
+            return dist
+
+        reviewed, result = self.audited(
+            "all_futures",
+            [
+                patch.object(StreamDecoder, "candidates", delayed),
+                patch.object(StreamDecoder, "sample", lambda *_: (68, -1.0)),
+            ],
+        )
+        self.assertEqual(result["events"], [])
+        self.assertEqual(reviewed["events"], 0)
+        self.assertEqual(len(result["body_ids"]), 12)
+        self.assertTrue(all(c["body_position"] < 5 for c in result["checks"]))
+
+    def test_rollout_chosen_before_cap_is_committed_without_truncation(self):
+        self.lookahead(max_branch_body_tokens=5, max_output_tokens=12, checkpoint_body_tokens=8)
+
+        def delayed(decoder, state):
+            dist = self.eligible(decoder, state)
+            if len(state.generated_ids) < 4:
+                return {**dist, "eligible": False, "items": []}
+            return dist
+
+        reviewed, result = self.audited(
+            "all_futures",
+            [
+                patch.object(StreamDecoder, "candidates", delayed),
+                patch.object(StreamDecoder, "sample", lambda *_: (68, -1.0)),
+            ],
+        )
+        self.assertEqual([e["body_position"] for e in result["events"]], [4])
+        self.assertEqual(len(result["events"][0]["committed_ids"]), 2)
+        self.assertEqual(reviewed["events"], 1)
+        self.assertEqual(len(result["body_ids"]), 12)
+
     def test_audit_detects_tampered_selection(self):
         from lost_tokens.audit import audit
         from lost_tokens.core import atomic_json, digest

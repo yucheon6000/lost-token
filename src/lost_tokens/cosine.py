@@ -141,7 +141,9 @@ def compare_rollouts(encoder, notes, threshold, min_threshold=None):
         embeddings[i] = vectors[a]
         for b, j in enumerate(indices):
             matrix[i][j] = dense[a][b]
-    retained, decisions = select_distinct(ranks, matrix, valid, threshold, min_threshold=min_threshold)
+    retained, decisions = select_distinct(
+        ranks, matrix, valid, threshold, min_threshold=min_threshold
+    )
     elapsed = time.monotonic() - started
     result = {
         "method": "embedding_cosine",

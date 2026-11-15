@@ -264,6 +264,8 @@ def audit(run, partial=False, model=None):
                 if scan and len(body) < next_fork_position:
                     expected_count = min(expected_count, next_fork_position - len(body))
                     scan = False
+                if scan and max_body is not None:
+                    expected_count = min(expected_count, max_body - len(body))
                 assert records[tag + f"/step-{step}/scan"]["request"]["count"] == expected_count
                 out = segment(f"step-{step}/scan", scan)
                 marker = out["stop_marker"]
@@ -276,6 +278,7 @@ def audit(run, partial=False, model=None):
                     has_reasoning_token = True
                 if out["fork"]:
                     event = records[tag + f"/event-{len(events)}/complete"]["result"]
+                    assert max_body is None or len(body) < max_body
                     assert event == result["events"][len(events)]
                     assert event["body_position"] == len(body) and event["root_sha256"] == digest(
                         context

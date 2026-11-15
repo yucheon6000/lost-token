@@ -489,7 +489,10 @@ def validate_selection(exp):
     if (
         "contradiction_penalty" in spec
         and spec["contradiction_penalty"] is not None
-        and (type(spec["contradiction_penalty"]) not in (int, float) or spec["contradiction_penalty"] < 0)
+        and (
+            type(spec["contradiction_penalty"]) not in (int, float)
+            or spec["contradiction_penalty"] < 0
+        )
     ):
         raise ValueError("Invalid contradiction_penalty")
     if spec["min_tokens"] >= exp["branch_tokens"]:
@@ -686,6 +689,10 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             # exact boundary instead of skipping the rest of a checkpoint chunk.
             count = min(count, next_fork_position - len(body))
             scan = False
+        if scan and max_body is not None:
+            # The scan itself must stop at the cap, even when a checkpoint
+            # starts below it. A previously chosen rollout may still cross it.
+            count = min(count, max_body - len(body))
         segment = persisted_segment(f"step-{step}/scan", count, scan)
         marker = segment["stop_marker"]
         if marker and marker.startswith("</"):

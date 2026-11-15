@@ -339,6 +339,14 @@ def export_reports(study, work, output):
             "copied into inference checkpoints. See baseline-reference.json for IDs, outcomes and provenance.",
             "",
         ]
+    elif study.get("allow_unmeasured_baseline"):
+        method += [
+            "## Baseline availability",
+            "",
+            "AR baseline was not measured or reused in this study. The user explicitly requested ours-only evaluation.",
+            "Report ours accuracy on the frozen cohort; do not claim a matched baseline improvement.",
+            "",
+        ]
     method += [
         "## Environment",
         "",
@@ -360,6 +368,8 @@ def export_reports(study, work, output):
             scores[arm] = {"n": score.get("n", 0), "correct": score.get("correct", 0)}
         if reference:
             scores["baseline"] = frozen_baseline.score(reference, task)
+        elif study.get("allow_unmeasured_baseline"):
+            scores["baseline"] = None
         rows.append(
             {
                 "dataset": task,
@@ -445,6 +455,11 @@ def main():
         type=Path,
         help="Immutable baseline-reference.json from your first study; use with --arms ours",
     )
+    parser.add_argument(
+        "--allow-unmeasured-baseline",
+        action="store_true",
+        help="Explicit ours-only evaluation without a reference; report AR as unmeasured",
+    )
     parser.add_argument("--profile", help="Registered hardware profile: l40s-4gpu or pro6000-8gpu")
     parser.add_argument(
         "--shared-root",
@@ -501,7 +516,9 @@ def main():
         return
     if args.baseline_ref and args.arms != ["ours"]:
         parser.error("--baseline-ref requires --arms ours; baseline must not be rerun")
-    if args.arms == ["ours"] and not args.baseline_ref:
+    if args.allow_unmeasured_baseline and (args.arms != ["ours"] or args.baseline_ref):
+        parser.error("--allow-unmeasured-baseline requires --arms ours and no --baseline-ref")
+    if args.arms == ["ours"] and not args.baseline_ref and not args.allow_unmeasured_baseline:
         parser.error("Ours-only studies require your frozen --baseline-ref")
     if args.profile is None and not plan_path.exists():
         parser.error("New studies require --profile l40s-4gpu or --profile pro6000-8gpu")
@@ -568,6 +585,7 @@ def main():
             or ("task_specs" in study and study["task_specs"] != resolved_specs)
             or study.get("arms", ["baseline", "ours"]) != args.arms
             or study.get("baseline_reference") != baseline_reference
+            or study.get("allow_unmeasured_baseline", False) != args.allow_unmeasured_baseline
         ):
             parser.error(
                 "Frozen study changed; restore original source/config/environment or use a new branch/date"
@@ -615,6 +633,7 @@ def main():
             "task_specs": resolved_specs,
             "arms": args.arms,
             "baseline_reference": baseline_reference,
+            "allow_unmeasured_baseline": args.allow_unmeasured_baseline,
             "source": source_fingerprint(),
             "gpus": args.gpus,
             "benchmarks": tasks,

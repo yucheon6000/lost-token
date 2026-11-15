@@ -216,6 +216,71 @@ class SharedEvaluationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             shared.load_profile(shared.SHARED_ROOT, "unknown")
 
+    def test_explicit_ours_only_without_reference_never_launches_baseline(self):
+        with tempfile.TemporaryDirectory() as folder:
+            work = Path(folder)
+            _, cohort = shared.load_profile(shared.SHARED_ROOT, "l40s-4gpu")
+            manifest = json.loads((cohort / "manifest.json").read_text())
+            env = {"gpu_count": 4, "gpus": [{"name": "NVIDIA L40S"}] * 4, "execution": {}}
+            commands = []
+            argv = [
+                "shared_eval.py",
+                "run",
+                "--name",
+                "tester",
+                "--date",
+                "2026-11-15",
+                "--work-dir",
+                folder,
+                "--profile",
+                "l40s-4gpu",
+                "--gpus",
+                "0,1,2,3",
+                "--shared-root",
+                str(shared.SHARED_ROOT.resolve()),
+                "--benchmarks",
+                "aime25",
+                "--config",
+                str(shared.REPO / "configs/vllm-ours.json"),
+                "--arms",
+                "ours",
+                "--allow-unmeasured-baseline",
+                "--method-description",
+                "ours only",
+                "--hypothesis",
+                "evaluate absolute accuracy",
+            ]
+            with (
+                patch.object(shared, "REPO", work),
+                patch.object(shared.sys, "argv", argv),
+                patch.object(shared, "verify_cohort", return_value=manifest),
+                patch.object(shared, "source_fingerprint", return_value={"generation.py": "fixed"}),
+                patch.object(shared, "collect_environment", return_value=env),
+                patch.object(shared, "require_free_gpus"),
+                patch.object(shared, "export_reports"),
+                patch.object(
+                    shared.subprocess,
+                    "check_output",
+                    side_effect=lambda cmd, **kw: "tester-2026-11-15"
+                    if cmd[:2] == ["git", "branch"]
+                    else ("" if cmd[:2] == ["git", "status"] else "a" * 40),
+                ),
+                patch.object(
+                    shared.subprocess, "run", side_effect=lambda cmd, **kw: commands.append(cmd)
+                ),
+            ):
+                shared.main()
+            self.assertEqual(len(commands), 1)
+            command = commands[0]
+            self.assertEqual(
+                command[command.index("--arms") + 1 : command.index("--run-name")], ["ours"]
+            )
+            plan = json.loads(
+                (work / "shared-studies/tester-2026-11-15/study-plan.json").read_text()
+            )
+            self.assertIsNone(plan["baseline_reference"])
+            self.assertTrue(plan["allow_unmeasured_baseline"])
+
     def test_profile_manifest_tampering_is_rejected(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
