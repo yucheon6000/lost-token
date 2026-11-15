@@ -1,0 +1,95 @@
+{
+  "code_branch": "yucheon-2026-11-15",
+  "code_commit": "0e7fa67be2a776f312af8fe552e70b3906e5e34b",
+  "cohort_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba",
+  "cohort_version": "l40s-2h-v1",
+  "formal_wall_seconds_including_audits": 20629.20391178131,
+  "hardware_profile": "l40s-4gpu",
+  "official_case_count": 2139,
+  "original_method_commit": "0a7d8a29b8cee89295ba5ca30f85a0e26ba91384",
+  "preflight": {
+    "all_answers_extracted": true,
+    "completed": 4,
+    "correct": 4,
+    "status": {
+      "at": "2026-11-15T08:09:07.966425+00:00",
+      "audits_passed": true,
+      "state": "complete"
+    }
+  },
+  "rows": [
+    {
+      "accuracy": 0.7,
+      "audits_passed": true,
+      "batch_size_per_gpu": 4,
+      "body_tokens": 620870,
+      "correct": 21,
+      "fork_events": 1959,
+      "n": 30,
+      "phase_seconds": 3310.946923494339,
+      "task": "aime25",
+      "thinking_complete": 24
+    },
+    {
+      "accuracy": 0.52,
+      "audits_passed": true,
+      "batch_size_per_gpu": 4,
+      "body_tokens": 599287,
+      "correct": 13,
+      "fork_events": 1879,
+      "n": 25,
+      "phase_seconds": 3280.1694946289062,
+      "task": "hmmt25",
+      "thinking_complete": 20
+    },
+    {
+      "accuracy": 0.9537528430629265,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 2098319,
+      "correct": 1258,
+      "fork_events": 6922,
+      "n": 1319,
+      "phase_seconds": 4465.242671489716,
+      "task": "gsm8k",
+      "thinking_complete": 1319
+    },
+    {
+      "accuracy": 0.5666666666666667,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 698696,
+      "correct": 51,
+      "fork_events": 2386,
+      "n": 90,
+      "phase_seconds": 1975.9548704624176,
+      "task": "gpqa",
+      "thinking_complete": 90
+    },
+    {
+      "accuracy": 0.984,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 782258,
+      "correct": 123,
+      "fork_events": 2653,
+      "n": 125,
+      "phase_seconds": 3087.367198228836,
+      "task": "math500",
+      "thinking_complete": 125
+    },
+    {
+      "accuracy": 0.8,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 1552854,
+      "correct": 440,
+      "fork_events": 5098,
+      "n": 550,
+      "phase_seconds": 3648.4649364948273,
+      "task": "mmlu",
+      "thinking_complete": 550
+    }
+  ],
+  "scope": "ours_only; no AR measured or reused; no paired improvement claim"
+}

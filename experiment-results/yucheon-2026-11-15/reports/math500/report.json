@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-15T12:50:35.377061+00:00",
+  "limitations": [
+    "Common completed sets are completion-selected when a time budget is used.",
+    "32K-input LongBench is not a full-context official benchmark score.",
+    "Selected-rollout commit changes the main continuation as well as alternative memory."
+  ],
+  "own": {
+    "ours": {
+      "all": {
+        "accuracy": 0.984,
+        "body_tokens": 782258,
+        "correct": 123,
+        "fork_events": 2653,
+        "n": 125,
+        "thinking_complete": 125
+      },
+      "math500": {
+        "accuracy": 0.984,
+        "body_tokens": 782258,
+        "correct": 123,
+        "fork_events": 2653,
+        "n": 125,
+        "thinking_complete": 125
+      }
+    }
+  },
+  "paired": {
+    "all": {
+      "accuracy": {
+        "ours": 0.984
+      },
+      "correct": {
+        "ours": 123
+      },
+      "n": 125
+    },
+    "math500": {
+      "accuracy": {
+        "ours": 0.984
+      },
+      "correct": {
+        "ours": 123
+      },
+      "n": 125
+    }
+  },
+  "schedule": {
+    "ours": {
+      "deadline_epoch": null,
+      "start_epoch": 1794743831.886505
+    }
+  },
+  "smoke": false
+}

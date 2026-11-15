@@ -102,6 +102,15 @@ class ResultTests(unittest.TestCase):
         self.assertIn("60.00% (18/30)", md)
         self.assertIn("full-v1", table)
 
+    def test_full_ours_only_retains_unmeasured_baseline(self):
+        self.full_baseline()
+        self.item["rows"][0].update(baseline=None, ours={"n": 30, "correct": 18})
+        self.write()
+        validate(self.folder, self.root)
+        md, _ = build(self.root)
+        self.assertIn("ours 완료 · baseline 미측정", md)
+        self.assertIn("| 미측정 | 60.00% (18/30) | — |", md)
+
     def test_full_cohort_rejects_wrong_hash_coverage_duplicate_and_count(self):
         manifest, path = self.full_baseline()
         original = copy.deepcopy(manifest)
@@ -155,6 +164,27 @@ class ResultTests(unittest.TestCase):
         md, table = build(self.root)
         self.assertIn("## test-v1", md)
         self.assertIn("test-hardware", table)
+
+    def test_audited_ours_only_is_complete_without_baseline_or_delta(self):
+        self.shared_profile()
+        validate(self.folder, self.root)
+        md, table = build(self.root)
+        self.assertIn("ours 완료 · baseline 미측정", md)
+        self.assertIn("| 미측정 | 60.00% (18/30) | — |", md)
+        self.assertNotIn("부분/미완료", md)
+        self.assertNotIn("baseline 완료 · ours 미측정", md)
+
+        self.item["rows"][0]["audits_passed"] = False
+        self.write()
+        md, _ = build(self.root)
+        self.assertIn("부분/미완료", md)
+        self.assertNotIn("ours 완료 · baseline 미측정", md)
+
+        self.item["rows"][0].update(audits_passed=True, ours={"n": 29, "correct": 18})
+        self.write()
+        md, _ = build(self.root)
+        self.assertIn("부분/미완료", md)
+        self.assertNotIn("ours 완료 · baseline 미측정", md)
 
     def test_profile_rejects_wrong_hardware_batch_manifest_and_missing_profile(self):
         self.shared_profile()

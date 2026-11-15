@@ -267,8 +267,13 @@ def build(root):
                 "baseline 완료 · ours 미측정"
                 if a and not b and a["n"] == row["n_required"] and row.get("audits_passed")
                 else (
-                    "완료" if complete else (
-                        "ablation·AR 미측정" if s["scope"] == "historical-ablation" and not a else "부분/미완료"
+                    "ours 완료 · baseline 미측정"
+                    if s["scope"] in ("shared", "full")
+                    and not a and b and b["n"] == row["n_required"] and row.get("audits_passed")
+                    else (
+                        "완료" if complete else (
+                            "ablation·AR 미측정" if s["scope"] == "historical-ablation" and not a else "부분/미완료"
+                        )
                     )
                 )
             )
