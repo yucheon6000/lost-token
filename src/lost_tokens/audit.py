@@ -90,6 +90,7 @@ def audit(run, partial=False, model=None):
             forcing = exp.get("budget_forcing")
             max_memory_events = exp.get("max_memory_events")
             min_body = exp.get("min_branch_body_tokens") or 0
+            max_body = exp.get("max_branch_body_tokens")
             memory_ttl = exp.get("memory_ttl_tokens")
             cap = exp["max_output_tokens"]
             forced_at = None
@@ -245,6 +246,8 @@ def audit(run, partial=False, model=None):
                     and sum(bool(e["memory_ids"]) for e in events) >= max_memory_events
                 ):
                     scan = False
+                if scan and max_body is not None and len(body) >= max_body:
+                    scan = False
                 next_fork_position = (
                     (events[-1]["body_position"] + exp["min_branch_interval_tokens"])
                     if events
@@ -351,6 +354,8 @@ def audit(run, partial=False, model=None):
                         }
                         assert record["result"] == gate and gate["method"] == "embedding_cosine"
                         assert gate["threshold"] == spec["similarity"]["threshold"]
+                        if spec["similarity"].get("min_threshold") is not None:
+                            assert gate.get("min_threshold") == spec["similarity"]["min_threshold"]
                         assert (
                             gate["texts"] == record["request"]["texts"]
                             and gate["ranks"] == record["request"]["ranks"]
@@ -377,6 +382,7 @@ def audit(run, partial=False, model=None):
                             gate["similarity_matrix"],
                             gate["valid"],
                             gate["threshold"],
+                            gate.get("min_threshold"),
                         )
                         assert ranks == gate["retained_ranks"] and decisions == gate["decisions"]
                         costs.append(gate)

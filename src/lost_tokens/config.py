@@ -72,6 +72,7 @@ def validate_spec(spec):
     for key, floor in (
         ("max_memory_events", 1),
         ("min_branch_body_tokens", 0),
+        ("max_branch_body_tokens", 1),
         ("memory_ttl_tokens", 1),
     ):
         value = exp.get(key)
@@ -95,6 +96,9 @@ def validate_spec(spec):
     similarity = spec["similarity"]
     if not -1 <= similarity["threshold"] <= 1:
         raise ValueError("Invalid cosine threshold")
+    if "min_threshold" in similarity and similarity["min_threshold"] is not None:
+        if not -1 <= similarity["min_threshold"] <= similarity["threshold"]:
+            raise ValueError("Invalid cosine min_threshold")
     if (
         similarity["text_scope"] != "rollout_only"
         or similarity["comparison"] != "retained_candidates"

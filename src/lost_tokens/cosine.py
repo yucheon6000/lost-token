@@ -75,10 +75,12 @@ def cosine_matrix(vectors):
     return scores.tolist()
 
 
-def select_distinct(ranks, matrix, valid, threshold):
+def select_distinct(ranks, matrix, valid, threshold, min_threshold=None):
     """Greedy by probability rank; compare each option to all retained options."""
     if not -1 <= threshold <= 1:
         raise ValueError("Cosine threshold outside [-1, 1]")
+    if min_threshold is not None and not -1 <= min_threshold <= threshold:
+        raise ValueError("Cosine min_threshold outside [-1, threshold]")
     retained = [0] if valid and valid[0] else []
     decisions = []
     for index in range(1, len(ranks)):
@@ -96,12 +98,21 @@ def select_distinct(ranks, matrix, valid, threshold):
             continue
         closest = max(retained, key=lambda j: matrix[index][j])
         score = matrix[index][closest]
-        drop = score >= threshold
+        ref_score = matrix[index][0]
+        if score >= threshold:
+            drop = True
+            reason = "cosine_above_threshold"
+        elif min_threshold is not None and ref_score < min_threshold:
+            drop = True
+            reason = "cosine_below_min_threshold"
+        else:
+            drop = False
+            reason = "cosine_below_threshold"
         decisions.append(
             {
                 "rank": ranks[index],
                 "drop_alternative": drop,
-                "reason": "cosine_above_threshold" if drop else "cosine_below_threshold",
+                "reason": reason,
                 "compared_ranks": [ranks[j] for j in retained],
                 "closest_rank": ranks[closest],
                 "max_cosine": score,
@@ -114,7 +125,7 @@ def select_distinct(ranks, matrix, valid, threshold):
     return [ranks[i] for i in retained if i != 0], decisions
 
 
-def compare_rollouts(encoder, notes, threshold):
+def compare_rollouts(encoder, notes, threshold, min_threshold=None):
     started = time.monotonic()
     texts = [n["text"] for n in notes]
     valid = [bool(t.strip()) for t in texts]
@@ -130,9 +141,9 @@ def compare_rollouts(encoder, notes, threshold):
         embeddings[i] = vectors[a]
         for b, j in enumerate(indices):
             matrix[i][j] = dense[a][b]
-    retained, decisions = select_distinct(ranks, matrix, valid, threshold)
+    retained, decisions = select_distinct(ranks, matrix, valid, threshold, min_threshold=min_threshold)
     elapsed = time.monotonic() - started
-    return {
+    result = {
         "method": "embedding_cosine",
         "texts": texts,
         "ranks": ranks,
@@ -152,3 +163,6 @@ def compare_rollouts(encoder, notes, threshold):
             "seconds": elapsed,
         },
     }
+    if min_threshold is not None:
+        result["min_threshold"] = min_threshold
+    return result

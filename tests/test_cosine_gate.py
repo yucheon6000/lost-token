@@ -51,6 +51,22 @@ class CosineTests(unittest.TestCase):
         self.assertEqual(result["retained_ranks"], [])
         self.assertEqual(result["embedding_cost"]["texts"], 0)
 
+    def test_min_threshold_filters_out_drift(self):
+        # 1 vs 2 has cosine 0.5 (between min_threshold=0.2 and threshold=0.9) -> kept
+        # 1 vs 3 has cosine 0.1 (below min_threshold=0.2) -> dropped
+        matrix = [[1.0, 0.5, 0.1], [0.5, 1.0, 0.3], [0.1, 0.3, 1.0]]
+        ranks, decisions = select_distinct([1, 2, 3], matrix, [True] * 3, threshold=0.9, min_threshold=0.2)
+        self.assertEqual(ranks, [2])
+        self.assertFalse(decisions[0]["drop_alternative"])
+        self.assertTrue(decisions[1]["drop_alternative"])
+        self.assertEqual(decisions[1]["reason"], "cosine_below_min_threshold")
+
+    def test_min_threshold_invalid_range_raises(self):
+        with self.assertRaises(ValueError):
+            select_distinct([1, 2], [[1.0, 0.5], [0.5, 1.0]], [True, True], threshold=0.5, min_threshold=0.8)
+        with self.assertRaises(ValueError):
+            select_distinct([1, 2], [[1.0, 0.5], [0.5, 1.0]], [True, True], threshold=0.5, min_threshold=-1.5)
+
     def test_invalid_vectors_rejected(self):
         for vectors in ([], [[0.0, 0.0]], [[math.nan, 1.0]]):
             with self.assertRaises(ValueError):

@@ -108,6 +108,20 @@ class SelectRolloutTests(unittest.TestCase):
         self.assertAlmostEqual(result["scores"][1]["value"], -0.2)
         self.assertFalse(select_rollout(previews, self.exp(), self.EOS)["flipped"])
 
+    def test_contradiction_penalty_applies_to_doubt_markers(self):
+        previews = [
+            preview(1, [-0.1, -0.5], text="Wait, this is a contradiction"),
+            preview(2, [-1.0, -0.55], text="Let us assume k is even"),
+        ]
+        no_penalty = select_rollout(previews, self.exp(), self.EOS)
+        self.assertFalse(no_penalty["flipped"])
+        self.assertEqual(no_penalty["selected_rank"], 1)
+
+        with_penalty = select_rollout(previews, self.exp(contradiction_penalty=0.2), self.EOS)
+        self.assertTrue(with_penalty["flipped"])
+        self.assertEqual(with_penalty["selected_rank"], 2)
+        self.assertAlmostEqual(with_penalty["scores"][0]["value"], -0.7)
+
 
 class LookaheadRunTests(unittest.TestCase):
     setUpClass = classmethod(base.RecurrentTests.setUpClass.__func__)
@@ -264,6 +278,19 @@ class LookaheadRunTests(unittest.TestCase):
             )
             self.assertEqual(reviewed["events"], 4)
             self.assertEqual([e["selected_rank"] for e in result["events"]], [2, 2, 2, 1])
+
+    def test_max_branch_body_tokens_stops_branching_and_audits(self):
+        self.lookahead(max_branch_body_tokens=4)
+        reviewed, result = self.audited(
+            "all_futures",
+            [
+                patch.object(StreamDecoder, "candidates", self.eligible),
+                patch.object(StreamDecoder, "sample", lambda *_: (68, -1.0)),
+                self.biased_rollout(),
+            ],
+        )
+        self.assertEqual(len(result["events"]), 2)
+        self.assertEqual(reviewed["events"], 2)
 
     def test_audit_detects_tampered_selection(self):
         from lost_tokens.audit import audit

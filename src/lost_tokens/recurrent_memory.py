@@ -426,11 +426,17 @@ def select_rollout(previews, exp, eos_ids):
             reasons.append("terminal")
         if not preview["text"].strip():
             reasons.append("blank")
+        val = rollout_statistic(preview, spec["statistic"])
+        if val is not None and spec.get("contradiction_penalty"):
+            text_lower = preview["text"].lower()
+            doubt_markers = ("wait,", "wait.", "hold on", "contradiction", "impossible", "mistake")
+            if any(m in text_lower for m in doubt_markers):
+                val = val - spec["contradiction_penalty"]
         scores.append(
             {
                 "rank": preview["rank"],
                 "continuation_tokens": continuation,
-                "value": rollout_statistic(preview, spec["statistic"]),
+                "value": val,
                 "eligible": not reasons,
                 "reasons": reasons,
             }
@@ -445,7 +451,7 @@ def select_rollout(previews, exp, eos_ids):
         ]
         if better:
             selected = max(better, key=lambda s: (s["value"], -s["rank"]))["rank"]
-    return {
+    res = {
         "rule": "lookahead",
         "statistic": spec["statistic"],
         "margin": spec["margin"],
@@ -454,6 +460,9 @@ def select_rollout(previews, exp, eos_ids):
         "flipped": selected != reference["rank"],
         "scores": scores,
     }
+    if "contradiction_penalty" in spec:
+        res["contradiction_penalty"] = spec["contradiction_penalty"]
+    return res
 
 
 def validate_selection(exp):
@@ -464,9 +473,12 @@ def validate_selection(exp):
         if spec is not None:
             raise ValueError("lookahead settings require selection = lookahead")
         return
+    allowed_keys = {"statistic", "margin", "min_tokens", "contradiction_penalty"}
+    required_keys = {"statistic", "margin", "min_tokens"}
     if (
         not isinstance(spec, dict)
-        or set(spec) != {"statistic", "margin", "min_tokens"}
+        or not required_keys.issubset(set(spec))
+        or not set(spec).issubset(allowed_keys)
         or spec["statistic"] not in LOOKAHEAD_STATISTICS
         or type(spec["margin"]) not in (int, float)
         or spec["margin"] < 0
@@ -474,6 +486,12 @@ def validate_selection(exp):
         or spec["min_tokens"] < 1
     ):
         raise ValueError("Invalid lookahead")
+    if (
+        "contradiction_penalty" in spec
+        and spec["contradiction_penalty"] is not None
+        and (type(spec["contradiction_penalty"]) not in (int, float) or spec["contradiction_penalty"] < 0)
+    ):
+        raise ValueError("Invalid contradiction_penalty")
     if spec["min_tokens"] >= exp["branch_tokens"]:
         raise ValueError("lookahead.min_tokens must be below branch_tokens")
 
@@ -497,6 +515,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
         raise ValueError("budget_forcing is only supported for plain_ar")
     max_memory_events = exp.get("max_memory_events")
     min_body = exp.get("min_branch_body_tokens") or 0
+    max_body = exp.get("max_branch_body_tokens")
     memory_ttl = exp.get("memory_ttl_tokens")
     forcing = exp.get("budget_forcing")
     cap = exp["max_output_tokens"]
@@ -655,6 +674,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             and sum(bool(e["memory_ids"]) for e in events) >= max_memory_events
         ):
             scan = False
+        if scan and max_body is not None and len(body) >= max_body:
+            scan = False
         next_fork_position = (
             (events[-1]["body_position"] + exp["min_branch_interval_tokens"]) if events else 0
         )
@@ -730,12 +751,13 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                     "texts": [n["text"] for n in ordered],
                     "similarity_spec": similarity_spec,
                 }
+                gate_args = [model.semantic_encoder, ordered, similarity_spec["threshold"]]
+                if similarity_spec.get("min_threshold") is not None:
+                    gate_args.append(similarity_spec["min_threshold"])
                 result = store.call(
                     tag + f"/event-{event_index}/cosine",
                     request,
-                    lambda: compare_rollouts(
-                        model.semantic_encoder, ordered, similarity_spec["threshold"]
-                    ),
+                    lambda: compare_rollouts(*gate_args),
                 )
                 event["similarity"] = result
                 costs.append(result)
