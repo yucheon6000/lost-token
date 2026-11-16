@@ -116,6 +116,8 @@ def validate_spec(spec):
         raise ValueError("Invalid arms")
     if exp.get("budget_forcing") is not None and set(exp["arms"]) != {"plain_ar"}:
         raise ValueError("budget_forcing is only supported for plain_ar")
+    if exp.get("ours_budget_forcing") is not None and "filtered_futures" not in exp["arms"]:
+        raise ValueError("ours_budget_forcing requires filtered_futures")
     if spec["execution"]["workers"] != 1:
         raise ValueError(
             "One worker per run; use distinct run paths/devices for independent workers"

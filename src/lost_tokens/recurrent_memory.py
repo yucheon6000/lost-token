@@ -341,20 +341,42 @@ def ttl_history(history, events, body_length, ttl):
 
 
 def validate_budget_forcing(exp):
-    forcing = exp.get("budget_forcing")
-    if forcing is None:
-        return
-    if (
-        not isinstance(forcing, dict)
-        or set(forcing) != {"force_at_body_tokens", "answer_tokens"}
-        or type(forcing["force_at_body_tokens"]) is not int
-        or forcing["force_at_body_tokens"] < 1
-        or type(forcing["answer_tokens"]) is not int
-        or forcing["answer_tokens"] < 0
+    for key in ("budget_forcing", "ours_budget_forcing"):
+        forcing = exp.get(key)
+        if forcing is None:
+            continue
+        if (
+            not isinstance(forcing, dict)
+            or set(forcing) != {"force_at_body_tokens", "answer_tokens"}
+            or type(forcing["force_at_body_tokens"]) is not int
+            or forcing["force_at_body_tokens"] < 1
+            or type(forcing["answer_tokens"]) is not int
+            or forcing["answer_tokens"] < 0
+        ):
+            raise ValueError(f"Invalid {key}")
+        if (
+            forcing["force_at_body_tokens"] + 1 + forcing["answer_tokens"]
+            > exp["max_output_tokens"]
+        ):
+            raise ValueError(f"{key} exceeds max_output_tokens")
+    stop = exp.get("max_branch_body_tokens")
+    if stop is not None and (type(stop) is not int or not 0 < stop <= exp["max_output_tokens"]):
+        raise ValueError("Invalid max_branch_body_tokens")
+    forcing = exp.get("ours_budget_forcing")
+    if forcing is not None and (
+        stop is None or stop + exp["branch_tokens"] > forcing["force_at_body_tokens"]
     ):
-        raise ValueError("Invalid budget_forcing")
-    if forcing["force_at_body_tokens"] + 1 + forcing["answer_tokens"] > exp["max_output_tokens"]:
-        raise ValueError("budget_forcing exceeds max_output_tokens")
+        raise ValueError(
+            "Stop branching early enough to commit a full rollout before answer forcing"
+        )
+
+
+def active_budget_forcing(exp, arm):
+    if arm == "plain_ar":
+        return exp.get("budget_forcing")
+    if arm == "filtered_futures":
+        return exp.get("ours_budget_forcing")
+    return None
 
 
 def escape_markup(text):
@@ -498,7 +520,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     max_memory_events = exp.get("max_memory_events")
     min_body = exp.get("min_branch_body_tokens") or 0
     memory_ttl = exp.get("memory_ttl_tokens")
-    forcing = exp.get("budget_forcing")
+    forcing = active_budget_forcing(exp, arm)
+    max_branch_body = exp.get("max_branch_body_tokens")
     cap = exp["max_output_tokens"]
     forced_at = None
     decoder = StreamDecoder(model, exp)
@@ -649,6 +672,11 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             # Hit the forcing boundary exactly instead of overshooting a chunk.
             count = min(count, forcing["force_at_body_tokens"] - len(body))
         scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
+        if scan and max_branch_body is not None:
+            if len(body) >= max_branch_body:
+                scan = False
+            else:
+                count = min(count, max_branch_body - len(body))
         if (
             scan
             and max_memory_events is not None

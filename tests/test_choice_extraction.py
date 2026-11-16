@@ -36,3 +36,24 @@ class ChoiceExtractionTests(unittest.TestCase):
     def test_last_answer_must_be_an_allowed_choice(self):
         self.assertIsNone(extract_choice("Final answer: (Z)", self.choices))
         self.assertIsNone(extract_choice("Final answer: (A)\n**Final answer**: (Z)", self.choices))
+
+    def test_terminal_box_in_final_response_is_an_explicit_choice(self):
+        for text in (
+            r"Final answer: $\boxed{D}$",
+            "### Final Answer\n\n$$\n\\boxed{D}\n$$",
+            r"\boxed{D}",
+            r"\[\boxed{D}\]",
+        ):
+            with self.subTest(text=text):
+                self.assertEqual(extract_choice(text, self.choices), "D")
+
+    def test_box_fallback_does_not_guess_or_override_explicit_invalid_answer(self):
+        for text in (
+            r"\boxed{A+B}",
+            r"\boxed{A",
+            r"\boxed{Z}",
+            r"Consider \boxed{A}, but the final choice is uncertain.",
+            "\\boxed{A}\nFinal answer: (Z)",
+        ):
+            with self.subTest(text=text):
+                self.assertIsNone(extract_choice(text, self.choices))

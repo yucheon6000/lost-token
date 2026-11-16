@@ -10,6 +10,7 @@ from transformers import AutoTokenizer, GenerationConfig
 
 from lost_tokens.core import atomic_json, derived_seed, digest, file_digest, sum_cost
 from lost_tokens.recurrent_memory import (
+    active_budget_forcing,
     compact_history,
     final_response,
     instruction,
@@ -87,7 +88,8 @@ def audit(run, partial=False, model=None):
             step = 0
             compactions = []
             body_guards = []
-            forcing = exp.get("budget_forcing")
+            forcing = active_budget_forcing(exp, arm)
+            max_branch_body = exp.get("max_branch_body_tokens")
             max_memory_events = exp.get("max_memory_events")
             min_body = exp.get("min_branch_body_tokens") or 0
             memory_ttl = exp.get("memory_ttl_tokens")
@@ -238,7 +240,19 @@ def audit(run, partial=False, model=None):
                     step += 1
                     continue
                 assert force_label not in records
+                expected_count = min(exp["checkpoint_body_tokens"], cap - len(body))
+                if phase == "thinking" and not has_reasoning_token:
+                    expected_count = 1
+                if forcing and forced_at is None and phase == "thinking":
+                    expected_count = min(
+                        expected_count, forcing["force_at_body_tokens"] - len(body)
+                    )
                 scan = phase == "thinking" and has_reasoning_token and arm != "plain_ar"
+                if scan and max_branch_body is not None:
+                    if len(body) >= max_branch_body:
+                        scan = False
+                    else:
+                        expected_count = min(expected_count, max_branch_body - len(body))
                 if (
                     scan
                     and max_memory_events is not None
@@ -251,13 +265,6 @@ def audit(run, partial=False, model=None):
                     else 0
                 )
                 next_fork_position = max(next_fork_position, min_body)
-                expected_count = min(exp["checkpoint_body_tokens"], cap - len(body))
-                if phase == "thinking" and not has_reasoning_token:
-                    expected_count = 1
-                if forcing and forced_at is None and phase == "thinking":
-                    expected_count = min(
-                        expected_count, forcing["force_at_body_tokens"] - len(body)
-                    )
                 if scan and len(body) < next_fork_position:
                     expected_count = min(expected_count, next_fork_position - len(body))
                     scan = False
