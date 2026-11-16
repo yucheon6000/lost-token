@@ -70,6 +70,8 @@ Before attributing further accuracy gains to a method change, test a controlled 
 - Audit/export code: [`aa558bbbc6c0a27acffa5e9e9ae6e67e0c4384c7`](https://github.com/yucheon6000/lost-token/tree/aa558bbbc6c0a27acffa5e9e9ae6e67e0c4384c7).
 - CPU validation: **177 tests passed**; Ruff format/lint passed. No Ours inference implementation or benchmark scorer was changed.
 
+**CI limitation:** the [source-branch CI](https://github.com/yucheon6000/lost-token/actions/runs/43971397698) passes 176/177 tests; the existing `test_defaults_match_pre_change_golden` exact fingerprint fails on its CPU runner. All five new diagnostic tests pass. The full local suite passes 177/177. A separate local CPU-feature control passes all 29 knob tests with `ATEN_CPU_CAPABILITY=avx2`, while `ATEN_CPU_CAPABILITY=default` fails only that same strict fingerprint test. The inference source, configs, tiny-model fixture, and golden fixture are unchanged from the evaluated method. This demonstrates CPU sensitivity of that fixture; the precise GitHub-runner arithmetic difference remains unisolated. No golden was regenerated or assertion weakened. The diagnostic audit and [shared-report CI](https://github.com/yucheon6000/lost-token/actions/runs/43971502641) pass. Logs and statuses: [validation.json](validation.json), `validation/`.
+
 Run from the personal code checkout, with original saved source runs available. CLI paths below are placeholders:
 
 ```bash

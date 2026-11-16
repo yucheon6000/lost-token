@@ -1,0 +1,41 @@
+test_audit_detects_tampered_compaction_summary (test_knobs.KnobTests.test_audit_detects_tampered_compaction_summary) ... audited 1 conditions, 3 events; elapsed=0.0s
+audited 1 conditions, 3 events; elapsed=0.0s
+ok
+test_audit_passes_with_a_b_and_ttl (test_knobs.KnobTests.test_audit_passes_with_a_b_and_ttl) ... audited 1 conditions, 3 events; elapsed=0.0s
+ok
+test_audit_passes_with_forcing (test_knobs.KnobTests.test_audit_passes_with_forcing) ... audited 1 conditions, 0 events; elapsed=0.0s
+ok
+test_audit_passes_with_knobs_off (test_knobs.KnobTests.test_audit_passes_with_knobs_off) ... audited 1 conditions, 4 events; elapsed=0.0s
+ok
+test_budget_forcing_inserts_think_end_exactly_and_extracts_answer (test_knobs.KnobTests.test_budget_forcing_inserts_think_end_exactly_and_extracts_answer) ... ok
+test_budget_forcing_keeps_sampling_seeds_for_other_positions (test_knobs.KnobTests.test_budget_forcing_keeps_sampling_seeds_for_other_positions) ... ok
+test_budget_forcing_not_applied_when_thinking_already_ended (test_knobs.KnobTests.test_budget_forcing_not_applied_when_thinking_already_ended) ... ok
+test_budget_forcing_rejected_for_scanning_arms (test_knobs.KnobTests.test_budget_forcing_rejected_for_scanning_arms) ... ok
+test_budget_forcing_respects_answer_cap (test_knobs.KnobTests.test_budget_forcing_respects_answer_cap) ... ok
+test_budget_forcing_resume_is_identical (test_knobs.KnobTests.test_budget_forcing_resume_is_identical) ... ok
+test_budget_forcing_zero_answer_tokens (test_knobs.KnobTests.test_budget_forcing_zero_answer_tokens) ... ok
+test_config_validation_rejects_bad_knobs (test_knobs.KnobTests.test_config_validation_rejects_bad_knobs) ... ok
+test_defaults_match_pre_change_golden (test_knobs.KnobTests.test_defaults_match_pre_change_golden) ... ok
+test_explicit_off_knobs_equal_absent_knobs (test_knobs.KnobTests.test_explicit_off_knobs_equal_absent_knobs) ... ok
+test_max_memory_events_counts_only_injecting_events (test_knobs.KnobTests.test_max_memory_events_counts_only_injecting_events) ... ok
+test_max_memory_events_stops_forks_after_n_injections (test_knobs.KnobTests.test_max_memory_events_stops_forks_after_n_injections) ... ok
+test_memory_ttl_drops_old_blocks_and_preserves_body (test_knobs.KnobTests.test_memory_ttl_drops_old_blocks_and_preserves_body) ... ok
+test_memory_ttl_resume_is_identical (test_knobs.KnobTests.test_memory_ttl_resume_is_identical) ... ok
+test_min_branch_body_tokens_applies_to_every_scanning_arm (test_knobs.KnobTests.test_min_branch_body_tokens_applies_to_every_scanning_arm) ... ok
+test_min_branch_body_tokens_delays_first_fork (test_knobs.KnobTests.test_min_branch_body_tokens_delays_first_fork) ... ok
+test_ours_forcing_audit_rejects_false_closure_position (test_knobs.KnobTests.test_ours_forcing_audit_rejects_false_closure_position) ... audited 1 conditions, 2 events; elapsed=0.0s
+ok
+test_ours_forcing_leaves_ar_and_other_ablation_checkpoints_identical (test_knobs.KnobTests.test_ours_forcing_leaves_ar_and_other_ablation_checkpoints_identical) ... ok
+test_ours_forcing_recovers_missing_answer_under_same_body_cap (test_knobs.KnobTests.test_ours_forcing_recovers_missing_answer_under_same_body_cap) ... ok
+test_ours_forcing_rejects_overflow_and_rollout_boundary_conflicts (test_knobs.KnobTests.test_ours_forcing_rejects_overflow_and_rollout_boundary_conflicts) ... ok
+test_ours_forcing_resume_preserves_tokens_memory_and_saved_calls (test_knobs.KnobTests.test_ours_forcing_resume_preserves_tokens_memory_and_saved_calls) ... ok
+test_ours_natural_thinking_end_is_not_forced (test_knobs.KnobTests.test_ours_natural_thinking_end_is_not_forced) ... ok
+test_ours_reserves_answer_and_audits_full_selected_rollouts (test_knobs.KnobTests.test_ours_reserves_answer_and_audits_full_selected_rollouts) ... audited 1 conditions, 2 events; elapsed=0.0s
+ok
+test_runtime_override_of_max_output_revalidates_forcing (test_knobs.KnobTests.test_runtime_override_of_max_output_revalidates_forcing) ... ok
+test_ttl_and_capacity_compactions_are_distinguishable (test_knobs.KnobTests.test_ttl_and_capacity_compactions_are_distinguishable) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 2.634s
+
+OK

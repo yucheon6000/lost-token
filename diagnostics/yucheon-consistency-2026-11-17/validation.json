@@ -1,0 +1,31 @@
+{
+  "local_full_suite": {
+    "passed": true,
+    "tests": 177
+  },
+  "source_ci": {
+    "conclusion": "failure",
+    "passed_tests": 176,
+    "total_tests": 177,
+    "failure": "test_knobs.KnobTests.test_defaults_match_pre_change_golden",
+    "url": "https://github.com/yucheon6000/lost-token/actions/runs/43971397698"
+  },
+  "shared_report_ci": {
+    "conclusion": "success",
+    "url": "https://github.com/yucheon6000/lost-token/actions/runs/43971502641"
+  },
+  "cpu_feature_control": {
+    "ATEN_CPU_CAPABILITY=default": {
+      "passed": false,
+      "tests": 29,
+      "failures": 1,
+      "failed_test": "test_defaults_match_pre_change_golden"
+    },
+    "ATEN_CPU_CAPABILITY=avx2": {
+      "passed": true,
+      "tests": 29
+    }
+  },
+  "inference_source_config_and_golden_fixture_diff_from_source_method": "empty",
+  "note": "CPU feature control reproduces sensitivity of the pre-existing exact fingerprint fixture. The exact GitHub runner operation responsible was not isolated. Frozen inference code, goldens, and GPU diagnostic results were not altered to force CI to pass."
+}

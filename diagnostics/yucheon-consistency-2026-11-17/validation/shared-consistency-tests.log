@@ -1,0 +1,17 @@
+test_frozen_cohorts_and_parent_membership (test_profiles.ProfileIntegrityTests.test_frozen_cohorts_and_parent_membership) ... ok
+test_audited_ours_only_is_complete_without_baseline_or_delta (test_results.ResultTests.test_audited_ours_only_is_complete_without_baseline_or_delta) ... ok
+test_comparison_groups_separate_backend_and_scorer (test_results.ResultTests.test_comparison_groups_separate_backend_and_scorer) ... ok
+test_fixed_baseline_scores_must_match_the_referenced_outcomes (test_results.ResultTests.test_fixed_baseline_scores_must_match_the_referenced_outcomes) ... ok
+test_full_baseline_has_truthful_branch_and_completion_status (test_results.ResultTests.test_full_baseline_has_truthful_branch_and_completion_status) ... ok
+test_full_cohort_rejects_wrong_hash_coverage_duplicate_and_count (test_results.ResultTests.test_full_cohort_rejects_wrong_hash_coverage_duplicate_and_count) ... ok
+test_full_ours_only_retains_unmeasured_baseline (test_results.ResultTests.test_full_ours_only_retains_unmeasured_baseline) ... ok
+test_invalid_count_or_missing_environment_rejected (test_results.ResultTests.test_invalid_count_or_missing_environment_rejected) ... ok
+test_missing_baseline_is_not_relabelled_from_ours (test_results.ResultTests.test_missing_baseline_is_not_relabelled_from_ours) ... ok
+test_profile_rejects_wrong_hardware_batch_manifest_and_missing_profile (test_results.ResultTests.test_profile_rejects_wrong_hardware_batch_manifest_and_missing_profile) ... ok
+test_registered_profile_accepts_new_cohort (test_results.ResultTests.test_registered_profile_accepts_new_cohort) ... ok
+test_render_is_deterministic (test_results.ResultTests.test_render_is_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.023s
+
+OK
