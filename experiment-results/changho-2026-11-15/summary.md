@@ -1,5 +1,9 @@
 # changho-2026-11-15: lookahead 제거 실험
 
+**최신 전체셋 결과:** [Changho baseline / argmax / lookahead 전체 비교](../changho-full-2026-11-15/summary.md).
+세 조건 모두 AIME/HMMT/GSM8K/GPQA Main/MATH500/MMLU의 전체 문제를 평가했다.
+아래 내용은 이전 pilot의 보관 기록이다.
+
 ## 범위와 상태
 
 - vLLM에서 메모리를 사용하는 **argmax vs lookahead** 12개 실행을 비교했다.

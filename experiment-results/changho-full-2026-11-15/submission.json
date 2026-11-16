@@ -1,0 +1,222 @@
+{
+  "backend": "vllm",
+  "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+  "code_branch": "changho-2026-11-15",
+  "code_commit": "204b01c7ee62027115be4d5456bb49acc5d382ed",
+  "cohort_manifest_sha256": "fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55",
+  "cohort_version": "full-v1",
+  "dtype": "bfloat16",
+  "evaluation_settings_sha256": "36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032",
+  "id": "changho-full-2026-11-15",
+  "model": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "rows": [
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 15,
+        "n": 30
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "hmmt25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 30,
+      "ours": {
+        "correct": 18,
+        "n": 30
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 15,
+        "n": 30
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "hmmt25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 30,
+      "ours": {
+        "correct": 17,
+        "n": 30
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 21,
+        "n": 30
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "aime25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 30,
+      "ours": {
+        "correct": 24,
+        "n": 30
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 21,
+        "n": 30
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "aime25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 30,
+      "ours": {
+        "correct": 21,
+        "n": 30
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 1258,
+        "n": 1319
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "gsm8k",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 1319,
+      "ours": {
+        "correct": 1261,
+        "n": 1319
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 1258,
+        "n": 1319
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "gsm8k",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 1319,
+      "ours": {
+        "correct": 1257,
+        "n": 1319
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 257,
+        "n": 448
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "gpqa",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 448,
+      "ours": {
+        "correct": 257,
+        "n": 448
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 257,
+        "n": 448
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "gpqa",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 448,
+      "ours": {
+        "correct": 261,
+        "n": 448
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 489,
+        "n": 500
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "math500",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 500,
+      "ours": {
+        "correct": 490,
+        "n": 500
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 489,
+        "n": 500
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "math500",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 500,
+      "ours": {
+        "correct": 493,
+        "n": 500
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 11388,
+        "n": 14042
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "mmlu",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/argmax",
+      "n_required": 14042,
+      "ours": {
+        "correct": 11367,
+        "n": 14042
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 11388,
+        "n": 14042
+      },
+      "batch_size_per_gpu": 8,
+      "dataset": "mmlu",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "filtered_futures/lookahead",
+      "n_required": 14042,
+      "ours": {
+        "correct": 11429,
+        "n": 14042
+      }
+    }
+  ],
+  "scope": "full",
+  "scorer_sha256": "8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a",
+  "seed": 95021
+}

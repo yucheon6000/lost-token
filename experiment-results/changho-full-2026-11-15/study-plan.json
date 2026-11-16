@@ -1,0 +1,204 @@
+{
+  "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+  "code_branch": "changho-2026-11-15",
+  "code_commit": "204b01c7ee62027115be4d5456bb49acc5d382ed",
+  "cohort_manifest_sha256": "fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55",
+  "cohort_version": "full-v1",
+  "finished_at": "2026-11-16T04:33:17.932050+09:00",
+  "full_counts": {
+    "aime25": 30,
+    "gpqa": 448,
+    "gsm8k": 1319,
+    "hmmt25": 30,
+    "math500": 500,
+    "mmlu": 14042
+  },
+  "runs": [
+    {
+      "audits_passed": true,
+      "correct": 15,
+      "full_n": 30,
+      "n": 30,
+      "reused": false,
+      "task": "hmmt25",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 18,
+      "full_n": 30,
+      "n": 30,
+      "reused": true,
+      "task": "hmmt25",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 17,
+      "full_n": 30,
+      "n": 30,
+      "reused": true,
+      "task": "hmmt25",
+      "variant": "lookahead"
+    },
+    {
+      "audits_passed": true,
+      "correct": 21,
+      "full_n": 30,
+      "n": 30,
+      "reused": false,
+      "task": "aime25",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 24,
+      "full_n": 30,
+      "n": 30,
+      "reused": true,
+      "task": "aime25",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 21,
+      "full_n": 30,
+      "n": 30,
+      "reused": true,
+      "task": "aime25",
+      "variant": "lookahead"
+    },
+    {
+      "audits_passed": true,
+      "correct": 1258,
+      "full_n": 1319,
+      "n": 1319,
+      "reused": false,
+      "task": "gsm8k",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 1261,
+      "full_n": 1319,
+      "n": 1319,
+      "reused": true,
+      "task": "gsm8k",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 1257,
+      "full_n": 1319,
+      "n": 1319,
+      "reused": true,
+      "task": "gsm8k",
+      "variant": "lookahead"
+    },
+    {
+      "audits_passed": true,
+      "correct": 257,
+      "full_n": 448,
+      "n": 448,
+      "reused": false,
+      "task": "gpqa",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 257,
+      "full_n": 448,
+      "n": 448,
+      "reused": false,
+      "task": "gpqa",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 261,
+      "full_n": 448,
+      "n": 448,
+      "reused": false,
+      "task": "gpqa",
+      "variant": "lookahead"
+    },
+    {
+      "audits_passed": true,
+      "correct": 489,
+      "full_n": 500,
+      "n": 500,
+      "reused": false,
+      "task": "math500",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 490,
+      "full_n": 500,
+      "n": 500,
+      "reused": false,
+      "task": "math500",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 493,
+      "full_n": 500,
+      "n": 500,
+      "reused": false,
+      "task": "math500",
+      "variant": "lookahead"
+    },
+    {
+      "audits_passed": true,
+      "correct": 11388,
+      "full_n": 14042,
+      "n": 14042,
+      "reused": false,
+      "task": "mmlu",
+      "variant": "baseline"
+    },
+    {
+      "audits_passed": true,
+      "correct": 11367,
+      "full_n": 14042,
+      "n": 14042,
+      "reused": false,
+      "task": "mmlu",
+      "variant": "argmax"
+    },
+    {
+      "audits_passed": true,
+      "correct": 11429,
+      "full_n": 14042,
+      "n": 14042,
+      "reused": false,
+      "task": "mmlu",
+      "variant": "lookahead"
+    }
+  ],
+  "source": {
+    "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+    "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+    "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+    "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+    "lost_tokens/config.py": "299fd08dbe8ba5ebd4235386bebc526dec186b67641bc3d011e3193868ffedd4",
+    "lost_tokens/core.py": "6b90ce548bb00caab3695c858821b9764c6b40216018b81028987015833a4469",
+    "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+    "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+    "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+    "lost_tokens/default.json": "d6e353e6e10cb368e0db76713ec91ec43160101ee80776848ac8e9496f1639f8",
+    "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+    "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+    "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+    "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+    "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+    "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+    "lost_tokens/runner.py": "a9704797b120ea402d3f537c73bd35aa1faad34361ad21e00375719390850413",
+    "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+    "lost_tokens/vllm_backend.py": "d52251a62a64ea3384eac31cb8307e1425f5f64c5bcab2111a94630ad16b3605"
+  },
+  "started_at": "2026-11-15T05:50:28.443393+09:00",
+  "study_id": "changho-2026-11-15-full"
+}

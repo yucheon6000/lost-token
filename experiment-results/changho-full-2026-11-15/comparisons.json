@@ -1,0 +1,146 @@
+{
+  "aime25": {
+    "argmax": {
+      "baseline_correct": 21,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "aime25",
+      "difference_pp": 10.0,
+      "losses": 0,
+      "n": 30,
+      "ours_correct": 24,
+      "variant": "argmax",
+      "wins": 3
+    },
+    "lookahead": {
+      "baseline_correct": 21,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "aime25",
+      "difference_pp": 0.0,
+      "losses": 1,
+      "n": 30,
+      "ours_correct": 21,
+      "variant": "lookahead",
+      "wins": 1
+    }
+  },
+  "gpqa": {
+    "argmax": {
+      "baseline_correct": 257,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "gpqa",
+      "difference_pp": 0.0,
+      "losses": 47,
+      "n": 448,
+      "ours_correct": 257,
+      "variant": "argmax",
+      "wins": 47
+    },
+    "lookahead": {
+      "baseline_correct": 257,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "gpqa",
+      "difference_pp": 0.8928571428571429,
+      "losses": 41,
+      "n": 448,
+      "ours_correct": 261,
+      "variant": "lookahead",
+      "wins": 45
+    }
+  },
+  "gsm8k": {
+    "argmax": {
+      "baseline_correct": 1258,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "gsm8k",
+      "difference_pp": 0.22744503411675512,
+      "losses": 8,
+      "n": 1319,
+      "ours_correct": 1261,
+      "variant": "argmax",
+      "wins": 11
+    },
+    "lookahead": {
+      "baseline_correct": 1258,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "gsm8k",
+      "difference_pp": -0.0758150113722517,
+      "losses": 13,
+      "n": 1319,
+      "ours_correct": 1257,
+      "variant": "lookahead",
+      "wins": 12
+    }
+  },
+  "hmmt25": {
+    "argmax": {
+      "baseline_correct": 15,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "hmmt25",
+      "difference_pp": 10.0,
+      "losses": 1,
+      "n": 30,
+      "ours_correct": 18,
+      "variant": "argmax",
+      "wins": 4
+    },
+    "lookahead": {
+      "baseline_correct": 15,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "hmmt25",
+      "difference_pp": 6.666666666666667,
+      "losses": 1,
+      "n": 30,
+      "ours_correct": 17,
+      "variant": "lookahead",
+      "wins": 3
+    }
+  },
+  "math500": {
+    "argmax": {
+      "baseline_correct": 489,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "math500",
+      "difference_pp": 0.2,
+      "losses": 4,
+      "n": 500,
+      "ours_correct": 490,
+      "variant": "argmax",
+      "wins": 5
+    },
+    "lookahead": {
+      "baseline_correct": 489,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "math500",
+      "difference_pp": 0.8,
+      "losses": 3,
+      "n": 500,
+      "ours_correct": 493,
+      "variant": "lookahead",
+      "wins": 7
+    }
+  },
+  "mmlu": {
+    "argmax": {
+      "baseline_correct": 11388,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "mmlu",
+      "difference_pp": -0.14955134596211367,
+      "losses": 465,
+      "n": 14042,
+      "ours_correct": 11367,
+      "variant": "argmax",
+      "wins": 444
+    },
+    "lookahead": {
+      "baseline_correct": 11388,
+      "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+      "dataset": "mmlu",
+      "difference_pp": 0.2919811992593648,
+      "losses": 437,
+      "n": 14042,
+      "ours_correct": 11429,
+      "variant": "lookahead",
+      "wins": 478
+    }
+  }
+}
