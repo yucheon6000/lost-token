@@ -1,0 +1,1626 @@
+{
+  "code_branch": "yucheon-consistency-2026-11-17",
+  "code_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+  "created": "2026-11-16T22:32:30.031902+00:00",
+  "datasets": {
+    "aime25": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 21,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 3,
+          "fork_gate_changed": 2,
+          "max_abs_logit": 0.5,
+          "max_abs_logprob": 0.6545562744140625,
+          "max_abs_probability": 0.07545316219329834,
+          "median_max_abs_probability": 0.0238264799118042,
+          "nonidentical": 18,
+          "prefixes": 21,
+          "top1_changed": 1,
+          "top2_order_changed": 1
+        },
+        "compaction_rebuild": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.15625,
+          "max_abs_logprob": 0.21875,
+          "max_abs_probability": 1.0728836059570312e-06,
+          "median_max_abs_probability": 1.0728836059570312e-06,
+          "nonidentical": 1,
+          "prefixes": 1,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 21,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 1,
+          "max_abs_logit": 0.5,
+          "max_abs_logprob": 0.4730415344238281,
+          "max_abs_probability": 0.03092333674430847,
+          "median_max_abs_probability": 0.0009057316929101944,
+          "nonidentical": 21,
+          "prefixes": 21,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 2,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.5567245483398438,
+          "max_abs_probability": 0.06217557191848755,
+          "median_max_abs_probability": 0.005816414952278137,
+          "nonidentical": 20,
+          "prefixes": 21,
+          "top1_changed": 0,
+          "top2_order_changed": 2
+        }
+      },
+      "prefixes": 21,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 0,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    },
+    "gpqa": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 2,
+          "max_abs_logit": 0.5,
+          "max_abs_logprob": 0.5760993957519531,
+          "max_abs_probability": 0.062176406383514404,
+          "median_max_abs_probability": 0.01619049906730652,
+          "nonidentical": 16,
+          "prefixes": 20,
+          "top1_changed": 1,
+          "top2_order_changed": 1
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.441558837890625,
+          "max_abs_probability": 0.04624098539352417,
+          "median_max_abs_probability": 0.003246464766561985,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 1,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.4370765686035156,
+          "max_abs_probability": 0.06238687038421631,
+          "median_max_abs_probability": 0.02083195000886917,
+          "nonidentical": 19,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 2
+        }
+      },
+      "prefixes": 20,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 2,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    },
+    "gsm8k": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.49993133544921875,
+          "max_abs_probability": 0.06220856308937073,
+          "median_max_abs_probability": 0.021840237081050873,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 1,
+          "top2_order_changed": 2
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.47332763671875,
+          "max_abs_probability": 0.062183678150177,
+          "median_max_abs_probability": 0.02168087661266327,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 1,
+          "top2_order_changed": 1
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.3125,
+          "max_abs_logprob": 0.3846626281738281,
+          "max_abs_probability": 0.0621834397315979,
+          "median_max_abs_probability": 0.01622121036052704,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 1,
+          "top2_order_changed": 0
+        }
+      },
+      "prefixes": 20,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 0,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    },
+    "hmmt25": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.5,
+          "max_abs_logprob": 0.5524930953979492,
+          "max_abs_probability": 0.06693220138549805,
+          "median_max_abs_probability": 0.002008410170674324,
+          "nonidentical": 18,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.875,
+          "max_abs_logprob": 0.8728065490722656,
+          "max_abs_probability": 0.060057640075683594,
+          "median_max_abs_probability": 0.02776402235031128,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 2,
+          "top2_order_changed": 2
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.36795616149902344,
+          "max_abs_probability": 0.06028291583061218,
+          "median_max_abs_probability": 0.006475156173110008,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        }
+      },
+      "prefixes": 20,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 0,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    },
+    "math500": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.5372238159179688,
+          "max_abs_probability": 0.06225809454917908,
+          "median_max_abs_probability": 0.0008025957504287362,
+          "nonidentical": 17,
+          "prefixes": 20,
+          "top1_changed": 2,
+          "top2_order_changed": 3
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.421875,
+          "max_abs_logprob": 0.37420654296875,
+          "max_abs_probability": 0.062078386545181274,
+          "median_max_abs_probability": 0.005803941283375025,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 2,
+          "top2_order_changed": 3
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 2,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.3125,
+          "max_abs_logprob": 0.3460216522216797,
+          "max_abs_probability": 0.06225809454917908,
+          "median_max_abs_probability": 0.02371782809495926,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 2,
+          "top2_order_changed": 1
+        }
+      },
+      "prefixes": 20,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 0,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    },
+    "mmlu": {
+      "comparisons": {
+        "batch_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "batch_vs_fresh": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.4375,
+          "max_abs_logprob": 0.5932102203369141,
+          "max_abs_probability": 0.06216132640838623,
+          "median_max_abs_probability": 0.0020869430154561996,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 1
+        },
+        "fresh_repeat": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "incremental_vs_fresh": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.375,
+          "max_abs_logprob": 0.5693473815917969,
+          "max_abs_probability": 0.0698649138212204,
+          "median_max_abs_probability": 0.005547285079956055,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "parent_cache": {
+          "affected_questions": 0,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.0,
+          "max_abs_logprob": 0.0,
+          "max_abs_probability": 0.0,
+          "median_max_abs_probability": 0.0,
+          "nonidentical": 0,
+          "prefixes": 20,
+          "top1_changed": 0,
+          "top2_order_changed": 0
+        },
+        "warm_vs_fresh": {
+          "affected_questions": 1,
+          "fork_gate_changed": 0,
+          "max_abs_logit": 0.458984375,
+          "max_abs_logprob": 0.5107555389404297,
+          "max_abs_probability": 0.062158048152923584,
+          "median_max_abs_probability": 0.01549508050084114,
+          "nonidentical": 20,
+          "prefixes": 20,
+          "top1_changed": 1,
+          "top2_order_changed": 2
+        }
+      },
+      "prefixes": 20,
+      "questions": 10,
+      "teacher_forced_branches": {
+        "memory_gate_changed": 0,
+        "questions": 10,
+        "selection_changed": 0
+      }
+    }
+  },
+  "examples": {
+    "batch_vs_fresh": [
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.5,
+          "max_abs_logprob": 0.6545562744140625,
+          "max_abs_probability": 0.07545316219329834,
+          "mean_abs_logprob": 0.39430665969848633,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.07545314729213715
+        },
+        "id": "aime25-8",
+        "kind": "first",
+        "prefix_length": 182,
+        "prefix_sha256": "7edb2cbebe5b7cc125cfffb9819b381f9d4c58e2292ea97cb51359061bfa5643",
+        "reference": {
+          "eligible": true,
+          "entropy": 1.008771538734436,
+          "items": [
+            {
+              "probability": 0.5586327910423279,
+              "rank": 1,
+              "text": " and",
+              "token_id": 323
+            },
+            {
+              "probability": 0.23287281394004822,
+              "rank": 2,
+              "text": ".",
+              "token_id": 13
+            }
+          ],
+          "second_probability": 0.23287281394004822,
+          "top_is_special": false,
+          "top_probability": 0.5586327910423279,
+          "top_token_id": 323
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": false,
+          "entropy": 0.9251603484153748,
+          "items": [],
+          "second_probability": 0.1816686987876892,
+          "top_is_special": false,
+          "top_probability": 0.6340860724449158,
+          "top_token_id": 323
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.203125,
+          "max_abs_logprob": 0.265777587890625,
+          "max_abs_probability": 0.03537827730178833,
+          "mean_abs_logprob": 0.06692502647638321,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.03547859936952591
+        },
+        "id": "aime25-13",
+        "kind": "first",
+        "prefix_length": 141,
+        "prefix_sha256": "56807c0b781c57ba205fdd699085a8e1fef1afeb1c7701d870cbcbbdbc0b0362",
+        "reference": {
+          "eligible": false,
+          "entropy": 1.2440849542617798,
+          "items": [],
+          "second_probability": 0.19002729654312134,
+          "top_is_special": false,
+          "top_probability": 0.585325300693512,
+          "top_token_id": 9271
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": true,
+          "entropy": 1.3055459260940552,
+          "items": [
+            {
+              "probability": 0.5499470233917236,
+              "rank": 1,
+              "text": " finding",
+              "token_id": 9271
+            },
+            {
+              "probability": 0.20231421291828156,
+              "rank": 2,
+              "text": " expected",
+              "token_id": 3601
+            }
+          ],
+          "second_probability": 0.20231421291828156,
+          "top_is_special": false,
+          "top_probability": 0.5499470233917236,
+          "top_token_id": 9271
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.171875,
+          "max_abs_logprob": 0.1998443603515625,
+          "max_abs_probability": 0.03058004379272461,
+          "mean_abs_logprob": 0.05883968248963356,
+          "top1_changed": true,
+          "top2_order_changed": true,
+          "total_variation": 0.031075647100806236
+        },
+        "id": "aime25-4",
+        "kind": "middle",
+        "prefix_length": 6202,
+        "prefix_sha256": "77a2217e2b1c903031e4a03f08bf5a7ad0400d0f54f0f54f2e54126b402822ae",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.9181897044181824,
+          "items": [
+            {
+              "probability": 0.4998147487640381,
+              "rank": 1,
+              "text": " +",
+              "token_id": 488
+            },
+            {
+              "probability": 0.44108498096466064,
+              "rank": 2,
+              "text": "+",
+              "token_id": 10
+            }
+          ],
+          "second_probability": 0.44108498096466064,
+          "top_is_special": false,
+          "top_probability": 0.4998147487640381,
+          "top_token_id": 488
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.9143562316894531,
+          "items": [
+            {
+              "probability": 0.4716649651527405,
+              "rank": 1,
+              "text": "+",
+              "token_id": 10
+            },
+            {
+              "probability": 0.4716649651527405,
+              "rank": 2,
+              "text": " +",
+              "token_id": 488
+            }
+          ],
+          "second_probability": 0.4716649651527405,
+          "top_is_special": false,
+          "top_probability": 0.4716649651527405,
+          "top_token_id": 10
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.2578125,
+          "max_abs_logprob": 0.21944808959960938,
+          "max_abs_probability": 0.026208043098449707,
+          "mean_abs_logprob": 0.041126322001218796,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.02658279985189438
+        },
+        "id": "gpqa-recxWirvTOyWz2zja",
+        "kind": "first",
+        "prefix_length": 154,
+        "prefix_sha256": "6a8703662a04194f1a9e56463ecd9276856579e8dceebba1dddc06aca2d0bb2c",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.8787222504615784,
+          "items": [
+            {
+              "probability": 0.6701000928878784,
+              "rank": 1,
+              "text": " So",
+              "token_id": 2055
+            },
+            {
+              "probability": 0.2175496369600296,
+              "rank": 2,
+              "text": " The",
+              "token_id": 576
+            }
+          ],
+          "second_probability": 0.2175496369600296,
+          "top_is_special": false,
+          "top_probability": 0.6701000928878784,
+          "top_token_id": 2055
+        },
+        "task": "gpqa",
+        "variant": {
+          "eligible": false,
+          "entropy": 0.8423655033111572,
+          "items": [],
+          "second_probability": 0.1994955986738205,
+          "top_is_special": false,
+          "top_probability": 0.6963081359863281,
+          "top_token_id": 2055
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.3125,
+          "max_abs_logprob": 0.35158538818359375,
+          "max_abs_probability": 0.062176406383514404,
+          "mean_abs_logprob": 0.08834637701511383,
+          "top1_changed": true,
+          "top2_order_changed": false,
+          "total_variation": 0.062176451086997986
+        },
+        "id": "gpqa-reclPSWuaG47bkpDv",
+        "kind": "first",
+        "prefix_length": 173,
+        "prefix_sha256": "f5c84f77f01766407d7205b034fb38e2d052dbb5229bc6d3ab9b0c10f6369ca9",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.6854172348976135,
+          "items": [
+            {
+              "probability": 0.5621757507324219,
+              "rank": 1,
+              "text": " the",
+              "token_id": 279
+            },
+            {
+              "probability": 0.43782293796539307,
+              "rank": 2,
+              "text": " I",
+              "token_id": 358
+            }
+          ],
+          "second_probability": 0.43782293796539307,
+          "top_is_special": false,
+          "top_probability": 0.5621757507324219,
+          "top_token_id": 279
+        },
+        "task": "gpqa",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.6931681632995605,
+          "items": [
+            {
+              "probability": 0.49999934434890747,
+              "rank": 1,
+              "text": " I",
+              "token_id": 358
+            },
+            {
+              "probability": 0.49999934434890747,
+              "rank": 2,
+              "text": " the",
+              "token_id": 279
+            }
+          ],
+          "second_probability": 0.49999934434890747,
+          "top_is_special": false,
+          "top_probability": 0.49999934434890747,
+          "top_token_id": 358
+        }
+      }
+    ],
+    "incremental_vs_fresh": [
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.2109375,
+          "max_abs_logprob": 0.24436187744140625,
+          "max_abs_probability": 0.01924055814743042,
+          "mean_abs_logprob": 0.04157783463597298,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.024632340297102928
+        },
+        "id": "aime25-13",
+        "kind": "first",
+        "prefix_length": 141,
+        "prefix_sha256": "56807c0b781c57ba205fdd699085a8e1fef1afeb1c7701d870cbcbbdbc0b0362",
+        "reference": {
+          "eligible": false,
+          "entropy": 1.2440849542617798,
+          "items": [],
+          "second_probability": 0.19002729654312134,
+          "top_is_special": false,
+          "top_probability": 0.585325300693512,
+          "top_token_id": 9271
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": true,
+          "entropy": 1.267093539237976,
+          "items": [
+            {
+              "probability": 0.5660848617553711,
+              "rank": 1,
+              "text": " finding",
+              "token_id": 9271
+            },
+            {
+              "probability": 0.2082509845495224,
+              "rank": 2,
+              "text": " expected",
+              "token_id": 3601
+            }
+          ],
+          "second_probability": 0.2082509845495224,
+          "top_is_special": false,
+          "top_probability": 0.5660848617553711,
+          "top_token_id": 9271
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.203125,
+          "max_abs_logprob": 0.24759674072265625,
+          "max_abs_probability": 0.031193703413009644,
+          "mean_abs_logprob": 0.04980817064642906,
+          "top1_changed": true,
+          "top2_order_changed": true,
+          "total_variation": 0.03119371458888054
+        },
+        "id": "gsm8k-test-155",
+        "kind": "first",
+        "prefix_length": 106,
+        "prefix_sha256": "f30d34af4274124f7a985c949a7cc829a319afa1d5a34fb695512317085fe1bb",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.7316102981567383,
+          "items": [
+            {
+              "probability": 0.5271418690681458,
+              "rank": 1,
+              "text": " see",
+              "token_id": 1490
+            },
+            {
+              "probability": 0.46520107984542847,
+              "rank": 2,
+              "text": " try",
+              "token_id": 1430
+            }
+          ],
+          "second_probability": 0.46520107984542847,
+          "top_is_special": false,
+          "top_probability": 0.5271418690681458,
+          "top_token_id": 1490
+        },
+        "task": "gsm8k",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.7316240072250366,
+          "items": [
+            {
+              "probability": 0.49639472365379333,
+              "rank": 1,
+              "text": " try",
+              "token_id": 1430
+            },
+            {
+              "probability": 0.49639472365379333,
+              "rank": 2,
+              "text": " see",
+              "token_id": 1490
+            }
+          ],
+          "second_probability": 0.49639472365379333,
+          "top_is_special": false,
+          "top_probability": 0.49639472365379333,
+          "top_token_id": 1430
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.21875,
+          "max_abs_logprob": 0.21369171142578125,
+          "max_abs_probability": 0.04187813401222229,
+          "mean_abs_logprob": 0.04675736278295517,
+          "top1_changed": true,
+          "top2_order_changed": true,
+          "total_variation": 0.043472252786159515
+        },
+        "id": "hmmt25-9",
+        "kind": "middle",
+        "prefix_length": 9020,
+        "prefix_sha256": "b97b5388c00b34b1a1929ea47efe96b0791dbf9879d4bc9ca5e9cbedf65863b0",
+        "reference": {
+          "eligible": true,
+          "entropy": 1.3962266445159912,
+          "items": [
+            {
+              "probability": 0.34338465332984924,
+              "rank": 1,
+              "text": ",",
+              "token_id": 11
+            },
+            {
+              "probability": 0.3030358850955963,
+              "rank": 2,
+              "text": " (",
+              "token_id": 320
+            }
+          ],
+          "second_probability": 0.3030358850955963,
+          "top_is_special": false,
+          "top_probability": 0.34338465332984924,
+          "top_token_id": 11
+        },
+        "task": "hmmt25",
+        "variant": {
+          "eligible": true,
+          "entropy": 1.4065059423446655,
+          "items": [
+            {
+              "probability": 0.3416516184806824,
+              "rank": 1,
+              "text": " (",
+              "token_id": 320
+            },
+            {
+              "probability": 0.30150648951530457,
+              "rank": 2,
+              "text": ",",
+              "token_id": 11
+            }
+          ],
+          "second_probability": 0.30150648951530457,
+          "top_is_special": false,
+          "top_probability": 0.3416516184806824,
+          "top_token_id": 320
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.21875,
+          "max_abs_logprob": 0.21726608276367188,
+          "max_abs_probability": 0.03092995285987854,
+          "mean_abs_logprob": 0.08040719479322433,
+          "top1_changed": true,
+          "top2_order_changed": true,
+          "total_variation": 0.03145493566989899
+        },
+        "id": "hmmt25-13",
+        "kind": "middle",
+        "prefix_length": 15338,
+        "prefix_sha256": "7c5573c7953e5d4fe9ba31b01e905eb4d0cbf6afd8107d3de3bbc65c2e904bc9",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.9807779788970947,
+          "items": [
+            {
+              "probability": 0.4681084156036377,
+              "rank": 1,
+              "text": ",",
+              "token_id": 11
+            },
+            {
+              "probability": 0.4681084156036377,
+              "rank": 2,
+              "text": " (",
+              "token_id": 320
+            }
+          ],
+          "second_probability": 0.4681084156036377,
+          "top_is_special": false,
+          "top_probability": 0.4681084156036377,
+          "top_token_id": 11
+        },
+        "task": "hmmt25",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.9672564268112183,
+          "items": [
+            {
+              "probability": 0.4990383982658386,
+              "rank": 1,
+              "text": " (",
+              "token_id": 320
+            },
+            {
+              "probability": 0.44039982557296753,
+              "rank": 2,
+              "text": ",",
+              "token_id": 11
+            }
+          ],
+          "second_probability": 0.44039982557296753,
+          "top_is_special": false,
+          "top_probability": 0.4990383982658386,
+          "top_token_id": 320
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.25,
+          "max_abs_logprob": 0.3657646179199219,
+          "max_abs_probability": 0.062078386545181274,
+          "mean_abs_logprob": 0.08495764434337616,
+          "top1_changed": true,
+          "top2_order_changed": false,
+          "total_variation": 0.062078382819890976
+        },
+        "id": "math500-test-counting_and_probability-116.json",
+        "kind": "first",
+        "prefix_length": 87,
+        "prefix_sha256": "6dbb9fbaa30bc220e9034069636859c001df97d50635cae189b4680d1ece9415",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.7484215497970581,
+          "items": [
+            {
+              "probability": 0.4941888749599457,
+              "rank": 1,
+              "text": ").",
+              "token_id": 568
+            },
+            {
+              "probability": 0.4941888749599457,
+              "rank": 2,
+              "text": ")",
+              "token_id": 8
+            }
+          ],
+          "second_probability": 0.4941888749599457,
+          "top_is_special": false,
+          "top_probability": 0.4941888749599457,
+          "top_token_id": 568
+        },
+        "task": "math500",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.7460346221923828,
+          "items": [
+            {
+              "probability": 0.5548409223556519,
+              "rank": 1,
+              "text": ")",
+              "token_id": 8
+            },
+            {
+              "probability": 0.4321105182170868,
+              "rank": 2,
+              "text": ").",
+              "token_id": 568
+            }
+          ],
+          "second_probability": 0.4321105182170868,
+          "top_is_special": false,
+          "top_probability": 0.5548409223556519,
+          "top_token_id": 8
+        }
+      }
+    ],
+    "warm_vs_fresh": [
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.25,
+          "max_abs_logprob": 0.2464427947998047,
+          "max_abs_probability": 0.03837555646896362,
+          "mean_abs_logprob": 0.03634609282016754,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.04821102321147919
+        },
+        "id": "aime25-13",
+        "kind": "first",
+        "prefix_length": 141,
+        "prefix_sha256": "56807c0b781c57ba205fdd699085a8e1fef1afeb1c7701d870cbcbbdbc0b0362",
+        "reference": {
+          "eligible": false,
+          "entropy": 1.2440849542617798,
+          "items": [],
+          "second_probability": 0.19002729654312134,
+          "top_is_special": false,
+          "top_probability": 0.585325300693512,
+          "top_token_id": 9271
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": true,
+          "entropy": 1.2776514291763306,
+          "items": [
+            {
+              "probability": 0.5479099154472351,
+              "rank": 1,
+              "text": " finding",
+              "token_id": 9271
+            },
+            {
+              "probability": 0.22840285301208496,
+              "rank": 2,
+              "text": " expected",
+              "token_id": 3601
+            }
+          ],
+          "second_probability": 0.22840285301208496,
+          "top_is_special": false,
+          "top_probability": 0.5479099154472351,
+          "top_token_id": 9271
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.25,
+          "max_abs_logprob": 0.3151435852050781,
+          "max_abs_probability": 0.043796658515930176,
+          "mean_abs_logprob": 0.18381266295909882,
+          "top1_changed": false,
+          "top2_order_changed": false,
+          "total_variation": 0.043796736747026443
+        },
+        "id": "aime25-3",
+        "kind": "first",
+        "prefix_length": 177,
+        "prefix_sha256": "38eef1409321198d4f0b73f5e0c39fdaf0f36b742c82d9ceb505bc988689ec20",
+        "reference": {
+          "eligible": false,
+          "entropy": 0.6952763795852661,
+          "items": [],
+          "second_probability": 0.1905917376279831,
+          "top_is_special": false,
+          "top_probability": 0.7538049221038818,
+          "top_token_id": 264
+        },
+        "task": "aime25",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.75594562292099,
+          "items": [
+            {
+              "probability": 0.7100081443786621,
+              "rank": 1,
+              "text": " a",
+              "token_id": 264
+            },
+            {
+              "probability": 0.23050589859485626,
+              "rank": 2,
+              "text": " one",
+              "token_id": 825
+            }
+          ],
+          "second_probability": 0.23050589859485626,
+          "top_is_special": false,
+          "top_probability": 0.7100081443786621,
+          "top_token_id": 264
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": true,
+          "identical": false,
+          "max_abs_logit": 0.15625,
+          "max_abs_logprob": 0.19614791870117188,
+          "max_abs_probability": 0.01632973551750183,
+          "mean_abs_logprob": 0.034846238791942596,
+          "top1_changed": false,
+          "top2_order_changed": true,
+          "total_variation": 0.02707335166633129
+        },
+        "id": "gpqa-reclPSWuaG47bkpDv",
+        "kind": "middle",
+        "prefix_length": 1458,
+        "prefix_sha256": "3d908b565758450c8e7774e638e5177511d05503e1c045b6dc67af4dd0bd016c",
+        "reference": {
+          "eligible": true,
+          "entropy": 2.085515022277832,
+          "items": [
+            {
+              "probability": 0.22681483626365662,
+              "rank": 1,
+              "text": " I",
+              "token_id": 358
+            },
+            {
+              "probability": 0.20016337931156158,
+              "rank": 2,
+              "text": " is",
+              "token_id": 374
+            }
+          ],
+          "second_probability": 0.20016337931156158,
+          "top_is_special": false,
+          "top_probability": 0.22681483626365662,
+          "top_token_id": 358
+        },
+        "task": "gpqa",
+        "variant": {
+          "eligible": false,
+          "entropy": 2.071857452392578,
+          "items": [],
+          "second_probability": 0.18383368849754333,
+          "top_is_special": false,
+          "top_probability": 0.23604713380336761,
+          "top_token_id": 358
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.25,
+          "max_abs_logprob": 0.3672065734863281,
+          "max_abs_probability": 0.062176525592803955,
+          "mean_abs_logprob": 0.09261450916528702,
+          "top1_changed": true,
+          "top2_order_changed": false,
+          "total_variation": 0.062176503241062164
+        },
+        "id": "gsm8k-test-482",
+        "kind": "middle",
+        "prefix_length": 364,
+        "prefix_sha256": "e6cd1d360f16a4b10f83795592a6eab737e053ac5a5fecfb8ced6055047293ff",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.6931518912315369,
+          "items": [
+            {
+              "probability": 0.49999988079071045,
+              "rank": 1,
+              "text": ".",
+              "token_id": 13
+            },
+            {
+              "probability": 0.49999988079071045,
+              "rank": 2,
+              "text": ".\n\n",
+              "token_id": 382
+            }
+          ],
+          "second_probability": 0.49999988079071045,
+          "top_is_special": false,
+          "top_probability": 0.49999988079071045,
+          "top_token_id": 13
+        },
+        "task": "gsm8k",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.6854010224342346,
+          "items": [
+            {
+              "probability": 0.5621762871742249,
+              "rank": 1,
+              "text": ".\n\n",
+              "token_id": 382
+            },
+            {
+              "probability": 0.4378233551979065,
+              "rank": 2,
+              "text": ".",
+              "token_id": 13
+            }
+          ],
+          "second_probability": 0.4378233551979065,
+          "top_is_special": false,
+          "top_probability": 0.5621762871742249,
+          "top_token_id": 382
+        }
+      },
+      {
+        "comparison": {
+          "fork_gate_changed": false,
+          "identical": false,
+          "max_abs_logit": 0.25,
+          "max_abs_logprob": 0.3358726501464844,
+          "max_abs_probability": 0.06217116117477417,
+          "mean_abs_logprob": 0.10292048752307892,
+          "top1_changed": true,
+          "top2_order_changed": false,
+          "total_variation": 0.06217110529541969
+        },
+        "id": "math500-test-intermediate_algebra-894.json",
+        "kind": "first",
+        "prefix_length": 143,
+        "prefix_sha256": "d39440730ccdc832932977dd8c57c03a0fa8a18d981871f703ad56255acf9c16",
+        "reference": {
+          "eligible": true,
+          "entropy": 0.6916346549987793,
+          "items": [
+            {
+              "probability": 0.5617371797561646,
+              "rank": 1,
+              "text": " we",
+              "token_id": 582
+            },
+            {
+              "probability": 0.4374813735485077,
+              "rank": 2,
+              "text": " first",
+              "token_id": 1156
+            }
+          ],
+          "second_probability": 0.4374813735485077,
+          "top_is_special": false,
+          "top_probability": 0.5617371797561646,
+          "top_token_id": 582
+        },
+        "task": "math500",
+        "variant": {
+          "eligible": true,
+          "entropy": 0.6987736225128174,
+          "items": [
+            {
+              "probability": 0.4996524751186371,
+              "rank": 1,
+              "text": " first",
+              "token_id": 1156
+            },
+            {
+              "probability": 0.4996524751186371,
+              "rank": 2,
+              "text": " we",
+              "token_id": 582
+            }
+          ],
+          "second_probability": 0.4996524751186371,
+          "top_is_special": false,
+          "top_probability": 0.4996524751186371,
+          "top_token_id": 1156
+        }
+      }
+    ]
+  },
+  "metric_notes": {
+    "fork_gate_changed": "production decoder eligibility: top token non-special and two non-special probabilities >=0.2",
+    "incremental_vs_fresh": "up to last 64 generated context tokens decoded incrementally, earlier prefix freshly prefilled; not full token-by-token replay of entire context",
+    "teacher_forced_branches": "fixed saved continuation pairs; excludes forced first token; does not measure free-running choice or answer accuracy",
+    "top1_changed": "production decoder topk(6) top token, using CUDA tie-breaking",
+    "top2_order_changed": "ordering of first two entries of diagnostic CUDA topk(20); ties can differ from production topk(6); not used for production-rank conclusions"
+  },
+  "overall": {
+    "comparisons": {
+      "batch_repeat": {
+        "affected_questions": 0,
+        "fork_gate_changed": 0,
+        "max_abs_logit": 0.0,
+        "max_abs_logprob": 0.0,
+        "max_abs_probability": 0.0,
+        "median_max_abs_probability": 0.0,
+        "nonidentical": 0,
+        "prefixes": 121,
+        "top1_changed": 0,
+        "top2_order_changed": 0
+      },
+      "batch_vs_fresh": {
+        "affected_questions": 8,
+        "fork_gate_changed": 4,
+        "max_abs_logit": 0.5,
+        "max_abs_logprob": 0.6545562744140625,
+        "max_abs_probability": 0.07545316219329834,
+        "median_max_abs_probability": 0.006163585931062698,
+        "nonidentical": 109,
+        "prefixes": 121,
+        "top1_changed": 5,
+        "top2_order_changed": 8
+      },
+      "compaction_rebuild": {
+        "affected_questions": 0,
+        "fork_gate_changed": 0,
+        "max_abs_logit": 0.15625,
+        "max_abs_logprob": 0.21875,
+        "max_abs_probability": 1.0728836059570312e-06,
+        "median_max_abs_probability": 1.0728836059570312e-06,
+        "nonidentical": 1,
+        "prefixes": 1,
+        "top1_changed": 0,
+        "top2_order_changed": 0
+      },
+      "fresh_repeat": {
+        "affected_questions": 0,
+        "fork_gate_changed": 0,
+        "max_abs_logit": 0.0,
+        "max_abs_logprob": 0.0,
+        "max_abs_probability": 0.0,
+        "median_max_abs_probability": 0.0,
+        "nonidentical": 0,
+        "prefixes": 121,
+        "top1_changed": 0,
+        "top2_order_changed": 0
+      },
+      "incremental_vs_fresh": {
+        "affected_questions": 6,
+        "fork_gate_changed": 1,
+        "max_abs_logit": 0.875,
+        "max_abs_logprob": 0.8728065490722656,
+        "max_abs_probability": 0.0698649138212204,
+        "median_max_abs_probability": 0.00825316458940506,
+        "nonidentical": 121,
+        "prefixes": 121,
+        "top1_changed": 5,
+        "top2_order_changed": 6
+      },
+      "parent_cache": {
+        "affected_questions": 0,
+        "fork_gate_changed": 0,
+        "max_abs_logit": 0.0,
+        "max_abs_logprob": 0.0,
+        "max_abs_probability": 0.0,
+        "median_max_abs_probability": 0.0,
+        "nonidentical": 0,
+        "prefixes": 120,
+        "top1_changed": 0,
+        "top2_order_changed": 0
+      },
+      "warm_vs_fresh": {
+        "affected_questions": 7,
+        "fork_gate_changed": 3,
+        "max_abs_logit": 0.458984375,
+        "max_abs_logprob": 0.5567245483398438,
+        "max_abs_probability": 0.06238687038421631,
+        "median_max_abs_probability": 0.01632973551750183,
+        "nonidentical": 119,
+        "prefixes": 121,
+        "top1_changed": 4,
+        "top2_order_changed": 7
+      }
+    },
+    "prefixes": 121,
+    "questions": 60,
+    "teacher_forced_branches": {
+      "memory_gate_changed": 2,
+      "questions": 60,
+      "selection_changed": 0
+    }
+  },
+  "scope": "60-question diagnostic; no new accuracy measurement or AR baseline run",
+  "source_method_commit": "2c8b4870afab764f51cf5092467add4a3832f801",
+  "workers": [
+    {
+      "completion": {
+        "completed": "2026-11-16T22:29:32.365564+00:00",
+        "elapsed_seconds": 273.2615877580829,
+        "tasks": [
+          "hmmt25"
+        ]
+      },
+      "environment": {
+        "config": {
+          "backend": "vllm",
+          "cache_dir": "/data/user04/IDL/lost-token/workspace/models",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 4,
+          "vllm_batch_tokens": 4096
+        },
+        "created": "2026-11-16T22:24:59.090539+00:00",
+        "cuda_visible_devices": "1",
+        "gpu": "NVIDIA L40S",
+        "pip": "agent-detector==2.0.0\naiohappyeyeballs==2.7.1\naiohttp==3.14.5\naiosignal==1.4.0\nannotated-doc==0.0.6\nannotated-types==0.8.0\nantlr4-python3-runtime==4.13.2\nanyio==4.16.0\nastor==0.8.1\nattrs==26.1.0\nblake3==1.0.11\ncachetools==8.0.0\ncbor2==6.3.0\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.5.1\ncloudpickle==3.1.2\ncompressed-tensors==0.11.0\ncuda-pathfinder==1.9.0\ncupy-cuda12x==14.2.0\ndepyf==0.19.0\ndetect-installer==0.2.1\ndill==0.4.1\ndiskcache==5.6.3\ndnspython==2.9.2\neinops==0.8.2\nemail-validator==2.3.0\nfastapi==0.162.7\nfastapi-cli==0.0.34\nfastapi-cloud-cli==0.28.0\nfastar==0.12.0\nfilelock==4.0.0\nfrozendict==2.5.1\nfrozenlist==1.8.0\nfsspec==2026.7.0\ngguf==0.19.0\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhf-xet==1.6.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttptools==0.9.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhuggingface-hub==0.36.2\nidna==3.20\ninteregular==0.3.3\njinja2==3.1.6\njiter==0.19.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlark==1.2.2\nlatex2sympy2-extended==1.11.0\nllguidance==0.7.30\nllvmlite==0.44.0\nlm-format-enforcer==0.11.3\n-e file:///data/user04/ch/lost-token-yucheon-consistency\nmarkdown-it-py==4.3.0\nmarkupsafe==3.0.3\nmath-verify==0.9.0\nmdurl==0.1.2\nmistral-common==1.13.1\nmpmath==1.3.0\nmsgpack==1.2.4\nmsgspec==0.22.0\nmultidict==7.2.1\nnetworkx==3.6.1\nninja==1.13.2\nnumba==0.61.2\nnumpy==2.2.6\nnvidia-cublas-cu12==12.8.4.1\nnvidia-cuda-cupti-cu12==12.8.90\nnvidia-cuda-nvrtc-cu12==12.8.93\nnvidia-cuda-runtime-cu12==12.8.90\nnvidia-cudnn-cu12==9.10.2.21\nnvidia-cufft-cu12==11.3.3.83\nnvidia-cufile-cu12==1.13.1.3\nnvidia-curand-cu12==10.3.9.90\nnvidia-cusolver-cu12==11.7.3.90\nnvidia-cusparse-cu12==12.5.8.93\nnvidia-cusparselt-cu12==0.7.1\nnvidia-nccl-cu12==2.27.3\nnvidia-nvjitlink-cu12==12.8.93\nnvidia-nvtx-cu12==12.8.90\nopenai==3.51.0\nopenai-harmony==0.0.8\nopencv-python-headless==5.0.0.93\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\noutlines-core==0.2.11\npackaging==26.3\npartial-json-parser==0.2.1.1.post7\npillow==13.0.0\nprometheus-client==0.26.0\nprometheus-fastapi-instrumentator==8.1.0\npropcache==0.5.4\nprotobuf==7.36.2\npsutil==7.2.2\npy-cpuinfo==9.0.0\npyarrow==23.0.1\npybase64==1.5.2\npycountry==26.2.16\npycparser==3.12\npydantic==2.14.3\npydantic-core==2.50.4\npydantic-extra-types==2.11.1\npydantic-settings==2.16.3\npygments==2.21.0\npython-dotenv==1.2.4\npython-json-logger==4.2.0\npython-multipart==0.0.33\npyyaml==6.0.3\npyzmq==27.3.0\nray==2.60.0\nreferencing==0.37.0\nregex==2026.9.10\nrequests==2.34.2\nrich==15.0.0\nrich-toolkit==0.20.6\nrignore==0.8.1\nrpds-py==2026.9.1\nruff==0.13.2\nsafetensors==0.8.0\nscipy==1.18.1\nsentencepiece==0.2.3\nsentry-sdk==2.75.0\nsetproctitle==1.3.8\nsetuptools==79.0.1\nshellingham==1.5.4\nsix==1.17.0\nsniffio==1.3.1\nsoundfile==0.14.0\nsoxr==1.1.0\nstarlette==1.10.0\nsympy==1.14.0\ntiktoken==0.14.0\ntokenizers==0.22.2\ntorch==2.8.0\ntorchaudio==2.8.0\ntorchvision==0.23.0\ntqdm==4.70.1\ntransformers==4.57.1\ntriton==3.4.0\ntruststore==0.10.5\ntyper==0.29.1\ntyping-extensions==4.16.0\ntyping-inspection==0.4.5\nurllib3==2.8.0\nuvicorn==0.54.0\nuvloop==0.23.0\nvllm==0.10.2\nwatchfiles==1.3.0\nwebsockets==17.4\nxformers==0.0.32.post1\nxgrammar==0.1.23\nyarl==1.25.1\n",
+        "source_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+        "tasks": [
+          "hmmt25"
+        ],
+        "torch": "2.8.0+cu128"
+      },
+      "worker": "gpu1"
+    },
+    {
+      "completion": {
+        "completed": "2026-11-16T22:29:50.361089+00:00",
+        "elapsed_seconds": 291.13100405503064,
+        "tasks": [
+          "gpqa",
+          "mmlu"
+        ]
+      },
+      "environment": {
+        "config": {
+          "backend": "vllm",
+          "cache_dir": "/data/user04/IDL/lost-token/workspace/models",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "created": "2026-11-16T22:24:59.216493+00:00",
+        "cuda_visible_devices": "3",
+        "gpu": "NVIDIA L40S",
+        "pip": "agent-detector==2.0.0\naiohappyeyeballs==2.7.1\naiohttp==3.14.5\naiosignal==1.4.0\nannotated-doc==0.0.6\nannotated-types==0.8.0\nantlr4-python3-runtime==4.13.2\nanyio==4.16.0\nastor==0.8.1\nattrs==26.1.0\nblake3==1.0.11\ncachetools==8.0.0\ncbor2==6.3.0\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.5.1\ncloudpickle==3.1.2\ncompressed-tensors==0.11.0\ncuda-pathfinder==1.9.0\ncupy-cuda12x==14.2.0\ndepyf==0.19.0\ndetect-installer==0.2.1\ndill==0.4.1\ndiskcache==5.6.3\ndnspython==2.9.2\neinops==0.8.2\nemail-validator==2.3.0\nfastapi==0.162.7\nfastapi-cli==0.0.34\nfastapi-cloud-cli==0.28.0\nfastar==0.12.0\nfilelock==4.0.0\nfrozendict==2.5.1\nfrozenlist==1.8.0\nfsspec==2026.7.0\ngguf==0.19.0\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhf-xet==1.6.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttptools==0.9.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhuggingface-hub==0.36.2\nidna==3.20\ninteregular==0.3.3\njinja2==3.1.6\njiter==0.19.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlark==1.2.2\nlatex2sympy2-extended==1.11.0\nllguidance==0.7.30\nllvmlite==0.44.0\nlm-format-enforcer==0.11.3\n-e file:///data/user04/ch/lost-token-yucheon-consistency\nmarkdown-it-py==4.3.0\nmarkupsafe==3.0.3\nmath-verify==0.9.0\nmdurl==0.1.2\nmistral-common==1.13.1\nmpmath==1.3.0\nmsgpack==1.2.4\nmsgspec==0.22.0\nmultidict==7.2.1\nnetworkx==3.6.1\nninja==1.13.2\nnumba==0.61.2\nnumpy==2.2.6\nnvidia-cublas-cu12==12.8.4.1\nnvidia-cuda-cupti-cu12==12.8.90\nnvidia-cuda-nvrtc-cu12==12.8.93\nnvidia-cuda-runtime-cu12==12.8.90\nnvidia-cudnn-cu12==9.10.2.21\nnvidia-cufft-cu12==11.3.3.83\nnvidia-cufile-cu12==1.13.1.3\nnvidia-curand-cu12==10.3.9.90\nnvidia-cusolver-cu12==11.7.3.90\nnvidia-cusparse-cu12==12.5.8.93\nnvidia-cusparselt-cu12==0.7.1\nnvidia-nccl-cu12==2.27.3\nnvidia-nvjitlink-cu12==12.8.93\nnvidia-nvtx-cu12==12.8.90\nopenai==3.51.0\nopenai-harmony==0.0.8\nopencv-python-headless==5.0.0.93\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\noutlines-core==0.2.11\npackaging==26.3\npartial-json-parser==0.2.1.1.post7\npillow==13.0.0\nprometheus-client==0.26.0\nprometheus-fastapi-instrumentator==8.1.0\npropcache==0.5.4\nprotobuf==7.36.2\npsutil==7.2.2\npy-cpuinfo==9.0.0\npyarrow==23.0.1\npybase64==1.5.2\npycountry==26.2.16\npycparser==3.12\npydantic==2.14.3\npydantic-core==2.50.4\npydantic-extra-types==2.11.1\npydantic-settings==2.16.3\npygments==2.21.0\npython-dotenv==1.2.4\npython-json-logger==4.2.0\npython-multipart==0.0.33\npyyaml==6.0.3\npyzmq==27.3.0\nray==2.60.0\nreferencing==0.37.0\nregex==2026.9.10\nrequests==2.34.2\nrich==15.0.0\nrich-toolkit==0.20.6\nrignore==0.8.1\nrpds-py==2026.9.1\nruff==0.13.2\nsafetensors==0.8.0\nscipy==1.18.1\nsentencepiece==0.2.3\nsentry-sdk==2.75.0\nsetproctitle==1.3.8\nsetuptools==79.0.1\nshellingham==1.5.4\nsix==1.17.0\nsniffio==1.3.1\nsoundfile==0.14.0\nsoxr==1.1.0\nstarlette==1.10.0\nsympy==1.14.0\ntiktoken==0.14.0\ntokenizers==0.22.2\ntorch==2.8.0\ntorchaudio==2.8.0\ntorchvision==0.23.0\ntqdm==4.70.1\ntransformers==4.57.1\ntriton==3.4.0\ntruststore==0.10.5\ntyper==0.29.1\ntyping-extensions==4.16.0\ntyping-inspection==0.4.5\nurllib3==2.8.0\nuvicorn==0.54.0\nuvloop==0.23.0\nvllm==0.10.2\nwatchfiles==1.3.0\nwebsockets==17.4\nxformers==0.0.32.post1\nxgrammar==0.1.23\nyarl==1.25.1\n",
+        "source_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+        "tasks": [
+          "gpqa",
+          "mmlu"
+        ],
+        "torch": "2.8.0+cu128"
+      },
+      "worker": "gpu3"
+    },
+    {
+      "completion": {
+        "completed": "2026-11-16T22:29:16.246983+00:00",
+        "elapsed_seconds": 256.6176905571483,
+        "tasks": [
+          "gsm8k",
+          "math500"
+        ]
+      },
+      "environment": {
+        "config": {
+          "backend": "vllm",
+          "cache_dir": "/data/user04/IDL/lost-token/workspace/models",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "created": "2026-11-16T22:24:59.616681+00:00",
+        "cuda_visible_devices": "2",
+        "gpu": "NVIDIA L40S",
+        "pip": "agent-detector==2.0.0\naiohappyeyeballs==2.7.1\naiohttp==3.14.5\naiosignal==1.4.0\nannotated-doc==0.0.6\nannotated-types==0.8.0\nantlr4-python3-runtime==4.13.2\nanyio==4.16.0\nastor==0.8.1\nattrs==26.1.0\nblake3==1.0.11\ncachetools==8.0.0\ncbor2==6.3.0\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.5.1\ncloudpickle==3.1.2\ncompressed-tensors==0.11.0\ncuda-pathfinder==1.9.0\ncupy-cuda12x==14.2.0\ndepyf==0.19.0\ndetect-installer==0.2.1\ndill==0.4.1\ndiskcache==5.6.3\ndnspython==2.9.2\neinops==0.8.2\nemail-validator==2.3.0\nfastapi==0.162.7\nfastapi-cli==0.0.34\nfastapi-cloud-cli==0.28.0\nfastar==0.12.0\nfilelock==4.0.0\nfrozendict==2.5.1\nfrozenlist==1.8.0\nfsspec==2026.7.0\ngguf==0.19.0\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhf-xet==1.6.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttptools==0.9.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhuggingface-hub==0.36.2\nidna==3.20\ninteregular==0.3.3\njinja2==3.1.6\njiter==0.19.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlark==1.2.2\nlatex2sympy2-extended==1.11.0\nllguidance==0.7.30\nllvmlite==0.44.0\nlm-format-enforcer==0.11.3\n-e file:///data/user04/ch/lost-token-yucheon-consistency\nmarkdown-it-py==4.3.0\nmarkupsafe==3.0.3\nmath-verify==0.9.0\nmdurl==0.1.2\nmistral-common==1.13.1\nmpmath==1.3.0\nmsgpack==1.2.4\nmsgspec==0.22.0\nmultidict==7.2.1\nnetworkx==3.6.1\nninja==1.13.2\nnumba==0.61.2\nnumpy==2.2.6\nnvidia-cublas-cu12==12.8.4.1\nnvidia-cuda-cupti-cu12==12.8.90\nnvidia-cuda-nvrtc-cu12==12.8.93\nnvidia-cuda-runtime-cu12==12.8.90\nnvidia-cudnn-cu12==9.10.2.21\nnvidia-cufft-cu12==11.3.3.83\nnvidia-cufile-cu12==1.13.1.3\nnvidia-curand-cu12==10.3.9.90\nnvidia-cusolver-cu12==11.7.3.90\nnvidia-cusparse-cu12==12.5.8.93\nnvidia-cusparselt-cu12==0.7.1\nnvidia-nccl-cu12==2.27.3\nnvidia-nvjitlink-cu12==12.8.93\nnvidia-nvtx-cu12==12.8.90\nopenai==3.51.0\nopenai-harmony==0.0.8\nopencv-python-headless==5.0.0.93\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\noutlines-core==0.2.11\npackaging==26.3\npartial-json-parser==0.2.1.1.post7\npillow==13.0.0\nprometheus-client==0.26.0\nprometheus-fastapi-instrumentator==8.1.0\npropcache==0.5.4\nprotobuf==7.36.2\npsutil==7.2.2\npy-cpuinfo==9.0.0\npyarrow==23.0.1\npybase64==1.5.2\npycountry==26.2.16\npycparser==3.12\npydantic==2.14.3\npydantic-core==2.50.4\npydantic-extra-types==2.11.1\npydantic-settings==2.16.3\npygments==2.21.0\npython-dotenv==1.2.4\npython-json-logger==4.2.0\npython-multipart==0.0.33\npyyaml==6.0.3\npyzmq==27.3.0\nray==2.60.0\nreferencing==0.37.0\nregex==2026.9.10\nrequests==2.34.2\nrich==15.0.0\nrich-toolkit==0.20.6\nrignore==0.8.1\nrpds-py==2026.9.1\nruff==0.13.2\nsafetensors==0.8.0\nscipy==1.18.1\nsentencepiece==0.2.3\nsentry-sdk==2.75.0\nsetproctitle==1.3.8\nsetuptools==79.0.1\nshellingham==1.5.4\nsix==1.17.0\nsniffio==1.3.1\nsoundfile==0.14.0\nsoxr==1.1.0\nstarlette==1.10.0\nsympy==1.14.0\ntiktoken==0.14.0\ntokenizers==0.22.2\ntorch==2.8.0\ntorchaudio==2.8.0\ntorchvision==0.23.0\ntqdm==4.70.1\ntransformers==4.57.1\ntriton==3.4.0\ntruststore==0.10.5\ntyper==0.29.1\ntyping-extensions==4.16.0\ntyping-inspection==0.4.5\nurllib3==2.8.0\nuvicorn==0.54.0\nuvloop==0.23.0\nvllm==0.10.2\nwatchfiles==1.3.0\nwebsockets==17.4\nxformers==0.0.32.post1\nxgrammar==0.1.23\nyarl==1.25.1\n",
+        "source_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+        "tasks": [
+          "gsm8k",
+          "math500"
+        ],
+        "torch": "2.8.0+cu128"
+      },
+      "worker": "gpu2"
+    },
+    {
+      "completion": {
+        "completed": "2026-11-16T22:29:22.931950+00:00",
+        "elapsed_seconds": 305.4947752170265,
+        "tasks": [
+          "aime25"
+        ]
+      },
+      "environment": {
+        "config": {
+          "backend": "vllm",
+          "cache_dir": "/data/user04/IDL/lost-token/workspace/models",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 4,
+          "vllm_batch_tokens": 4096
+        },
+        "created": "2026-11-16T22:24:17.422598+00:00",
+        "cuda_visible_devices": "0",
+        "gpu": "NVIDIA L40S",
+        "pip": "agent-detector==2.0.0\naiohappyeyeballs==2.7.1\naiohttp==3.14.5\naiosignal==1.4.0\nannotated-doc==0.0.6\nannotated-types==0.8.0\nantlr4-python3-runtime==4.13.2\nanyio==4.16.0\nastor==0.8.1\nattrs==26.1.0\nblake3==1.0.11\ncachetools==8.0.0\ncbor2==6.3.0\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.5.1\ncloudpickle==3.1.2\ncompressed-tensors==0.11.0\ncuda-pathfinder==1.9.0\ncupy-cuda12x==14.2.0\ndepyf==0.19.0\ndetect-installer==0.2.1\ndill==0.4.1\ndiskcache==5.6.3\ndnspython==2.9.2\neinops==0.8.2\nemail-validator==2.3.0\nfastapi==0.162.7\nfastapi-cli==0.0.34\nfastapi-cloud-cli==0.28.0\nfastar==0.12.0\nfilelock==4.0.0\nfrozendict==2.5.1\nfrozenlist==1.8.0\nfsspec==2026.7.0\ngguf==0.19.0\ngoogleapis-common-protos==1.76.0\nh11==0.16.0\nhf-xet==1.6.0\nhttpcore==1.0.9\nhttpcore2==2.16.0\nhttptools==0.9.0\nhttpx==0.28.1\nhttpx2==2.16.0\nhuggingface-hub==0.36.2\nidna==3.20\ninteregular==0.3.3\njinja2==3.1.6\njiter==0.19.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nlark==1.2.2\nlatex2sympy2-extended==1.11.0\nllguidance==0.7.30\nllvmlite==0.44.0\nlm-format-enforcer==0.11.3\n-e file:///data/user04/ch/lost-token-yucheon-consistency\nmarkdown-it-py==4.3.0\nmarkupsafe==3.0.3\nmath-verify==0.9.0\nmdurl==0.1.2\nmistral-common==1.13.1\nmpmath==1.3.0\nmsgpack==1.2.4\nmsgspec==0.22.0\nmultidict==7.2.1\nnetworkx==3.6.1\nninja==1.13.2\nnumba==0.61.2\nnumpy==2.2.6\nnvidia-cublas-cu12==12.8.4.1\nnvidia-cuda-cupti-cu12==12.8.90\nnvidia-cuda-nvrtc-cu12==12.8.93\nnvidia-cuda-runtime-cu12==12.8.90\nnvidia-cudnn-cu12==9.10.2.21\nnvidia-cufft-cu12==11.3.3.83\nnvidia-cufile-cu12==1.13.1.3\nnvidia-curand-cu12==10.3.9.90\nnvidia-cusolver-cu12==11.7.3.90\nnvidia-cusparse-cu12==12.5.8.93\nnvidia-cusparselt-cu12==0.7.1\nnvidia-nccl-cu12==2.27.3\nnvidia-nvjitlink-cu12==12.8.93\nnvidia-nvtx-cu12==12.8.90\nopenai==3.51.0\nopenai-harmony==0.0.8\nopencv-python-headless==5.0.0.93\nopentelemetry-api==1.45.2\nopentelemetry-exporter-http-transport==0.66b2\nopentelemetry-exporter-otlp-common==0.66b2\nopentelemetry-exporter-otlp-proto-common==1.45.2\nopentelemetry-exporter-otlp-proto-http==1.45.2\nopentelemetry-proto==1.45.2\nopentelemetry-sdk==1.45.2\nopentelemetry-semantic-conventions==0.66b2\noutlines-core==0.2.11\npackaging==26.3\npartial-json-parser==0.2.1.1.post7\npillow==13.0.0\nprometheus-client==0.26.0\nprometheus-fastapi-instrumentator==8.1.0\npropcache==0.5.4\nprotobuf==7.36.2\npsutil==7.2.2\npy-cpuinfo==9.0.0\npyarrow==23.0.1\npybase64==1.5.2\npycountry==26.2.16\npycparser==3.12\npydantic==2.14.3\npydantic-core==2.50.4\npydantic-extra-types==2.11.1\npydantic-settings==2.16.3\npygments==2.21.0\npython-dotenv==1.2.4\npython-json-logger==4.2.0\npython-multipart==0.0.33\npyyaml==6.0.3\npyzmq==27.3.0\nray==2.60.0\nreferencing==0.37.0\nregex==2026.9.10\nrequests==2.34.2\nrich==15.0.0\nrich-toolkit==0.20.6\nrignore==0.8.1\nrpds-py==2026.9.1\nruff==0.13.2\nsafetensors==0.8.0\nscipy==1.18.1\nsentencepiece==0.2.3\nsentry-sdk==2.75.0\nsetproctitle==1.3.8\nsetuptools==79.0.1\nshellingham==1.5.4\nsix==1.17.0\nsniffio==1.3.1\nsoundfile==0.14.0\nsoxr==1.1.0\nstarlette==1.10.0\nsympy==1.14.0\ntiktoken==0.14.0\ntokenizers==0.22.2\ntorch==2.8.0\ntorchaudio==2.8.0\ntorchvision==0.23.0\ntqdm==4.70.1\ntransformers==4.57.1\ntriton==3.4.0\ntruststore==0.10.5\ntyper==0.29.1\ntyping-extensions==4.16.0\ntyping-inspection==0.4.5\nurllib3==2.8.0\nuvicorn==0.54.0\nuvloop==0.23.0\nvllm==0.10.2\nwatchfiles==1.3.0\nwebsockets==17.4\nxformers==0.0.32.post1\nxgrammar==0.1.23\nyarl==1.25.1\n",
+        "source_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+        "tasks": [
+          "aime25"
+        ],
+        "torch": "2.8.0+cu128"
+      },
+      "worker": "gpu0"
+    }
+  ]
+}

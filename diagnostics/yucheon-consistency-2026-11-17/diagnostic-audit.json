@@ -1,0 +1,507 @@
+{
+  "audit_code_commit": "aa558bbbc6c0a27acffa5e9e9ae6e67e0c4384c7",
+  "audit_tool_sha256": "c65a21a847759c17dc5ec2714ba8b780af452f921b9f4cc3863db45131003a8f",
+  "checks": [
+    "exact selected question coverage",
+    "input manifest/source case/worker identity hashes",
+    "source experiment/model configs match",
+    "all reconstructed prefix hashes match every mode",
+    "fresh/batch cache miss and warm cache hit verified",
+    "all saved logits finite",
+    "full-vocabulary differences independently recomputed",
+    "branch selection and memory gates recomputed from teacher-forced statistics",
+    "all workers completed on frozen code with exact task coverage"
+  ],
+  "created": "2026-11-16T22:32:30.040244+00:00",
+  "evidence": {
+    "workers/gpu0/aime25/aime25-13-first.json": {
+      "json_sha256": "d9f3e1c3f69d40eebfe5c59ac1bbc66b1514a74be786045d48afd2af7bed3d0d",
+      "vectors_sha256": "7f16d19249525f70e7162fab8501e1d3f62158488896be3dfa61db194e7f5209"
+    },
+    "workers/gpu0/aime25/aime25-13-middle.json": {
+      "json_sha256": "37f3504bfa2f0d7c4f98e88ff276d14aa06fdd143e1ed6496dcb6d42bbc6804b",
+      "vectors_sha256": "9a033ec25b53e16487a2ab1bb74e6a6f72844e80d2a3a2e0a2fae493d8f7de1e"
+    },
+    "workers/gpu0/aime25/aime25-15-first.json": {
+      "json_sha256": "0cc15a53cad62bc7065d832edee222fa3e8842813888417a619ec93b27c46a36",
+      "vectors_sha256": "340c842f834d1255156ad167e5259f03ef01d892cc124d8ade271e09dcaa2ce2"
+    },
+    "workers/gpu0/aime25/aime25-15-middle.json": {
+      "json_sha256": "1f8406ef274e7e50d783d4ce0cb9ab1b5891ff3fd70fe1a18986084f3a777f21",
+      "vectors_sha256": "706a1feea41853c3b114260d9a9b860734e8c943ee2139e62ec378b6fd284ed2"
+    },
+    "workers/gpu0/aime25/aime25-17-first.json": {
+      "json_sha256": "5fef7b9fe79550e98403aa5e5b5433bb8c1f6486330fc405d9d8acd033971667",
+      "vectors_sha256": "224af2c0c76ded36584ccd256d31b7f39c11f49370802cd7d60fe09fe248cbb8"
+    },
+    "workers/gpu0/aime25/aime25-17-middle.json": {
+      "json_sha256": "31dc654da8a0f7a622020323a4f029de77b22510618390b0c9e9ee16238782f5",
+      "vectors_sha256": "51b231b8662fe2addc4b76f83cde220990cf81c2b55a6da7902dd88536fb0ac2"
+    },
+    "workers/gpu0/aime25/aime25-22-first.json": {
+      "json_sha256": "607fbcdc9bd85d4b0a26a014c49c87ac162344d1bfd67c7d1b8f1c4b02feb57a",
+      "vectors_sha256": "44f47a5751342c22886151d8755b1eb7f1e0a2bdbefa11425981a06ff3c7e565"
+    },
+    "workers/gpu0/aime25/aime25-22-middle.json": {
+      "json_sha256": "0da3a52d6a32fcda8de81df274b952c5a66ef4eaec25a8140357bb998b3f0bee",
+      "vectors_sha256": "0f1f176d6b553c15a5bb3a6a8dca212f4f7f00fafc6425981a2ac15fef1232ef"
+    },
+    "workers/gpu0/aime25/aime25-23-first.json": {
+      "json_sha256": "a6b7d0f5abd8ed3c849156bf2f6669ca2302ab1f0854c7278f1386bd9e0bd2a0",
+      "vectors_sha256": "f845bf7137c48da1bce262a753a8b406e2afbad71e3f16e880a2c3f14af958ff"
+    },
+    "workers/gpu0/aime25/aime25-23-middle.json": {
+      "json_sha256": "5de349f7bc600a45811c40c71a451628b7352598eb5d51123a3eb92a309e50e8",
+      "vectors_sha256": "b27825365fdf92c952f2f250eae3c332ffecb45b2afba61bec05ebb4cbad737c"
+    },
+    "workers/gpu0/aime25/aime25-3-first.json": {
+      "json_sha256": "3a9a24eb125cead123180ebd70c84764843cdb3a6e8672c8d9ae14e836348fe7",
+      "vectors_sha256": "d9df31bb492b1851a42ff4e180d454cb5ac7cc89460bb10f823648f027da57b9"
+    },
+    "workers/gpu0/aime25/aime25-3-middle.json": {
+      "json_sha256": "6022da8fbaa3998cf1dd279d2d09f133a74d41647ab49ffcf4ef64627538ea76",
+      "vectors_sha256": "365a24b87147bda172ef8ca6e41cc7248fa4d201b34e3413ebc3434ff948375c"
+    },
+    "workers/gpu0/aime25/aime25-30-compaction.json": {
+      "json_sha256": "cf45074811e7b24fa039c2769f966bc0fdd3e048518ee2770cf8fae2310fa218",
+      "vectors_sha256": "54ded2f86d568ec96ce328b137d43da78c098301d6a72ad2056bdb9f5198cdd2"
+    },
+    "workers/gpu0/aime25/aime25-30-first.json": {
+      "json_sha256": "8933268c653cd4d60b4119dbcec2ecd4979d660dea720fc2fc1abf9ed54f50f9",
+      "vectors_sha256": "584585e018f45af718a3f9d5434075886049b40b7f145300feb0b1f3124c3f9e"
+    },
+    "workers/gpu0/aime25/aime25-30-middle.json": {
+      "json_sha256": "d11fdbd1748966d7a6248d74ebc0c7ce3c8b20309fbf6b190b9339e42196a1da",
+      "vectors_sha256": "d81b7f205ed0d7f479409193cdfa3ba8d0303ef02904dc5601b14c8b843d3b29"
+    },
+    "workers/gpu0/aime25/aime25-4-first.json": {
+      "json_sha256": "818df666bba34eef582ea6b1bfb093bad70450aad3ad7ac29989f27b33b88e22",
+      "vectors_sha256": "cd9f90d311ae9115fc3bf9b1102729a30d5003c36788398ee63c38d4e4aa42d9"
+    },
+    "workers/gpu0/aime25/aime25-4-middle.json": {
+      "json_sha256": "917e582c557c8ca8d260256ac4f0cb05dd581af9b4ba44541b0b11afe355dc28",
+      "vectors_sha256": "abb95e168dbfa710d1ac9633c7bfb0fd38c9b808731273df40dcf8662af8db8b"
+    },
+    "workers/gpu0/aime25/aime25-5-first.json": {
+      "json_sha256": "6c9cdb8490cc59206dc7591bcb53a39b240bdda667c390a611abd17e8e70a631",
+      "vectors_sha256": "fdba0011736658e713e0fb6c3b65c29d1850640a6394db694c4989b1bfd8f009"
+    },
+    "workers/gpu0/aime25/aime25-5-middle.json": {
+      "json_sha256": "d2b41141b3378a95f3ff5f5c1155fa940528651fcbdfaa95df1ebd3fac6adae0",
+      "vectors_sha256": "a9f510504666154e0018f065d3c97a6d661dc0922a1eb5d6268391a3698ce853"
+    },
+    "workers/gpu0/aime25/aime25-8-first.json": {
+      "json_sha256": "e92a7eb10335c67aa2118bc9b2e38021ebe117c518fc8992450577e93c073f14",
+      "vectors_sha256": "84568cb5318e3dd76bd467b0ec5d654c51037d617b51f3137ee90fe4f7aa3610"
+    },
+    "workers/gpu0/aime25/aime25-8-middle.json": {
+      "json_sha256": "16aeaae32557602855b27bf5062e9750197bb190075e626d97e8fd070cb7cf3e",
+      "vectors_sha256": "c44e100d6d8b377bf7cb30488827188728d779ac5eb36614d7752d88dabb7dca"
+    },
+    "workers/gpu1/hmmt25/hmmt25-10-first.json": {
+      "json_sha256": "f4dedecbfc8e94f411d3ef45dda9610ae3458f17f66285038f9792e66ebdc3db",
+      "vectors_sha256": "6bec90f1dc1d4a5cb2e1082e8c0db548499d3772764aa68efb56975cf9ab107c"
+    },
+    "workers/gpu1/hmmt25/hmmt25-10-middle.json": {
+      "json_sha256": "beadf10da637eff8521ff47c4fcb536973a53114aea76c34623ee06202697187",
+      "vectors_sha256": "df2dc632127454a2f1a340b42460604b7c422e947763ef7312a7271ea55105ac"
+    },
+    "workers/gpu1/hmmt25/hmmt25-12-first.json": {
+      "json_sha256": "cbe10e0b1a552477d25e043a88f1b6256d109b120030fe14fee9766b60019886",
+      "vectors_sha256": "e550e80cdb239c14c20c179b0c085819313c5877a307a91ef2873e6a3aeb759c"
+    },
+    "workers/gpu1/hmmt25/hmmt25-12-middle.json": {
+      "json_sha256": "c94d5c0b514e0f7279c27dc9fb237a58bbdefb4329b3c504e6b90e177ddf09ab",
+      "vectors_sha256": "3af6299b69b6218505f0a5941c1ab74d48f99b67db19e582cdb1daaf4ee47607"
+    },
+    "workers/gpu1/hmmt25/hmmt25-13-first.json": {
+      "json_sha256": "2f3d7af7efcab5162ab2c1bc086e2a8b3363ece5f35fa8a67dd61c977b34db5d",
+      "vectors_sha256": "685c6daaeebab891cb2c850030b0274eb4d5a169526913ca46201252d3b13b40"
+    },
+    "workers/gpu1/hmmt25/hmmt25-13-middle.json": {
+      "json_sha256": "3c1b20b73b4442cdf0142a21bd010ef83cee822d560309ce280d358ca2d45edc",
+      "vectors_sha256": "46e804811a7199f44194dd45cf5992cf6d2e06e22c06953c081b82a499be25ec"
+    },
+    "workers/gpu1/hmmt25/hmmt25-14-first.json": {
+      "json_sha256": "113e3009dcbeba8d5be61bf1a13a640a9be426944fa2c904570244fce31619f6",
+      "vectors_sha256": "2c6085dd3fa7c958efe3827b895c4a7fac1bd5a2977e229eeed5aed1bcfbfc15"
+    },
+    "workers/gpu1/hmmt25/hmmt25-14-middle.json": {
+      "json_sha256": "876cce45b344b8f9cb1598d7782918104742642d817f9bac4923cee1d1e7a276",
+      "vectors_sha256": "a414430ff88a86626b8b570e7ac9fcb609dcc888d5682e304b2997b1f62e3e59"
+    },
+    "workers/gpu1/hmmt25/hmmt25-22-first.json": {
+      "json_sha256": "6d932799f849652c77b35045cc6ab963d518592c63aea55e5cc5d4db01d55c23",
+      "vectors_sha256": "580cecbb5e67183ade22a86e53450955652d4397ee2d7aae98cb47553bdd52d9"
+    },
+    "workers/gpu1/hmmt25/hmmt25-22-middle.json": {
+      "json_sha256": "1f91e3b34816e80be028e4f4037f12f688a44a97bf768d0b91e83ef8a1b53ca9",
+      "vectors_sha256": "6ab3170e65a2d9985ba0bb42520eb9bf56743537004b720544c242e301a97791"
+    },
+    "workers/gpu1/hmmt25/hmmt25-25-first.json": {
+      "json_sha256": "883ab85eed3bf32a3c8b8ff4f12f01d048552c6864ee4db8af1e2b125405257d",
+      "vectors_sha256": "2da10cb4201999a3b6cd06e4ee318177de4c6b6e5647754555b448ce6a1c4569"
+    },
+    "workers/gpu1/hmmt25/hmmt25-25-middle.json": {
+      "json_sha256": "ec5964e15dbb4b06801fccaa59677921c5c1884581d906e5a7082d22eb05f4a9",
+      "vectors_sha256": "3aa32d8fab273a4a0c72028a5e1304e85b3451d24ae4a63c29681c1d7761ca01"
+    },
+    "workers/gpu1/hmmt25/hmmt25-30-first.json": {
+      "json_sha256": "768f04cf569d96c967ba88bbecfa2ba49b7a1396a059977550d0f1d9c4b55fe4",
+      "vectors_sha256": "b72dc5275ad8931d5016b3cc1f162cada44e864e12f891c9f4d8d5d7a1d05d23"
+    },
+    "workers/gpu1/hmmt25/hmmt25-30-middle.json": {
+      "json_sha256": "b396ac05c5c4f081dc7466f128639539b581749bfd4945d13d138819b0907e0a",
+      "vectors_sha256": "546fd09807c861ccc9cab3dbfa94df3ee8c5821a4e5d40b1f24aefb7c2b43b48"
+    },
+    "workers/gpu1/hmmt25/hmmt25-7-first.json": {
+      "json_sha256": "eb31120d1a51aecd68effd61f7c72650b576d86fb812cfe5dfad20b4b2bad168",
+      "vectors_sha256": "9e3da202cad5609b413174050cb1fcded9172f7037d1d3f7e8b661dc7d80be0a"
+    },
+    "workers/gpu1/hmmt25/hmmt25-7-middle.json": {
+      "json_sha256": "91bb6b4156b378e00745f33573c2da499168a84e3bba78b6dc221187b1ec6b21",
+      "vectors_sha256": "d974a52c02eb932cda1b12fbe8e585299f73173ff17d54183e6dcb28c22bd21b"
+    },
+    "workers/gpu1/hmmt25/hmmt25-8-first.json": {
+      "json_sha256": "54997bc4a856e303e73676ac166364b60a9b163ee48271c882db8cff692e969f",
+      "vectors_sha256": "b540a920964979eed39f1cb6d2493386f334ab973998f1f3332f980e6bde28cf"
+    },
+    "workers/gpu1/hmmt25/hmmt25-8-middle.json": {
+      "json_sha256": "56845fa4deec2947b166574633cb3d09e704a0cd784bb1edf13a2746f0a1b2dd",
+      "vectors_sha256": "431826d4ab70b985aefd43d68521e834aa836c8f2627e0fa9af374f1e276f613"
+    },
+    "workers/gpu1/hmmt25/hmmt25-9-first.json": {
+      "json_sha256": "6e4b8596d0e587f64cc187648cd748c6c6ad4d9c75e579e4c16c694ff0894e5b",
+      "vectors_sha256": "e84403daf9962eb1f971bb42a157d4d6904d1a36e82678046b14f4794b9cef83"
+    },
+    "workers/gpu1/hmmt25/hmmt25-9-middle.json": {
+      "json_sha256": "17164d7dabeadf85f4211768a113c7a63defd74e955bf66795884848cd678db3",
+      "vectors_sha256": "1c3fa1eb5681cc200728c32ef3ebd25ceb21cbe87e439d8ed9a94be1e21a61a2"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1033-first.json": {
+      "json_sha256": "94f120f6e596e3211719947ee04653ac2971a3c596aa03257c3618820f7f97c8",
+      "vectors_sha256": "1a331b46ffd0a6f47ab6f7bc748bfd5e7706462d0c138f28b6988b9dfb714cc0"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1033-middle.json": {
+      "json_sha256": "1bc8c6416bb76292d07101ab0bb68f26b50d7a1712dc02a7e36b3c532a2f6460",
+      "vectors_sha256": "aaaa4876f806bdcd68301df5f859df5300b186522342e273f1d15a494a3bc2de"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1126-first.json": {
+      "json_sha256": "0994fb6d027c8711813c0a3fd05c07d289929599932830b2f7da7a16a914b0a9",
+      "vectors_sha256": "00673a7469d23944e7a14b3ce2ee59bed6e2ab79c92605c5d74bff3be1a4e8e7"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1126-middle.json": {
+      "json_sha256": "e380525d1509247ce3e55b51e941c5f5b13b4033495e5cd9aa472bc689bebde1",
+      "vectors_sha256": "012092fbd5fdf266ec004b6279a01f3c7000dd1d0a476cb656495ac75051c8b8"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1262-first.json": {
+      "json_sha256": "f329747df676ac791e55fc29d96bb2b9a62638cfb0b3fccd6037f4410b5c23d1",
+      "vectors_sha256": "36ba64b68993cdcf28e8dde64d76e90fc7c4b8c89c18c0cbbd9a6bd4a6932de4"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1262-middle.json": {
+      "json_sha256": "f16eee2851a4ad3ab53d28c40020ee64f9e6ce438de9d0dff59f5dbe37fea341",
+      "vectors_sha256": "e29b1724d0fe91dd6dfb052ec6b2282e217eec315ba7b562d01b00383b723cc6"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1266-first.json": {
+      "json_sha256": "7898625a19af6519a39531d5b7229337455088c3714db63ca200404ff48e7818",
+      "vectors_sha256": "1b0f507447d8b112679b18f6eea16d6af3a4994dff6c30b84218c8b9f466e05e"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-1266-middle.json": {
+      "json_sha256": "827a239a907ea604789337c3685db24256a1747ba40c5b3dbcd0a02e1315142b",
+      "vectors_sha256": "478bec86966833ef1ca639f6cdf840c35ffe3ee248932e4f205199d798e0e64a"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-155-first.json": {
+      "json_sha256": "dfdf8b11329da531f82029dd9625d0205701d57441bd6390d428b8e85656cee9",
+      "vectors_sha256": "d3c2200cb7d7edc175a3ec72cbcfd7f58e809a09d5ed2a82025bc7c26191018d"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-155-middle.json": {
+      "json_sha256": "b274303a435c499c1fe9256c676a30174749b08b7a70fb3b25abb4ae3bf0f714",
+      "vectors_sha256": "b6e7dbecd3bdf6f73ae88d00c39f7205e52b64fd3568127c032bd5f77356da47"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-216-first.json": {
+      "json_sha256": "9bd43e235f75bc2907cc187772506537198908ce947e0680e52f295c7d9216ad",
+      "vectors_sha256": "cb0832895ccce619194e0a3e9a140d27d0a8f9fd5758afb6a6ddd26abdd75d67"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-216-middle.json": {
+      "json_sha256": "47de3a6fe581409c000156163f14c3668d3b9786739cfd3c00c7defae0ed9253",
+      "vectors_sha256": "54d611a6300b515b8ddf58658411d419ba1e89da015a87fcd34d21d3ad436c32"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-369-first.json": {
+      "json_sha256": "01e3aa761ab6bbf47338d91a0a13095ed2ee1da3ddf430239c6b7108bafc2386",
+      "vectors_sha256": "3a7825e8f150853f460df55d32714cf3494879efe5df184bf3ec80245aa47d3c"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-369-middle.json": {
+      "json_sha256": "bafb03e164f526e4557ba5d345128f5ece45192c45160db755a233c26bc8a3a6",
+      "vectors_sha256": "cd98b350c2bf30c6b64a7c516bf731df61d0d9d1ff459f3310c644d102f8452c"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-411-first.json": {
+      "json_sha256": "c48e8370d1e26938a49821d3ac3e137abf805722b2dec98a67bb92eb64e839ef",
+      "vectors_sha256": "ee1df9c7c1f7228365cd76d5855918918ccc6c8c3d58f30ae3bb9c6153ebb2e9"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-411-middle.json": {
+      "json_sha256": "346de5413b9677d66539bca30959ef9f66efac341dc417cca98ae7f05c0b2e89",
+      "vectors_sha256": "31d179779b2df5db362ad173c632c26e8079cd7600968c368a2310011c54f243"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-482-first.json": {
+      "json_sha256": "3edeab4403f37655fd5ee85bb8d6387b81dd3bfbe2323d74625df95820503fde",
+      "vectors_sha256": "43e00caecd33ca9bd593154ea840db355b56641af0fe6f36a35d8b81db57c74c"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-482-middle.json": {
+      "json_sha256": "8c71bbb78a4fac2ae737e02b3f8ecde40f060e5e322055cb903312fff4a45ae2",
+      "vectors_sha256": "694d7118c8c08b0117062d04a5bd222ef2cee3583962ddb784252bda6bf3b107"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-956-first.json": {
+      "json_sha256": "48671a034e31f0f471ffb5ebffc6b005d2b4daffb7a869db9944a619648d9cc3",
+      "vectors_sha256": "738b9c342e5d90a1b36746bc123fb9a9631df9d51b0fa531baf6808ad5de4ab7"
+    },
+    "workers/gpu2/gsm8k/gsm8k-test-956-middle.json": {
+      "json_sha256": "39753a460d6a22d15985872ffaebf7aabd458da1c0fd568ba6ef14f03042414b",
+      "vectors_sha256": "676a381398074528b6660da7ad83640daa4defcfe5c04261f5cc4e8c8b2e2337"
+    },
+    "workers/gpu2/math500/math500-test-algebra-1199.json-first.json": {
+      "json_sha256": "65a32806088563592a265ca1fdfb8316ba70a7b6b289f67972c502197f72f9a1",
+      "vectors_sha256": "417cae14bc463f3eb22d14ffd775d8e210ab95b9f1002e2f5fa99a16322577a5"
+    },
+    "workers/gpu2/math500/math500-test-algebra-1199.json-middle.json": {
+      "json_sha256": "57cf8312e5cb27a5361ef4f5c183803250fa88aa17cdd08e3beba4927b6f6624",
+      "vectors_sha256": "448cee5d2e1790acab0f58ed1a1b4b8fc8b3eabaaf3a27e264f5fb8bd3151141"
+    },
+    "workers/gpu2/math500/math500-test-algebra-864.json-first.json": {
+      "json_sha256": "9ed16e51a370524450920ce6cc4d488c3c3785cab1b1257c18a967c97b6a5f27",
+      "vectors_sha256": "65d0b49b5bfb87224f9b77c47dcf95f1b3b919f4053db5cf0ec816aca494eecc"
+    },
+    "workers/gpu2/math500/math500-test-algebra-864.json-middle.json": {
+      "json_sha256": "93dd2b9436489abf0d1471e0498a0de6dc26e46a2c96ecbb9b7527547f241998",
+      "vectors_sha256": "851dca1838ce1c2c95fcbd54592f3c3be6241cd1e2fdc7f822c7af38f35bc3a8"
+    },
+    "workers/gpu2/math500/math500-test-counting_and_probability-116.json-first.json": {
+      "json_sha256": "b7a03ba29aba0dabc02fdd7e69101304c57c6db916fa97b6be6d8a9ce209ba56",
+      "vectors_sha256": "9294c2cdd88beceff2ec17fd684652a6021d1f7361b9cf6e1da5e0c79cccf890"
+    },
+    "workers/gpu2/math500/math500-test-counting_and_probability-116.json-middle.json": {
+      "json_sha256": "81f52ce27f3d38b4c1a58562b3676828de1220b0f90ca2fc1d0a894a4c9f5b8e",
+      "vectors_sha256": "3e34a4f995e4df20af42da3222272a5966a735cc2481190bb62d8e1c291fad4e"
+    },
+    "workers/gpu2/math500/math500-test-geometry-947.json-first.json": {
+      "json_sha256": "183fefbcbf5b4a3101379abe48c37aa971e5623db8c790140b65f3352395cf68",
+      "vectors_sha256": "8a4de142df5fe0eba6c488757766065705b29b37245ccbc92bda0cd571821bdf"
+    },
+    "workers/gpu2/math500/math500-test-geometry-947.json-middle.json": {
+      "json_sha256": "91738daa00cc66758a6db9a883fd213c5afb55e6100f840bfb53957175ebd059",
+      "vectors_sha256": "947407f9e024ee31b10733495b56b8b77396216bbbf97b8babe96115afba4419"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-362.json-first.json": {
+      "json_sha256": "26882a4ba4d4d9ac6f35dad3fc3bff6639fda2a345664d32c3b7001884cf2633",
+      "vectors_sha256": "049bc6b17a57832c43b8c22fb9b152a127510fb555b6e6fe24a35e13b5cf15e2"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-362.json-middle.json": {
+      "json_sha256": "f47405861e4342aef031fa5b3ae5cbeb6bc1beceeb300b2afb1f3b5652222f1b",
+      "vectors_sha256": "1a3c4ccd82f119ce96f4f08862a68df46f9cbef9044713172e8b49fc12cec758"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-582.json-first.json": {
+      "json_sha256": "5d6955cfa8e612c5cf2408bb1ba8973a24d7b926aa9c4dc4cbb0782a273de1b9",
+      "vectors_sha256": "0d49e8252feab4a269019b52b183921c20e02ca8578494468f07abf94ae0877d"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-582.json-middle.json": {
+      "json_sha256": "6f9628cd7dcd644188b1189815c95facdc0076c86dbb9045079d14786f008889",
+      "vectors_sha256": "85e27d6ec7a2b0cd6cb23091448a74c23b0d8c7182a91cb68c23242b6f61fe1c"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-860.json-first.json": {
+      "json_sha256": "19fce8101aafbd471fe12057cde0f8bfb1e0eb914f9ea360d9d715a56d0b8a0f",
+      "vectors_sha256": "a23722dec25ac3e9ccbe935327fce9041baa7a6c70363a6af35c4c0281a26798"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-860.json-middle.json": {
+      "json_sha256": "ba8feb3e64acecb79c9043d1900e414e015e77fef86358e54653fdda62794140",
+      "vectors_sha256": "44d259a56abf60fd99e50d6b2b6b8d7468ee3c4fdd2363649476ce8597931b6e"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-894.json-first.json": {
+      "json_sha256": "26fc2821a447072d72e5c7f386b1056d9929225694a40800b54980b24d36f8e7",
+      "vectors_sha256": "aa903ca43cd484d75a1f9aee3fcf3953b4d30ba7950929eee3e8a77dd2e14379"
+    },
+    "workers/gpu2/math500/math500-test-intermediate_algebra-894.json-middle.json": {
+      "json_sha256": "954e2343be2d0c1bb5774d47b51d22c72647b3320ef686ca0daf3cd77923ff6d",
+      "vectors_sha256": "7141a53e92a9049772f313e19ab31745df39f1ab1f43c8873ed3128aa9797ac3"
+    },
+    "workers/gpu2/math500/math500-test-number_theory-1000.json-first.json": {
+      "json_sha256": "d2b3267eb336168b0c9408e89cb48fec7f7d7d0981f0ccf154c6435884e74bf2",
+      "vectors_sha256": "cbf20dc9cf12ea7ae21d4c621a5ee57474f7f7998b3ff2b537ad49a1cd29f539"
+    },
+    "workers/gpu2/math500/math500-test-number_theory-1000.json-middle.json": {
+      "json_sha256": "258905f9dcf9a524c3c8580340d9574abd8d7a0952a814cb8f9d44c4c81b4124",
+      "vectors_sha256": "9cd13171150a053629037351619de242537ec1b3ed2ba944a4dc82eb6a355b8b"
+    },
+    "workers/gpu2/math500/math500-test-prealgebra-1114.json-first.json": {
+      "json_sha256": "8c08a534b5395224755507c9f207a69316e7631a83e9534ad88b1b5eabe8c4dd",
+      "vectors_sha256": "a814c9f7f2de45b9b7c81901d4f827806e84db897a1adb2611a590d234fe23d0"
+    },
+    "workers/gpu2/math500/math500-test-prealgebra-1114.json-middle.json": {
+      "json_sha256": "3a1c11fe4d9e5e7331bd8b41a1b3325549511082087da1cc6a954c8f82304eb3",
+      "vectors_sha256": "acedadab391935f700718bbcf7cdf11f7a8d4113af334f53a7a0e6c2c54c897c"
+    },
+    "workers/gpu3/gpqa/gpqa-recBTsbQnhEKSSnQh-first.json": {
+      "json_sha256": "24db635960a0e2085382a2f758df6e702f8897b2d8cfd1f6326d79ab81b09d1b",
+      "vectors_sha256": "0f3a7cd9cb8d26c3dc36e97c8567a143af5066ef9542ac89519b9187af2c7d72"
+    },
+    "workers/gpu3/gpqa/gpqa-recBTsbQnhEKSSnQh-middle.json": {
+      "json_sha256": "3562985fcf943b1b3719056cd8c027c8d490a20da16e8c9d83984c5709d8eafb",
+      "vectors_sha256": "b25bc156983e362dd689fb506f79e18aa68762acf34ffa95b46677aeba5da909"
+    },
+    "workers/gpu3/gpqa/gpqa-recH879YiAi6dLCSy-first.json": {
+      "json_sha256": "825556a32ac48cc98258cf141f27ecdfeb97dc665c394d7d98719248d1784644",
+      "vectors_sha256": "8690bcb906991d394c08cd9f780693d9df91d399e7a1c73f9fb835e7f13cf548"
+    },
+    "workers/gpu3/gpqa/gpqa-recH879YiAi6dLCSy-middle.json": {
+      "json_sha256": "50959861d81ad61c16e47f87172d315d153cdb7c2098e3b967eea696daaf30dd",
+      "vectors_sha256": "7a5d0d4a7cc931cdabbd98deb436840b2ab1cd7a107f1fdc3b39ae21bd4a6261"
+    },
+    "workers/gpu3/gpqa/gpqa-reccc0j9BzteLsAB5-first.json": {
+      "json_sha256": "a668ff4a99726b6fb2febc430d71f0207358355e49999b8da34c850b53ff72bb",
+      "vectors_sha256": "7de7122f680ff71a6374353d627f5a866679cad9b656a8babecd28e8a2db8692"
+    },
+    "workers/gpu3/gpqa/gpqa-reccc0j9BzteLsAB5-middle.json": {
+      "json_sha256": "a89282244df360dff0c74d9603f86f19ebdbb5bdc139607574ec77658802078e",
+      "vectors_sha256": "9079fa35f42c3109281f9bdf6708549fb90aa82f275cd2ad4acb4c23055327a8"
+    },
+    "workers/gpu3/gpqa/gpqa-reclPSWuaG47bkpDv-first.json": {
+      "json_sha256": "a7357a36c2e73d52a92dfbc2cbe79749dc89ba83acd3e5e875fd1a57cd4d32cf",
+      "vectors_sha256": "f92175942217a73414ba32c5e14aa4ff01cfd36dcc7f3645edfba798c05492fd"
+    },
+    "workers/gpu3/gpqa/gpqa-reclPSWuaG47bkpDv-middle.json": {
+      "json_sha256": "e2db0dc4017c376ae3eecd629ad89af7399e987de1f76f10861a690c8a3bd01c",
+      "vectors_sha256": "470097a15b30e1821993551fdc9b1b850cb49903e659b0e9304df2c08c6a4cdc"
+    },
+    "workers/gpu3/gpqa/gpqa-recnsAVZoGayGIj3g-first.json": {
+      "json_sha256": "0b4b50b6647a33dadc9bfce40caf3c8b6c52ef6fbcdeabfb36d2804ebacfdc52",
+      "vectors_sha256": "2bd25e79d68436f6e6fb684652a612aeb102b4abb8eab4ab4cf74a608fea93e6"
+    },
+    "workers/gpu3/gpqa/gpqa-recnsAVZoGayGIj3g-middle.json": {
+      "json_sha256": "c14a8224c6644edad05a798c9f82c229d5bb3220bed7c0fd9466b49fbc4b1250",
+      "vectors_sha256": "61d871e3cd8444f46352f5d62cb11a187b408eb45a7fb35384bfc0fed8d8d97d"
+    },
+    "workers/gpu3/gpqa/gpqa-recoiTJPGUmzAkief-first.json": {
+      "json_sha256": "d97fe982775e64c64b5e2dad4444f22a19bc4c44d6acf682fccc0142d0d643be",
+      "vectors_sha256": "5af28c8a514a45ae60dd11feb85d4eb880389f484991c72057b66c2b3baeeed3"
+    },
+    "workers/gpu3/gpqa/gpqa-recoiTJPGUmzAkief-middle.json": {
+      "json_sha256": "fc6043a23da35923475e149434f824afa568fd2e214e528ddf171bddef2e6892",
+      "vectors_sha256": "24a6ed443f67df74384194290f0e2cdf07f5c06281b18999cd18439792fedf7d"
+    },
+    "workers/gpu3/gpqa/gpqa-recqLRu4BcJvlSANc-first.json": {
+      "json_sha256": "77dffdd3311f064c170420a2a2d83a33c05d6253f259d1231a8cb6062c8ff0d2",
+      "vectors_sha256": "968f004a42d2f691ceff1ea70b1339589e0009f414eb0f44b2cad44739a32add"
+    },
+    "workers/gpu3/gpqa/gpqa-recqLRu4BcJvlSANc-middle.json": {
+      "json_sha256": "00c10f70d5e1ac6879f21ef4cec3f355df3b19fda91c2bc6030ace1e4c645923",
+      "vectors_sha256": "cdc6f2c9e2293bf03440a584405eda016ee477b33d9b7923565395ecfcefdfbb"
+    },
+    "workers/gpu3/gpqa/gpqa-recrTL3i1VEPCfDGy-first.json": {
+      "json_sha256": "63e862c7eb711e5d6b8450224f9b3f57f73bd3380ad160c8e17aadd0c0b07afc",
+      "vectors_sha256": "e0c3d66a994d43ff01989f4a7bb32dcd0ffeaa733e0937be0aff03a226c950e1"
+    },
+    "workers/gpu3/gpqa/gpqa-recrTL3i1VEPCfDGy-middle.json": {
+      "json_sha256": "3d10ee6c741f98039e25c86770ef9fcc783d3eae0807e504226e60b72f4506ac",
+      "vectors_sha256": "dd6d7d042a0baa0910667ca7e5e63537b9089c064cf3ebab6c3cfa9e734da2fa"
+    },
+    "workers/gpu3/gpqa/gpqa-recs3PLPUEMiqg4P8-first.json": {
+      "json_sha256": "2eaa6f96f54f78af96adfb00545eae766051b4d3fb0a415175311998ef5e4d6b",
+      "vectors_sha256": "703fdd2a728c2852be66576696f4bbd7e0d07fe625f568fb6747d3d9a6392b95"
+    },
+    "workers/gpu3/gpqa/gpqa-recs3PLPUEMiqg4P8-middle.json": {
+      "json_sha256": "5e4684f87148c2863ee35e46ba7d70f7317761270178a866f735b9544f28ca02",
+      "vectors_sha256": "71a5628ac1de681d2cc76dd0955a173a2b3266b887e9bbb117e52a6059ac40a9"
+    },
+    "workers/gpu3/gpqa/gpqa-recxWirvTOyWz2zja-first.json": {
+      "json_sha256": "be13c38010a6feb7972e8efbc127fbeb176825f0c03ffdae521c6b2bb544c766",
+      "vectors_sha256": "1c588660e17123d21d483bbbf167684f12f865e9f53f3bff721f397234e29765"
+    },
+    "workers/gpu3/gpqa/gpqa-recxWirvTOyWz2zja-middle.json": {
+      "json_sha256": "8e8803fc8efb5939a9e4fb6772198133147d604e999e6deeb234546697aee29a",
+      "vectors_sha256": "d293a4aca704d349015befc778e45f7e578635b870ca9fe82c181a4a18a1838f"
+    },
+    "workers/gpu3/mmlu/mmlu-abstract_algebra-7-first.json": {
+      "json_sha256": "55a18781d1e99a8133c11e5aeecebc96436b3fb1837961efb4db0b1f531ee280",
+      "vectors_sha256": "e1fe3be679933ccefab80c4b07849f67d20adc8f142119184a02a503d83a9f4f"
+    },
+    "workers/gpu3/mmlu/mmlu-abstract_algebra-7-middle.json": {
+      "json_sha256": "87c999dc2c3272e29049435402710991a74fca8639305ef32cd89525e7f98e1b",
+      "vectors_sha256": "cbc8e268f3799d277240e2c7f234fc49decc721bd62cb087095ab16a5a7142f8"
+    },
+    "workers/gpu3/mmlu/mmlu-astronomy-334-first.json": {
+      "json_sha256": "d32c9d2862af74d16a903ac5e269356f641922301067899dfa0827f33fed03ac",
+      "vectors_sha256": "a729645930ecc85079678620d3d62e7501b35a325ed032acb5a1401fa49b2f4e"
+    },
+    "workers/gpu3/mmlu/mmlu-astronomy-334-middle.json": {
+      "json_sha256": "0ea27bb9990a14e95d48e9102485049dd92014d90df0da9b947c5636c19dd3ae",
+      "vectors_sha256": "d832fc2a2a68436c85c01b77693b5ebb696d9e68877c65e75fe47f393251e1cf"
+    },
+    "workers/gpu3/mmlu/mmlu-high_school_macroeconomics-3914-first.json": {
+      "json_sha256": "6bc40e141323d527ceb4e47b519cd0e079248004cf30e600251edc2bcff523e2",
+      "vectors_sha256": "d3ba2d547293b310c15192d6c52378f97e8f75cd57a9869064fe194f047a6c87"
+    },
+    "workers/gpu3/mmlu/mmlu-high_school_macroeconomics-3914-middle.json": {
+      "json_sha256": "088d9eafc074acbe79724f47822b9f3512d6d31fcd02ee8c5492e764723e33f2",
+      "vectors_sha256": "0311142c5da0acf145fc71ef48cbd0867d70cff20ed1588f000ad13626e2b8d8"
+    },
+    "workers/gpu3/mmlu/mmlu-high_school_us_history-5828-first.json": {
+      "json_sha256": "6ed9188b3ffde3aa1dd29f3b193213054b1726316713c54f9015eca5e462a7ec",
+      "vectors_sha256": "dde0b1806839b916c61a0955ba0bee2a782edb5b13bd0d1ec846926a9b25ddb6"
+    },
+    "workers/gpu3/mmlu/mmlu-high_school_us_history-5828-middle.json": {
+      "json_sha256": "1bf80ba14a0f9ebc0206b9a292918ead5ce4a3f011d5b01e4c621b04cae5cdca",
+      "vectors_sha256": "a23c611fb8fb7370594309e63b6008eeeda08bf3cbfc14002c2ad7f08dc27ff3"
+    },
+    "workers/gpu3/mmlu/mmlu-logical_fallacies-6731-first.json": {
+      "json_sha256": "2e106bb62eedd1782146dbbf14476e926ebae4c7088c2435ad54cacc8a4d4bad",
+      "vectors_sha256": "ff43118de65b0e72ce20da7e62ab31f453430bafe26d3330207020b6d0dbc67c"
+    },
+    "workers/gpu3/mmlu/mmlu-logical_fallacies-6731-middle.json": {
+      "json_sha256": "63e184044ff79bf2f8c9ce0562b47a136d269347cdaa233c5e272de21bcf68ae",
+      "vectors_sha256": "6fbf3f3567d83f4a75186848ea2706f80db442cb1e36fc7c80f14681694bc6a7"
+    },
+    "workers/gpu3/mmlu/mmlu-prehistory-10156-first.json": {
+      "json_sha256": "cfe54b4012e13d8f362492910cd03e896f67d09b28b40f04076d3a27dea69817",
+      "vectors_sha256": "0384eb91763bfec159f0bb2bd7e5ce075e77209639d025c25d285f82f5567e14"
+    },
+    "workers/gpu3/mmlu/mmlu-prehistory-10156-middle.json": {
+      "json_sha256": "630212f519a95c371e6c926b55ad3abafba8e51ab5c06d6650516ec043cd8ad0",
+      "vectors_sha256": "f63dca3ed244620c732b5afa4e88bfe57b73a0ea050c84abbcae5882fc9dc716"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_law-11657-first.json": {
+      "json_sha256": "0ddf45a6164b827b6e220fa13e61ea5babd2a18b45c005a1e31167e58470e220",
+      "vectors_sha256": "7bc0eb25380957395fc24c17f04f8efceb6ef574175b4863f55f964698cd78bf"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_law-11657-middle.json": {
+      "json_sha256": "d1b00a6b80c7b5b6a3144675b5e7e963c3484bfb9eac7664940e92f25cc6ee01",
+      "vectors_sha256": "80bc74ff48530303f66f3956f4d6c0e8d16e20a725c4c6a13a90dc41f60723f8"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_psychology-12683-first.json": {
+      "json_sha256": "fba20998b7a6531eadfbcc836933ff1dcfd28346ee75f620920a32d0b9810246",
+      "vectors_sha256": "5a6aad145bd346de1ac93a9add49c89bff7d0ab89eee45cc3554f97f64a8bee7"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_psychology-12683-middle.json": {
+      "json_sha256": "ce5ffa0829be83210e39ca9663c1cd98ece95ad2d638e6786f20c5d2231195bb",
+      "vectors_sha256": "aae7af58f6c64d06824566d417b510e21929d74f0865151d1ee90bf9edcf36cd"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_psychology-12918-first.json": {
+      "json_sha256": "b6ef831d0d527c6131e4299dbe060ed93b6c11f452b1fdacae8efadc1922c259",
+      "vectors_sha256": "b61b9f6231a9806b908265e576a0fefc91e9d49f46c04e16282342d3399d3b1b"
+    },
+    "workers/gpu3/mmlu/mmlu-professional_psychology-12918-middle.json": {
+      "json_sha256": "3e4d608bdf3ed506eab7607e8c7c67eb46c91f6c3cc81e735478824c874ee0ce",
+      "vectors_sha256": "00b1ccc0a7d0036c80e4426d01b8d376f7b5e7a245c693f93f1f40f4424c4391"
+    },
+    "workers/gpu3/mmlu/mmlu-security_studies-13306-first.json": {
+      "json_sha256": "cddd190d5a7c7e3c07766b2021ba608d62992d3b5ede65a49b4d3d3452ce9926",
+      "vectors_sha256": "c93ece3f5aecb0835dc7b79712c72311dbe7cb0b796f8d505162aa8206b1c880"
+    },
+    "workers/gpu3/mmlu/mmlu-security_studies-13306-middle.json": {
+      "json_sha256": "3284bfc4630d1d8fbedd25705ec924a40b169e31a9495a91c3e403be42daa6d9",
+      "vectors_sha256": "04d8b4e9b21b18ba95bde9b17efc305f0f8a9305af81558d0e761af5d567b815"
+    }
+  },
+  "manifest_sha256": "7342c71f84d143639cc75c0a0bbab6398f1dd25c4859b1cd7179dfbe138b7c8c",
+  "passed": true,
+  "prefixes": 121,
+  "questions": 60,
+  "summary_sha256": "cb1d3ac3555d4e1292bc92c8060fc578af3d385aff0812e31a88e7f5fe38d3b2"
+}

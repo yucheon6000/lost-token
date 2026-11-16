@@ -5,6 +5,7 @@
 
 - **[작업자별 baseline 1회 동결 → ours-only 반복 평가](docs/BASELINE_REUSE.md)**
 - **[전체 실험 비교표](experiment-results/README.md)** / [비교 CSV](experiment-results/comparison.csv)
+- [6개 데이터셋 × 10문항 추론 일관성 진단](diagnostics/yucheon-consistency-2026-11-17/README.md) — 정확도 평가와 별도 기록
 - **[Claude 진입 문서](CLAUDE.md)** / [공통 실험 가이드](docs/EXPERIMENT_GUIDE.md)
 - **[하드웨어별 필수 고정 서브셋·실행법](docs/EVALUATION_PROFILES.md)** / [프로필 정본](evaluation/profiles.json)
 - [L40S 4 GPU 고정 IDs](evaluation/subsets/l40s-2h-v1/manifest.json) / [PRO 6000 8 GPU 고정 IDs](evaluation/subsets/shared-v1/manifest.json)
