@@ -13,6 +13,24 @@ spec.loader.exec_module(consistency)
 
 
 class ConsistencyDiagnosticTests(unittest.TestCase):
+    def test_engine_stop_token_variants_and_corrupted_outputs(self):
+        for actual in ([1, 2], [1, 2, 99]):
+            self.assertTrue(consistency.engine_tokens_match(actual, [1, 2], {99}))
+        self.assertTrue(consistency.engine_tokens_match([1, 2], [1, 2, 99], {99}))
+        for actual in ([1], [1, 3], [1, 2, 7], [1, 2, 99, 99]):
+            self.assertFalse(consistency.engine_tokens_match(actual, [1, 2], {99}))
+
+    def test_incremental_replay_does_not_emit_chat_prompt_stop_tokens(self):
+        self.assertEqual(
+            consistency.incremental_tail_length({"ids": list(range(200)), "body_ids": [7]}), 1
+        )
+        self.assertEqual(
+            consistency.incremental_tail_length(
+                {"ids": list(range(200)), "body_ids": list(range(70))}
+            ),
+            64,
+        )
+
     def test_sampling_is_order_independent_and_task_specific(self):
         ids = [str(i) for i in range(100)]
         selected = consistency.sample_ids(ids, "a", 10)

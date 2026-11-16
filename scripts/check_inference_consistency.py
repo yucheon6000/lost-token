@@ -21,6 +21,18 @@ TASKS = ("aime25", "hmmt25", "gsm8k", "gpqa", "math500", "mmlu")
 SAMPLE_RULE = "lost-tokens/consistency-v1/{task}/{id}"
 
 
+def engine_tokens_match(actual, expected, eos_ids):
+    if expected and expected[-1] in eos_ids and actual == expected[:-1]:
+        return True
+    return actual[: len(expected)] == expected and actual[len(expected) :] in ([], [min(eos_ids)])
+
+
+def incremental_tail_length(probe):
+    # Prompt chat boundaries can be EOS IDs. Keep those in the prefill and only
+    # replay generated body tokens, stopping at the recorded pre-fork context.
+    return min(64, len(probe["body_ids"]), len(probe["ids"]) - 1)
+
+
 def sample_ids(ids, task, count):
     if count > len(ids) or len(set(ids)) != len(ids):
         raise ValueError("Invalid sample/cohort size")
@@ -283,7 +295,7 @@ def worker(args):
         assert len(outputs) == len(processors)
         for p, output in zip(processors, outputs):
             actual, expected = list(output.outputs[0].token_ids), p.ids
-            assert actual == expected or (expected[-1] in model.eos_ids and actual == expected[:-1])
+            assert engine_tokens_match(actual, expected, model.eos_ids)
             p.cached_tokens = output.num_cached_tokens
             if isinstance(p, Probe):
                 assert len(p.logprobs) == len(p.forced)
@@ -342,7 +354,8 @@ def worker(args):
             modes["fresh1"] = run([Probe(p, exp)], reset=True)[0]
             modes["fresh2"] = run([Probe(p, exp)], reset=True)[0]
             modes["warm"] = run([Probe(p, exp)])[0]
-            tail = min(64, len(p["ids"]) - 1)
+            tail = incremental_tail_length(p)
+            assert tail > 0, "Need at least one generated token for incremental test"
             modes["incremental64"] = run(
                 [Probe(p, exp, p["ids"][-tail:], p["ids"][:-tail])], reset=True
             )[0]
@@ -420,6 +433,7 @@ def worker(args):
                 "kind": p["kind"],
                 "prefix_length": len(p["ids"]),
                 "body_position": len(p["body_ids"]),
+                "incremental_tokens": tail,
                 "prefix_sha256": p["root_sha256"],
                 "batch_size": batch_size,
                 "observations": {k: observed(v, exp) for k, v in modes.items()},
