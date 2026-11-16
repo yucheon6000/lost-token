@@ -36,11 +36,17 @@ Scorer: `8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a` · ev
 | Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
 |---|---|---|---:|---:|---:|---|---|
 | aime25 | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 70.00% (21/30) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| aime25 | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 83.33% (25/30) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 | gpqa | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 56.67% (51/90) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| gpqa | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 56.67% (51/90) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 | gsm8k | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 95.38% (1258/1319) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| gsm8k | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 95.22% (1256/1319) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 | hmmt25 | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 52.00% (13/25) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| hmmt25 | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 56.00% (14/25) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 | math500 | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 98.40% (123/125) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| math500 | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 98.40% (123/125) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 | mmlu | [yucheon-2026-11-15](yucheon-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/0e7fa67be2a776f312af8fe552e70b3906e5e34b) | filtered_futures/lookahead | 미측정 | 80.00% (440/550) | — | 4 × L40S | ours 완료 · baseline 미측정 |
+| mmlu | [yucheon-2026-11-16](yucheon-2026-11-16/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/2309ee4da32203ae0ca2b741907029c2f9c81d9d) | filtered_futures/lookahead | 미측정 | 80.00% (440/550) | — | 4 × L40S | ours 완료 · baseline 미측정 |
 
 ## pilot-2026-11-14
 

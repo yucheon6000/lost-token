@@ -1,0 +1,381 @@
+{
+  "aime25": {
+    "accuracy": 0.8333333333333334,
+    "audits_passed": true,
+    "batch_size_per_gpu": 4,
+    "body_tokens": 613666,
+    "correct": 25,
+    "current_outcomes_sha256": "327e8bd2fcd845714f519155b3e3040eada9eafd92cec0c0cad0474fd1e356d2",
+    "delta_vs_previous_ours_pp": 13.333333333333334,
+    "forced_cases": [
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "aime25-2",
+        "prediction": "569"
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "aime25-15",
+        "prediction": "245"
+      },
+      {
+        "at": 30720,
+        "correct": true,
+        "id": "aime25-20",
+        "prediction": "336"
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "aime25-14",
+        "prediction": "63"
+      }
+    ],
+    "forced_closures": 4,
+    "forced_correct": 1,
+    "forced_with_answer": 4,
+    "fork_events": 1985,
+    "loss_ids": [],
+    "losses": 0,
+    "n": 30,
+    "natural_thinking_complete": 26,
+    "no_prediction": 0,
+    "phase_seconds": 3220.870301961899,
+    "previous_correct": 21,
+    "previous_no_prediction": 6,
+    "previous_open_ids": [
+      "aime25-13",
+      "aime25-18",
+      "aime25-2",
+      "aime25-20",
+      "aime25-28",
+      "aime25-9"
+    ],
+    "previous_open_now_answered": 6,
+    "previous_open_now_answered_ids": [
+      "aime25-13",
+      "aime25-18",
+      "aime25-2",
+      "aime25-20",
+      "aime25-28",
+      "aime25-9"
+    ],
+    "previous_open_now_correct": 4,
+    "previous_open_now_correct_ids": [
+      "aime25-18",
+      "aime25-20",
+      "aime25-28",
+      "aime25-9"
+    ],
+    "previous_open_thinking": 6,
+    "previous_outcomes_sha256": "e2ab27ba1cae0c248790a0067dbea0407b19b03d318817d0e7e17d5e9280ee48",
+    "task": "aime25",
+    "win_ids": [
+      "aime25-18",
+      "aime25-20",
+      "aime25-28",
+      "aime25-9"
+    ],
+    "wins": 4
+  },
+  "gpqa": {
+    "accuracy": 0.5666666666666667,
+    "audits_passed": true,
+    "batch_size_per_gpu": 8,
+    "body_tokens": 704865,
+    "correct": 51,
+    "current_outcomes_sha256": "950426a8cb213408ba9fd0a0dcc0ffe90453573af01c3572b29f52a1483087ea",
+    "delta_vs_previous_ours_pp": 0.0,
+    "forced_cases": [],
+    "forced_closures": 0,
+    "forced_correct": 0,
+    "forced_with_answer": 0,
+    "fork_events": 2407,
+    "loss_ids": [
+      "gpqa-rec4JrWy7Il8ho5vk",
+      "gpqa-rec5rjeLsEq5Fg7Oj",
+      "gpqa-recIMcQfaQNa6vzsT",
+      "gpqa-recPzW1WqRnPs57D6",
+      "gpqa-recTns0XOb6qlewR9",
+      "gpqa-recbWK7TxyPMNhPIb",
+      "gpqa-recrTL3i1VEPCfDGy",
+      "gpqa-recuYEkVjdVUwA3c0"
+    ],
+    "losses": 8,
+    "n": 90,
+    "natural_thinking_complete": 90,
+    "no_prediction": 6,
+    "phase_seconds": 1901.4023933410645,
+    "previous_correct": 51,
+    "previous_no_prediction": 6,
+    "previous_open_ids": [],
+    "previous_open_now_answered": 0,
+    "previous_open_now_answered_ids": [],
+    "previous_open_now_correct": 0,
+    "previous_open_now_correct_ids": [],
+    "previous_open_thinking": 0,
+    "previous_outcomes_sha256": "1cf23587a9a3ed2c84e3286ae1b14fdf3f655a347fa2638c02d5627d8643ad43",
+    "task": "gpqa",
+    "win_ids": [
+      "gpqa-rec5gf9RftZN8uzUk",
+      "gpqa-recH879YiAi6dLCSy",
+      "gpqa-recPIzpnuYpB4yvmp",
+      "gpqa-recUdj6ZqNvWNlRKq",
+      "gpqa-recjJ54TXc04enRkZ",
+      "gpqa-recn3NhOhqAPLda16",
+      "gpqa-recoiTJPGUmzAkief",
+      "gpqa-recxWirvTOyWz2zja"
+    ],
+    "wins": 8
+  },
+  "gsm8k": {
+    "accuracy": 0.9522365428354814,
+    "audits_passed": true,
+    "batch_size_per_gpu": 8,
+    "body_tokens": 2062324,
+    "correct": 1256,
+    "current_outcomes_sha256": "04101543b2b7c524bff8a02799093f87916a1e43ba08a56cf354b74cd9e4260a",
+    "delta_vs_previous_ours_pp": -0.1516300227445034,
+    "forced_cases": [],
+    "forced_closures": 0,
+    "forced_correct": 0,
+    "forced_with_answer": 0,
+    "fork_events": 6798,
+    "loss_ids": [
+      "gsm8k-test-1046",
+      "gsm8k-test-1056",
+      "gsm8k-test-1097",
+      "gsm8k-test-1100",
+      "gsm8k-test-1161",
+      "gsm8k-test-1303",
+      "gsm8k-test-304",
+      "gsm8k-test-428",
+      "gsm8k-test-515",
+      "gsm8k-test-652",
+      "gsm8k-test-880"
+    ],
+    "losses": 11,
+    "n": 1319,
+    "natural_thinking_complete": 1319,
+    "no_prediction": 0,
+    "phase_seconds": 4495.599212884903,
+    "previous_correct": 1258,
+    "previous_no_prediction": 0,
+    "previous_open_ids": [],
+    "previous_open_now_answered": 0,
+    "previous_open_now_answered_ids": [],
+    "previous_open_now_correct": 0,
+    "previous_open_now_correct_ids": [],
+    "previous_open_thinking": 0,
+    "previous_outcomes_sha256": "580d8f4de1608723920c916aeefacc7718d98b82a0f4fabba48f292ee8ed6bea",
+    "task": "gsm8k",
+    "win_ids": [
+      "gsm8k-test-1072",
+      "gsm8k-test-1187",
+      "gsm8k-test-187",
+      "gsm8k-test-252",
+      "gsm8k-test-255",
+      "gsm8k-test-380",
+      "gsm8k-test-494",
+      "gsm8k-test-552",
+      "gsm8k-test-966"
+    ],
+    "wins": 9
+  },
+  "hmmt25": {
+    "accuracy": 0.56,
+    "audits_passed": true,
+    "batch_size_per_gpu": 4,
+    "body_tokens": 526902,
+    "correct": 14,
+    "current_outcomes_sha256": "52da6a51d55174086f9aa6407055cd0138e59b4b95d9cce72589470eaf80d7fe",
+    "delta_vs_previous_ours_pp": 4.0,
+    "forced_cases": [
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "hmmt25-29",
+        "prediction": null
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "hmmt25-14",
+        "prediction": "20"
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "hmmt25-18",
+        "prediction": "1825"
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "hmmt25-25",
+        "prediction": "\\sqrt{11}"
+      },
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "hmmt25-13",
+        "prediction": "6"
+      }
+    ],
+    "forced_closures": 5,
+    "forced_correct": 0,
+    "forced_with_answer": 4,
+    "fork_events": 1730,
+    "loss_ids": [
+      "hmmt25-4"
+    ],
+    "losses": 1,
+    "n": 25,
+    "natural_thinking_complete": 20,
+    "no_prediction": 1,
+    "phase_seconds": 2634.890260696411,
+    "previous_correct": 13,
+    "previous_no_prediction": 5,
+    "previous_open_ids": [
+      "hmmt25-13",
+      "hmmt25-17",
+      "hmmt25-25",
+      "hmmt25-29",
+      "hmmt25-3"
+    ],
+    "previous_open_now_answered": 4,
+    "previous_open_now_answered_ids": [
+      "hmmt25-13",
+      "hmmt25-17",
+      "hmmt25-25",
+      "hmmt25-3"
+    ],
+    "previous_open_now_correct": 1,
+    "previous_open_now_correct_ids": [
+      "hmmt25-3"
+    ],
+    "previous_open_thinking": 5,
+    "previous_outcomes_sha256": "7c94ffe72386ef2c6d090bb8185b1418712e42401093f118c0573f36f0d5a0dc",
+    "task": "hmmt25",
+    "win_ids": [
+      "hmmt25-11",
+      "hmmt25-3"
+    ],
+    "wins": 2
+  },
+  "math500": {
+    "accuracy": 0.984,
+    "audits_passed": true,
+    "batch_size_per_gpu": 8,
+    "body_tokens": 732317,
+    "correct": 123,
+    "current_outcomes_sha256": "b002a437b90ff85db031a1e8d578e7d723c2be2aa6ea73d8f5528df442acdd41",
+    "delta_vs_previous_ours_pp": 0.0,
+    "forced_cases": [
+      {
+        "at": 30720,
+        "correct": false,
+        "id": "math500-test-intermediate_algebra-2015.json",
+        "prediction": "\\{0,\\ 2\\sqrt{2},\\ -2\\sqrt{2}\\}"
+      }
+    ],
+    "forced_closures": 1,
+    "forced_correct": 0,
+    "forced_with_answer": 1,
+    "fork_events": 2452,
+    "loss_ids": [
+      "math500-test-intermediate_algebra-2015.json"
+    ],
+    "losses": 1,
+    "n": 125,
+    "natural_thinking_complete": 123,
+    "no_prediction": 0,
+    "phase_seconds": 3088.1171822547913,
+    "previous_correct": 123,
+    "previous_no_prediction": 0,
+    "previous_open_ids": [],
+    "previous_open_now_answered": 0,
+    "previous_open_now_answered_ids": [],
+    "previous_open_now_correct": 0,
+    "previous_open_now_correct_ids": [],
+    "previous_open_thinking": 0,
+    "previous_outcomes_sha256": "585664f32c0c806234cd7d5c4840cee286ee8b780db168c5439828cf110715e8",
+    "task": "math500",
+    "win_ids": [
+      "math500-test-prealgebra-1646.json"
+    ],
+    "wins": 1
+  },
+  "mmlu": {
+    "accuracy": 0.8,
+    "audits_passed": true,
+    "batch_size_per_gpu": 8,
+    "body_tokens": 1565894,
+    "correct": 440,
+    "current_outcomes_sha256": "c65ed04e766aa5ce385c3e5e47a579d34a32d8a129a1bc54b58eb23dcc2f0f14",
+    "delta_vs_previous_ours_pp": 0.0,
+    "forced_cases": [],
+    "forced_closures": 0,
+    "forced_correct": 0,
+    "forced_with_answer": 0,
+    "fork_events": 5119,
+    "loss_ids": [
+      "mmlu-college_chemistry-950",
+      "mmlu-college_physics-1446",
+      "mmlu-high_school_physics-4804",
+      "mmlu-miscellaneous-7598",
+      "mmlu-miscellaneous-7944",
+      "mmlu-miscellaneous-7952",
+      "mmlu-moral_scenarios-9101",
+      "mmlu-nutrition-9477",
+      "mmlu-nutrition-9627",
+      "mmlu-prehistory-10118",
+      "mmlu-professional_accounting-10482",
+      "mmlu-professional_law-10894",
+      "mmlu-professional_law-11128",
+      "mmlu-professional_law-11640",
+      "mmlu-professional_law-11944",
+      "mmlu-professional_medicine-12314",
+      "mmlu-security_studies-13320",
+      "mmlu-virology-13830"
+    ],
+    "losses": 18,
+    "n": 550,
+    "natural_thinking_complete": 550,
+    "no_prediction": 2,
+    "phase_seconds": 3543.5661811828613,
+    "previous_correct": 440,
+    "previous_no_prediction": 2,
+    "previous_open_ids": [],
+    "previous_open_now_answered": 0,
+    "previous_open_now_answered_ids": [],
+    "previous_open_now_correct": 0,
+    "previous_open_now_correct_ids": [],
+    "previous_open_thinking": 0,
+    "previous_outcomes_sha256": "b3972e6ce9397696c5926be43bab69d66e3c797f6ab2d2fdb04c2ff2adf17253",
+    "task": "mmlu",
+    "win_ids": [
+      "mmlu-econometrics-1890",
+      "mmlu-formal_logic-2512",
+      "mmlu-high_school_european_history-3421",
+      "mmlu-high_school_psychology-5083",
+      "mmlu-international_law-6529",
+      "mmlu-jurisprudence-6647",
+      "mmlu-moral_disputes-8269",
+      "mmlu-moral_scenarios-8802",
+      "mmlu-professional_accounting-10452",
+      "mmlu-professional_law-10720",
+      "mmlu-professional_law-10803",
+      "mmlu-professional_law-10900",
+      "mmlu-professional_law-11134",
+      "mmlu-professional_law-11540",
+      "mmlu-professional_law-11912",
+      "mmlu-professional_medicine-12273",
+      "mmlu-professional_psychology-12615",
+      "mmlu-sociology-13431"
+    ],
+    "wins": 18
+  }
+}

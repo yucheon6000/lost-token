@@ -1,0 +1,235 @@
+{
+  "code_branch": "yucheon-2026-11-16",
+  "code_commit": "2309ee4da32203ae0ca2b741907029c2f9c81d9d",
+  "cohort_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba",
+  "cohort_version": "l40s-2h-v1",
+  "formal_wall_seconds_including_audits": 19713.720445871353,
+  "hardware_profile": "l40s-4gpu",
+  "official_case_count": 2139,
+  "policy": {
+    "answer_tokens": 2047,
+    "force_at_body_tokens": 30720
+  },
+  "preflights": {
+    "forced_path": {
+      "cases": [
+        {
+          "correct": true,
+          "forced_at": 256,
+          "id": "gsm8k-test-2",
+          "prediction": "70000",
+          "tokens": 746
+        },
+        {
+          "correct": true,
+          "forced_at": 256,
+          "id": "gsm8k-test-3",
+          "prediction": "540",
+          "tokens": 375
+        },
+        {
+          "correct": true,
+          "forced_at": 256,
+          "id": "gsm8k-test-1",
+          "prediction": "3",
+          "tokens": 475
+        },
+        {
+          "correct": true,
+          "forced_at": 256,
+          "id": "gsm8k-test-0",
+          "prediction": "18",
+          "tokens": 484
+        }
+      ],
+      "note": "Forced-path mechanics only: branch cap 128 and closure at 256; not formal performance.",
+      "status": {
+        "at": "2026-11-15T19:52:42.476363+00:00",
+        "audits_passed": true,
+        "state": "complete"
+      }
+    },
+    "formal_config": {
+      "cases": [
+        {
+          "correct": true,
+          "forced_at": null,
+          "id": "gsm8k-test-2",
+          "prediction": "70000"
+        },
+        {
+          "correct": true,
+          "forced_at": null,
+          "id": "gsm8k-test-3",
+          "prediction": "540"
+        },
+        {
+          "correct": true,
+          "forced_at": null,
+          "id": "gsm8k-test-1",
+          "prediction": "3"
+        },
+        {
+          "correct": true,
+          "forced_at": null,
+          "id": "gsm8k-test-0",
+          "prediction": "18"
+        }
+      ],
+      "status": {
+        "at": "2026-11-15T19:54:47.114306+00:00",
+        "audits_passed": true,
+        "state": "complete"
+      }
+    }
+  },
+  "previous_ours_code_commit": "0e7fa67be2a776f312af8fe552e70b3906e5e34b",
+  "previous_ours_submission": "yucheon-2026-11-15",
+  "rows": [
+    {
+      "accuracy": 0.8333333333333334,
+      "audits_passed": true,
+      "batch_size_per_gpu": 4,
+      "body_tokens": 613666,
+      "correct": 25,
+      "delta_vs_previous_ours_pp": 13.333333333333334,
+      "forced_closures": 4,
+      "forced_correct": 1,
+      "forced_with_answer": 4,
+      "fork_events": 1985,
+      "losses": 0,
+      "n": 30,
+      "natural_thinking_complete": 26,
+      "no_prediction": 0,
+      "phase_seconds": 3220.870301961899,
+      "previous_correct": 21,
+      "previous_no_prediction": 6,
+      "previous_open_now_answered": 6,
+      "previous_open_now_correct": 4,
+      "previous_open_thinking": 6,
+      "task": "aime25",
+      "wins": 4
+    },
+    {
+      "accuracy": 0.56,
+      "audits_passed": true,
+      "batch_size_per_gpu": 4,
+      "body_tokens": 526902,
+      "correct": 14,
+      "delta_vs_previous_ours_pp": 4.0,
+      "forced_closures": 5,
+      "forced_correct": 0,
+      "forced_with_answer": 4,
+      "fork_events": 1730,
+      "losses": 1,
+      "n": 25,
+      "natural_thinking_complete": 20,
+      "no_prediction": 1,
+      "phase_seconds": 2634.890260696411,
+      "previous_correct": 13,
+      "previous_no_prediction": 5,
+      "previous_open_now_answered": 4,
+      "previous_open_now_correct": 1,
+      "previous_open_thinking": 5,
+      "task": "hmmt25",
+      "wins": 2
+    },
+    {
+      "accuracy": 0.9522365428354814,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 2062324,
+      "correct": 1256,
+      "delta_vs_previous_ours_pp": -0.1516300227445034,
+      "forced_closures": 0,
+      "forced_correct": 0,
+      "forced_with_answer": 0,
+      "fork_events": 6798,
+      "losses": 11,
+      "n": 1319,
+      "natural_thinking_complete": 1319,
+      "no_prediction": 0,
+      "phase_seconds": 4495.599212884903,
+      "previous_correct": 1258,
+      "previous_no_prediction": 0,
+      "previous_open_now_answered": 0,
+      "previous_open_now_correct": 0,
+      "previous_open_thinking": 0,
+      "task": "gsm8k",
+      "wins": 9
+    },
+    {
+      "accuracy": 0.5666666666666667,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 704865,
+      "correct": 51,
+      "delta_vs_previous_ours_pp": 0.0,
+      "forced_closures": 0,
+      "forced_correct": 0,
+      "forced_with_answer": 0,
+      "fork_events": 2407,
+      "losses": 8,
+      "n": 90,
+      "natural_thinking_complete": 90,
+      "no_prediction": 6,
+      "phase_seconds": 1901.4023933410645,
+      "previous_correct": 51,
+      "previous_no_prediction": 6,
+      "previous_open_now_answered": 0,
+      "previous_open_now_correct": 0,
+      "previous_open_thinking": 0,
+      "task": "gpqa",
+      "wins": 8
+    },
+    {
+      "accuracy": 0.984,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 732317,
+      "correct": 123,
+      "delta_vs_previous_ours_pp": 0.0,
+      "forced_closures": 1,
+      "forced_correct": 0,
+      "forced_with_answer": 1,
+      "fork_events": 2452,
+      "losses": 1,
+      "n": 125,
+      "natural_thinking_complete": 123,
+      "no_prediction": 0,
+      "phase_seconds": 3088.1171822547913,
+      "previous_correct": 123,
+      "previous_no_prediction": 0,
+      "previous_open_now_answered": 0,
+      "previous_open_now_correct": 0,
+      "previous_open_thinking": 0,
+      "task": "math500",
+      "wins": 1
+    },
+    {
+      "accuracy": 0.8,
+      "audits_passed": true,
+      "batch_size_per_gpu": 8,
+      "body_tokens": 1565894,
+      "correct": 440,
+      "delta_vs_previous_ours_pp": 0.0,
+      "forced_closures": 0,
+      "forced_correct": 0,
+      "forced_with_answer": 0,
+      "fork_events": 5119,
+      "losses": 18,
+      "n": 550,
+      "natural_thinking_complete": 550,
+      "no_prediction": 2,
+      "phase_seconds": 3543.5661811828613,
+      "previous_correct": 440,
+      "previous_no_prediction": 2,
+      "previous_open_now_answered": 0,
+      "previous_open_now_correct": 0,
+      "previous_open_thinking": 0,
+      "task": "mmlu",
+      "wins": 18
+    }
+  ],
+  "scope": "Ours-only answer reservation, compared with previous Ours; AR unmeasured"
+}

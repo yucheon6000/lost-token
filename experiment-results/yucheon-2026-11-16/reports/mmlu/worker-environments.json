@@ -1,0 +1,102 @@
+{
+  "ours-worker0": {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker0.json",
+      "gpu": "0",
+      "name": "ours-worker0",
+      "split": "configs/ours-worker0-split.json"
+    },
+    "identity_sha256": "58d73c5c4012385119b510807076a5ad39e69c17f52d8da210c00ad09cf7533f",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    }
+  },
+  "ours-worker1": {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker1.json",
+      "gpu": "1",
+      "name": "ours-worker1",
+      "split": "configs/ours-worker1-split.json"
+    },
+    "identity_sha256": "b874610aa7390a549bf5ac00605ad3a6dc2984aa5f2a75f846e54a688f6d9566",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    }
+  },
+  "ours-worker2": {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker2.json",
+      "gpu": "2",
+      "name": "ours-worker2",
+      "split": "configs/ours-worker2-split.json"
+    },
+    "identity_sha256": "66acb94bd83e40d819b0f00f2023412585ec565b927c00b7412046b088a15b1a",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    }
+  },
+  "ours-worker3": {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker3.json",
+      "gpu": "3",
+      "name": "ours-worker3",
+      "split": "configs/ours-worker3-split.json"
+    },
+    "identity_sha256": "945c1a32435c37779b681e2d36473e9055b755b8386d772f482ad9fdb3c5b816",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    }
+  }
+}
