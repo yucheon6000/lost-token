@@ -2,11 +2,13 @@
 
 import unittest
 from unittest.mock import patch
+from pathlib import Path
 
 from lost_tokens.core import RunStore
 from lost_tokens.protocol import PausableStore, RequestedPause
 from lost_tokens.recurrent_memory import StreamDecoder, run_condition, validate_budget_forcing
 from lost_tokens.cosine import compare_rollouts
+from lost_tokens.config import load_spec
 import test_knobs as knobs
 
 
@@ -124,6 +126,20 @@ class TargetedPolicyTests(unittest.TestCase):
             )
         self.assertIsNone(result["forced_think_end_at"])
         self.assertTrue(result["correct"])
+
+    def test_experiment_presets_fit_declared_model_context(self):
+        root = Path(__file__).resolve().parents[1] / "configs"
+        for path in root.glob("targeted-*.json"):
+            with self.subTest(config=path.name):
+                cfg = load_spec(path)
+                exp = cfg["experiment"]
+                required = (
+                    cfg["data"]["prompt_limit"]
+                    + exp["max_output_tokens"]
+                    + exp["memory_capacity_tokens"]
+                    + exp["branch_tokens"]
+                )
+                self.assertLessEqual(required, cfg["model"]["max_context_tokens"])
 
 
 if __name__ == "__main__":
