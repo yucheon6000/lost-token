@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import copy
 from dataclasses import dataclass, field
+import math
 import random
 import re
 import time
@@ -492,6 +493,69 @@ def select_rollout(previews, exp, eos_ids):
     return res
 
 
+def validate_memory_quality_gate(exp):
+    gate = exp.get("memory_quality_gate")
+    if gate is None:
+        return
+    if (
+        not isinstance(gate, dict)
+        or set(gate) != {"max_score_gap"}
+        or type(gate["max_score_gap"]) not in (int, float)
+        or not math.isfinite(gate["max_score_gap"])
+        or gate["max_score_gap"] < 0
+        or exp.get("selection") != "lookahead"
+    ):
+        raise ValueError(
+            "Invalid memory_quality_gate; require lookahead and a finite nonnegative gap"
+        )
+
+
+def memory_quality_gate(previews, selection, exp):
+    """Keep credible unchosen continuations before cosine deduplication.
+
+    Confidence is a proxy, not correctness. Score the continuation without the
+    forced first token or the lexical doubt penalty. Selection stays unchanged.
+    """
+    gate = exp["memory_quality_gate"]
+    statistic = exp["lookahead"]["statistic"]
+    selected = selection["selected_rank"]
+    eligibility = {s["rank"]: s for s in selection["scores"]}
+    values = {p["rank"]: rollout_statistic(p, statistic) for p in previews}
+    values = {k: v if v is not None and math.isfinite(v) else None for k, v in values.items()}
+    reference = values[selected]
+    reference_ok = eligibility[selected]["eligible"] and reference is not None
+    retained, scores = [], []
+    for preview in previews:
+        rank = preview["rank"]
+        value = values[rank]
+        reasons = list(eligibility[rank]["reasons"])
+        gap = reference - value if reference is not None and value is not None else None
+        if rank == selected:
+            reasons.append("selected_not_memory")
+        else:
+            if not reference_ok:
+                reasons.append("reference_ineligible")
+            if value is None:
+                reasons.append("no_finite_score")
+            elif gap is not None and gap > gate["max_score_gap"]:
+                reasons.append("score_gap")
+        accepted = rank != selected and not reasons
+        if accepted:
+            retained.append(rank)
+        scores.append(
+            {"rank": rank, "value": value, "gap": gap, "accepted": accepted, "reasons": reasons}
+        )
+    return {
+        "statistic": statistic,
+        "score_basis": "unpenalized_continuation",
+        "max_score_gap": gate["max_score_gap"],
+        "reference_rank": selected,
+        "reference_eligible": reference_ok,
+        "scores": scores,
+        "retained_ranks": retained,
+    }
+
+
 def validate_selection(exp):
     if exp.get("selection") not in SELECTION_RULES:
         raise ValueError("selection must be one of " + ", ".join(SELECTION_RULES))
@@ -540,6 +604,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     exp = cfg["experiment"]
     validate_budget_forcing(exp)
     validate_selection(exp)
+    validate_memory_quality_gate(exp)
     validate_memory_preamble(exp)
     max_memory_events = exp.get("max_memory_events")
     min_body = exp.get("min_branch_body_tokens") or 0
@@ -778,6 +843,12 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             if arm == "selected_only":
                 retained = []
             elif arm == "filtered_futures":
+                if exp.get("memory_quality_gate") is not None:
+                    quality = memory_quality_gate(event["previews"], selection, exp)
+                    event["memory_quality"] = quality
+                    allowed = set(quality["retained_ranks"])
+                    ordered = [chosen_preview] + [n for n in ordered[1:] if n["rank"] in allowed]
+                    retained = [n for n in retained if n["rank"] in allowed]
                 similarity_spec = cfg["similarity"]
                 request = {
                     "root_sha256": root_sha,

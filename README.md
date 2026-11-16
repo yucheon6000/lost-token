@@ -210,6 +210,21 @@ end marker as evidence of a correct solution.
 
 ## Data and configuration
 
+`configs/vllm-ours-quality-memory.json` adds one opt-in memory filter to the
+answer-reserve variant. `experiment.memory_quality_gate.max_score_gap = 0.1`
+admits only unchosen rollouts whose unpenalized continuation score is no more
+than 0.1 nats/token below the selected rollout. The forced first token is excluded.
+Both rollouts must pass the existing lookahead eligibility rules (enough
+continuation tokens, nonblank, nonterminal). The lexical doubt penalty still
+affects selection, but is not applied again to memory quality.
+Quality filtering runs before the unchanged cosine filter, so a rejected
+alternative cannot suppress a better alternative during deduplication.
+Every decision is recorded in `event.memory_quality` and independently checked
+against the stored previews by audit. Selected rollout commits remain verbatim.
+The gate affects only `filtered_futures`; it is off when absent/null. Confidence
+does not prove correctness. The fixed threshold is a hypothesis to evaluate,
+with no guarantee of improvement on every benchmark.
+
 | CLI name | Dataset | Questions |
 |---|---|---:|
 | `aime25` | [MathArena AIME 2025](https://huggingface.co/datasets/MathArena/aime_2025) | 30 |

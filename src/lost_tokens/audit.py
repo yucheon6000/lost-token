@@ -15,6 +15,7 @@ from lost_tokens.recurrent_memory import (
     final_response,
     instruction,
     memory_text,
+    memory_quality_gate,
     reasoning_phase,
     select_rollout,
     ttl_history,
@@ -349,6 +350,16 @@ def audit(run, partial=False, model=None):
                     if arm == "selected_only":
                         retained = []
                     if arm == "filtered_futures":
+                        if exp.get("memory_quality_gate") is not None:
+                            quality = memory_quality_gate(event["previews"], selection, exp)
+                            assert event["memory_quality"] == quality
+                            allowed = set(quality["retained_ranks"])
+                            ordered = [chosen_preview] + [
+                                n for n in ordered[1:] if n["rank"] in allowed
+                            ]
+                            retained = [n for n in retained if n["rank"] in allowed]
+                        else:
+                            assert "memory_quality" not in event
                         gate = event["similarity"]
                         record = records[tag + f"/event-{len(events)}/cosine"]
                         assert record["request"] == {

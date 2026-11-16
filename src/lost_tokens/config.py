@@ -8,6 +8,7 @@ from .recurrent_memory import (
     ARMS,
     validate_budget_forcing,
     validate_memory_preamble,
+    validate_memory_quality_gate,
     validate_selection,
 )
 
@@ -80,6 +81,7 @@ def validate_spec(spec):
             raise ValueError(f"Invalid {key}")
     validate_budget_forcing(exp)
     validate_selection(exp)
+    validate_memory_quality_gate(exp)
     validate_memory_preamble(exp)
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
