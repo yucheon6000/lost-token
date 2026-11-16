@@ -1,0 +1,103 @@
+{
+  "backend": "vllm",
+  "baseline_reference_sha256": null,
+  "code_branch": "yucheon-memory-2026-11-16",
+  "code_commit": "2c8b4870afab764f51cf5092467add4a3832f801",
+  "cohort_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba",
+  "cohort_version": "l40s-2h-v1",
+  "dtype": "bfloat16",
+  "evaluation_settings_sha256": "36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032",
+  "hardware_profile": "l40s-4gpu",
+  "id": "yucheon-memory-2026-11-16",
+  "model": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "rows": [
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 4,
+      "dataset": "aime25",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 30,
+      "ours": {
+        "correct": 22,
+        "n": 30
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 4,
+      "dataset": "hmmt25",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 25,
+      "ours": {
+        "correct": 12,
+        "n": 25
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 8,
+      "dataset": "gsm8k",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 1319,
+      "ours": {
+        "correct": 1256,
+        "n": 1319
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 8,
+      "dataset": "gpqa",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 90,
+      "ours": {
+        "correct": 59,
+        "n": 90
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 8,
+      "dataset": "math500",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 125,
+      "ours": {
+        "correct": 124,
+        "n": 125
+      }
+    },
+    {
+      "audits_passed": true,
+      "baseline": null,
+      "batch_size_per_gpu": 8,
+      "dataset": "mmlu",
+      "gpu_count": 4,
+      "gpu_model": "NVIDIA L40S",
+      "method": "filtered_futures/lookahead",
+      "n_required": 550,
+      "ours": {
+        "correct": 436,
+        "n": 550
+      }
+    }
+  ],
+  "scope": "shared",
+  "scorer_sha256": "8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a",
+  "seed": 95021
+}
