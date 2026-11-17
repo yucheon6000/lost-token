@@ -350,9 +350,11 @@ def audit(run, partial=False, model=None):
                     if arm == "selected_only":
                         retained = []
                     if arm == "filtered_futures":
-                        if exp.get("memory_quality_gate") is not None:
+                        quality_spec = exp.get("memory_quality_gate")
+                        if quality_spec is not None:
                             quality = memory_quality_gate(event["previews"], selection, exp)
-                            assert event["memory_quality"] == quality
+                            if "similarity_gap_bonus" not in quality_spec:
+                                assert event["memory_quality"] == quality
                             allowed = set(quality["retained_ranks"])
                             ordered = [chosen_preview] + [
                                 n for n in ordered[1:] if n["rank"] in allowed
@@ -402,6 +404,11 @@ def audit(run, partial=False, model=None):
                         )
                         assert ranks == gate["retained_ranks"] and decisions == gate["decisions"]
                         costs.append(gate)
+                        if quality_spec is not None and "similarity_gap_bonus" in quality_spec:
+                            quality = memory_quality_gate(event["previews"], selection, exp, gate)
+                            assert event["memory_quality"] == quality
+                            allowed = set(quality["retained_ranks"])
+                            retained = [n for n in retained if n["rank"] in allowed]
                         retained = [n for n in retained if n["rank"] in ranks]
                     else:
                         assert event["similarity"] is None

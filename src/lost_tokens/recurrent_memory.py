@@ -508,7 +508,8 @@ def validate_memory_quality_gate(exp):
         return
     if (
         not isinstance(gate, dict)
-        or set(gate) != {"max_score_gap"}
+        or "max_score_gap" not in gate
+        or set(gate) - {"max_score_gap", "similarity_gap_bonus"}
         or type(gate["max_score_gap"]) not in (int, float)
         or not math.isfinite(gate["max_score_gap"])
         or gate["max_score_gap"] < 0
@@ -517,10 +518,17 @@ def validate_memory_quality_gate(exp):
         raise ValueError(
             "Invalid memory_quality_gate; require lookahead and a finite nonnegative gap"
         )
+    if "similarity_gap_bonus" in gate:
+        bonus = gate["similarity_gap_bonus"]
+        if type(bonus) not in (int, float) or not math.isfinite(bonus) or bonus <= 0:
+            raise ValueError("similarity_gap_bonus must be finite and positive")
 
 
-def memory_quality_gate(previews, selection, exp):
-    """Keep credible unchosen continuations before cosine deduplication.
+def memory_quality_gate(previews, selection, exp, similarity=None):
+    """Filter unchosen continuations by confidence, optionally using cosine similarity.
+
+    In blended mode, the pass before embedding checks only basic eligibility.
+    Given the measured cosine, the gap allowance peaks at the center of the band.
 
     Confidence is a proxy, not correctness. Score the continuation without the
     forced first token or the lexical doubt penalty. Selection stays unchanged.
@@ -533,6 +541,12 @@ def memory_quality_gate(previews, selection, exp):
     values = {k: v if v is not None and math.isfinite(v) else None for k, v in values.items()}
     reference = values[selected]
     reference_ok = eligibility[selected]["eligible"] and reference is not None
+    bonus = gate.get("similarity_gap_bonus")
+    cosine_by_rank = {}
+    if bonus is not None and similarity is not None:
+        ranks = similarity["ranks"]
+        row = similarity["similarity_matrix"][ranks.index(selected)]
+        cosine_by_rank = dict(zip(ranks, row, strict=True))
     retained, scores = [], []
     for preview in previews:
         rank = preview["rank"]
@@ -546,15 +560,30 @@ def memory_quality_gate(previews, selection, exp):
                 reasons.append("reference_ineligible")
             if value is None:
                 reasons.append("no_finite_score")
-            elif gap is not None and gap > gate["max_score_gap"]:
-                reasons.append("score_gap")
+        allowed_gap = gate["max_score_gap"]
+        cosine = cosine_by_rank.get(rank) if rank != selected else None
+        if cosine is not None:
+            lower = similarity["min_threshold"]
+            upper = similarity["threshold"]
+            position = (cosine - lower) / (upper - lower)
+            allowed_gap += bonus * max(0.0, 1.0 - abs(2.0 * position - 1.0))
+        if (
+            rank != selected
+            and gap is not None
+            and (bonus is None or similarity is not None)
+            and gap > allowed_gap
+        ):
+            reasons.append("score_gap")
         accepted = rank != selected and not reasons
         if accepted:
             retained.append(rank)
         scores.append(
             {"rank": rank, "value": value, "gap": gap, "accepted": accepted, "reasons": reasons}
         )
+        if bonus is not None and similarity is not None:
+            scores[-1].update(cosine_with_reference=cosine, allowed_score_gap=allowed_gap)
     return {
+        **({"similarity_gap_bonus": bonus} if bonus is not None else {}),
         "statistic": statistic,
         "score_basis": "unpenalized_continuation",
         "max_score_gap": gate["max_score_gap"],
@@ -866,9 +895,11 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             if arm == "selected_only":
                 retained = []
             elif arm == "filtered_futures":
-                if exp.get("memory_quality_gate") is not None:
+                quality_spec = exp.get("memory_quality_gate")
+                if quality_spec is not None:
                     quality = memory_quality_gate(event["previews"], selection, exp)
-                    event["memory_quality"] = quality
+                    if "similarity_gap_bonus" not in quality_spec:
+                        event["memory_quality"] = quality
                     allowed = set(quality["retained_ranks"])
                     ordered = [chosen_preview] + [n for n in ordered[1:] if n["rank"] in allowed]
                     retained = [n for n in retained if n["rank"] in allowed]
@@ -889,6 +920,11 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 )
                 event["similarity"] = result
                 costs.append(result)
+                if quality_spec is not None and "similarity_gap_bonus" in quality_spec:
+                    quality = memory_quality_gate(event["previews"], selection, exp, result)
+                    event["memory_quality"] = quality
+                    allowed = set(quality["retained_ranks"])
+                    retained = [n for n in retained if n["rank"] in allowed]
                 retained = [n for n in retained if n["rank"] in result["retained_ranks"]]
             if retained:
                 text = memory_text(retained, exp.get("memory_preamble"))

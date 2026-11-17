@@ -101,6 +101,10 @@ def validate_spec(spec):
     if "min_threshold" in similarity and similarity["min_threshold"] is not None:
         if not -1 <= similarity["min_threshold"] <= similarity["threshold"]:
             raise ValueError("Invalid cosine min_threshold")
+    if "similarity_gap_bonus" in (exp.get("memory_quality_gate") or {}):
+        lower = similarity.get("min_threshold")
+        if lower is None or lower >= similarity["threshold"]:
+            raise ValueError("Blended memory quality requires a nonempty cosine band")
     if (
         similarity["text_scope"] != "rollout_only"
         or similarity["comparison"] != "retained_candidates"
