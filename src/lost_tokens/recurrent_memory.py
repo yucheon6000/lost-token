@@ -411,11 +411,13 @@ def distribution_entropy(logits):
     return float(-(lp.exp() * lp).sum())
 
 
-def rollout_statistic(preview, statistic):
+def rollout_statistic(preview, statistic, half_weights=None):
     """Length-normalized confidence of the continuation after the forced first token.
 
     The first token is excluded on purpose: its probability is exactly what the
     argmax rule already ranks by, and lookahead exists to look past it.
+    Optional weights apply to the means of the first floor(n/2) and remaining
+    continuation tokens. Memory quality deliberately calls the uniform version.
     """
     values = (
         preview["raw_log_probabilities"][1:]
@@ -424,6 +426,11 @@ def rollout_statistic(preview, statistic):
     )
     if not values:
         return None
+    if half_weights is not None and len(values) > 1:
+        middle = len(values) // 2
+        first = sum(values[:middle]) / middle
+        second = sum(values[middle:]) / (len(values) - middle)
+        return half_weights[0] * first + half_weights[1] * second
     return sum(values) / len(values)
 
 
@@ -454,7 +461,7 @@ def select_rollout(previews, exp, eos_ids):
             reasons.append("terminal")
         if not preview["text"].strip():
             reasons.append("blank")
-        val = rollout_statistic(preview, spec["statistic"])
+        val = rollout_statistic(preview, spec["statistic"], spec.get("half_weights"))
         if val is not None and spec.get("contradiction_penalty"):
             text_lower = preview["text"].lower()
             doubt_markers = ("wait,", "wait.", "hold on", "contradiction", "impossible", "mistake")
@@ -490,6 +497,8 @@ def select_rollout(previews, exp, eos_ids):
     }
     if "contradiction_penalty" in spec:
         res["contradiction_penalty"] = spec["contradiction_penalty"]
+    if "half_weights" in spec:
+        res["half_weights"] = list(spec["half_weights"])
     return res
 
 
@@ -564,7 +573,7 @@ def validate_selection(exp):
         if spec is not None:
             raise ValueError("lookahead settings require selection = lookahead")
         return
-    allowed_keys = {"statistic", "margin", "min_tokens", "contradiction_penalty"}
+    allowed_keys = {"statistic", "margin", "min_tokens", "contradiction_penalty", "half_weights"}
     required_keys = {"statistic", "margin", "min_tokens"}
     if (
         not isinstance(spec, dict)
@@ -588,6 +597,20 @@ def validate_selection(exp):
         raise ValueError("Invalid contradiction_penalty")
     if spec["min_tokens"] >= exp["branch_tokens"]:
         raise ValueError("lookahead.min_tokens must be below branch_tokens")
+    if "half_weights" in spec:
+        weights = spec["half_weights"]
+        if (
+            not isinstance(weights, list)
+            or len(weights) != 2
+            or any(
+                type(w) not in (int, float) or not math.isfinite(w) or not 0 <= w <= 1
+                for w in weights
+            )
+            or not math.isclose(sum(weights), 1.0, rel_tol=0.0, abs_tol=1e-12)
+        ):
+            raise ValueError(
+                "half_weights must contain two finite nonnegative weights summing to 1"
+            )
 
 
 def validate_memory_preamble(exp):
