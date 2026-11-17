@@ -1,0 +1,725 @@
+{
+  "code_commit": "cc04a32e1cf93ad1bd28d283e2df48f384bc10fb",
+  "count_per_task": 10,
+  "created": "2026-11-16T22:23:50.863735+00:00",
+  "sampling_rule": "lost-tokens/consistency-v1/{task}/{id}",
+  "schema": 1,
+  "scope": "diagnostic, not accuracy evaluation",
+  "tasks": {
+    "aime25": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker2/cases/evaluation/aime25/aime25-23.json",
+          "case_sha256": "44ceb308713c56f5324177e2f7b4d9477c7f1e080305d603b3341ba7eb5da8f9",
+          "id": "aime25-23",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "ea493340ec2e04fff6f818d67cfe7054fd80bdd88f68919fc777d3f3faaa7a4c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker0/cases/evaluation/aime25/aime25-30.json",
+          "case_sha256": "6d3328a64e8f31225d5cdea37fd74de51c396094248139a0f5bd0938fdb6d0e0",
+          "id": "aime25-30",
+          "probe_kinds": [
+            "first",
+            "middle",
+            "compaction"
+          ],
+          "worker_identity_sha256": "d6ad56aedcec48fc8864329add45c8a0aeb5a37ea1f07021f122695a48d7ba9b"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker1/cases/evaluation/aime25/aime25-15.json",
+          "case_sha256": "ecf7a9b14bd02edebfcc6c4054f35bfb7c7cb654d7bc6264da68a3fe4c2ef737",
+          "id": "aime25-15",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "14759a353a0fc7ffb4c97559a410eb78dfbba7c828f79cbbe97af46e0bdb901a"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker3/cases/evaluation/aime25/aime25-13.json",
+          "case_sha256": "bb81bee2bf8b5619e212421ebb7b027b001571c752720209dd774f16e00a8b58",
+          "id": "aime25-13",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "1209b9a762fa423a74aa2e695ca744e5fbcfc790f3e8d456011cbc0cd585ba5b"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker1/cases/evaluation/aime25/aime25-17.json",
+          "case_sha256": "c859cbed9bc9e432233ba9f29f7fee92c69337d2cc4ad03a5d98aed00a2c59db",
+          "id": "aime25-17",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "14759a353a0fc7ffb4c97559a410eb78dfbba7c828f79cbbe97af46e0bdb901a"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker0/cases/evaluation/aime25/aime25-8.json",
+          "case_sha256": "eff2744262f7d6fcc379632f8681586ce44eb4db292e817f94d9710e03365b1e",
+          "id": "aime25-8",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "d6ad56aedcec48fc8864329add45c8a0aeb5a37ea1f07021f122695a48d7ba9b"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker2/cases/evaluation/aime25/aime25-22.json",
+          "case_sha256": "7e63a78e676466c46d7a86e7c8876e20928caec92dfe5ce90b983cf57bf5918a",
+          "id": "aime25-22",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "ea493340ec2e04fff6f818d67cfe7054fd80bdd88f68919fc777d3f3faaa7a4c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker2/cases/evaluation/aime25/aime25-5.json",
+          "case_sha256": "3d02960f66705715a301ff560b451268eaedf746b01eae43a2257c523f0c7029",
+          "id": "aime25-5",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "ea493340ec2e04fff6f818d67cfe7054fd80bdd88f68919fc777d3f3faaa7a4c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker3/cases/evaluation/aime25/aime25-4.json",
+          "case_sha256": "e984e020558b9af5e33dfdba8ef404c0851a47f6a2d1b37db4e2efab159c8938",
+          "id": "aime25-4",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "1209b9a762fa423a74aa2e695ca744e5fbcfc790f3e8d456011cbc0cd585ba5b"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-aime25/workers/ours-worker2/cases/evaluation/aime25/aime25-3.json",
+          "case_sha256": "f5aff214a9f4bdb56e79628ce964f1cc2f6d82aef3cab1938e3186fed8682a7b",
+          "id": "aime25-3",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "ea493340ec2e04fff6f818d67cfe7054fd80bdd88f68919fc777d3f3faaa7a4c"
+        }
+      ],
+      "cohort_sha256": "d2e79af550778ca292a85806c0d480e2ef66920782869b5cb4396e6607bfdfeb",
+      "ids": [
+        "aime25-23",
+        "aime25-30",
+        "aime25-15",
+        "aime25-13",
+        "aime25-17",
+        "aime25-8",
+        "aime25-22",
+        "aime25-5",
+        "aime25-4",
+        "aime25-3"
+      ],
+      "input_sha256": "d43e6edd4eee21f82cbaf300355aee0cbbe3773e9eb03d9642bb4b5ee96f0ba4",
+      "prefixes": 21
+    },
+    "gpqa": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-recnsAVZoGayGIj3g.json",
+          "case_sha256": "c970c5a6bb33aaa310f98d6afe268c477b33c211358379bc4b1e3179ddd08c37",
+          "id": "gpqa-recnsAVZoGayGIj3g",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-recs3PLPUEMiqg4P8.json",
+          "case_sha256": "312490b98048702d7be70fe05bcf31411c3d59790e124dbe78039965407405bb",
+          "id": "gpqa-recs3PLPUEMiqg4P8",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker3/cases/evaluation/gpqa/gpqa-recrTL3i1VEPCfDGy.json",
+          "case_sha256": "bba263947a2da50539d9cf850b85bf848bc55f9af8316e45959f91fa36f38aee",
+          "id": "gpqa-recrTL3i1VEPCfDGy",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0a2fe4a26bfafba8a79277d216cb1393032dcdded1990743c65e454364633303"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker0/cases/evaluation/gpqa/gpqa-reccc0j9BzteLsAB5.json",
+          "case_sha256": "118e9e6894e2ca8b922f3a1d5c396b40d6363eeb08fc639b59cab9e57b3efc32",
+          "id": "gpqa-reccc0j9BzteLsAB5",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "1154e96c09ed6d156498ac70b444bc80a22848be19bebf58ecb94f3a9d98c08a"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker3/cases/evaluation/gpqa/gpqa-recxWirvTOyWz2zja.json",
+          "case_sha256": "90bfa2f86f0fd00a0b05896d2c3abf4c1d8b36704b8e333d214e05a8bc79b71e",
+          "id": "gpqa-recxWirvTOyWz2zja",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0a2fe4a26bfafba8a79277d216cb1393032dcdded1990743c65e454364633303"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-recqLRu4BcJvlSANc.json",
+          "case_sha256": "501badca6bfd23bbc7291bf907655023590d85c7d14cf4447984a6c6b99c397c",
+          "id": "gpqa-recqLRu4BcJvlSANc",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-recBTsbQnhEKSSnQh.json",
+          "case_sha256": "31711e0f10be53466946b59883896a056c9020291b3ae8ddf4a69e60e8720003",
+          "id": "gpqa-recBTsbQnhEKSSnQh",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-reclPSWuaG47bkpDv.json",
+          "case_sha256": "f93146f9949ca29eef367416dc37aa8bec7c8a07defc1129d385472327975595",
+          "id": "gpqa-reclPSWuaG47bkpDv",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker3/cases/evaluation/gpqa/gpqa-recH879YiAi6dLCSy.json",
+          "case_sha256": "8449ec93f0031948b127bbc08c998961e44e49338874d844451fc60c488feaa3",
+          "id": "gpqa-recH879YiAi6dLCSy",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0a2fe4a26bfafba8a79277d216cb1393032dcdded1990743c65e454364633303"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gpqa/workers/ours-worker1/cases/evaluation/gpqa/gpqa-recoiTJPGUmzAkief.json",
+          "case_sha256": "fd99c4198515416f3a71eab75aeda707e01da05a72819210cc29e676278b879e",
+          "id": "gpqa-recoiTJPGUmzAkief",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "3f7a8d802fcb891846c8c0b15a00b093570607c44550ef4a96cc8cf7b55f2eb2"
+        }
+      ],
+      "cohort_sha256": "f426420ea0dd8754d79be0a31020ec1b894f39b2894e92b8a840231b4b530564",
+      "ids": [
+        "gpqa-recnsAVZoGayGIj3g",
+        "gpqa-recs3PLPUEMiqg4P8",
+        "gpqa-recrTL3i1VEPCfDGy",
+        "gpqa-reccc0j9BzteLsAB5",
+        "gpqa-recxWirvTOyWz2zja",
+        "gpqa-recqLRu4BcJvlSANc",
+        "gpqa-recBTsbQnhEKSSnQh",
+        "gpqa-reclPSWuaG47bkpDv",
+        "gpqa-recH879YiAi6dLCSy",
+        "gpqa-recoiTJPGUmzAkief"
+      ],
+      "input_sha256": "50b294bed8157f2ecf4e0d11c752c95c6b08ca93a3024814a2567edd788f07b6",
+      "prefixes": 20
+    },
+    "gsm8k": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker2/cases/evaluation/gsm8k/gsm8k-test-1262.json",
+          "case_sha256": "c6f0ae87435bba675798b7e065ea03fe4f99ba70ee4b808bbeb7d0c7500b4793",
+          "id": "gsm8k-test-1262",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4ff1e53197d297f2538fad2150229a5cd4a5b3521e6aa8309eb362c826f879b3"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker1/cases/evaluation/gsm8k/gsm8k-test-1266.json",
+          "case_sha256": "4f17ca306aad0b85bf564bdeb630450b03bf4458d7ef579c8dd3bfdd23f56c41",
+          "id": "gsm8k-test-1266",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0c0f7e7bb33864f52c33f21713d3c82e31e3abc0954531b726701b3a5f578afc"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker1/cases/evaluation/gsm8k/gsm8k-test-1033.json",
+          "case_sha256": "647ecbc736727b269b386b677fb19dd390aea1b2dad8e408697990863719eb70",
+          "id": "gsm8k-test-1033",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0c0f7e7bb33864f52c33f21713d3c82e31e3abc0954531b726701b3a5f578afc"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker0/cases/evaluation/gsm8k/gsm8k-test-155.json",
+          "case_sha256": "eafc191847331db5c44de5015f2060c9622301aa4c18703ca5ccde5101ae94e8",
+          "id": "gsm8k-test-155",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4dc5ff84ab42a7f1473f3798ad567ce7f7c323724b93ec01f35480a083d6b5db"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker2/cases/evaluation/gsm8k/gsm8k-test-369.json",
+          "case_sha256": "a0e84a3dedbe097de1ab68ad4749cf8688d542a769ec9dbc3a6b0a5657ea79f6",
+          "id": "gsm8k-test-369",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4ff1e53197d297f2538fad2150229a5cd4a5b3521e6aa8309eb362c826f879b3"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker0/cases/evaluation/gsm8k/gsm8k-test-482.json",
+          "case_sha256": "f938c0d391cc8d483a5d0395904d9d68c626355894694a56b3e1754e3014f4e7",
+          "id": "gsm8k-test-482",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4dc5ff84ab42a7f1473f3798ad567ce7f7c323724b93ec01f35480a083d6b5db"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker2/cases/evaluation/gsm8k/gsm8k-test-216.json",
+          "case_sha256": "234308b6ea4b980e3ea912fbf278d0b39fcdd2ea3d8a17a55314ceb7c67cbeb5",
+          "id": "gsm8k-test-216",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4ff1e53197d297f2538fad2150229a5cd4a5b3521e6aa8309eb362c826f879b3"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker3/cases/evaluation/gsm8k/gsm8k-test-1126.json",
+          "case_sha256": "c0171eaf40a36b4e24a95eb3340329ddae1fe449d16a62dd3f86b109e305ffc5",
+          "id": "gsm8k-test-1126",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "d0fd9bccc4f81b1283c93af9ba044513aae2bbe3ab9a5f10b657e2616d3875ab"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker1/cases/evaluation/gsm8k/gsm8k-test-411.json",
+          "case_sha256": "d081591545fcb82141a4a1db584fc82668c396a66100206d6648846a71ca3179",
+          "id": "gsm8k-test-411",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "0c0f7e7bb33864f52c33f21713d3c82e31e3abc0954531b726701b3a5f578afc"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-gsm8k/workers/ours-worker0/cases/evaluation/gsm8k/gsm8k-test-956.json",
+          "case_sha256": "c045e303a31364afd8f5c746bad116a6299749a709e5917ad2191e6af0e39ef6",
+          "id": "gsm8k-test-956",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4dc5ff84ab42a7f1473f3798ad567ce7f7c323724b93ec01f35480a083d6b5db"
+        }
+      ],
+      "cohort_sha256": "a01b6b880e09fb6939af9e5c876c61fc72ae96d67c0ebcf56d33f304fcaa7577",
+      "ids": [
+        "gsm8k-test-1262",
+        "gsm8k-test-1266",
+        "gsm8k-test-1033",
+        "gsm8k-test-155",
+        "gsm8k-test-369",
+        "gsm8k-test-482",
+        "gsm8k-test-216",
+        "gsm8k-test-1126",
+        "gsm8k-test-411",
+        "gsm8k-test-956"
+      ],
+      "input_sha256": "94272e919965757e29d9cc938106993e3054f47b28cc6ccbc001916cc60b72aa",
+      "prefixes": 20
+    },
+    "hmmt25": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker2/cases/evaluation/hmmt25/hmmt25-8.json",
+          "case_sha256": "672b38a3a98d763377d31af906827dc5077c5a0bbbcde5c3eb0e312a2f95da11",
+          "id": "hmmt25-8",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "96573203f1626ee6c9e4ff00f99840abf0e9a75e7a91edfbfe2f7cb915e2132e"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker1/cases/evaluation/hmmt25/hmmt25-9.json",
+          "case_sha256": "2abc6543c5601181929ca16da03bd20a48f9e76514aa2d58f8f991e49432d5c7",
+          "id": "hmmt25-9",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "5a2fc5886c58dabd1b4b5b5be73be594d702f235e5f81aa8055c6284ccec6857"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker2/cases/evaluation/hmmt25/hmmt25-22.json",
+          "case_sha256": "a51fe2efe47ee9323e004000c38181a3d7371b4ed1c0b46155f2b1870d9d48ab",
+          "id": "hmmt25-22",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "96573203f1626ee6c9e4ff00f99840abf0e9a75e7a91edfbfe2f7cb915e2132e"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker3/cases/evaluation/hmmt25/hmmt25-10.json",
+          "case_sha256": "b1bc801e91255b196a805fb8ba78264a23c5f222768a45d88bed2ede8b92c33f",
+          "id": "hmmt25-10",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "e1d87409e087b4f1422318372a11d6bc8709d37ffb4609d7fa6678de7a252221"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker2/cases/evaluation/hmmt25/hmmt25-13.json",
+          "case_sha256": "b02a507fa206aae9b9f6717f4b7b8e9209b3303b09decc36b684650a70764424",
+          "id": "hmmt25-13",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "96573203f1626ee6c9e4ff00f99840abf0e9a75e7a91edfbfe2f7cb915e2132e"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker3/cases/evaluation/hmmt25/hmmt25-14.json",
+          "case_sha256": "787928306c19526ad81ae62653115ce439400657a1070bdcdc4685635eb788c8",
+          "id": "hmmt25-14",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "e1d87409e087b4f1422318372a11d6bc8709d37ffb4609d7fa6678de7a252221"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker0/cases/evaluation/hmmt25/hmmt25-7.json",
+          "case_sha256": "66d7934e3b9ea2b8e2cdbb43eb6665da2e5e9b9cfe2d651e93ca4dde700b6850",
+          "id": "hmmt25-7",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4cf4a00e2ac4e77191e9212bfcb44ecadcb05aa88fe7ad89b7850df220cc8171"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker2/cases/evaluation/hmmt25/hmmt25-12.json",
+          "case_sha256": "2dcc46a0989763aa20ec2b624c665909259be019c815406410953c554cc3200e",
+          "id": "hmmt25-12",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "96573203f1626ee6c9e4ff00f99840abf0e9a75e7a91edfbfe2f7cb915e2132e"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker0/cases/evaluation/hmmt25/hmmt25-25.json",
+          "case_sha256": "609075901c51d062c5579b2d0e4bf44d60d8c427d5b76723893c65013e929088",
+          "id": "hmmt25-25",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4cf4a00e2ac4e77191e9212bfcb44ecadcb05aa88fe7ad89b7850df220cc8171"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-hmmt25/workers/ours-worker0/cases/evaluation/hmmt25/hmmt25-30.json",
+          "case_sha256": "2387c8f343be62f941e446bbb47056d15dd6cbd33fed665e0bffb4b1596d6db0",
+          "id": "hmmt25-30",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "4cf4a00e2ac4e77191e9212bfcb44ecadcb05aa88fe7ad89b7850df220cc8171"
+        }
+      ],
+      "cohort_sha256": "f087847f69924e22f83232fe452426872b7f8cddb38843030594ee890c6c22fd",
+      "ids": [
+        "hmmt25-8",
+        "hmmt25-9",
+        "hmmt25-22",
+        "hmmt25-10",
+        "hmmt25-13",
+        "hmmt25-14",
+        "hmmt25-7",
+        "hmmt25-12",
+        "hmmt25-25",
+        "hmmt25-30"
+      ],
+      "input_sha256": "b6d95af852f7d3c7c22898518e28ebd37c99cae6784a472f03459dba8647b36f",
+      "prefixes": 20
+    },
+    "math500": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker1/cases/evaluation/math500/math500-test-number_theory-1000.json.json",
+          "case_sha256": "e1aa09cf81976e00a43210514e7f7ce3258024011c452ef815dc765eed42d231",
+          "id": "math500-test-number_theory-1000.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "8281b65a6ce1dfa6b224dc88e49b265eb41646f441693f444f58dc760f7bf2af"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker2/cases/evaluation/math500/math500-test-intermediate_algebra-362.json.json",
+          "case_sha256": "ba3422b72b828c6e90d43900a63d71bc42fdb9f79c583815dd52a07a8469f25a",
+          "id": "math500-test-intermediate_algebra-362.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "22454c174ef27581620cc3daf84b84a57f8488dcf8406dbf387e432c9d93d7a9"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker1/cases/evaluation/math500/math500-test-prealgebra-1114.json.json",
+          "case_sha256": "d2b6665a03d38e8b2f76511b950f9b0d606cb704dad07664928e76ca74e77684",
+          "id": "math500-test-prealgebra-1114.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "8281b65a6ce1dfa6b224dc88e49b265eb41646f441693f444f58dc760f7bf2af"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker2/cases/evaluation/math500/math500-test-counting_and_probability-116.json.json",
+          "case_sha256": "b012392eae984ff6303d17d038f80a5229de30ce152e5163f373b897fa4553af",
+          "id": "math500-test-counting_and_probability-116.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "22454c174ef27581620cc3daf84b84a57f8488dcf8406dbf387e432c9d93d7a9"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker0/cases/evaluation/math500/math500-test-intermediate_algebra-894.json.json",
+          "case_sha256": "0aa41f823594921845dd05c2015f3d04055d85ba75e8e8360b7fffdd37f97e99",
+          "id": "math500-test-intermediate_algebra-894.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "b48e9202db00e76325b707c39f3f465388d4fafae55a06be3929d5d76f572dd7"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker3/cases/evaluation/math500/math500-test-intermediate_algebra-860.json.json",
+          "case_sha256": "4545985f0fc23e2e263c6fcc9af02a8abcad45f3c028f100024231b518930cb9",
+          "id": "math500-test-intermediate_algebra-860.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "d62168d26ea3d844203c72ed6e3e54ab428bffcba5d403e2ddaf47a6b7a99b08"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker0/cases/evaluation/math500/math500-test-algebra-1199.json.json",
+          "case_sha256": "07b608bdcce17e4e39694182fb4eb929a01020cb5be6a6f92d03aec45c37b193",
+          "id": "math500-test-algebra-1199.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "b48e9202db00e76325b707c39f3f465388d4fafae55a06be3929d5d76f572dd7"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker0/cases/evaluation/math500/math500-test-algebra-864.json.json",
+          "case_sha256": "c404efdca76ad452e9330c6789c5f6cc5f89a0544aacd483dcf7096bdaf089f1",
+          "id": "math500-test-algebra-864.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "b48e9202db00e76325b707c39f3f465388d4fafae55a06be3929d5d76f572dd7"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker1/cases/evaluation/math500/math500-test-intermediate_algebra-582.json.json",
+          "case_sha256": "1ec7c40c2f58cb203b986676211c2c3ccc51d6d76652a4a6b40ff57198154927",
+          "id": "math500-test-intermediate_algebra-582.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "8281b65a6ce1dfa6b224dc88e49b265eb41646f441693f444f58dc760f7bf2af"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-math500/workers/ours-worker0/cases/evaluation/math500/math500-test-geometry-947.json.json",
+          "case_sha256": "2c754274e9916baf6b0b327cf49632f0b27afc53bf55eb2d7e812a6cc91d07bb",
+          "id": "math500-test-geometry-947.json",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "b48e9202db00e76325b707c39f3f465388d4fafae55a06be3929d5d76f572dd7"
+        }
+      ],
+      "cohort_sha256": "1abb38efe6e3a65514a1b1123192f7f48e768bb02117e05105b2fb9ef768247f",
+      "ids": [
+        "math500-test-number_theory-1000.json",
+        "math500-test-intermediate_algebra-362.json",
+        "math500-test-prealgebra-1114.json",
+        "math500-test-counting_and_probability-116.json",
+        "math500-test-intermediate_algebra-894.json",
+        "math500-test-intermediate_algebra-860.json",
+        "math500-test-algebra-1199.json",
+        "math500-test-algebra-864.json",
+        "math500-test-intermediate_algebra-582.json",
+        "math500-test-geometry-947.json"
+      ],
+      "input_sha256": "9536340af42c752ca899a8a69ce714dd2d191d969111ad91a0ae1008df6b7138",
+      "prefixes": 20
+    },
+    "mmlu": {
+      "cases": [
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker1/cases/evaluation/mmlu/mmlu-security_studies-13306.json",
+          "case_sha256": "85b16c95d6f0cf297a09fdbebc89c87402567e903e3581ec3c6a159dbe732daa",
+          "id": "mmlu-security_studies-13306",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "878b06352b0dd85b4a52d19d037ffa8013319cef54b48ee8c9136d6039b6454c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker0/cases/evaluation/mmlu/mmlu-logical_fallacies-6731.json",
+          "case_sha256": "1e5fc80e4ebbed1a2bd7104379080ba68055f2233e2029ca9e6c7400073b6f76",
+          "id": "mmlu-logical_fallacies-6731",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "717f4f098ceb3c188962d56517b6e89bf1040fad63d8274cd89cc5cff3fd17f2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker1/cases/evaluation/mmlu/mmlu-professional_psychology-12683.json",
+          "case_sha256": "c09d0faeaf694bfeaff98b8d4fc294ac43c78f78899521b12c51327d9cd9be08",
+          "id": "mmlu-professional_psychology-12683",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "878b06352b0dd85b4a52d19d037ffa8013319cef54b48ee8c9136d6039b6454c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker0/cases/evaluation/mmlu/mmlu-professional_psychology-12918.json",
+          "case_sha256": "1a2d6f9fabed0c9a33d8bc7f16260d742e32f80446bf06cf377247d814c363db",
+          "id": "mmlu-professional_psychology-12918",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "717f4f098ceb3c188962d56517b6e89bf1040fad63d8274cd89cc5cff3fd17f2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker1/cases/evaluation/mmlu/mmlu-professional_law-11657.json",
+          "case_sha256": "b2382113daa363c804f9640023c9a7fc0442eb53d981052e561f9e87ee470f5e",
+          "id": "mmlu-professional_law-11657",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "878b06352b0dd85b4a52d19d037ffa8013319cef54b48ee8c9136d6039b6454c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker0/cases/evaluation/mmlu/mmlu-abstract_algebra-7.json",
+          "case_sha256": "beab15de178bfe53c6607fe963bfdee696de1714ee6cb0e84e9c32cc3ae10f72",
+          "id": "mmlu-abstract_algebra-7",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "717f4f098ceb3c188962d56517b6e89bf1040fad63d8274cd89cc5cff3fd17f2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker1/cases/evaluation/mmlu/mmlu-high_school_us_history-5828.json",
+          "case_sha256": "5cb849f76075934a13da6d7d6beef71b507145e0808d8467b602a41bf575b0b2",
+          "id": "mmlu-high_school_us_history-5828",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "878b06352b0dd85b4a52d19d037ffa8013319cef54b48ee8c9136d6039b6454c"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker3/cases/evaluation/mmlu/mmlu-astronomy-334.json",
+          "case_sha256": "f09754dd48c87aa39920a5e834f38c9f93a279317a61d86ab7aaccc3ca4e6ef5",
+          "id": "mmlu-astronomy-334",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "9852b6c7537d0c676837222bd3f46b4a0f4bd3116b6d00e8a2d8bce6ff5b2356"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker0/cases/evaluation/mmlu/mmlu-prehistory-10156.json",
+          "case_sha256": "1571c8b829c2465ac391e1f5767ac28b9d88d05aae01b0844abb6b206bbc0f69",
+          "id": "mmlu-prehistory-10156",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "717f4f098ceb3c188962d56517b6e89bf1040fad63d8274cd89cc5cff3fd17f2"
+        },
+        {
+          "case_path": "/data/user04/ch/lost-token-yucheon-memory/workspace/outputs/yucheon-memory-2026-11-16-l40s-2h-v1-mmlu/workers/ours-worker2/cases/evaluation/mmlu/mmlu-high_school_macroeconomics-3914.json",
+          "case_sha256": "f62d8108843f170c038d68ecad2cf685e4eb09d5b02cd63d08d4cecc09c0bc77",
+          "id": "mmlu-high_school_macroeconomics-3914",
+          "probe_kinds": [
+            "first",
+            "middle"
+          ],
+          "worker_identity_sha256": "b40b1abc09ec56bb3889fa01b694ace1f359d28efa95e91e86b7470655e9c560"
+        }
+      ],
+      "cohort_sha256": "b9fac7a2dcf931e45ac6b9a8b329078d9d695542df8fd194685332966db246ad",
+      "ids": [
+        "mmlu-security_studies-13306",
+        "mmlu-logical_fallacies-6731",
+        "mmlu-professional_psychology-12683",
+        "mmlu-professional_psychology-12918",
+        "mmlu-professional_law-11657",
+        "mmlu-abstract_algebra-7",
+        "mmlu-high_school_us_history-5828",
+        "mmlu-astronomy-334",
+        "mmlu-prehistory-10156",
+        "mmlu-high_school_macroeconomics-3914"
+      ],
+      "input_sha256": "d6c90aa810f4be4652082bed3a03c857123029fbc1491d2f1f45fb0475edd47e",
+      "prefixes": 20
+    }
+  }
+}

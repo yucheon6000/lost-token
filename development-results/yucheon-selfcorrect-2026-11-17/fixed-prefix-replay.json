@@ -1,0 +1,39 @@
+{
+  "datasets": {
+    "aime25": {
+      "changed_choices": 44,
+      "events": 616,
+      "questions_with_changed_choice": 10
+    },
+    "gpqa": {
+      "changed_choices": 26,
+      "events": 246,
+      "questions_with_changed_choice": 10
+    },
+    "gsm8k": {
+      "changed_choices": 3,
+      "events": 51,
+      "questions_with_changed_choice": 2
+    },
+    "hmmt25": {
+      "changed_choices": 91,
+      "events": 796,
+      "questions_with_changed_choice": 10
+    },
+    "math500": {
+      "changed_choices": 18,
+      "events": 207,
+      "questions_with_changed_choice": 7
+    },
+    "mmlu": {
+      "changed_choices": 4,
+      "events": 73,
+      "questions_with_changed_choice": 4
+    }
+  },
+  "eos_ids": [
+    151643,
+    151645
+  ],
+  "scope": "fixed historical prefixes; not an accuracy measurement"
+}

@@ -1,0 +1,171 @@
+{
+  "status": {
+    "at": "2026-11-16T23:27:56.056362+00:00",
+    "audits_passed": true,
+    "state": "complete"
+  },
+  "outcomes": [
+    {
+      "arm": "ours",
+      "body_tokens": 1303,
+      "context_truncated": false,
+      "correct": true,
+      "events": 4,
+      "finished_epoch": 1794871548.2757404,
+      "gold": "18",
+      "id": "gsm8k-test-0",
+      "prediction": "18",
+      "seconds": 25.011453681625426,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    },
+    {
+      "arm": "ours",
+      "body_tokens": 1656,
+      "context_truncated": false,
+      "correct": true,
+      "events": 6,
+      "finished_epoch": 1794871556.4212112,
+      "gold": "366",
+      "id": "gsm8k-test-10",
+      "prediction": "366",
+      "seconds": 33.16833006311208,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    },
+    {
+      "arm": "ours",
+      "body_tokens": 677,
+      "context_truncated": false,
+      "correct": true,
+      "events": 2,
+      "finished_epoch": 1794871535.1001751,
+      "gold": "3",
+      "id": "gsm8k-test-1",
+      "prediction": "3",
+      "seconds": 12.929811283946037,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    },
+    {
+      "arm": "ours",
+      "body_tokens": 6647,
+      "context_truncated": false,
+      "correct": false,
+      "events": 24,
+      "finished_epoch": 1794871661.1107802,
+      "gold": "175",
+      "id": "gsm8k-test-100",
+      "prediction": "155",
+      "seconds": 137.86411951621994,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    }
+  ],
+  "audits": {
+    "ours-worker3": {
+      "audit_script_sha256": "29c5ea6c1da97c166bf6dd2ea738685b14eda7240610f5116158c61641c887e0",
+      "checkpoints": 38,
+      "checks": [
+        "source/split/checkpoint hashes",
+        "all eligible scan positions and declared candidates",
+        "minimum body-token fork interval and exact scan restart boundary",
+        "same pre-injection root for every candidate",
+        "only unchosen alternatives in memory",
+        "selection rule recomputed from recorded rollout statistics",
+        "selected rollout committed verbatim after memory",
+        "cosine matrix recomputed from vectors",
+        "no intervention after thinking ends",
+        "main body preserved across memory compaction",
+        "generated-only repetition history and every blocked cycle token",
+        "separate final-response scoring",
+        "policy cost sums and replay ledgers"
+      ],
+      "completed_cases": 1,
+      "completed_conditions": 1,
+      "events": 4,
+      "partial": false,
+      "run": "/data/user04/ch/lost-token-yucheon-selfcorrect/workspace/outputs/selfcorrect-preflight/workers/ours-worker3",
+      "audit_sha256": "e2de51ecdc18896b27aa19c227e806a49b1ae80c13e6e020a6251dd29e28ad03"
+    },
+    "ours-worker1": {
+      "audit_script_sha256": "29c5ea6c1da97c166bf6dd2ea738685b14eda7240610f5116158c61641c887e0",
+      "checkpoints": 56,
+      "checks": [
+        "source/split/checkpoint hashes",
+        "all eligible scan positions and declared candidates",
+        "minimum body-token fork interval and exact scan restart boundary",
+        "same pre-injection root for every candidate",
+        "only unchosen alternatives in memory",
+        "selection rule recomputed from recorded rollout statistics",
+        "selected rollout committed verbatim after memory",
+        "cosine matrix recomputed from vectors",
+        "no intervention after thinking ends",
+        "main body preserved across memory compaction",
+        "generated-only repetition history and every blocked cycle token",
+        "separate final-response scoring",
+        "policy cost sums and replay ledgers"
+      ],
+      "completed_cases": 1,
+      "completed_conditions": 1,
+      "events": 6,
+      "partial": false,
+      "run": "/data/user04/ch/lost-token-yucheon-selfcorrect/workspace/outputs/selfcorrect-preflight/workers/ours-worker1",
+      "audit_sha256": "24cb004b7da07344e1401514e9225380bacf3f3424ec17351ea8ea3be63e9458"
+    },
+    "ours-worker0": {
+      "audit_script_sha256": "29c5ea6c1da97c166bf6dd2ea738685b14eda7240610f5116158c61641c887e0",
+      "checkpoints": 22,
+      "checks": [
+        "source/split/checkpoint hashes",
+        "all eligible scan positions and declared candidates",
+        "minimum body-token fork interval and exact scan restart boundary",
+        "same pre-injection root for every candidate",
+        "only unchosen alternatives in memory",
+        "selection rule recomputed from recorded rollout statistics",
+        "selected rollout committed verbatim after memory",
+        "cosine matrix recomputed from vectors",
+        "no intervention after thinking ends",
+        "main body preserved across memory compaction",
+        "generated-only repetition history and every blocked cycle token",
+        "separate final-response scoring",
+        "policy cost sums and replay ledgers"
+      ],
+      "completed_cases": 1,
+      "completed_conditions": 1,
+      "events": 2,
+      "partial": false,
+      "run": "/data/user04/ch/lost-token-yucheon-selfcorrect/workspace/outputs/selfcorrect-preflight/workers/ours-worker0",
+      "audit_sha256": "7cd7bf91d6bd39ff1d5838a55704594db302993d779130b7a382a43d5316cb2b"
+    },
+    "ours-worker2": {
+      "audit_script_sha256": "29c5ea6c1da97c166bf6dd2ea738685b14eda7240610f5116158c61641c887e0",
+      "checkpoints": 209,
+      "checks": [
+        "source/split/checkpoint hashes",
+        "all eligible scan positions and declared candidates",
+        "minimum body-token fork interval and exact scan restart boundary",
+        "same pre-injection root for every candidate",
+        "only unchosen alternatives in memory",
+        "selection rule recomputed from recorded rollout statistics",
+        "selected rollout committed verbatim after memory",
+        "cosine matrix recomputed from vectors",
+        "no intervention after thinking ends",
+        "main body preserved across memory compaction",
+        "generated-only repetition history and every blocked cycle token",
+        "separate final-response scoring",
+        "policy cost sums and replay ledgers"
+      ],
+      "completed_cases": 1,
+      "completed_conditions": 1,
+      "events": 24,
+      "partial": false,
+      "run": "/data/user04/ch/lost-token-yucheon-selfcorrect/workspace/outputs/selfcorrect-preflight/workers/ours-worker2",
+      "audit_sha256": "149b417a001267ce90f937a4392b67db2513d38c2f3935c0771b1bf6755e639f"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "allocation": {
+    "candidate": "2,3",
+    "control": "0,1"
+  },
+  "arms": [
+    "ours"
+  ],
+  "baseline_reference": {
+    "file_sha256": "b3e493a958e9311bacf40570f49583e0b386d1668b8f1cf599717342cfe9907a",
+    "hardware_note": "Existing PRO 6000 full baseline; cross-hardware comparison only, no new AR run",
+    "path": "/data/user04/ch/lost-token/experiment-results/changho-full-baseline-2026-11-15/baseline-reference.json",
+    "reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c"
+  },
+  "branch": "yucheon-selfcorrect-2026-11-17",
+  "change": "Only experiment.lookahead.contradiction_penalty changes from 0.25 to 0.0",
+  "code_commit": "9feae0c947e5c4fa3ea1b0bee2bd675b50019c0d",
+  "files": {
+    "candidate-math-config.json": "be68b199f0df22a272731f659347b355fd613885130c5418f073c656f124a830",
+    "candidate-short-config.json": "f07486f11e79ae81b07941f6acfc25873ac9d08caabd04c5c6eb6b96d74c1733",
+    "control-math-config.json": "54aafb46432f5ed473b3c00c195d27d78b3ef18bcc8dcb0d8251f3c5a377422b",
+    "control-short-config.json": "151cbd70e7281fea02995ef2c1979cb96a3306256f844ca497664c019762a7c3"
+  },
+  "fresh_control_and_candidate": true,
+  "frozen_sample_manifest_sha256": "fbe9885611cec58d66111ff61a7c68a294213b75c69d95492de06e88f2e8bc48",
+  "groups": {
+    "math": {
+      "batch": 4,
+      "tasks": [
+        "aime25",
+        "hmmt25"
+      ]
+    },
+    "short": {
+      "batch": 8,
+      "tasks": [
+        "gsm8k",
+        "gpqa",
+        "math500",
+        "mmlu"
+      ]
+    }
+  },
+  "hypothesis": "Removing a lexical penalty preserves useful self-correction and contradiction reasoning, improving final-answer accuracy. Confidence is still an imperfect correctness proxy.",
+  "primary_metric": "scored final-answer accuracy on exactly the same IDs; task accuracies, paired wins/losses, answer completion, and elapsed time",
+  "questions_per_task": 10,
+  "runtime_caveat": "Fresh Ours control and candidate use matching GPU counts, batching maxima, seeds, budgets and scorer; dynamic execution paths can still differ. A single small pilot cannot establish a universal gain.",
+  "scope": "development accuracy pilot, not canonical full-cohort submission",
+  "selection_note": "Same label-independent diagnostic IDs reused as a development pilot; these 60 questions must not be treated as held-out confirmation of subsequent tuning",
+  "unique_questions": 60
+}
