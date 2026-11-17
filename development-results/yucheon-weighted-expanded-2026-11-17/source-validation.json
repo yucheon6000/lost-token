@@ -1,0 +1,58 @@
+{
+  "canonical_l40s_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba",
+  "cpu_tests": {
+    "log_sha256": "49e35d996fc7b055681acc14ea3551153320398dd2e7e9000d78e63fb45e8b6d",
+    "passed": 181
+  },
+  "created": "2026-11-17T03:54:21.255505+00:00",
+  "different_cwd_config_loading": {
+    "configs": [
+      {
+        "half_weights": [
+          0.25,
+          0.75
+        ],
+        "name": "candidate-math-config.json",
+        "sha256": "89608778af6bfa30e7fa03f80e1ccaa965ee18b98f0fb0b2b42a72ba0be48048"
+      },
+      {
+        "half_weights": [
+          0.25,
+          0.75
+        ],
+        "name": "candidate-short-config.json",
+        "sha256": "9d29741cd3890a23749b6ff57ce62105329371d258fbc003d06e5c94f30ce0d9"
+      },
+      {
+        "half_weights": null,
+        "name": "control-math-config.json",
+        "sha256": "be68b199f0df22a272731f659347b355fd613885130c5418f073c656f124a830"
+      },
+      {
+        "half_weights": null,
+        "name": "control-short-config.json",
+        "sha256": "f07486f11e79ae81b07941f6acfc25873ac9d08caabd04c5c6eb6b96d74c1733"
+      },
+      {
+        "half_weights": [
+          0.25,
+          0.75
+        ],
+        "name": "vllm-ours-weighted.json",
+        "sha256": "8df4c31bba45fe78503f3194262146356fe081c6d8253ae9d192b39a65a61184"
+      }
+    ],
+    "cwd": "/tmp",
+    "passed": true
+  },
+  "passed": true,
+  "source_ci": {
+    "commit": "fe06f6db1f0ce3c053c9da24b54e3e6c4080feea",
+    "conclusion": "success",
+    "url": "https://github.com/yucheon6000/lost-token/actions/runs/44003135240"
+  },
+  "wheel_build": {
+    "log_sha256": "87280f1968d72038742eafedecd91ffbcc38d7f133e118a1849d500fc9f33380",
+    "passed": true
+  }
+}

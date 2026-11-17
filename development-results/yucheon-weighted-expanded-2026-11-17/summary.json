@@ -1,0 +1,116 @@
+{
+  "code_branch": "yucheon-weighted-2026-11-17",
+  "code_commit": "fe06f6db1f0ce3c053c9da24b54e3e6c4080feea",
+  "comparison_notes": [
+    "Only weighted Ours was rerun; no new AR or uniform-control inference",
+    "Frozen AR is original PRO 6000 context, not a matched L40S baseline",
+    "Prior 60-question results are historical overlap only; this larger run alone does not isolate the weighting effect",
+    "All prior 60 development IDs are included; this is not a held-out confirmation set",
+    "Equal task sizes give a six-task macro average; not the distribution of the 2139-question canonical L40S cohort"
+  ],
+  "created": "2026-11-17T06:19:42.393687+00:00",
+  "datasets": {
+    "aime25": {
+      "body_tokens": 550109,
+      "forced_closures": 3,
+      "losses_vs_cross_hardware_ar": 0,
+      "n": 30,
+      "reference_ar_correct": 21,
+      "scope": "full dataset",
+      "thinking_incomplete": 0,
+      "unextractable": 1,
+      "weighted_accuracy": 0.8,
+      "weighted_correct": 24,
+      "wins_vs_cross_hardware_ar": 3
+    },
+    "gpqa": {
+      "body_tokens": 237909,
+      "forced_closures": 0,
+      "losses_vs_cross_hardware_ar": 1,
+      "n": 30,
+      "reference_ar_correct": 18,
+      "scope": "sample of registered L40S IDs",
+      "thinking_incomplete": 0,
+      "unextractable": 2,
+      "weighted_accuracy": 0.6333333333333333,
+      "weighted_correct": 19,
+      "wins_vs_cross_hardware_ar": 2
+    },
+    "gsm8k": {
+      "body_tokens": 45737,
+      "forced_closures": 0,
+      "losses_vs_cross_hardware_ar": 0,
+      "n": 30,
+      "reference_ar_correct": 29,
+      "scope": "sample of registered L40S IDs",
+      "thinking_incomplete": 0,
+      "unextractable": 0,
+      "weighted_accuracy": 0.9666666666666667,
+      "weighted_correct": 29,
+      "wins_vs_cross_hardware_ar": 0
+    },
+    "hmmt25": {
+      "body_tokens": 673009,
+      "forced_closures": 8,
+      "losses_vs_cross_hardware_ar": 1,
+      "n": 30,
+      "reference_ar_correct": 15,
+      "scope": "full dataset",
+      "thinking_incomplete": 0,
+      "unextractable": 2,
+      "weighted_accuracy": 0.6,
+      "weighted_correct": 18,
+      "wins_vs_cross_hardware_ar": 4
+    },
+    "math500": {
+      "body_tokens": 217708,
+      "forced_closures": 0,
+      "losses_vs_cross_hardware_ar": 0,
+      "n": 30,
+      "reference_ar_correct": 29,
+      "scope": "sample of registered L40S IDs",
+      "thinking_incomplete": 0,
+      "unextractable": 0,
+      "weighted_accuracy": 1.0,
+      "weighted_correct": 30,
+      "wins_vs_cross_hardware_ar": 1
+    },
+    "mmlu": {
+      "body_tokens": 77095,
+      "forced_closures": 0,
+      "losses_vs_cross_hardware_ar": 2,
+      "n": 30,
+      "reference_ar_correct": 25,
+      "scope": "sample of registered L40S IDs",
+      "thinking_incomplete": 0,
+      "unextractable": 0,
+      "weighted_accuracy": 0.7666666666666667,
+      "weighted_correct": 23,
+      "wins_vs_cross_hardware_ar": 0
+    }
+  },
+  "elapsed_seconds": 7995.317653417587,
+  "overall": {
+    "body_tokens": 1801567,
+    "forced_closures": 11,
+    "losses_vs_cross_hardware_ar": 4,
+    "n": 180,
+    "reference_ar_correct": 137,
+    "thinking_incomplete": 0,
+    "unextractable": 5,
+    "weighted_accuracy": 0.7944444444444444,
+    "weighted_correct": 143,
+    "wins_vs_cross_hardware_ar": 10
+  },
+  "previous_60_overlap": {
+    "new_weighted": 47,
+    "previous_uniform": 48,
+    "previous_weighted": 47
+  },
+  "scope": "Expanded development run; not full registered L40S cohort",
+  "weighted_events_checked": 5886,
+  "weights": [
+    0.25,
+    0.75
+  ]
+}

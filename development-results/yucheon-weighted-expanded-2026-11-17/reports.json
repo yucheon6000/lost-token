@@ -1,0 +1,196 @@
+{
+  "math": {
+    "plan_sha256": "47e8e08485ae8a049c9d87b39a3984ddb4dacc0500b458a62fed303401bd979b",
+    "report": {
+      "at": "2026-11-17T05:48:26.820765+00:00",
+      "limitations": [
+        "Common completed sets are completion-selected when a time budget is used.",
+        "32K-input LongBench is not a full-context official benchmark score.",
+        "Selected-rollout commit changes the main continuation as well as alternative memory."
+      ],
+      "own": {
+        "ours": {
+          "aime25": {
+            "accuracy": 0.8,
+            "body_tokens": 550109,
+            "correct": 24,
+            "fork_events": 1812,
+            "n": 30,
+            "thinking_complete": 30
+          },
+          "all": {
+            "accuracy": 0.7,
+            "body_tokens": 1223118,
+            "correct": 42,
+            "fork_events": 3929,
+            "n": 60,
+            "thinking_complete": 60
+          },
+          "hmmt25": {
+            "accuracy": 0.6,
+            "body_tokens": 673009,
+            "correct": 18,
+            "fork_events": 2117,
+            "n": 30,
+            "thinking_complete": 30
+          }
+        }
+      },
+      "paired": {
+        "aime25": {
+          "accuracy": {
+            "ours": 0.8
+          },
+          "correct": {
+            "ours": 24
+          },
+          "n": 30
+        },
+        "all": {
+          "accuracy": {
+            "ours": 0.7
+          },
+          "correct": {
+            "ours": 42
+          },
+          "n": 60
+        },
+        "hmmt25": {
+          "accuracy": {
+            "ours": 0.6
+          },
+          "correct": {
+            "ours": 18
+          },
+          "n": 30
+        }
+      },
+      "schedule": {
+        "ours": {
+          "deadline_epoch": null,
+          "start_epoch": 1794888362.8294141
+        }
+      },
+      "smoke": false
+    },
+    "status": {
+      "at": "2026-11-17T05:48:26.821798+00:00",
+      "audits_passed": true,
+      "state": "complete"
+    }
+  },
+  "short": {
+    "plan_sha256": "34da0b664e03794deeb5ed64897e80c76c73c1ea27732a4babe4633022dca9ed",
+    "report": {
+      "at": "2026-11-17T06:19:14.271963+00:00",
+      "limitations": [
+        "Common completed sets are completion-selected when a time budget is used.",
+        "32K-input LongBench is not a full-context official benchmark score.",
+        "Selected-rollout commit changes the main continuation as well as alternative memory."
+      ],
+      "own": {
+        "ours": {
+          "all": {
+            "accuracy": 0.8416666666666667,
+            "body_tokens": 578449,
+            "correct": 101,
+            "fork_events": 1957,
+            "n": 120,
+            "thinking_complete": 120
+          },
+          "gpqa": {
+            "accuracy": 0.6333333333333333,
+            "body_tokens": 237909,
+            "correct": 19,
+            "fork_events": 820,
+            "n": 30,
+            "thinking_complete": 30
+          },
+          "gsm8k": {
+            "accuracy": 0.9666666666666667,
+            "body_tokens": 45737,
+            "correct": 29,
+            "fork_events": 151,
+            "n": 30,
+            "thinking_complete": 30
+          },
+          "math500": {
+            "accuracy": 1.0,
+            "body_tokens": 217708,
+            "correct": 30,
+            "fork_events": 740,
+            "n": 30,
+            "thinking_complete": 30
+          },
+          "mmlu": {
+            "accuracy": 0.7666666666666667,
+            "body_tokens": 77095,
+            "correct": 23,
+            "fork_events": 246,
+            "n": 30,
+            "thinking_complete": 30
+          }
+        }
+      },
+      "paired": {
+        "all": {
+          "accuracy": {
+            "ours": 0.8416666666666667
+          },
+          "correct": {
+            "ours": 101
+          },
+          "n": 120
+        },
+        "gpqa": {
+          "accuracy": {
+            "ours": 0.6333333333333333
+          },
+          "correct": {
+            "ours": 19
+          },
+          "n": 30
+        },
+        "gsm8k": {
+          "accuracy": {
+            "ours": 0.9666666666666667
+          },
+          "correct": {
+            "ours": 29
+          },
+          "n": 30
+        },
+        "math500": {
+          "accuracy": {
+            "ours": 1.0
+          },
+          "correct": {
+            "ours": 30
+          },
+          "n": 30
+        },
+        "mmlu": {
+          "accuracy": {
+            "ours": 0.7666666666666667
+          },
+          "correct": {
+            "ours": 23
+          },
+          "n": 30
+        }
+      },
+      "schedule": {
+        "ours": {
+          "deadline_epoch": null,
+          "start_epoch": 1794894510.815675
+        }
+      },
+      "smoke": false
+    },
+    "status": {
+      "at": "2026-11-17T06:19:14.273233+00:00",
+      "audits_passed": true,
+      "state": "complete"
+    }
+  }
+}

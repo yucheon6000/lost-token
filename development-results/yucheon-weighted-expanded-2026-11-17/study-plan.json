@@ -1,0 +1,102 @@
+{
+  "arms": [
+    "ours"
+  ],
+  "baseline_reference": {
+    "code_commit": "204b01c7ee62027115be4d5456bb49acc5d382ed",
+    "file_sha256": "b3e493a958e9311bacf40570f49583e0b386d1668b8f1cf599717342cfe9907a",
+    "note": "Unchanged existing PRO 6000 reference; cross-hardware context only, no AR inference",
+    "path": "/data/user04/ch/lost-token/experiment-results/changho-full-baseline-2026-11-15/baseline-reference.json",
+    "reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c"
+  },
+  "branch": "yucheon-weighted-2026-11-17",
+  "canonical_l40s_manifest_sha256": "6fdcd29e0148339bb2e7541099ad69b93f5bb8e79f3e8ce5885bd222a88ed0ba",
+  "code_commit": "fe06f6db1f0ce3c053c9da24b54e3e6c4080feea",
+  "created": "2026-11-17T04:05:30.980106+00:00",
+  "estimated_minutes": [
+    120,
+    180
+  ],
+  "file_sha256": {
+    "math-config.json": "89608778af6bfa30e7fa03f80e1ccaa965ee18b98f0fb0b2b42a72ba0be48048",
+    "math-ids.json": "a84cca8451ccb0c9d4a88082a0f0c503b3c7ecf2894691c12e10d7ab502542b1",
+    "sample-manifest.json": "88b7e7c397ff3338c9907ee6151d5f87aa3bcf68a16da87f149f92627336e6b3",
+    "short-config.json": "9d29741cd3890a23749b6ff57ce62105329371d258fbc003d06e5c94f30ce0d9",
+    "short-ids.json": "450771b5b85bc112bf2da21f38e883e79cd2600214d9d9f73d44e48cdfd4e161"
+  },
+  "gpu_count": 4,
+  "gpu_model": "NVIDIA L40S",
+  "gpus": "0,1,2,3",
+  "group_order": [
+    "math",
+    "short"
+  ],
+  "groups": {
+    "math": {
+      "batch_per_gpu": 4,
+      "run_name": "weighted-expanded-math",
+      "tasks": [
+        "aime25",
+        "hmmt25"
+      ]
+    },
+    "short": {
+      "batch_per_gpu": 8,
+      "run_name": "weighted-expanded-short",
+      "tasks": [
+        "gsm8k",
+        "gpqa",
+        "math500",
+        "mmlu"
+      ]
+    }
+  },
+  "id": "yucheon-weighted-expanded-2026-11-17",
+  "model_cache": "/data/user04/IDL/lost-token/workspace/models",
+  "previous_pilot": {
+    "file_sha256": "adf1a787fbe9cb905527d01f8e2a96b6589b7a5c3b4fef89c6a678ce31011b21",
+    "note": "Overlap 10 per dataset only; old control is not a fresh matched 180-question control; batches and GPU allocation differ",
+    "paired_outcomes_path": "/data/user04/ch/lost-token-yucheon-weighted/workspace/weighted-pilot/paired-outcomes.json"
+  },
+  "primary_metric": "Final-answer correct/n and completion counts; no after-the-fact answer normalization or rescoring",
+  "runtime_note": "All 180 questions rerun from fresh native outputs; no old inference outcomes/checkpoints imported; identical seed does not guarantee identical outputs under changed dynamic batching",
+  "schema": 1,
+  "scope": "Expanded development run; not full registered L40S cohort",
+  "shared_commit": "787fce5ce092a57348306b04789449ac94fe05a4",
+  "source_fingerprint": {
+    "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+    "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "lost_tokens/audit.py": "29c5ea6c1da97c166bf6dd2ea738685b14eda7240610f5116158c61641c887e0",
+    "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+    "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+    "lost_tokens/config.py": "6e8ac4124abfedd938e0eb54a40caa34c54fd007bf1a67db5acd1bf5932857d7",
+    "lost_tokens/core.py": "6b90ce548bb00caab3695c858821b9764c6b40216018b81028987015833a4469",
+    "lost_tokens/cosine.py": "317b38d6c2fc2e2a8a114e9bc6004197e213e32f61701db96730159c4cd97972",
+    "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+    "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+    "lost_tokens/default.json": "d6e353e6e10cb368e0db76713ec91ec43160101ee80776848ac8e9496f1639f8",
+    "lost_tokens/frozen_baseline.py": "21aa244be6e917390af5f025c104fe52a7f487eed2b3d224bd53728993f9db65",
+    "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+    "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+    "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+    "lost_tokens/recurrent_memory.py": "dec27a7bf0c1ff8ae1559597d967e88fb6d067d5ee48ee54a2e5bfbba6445e26",
+    "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+    "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+    "lost_tokens/runner.py": "a9704797b120ea402d3f537c73bd35aa1faad34361ad21e00375719390850413",
+    "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+    "lost_tokens/vllm_backend.py": "d52251a62a64ea3384eac31cb8307e1425f5f64c5bcab2111a94630ad16b3605"
+  },
+  "unchanged_validation": {
+    "note": "No code, weights, model, scorer, or budget changes since the 181-test CI and scored 2-question GPU preflight",
+    "preflight_path": "/data/user04/ch/lost-token-yucheon-weighted/workspace/weighted-pilot/submission/preflight.json",
+    "preflight_sha256": "247d76b195ca592f3d56f258517787abe04b4e84ae5e273020d5f1b975cdbcd5",
+    "validation_path": "/data/user04/ch/lost-token-yucheon-weighted/workspace/weighted-pilot/submission/validation.json",
+    "validation_sha256": "88907da8573f0969e40fa4075dcc12e9265b03b2e48378e7b40397feef06f52d"
+  },
+  "unique_questions": 180,
+  "user_request": "Full AIME25 and HMMT25; sample 30 questions each from the remaining four datasets; rerun weighted Ours",
+  "weights": [
+    0.25,
+    0.75
+  ]
+}

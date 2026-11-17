@@ -1,0 +1,69 @@
+{
+  "scope": "Annotations only; no answer normalization or rescoring",
+  "unextractable_answers": [
+    {
+      "body_tokens": 32768,
+      "boxed_letters_in_answer": [],
+      "case_sha256": "2986ee12dab463f334495410a11cb0fe1159cae82fe3a3f6fbca07d940fbbf32",
+      "correct": false,
+      "forced_think_end_at": 30720,
+      "id": "hmmt25-10",
+      "observation": "Body cap exhausted without an extractable final answer",
+      "prediction": null,
+      "task": "hmmt25",
+      "thinking_complete": true
+    },
+    {
+      "body_tokens": 32768,
+      "boxed_letters_in_answer": [],
+      "case_sha256": "a165321047cbb29c5736de5860e6f1b547ef36b95828f4b4828d6c6a47051ddf",
+      "correct": false,
+      "forced_think_end_at": 30720,
+      "id": "hmmt25-29",
+      "observation": "Body cap exhausted without an extractable final answer",
+      "prediction": null,
+      "task": "hmmt25",
+      "thinking_complete": true
+    },
+    {
+      "body_tokens": 32768,
+      "boxed_letters_in_answer": [],
+      "case_sha256": "b32f4db4a7bfeea379d5720505e279ef6f73328360c413df44712250426d3c6b",
+      "correct": false,
+      "forced_think_end_at": 30720,
+      "id": "aime25-28",
+      "observation": "Body cap exhausted without an extractable final answer",
+      "prediction": null,
+      "task": "aime25",
+      "thinking_complete": true
+    },
+    {
+      "body_tokens": 5469,
+      "boxed_letters_in_answer": [
+        "C"
+      ],
+      "case_sha256": "ce41050a31ca90cba8f6497aa1330a8aedc955b94547677f7d854a21699b441b",
+      "correct": false,
+      "forced_think_end_at": null,
+      "id": "gpqa-recoiTJPGUmzAkief",
+      "observation": "A boxed letter is visible but the unchanged scorer returned null",
+      "prediction": null,
+      "task": "gpqa",
+      "thinking_complete": true
+    },
+    {
+      "body_tokens": 9067,
+      "boxed_letters_in_answer": [
+        "A"
+      ],
+      "case_sha256": "7101eeb2f13ea86b06769ee786d321ba0a8a51222d837dfc2343e169997d94ef",
+      "correct": false,
+      "forced_think_end_at": null,
+      "id": "gpqa-recH879YiAi6dLCSy",
+      "observation": "A boxed letter is visible but the unchanged scorer returned null",
+      "prediction": null,
+      "task": "gpqa",
+      "thinking_complete": true
+    }
+  ]
+}
