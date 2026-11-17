@@ -1,0 +1,76 @@
+{
+  "scope": "Qualitative annotations only; scores are unchanged, no normalization or rescoring",
+  "unextractable_answers": [
+    {
+      "body_tokens": 32768,
+      "boxed_letters_in_answer": [],
+      "case_sha256": "094a000ec830df4582890e1fd174ae54ffa7512d60cf9be335deb672d4a5723d",
+      "forced_think_end_at": 30720,
+      "id": "aime25-15",
+      "observation": "Body cap exhausted without an extractable final answer",
+      "official_correct": false,
+      "official_prediction": null,
+      "task": "aime25",
+      "thinking_complete": true,
+      "variant": "candidate"
+    },
+    {
+      "body_tokens": 4000,
+      "boxed_letters_in_answer": [
+        "D"
+      ],
+      "case_sha256": "eafb0d0b0299d3739709b36b0b3ab4c1232d5d1e169a0942b61564f8b0496810",
+      "forced_think_end_at": null,
+      "id": "gpqa-recrTL3i1VEPCfDGy",
+      "observation": "A boxed multiple-choice letter is visible, but the unchanged scorer returned null",
+      "official_correct": false,
+      "official_prediction": null,
+      "task": "gpqa",
+      "thinking_complete": true,
+      "variant": "candidate"
+    },
+    {
+      "body_tokens": 6505,
+      "boxed_letters_in_answer": [
+        "C"
+      ],
+      "case_sha256": "110e35e84aa8305bb24b43d7c410b908ebbb0284a082d8a13e633e0471bf1c3b",
+      "forced_think_end_at": null,
+      "id": "gpqa-recoiTJPGUmzAkief",
+      "observation": "A boxed multiple-choice letter is visible, but the unchanged scorer returned null",
+      "official_correct": false,
+      "official_prediction": null,
+      "task": "gpqa",
+      "thinking_complete": true,
+      "variant": "fresh_control"
+    },
+    {
+      "body_tokens": 5928,
+      "boxed_letters_in_answer": [
+        "C"
+      ],
+      "case_sha256": "4fbff27f4b80954ea500771ae155206f32b22d0f4e4827becf80e757898b94d7",
+      "forced_think_end_at": null,
+      "id": "gpqa-recoiTJPGUmzAkief",
+      "observation": "A boxed multiple-choice letter is visible, but the unchanged scorer returned null",
+      "official_correct": false,
+      "official_prediction": null,
+      "task": "gpqa",
+      "thinking_complete": true,
+      "variant": "candidate"
+    },
+    {
+      "body_tokens": 32768,
+      "boxed_letters_in_answer": [],
+      "case_sha256": "14bff910614cfd45373b8bf48d19a830fa927d83ee00594a68f9e6ab1de41b56",
+      "forced_think_end_at": 30720,
+      "id": "hmmt25-13",
+      "observation": "Body cap exhausted without an extractable final answer",
+      "official_correct": false,
+      "official_prediction": null,
+      "task": "hmmt25",
+      "thinking_complete": true,
+      "variant": "fresh_control"
+    }
+  ]
+}

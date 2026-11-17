@@ -1,0 +1,74 @@
+{
+  "allocation": {
+    "candidate": "2,3",
+    "control": "0,1"
+  },
+  "arms": [
+    "ours"
+  ],
+  "baseline_reference": {
+    "file_sha256": "b3e493a958e9311bacf40570f49583e0b386d1668b8f1cf599717342cfe9907a",
+    "hardware_note": "Existing PRO 6000 full baseline; cross-hardware comparison only, no new AR run",
+    "path": "/data/user04/ch/lost-token/experiment-results/changho-full-baseline-2026-11-15/baseline-reference.json",
+    "reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c"
+  },
+  "branch": "yucheon-weighted-2026-11-17",
+  "change": "Selection score only: uniform mean -> 0.25 * first-half mean + 0.75 * second-half mean; memory quality remains uniform",
+  "code_commit": "fe06f6db1f0ce3c053c9da24b54e3e6c4080feea",
+  "files": {
+    "candidate-math-config.json": "89608778af6bfa30e7fa03f80e1ccaa965ee18b98f0fb0b2b42a72ba0be48048",
+    "candidate-short-config.json": "9d29741cd3890a23749b6ff57ce62105329371d258fbc003d06e5c94f30ce0d9",
+    "control-math-config.json": "be68b199f0df22a272731f659347b355fd613885130c5418f073c656f124a830",
+    "control-short-config.json": "f07486f11e79ae81b07941f6acfc25873ac9d08caabd04c5c6eb6b96d74c1733"
+  },
+  "fresh_control_and_candidate": true,
+  "frozen_sample_manifest_sha256": "7342c71f84d143639cc75c0a0bbab6398f1dd25c4859b1cd7179dfbe138b7c8c",
+  "groups": {
+    "math": {
+      "batch": 4,
+      "tasks": [
+        "aime25",
+        "hmmt25"
+      ]
+    },
+    "short": {
+      "batch": 8,
+      "tasks": [
+        "gsm8k",
+        "gpqa",
+        "math500",
+        "mmlu"
+      ]
+    }
+  },
+  "hypothesis": "Later continuation confidence may distinguish a sustained reasoning direction from an easy opening. Final-answer accuracy, not resource savings, determines success.",
+  "ids_files": {
+    "math-ids.json": "a08d413d9a2e086f34c0a64aa5221c8508d9c5cf7627e8486ab86d8e4d7c8d22",
+    "preflight-ids.json": "7925da12e95c676315c3afc62cc5378674acff69566256d6ac59da73752d19bb",
+    "short-ids.json": "0fe16afc56fc7ff687d7827f6a0804edd269269ddb9e24fb35f4c30bf0b72d14"
+  },
+  "parent_method_commit": "9feae0c947e5c4fa3ea1b0bee2bd675b50019c0d",
+  "previous_pilot": {
+    "archived_current_ours_correct": 49,
+    "file_sha256": "c16a80610cef0a4bc8de9819ddb1575d424f35606991f27d1821d4f0318b8438",
+    "note": "Prior 60-question selfcorrect pilot; fresh uniform control is the primary comparison",
+    "paired_outcomes_path": "/data/user04/ch/lost-token-yucheon-selfcorrect/workspace/selfcorrect-pilot/paired-outcomes.json"
+  },
+  "primary_metric": "Final-answer correctness on identical IDs, task accuracies and paired wins/losses; completion and time are secondary metrics",
+  "questions_per_task": 10,
+  "runtime_caveat": "Fresh Ours control and candidate use matching GPU counts, batching maxima, seeds, budgets and scorer; dynamic execution paths can still differ. A single small pilot cannot establish a universal gain.",
+  "scope": "development accuracy pilot, not canonical full-cohort submission",
+  "selection_note": "Same 60 preselected development IDs reused without redraw; no held-out confirmation claim",
+  "unique_questions": 60,
+  "weight_definition": {
+    "exclude_forced_first_token": true,
+    "full_64_token_preview": "0.25 * mean(logp positions 2..32) + 0.75 * mean(logp positions 33..64)",
+    "memory_quality": "unweighted mean continuation logprob, unchanged max_score_gap=0.1",
+    "short_preview": "same split on actual continuation length; original minimum-length/terminal eligibility unchanged",
+    "split": "floor(n/2) continuation tokens in first half; remainder in second",
+    "weights": [
+      0.25,
+      0.75
+    ]
+  }
+}
