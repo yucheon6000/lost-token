@@ -1,0 +1,40 @@
+{
+  "protocol": "answer-consensus-v1",
+  "base_seed": 95021,
+  "validation_repeats": 2,
+  "report_pooled_consensus": true,
+  "benchmarks": ["aime25", "hmmt25", "gpqa"],
+  "cohort": "shared-v1",
+  "members": [
+    {"name": "ar", "arm": "baseline", "config": "vllm-argmax.json"},
+    {"name": "argmax", "arm": "ours", "config": "vllm-argmax.json"},
+    {"name": "lookahead", "arm": "ours", "config": "vllm-lookahead.json"},
+    {
+      "name": "reserve",
+      "arm": "ours",
+      "config_by_task": {
+        "aime25": "targeted-reserve-argmax.json",
+        "hmmt25": "targeted-reserve-argmax.json",
+        "gpqa": "targeted-reserve-lookahead.json"
+      }
+    },
+    {
+      "name": "coherent",
+      "arm": "ours",
+      "config_by_task": {
+        "aime25": "targeted-coherent-argmax.json",
+        "hmmt25": "targeted-coherent-argmax.json",
+        "gpqa": "targeted-coherent-lookahead.json"
+      }
+    }
+  ],
+  "vote": {
+    "rule": "unweighted_answer_consensus",
+    "tie_break": "earliest_frozen_member",
+    "math_equivalence": "locked_math_verify",
+    "missing_final": "abstain_with_full_question_denominator"
+  },
+  "seed_schedule": "derived_seed(base_seed, protocol, repeat_index, member_name)",
+  "comparison": "frozen_single_pass_ar_and_previous_ours",
+  "compute_note": "Five complete candidate generations per question. Accuracy-first multi-sample method; not equal-compute superiority over a single trace. No gold or reference solution enters voting."
+}
