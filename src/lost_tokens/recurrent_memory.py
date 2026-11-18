@@ -18,6 +18,7 @@ from .core import derived_seed, digest, sum_cost
 from .math_scoring import math_correct, natural_answer
 from .cosine import compare_rollouts
 from .repetition import repeated_suffix, repetition_summary, memory_markup_summary
+from .value_probe import choose_position, decide_probe, probe_for_arm, probe_requests
 
 
 ARMS = ("plain_ar", "reference_only", "selected_only", "all_futures", "filtered_futures")
@@ -271,7 +272,7 @@ class StreamDecoder:
             "cost": self.cost(start_length, len(ids), len(ids), time.monotonic() - started),
         }
 
-    def rollout(self, root, first, seed, count=None):
+    def rollout(self, root, first, seed, count=None, *, prefix=()):
         started = time.monotonic()
         count = self.exp["branch_tokens"] if count is None else count
         if not 1 <= count <= self.exp["branch_tokens"]:
@@ -281,11 +282,14 @@ class StreamDecoder:
         state = StreamState(
             list(root.ids), copy.deepcopy(root.cache), root.logits.clone(), list(root.generated_ids)
         )
+        if prefix:
+            self.advance(state, prefix, generated=True)
+        origin = digest(state.ids)
         ids, logprobs, entropies, guard_events = [], [], [], []
         stop_marker = None
         for index in range(count):
             entropies.append(distribution_entropy(state.logits))
-            if index == 0:
+            if index == 0 and first is not None:
                 token = first
                 lp = float(state.logits.log_softmax(-1)[token])
             else:
@@ -307,10 +311,12 @@ class StreamDecoder:
             "seed": seed,
             "stop_marker": stop_marker,
             "guard_events": guard_events,
-            "origin_sha256": digest(root.ids),
+            "origin_sha256": origin,
             "raw_log_probabilities": logprobs,
             "entropies": entropies,
-            "cost": self.cost(len(root.ids), len(ids), len(ids), time.monotonic() - started),
+            "cost": self.cost(
+                len(root.ids), len(prefix) + len(ids), len(ids), time.monotonic() - started
+            ),
         }
 
 
@@ -663,6 +669,8 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     max_body = exp.get("max_branch_body_tokens")
     memory_ttl = exp.get("memory_ttl_tokens")
     forcing = budget_forcing_for_arm(exp, arm)
+    value_probe = probe_for_arm(exp, arm)
+    probes_used = 0
     cap = exp["max_output_tokens"]
     forced_at = None
     decoder = StreamDecoder(model, exp)
@@ -891,6 +899,36 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             ordered = [n for n in event["previews"] if n["rank"] == selection["selected_rank"]]
             ordered += [n for n in event["previews"] if n["rank"] != selection["selected_rank"]]
             chosen_preview = ordered[0]
+            chosen = chosen_preview["ids"]
+            chosen_marker = chosen_preview["stop_marker"]
+            if value_probe and probes_used < value_probe["max_per_case"] and chosen[-1] not in model.eos_ids:
+                context_tail = state.ids[-24:]
+                position = choose_position(chosen_preview, value_probe, model.decode, context_tail)
+                if position is not None:
+                    probes_used += 1
+                    prefix = chosen[:position["offset"]]
+                    requests = probe_requests(
+                        state.ids, body, seed, prefix, rollout_count - len(prefix), value_probe
+                    )
+                    samples = [
+                        store.call(
+                            tag + f"/event-{event_index}/value-probe-{index}",
+                            request,
+                            lambda request=request: decoder.rollout(
+                                state, None, request["seed"], request["count"], prefix=prefix
+                            ),
+                        )
+                        for index, request in enumerate(requests)
+                    ]
+                    costs.extend(samples)
+                    decision = decide_probe(
+                        position, prefix, samples, model.decode, model.eos_ids, context_tail
+                    )
+                    event["value_probe"] = decision
+                    if decision["selected_sample"] is not None:
+                        sample = samples[decision["selected_sample"]]
+                        chosen = prefix + sample["ids"]
+                        chosen_marker = sample["stop_marker"]
             retained = [n for n in ordered[1:] if n["text"].strip()]
             if arm == "selected_only":
                 retained = []
@@ -951,7 +989,6 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
                 costs.append(ingestion)
                 history.append({"kind": "memory", "ids": side, "event": event_index})
             event["continuation_root_sha256"] = digest(state.ids)
-            chosen = chosen_preview["ids"]
             # The selected rollout becomes body text verbatim AFTER the alternatives.
             # Its branch KV cannot be reused because the continuing KV includes memory.
             commit_request = {
@@ -987,7 +1024,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             costs.append(committed)
             event["committed_ids"] = committed["ids"]
             event["after_commit_sha256"] = digest(state.ids)
-            if chosen_preview["stop_marker"] and chosen_preview["stop_marker"].startswith("</"):
+            if chosen_marker and chosen_marker.startswith("</"):
                 phase = "final"
             store.call(
                 tag + f"/event-{event_index}/complete",

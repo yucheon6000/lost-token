@@ -25,6 +25,7 @@ from lost_tokens.recurrent_memory import (
 from lost_tokens.protocol import planned_rows
 from lost_tokens.cosine import cosine_matrix, select_distinct
 from lost_tokens.repetition import repeated_suffix, repetition_summary, memory_markup_summary
+from lost_tokens.value_probe import choose_position, decide_probe, probe_for_arm, probe_requests
 
 
 def audit(run, partial=False, model=None):
@@ -90,6 +91,8 @@ def audit(run, partial=False, model=None):
             compactions = []
             body_guards = []
             forcing = budget_forcing_for_arm(exp, arm)
+            value_probe = probe_for_arm(exp, arm)
+            probes_used = 0
             max_memory_events = exp.get("max_memory_events")
             min_body = exp.get("min_branch_body_tokens") or 0
             max_body = exp.get("max_branch_body_tokens")
@@ -346,6 +349,57 @@ def audit(run, partial=False, model=None):
                     ordered = [n for n in event["previews"] if n["rank"] == selected]
                     ordered += [n for n in event["previews"] if n["rank"] != selected]
                     chosen_preview = ordered[0]
+                    chosen = chosen_preview["ids"]
+                    chosen_marker = chosen_preview["stop_marker"]
+                    position = None
+                    if value_probe and probes_used < value_probe["max_per_case"] and chosen[-1] not in model.eos_ids:
+                        context_tail = context[-24:]
+                        position = choose_position(
+                            chosen_preview, value_probe, model.decode, context_tail
+                        )
+                    if position is None:
+                        assert "value_probe" not in event
+                    else:
+                        probes_used += 1
+                        prefix = chosen[:position["offset"]]
+                        count = min(exp["branch_tokens"], exp["max_output_tokens"] - len(body))
+                        requests = probe_requests(
+                            context, body, seed, prefix, count - len(prefix), value_probe
+                        )
+                        samples = []
+                        for index, request in enumerate(requests):
+                            record = records[tag + f"/event-{len(events)}/value-probe-{index}"]
+                            assert record["request"] == request
+                            sample = record["result"]
+                            assert sample["origin_sha256"] == request["root_sha256"]
+                            assert sample["seed"] == request["seed"] and sample["first_token"] is None
+                            assert 1 <= len(sample["ids"]) <= request["count"]
+                            assert len(sample["ids"]) == len(sample["raw_log_probabilities"])
+                            assert len(sample["ids"]) == len(sample["entropies"])
+                            markers = [
+                                emitted_marker(model, context + prefix + sample["ids"][:i], token)
+                                for i, token in enumerate(sample["ids"])
+                            ]
+                            assert not any(m and m.startswith("</") for m in markers[:-1])
+                            assert sample["stop_marker"] == markers[-1]
+                            assert sample["text"] == fragment_text(model, sample["ids"])
+                            assert not any(
+                                token in model.eos_ids or token == think_end
+                                for token in sample["ids"][:-1]
+                            )
+                            check_guards(sample, body + prefix)
+                            assert sample["cost"]["input_tokens"] == len(prefix)
+                            assert sample["cost"]["output_tokens"] == len(sample["ids"])
+                            samples.append(sample)
+                        costs.extend(samples)
+                        decision = decide_probe(
+                            position, prefix, samples, model.decode, model.eos_ids, context_tail
+                        )
+                        assert event["value_probe"] == decision
+                        if decision["selected_sample"] is not None:
+                            sample = samples[decision["selected_sample"]]
+                            chosen = prefix + sample["ids"]
+                            chosen_marker = sample["stop_marker"]
                     retained = [n for n in ordered[1:] if n["text"].strip()]
                     if arm == "selected_only":
                         retained = []
@@ -435,13 +489,13 @@ def audit(run, partial=False, model=None):
                     commit = record["result"]
                     assert record["request"] == {
                         "root_sha256": digest(context),
-                        "ids": chosen_preview["ids"],
+                        "ids": chosen,
                         "selected_rank": selected,
                         "source_root_sha256": event["root_sha256"],
                         "body_position": len(body),
                         "generated_history_sha256": digest(body),
                     }
-                    assert commit["ids"] == event["committed_ids"] == chosen_preview["ids"]
+                    assert commit["ids"] == event["committed_ids"] == chosen
                     assert (
                         commit["cost"]["input_tokens"] == len(commit["ids"])
                         and commit["cost"]["output_tokens"] == 0
@@ -452,7 +506,7 @@ def audit(run, partial=False, model=None):
                     history.append({"kind": "body", "ids": commit["ids"]})
                     costs.append(commit)
                     assert event["after_commit_sha256"] == digest(context)
-                    marker = chosen_preview["stop_marker"]
+                    marker = chosen_marker
                     if marker and marker.startswith("</"):
                         phase = "final"
                     events.append(event)

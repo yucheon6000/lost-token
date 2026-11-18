@@ -27,13 +27,16 @@ from .recurrent_memory import (
 class ProtocolProcessor:
     """One processor per request. vLLM's own sampler only executes our choice."""
 
-    def __init__(self, model, exp, root, count, seed, body_position=0, scan=False, first=None):
+    def __init__(
+        self, model, exp, root, count, seed, body_position=0, scan=False, first=None, *, rollout=False
+    ):
         self.model, self.exp, self.root = model, exp, root
         self.count, self.seed, self.body_position = count, seed, body_position
         self.scan, self.first = scan, first
         self.ids, self.logprobs, self.entropies = [], [], []
         self.checks, self.guards = [], []
         self.fork, self.marker, self.done = None, None, False
+        self.rollout = rollout or first is not None
         # These helpers use the same raw probabilities, top-k/top-p and guard as HF.
         self.decoder = StreamDecoder(model, exp)
 
@@ -67,7 +70,7 @@ class ProtocolProcessor:
             guard = self.decoder.loop_guard(state)
             seed = (
                 derived_seed(self.seed, "rollout", offset)
-                if self.first is not None
+                if self.rollout
                 else derived_seed(self.seed, "body", self.body_position + offset)
             )
             token, lp = self.decoder.sample(state, seed)
@@ -78,7 +81,7 @@ class ProtocolProcessor:
         self.logprobs.append(lp)
         self.marker = marker
         self.done = token in self.model.eos_ids or bool(
-            marker and (self.first is None or marker.startswith("</"))
+            marker and (not self.rollout or marker.startswith("</"))
         )
         logits.fill_(-torch.inf)
         logits[token] = 0
@@ -284,14 +287,17 @@ class VLLMStreamDecoder(StreamDecoder):
             "cost": self.cost(root_length, len(p.ids), len(p.ids), time.monotonic() - start),
         }
 
-    def rollout(self, root, first, seed, count=None):
+    def rollout(self, root, first, seed, count=None, *, prefix=()):
         start = time.monotonic()
         count = self.exp["branch_tokens"] if count is None else count
         if not 1 <= count <= self.exp["branch_tokens"]:
             raise ValueError("Invalid rollout length")
-        origin = digest(root.ids)
+        state = StreamState(
+            root.ids + list(prefix), None, None, root.generated_ids + list(prefix)
+        ) if prefix else root
+        origin = digest(state.ids)
         p = self.model.engine.submit(
-            ProtocolProcessor(self.model, self.exp, root, count, seed, first=first)
+            ProtocolProcessor(self.model, self.exp, state, count, seed, first=first, rollout=True)
         )
         return {
             "ids": p.ids,
@@ -303,7 +309,9 @@ class VLLMStreamDecoder(StreamDecoder):
             "origin_sha256": origin,
             "raw_log_probabilities": p.logprobs,
             "entropies": p.entropies,
-            "cost": self.cost(len(root.ids), len(p.ids), len(p.ids), time.monotonic() - start),
+            "cost": self.cost(
+                len(root.ids), len(prefix) + len(p.ids), len(p.ids), time.monotonic() - start
+            ),
         }
 
 

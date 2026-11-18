@@ -11,6 +11,7 @@ from .recurrent_memory import (
     validate_memory_quality_gate,
     validate_selection,
 )
+from .value_probe import validate_value_probe
 
 
 def load_spec(path=None):
@@ -83,6 +84,7 @@ def validate_spec(spec):
     validate_selection(exp)
     validate_memory_quality_gate(exp)
     validate_memory_preamble(exp)
+    validate_value_probe(exp)
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
         raise ValueError("Invalid repetition guard switch")
