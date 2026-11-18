@@ -1,0 +1,1932 @@
+{
+  "cases": [
+    {
+      "correct": true,
+      "id": "hmmt25-1",
+      "member_predictions": [
+        "103",
+        "103",
+        "103",
+        "103",
+        "103",
+        "103",
+        "103",
+        "103",
+        "103",
+        "103"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "103"
+          }
+        ],
+        "prediction": "103",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-10",
+      "member_predictions": [
+        "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}",
+        "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}",
+        "\\frac{-1 + \\sqrt{17}}{2}, \\frac{-1 - \\sqrt{17}}{2}",
+        "\\frac{-1 + \\sqrt{17}}{2}, \\frac{-1 - \\sqrt{17}}{2}",
+        "\\frac{-1 + \\sqrt{17}}{2}, \\frac{-1 - \\sqrt{17}}{2}",
+        "\\frac{-1 + \\sqrt{17}}{2}, \\frac{-1 - \\sqrt{17}}{2}",
+        "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}",
+        "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}",
+        "\\frac{-1 + \\sqrt{17}}{2}, \\frac{-1 - \\sqrt{17}}{2}",
+        "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}"
+          }
+        ],
+        "prediction": "\\dfrac{-1 + \\sqrt{17}}{2}, \\dfrac{-1 - \\sqrt{17}}{2}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-11",
+      "member_predictions": [
+        "8",
+        "56",
+        "56",
+        "8",
+        "8",
+        "8",
+        "8",
+        "12",
+        "56",
+        "8"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              9
+            ],
+            "prediction": "8"
+          },
+          {
+            "members": [
+              1,
+              2,
+              8
+            ],
+            "prediction": "56"
+          },
+          {
+            "members": [
+              7
+            ],
+            "prediction": "12"
+          }
+        ],
+        "prediction": "8",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 6,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-12",
+      "member_predictions": [
+        "29",
+        "29",
+        "29",
+        "29",
+        "29",
+        "29",
+        "29",
+        null,
+        "29",
+        "29"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          7
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              8,
+              9
+            ],
+            "prediction": "29"
+          }
+        ],
+        "prediction": "29",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 9,
+        "tied": false,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-13",
+      "member_predictions": [
+        null,
+        null,
+        "105",
+        "6",
+        "12",
+        null,
+        null,
+        "105",
+        "105",
+        "4"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0,
+          1,
+          5,
+          6
+        ],
+        "groups": [
+          {
+            "members": [
+              2,
+              7,
+              8
+            ],
+            "prediction": "105"
+          },
+          {
+            "members": [
+              3
+            ],
+            "prediction": "6"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "12"
+          },
+          {
+            "members": [
+              9
+            ],
+            "prediction": "4"
+          }
+        ],
+        "prediction": "105",
+        "requested_members": 10,
+        "selected_member": 2,
+        "strict_majority": false,
+        "support": 3,
+        "tied": false,
+        "valid_members": 6
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-14",
+      "member_predictions": [
+        null,
+        "20",
+        "12",
+        "10",
+        "28",
+        null,
+        "20",
+        null,
+        "55",
+        "10"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0,
+          5,
+          7
+        ],
+        "groups": [
+          {
+            "members": [
+              1,
+              6
+            ],
+            "prediction": "20"
+          },
+          {
+            "members": [
+              3,
+              9
+            ],
+            "prediction": "10"
+          },
+          {
+            "members": [
+              2
+            ],
+            "prediction": "12"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "28"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "55"
+          }
+        ],
+        "prediction": "20",
+        "requested_members": 10,
+        "selected_member": 1,
+        "strict_majority": false,
+        "support": 2,
+        "tied": true,
+        "valid_members": 7
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-15",
+      "member_predictions": [
+        "202",
+        "184",
+        "184",
+        "202",
+        "202",
+        "202",
+        "202",
+        "202",
+        "202",
+        "184"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "prediction": "202"
+          },
+          {
+            "members": [
+              1,
+              2,
+              9
+            ],
+            "prediction": "184"
+          }
+        ],
+        "prediction": "202",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 7,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-16",
+      "member_predictions": [
+        null,
+        "6525",
+        "3375",
+        "6300",
+        "6300",
+        "6300",
+        "6300",
+        "6525",
+        "6525",
+        "6525"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0
+        ],
+        "groups": [
+          {
+            "members": [
+              1,
+              7,
+              8,
+              9
+            ],
+            "prediction": "6525"
+          },
+          {
+            "members": [
+              3,
+              4,
+              5,
+              6
+            ],
+            "prediction": "6300"
+          },
+          {
+            "members": [
+              2
+            ],
+            "prediction": "3375"
+          }
+        ],
+        "prediction": "6525",
+        "requested_members": 10,
+        "selected_member": 1,
+        "strict_majority": false,
+        "support": 4,
+        "tied": true,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-17",
+      "member_predictions": [
+        "2 \\cdot 26!",
+        "2 \\cdot 26!",
+        "26 \\cdot 26!",
+        "2 \\cdot 26!",
+        "2 \\times 26!",
+        null,
+        "2 \\times 26!",
+        "26!",
+        "2 \\cdot 26!",
+        "2 \\times 26!"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          5
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              3,
+              4,
+              6,
+              8,
+              9
+            ],
+            "prediction": "2 \\cdot 26!"
+          },
+          {
+            "members": [
+              2
+            ],
+            "prediction": "26 \\cdot 26!"
+          },
+          {
+            "members": [
+              7
+            ],
+            "prediction": "26!"
+          }
+        ],
+        "prediction": "2 \\cdot 26!",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 7,
+        "tied": false,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-18",
+      "member_predictions": [
+        "1825",
+        "1825",
+        "1825",
+        "1825",
+        "1825",
+        null,
+        "1825",
+        null,
+        "913",
+        "1825"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          5,
+          7
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              9
+            ],
+            "prediction": "1825"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "913"
+          }
+        ],
+        "prediction": "1825",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 7,
+        "tied": false,
+        "valid_members": 8
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-19",
+      "member_predictions": [
+        "\\frac{1}{2}",
+        "\\frac{1}{3}",
+        null,
+        "\\dfrac{1}{2}",
+        "\\frac{1}{3}",
+        "\\dfrac{1}{2}",
+        "\\dfrac{1}{2}",
+        "\\dfrac{1}{2}",
+        "\\dfrac{1}{3}",
+        "\\dfrac{1}{3}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          2
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              3,
+              5,
+              6,
+              7
+            ],
+            "prediction": "\\frac{1}{2}"
+          },
+          {
+            "members": [
+              1,
+              4,
+              8,
+              9
+            ],
+            "prediction": "\\frac{1}{3}"
+          }
+        ],
+        "prediction": "\\frac{1}{2}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": false,
+        "support": 5,
+        "tied": false,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-2",
+      "member_predictions": [
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375",
+        "3375"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "3375"
+          }
+        ],
+        "prediction": "3375",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-20",
+      "member_predictions": [
+        null,
+        "105",
+        "105",
+        "210",
+        "105",
+        "56",
+        "56",
+        "168",
+        "56",
+        "210"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0
+        ],
+        "groups": [
+          {
+            "members": [
+              1,
+              2,
+              4
+            ],
+            "prediction": "105"
+          },
+          {
+            "members": [
+              5,
+              6,
+              8
+            ],
+            "prediction": "56"
+          },
+          {
+            "members": [
+              3,
+              9
+            ],
+            "prediction": "210"
+          },
+          {
+            "members": [
+              7
+            ],
+            "prediction": "168"
+          }
+        ],
+        "prediction": "105",
+        "requested_members": 10,
+        "selected_member": 1,
+        "strict_majority": false,
+        "support": 3,
+        "tied": true,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-21",
+      "member_predictions": [
+        "26",
+        "26",
+        "26",
+        "26",
+        "26",
+        "26",
+        "26",
+        "26",
+        "26",
+        "26"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "26"
+          }
+        ],
+        "prediction": "26",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-22",
+      "member_predictions": [
+        "63",
+        "63",
+        "63",
+        "63",
+        "63",
+        "63",
+        "63",
+        "63",
+        "63",
+        "63"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "63"
+          }
+        ],
+        "prediction": "63",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-23",
+      "member_predictions": [
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}",
+        "8\\sqrt{10}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "8\\sqrt{10}"
+          }
+        ],
+        "prediction": "8\\sqrt{10}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-24",
+      "member_predictions": [
+        "100",
+        "100",
+        "4",
+        "100",
+        "100",
+        "20",
+        "100",
+        null,
+        "99",
+        "99"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          7
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              3,
+              4,
+              6
+            ],
+            "prediction": "100"
+          },
+          {
+            "members": [
+              8,
+              9
+            ],
+            "prediction": "99"
+          },
+          {
+            "members": [
+              2
+            ],
+            "prediction": "4"
+          },
+          {
+            "members": [
+              5
+            ],
+            "prediction": "20"
+          }
+        ],
+        "prediction": "100",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": false,
+        "support": 5,
+        "tied": false,
+        "valid_members": 9
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-25",
+      "member_predictions": [
+        null,
+        null,
+        null,
+        "3",
+        "1",
+        null,
+        null,
+        null,
+        "\\sqrt{35 - 4\\sqrt{69}}",
+        "\\sqrt{11}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          7
+        ],
+        "groups": [
+          {
+            "members": [
+              3
+            ],
+            "prediction": "3"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "1"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "\\sqrt{35 - 4\\sqrt{69}}"
+          },
+          {
+            "members": [
+              9
+            ],
+            "prediction": "\\sqrt{11}"
+          }
+        ],
+        "prediction": "3",
+        "requested_members": 10,
+        "selected_member": 3,
+        "strict_majority": false,
+        "support": 1,
+        "tied": true,
+        "valid_members": 4
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-26",
+      "member_predictions": [
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}",
+        "9\\sqrt{15}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "9\\sqrt{15}"
+          }
+        ],
+        "prediction": "9\\sqrt{15}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-27",
+      "member_predictions": [
+        "\\dfrac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\frac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\frac{7}{18}",
+        "\\dfrac{7}{18}",
+        "\\frac{7}{18}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "\\dfrac{7}{18}"
+          }
+        ],
+        "prediction": "\\dfrac{7}{18}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-28",
+      "member_predictions": [
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}",
+        "\\sqrt{6}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "\\sqrt{6}"
+          }
+        ],
+        "prediction": "\\sqrt{6}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-29",
+      "member_predictions": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "14 + 4\\sqrt{37}",
+        "x^2 + y^2 = wx",
+        null
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          9
+        ],
+        "groups": [
+          {
+            "members": [
+              7
+            ],
+            "prediction": "14 + 4\\sqrt{37}"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "x^2 + y^2 = wx"
+          }
+        ],
+        "prediction": "14 + 4\\sqrt{37}",
+        "requested_members": 10,
+        "selected_member": 7,
+        "strict_majority": false,
+        "support": 1,
+        "tied": true,
+        "valid_members": 2
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-3",
+      "member_predictions": [
+        "\\dfrac{1}{576}",
+        "1024",
+        "\\dfrac{1}{576}",
+        "120932352",
+        "\\dfrac{1}{576}",
+        null,
+        "576",
+        "\\dfrac{1}{576}",
+        "576",
+        null
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          5,
+          9
+        ],
+        "groups": [
+          {
+            "members": [
+              0,
+              2,
+              4,
+              7
+            ],
+            "prediction": "\\dfrac{1}{576}"
+          },
+          {
+            "members": [
+              6,
+              8
+            ],
+            "prediction": "576"
+          },
+          {
+            "members": [
+              1
+            ],
+            "prediction": "1024"
+          },
+          {
+            "members": [
+              3
+            ],
+            "prediction": "120932352"
+          }
+        ],
+        "prediction": "\\dfrac{1}{576}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": false,
+        "support": 4,
+        "tied": false,
+        "valid_members": 8
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-30",
+      "member_predictions": [
+        "101",
+        "10",
+        "10",
+        "9",
+        "60",
+        "33",
+        "2",
+        "100",
+        "\\dfrac{99}{2}",
+        "33"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              1,
+              2
+            ],
+            "prediction": "10"
+          },
+          {
+            "members": [
+              5,
+              9
+            ],
+            "prediction": "33"
+          },
+          {
+            "members": [
+              0
+            ],
+            "prediction": "101"
+          },
+          {
+            "members": [
+              3
+            ],
+            "prediction": "9"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "60"
+          },
+          {
+            "members": [
+              6
+            ],
+            "prediction": "2"
+          },
+          {
+            "members": [
+              7
+            ],
+            "prediction": "100"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "\\dfrac{99}{2}"
+          }
+        ],
+        "prediction": "10",
+        "requested_members": 10,
+        "selected_member": 1,
+        "strict_majority": false,
+        "support": 2,
+        "tied": true,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-4",
+      "member_predictions": [
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984",
+        "-984"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "-984"
+          }
+        ],
+        "prediction": "-984",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-5",
+      "member_predictions": [
+        "890",
+        "890",
+        "890",
+        "890",
+        "890",
+        "890",
+        "890",
+        "890",
+        "890",
+        "890"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "890"
+          }
+        ],
+        "prediction": "890",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 10,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-6",
+      "member_predictions": [
+        "\\dfrac{1}{2017}",
+        "\\frac{1}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1311}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1}{2017}",
+        "\\dfrac{1}{2017}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "prediction": "\\dfrac{1}{2017}"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "\\dfrac{1311}{2017}"
+          }
+        ],
+        "prediction": "\\dfrac{1}{2017}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 9,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-7",
+      "member_predictions": [
+        null,
+        null,
+        "\\dfrac{9\\sqrt{23}}{23}",
+        "\\dfrac{9\\sqrt{23}}{23}",
+        "\\sqrt{3}",
+        null,
+        null,
+        "\\dfrac{9\\sqrt{23}}{23}",
+        "\\dfrac{9\\sqrt{23}}{23}",
+        "\\dfrac{9\\sqrt{23}}{23}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [
+          0,
+          1,
+          5,
+          6
+        ],
+        "groups": [
+          {
+            "members": [
+              2,
+              3,
+              7,
+              8,
+              9
+            ],
+            "prediction": "\\dfrac{9\\sqrt{23}}{23}"
+          },
+          {
+            "members": [
+              4
+            ],
+            "prediction": "\\sqrt{3}"
+          }
+        ],
+        "prediction": "\\dfrac{9\\sqrt{23}}{23}",
+        "requested_members": 10,
+        "selected_member": 2,
+        "strict_majority": false,
+        "support": 5,
+        "tied": false,
+        "valid_members": 6
+      }
+    },
+    {
+      "correct": false,
+      "id": "hmmt25-8",
+      "member_predictions": [
+        "\\frac{4}{11}",
+        "\\dfrac{4}{11}",
+        "1 - \\frac{2}{\\pi}",
+        "0",
+        "\\dfrac{4}{11}",
+        "0",
+        "1 - \\frac{2}{\\pi}",
+        "\\dfrac{4}{11}",
+        "\\dfrac{4}{11}",
+        "1 - \\frac{2}{\\pi}"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              4,
+              7,
+              8
+            ],
+            "prediction": "\\frac{4}{11}"
+          },
+          {
+            "members": [
+              2,
+              6,
+              9
+            ],
+            "prediction": "1 - \\frac{2}{\\pi}"
+          },
+          {
+            "members": [
+              3,
+              5
+            ],
+            "prediction": "0"
+          }
+        ],
+        "prediction": "\\frac{4}{11}",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": false,
+        "support": 5,
+        "tied": false,
+        "valid_members": 10
+      }
+    },
+    {
+      "correct": true,
+      "id": "hmmt25-9",
+      "member_predictions": [
+        "1037",
+        "1037",
+        "1037",
+        "1037",
+        "1037",
+        "1037",
+        "1037",
+        "1037",
+        "1982",
+        "1037"
+      ],
+      "member_runs": [
+        "changho-2026-11-17-r0-hmmt25-ar",
+        "changho-2026-11-17-r0-hmmt25-argmax",
+        "changho-2026-11-17-r0-hmmt25-lookahead",
+        "changho-2026-11-17-r0-hmmt25-reserve",
+        "changho-2026-11-17-r0-hmmt25-coherent",
+        "changho-2026-11-17-r1-hmmt25-ar",
+        "changho-2026-11-17-r1-hmmt25-argmax",
+        "changho-2026-11-17-r1-hmmt25-lookahead",
+        "changho-2026-11-17-r1-hmmt25-reserve",
+        "changho-2026-11-17-r1-hmmt25-coherent"
+      ],
+      "task": "hmmt25",
+      "vote": {
+        "abstentions": [],
+        "groups": [
+          {
+            "members": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9
+            ],
+            "prediction": "1037"
+          },
+          {
+            "members": [
+              8
+            ],
+            "prediction": "1982"
+          }
+        ],
+        "prediction": "1037",
+        "requested_members": 10,
+        "selected_member": 0,
+        "strict_majority": true,
+        "support": 9,
+        "tied": false,
+        "valid_members": 10
+      }
+    }
+  ],
+  "summary": {
+    "baseline_correct": 15,
+    "beats_both": false,
+    "body_tokens": 6913466,
+    "correct": 17,
+    "input_outcome_hashes": [
+      "ab2a92a79c6522b5d4c226b8578f85eca447153fc1b47e5deabeb0782f0bac49",
+      "153ebcb66b7f5567d58aaf4226e6ab65dcab9ab3371ac32dfe891c8982116e2c",
+      "c516793654941eb157b2e628a7719316eea6791f563b7c10a246a828a6b234d7",
+      "6a6573c3472a1269a5b25561392b77d15d8859a1e4ac93832a2a7eedb033d0cf",
+      "242a28fac4109caabbc893f26689a6c0c09af660fdba086dc98d67fef1fb14cf",
+      "4412570d51cca03114a5ff72042ebe3692ecf92f30bd7b0d8a6953cb8c5b2784",
+      "d23c4d6da54c02e3ddcc9d32e9ed0099b3053491308817b2e65096623ef1e3fd",
+      "78dbfde2880c4631320f536a097c7354282dc7180a981643bc6b55f82a57ccdf",
+      "47bd90d96592251d5250156eaba3bba69d41cc8802545bf6407c941af3f3d59d",
+      "6fc081cdc8e941d0029ca99ebe4b744b5a3f9eaf5b1c16939f90db26d861dbb0"
+    ],
+    "losses_baseline": 1,
+    "losses_previous_ours": 3,
+    "members_per_question": 10,
+    "missing": 0,
+    "n": 30,
+    "previous_ours_correct": 18,
+    "strict_majority_cases": 18,
+    "sum_member_phase_wall_seconds": 9478.405443429947,
+    "task": "hmmt25",
+    "ties": 6,
+    "wins_baseline": 3,
+    "wins_previous_ours": 2
+  }
+}

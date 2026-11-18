@@ -1,0 +1,222 @@
+{
+  "state": "complete",
+  "started_at": "2026-11-18T11:29:29.287581+09:00",
+  "authorization": "Resume the previously user-authorized unfinished consensus validation with identical source/config/checkpoints; retry only fresh startup port collisions.",
+  "source_or_config_changes": false,
+  "attempts": [
+    {
+      "at": "2026-11-18T11:29:29.288823+09:00",
+      "command": [
+        "/home/user04/lost-token/.tools/uv",
+        "run",
+        "--frozen",
+        "python",
+        "-u",
+        "scripts/run_consensus.py",
+        "run",
+        "--study",
+        "/home/user04/ch/workspace/consensus-studies/changho-2026-11-17",
+        "--work-dir",
+        "/home/user04/ch/workspace",
+        "--model-cache",
+        "/home/user04/lost-token/workspace/models",
+        "--shared",
+        "/home/user04/ch/temp/baseline-publication-hub",
+        "--baseline-ref",
+        "/home/user04/ch/workspace/targeted-studies/changho-2026-11-16/baseline-reference-rescored.json",
+        "--previous-study",
+        "/home/user04/ch/workspace/targeted-studies/changho-2026-11-16/manifest.json",
+        "--uv",
+        "/home/user04/lost-token/.tools/uv",
+        "--preflight-run",
+        "/home/user04/ch/workspace/outputs/consensus-control-a-fixed-batch",
+        "--preflight-run",
+        "/home/user04/ch/workspace/outputs/consensus-control-b-fixed-batch",
+        "--gpus",
+        "0,1,2,3,4,5,6,7",
+        "--name",
+        "changho"
+      ],
+      "stale_operational_statuses_refreshed": [
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker2/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:45.318086+00:00",
+            "case_id": "gpqa-recywRj5a8EEjj2Ib",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6721.53125
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 354,
+            "epoch": 1794899903.6346831,
+            "new": 354,
+            "reused": 0
+          }
+        },
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker5/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:47.580387+00:00",
+            "case_id": "gpqa-recMicVBcqy1xM1jq",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6718.2890625
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 475,
+            "epoch": 1794899964.9355524,
+            "new": 475,
+            "reused": 0
+          }
+        },
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker1/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:47.467417+00:00",
+            "case_id": "gpqa-recjP3AhnRaZ44JIR",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6717.7734375
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 280,
+            "epoch": 1794899870.327991,
+            "new": 280,
+            "reused": 0
+          }
+        },
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker7/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:47.568740+00:00",
+            "case_id": "gpqa-recSl0g9xnRRB2e0L",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6719.48046875
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 626,
+            "epoch": 1794900024.7355134,
+            "new": 626,
+            "reused": 0
+          }
+        },
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker6/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:47.491849+00:00",
+            "case_id": "gpqa-recNfEV6AjS2ZFn5W",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6717.8203125
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 548,
+            "epoch": 1794899995.1021633,
+            "new": 548,
+            "reused": 0
+          }
+        },
+        {
+          "path": "/home/user04/ch/workspace/outputs/changho-2026-11-17-r0-gpqa-ar/workers/baseline-worker0/status.json",
+          "previous_status": {
+            "at": "2026-11-17T07:16:48.494532+00:00",
+            "case_id": "gpqa-recUAzHaz2w1b1Ih8",
+            "resources": {
+              "backend": "vllm-v0-0.10.2",
+              "batch_engine": {
+                "batches": 0,
+                "body_and_rollout_tokens": 0,
+                "max_batch": 0,
+                "requests": 0
+              },
+              "device": "cuda:0",
+              "parameters": null,
+              "peak_cuda_allocated_mib": 82260.14404296875,
+              "peak_cuda_reserved_mib": 82286.0,
+              "peak_rss_mib": 6722.95703125
+            },
+            "state": "running",
+            "task": "gpqa"
+          },
+          "previous_progress": {
+            "checkpoint_count": 163,
+            "epoch": 1794899841.5091832,
+            "new": 163,
+            "reused": 0
+          }
+        }
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-11-18T21:27:41.076997+09:00"
+    }
+  ],
+  "historical_error": "Traceback (most recent call last):\n  File \"/home/user04/ch/temp/consensus-research/scripts/run_consensus.py\", line 494, in main\n    raise RuntimeError(\nRuntimeError: Member failed: 0 gpqa ar (1)\n",
+  "finished_at": "2026-11-18T21:27:41.078413+09:00"
+}

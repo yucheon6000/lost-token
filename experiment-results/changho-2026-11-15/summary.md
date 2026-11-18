@@ -1,6 +1,9 @@
 # changho-2026-11-15: lookahead 제거 실험
 
-**최신 전체셋 결과:** [Changho baseline / argmax / lookahead 전체 비교](../changho-full-2026-11-15/summary.md).
+**최신 11/18 결과:** [AIME/HMMT/GPQA 전체셋의 5경로 합의 두 번 검증 및 10경로 통합](../changho-2026-11-18/summary.md).
+세 셋 모두 수정된 동일 채점 기준의 baseline을 두 번의 5경로 평가에서 초과했다. 추론 비용은 문제당 5회이며, GPQA 차이는 작다.
+
+**이전 전체 6셋 결과:** [Changho baseline / argmax / lookahead 전체 비교](../changho-full-2026-11-15/summary.md).
 세 조건 모두 AIME/HMMT/GSM8K/GPQA Main/MATH500/MMLU의 전체 문제를 평가했다.
 아래 내용은 이전 pilot의 보관 기록이다.
 

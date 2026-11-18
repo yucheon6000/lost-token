@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-11-18T13:40:39.217838+09:00",
+  "user_instruction": "baseline만 이기면 된다",
+  "primary_success": "full-cohort consensus correct count strictly exceeds frozen identically-scored AR baseline",
+  "previous_ours": "secondary reference only, not a pass condition",
+  "generation_protocol": "unchanged; running source/configs/manifests remain frozen",
+  "current_benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa"
+  ],
+  "planned_sampling": "five member paths per repeat, two repeats, pooled ten-path secondary report"
+}

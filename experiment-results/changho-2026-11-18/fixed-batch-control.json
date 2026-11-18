@@ -1,0 +1,55 @@
+{
+  "identical_complete_body_by_id": {
+    "gpqa-rec055vn3qEqKHHTc": true,
+    "gpqa-rec06pnAkLOr2t2mp": true
+  },
+  "runs": [
+    {
+      "audits_passed": true,
+      "cases": {
+        "gpqa-rec055vn3qEqKHHTc": {
+          "body_sha256": "476ff3fc60e75398c6513c527525109286162c53016006fcdf52e88dbef3b9b8",
+          "case_sha256": "3e115c8b583f10210ae1e7445c504032eb97106a030288f5e6412bb1b981f351",
+          "correct": true,
+          "prediction": "A",
+          "tokens": 9543
+        },
+        "gpqa-rec06pnAkLOr2t2mp": {
+          "body_sha256": "b1306346218cf22322ca174cfae8d341ae0cf581ee6cd7b60efa90c61be99d2c",
+          "case_sha256": "89727e832b833adc9d3e9e8021acda0cf3814a0dff0805ed6fe8e14c25f85db1",
+          "correct": true,
+          "prediction": "A",
+          "tokens": 7811
+        }
+      },
+      "gpus": [
+        "0"
+      ],
+      "run": "consensus-control-a-fixed-batch"
+    },
+    {
+      "audits_passed": true,
+      "cases": {
+        "gpqa-rec055vn3qEqKHHTc": {
+          "body_sha256": "476ff3fc60e75398c6513c527525109286162c53016006fcdf52e88dbef3b9b8",
+          "case_sha256": "7759456f36f832b8be3aa1fbca9c750f0ea4a4c7f23946428fc6960401d7c06b",
+          "correct": true,
+          "prediction": "A",
+          "tokens": 9543
+        },
+        "gpqa-rec06pnAkLOr2t2mp": {
+          "body_sha256": "b1306346218cf22322ca174cfae8d341ae0cf581ee6cd7b60efa90c61be99d2c",
+          "case_sha256": "61debc3bb1cbd9ede71005ac2e25eb9507087f63a0f93d397891cbda19d37f0b",
+          "correct": true,
+          "prediction": "A",
+          "tokens": 7811
+        }
+      },
+      "gpus": [
+        "1"
+      ],
+      "run": "consensus-control-b-fixed-batch"
+    }
+  ],
+  "scope": "Two allocated GPU controls, batch=1, same config/seed; not an official score or proof for every batch schedule"
+}

@@ -13,6 +13,27 @@ Hardware profile: `full-cohort`
 
 Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95021` · `bfloat16`
 
+Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus10/pooled | 70.00% (21/30) | 86.67% (26/30) | +16.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| aime25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r0 | 70.00% (21/30) | 80.00% (24/30) | +10.00 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| aime25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r1 | 70.00% (21/30) | 83.33% (25/30) | +13.33 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus10/pooled | 61.38% (275/448) | 62.05% (278/448) | +0.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r0 | 61.38% (275/448) | 62.50% (280/448) | +1.12 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r1 | 61.38% (275/448) | 61.61% (276/448) | +0.22 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus10/pooled | 50.00% (15/30) | 56.67% (17/30) | +6.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r0 | 50.00% (15/30) | 56.67% (17/30) | +6.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-2026-11-18](changho-2026-11-18/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/7ed439b2ba51d588dae364584e3fbebc8bdcdc54) | consensus5/r1 | 50.00% (15/30) | 60.00% (18/30) | +10.00 | 8 × RTX PRO 6000 Blackwell | 완료 |
+
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95021` · `bfloat16`
+
 Scorer: `8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
 
 | Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
