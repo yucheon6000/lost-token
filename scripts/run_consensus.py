@@ -97,12 +97,22 @@ def initialize(args):
         if reference["payload"]["conditions"]["scoring_and_seed_sources"][key] != source[key]:
             raise ValueError("The baseline must use the same frozen scorer")
     previous = read(args.previous_study)
+    full_manifest = read(args.cohort_manifest) if args.cohort_manifest else None
+    if full_manifest and full_manifest["version"] != pipeline["cohort"]:
+        raise ValueError("Explicit committed cohort version differs")
     comparison, cohort = {}, {}
     for task in pipeline["benchmarks"]:
         path = args.shared / "evaluation/subsets" / pipeline["cohort"] / (task + ".json")
-        shutil.copy2(path, study / "ids" / path.name)
-        raw = read(path)
-        ids = raw["ids"] if isinstance(raw, dict) else raw
+        if full_manifest:
+            entry = full_manifest["datasets"][task]
+            ids = entry["ids"]
+            if len(ids) != entry["n"] or digest(ids) != entry["ids_sha256"]:
+                raise ValueError("Corrupt committed full-cohort IDs")
+            atomic_json(study / "ids" / (task + ".json"), ids)
+        else:
+            shutil.copy2(path, study / "ids" / path.name)
+            raw = read(path)
+            ids = raw["ids"] if isinstance(raw, dict) else raw
         baseline = {r["id"]: r for r in reference["payload"]["outcomes"][task]}
         selected = previous["comparison"][task][previous["selectors"][task]]["cases"]
         if not set(ids) <= baseline.keys() or not set(ids) <= selected.keys():
@@ -110,7 +120,19 @@ def initialize(args):
         baseline = {i: baseline[i] for i in ids}
         selected = {i: selected[i] for i in ids}
         comparison[task] = {"baseline": baseline, "previous_ours": selected}
-        cohort[task] = {"n": len(ids), "ids": ids, "ids_sha256": digest(ids)}
+        first = pipeline["members"][0]
+        first_name = first.get("config") or first["config_by_task"][task]
+        prepared = load_prepared(args.work_dir, load_spec(args.config.parent / first_name), task)
+        schemas = {
+            r["id"]: {"answer_format": r["answer_format"], "choices": r["choices"]}
+            for r in prepared
+        }
+        cohort[task] = {
+            "n": len(ids),
+            "ids": ids,
+            "ids_sha256": digest(ids),
+            "answer_schema": schemas,
+        }
     module_spec = importlib.util.spec_from_file_location(
         "shared_eval", ROOT / "scripts/shared_eval.py"
     )
@@ -130,6 +152,9 @@ def initialize(args):
         "baseline_reference_sha256": reference["sha256"],
         "original_baseline_reference_sha256": reference["payload"].get("original_reference_sha256"),
         "baseline_reference_file_sha256": file_digest(args.baseline_ref),
+        "explicit_cohort_manifest_sha256": file_digest(args.cohort_manifest)
+        if args.cohort_manifest
+        else None,
         "work_dir": str(args.work_dir),
         "model_cache": str(args.model_cache),
         "gpus": args.gpus,
@@ -236,7 +261,8 @@ def finish_member(job, manifest):
         "audits_passed": True,
         "body_tokens": sum(r["body_tokens"] for r in rows.values()),
         "phase_wall_seconds": end - schedule["start_epoch"],
-        "finished_at": now(),
+        "finished_at": status["at"],
+        "last_verified_at": now(),
         "outcomes_sha256": digest([rows[i] for i in sorted(rows)]),
     }
 
@@ -252,7 +278,8 @@ def finish_vote(study, manifest, jobs, key):
         samples = [bank[ident] for bank in banks]
         # Selection has no access to correctness, gold, or reference metadata.
         vote = answer_consensus(
-            [r["prediction"] for r in samples], "choice" if task == "gpqa" else "math", "ABCD"
+            [r["prediction"] for r in samples],
+            **manifest["cohort"][task]["answer_schema"][ident],
         )
         selected = vote["selected_member"]
         correct = bool(samples[selected]["correct"]) if selected is not None else False
@@ -289,6 +316,7 @@ def finish_vote(study, manifest, jobs, key):
     result["beats_both"] = result["correct"] > max(
         result["baseline_correct"], result["previous_ours_correct"]
     )
+    result["beats_baseline"] = result["correct"] > result["baseline_correct"]
     atomic_json(study / "votes" / f"{key}.json", {"summary": result, "cases": case_results})
     return result
 
@@ -315,9 +343,9 @@ def export(study, manifest, state):
         "",
         f"Updated {now()}; state={state['state']}",
         "",
-        "Fresh per-member seeds. Full AIME/HMMT/GPQA canonical IDs, two repeats. Five full generations per question per repeat; pooled result uses ten. This is increased-compute accuracy, not equal-compute superiority.",
+        "Fresh per-member seeds. Every frozen cohort ID is evaluated. Each repeat uses five full generations per question; all requested repeats and any predeclared pooled results are reported. Primary success: exceed frozen AR baseline. This is increased-compute accuracy.",
         "",
-        "| Group | Dataset | n | Frozen AR | Previous ours | Consensus | Beats both |",
+        "| Group | Dataset | n | Frozen AR | Previous ours | Consensus | Beats baseline |",
         "|---|---|---:|---:|---:|---:|---|",
     ]
     for key, value in state["ensembles"].items():
@@ -329,7 +357,7 @@ def export(study, manifest, state):
         lines.append(
             f"| {key.split('-')[0]} | {value['task']} | {n} | "
             + " | ".join(cells)
-            + f" | {value['beats_both']} |"
+            + f" | {value['correct'] > value['baseline_correct']} |"
         )
     lines += [
         "",
@@ -361,7 +389,8 @@ def wait_preflight(manifest):
         if not status.get("audits_passed"):
             raise ValueError("GPU preflight audit failed")
         rows = [read(p) for p in run.glob("workers/*/outcomes/*/*.json")]
-        if len(rows) != 2 or any(r["prediction"] is None for r in rows):
+        expected = sum(read(run / "plan.json")["counts"].values())
+        if not expected or len(rows) != expected or any(r["prediction"] is None for r in rows):
             raise ValueError("GPU preflight did not yield scored final responses")
     return True
 
@@ -388,6 +417,11 @@ def main():
     ):
         p.add_argument("--" + name, type=Path, required=True)
     p.add_argument("--config", type=Path, default=ROOT / "configs/consensus5.json")
+    p.add_argument(
+        "--cohort-manifest",
+        type=Path,
+        help="Existing committed full-cohort IDs; never redraws subsets",
+    )
     p.add_argument("--preflight-run", type=Path, action="append", default=[])
     p.add_argument("--gpus", required=True)
     p.add_argument("--name", required=True)
@@ -412,6 +446,10 @@ def main():
         check_inputs(args, manifest)
         if args.action == "prepare":
             print("Prepared", args.study, "member runs", len(state["jobs"]), flush=True)
+            return
+        if state["state"] == "complete":
+            export(args.study, manifest, state)
+            print("Already complete; original completion-date branch preserved", flush=True)
             return
         current = None
         try:

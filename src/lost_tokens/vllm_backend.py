@@ -7,8 +7,11 @@ Prefix caching owns physical KV storage; protocol states own independent IDs.
 """
 
 from concurrent.futures import Future
+from contextlib import contextmanager
 from dataclasses import dataclass
+import fcntl
 import os
+from pathlib import Path
 import queue
 import threading
 import time
@@ -22,6 +25,22 @@ from .recurrent_memory import (
     emitted_marker,
     fragment_text,
 )
+
+
+@contextmanager
+def initialization_lock(path):
+    """Serialize local rendezvous setup without changing any decoding operation."""
+    if path is None:
+        yield
+        return
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(lock, fcntl.LOCK_UN)
 
 
 class ProtocolProcessor:
@@ -227,20 +246,21 @@ class VLLMModel(LocalModel):
         self.special_ids = set(self.tokenizer.all_special_ids)
         self.parameter_count = None
         batch_size = cfg.get("vllm_batch_size", 8)
-        llm = LLM(
-            model=path,
-            dtype=cfg["dtype"],
-            tensor_parallel_size=1,
-            max_model_len=cfg["max_context_tokens"],
-            gpu_memory_utilization=cfg["gpu_memory_fraction"],
-            enable_prefix_caching=True,
-            enable_chunked_prefill=True,
-            max_num_seqs=batch_size,
-            max_num_batched_tokens=cfg.get("vllm_batch_tokens", 4096),
-            enforce_eager=cfg.get("vllm_enforce_eager", False),
-            disable_async_output_proc=True,
-            seed=0,
-        )
+        with initialization_lock(cfg.get("initialization_lock")):
+            llm = LLM(
+                model=path,
+                dtype=cfg["dtype"],
+                tensor_parallel_size=1,
+                max_model_len=cfg["max_context_tokens"],
+                gpu_memory_utilization=cfg["gpu_memory_fraction"],
+                enable_prefix_caching=True,
+                enable_chunked_prefill=True,
+                max_num_seqs=batch_size,
+                max_num_batched_tokens=cfg.get("vllm_batch_tokens", 4096),
+                enforce_eager=cfg.get("vllm_enforce_eager", False),
+                disable_async_output_proc=True,
+                seed=0,
+            )
         self.engine = BatchEngine(llm, self, batch_size)
 
     def close(self):

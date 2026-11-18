@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from lost_tokens.core import atomic_json
 
@@ -15,6 +16,46 @@ loader.loader.exec_module(study)
 
 
 class ConsensusStudyTests(unittest.TestCase):
+    def test_mmlu_is_voted_as_choices_from_the_declared_case_schema(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "votes").mkdir()
+            run = root / "member"
+            atomic_json(
+                run / "workers/one/outcomes/mmlu/one.json",
+                {"id": "one", "task": "mmlu", "arm": "ours", "prediction": "C", "correct": True},
+            )
+            job = {
+                "task": "mmlu",
+                "repeat": 0,
+                "member_index": 0,
+                "arm": "ours",
+                "run": str(run),
+                "body_tokens": 10,
+                "phase_wall_seconds": 1,
+                "outcomes_sha256": "test",
+            }
+            manifest = {
+                "cohort": {
+                    "mmlu": {
+                        "ids": ["one"],
+                        "answer_schema": {
+                            "one": {"answer_format": "choice", "choices": list("ABCD")}
+                        },
+                    }
+                },
+                "comparison": {
+                    "mmlu": {
+                        "baseline": {"one": {"correct": False}},
+                        "previous_ours": {"one": {"correct": False}},
+                    }
+                },
+            }
+            with patch.object(study, "answer_consensus", wraps=study.answer_consensus) as voter:
+                result = study.finish_vote(root, manifest, [job], "test")
+            self.assertEqual(voter.call_args.kwargs["answer_format"], "choice")
+            self.assertEqual(result["correct"], 1)
+
     def test_members_and_repeats_have_distinct_stable_seeds(self):
         cfg = study.load_pipeline(study.ROOT / "configs/consensus5.json")
         seeds = [
@@ -57,7 +98,14 @@ class ConsensusStudyTests(unittest.TestCase):
                     }
                 )
             manifest = {
-                "cohort": {"gpqa": {"ids": ["one"]}},
+                "cohort": {
+                    "gpqa": {
+                        "ids": ["one"],
+                        "answer_schema": {
+                            "one": {"answer_format": "choice", "choices": ["A", "B", "C", "D"]}
+                        },
+                    }
+                },
                 "comparison": {
                     "gpqa": {
                         "baseline": {"one": {"correct": True}},

@@ -30,6 +30,10 @@ def runtime_spec(spec, work_dir, model_cache=None):
     )
     result["model"]["cache_dir"] = str(cache)
     result["similarity"]["encoder"]["cache_dir"] = str(cache)
+    if result["model"].get("backend") == "vllm":
+        result["model"]["initialization_lock"] = str(
+            Path(work_dir).resolve() / "locks" / "vllm-initialization.lock"
+        )
     return result
 
 
