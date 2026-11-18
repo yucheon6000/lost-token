@@ -9,6 +9,7 @@
 - [자기수정 표현 패널티 제거 정확도 파일럿](development-results/yucheon-selfcorrect-2026-11-17/README.md) — 데이터셋별 10문항, 정식 전체 평가와 별도 기록
 - [64-token 후반부 가중치 정확도 파일럿](development-results/yucheon-weighted-2026-11-17/README.md) — 데이터셋별 10문항, 정식 전체 평가와 별도 기록
 - [가중치 방법 확장 평가](development-results/yucheon-weighted-expanded-2026-11-17/README.md) — AIME25/HMMT25 전체, 나머지 데이터셋별 30문항; weighted Ours만 재실행
+- [Confidence와 의미 유사도를 결합한 메모리 평가](development-results/yucheon-blended-memory-2026-11-18/README.md) — 기존 weighted 평가의 고정 180문항
 - **[Claude 진입 문서](CLAUDE.md)** / [공통 실험 가이드](docs/EXPERIMENT_GUIDE.md)
 - **[하드웨어별 필수 고정 서브셋·실행법](docs/EVALUATION_PROFILES.md)** / [프로필 정본](evaluation/profiles.json)
 - [L40S 4 GPU 고정 IDs](evaluation/subsets/l40s-2h-v1/manifest.json) / [PRO 6000 8 GPU 고정 IDs](evaluation/subsets/shared-v1/manifest.json)

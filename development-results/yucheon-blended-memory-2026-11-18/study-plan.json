@@ -1,0 +1,79 @@
+{
+  "allocation_note": "User requested immediate run. GPUs 1–3 were idle with about 936 MiB each allocated to an existing notebook. The previous weighted run used GPUs 0–3.",
+  "allowed_idle_notebook": {
+    "max_mib_per_gpu": 1024,
+    "pid": 2290599,
+    "start_ticks": "304176884",
+    "user": "user05"
+  },
+  "arms": [
+    "ours"
+  ],
+  "baseline_reference_file_sha256": "b3e493a958e9311bacf40570f49583e0b386d1668b8f1cf599717342cfe9907a",
+  "baseline_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+  "commit": "d554ba5c57260363816a1701050d135d95b9b821",
+  "created": "2026-11-17T23:22:08.584787+00:00",
+  "files": {
+    "cpu-tests.log": "04da52753039d2b654bfe054a6e9db609acdad0d52d5d84d616289eee193f7d7",
+    "math-config.json": "739978e575be5c1e47779b1bcbc9ef37b52da3d5c815f3888ec5750de145c88c",
+    "math-ids.json": "a84cca8451ccb0c9d4a88082a0f0c503b3c7ecf2894691c12e10d7ab502542b1",
+    "sample-manifest.json": "88b7e7c397ff3338c9907ee6151d5f87aa3bcf68a16da87f149f92627336e6b3",
+    "short-config.json": "1ee2b396212f48ea35d5093a5dec969ec36820f170206512ee09e2f2176beb6a",
+    "short-ids.json": "450771b5b85bc112bf2da21f38e883e79cd2600214d9d9f73d44e48cdfd4e161",
+    "smoke-ids.json": "7925da12e95c676315c3afc62cc5378674acff69566256d6ac59da73752d19bb"
+  },
+  "gpu_uuids": [
+    "GPU-664e1f9a-f2da-a2a6-d4b0-036ef311ba1c",
+    "GPU-3499dbe8-b4f5-9318-5b15-30fad743dfb9",
+    "GPU-e5d53a90-3110-a224-9bce-1bcc5a2851d1"
+  ],
+  "gpus": "1,2,3",
+  "groups": {
+    "math": {
+      "batch": 4,
+      "run_name": "blended-expanded-math",
+      "tasks": [
+        "aime25",
+        "hmmt25"
+      ]
+    },
+    "short": {
+      "batch": 8,
+      "run_name": "blended-expanded-short",
+      "tasks": [
+        "gsm8k",
+        "gpqa",
+        "math500",
+        "mmlu"
+      ]
+    }
+  },
+  "model_cache": "/data/user04/IDL/lost-token/workspace/models",
+  "previous_code_commit": "fe06f6db1f0ce3c053c9da24b54e3e6c4080feea",
+  "previous_outcomes_sha256": "6028a297ed0d10b86a59c323cca09d4434e28fb85068d7698f47cf2c74e6efa2",
+  "previous_report": "/data/user04/ch/lost-token/development-results/yucheon-weighted-expanded-2026-11-17",
+  "scope": "Reuse the 180 IDs from the preceding weighted development evaluation",
+  "source_fingerprint": {
+    "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+    "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "lost_tokens/audit.py": "ae80997e00bf1482238e80a4c1da113f91ccf9c7176e5edf7aaf2b3899710d8b",
+    "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+    "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+    "lost_tokens/config.py": "c001e8ef47c8e6e99c4b2e79ea15cf82232472c9eda33fc71424789cf328b1e2",
+    "lost_tokens/core.py": "6b90ce548bb00caab3695c858821b9764c6b40216018b81028987015833a4469",
+    "lost_tokens/cosine.py": "317b38d6c2fc2e2a8a114e9bc6004197e213e32f61701db96730159c4cd97972",
+    "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+    "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+    "lost_tokens/default.json": "d6e353e6e10cb368e0db76713ec91ec43160101ee80776848ac8e9496f1639f8",
+    "lost_tokens/frozen_baseline.py": "21aa244be6e917390af5f025c104fe52a7f487eed2b3d224bd53728993f9db65",
+    "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+    "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+    "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+    "lost_tokens/recurrent_memory.py": "d510fbe462f721f2c92400e0552cd111940fde74d2f4b24aa1be27c6d6c52ca1",
+    "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+    "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+    "lost_tokens/runner.py": "a9704797b120ea402d3f537c73bd35aa1faad34361ad21e00375719390850413",
+    "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+    "lost_tokens/vllm_backend.py": "d52251a62a64ea3384eac31cb8307e1425f5f64c5bcab2111a94630ad16b3605"
+  }
+}

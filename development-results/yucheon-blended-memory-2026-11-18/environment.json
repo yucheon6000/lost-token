@@ -1,0 +1,164 @@
+{
+  "launcher": {
+    "batch_maximum_by_group": {
+      "math": 4,
+      "short": 8
+    },
+    "capture_scope": "before study launch",
+    "cpu_architecture": "x86_64",
+    "cpu_logical_count": 64,
+    "environment_variables": {
+      "CUDA_VISIBLE_DEVICES": null,
+      "OMP_NUM_THREADS": null,
+      "VLLM_USE_V1": null
+    },
+    "execution": {
+      "backend": "vllm",
+      "dtype": "bfloat16",
+      "gpu_memory_fraction": 0.85,
+      "gpu_workers": 3,
+      "max_concurrent_cases_per_gpu": 4,
+      "model": "Qwen/Qwen3-4B-Thinking-2507",
+      "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+      "tensor_parallel_size": 1,
+      "vllm_batch_tokens": 4096
+    },
+    "gpu_cli_indices": "1,2,3",
+    "gpu_count": 3,
+    "gpus": [
+      {
+        "driver_version": "580.178.04",
+        "memory_total_mib": 46068,
+        "name": "NVIDIA L40S",
+        "physical_index": "1",
+        "uuid": "GPU-664e1f9a-f2da-a2a6-d4b0-036ef311ba1c"
+      },
+      {
+        "driver_version": "580.178.04",
+        "memory_total_mib": 46068,
+        "name": "NVIDIA L40S",
+        "physical_index": "2",
+        "uuid": "GPU-3499dbe8-b4f5-9318-5b15-30fad743dfb9"
+      },
+      {
+        "driver_version": "580.178.04",
+        "memory_total_mib": 46068,
+        "name": "NVIDIA L40S",
+        "physical_index": "3",
+        "uuid": "GPU-e5d53a90-3110-a224-9bce-1bcc5a2851d1"
+      }
+    ],
+    "host_ram_bytes": 540720058368,
+    "physical_gpu_indices": [
+      "1",
+      "2",
+      "3"
+    ],
+    "recorded_at": "2026-11-18T08:22:09.800099+09:00",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "runtime_scope": "launcher; worker-specific execution environments are exported separately",
+    "scoring_packages": {
+      "math-verify": "0.9.0",
+      "sympy": "1.14.0"
+    }
+  },
+  "workers": {
+    "math/ours-worker0": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "math/ours-worker1": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "math/ours-worker2": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "short/ours-worker0": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "short/ours-worker1": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "short/ours-worker2": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA L40S",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    }
+  }
+}

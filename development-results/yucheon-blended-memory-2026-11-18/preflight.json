@@ -1,0 +1,37 @@
+{
+  "audits_passed": true,
+  "outcomes": [
+    {
+      "arm": "ours",
+      "body_tokens": 1303,
+      "context_truncated": false,
+      "correct": true,
+      "events": 4,
+      "finished_epoch": 1794957785.1158679,
+      "gold": "18",
+      "id": "gsm8k-test-0",
+      "prediction": "18",
+      "seconds": 24.91330181295052,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    },
+    {
+      "arm": "ours",
+      "body_tokens": 677,
+      "context_truncated": false,
+      "correct": true,
+      "events": 2,
+      "finished_epoch": 1794957773.2486646,
+      "gold": "3",
+      "id": "gsm8k-test-1",
+      "prediction": "3",
+      "seconds": 13.043579819146544,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    }
+  ],
+  "scored_cases": 2,
+  "status_sha256": "47408de54e7f27c92cc7f6b59a8c5aed14d7ca8895d1335ebcf7f35be2d8f0d5"
+}
