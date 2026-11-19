@@ -1,0 +1,40 @@
+{
+  "gpu": "1",
+  "outcomes": [
+    {
+      "arm": "ours",
+      "body_tokens": 1110,
+      "context_truncated": false,
+      "correct": true,
+      "events": 3,
+      "finished_epoch": 1795025829.182754,
+      "gold": "18",
+      "id": "gsm8k-test-0",
+      "prediction": "18",
+      "seconds": 26.416661181952804,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    },
+    {
+      "arm": "ours",
+      "body_tokens": 872,
+      "context_truncated": false,
+      "correct": true,
+      "events": 3,
+      "finished_epoch": 1795025824.8109274,
+      "gold": "3",
+      "id": "gsm8k-test-1",
+      "prediction": "3",
+      "seconds": 22.045291856862605,
+      "task": "gsm8k",
+      "thinking_complete": true,
+      "timing_semantics": "concurrent_case_elapsed_including_batch_wait"
+    }
+  ],
+  "status": {
+    "at": "2026-11-18T18:17:26.748188+00:00",
+    "audits_passed": true,
+    "state": "complete"
+  }
+}

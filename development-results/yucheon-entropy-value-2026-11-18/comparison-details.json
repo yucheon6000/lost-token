@@ -1,0 +1,244 @@
+{
+  "cross_hardware_ar_code_commit": "204b01c7ee62027115be4d5456bb49acc5d382ed",
+  "cross_hardware_ar_reference_sha256": "389533293df13ae4eba7c5457dc105cd207768bfddf73ffa6db733f146badb1c",
+  "datasets": {
+    "aime25": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 30,
+          "sha256": "b683938953fba6d95651bf680be88eaefaeb862bb7f539c8bebf29dd8e89a211"
+        }
+      },
+      "gpu_index": "1",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.7666666666666667,
+        "baseline_accuracy": 0.7,
+        "baseline_correct": 21,
+        "correct": 23,
+        "difference_pp": 6.666666666666667,
+        "losses": 0,
+        "n": 30,
+        "wins": 2
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.7666666666666667,
+        "baseline_accuracy": 0.7333333333333333,
+        "baseline_correct": 22,
+        "correct": 23,
+        "difference_pp": 3.3333333333333335,
+        "losses": 1,
+        "n": 30,
+        "wins": 2
+      },
+      "phase_wall_seconds": 8753.208878993988,
+      "score": {
+        "checked": 5,
+        "correct": 23,
+        "corrected": 0,
+        "forced": 4,
+        "multiple_values": 1,
+        "unextractable": 0
+      }
+    },
+    "gpqa": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 90,
+          "sha256": "1f57efe3d4eec4fc0a62def6deba11ab40fd5070c0f721ba288d9fa951664c8f"
+        }
+      },
+      "gpu_index": "1",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.5444444444444444,
+        "baseline_accuracy": 0.6111111111111112,
+        "baseline_correct": 55,
+        "correct": 49,
+        "difference_pp": -6.666666666666667,
+        "losses": 12,
+        "n": 90,
+        "wins": 6
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.5444444444444444,
+        "baseline_accuracy": 0.6555555555555556,
+        "baseline_correct": 59,
+        "correct": 49,
+        "difference_pp": -11.11111111111111,
+        "losses": 13,
+        "n": 90,
+        "wins": 3
+      },
+      "phase_wall_seconds": 6849.32231926918,
+      "score": {
+        "checked": 3,
+        "correct": 49,
+        "corrected": 0,
+        "forced": 0,
+        "multiple_values": 1,
+        "unextractable": 6
+      }
+    },
+    "gsm8k": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 1319,
+          "sha256": "a7d4cae8b829ddd6c18d18a57b0b1c83d7b347eb47fcf88bcfcd68b69761bcbc"
+        }
+      },
+      "gpu_index": "2",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.9514783927217589,
+        "baseline_accuracy": 0.9537528430629265,
+        "baseline_correct": 1258,
+        "correct": 1255,
+        "difference_pp": -0.22744503411675512,
+        "losses": 12,
+        "n": 1319,
+        "wins": 9
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.9514783927217589,
+        "baseline_accuracy": 0.9522365428354814,
+        "baseline_correct": 1256,
+        "correct": 1255,
+        "difference_pp": -0.0758150113722517,
+        "losses": 9,
+        "n": 1319,
+        "wins": 8
+      },
+      "phase_wall_seconds": 16559.645694971085,
+      "score": {
+        "checked": 1,
+        "correct": 1255,
+        "corrected": 0,
+        "forced": 0,
+        "multiple_values": 0,
+        "unextractable": 0
+      }
+    },
+    "hmmt25": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 25,
+          "sha256": "f9cf3ed2e79dbc2b5899b9e4057b850da4c4b4985eec4fb910724b34cbaabf34"
+        }
+      },
+      "gpu_index": "1",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.48,
+        "baseline_accuracy": 0.48,
+        "baseline_correct": 12,
+        "correct": 12,
+        "difference_pp": 0.0,
+        "losses": 2,
+        "n": 25,
+        "wins": 2
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.48,
+        "baseline_accuracy": 0.48,
+        "baseline_correct": 12,
+        "correct": 12,
+        "difference_pp": 0.0,
+        "losses": 2,
+        "n": 25,
+        "wins": 2
+      },
+      "phase_wall_seconds": 8887.951056718826,
+      "score": {
+        "checked": 2,
+        "correct": 12,
+        "corrected": 0,
+        "forced": 4,
+        "multiple_values": 0,
+        "unextractable": 1
+      }
+    },
+    "math500": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 125,
+          "sha256": "a04e89f826e3778446432ccf358202c7f95f85adf3c393cb7218c03e5ff06a37"
+        }
+      },
+      "gpu_index": "2",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.992,
+        "baseline_accuracy": 0.984,
+        "baseline_correct": 123,
+        "correct": 124,
+        "difference_pp": 0.8,
+        "losses": 0,
+        "n": 125,
+        "wins": 1
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.992,
+        "baseline_accuracy": 0.992,
+        "baseline_correct": 124,
+        "correct": 124,
+        "difference_pp": 0.0,
+        "losses": 1,
+        "n": 125,
+        "wins": 1
+      },
+      "phase_wall_seconds": 7270.379323482513,
+      "score": {
+        "checked": 2,
+        "correct": 124,
+        "corrected": 0,
+        "forced": 0,
+        "multiple_values": 0,
+        "unextractable": 0
+      }
+    },
+    "mmlu": {
+      "audits": {
+        "ours-worker0": {
+          "completed_conditions": 550,
+          "sha256": "29cf6ca40d41eb9e0042dbebd5a574c74fe37c69c4265aec76948eb99fa56f88"
+        }
+      },
+      "gpu_index": "3",
+      "paired_vs_existing_pro_ar": {
+        "accuracy": 0.8036363636363636,
+        "baseline_accuracy": 0.7945454545454546,
+        "baseline_correct": 437,
+        "correct": 442,
+        "difference_pp": 0.9090909090909091,
+        "losses": 12,
+        "n": 550,
+        "wins": 17
+      },
+      "paired_vs_prior_l40s_ours": {
+        "accuracy": 0.8036363636363636,
+        "baseline_accuracy": 0.7927272727272727,
+        "baseline_correct": 436,
+        "correct": 442,
+        "difference_pp": 1.0909090909090908,
+        "losses": 13,
+        "n": 550,
+        "wins": 19
+      },
+      "phase_wall_seconds": 13010.973546504974,
+      "score": {
+        "checked": 2,
+        "correct": 442,
+        "corrected": 0,
+        "forced": 0,
+        "multiple_values": 0,
+        "unextractable": 1
+      }
+    }
+  },
+  "earlier_ours": "yucheon-memory-2026-11-16",
+  "matched_ar": null,
+  "overall": {
+    "ar": 1906,
+    "changed": 0,
+    "checked": 15,
+    "current": 1905,
+    "n": 2139,
+    "old": 1909
+  }
+}
