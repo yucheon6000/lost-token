@@ -3,7 +3,10 @@
   "benchmarks": [
     "aime25",
     "hmmt25",
-    "gpqa"
+    "gpqa",
+    "gsm8k",
+    "math500",
+    "mmlu"
   ],
   "condition_order": [
     "verification",
@@ -12,7 +15,10 @@
   "previous_selectors": {
     "aime25": "argmax",
     "hmmt25": "argmax",
-    "gpqa": "lookahead"
+    "gpqa": "lookahead",
+    "gsm8k": "argmax",
+    "math500": "lookahead",
+    "mmlu": "lookahead"
   },
   "configs_by_task": {
     "aime25": {
@@ -26,10 +32,31 @@
     "gpqa": {
       "control": "configs/vllm-lookahead.json",
       "verification": "configs/verification-lookahead.json"
+    },
+    "gsm8k": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "math500": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
+    },
+    "mmlu": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
     }
   },
   "primary_criterion": "Beat frozen single-pass AR; report the fresh control and previous ours as additional comparisons.",
-  "scope": "All committed shared-v1 IDs for AIME25, HMMT25 and GPQA Main; these three cohorts are full datasets.",
+  "scope": "Required whole six-benchmark suite, every committed full-v1 ID. Reuse already audited identical conditions; generate every missing condition. Never silently restrict this protocol to the three hard benchmarks.",
   "compute_accounting": "One continuing solution per condition; short speculative rollouts, verification cue prefill and generated verification tokens all counted. Same 32768 body cap; not an equal-FLOP claim.",
-  "method": "After exact selected-rollout commit, the same stream checks a nominated local disagreement against original problem constraints. No answer voting, full-response candidate bank, reranking or separate verifier model."
+  "method": "After exact selected-rollout commit, the same stream checks a nominated local disagreement against original problem constraints. No answer voting, full-response candidate bank, reranking or separate verifier model.",
+  "required_benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa",
+    "gsm8k",
+    "math500",
+    "mmlu"
+  ],
+  "cohort": "full-v1"
 }

@@ -19,6 +19,7 @@ from zoneinfo import ZoneInfo
 
 from lost_tokens.config import load_spec
 from lost_tokens.core import atomic_json, atomic_text, digest, file_digest, source_fingerprint
+from lost_tokens.data import load_prepared
 from lost_tokens.runtime import environment, install_interrupt_handlers
 
 
@@ -60,6 +61,81 @@ def validate_pair(control, verify):
         raise ValueError("Control/treatment must differ only in the verification policy")
 
 
+def frozen_cohort(work, config, task, shared_root, full_manifest=None):
+    """Use committed IDs verbatim; a full cohort is never a redrawn subset."""
+    shared.verify_cohort(work, config, [task], shared_root / "evaluation/subsets/shared-v1")
+    if full_manifest is None:
+        path = shared_root / "evaluation/subsets/shared-v1" / (task + ".json")
+        return read(path)["ids"], path, file_digest(path.parent / "manifest.json"), "shared-v1"
+    manifest = read(full_manifest)
+    if manifest["version"] != "full-v1":
+        raise ValueError("Expected the committed full-v1 cohort")
+    source = source_fingerprint()
+    for key in ("lost_tokens/data.py", "lost_tokens/datasets.json"):
+        if source[key] != manifest["source"][key]:
+            raise ValueError("Dataset adapter/pins differ from the committed full cohort")
+    entry = manifest["datasets"][task]
+    ids = entry["ids"]
+    prepared = load_prepared(work, config, task)
+    by_id = {r["id"]: r for r in prepared}
+    if (
+        len(ids) != len(set(ids))
+        or len(ids) != entry["n"]
+        or len(ids) != entry["full_n"]
+        or len(prepared) != len(by_id)
+        or set(ids) != set(by_id)
+        or digest(ids) != entry["ids_sha256"]
+        or digest([by_id[i] for i in ids]) != entry["rows_sha256"]
+    ):
+        raise ValueError("Committed full cohort IDs/rows/coverage differ: " + task)
+    return ids, full_manifest, file_digest(full_manifest), manifest["version"]
+
+
+def reuse_completed(study, jobs, cohort, source, gpus):
+    """Reuse audited identical conditions, preserving original timing and provenance."""
+    parent, previous = read(study / "manifest.json"), read(study / "status.json")
+    if previous["state"] != "complete" or parent["source"] != source or parent["gpus"] != gpus:
+        raise ValueError("Reusable study is incomplete or has different generation/allocation")
+    old = {(j["task"], j["variant"]): j for j in previous["jobs"]}
+    inputs = {
+        str(study / name): file_digest(study / name) for name in ("manifest.json", "status.json")
+    }
+    for job in jobs:
+        original = old.get((job["task"], job["variant"]))
+        if original is None:
+            continue
+        if original["state"] != "complete" or not original.get("audits_passed"):
+            raise ValueError("Reusable condition is not audited")
+        if load_spec(original["config"]) != load_spec(job["config"]):
+            raise ValueError("Reusable condition settings differ")
+        run = Path(original["run"])
+        status, plan = read(run / "status.json"), read(run / "plan.json")
+        found = rows(original)
+        if (
+            status.get("audits_passed") is not True
+            or status["state"] != "complete"
+            or plan["source"] != source
+            or plan["arms"] != ["ours"]
+            or plan["seconds_per_arm"] is not None
+            or plan["gpus"] != gpus.split(",")
+            or set(found) != set(cohort[job["task"]]["ids"])
+            or digest([found[i] for i in sorted(found)]) != original["outcomes_sha256"]
+        ):
+            raise ValueError("Reusable condition identity/coverage/outcomes differ")
+        inputs[str(Path(original["config"]))] = file_digest(Path(original["config"]))
+        for name in ("status.json", "plan.json", "schedule.json"):
+            inputs[str(run / name)] = file_digest(run / name)
+        original_metrics = {k: v for k, v in original.items() if k not in ("config", "ids_file")}
+        job.update(original_metrics)
+        job["reused_from"] = {
+            "study": str(study),
+            "code_commit": parent["code_commit"],
+            "finished_at": original["finished_at"],
+            "timing": "original execution; no new GPU generation",
+        }
+    return inputs
+
+
 def initialize(args):
     if git(
         "status",
@@ -78,6 +154,13 @@ def initialize(args):
         raise ValueError("Unsupported study protocol")
     if sorted(pipeline["condition_order"]) != ["control", "verification"]:
         raise ValueError("Exactly the separate control and verification conditions are required")
+    required = pipeline.get("required_benchmarks")
+    if required and (
+        set(pipeline["benchmarks"]) != set(required) or len(pipeline["benchmarks"]) != len(required)
+    ):
+        raise ValueError("The required whole benchmark suite must not be truncated")
+    if pipeline.get("cohort") == "full-v1" and args.cohort_manifest is None:
+        raise ValueError("The whole-suite protocol requires the committed full-v1 manifest")
     baseline, previous = read(args.baseline_ref), read(args.previous_study)
     if baseline["sha256"] != digest(baseline["payload"]):
         raise ValueError("Corrupt frozen baseline")
@@ -102,19 +185,17 @@ def initialize(args):
         configs = pipeline["configs_by_task"][task]
         validate_pair(ROOT / configs["control"], ROOT / configs["verification"])
         config = load_spec(ROOT / configs["control"])
-        pinned = shared.verify_cohort(
-            args.work_dir, config, [task], args.shared / "evaluation/subsets/shared-v1"
+        ids, ids_path, cohort_sha, cohort_version = frozen_cohort(
+            args.work_dir, config, task, args.shared, args.cohort_manifest
         )
-        ids_path = args.shared / "evaluation/subsets/shared-v1" / (task + ".json")
-        ids = read(ids_path)["ids"]
-        shutil.copy2(ids_path, args.study / "ids" / ids_path.name)
+        id_copy = args.study / "ids" / (task + ".json")
+        atomic_json(id_copy, {"ids": ids})
         inputs[str(ids_path)] = file_digest(ids_path)
         cohort[task] = {
             "ids": ids,
             "n": len(ids),
-            "manifest_sha256": file_digest(
-                args.shared / "evaluation/subsets/shared-v1/manifest.json"
-            ),
+            "manifest_sha256": cohort_sha,
+            "version": cohort_version,
         }
         baselines = {r["id"]: r for r in baseline["payload"]["outcomes"][task]}
         old = previous["comparison"][task][pipeline["previous_selectors"][task]]["cases"]
@@ -132,15 +213,12 @@ def initialize(args):
             raise ValueError("Sampling/seed/output budget differs from frozen AR")
         if any(config["model"][k] != v for k, v in conditions["model"].items()):
             raise ValueError("Model/backend differs from frozen AR")
-        if pinned["datasets"][task]["n"] != len(ids):
-            raise ValueError("Canonical cohort count differs")
         for variant in pipeline["condition_order"]:
             source_path = ROOT / configs[variant]
             dest = args.study / "configs" / f"{task}-{variant}.json"
             shutil.copy2(source_path, dest)
             inputs[str(source_path)] = file_digest(source_path)
             inputs[str(dest)] = file_digest(dest)
-            id_copy = args.study / "ids" / ids_path.name
             inputs[str(id_copy)] = file_digest(id_copy)
             jobs.append(
                 {
@@ -154,6 +232,8 @@ def initialize(args):
                     "run": str(args.work_dir / "outputs" / f"{args.study.name}-{task}-{variant}"),
                 }
             )
+    if args.reuse_study:
+        inputs.update(reuse_completed(args.reuse_study, jobs, cohort, source, args.gpus))
     for path in (Path(__file__), ROOT / "scripts/shared_eval.py", ROOT / "uv.lock"):
         inputs[str(path)] = file_digest(path)
     env = shared.collect_environment(
@@ -173,6 +253,8 @@ def initialize(args):
         "work_dir": str(args.work_dir),
         "model_cache": str(args.model_cache),
         "preflight_run": str(args.preflight_run),
+        "cohort_manifest": str(args.cohort_manifest) if args.cohort_manifest else None,
+        "reuse_study": str(args.reuse_study) if args.reuse_study else None,
         "name": args.name,
     }
     atomic_json(args.study / "manifest.json", manifest)
@@ -195,6 +277,8 @@ def check_inputs(args, manifest):
         "work_dir": str(args.work_dir),
         "model_cache": str(args.model_cache),
         "preflight_run": str(args.preflight_run),
+        "cohort_manifest": str(args.cohort_manifest) if args.cohort_manifest else None,
+        "reuse_study": str(args.reuse_study) if args.reuse_study else None,
         "name": args.name,
     }.items():
         if manifest[key] != value:
@@ -214,8 +298,8 @@ def export(study, manifest, state):
         "",
         "Each condition generates one solution per question. No completed-answer voting, reranking or best-of-N selection. Verification consumes the same 32K body cap; short speculative candidates and side-input costs are reported separately.",
         "",
-        "| Dataset | Condition | Completed / full | Correct | Accuracy | Frozen AR on same completed IDs | Wins/losses vs AR | State |",
-        "|---|---|---:|---:|---:|---:|---:|---|",
+        "| Dataset | Condition | Completed / full | Correct | Accuracy | Frozen AR on same completed IDs | Wins/losses vs AR | State | Origin |",
+        "|---|---|---:|---:|---:|---:|---:|---|---|",
     ]
     for job in state["jobs"]:
         found = rows(job)
@@ -235,8 +319,9 @@ def export(study, manifest, state):
             losses_baseline=losses,
         )
         accuracy = f"{100 * correct / n:.2f}%" if n else "—"
+        origin = "reused audited result" if job.get("reused_from") else "new generation"
         lines.append(
-            f"| {job['task']} | {job['variant']} | {n}/{job['n_required']} | {correct} | {accuracy} | {bc}/{n} | {wins}/{losses} | {job['state']} |"
+            f"| {job['task']} | {job['variant']} | {n}/{job['n_required']} | {correct} | {accuracy} | {bc}/{n} | {wins}/{losses} | {job['state']} | {origin} |"
         )
     lines += ["", "Full frozen baseline:"]
     for task, group in manifest["comparison"].items():
@@ -307,6 +392,16 @@ def main():
         p.add_argument("--" + name, type=Path, required=True)
     p.add_argument("--gpus", required=True)
     p.add_argument("--name", required=True)
+    p.add_argument(
+        "--cohort-manifest",
+        type=Path,
+        help="Committed full-v1 manifest; use every prepared row without redrawing IDs",
+    )
+    p.add_argument(
+        "--reuse-study",
+        type=Path,
+        help="Audited prior identical conditions; preserve their original results/provenance",
+    )
     args = p.parse_args()
     for key, value in vars(args).items():
         if isinstance(value, Path):
