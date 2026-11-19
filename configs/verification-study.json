@@ -1,0 +1,35 @@
+{
+  "protocol": "single-stream-local-verification-v1",
+  "benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa"
+  ],
+  "condition_order": [
+    "verification",
+    "control"
+  ],
+  "previous_selectors": {
+    "aime25": "argmax",
+    "hmmt25": "argmax",
+    "gpqa": "lookahead"
+  },
+  "configs_by_task": {
+    "aime25": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "hmmt25": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "gpqa": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
+    }
+  },
+  "primary_criterion": "Beat frozen single-pass AR; report the fresh control and previous ours as additional comparisons.",
+  "scope": "All committed shared-v1 IDs for AIME25, HMMT25 and GPQA Main; these three cohorts are full datasets.",
+  "compute_accounting": "One continuing solution per condition; short speculative rollouts, verification cue prefill and generated verification tokens all counted. Same 32768 body cap; not an equal-FLOP claim.",
+  "method": "After exact selected-rollout commit, the same stream checks a nominated local disagreement against original problem constraints. No answer voting, full-response candidate bank, reranking or separate verifier model."
+}

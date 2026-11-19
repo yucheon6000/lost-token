@@ -24,6 +24,7 @@ from lost_tokens.recurrent_memory import (
 from lost_tokens.protocol import planned_rows
 from lost_tokens.cosine import cosine_matrix, select_distinct
 from lost_tokens.repetition import repeated_suffix, repetition_summary, memory_markup_summary
+from lost_tokens.verification import verification_plan
 
 
 def audit(run, partial=False, model=None):
@@ -433,6 +434,33 @@ def audit(run, partial=False, model=None):
                     marker = chosen_preview["stop_marker"]
                     if marker and marker.startswith("</"):
                         phase = "final"
+                    verification = verification_plan(
+                        exp, arm, event, events, len(body), phase, model.eos_ids, cap
+                    )
+                    if verification:
+                        cue = model.encode(verification["text"])
+                        assert len(cue) + len(event["memory_ids"]) <= exp["max_event_memory_tokens"]
+                        record = records[tag + f"/event-{len(events)}/verification-cue"]
+                        assert record["request"] == {"root_sha256": digest(context), "ids": cue}
+                        context.extend(cue)
+                        history.append({"kind": "memory", "ids": cue, "event": len(events)})
+                        costs.append(record["result"])
+                        label = f"event-{len(events)}/verification-body"
+                        assert (
+                            records[tag + "/" + label]["request"]["count"] == verification["tokens"]
+                        )
+                        checked = segment(label, False)
+                        assert event["verification"] == {
+                            **verification,
+                            "cue_ids": cue,
+                            "body_ids": checked["ids"],
+                            "body_text": model.decode(checked["ids"]),
+                            "after_sha256": digest(context),
+                        }
+                        if checked["stop_marker"] and checked["stop_marker"].startswith("</"):
+                            phase = "final"
+                    else:
+                        assert "verification" not in event
                     events.append(event)
                 step += 1
             assert body == result["body_ids"] and model.decode(body) == result["body_text"]

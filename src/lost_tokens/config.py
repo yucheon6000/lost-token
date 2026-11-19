@@ -4,6 +4,7 @@ import copy
 import json
 from importlib.resources import files
 from pathlib import Path
+from .verification import validate_verification
 from .recurrent_memory import (
     ARMS,
     validate_budget_forcing,
@@ -84,6 +85,7 @@ def validate_spec(spec):
     validate_budget_forcing(exp)
     validate_selection(exp)
     validate_memory_preamble(exp)
+    validate_verification(exp)
     guard = exp["repetition_guard"]
     if type(guard["enabled"]) is not bool:
         raise ValueError("Invalid repetition guard switch")

@@ -17,6 +17,7 @@ from .core import derived_seed, digest, sum_cost
 from .math_scoring import math_correct, natural_answer
 from .cosine import compare_rollouts
 from .repetition import repeated_suffix, repetition_summary, memory_markup_summary
+from .verification import validate_verification, verification_plan
 
 
 ARMS = ("plain_ar", "reference_only", "selected_only", "all_futures", "filtered_futures")
@@ -515,6 +516,7 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
     validate_budget_forcing(exp)
     validate_selection(exp)
     validate_memory_preamble(exp)
+    validate_verification(exp)
     if exp.get("budget_forcing") is not None and arm != "plain_ar":
         raise ValueError("budget_forcing is only supported for plain_ar")
     max_memory_events = exp.get("max_memory_events")
@@ -831,6 +833,40 @@ def run_condition(model, store, row, cfg, namespace, arm, log):
             event["after_commit_sha256"] = digest(state.ids)
             if chosen_preview["stop_marker"] and chosen_preview["stop_marker"].startswith("</"):
                 phase = "final"
+            verification = verification_plan(
+                exp, arm, event, events, len(body), phase, model.eos_ids, cap
+            )
+            if verification:
+                cue = model.encode(verification["text"])
+                if len(cue) + len(event["memory_ids"]) > exp["max_event_memory_tokens"]:
+                    raise ValueError("Memory reservation cannot fit the verification task")
+                before = len(state.ids)
+                cue_started = time.monotonic()
+                decoder.advance(state, cue, exp["prefill_chunk_tokens"])
+                cue_result = store.call(
+                    tag + f"/event-{event_index}/verification-cue",
+                    {"root_sha256": event["after_commit_sha256"], "ids": cue},
+                    lambda: {
+                        "cost": decoder.cost(before, len(cue), 0, time.monotonic() - cue_started)
+                    },
+                )
+                costs.append(cue_result)
+                history.append({"kind": "memory", "ids": cue, "event": event_index})
+                # This is a bounded portion of the ordinary continuing body. It
+                # shares the same KV, seed clock, token cap and repetition guard.
+                # No siblings or completed answers are generated or voted on.
+                checked = persisted_segment(
+                    f"event-{event_index}/verification-body", verification["tokens"], False
+                )
+                event["verification"] = {
+                    **verification,
+                    "cue_ids": cue,
+                    "body_ids": checked["ids"],
+                    "body_text": model.decode(checked["ids"]),
+                    "after_sha256": digest(state.ids),
+                }
+                if checked["stop_marker"] and checked["stop_marker"].startswith("</"):
+                    phase = "final"
             store.call(
                 tag + f"/event-{event_index}/complete",
                 {"body_position": event["body_position"], "root_sha256": root_sha},
