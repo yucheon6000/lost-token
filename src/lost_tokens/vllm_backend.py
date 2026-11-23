@@ -253,7 +253,7 @@ class VLLMModel(LocalModel):
                 tensor_parallel_size=1,
                 max_model_len=cfg["max_context_tokens"],
                 gpu_memory_utilization=cfg["gpu_memory_fraction"],
-                enable_prefix_caching=True,
+                enable_prefix_caching=cfg.get("vllm_prefix_caching", True),
                 enable_chunked_prefill=True,
                 max_num_seqs=batch_size,
                 max_num_batched_tokens=cfg.get("vllm_batch_tokens", 4096),

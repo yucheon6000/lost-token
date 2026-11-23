@@ -1,4 +1,13 @@
 {
+  "latent_reasoning": {
+    "top_k": 3,
+    "entropy_threshold": 0.5,
+    "contrastive_weight": 1.0,
+    "protect_math_tokens": true,
+    "checkpoint_tokens": 128,
+    "mixing_precision": "float32",
+    "reasoning_only": true
+  },
   "data": {
     "prompt_limit": 32768,
     "shuffle_seed": 20260921

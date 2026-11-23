@@ -39,6 +39,10 @@ def runtime_spec(spec, work_dir, model_cache=None):
 
 
 def validate_spec(spec):
+    if "latent_reasoning" in spec:
+        from .latent import policy
+
+        policy(spec)
     backend = spec["model"].get("backend", "transformers")
     if backend not in ("transformers", "vllm"):
         raise ValueError("Unknown model backend")
