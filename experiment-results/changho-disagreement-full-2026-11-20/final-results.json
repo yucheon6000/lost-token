@@ -1,0 +1,73 @@
+{
+  "all_conditions_audited": true,
+  "baseline_wins_ties_losses": [
+    2,
+    1,
+    3
+  ],
+  "completed_at": "2026-11-20T18:03:07.761564+09:00",
+  "datasets": {
+    "aime25": {
+      "baseline": 21,
+      "control": 23,
+      "delta_baseline": -1,
+      "delta_control": -3,
+      "losses_baseline": 3,
+      "n": 30,
+      "verification": 20,
+      "wins_baseline": 2
+    },
+    "gpqa": {
+      "baseline": 275,
+      "control": 279,
+      "delta_baseline": 8,
+      "delta_control": 4,
+      "losses_baseline": 28,
+      "n": 448,
+      "verification": 283,
+      "wins_baseline": 36
+    },
+    "gsm8k": {
+      "baseline": 1258,
+      "control": 1260,
+      "delta_baseline": -6,
+      "delta_control": -8,
+      "losses_baseline": 11,
+      "n": 1319,
+      "verification": 1252,
+      "wins_baseline": 5
+    },
+    "hmmt25": {
+      "baseline": 15,
+      "control": 15,
+      "delta_baseline": 1,
+      "delta_control": 1,
+      "losses_baseline": 0,
+      "n": 30,
+      "verification": 16,
+      "wins_baseline": 1
+    },
+    "math500": {
+      "baseline": 489,
+      "control": 493,
+      "delta_baseline": 0,
+      "delta_control": -4,
+      "losses_baseline": 6,
+      "n": 500,
+      "verification": 489,
+      "wins_baseline": 6
+    },
+    "mmlu": {
+      "baseline": 11438,
+      "control": 11435,
+      "delta_baseline": -11,
+      "delta_control": -8,
+      "losses_baseline": 427,
+      "n": 14042,
+      "verification": 11427,
+      "wins_baseline": 416
+    }
+  },
+  "decision": "reject_as_general_improvement",
+  "no_completed_answer_ensemble": true
+}

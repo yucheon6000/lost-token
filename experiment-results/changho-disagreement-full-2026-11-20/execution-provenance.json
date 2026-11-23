@@ -1,0 +1,264 @@
+{
+  "code_branch": "changho-disagreement-full-2026-11-20",
+  "code_commit": "fd28c1438fb4e0d31465ff65b33a288185ce5008",
+  "completion": "2026-11-20T18:03:07.761564+09:00",
+  "execution_environment": {
+    "capture_scope": "before study launch",
+    "cpu_architecture": "x86_64",
+    "cpu_logical_count": 256,
+    "environment_variables": {
+      "CUDA_VISIBLE_DEVICES": null,
+      "OMP_NUM_THREADS": null,
+      "VLLM_USE_V1": null
+    },
+    "execution": {
+      "backend": "vllm",
+      "dtype": "bfloat16",
+      "gpu_memory_fraction": 0.85,
+      "gpu_workers": 8,
+      "max_concurrent_cases_per_gpu": 8,
+      "model": "Qwen/Qwen3-4B-Thinking-2507",
+      "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+      "tensor_parallel_size": 1,
+      "vllm_batch_tokens": 4096
+    },
+    "gpu_cli_indices": "0,1,2,3,4,5,6,7",
+    "gpu_count": 8,
+    "gpus": [
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "0",
+        "uuid": "GPU-32baf646-0b90-75f5-fd4c-8f84e66d1d3e"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "1",
+        "uuid": "GPU-f65d2480-22e3-8981-25dd-91ee44c3b544"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "2",
+        "uuid": "GPU-87a49c83-a54b-0f9a-ec77-633a45f6b5c4"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "3",
+        "uuid": "GPU-c6d16c0d-cf3e-db87-6e60-8f1f52d83a22"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "4",
+        "uuid": "GPU-6170ae3e-301b-f10f-b931-3d8f27876b2e"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "5",
+        "uuid": "GPU-7534c195-7b68-8d3a-b6a4-8bbc4334b015"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "6",
+        "uuid": "GPU-6fef2d20-7273-89d1-6fed-09962fc2fb5f"
+      },
+      {
+        "driver_version": "610.57.04",
+        "memory_total_mib": 97887,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "physical_index": "7",
+        "uuid": "GPU-042ec1bb-2d6b-27df-2f57-5d3120b597f4"
+      }
+    ],
+    "host_ram_bytes": 811067154432,
+    "physical_gpu_indices": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "recorded_at": "2026-11-20T01:24:57.010831+09:00",
+    "runtime": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "runtime_scope": "launcher; worker-specific execution environments are exported separately",
+    "scoring_packages": {
+      "math-verify": "0.9.0",
+      "sympy": "1.14.0"
+    }
+  },
+  "manifest_sha256": "d5dab216a5d0e32bd179583549d5e0003734c21fa16ffd2c561d99c998ca29ba",
+  "original_shared_commit": "36ebad470a8bbe501f7620bf5c78508797673703",
+  "pipeline": {
+    "benchmarks": [
+      "aime25",
+      "hmmt25",
+      "gpqa",
+      "gsm8k",
+      "math500",
+      "mmlu"
+    ],
+    "cohort": "full-v1",
+    "compute_accounting": "One continuing solution per condition; short speculative rollouts, verification cue prefill and generated verification tokens all counted. Same 32768 body cap; not an equal-FLOP claim.",
+    "condition_order": [
+      "verification",
+      "control"
+    ],
+    "configs_by_task": {
+      "aime25": {
+        "control": "configs/vllm-argmax.json",
+        "verification": "configs/verification-argmax.json"
+      },
+      "gpqa": {
+        "control": "configs/vllm-lookahead.json",
+        "verification": "configs/verification-lookahead.json"
+      },
+      "gsm8k": {
+        "control": "configs/vllm-argmax.json",
+        "verification": "configs/verification-argmax.json"
+      },
+      "hmmt25": {
+        "control": "configs/vllm-argmax.json",
+        "verification": "configs/verification-argmax.json"
+      },
+      "math500": {
+        "control": "configs/vllm-lookahead.json",
+        "verification": "configs/verification-lookahead.json"
+      },
+      "mmlu": {
+        "control": "configs/vllm-lookahead.json",
+        "verification": "configs/verification-lookahead.json"
+      }
+    },
+    "method": "After exact selected-rollout commit, the same stream checks a nominated local disagreement against original problem constraints. No answer voting, full-response candidate bank, reranking or separate verifier model.",
+    "previous_selectors": {
+      "aime25": "argmax",
+      "gpqa": "lookahead",
+      "gsm8k": "argmax",
+      "hmmt25": "argmax",
+      "math500": "lookahead",
+      "mmlu": "lookahead"
+    },
+    "primary_criterion": "Beat frozen single-pass AR; report the fresh control and previous ours as additional comparisons.",
+    "protocol": "single-stream-local-verification-v1",
+    "required_benchmarks": [
+      "aime25",
+      "hmmt25",
+      "gpqa",
+      "gsm8k",
+      "math500",
+      "mmlu"
+    ],
+    "scope": "Required whole six-benchmark suite, every committed full-v1 ID. Reuse already audited identical conditions; generate every missing condition. Never silently restrict this protocol to the three hard benchmarks."
+  },
+  "preflight": "/home/user04/ch/workspace/outputs/disagreement-preflight-a24f8e21",
+  "reuse_parent": "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19",
+  "source": {
+    "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+    "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+    "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+    "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+    "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+    "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+    "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+    "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+    "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+    "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+    "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+    "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+    "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+    "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+    "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+    "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+    "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+    "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+    "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+    "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+  },
+  "source_config_and_input_hashes": {
+    "/home/user04/ch/temp/baseline-publication-hub/experiment-results/changho-full-baseline-2026-11-15/cohort-manifest.json": "fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55",
+    "/home/user04/ch/temp/verification-full/configs/verification-argmax.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/temp/verification-full/configs/verification-lookahead.json": "8246e9b3d3c44fbf42503c07d45d8226dd8dcd59677db31f75bf971ac530792f",
+    "/home/user04/ch/temp/verification-full/configs/verification-study.json": "902e9a9aa3470f330750114fb1140a450b940b1b4df02722e7b77c7579c2ed70",
+    "/home/user04/ch/temp/verification-full/configs/vllm-argmax.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/temp/verification-full/configs/vllm-lookahead.json": "48fe918e8d7dc39eb97c34d53e066a2955a04691c003ab9283e5679006403eb6",
+    "/home/user04/ch/temp/verification-full/scripts/run_verification_study.py": "e6eb204dfa572ff163677191ac99b77d211dd6f110afd5d4b323fe33841ccf92",
+    "/home/user04/ch/temp/verification-full/scripts/shared_eval.py": "527de1c390e6f5802f879060886c6565d5f9bcfb558dec1991aa43e1f6647a6e",
+    "/home/user04/ch/temp/verification-full/uv.lock": "ba25d2d27e731d14c86370cf75dcb9809ea892ee9a8d4d08e2c1adcc859b9b42",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-control/plan.json": "042f12c603987fe153aeb72fe5b83c77d6bc68f6f0f4e2df1fbda0ee921ccb5e",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-control/schedule.json": "91f0ca1f28ffa558a4c4c5c1c63604e6a4e6adcf12a059cfbee275af7dbe00ff",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-control/status.json": "1f84e8604afab5a79392e5c84c03b2b964fbf672ad377155956c6dd52d746c8f",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-verification/plan.json": "e4a806efd3c2c35a6226fd7c441ff52a484544cbf82a221574a3444adb61e41d",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-verification/schedule.json": "47d09084b743d11824e750289272428c60c1bd16ea8c1e8d136b52d47d310284",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-aime25-verification/status.json": "fda8b2b993a9ea159444ba212f2895fd311c6795fc40e347161de2c5f9ef6680",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-control/plan.json": "c7f4aed0b3fbc4fb0c545d9c5dd0d9d9cd28d2a3934ef50fbfdc15986e4ca61c",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-control/schedule.json": "9dd500ab74de9c638f9e872a3f388943a2bbc12e61c441be3146b643eeed5c41",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-control/status.json": "1ee1973244db0ee5f2eb77fc58cdd282704e7fa596d25ed8f5461e4873a80322",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-verification/plan.json": "a202e0ec07ab0bd803164d3abe957bb867f2ee52e95f5b426d00d62d6986810b",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-verification/schedule.json": "66007ac2972656a7470cf9e64c9125985ef2672b000e30b5ced42a17eea8c8c1",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-gpqa-verification/status.json": "12b9768632986dcb072b8ca900a1a6f6497ab7bc6860067cb0932d2bb280a14a",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-control/plan.json": "3031683d9d159303cf6b5b9bad1c229b8dfd23aab11a2ccd925c193386be58e1",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-control/schedule.json": "6558444f92832cff42acb7d2af8bc009b4ca60d9c82e11934eedc83e0dd5b215",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-control/status.json": "fc695f2b24b1ce4bdfb1d52d6276a277c899449ac975a9f1faf565ac6137c2c7",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-verification/plan.json": "656667f95dc53cb9d6769ad5824b154fb19fabdbf5a0ad2df58732c45de98bd8",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-verification/schedule.json": "e0a71495479f244db3fb9c482acf80405f5d1313ee3a4841c85e8d826be4f307",
+    "/home/user04/ch/workspace/outputs/disagreement-2026-11-19-hmmt25-verification/status.json": "432c6b25b8a67e6c4d7f353f141c92c0afcb7273530690666db1ccb0691830da",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/aime25-control.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/aime25-verification.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/gpqa-control.json": "48fe918e8d7dc39eb97c34d53e066a2955a04691c003ab9283e5679006403eb6",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/gpqa-verification.json": "8246e9b3d3c44fbf42503c07d45d8226dd8dcd59677db31f75bf971ac530792f",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/hmmt25-control.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/configs/hmmt25-verification.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/manifest.json": "92d9ee4da765c1ffa6c68e0bd4cc8fda69017869827f578d457c093ee9aa0390",
+    "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19/status.json": "a15ca807e4a6bc7b22706b26b0a2cb2f6cd7d55800620c72d4c10f2800089549",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/comparison/baseline-reference.json": "a7147a66105473d3edd17fda3e842e60dfb15a320f4a321f9d575b495d6666a2",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/comparison/previous-study.json": "b7945966d446dc7abff835fbe259982346a006d58e09fbd3c8a5798706600f04",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/aime25-control.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/aime25-verification.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/gpqa-control.json": "48fe918e8d7dc39eb97c34d53e066a2955a04691c003ab9283e5679006403eb6",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/gpqa-verification.json": "8246e9b3d3c44fbf42503c07d45d8226dd8dcd59677db31f75bf971ac530792f",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/gsm8k-control.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/gsm8k-verification.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/hmmt25-control.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/hmmt25-verification.json": "e43d3dee2888c30e15ae71cac71c878f6595091361409294bfa4e3e806128b84",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/math500-control.json": "48fe918e8d7dc39eb97c34d53e066a2955a04691c003ab9283e5679006403eb6",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/math500-verification.json": "8246e9b3d3c44fbf42503c07d45d8226dd8dcd59677db31f75bf971ac530792f",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/mmlu-control.json": "48fe918e8d7dc39eb97c34d53e066a2955a04691c003ab9283e5679006403eb6",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/configs/mmlu-verification.json": "8246e9b3d3c44fbf42503c07d45d8226dd8dcd59677db31f75bf971ac530792f",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/aime25.json": "a4929b6916b93f039f70ba2f9aeed21ee580fd9d927e8049fe8ce5bc02700c40",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/gpqa.json": "95acee32b38475a407491ef94b79d3d030c5bb0e1d2094b7eb6ebe28a1261ad0",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/gsm8k.json": "9d0b3de4c78999053ecbf1579b78875e52179b030e05b6332509120b0fac600e",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/hmmt25.json": "cb4b279b6e3c8a165643b63ca4396eb48a40db78ed8a93462b3e1900506a2fd9",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/math500.json": "1cd949a2939b5c8d6c5762555ab2581813fb1e02d862319349f860ba59efab66",
+    "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/ids/mmlu.json": "bbde6b62848074033a988b2ba66e8f83be2fa44f4b07498b4febbefef273b35f"
+  }
+}

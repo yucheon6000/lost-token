@@ -1,0 +1,50 @@
+{
+  "state": "complete",
+  "started_at": "2026-11-20T01:25:54.979791+09:00",
+  "authorization": "User explicitly requires ALL benchmarks, not only AIME/HMMT/GPQA. Complete the full six-benchmark single-stream verification suite using eight GPUs, preserve the completed three and generate every missing full-set condition. Complete-answer ensembles remain excluded. Prior and current instructions require whole original datasets.",
+  "source_or_config_changes": false,
+  "attempts": [
+    {
+      "at": "2026-11-20T01:25:54.980782+09:00",
+      "command": [
+        "/home/user04/lost-token/.tools/uv",
+        "run",
+        "--frozen",
+        "python",
+        "-u",
+        "scripts/run_verification_study.py",
+        "run",
+        "--study",
+        "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20",
+        "--work-dir",
+        "/home/user04/ch/workspace",
+        "--model-cache",
+        "/home/user04/lost-token/workspace/models",
+        "--shared",
+        "/home/user04/ch/temp/baseline-publication-hub",
+        "--baseline-ref",
+        "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/input-references/baseline-reference.json",
+        "--previous-study",
+        "/home/user04/ch/workspace/verification-studies/disagreement-full-2026-11-20/input-references/previous-study.json",
+        "--uv",
+        "/home/user04/lost-token/.tools/uv",
+        "--pipeline",
+        "configs/verification-study.json",
+        "--preflight-run",
+        "/home/user04/ch/workspace/outputs/disagreement-preflight-a24f8e21",
+        "--cohort-manifest",
+        "/home/user04/ch/temp/baseline-publication-hub/experiment-results/changho-full-baseline-2026-11-15/cohort-manifest.json",
+        "--reuse-study",
+        "/home/user04/ch/workspace/verification-studies/disagreement-2026-11-19",
+        "--gpus",
+        "0,1,2,3,4,5,6,7",
+        "--name",
+        "changho-disagreement-full"
+      ],
+      "stale_operational_statuses_refreshed": [],
+      "exit_code": 0,
+      "finished_at": "2026-11-20T18:03:08.899932+09:00"
+    }
+  ],
+  "finished_at": "2026-11-20T18:03:08.900273+09:00"
+}

@@ -1,0 +1,62 @@
+{
+  "benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa",
+    "gsm8k",
+    "math500",
+    "mmlu"
+  ],
+  "cohort": "full-v1",
+  "compute_accounting": "One continuing solution per condition; short speculative rollouts, verification cue prefill and generated verification tokens all counted. Same 32768 body cap; not an equal-FLOP claim.",
+  "condition_order": [
+    "verification",
+    "control"
+  ],
+  "configs_by_task": {
+    "aime25": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "gpqa": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
+    },
+    "gsm8k": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "hmmt25": {
+      "control": "configs/vllm-argmax.json",
+      "verification": "configs/verification-argmax.json"
+    },
+    "math500": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
+    },
+    "mmlu": {
+      "control": "configs/vllm-lookahead.json",
+      "verification": "configs/verification-lookahead.json"
+    }
+  },
+  "method": "After exact selected-rollout commit, the same stream checks a nominated local disagreement against original problem constraints. No answer voting, full-response candidate bank, reranking or separate verifier model.",
+  "previous_selectors": {
+    "aime25": "argmax",
+    "gpqa": "lookahead",
+    "gsm8k": "argmax",
+    "hmmt25": "argmax",
+    "math500": "lookahead",
+    "mmlu": "lookahead"
+  },
+  "primary_criterion": "Beat frozen single-pass AR; report the fresh control and previous ours as additional comparisons.",
+  "protocol": "single-stream-local-verification-v1",
+  "required_benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa",
+    "gsm8k",
+    "math500",
+    "mmlu"
+  ],
+  "scope": "Required whole six-benchmark suite, every committed full-v1 ID. Reuse already audited identical conditions; generate every missing condition. Never silently restrict this protocol to the three hard benchmarks."
+}

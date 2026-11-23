@@ -1,0 +1,256 @@
+[
+  {
+    "audit_file_sha256": "cfbaabfa570fd5bb9672e34b418f1ba9554b2a1b18c14aa956d900b45cfcb21a",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-20.json": "e498185c5df2ba296eec795461d02d200f57511b8fd6da5ff43e94dae627ba3a",
+      "cases/evaluation/aime25/aime25-26.json": "d3c1878fb6bc25cd0c46e7d44a518c28e572c248de3445165eb1667a8d3d5ff4",
+      "cases/evaluation/aime25/aime25-29.json": "7c08cd8087e693482ee8b872ebcecbc802fb35fecae47d80e51bbb55a1579a36",
+      "cases/evaluation/aime25/aime25-30.json": "eab076909d5ba2aba99273a1f61e654937607001db61a4e633950017207f3af9"
+    },
+    "checkpoint_map_sha256": "4883a130a34f8b9c85cd23cd7d0ed6bfdc708ff1c074c1b4c790eb21cde056a0",
+    "checkpoints": 3422,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 395,
+    "partial": false,
+    "worker": "ours-worker0"
+  },
+  {
+    "audit_file_sha256": "e0f59d4b5a82e6ffb94416dab66c20fc489c849f730d0bea12df7515cc489360",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-15.json": "b5fc22ac88c145c8be5eaa799068216b96aebc4350a50facc764ebbf89aad5c9",
+      "cases/evaluation/aime25/aime25-21.json": "0a9f16323a4f3e6dfe458ca25d89d431265322dce49d866f31bd87745e261b5a",
+      "cases/evaluation/aime25/aime25-24.json": "4f4a29d1ee230614cdbdc9f6a9656d1813c7be156fbe872e092bf2c24ab03910",
+      "cases/evaluation/aime25/aime25-27.json": "f25cde96316283a2ac377e13a87a02d74eac307f75d83bed67e84796c6b5c939"
+    },
+    "checkpoint_map_sha256": "99ef6b696722d18ec183944fcf270235829efe781614618f4e0c30a739b78ff3",
+    "checkpoints": 1964,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 223,
+    "partial": false,
+    "worker": "ours-worker1"
+  },
+  {
+    "audit_file_sha256": "af496be4d8cbbcf13ceff4a9526e12c918d4806eb1ed36045390f96b67d369ce",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-16.json": "d162b311a5af350f71cf7cccb5fe4609bb225025f4189b7d59c9256c62e06a22",
+      "cases/evaluation/aime25/aime25-22.json": "b96ca5a714d63fbe1e18ce8299f80d83096f5f1916cd47f8fba833ae194e1e09",
+      "cases/evaluation/aime25/aime25-3.json": "d0b5859e723219f612e721c8e849759755f480c144846a3d7bf30fe116ae53f9",
+      "cases/evaluation/aime25/aime25-5.json": "9296e7bc1d87dbeb1d570152484702ef8dcb74ba921e46ae54f2020733b98acc"
+    },
+    "checkpoint_map_sha256": "f688805a3c4d5d512410cae055d30423e51cfa9ac35fe47a1884990fcad0009e",
+    "checkpoints": 1439,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 162,
+    "partial": false,
+    "worker": "ours-worker2"
+  },
+  {
+    "audit_file_sha256": "65eb24fdf092f5f92506de2fd564a7bb20eb5268960c5e6ecf34f49ae329bbfb",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-11.json": "a4cf5d1e356da9320c12e847eab024f293c9e71d9d94de997588f2adb76d1a6b",
+      "cases/evaluation/aime25/aime25-25.json": "6b97f1dd6a14c47b45c09f443a5add8cb3e04cfd4bee415c04dc29a17a62876b",
+      "cases/evaluation/aime25/aime25-28.json": "91c6b997d3ff86ab306233a2136058ce4f292725eeb3230ae42db475b506d4f0",
+      "cases/evaluation/aime25/aime25-9.json": "4d79398153d4af763ad0dc37b56af60a6c8bbbb40302e2b2d9ac680fec1983f4"
+    },
+    "checkpoint_map_sha256": "2a22b19f931e29b3f2176fe688b9c8563e5e129e1815a69d8c25f2465cf4b855",
+    "checkpoints": 2802,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 321,
+    "partial": false,
+    "worker": "ours-worker3"
+  },
+  {
+    "audit_file_sha256": "f4715c3ef6b10adead74b1a6b4b8914c8aafde1a2ead045cfb013b5964edf32e",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-10.json": "fbf2127aba8784b0fa888715231c5d8ea1e31df2c71e1cf1eef14edf8b37b81b",
+      "cases/evaluation/aime25/aime25-12.json": "51f7718899cd3b91a725856e6311eaf47edeafc4475e06a2d6b7581ddf5c5fff",
+      "cases/evaluation/aime25/aime25-14.json": "65c3b5fc4dedee70eec112d8665fb33bbe3a9cda404ad573a8a82820cbe14123",
+      "cases/evaluation/aime25/aime25-8.json": "17689f79fc47e93aae80fb54eeb8481fbc1fd1a64cad42b0f4085dae8cb31b17"
+    },
+    "checkpoint_map_sha256": "8cc792b4cfaddde9f023bee569a05d1c841384a55cd379a6063196f0d500a74b",
+    "checkpoints": 2563,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 293,
+    "partial": false,
+    "worker": "ours-worker4"
+  },
+  {
+    "audit_file_sha256": "9cbd570c3fb2257b1e73b7f70e8404190be3a5809e93abaf00b4692d1cb7e97c",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-17.json": "9a4da1fc5de7e358c2597276c0f4ec4bc2fe7ba9589913f15ed38fd1cc658a07",
+      "cases/evaluation/aime25/aime25-18.json": "9ceccd30e7ca980da5611cf3f5713856e3e027c9bd472d10e5c1e0e1b9de1f37",
+      "cases/evaluation/aime25/aime25-19.json": "71c1c1341a24f3c7bf10ab118c8ceff5bfb26fb655bb2f1cf3bf71de91641a81",
+      "cases/evaluation/aime25/aime25-6.json": "b7b0bd77b117eefd22851f7dcfe911d57a0678d1e00ed76044c94875e2d8732f"
+    },
+    "checkpoint_map_sha256": "469fec3d16f341fa0dfea1eb5ae32398d677d5fc1351db936ed47e5f0fc352ea",
+    "checkpoints": 1694,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 191,
+    "partial": false,
+    "worker": "ours-worker5"
+  },
+  {
+    "audit_file_sha256": "6b305321ef7fa0eefe65d6bf98613c68b97a7d6505b500a766df89f6c5443ea7",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-1.json": "ed92a36fda13e48ff0a992beef74ad92d4a43f71c235931606fcf13868891474",
+      "cases/evaluation/aime25/aime25-23.json": "df865e560b7e458b67103852dd1cadad0416490ec745b0cc19be55c4bda274b2",
+      "cases/evaluation/aime25/aime25-7.json": "ea3c3d8561c8604b8694a15c57383ad6d9406a922427f371880b13b21fb00224"
+    },
+    "checkpoint_map_sha256": "efef44479e38315adfdab260206bd5a8799de87af0af6fc2ec8b09cb0e3f5149",
+    "checkpoints": 2026,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 3,
+    "completed_conditions": 3,
+    "events": 232,
+    "partial": false,
+    "worker": "ours-worker6"
+  },
+  {
+    "audit_file_sha256": "a08bb76cb4ffbdf46e4d90c164cbe3879744de6a0b572a9488d2c50b413e50fb",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/aime25/aime25-13.json": "d4fd4d00f24b2fcdaa4237ac8567d077850bb4b4c9801d2ff0ed8b1d6ffe7883",
+      "cases/evaluation/aime25/aime25-2.json": "a4bfcd13bc2466954c16fc92f68e604950d3c24097f587d42419c6936c5cd378",
+      "cases/evaluation/aime25/aime25-4.json": "406353f6d7734ee6a30484a7984f230dd7ea553e65a607112ae168dffaf81095"
+    },
+    "checkpoint_map_sha256": "6c51998e8dfe90ddcabf390070e3dfac0884d965578ee8bd28fdc825f27c33ad",
+    "checkpoints": 2420,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 3,
+    "completed_conditions": 3,
+    "events": 279,
+    "partial": false,
+    "worker": "ours-worker7"
+  }
+]

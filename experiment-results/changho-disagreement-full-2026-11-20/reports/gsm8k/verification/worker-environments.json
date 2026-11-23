@@ -1,0 +1,450 @@
+[
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker0.json",
+      "gpu": "0",
+      "name": "ours-worker0",
+      "split": "configs/ours-worker0-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "38c02ffd25cb52692be5bcc8f2299e7e12e085b2fa93b4beccc673fe20fb82af",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "6dc2c4cd4c131c3f402595bedf8608040ac1e4cec07edb64f5d0e2541a7e9815",
+    "worker": "ours-worker0"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker1.json",
+      "gpu": "1",
+      "name": "ours-worker1",
+      "split": "configs/ours-worker1-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "0c27eaf4cda3a1a9d6ee182316c681f0a688fe119a8750fa02cfce585b373163",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "f1260312b32b35b34f83275ca12c46b8017c620d23cb400c5f32f4a7c01436ef",
+    "worker": "ours-worker1"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker2.json",
+      "gpu": "2",
+      "name": "ours-worker2",
+      "split": "configs/ours-worker2-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "b761e7104ed6ab948e93e6b600796a8f9b6d6bfbf69f7ebc0c4859996389cd82",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "b95bac29007c182aaee7368c910d969888dde83061d423294057ac9b6347f89c",
+    "worker": "ours-worker2"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker3.json",
+      "gpu": "3",
+      "name": "ours-worker3",
+      "split": "configs/ours-worker3-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "be2956ac298f5753f01c115aa88fb5d2ebb106c0a666dde5dd6932bd723c633e",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "6e4b9100e84dd0fdefa18cc91177a93701187219a81424053986d800c3396265",
+    "worker": "ours-worker3"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker4.json",
+      "gpu": "4",
+      "name": "ours-worker4",
+      "split": "configs/ours-worker4-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "d235cf2a22564724807734149bd772f25209aa6ec75e280e56b544d23e4d77ff",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "244881da521956ac94785c977db6a41a6f39422e3713201f13258582c54d33c5",
+    "worker": "ours-worker4"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker5.json",
+      "gpu": "5",
+      "name": "ours-worker5",
+      "split": "configs/ours-worker5-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "9a59a4b2c4641f8ba0a5cadd15024ce432fd962bf6c11bf87a6668d83a9aac51",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "db2333c905c8a75cae7b81ab50f1e93ace1240086157f5bdf4e4fa23433b4297",
+    "worker": "ours-worker5"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker6.json",
+      "gpu": "6",
+      "name": "ours-worker6",
+      "split": "configs/ours-worker6-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "2a050ff31ddef69e66f4dd43b99e86cf8fdbaa3c808f1bae3f70733569aebcdd",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "eb7bf86794ebdb277339bd55c2abc17bf6832be35fb274474c253ca94f836326",
+    "worker": "ours-worker6"
+  },
+  {
+    "assignment": {
+      "arm": "ours",
+      "condition": "filtered_futures",
+      "config": "configs/ours-worker7.json",
+      "gpu": "7",
+      "name": "ours-worker7",
+      "split": "configs/ours-worker7-split.json"
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_file_sha256": "5becf3d5982390ded14b4e9c5bab0944738c40972ba04a790c1ab7fcceb89e74",
+    "plan_sha256": "dff917d22302461fe7f0003929b8ae6a5eee19e8fbeaa7a88d7a57922fe9e74b",
+    "schedule": {
+      "deadline_epoch": null,
+      "start_epoch": 1795105561.601518
+    },
+    "source": {
+      "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+      "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+      "lost_tokens/audit.py": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+      "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+      "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+      "lost_tokens/config.py": "8fb22900e6cb218db2f99a49206001f06e4a3abfbf6a20d09507fcc7224eeacb",
+      "lost_tokens/consensus.py": "aed700e872abb24ed944ab7fe5e42c478156f814bb736b241ee510c460eb7ef8",
+      "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+      "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+      "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+      "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+      "lost_tokens/default.json": "8dd4824f3272b90a54d5b6c829b2b80e0adcbf9dd2c5650c58bc9e29e0ad181e",
+      "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+      "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+      "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+      "lost_tokens/recurrent_memory.py": "fa133c428f368c1dae82d519ac7d18b3b19e6abc3ac89a460f1b84f8c378b087",
+      "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+      "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+      "lost_tokens/runner.py": "4b73e94bac5f39cecfd6cd01335edcb99333a8372e8490e8aa75d49dcd4d14f2",
+      "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+      "lost_tokens/verification.py": "28f6615c27f5302aeea2d46b943ad226b05d33cf2e3440acbb1119067509ff87",
+      "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+    },
+    "split_sha256": "a35739552adc3975c1d9aae0e62d4e3fd912b0f97b390c3339aa7ad6dd873d4a",
+    "worker": "ours-worker7"
+  }
+]

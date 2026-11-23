@@ -1,0 +1,256 @@
+[
+  {
+    "audit_file_sha256": "884cc5f4bcb457c5a14c3310304c454de08769058b0e0fbb0265947592da7951",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-16.json": "a0c3735f342d6ca6e24fd41613ab5c7795c40f817714165976b433f1ecf82782",
+      "cases/evaluation/hmmt25/hmmt25-17.json": "85a3a69331c63e909d97bc41a4540771db1cb3bb7fc57889a54adf8729376d58",
+      "cases/evaluation/hmmt25/hmmt25-2.json": "6b34a2137d657bcb50439c15404a69e1f48b3031fb0d82890e67205a8720687d",
+      "cases/evaluation/hmmt25/hmmt25-7.json": "c19f56e527c05587cfca89898b887169791b4dad848b7893d5244423ff4cb54e"
+    },
+    "checkpoint_map_sha256": "554e7256641bbc7c82dd0a826a47da9836cc453e24ac90225ef5e9bf643b9520",
+    "checkpoints": 2476,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 285,
+    "partial": false,
+    "worker": "ours-worker0"
+  },
+  {
+    "audit_file_sha256": "fcfe65e9e4e7ddf1f086c90c32aee85a5b107979bd93ad196c12a2472d2645ca",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-10.json": "a882a840c27d69d3c7dfdeed28d574605ffdb76a2c848ad04b180cccf6ff49ad",
+      "cases/evaluation/hmmt25/hmmt25-15.json": "253b4190a727f10ca3a6a2ebe83e8c57deb89dbe4c224f45e35e5f5384e01b25",
+      "cases/evaluation/hmmt25/hmmt25-18.json": "497715cfd7046384d2bf0cd01314357582e239644fe1ac7d9c9aaee8b5b03bd6",
+      "cases/evaluation/hmmt25/hmmt25-21.json": "3b29d58a3d7c24f7c7ce7d9df644eeb5e1b0fe3d47e4d0de71d0a240c85f0d44"
+    },
+    "checkpoint_map_sha256": "18855d4bfe1cd9cd3df0c328c4896f05adb25384365a325af8804ad8ef27ea61",
+    "checkpoints": 2509,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 286,
+    "partial": false,
+    "worker": "ours-worker1"
+  },
+  {
+    "audit_file_sha256": "ab75e26c7ccbf063963f264f3ffdb806edfa7ec7e3be38881d358c6bbcb8bab6",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-12.json": "b0d938e09ecfef02df4c6f703b54356c09ba3da4bb0dd508fc80f5d2d742f7ba",
+      "cases/evaluation/hmmt25/hmmt25-23.json": "0b839782b8a61a9e25c172be8311b14900f5d90638d9a4b89f9e924a8cdc3c9b",
+      "cases/evaluation/hmmt25/hmmt25-3.json": "3d949856744df31fc8cf86c66276ec6ead562a751f0a6e6edfce67ce141c8e93",
+      "cases/evaluation/hmmt25/hmmt25-9.json": "55c3fc313ba382441c98077a8c58ffc39bc44358e930b0ada58c191e6abce9fe"
+    },
+    "checkpoint_map_sha256": "da55721cb546b4572a7f38973801bb661af02dc9c4220d0cff153da0bbac9d90",
+    "checkpoints": 2346,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 268,
+    "partial": false,
+    "worker": "ours-worker2"
+  },
+  {
+    "audit_file_sha256": "86218621eb0f7e76495fe1e7e92440b4e36481e3219399a65ac266e2682a452a",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-1.json": "de88617631a2da19f772387c95faa25e36da851291dd6eebcef690834e7dcc9f",
+      "cases/evaluation/hmmt25/hmmt25-13.json": "50c3821d18db28f6a4a536f0a6c064ea3ad0f2f158846a3993ed1170dc69c4ef",
+      "cases/evaluation/hmmt25/hmmt25-24.json": "cdfc19646ba6d9bfe283d566ac535f0094ce4923ceb87482ecd39933cd358a18",
+      "cases/evaluation/hmmt25/hmmt25-4.json": "c47649ae023371ef853581740d12c527ce2084b0941b896b04571c7fa7b4c473"
+    },
+    "checkpoint_map_sha256": "8a3692803965edefd82673ea9ad2fdf0ff61ac102dbe1b8039d62d0289741763",
+    "checkpoints": 3154,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 360,
+    "partial": false,
+    "worker": "ours-worker3"
+  },
+  {
+    "audit_file_sha256": "ad4336c7c2b115c9ffc6080e7fb37dc93e65477ce194443551af7a9cf652d455",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-11.json": "ff683945fdbdf822d36a67ae62a5fdc3dd26c7fc7b9c335ea75b0f421fa89401",
+      "cases/evaluation/hmmt25/hmmt25-19.json": "24354e875f14b146abde39dfc0466f91045139d19e52e5f772236fc5d58750ee",
+      "cases/evaluation/hmmt25/hmmt25-30.json": "3261694ea11cbf641e2089edff523687fa150e3004c7aaba05639e89fe95b721",
+      "cases/evaluation/hmmt25/hmmt25-6.json": "df59ee5b8d694474642d074ed64cad9dc52f36ea8770fb4eef3e12372c12cd43"
+    },
+    "checkpoint_map_sha256": "9b6bb4d41c882081c55509cd640cd78b53ef5964c792b6210a4fe2ab341e4e8f",
+    "checkpoints": 3437,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 392,
+    "partial": false,
+    "worker": "ours-worker4"
+  },
+  {
+    "audit_file_sha256": "9eb63bb68e706784a74c46829db1c6002c7c0209d84d2da043a1d3ee651fb0ad",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-14.json": "64b73ac3874674ee01bb3f9988b4ee6f0a1c8ebb3dcd3e09b5862c81f7bd180b",
+      "cases/evaluation/hmmt25/hmmt25-22.json": "7476514476ab7840811bf4e03ffff19413cf5f3a4f576414670a4943279c4d6c",
+      "cases/evaluation/hmmt25/hmmt25-26.json": "3b4a0cbc02cf08a667161f35f2bccc877bd92ee46a50df7a4e8659ef90e999cf",
+      "cases/evaluation/hmmt25/hmmt25-5.json": "75c696f22ad0433d5c510bb65f7ba7beb891b8dc1a347267d098b641b0296eeb"
+    },
+    "checkpoint_map_sha256": "0f2423b4e5cb628355c0013ef499cbfc37a56d81af639552806f5b40380ed268",
+    "checkpoints": 2329,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 4,
+    "completed_conditions": 4,
+    "events": 267,
+    "partial": false,
+    "worker": "ours-worker5"
+  },
+  {
+    "audit_file_sha256": "24c3f51c6268a9997a24a02b8cb41a0a0ef1c6bfc359ce1de38b859c9323841a",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-25.json": "c00de5367848ad5eae4c2d12af2358a919374e395413f60a33da0347adc611dd",
+      "cases/evaluation/hmmt25/hmmt25-29.json": "0f366cccb01b7f427d7cc331538bdb3fea6a7fe72deaf89527a8339ae6325f6c",
+      "cases/evaluation/hmmt25/hmmt25-8.json": "8ba9a82209a684849c12da79120d11557b628b0fd6421eedb37e50c655a516f9"
+    },
+    "checkpoint_map_sha256": "4ecb5836884e4ba280de7e2197fa0527c247848105c5d285256d9d11984d5d07",
+    "checkpoints": 2973,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 3,
+    "completed_conditions": 3,
+    "events": 346,
+    "partial": false,
+    "worker": "ours-worker6"
+  },
+  {
+    "audit_file_sha256": "cef815f8b884adcd262e33bcb2aeaf868352100623670f8e9bb5442b69e672ee",
+    "audit_script_sha256": "0c64831e43e03a9e925fe3a3f4706f1d9050816ba55a9f9f1aff7587fffc5430",
+    "case_sha256": {
+      "cases/evaluation/hmmt25/hmmt25-20.json": "ca53535d0adc547982eb0af762193578bc080c664111fbb64bf7ac8b9561e16f",
+      "cases/evaluation/hmmt25/hmmt25-27.json": "6b74a47174f5d0cd5c8b9ed80dcbad766fdcd7af093b89302e376cfd2ad37760",
+      "cases/evaluation/hmmt25/hmmt25-28.json": "65283d5740a67096ebd64e3909d5a015f4f6ddf28eebb9806cfd9897f62ca4e1"
+    },
+    "checkpoint_map_sha256": "19f0a33dd5aa6b06fdda456b3fd88014fc07e0df6de87702e9f53579aa89b684",
+    "checkpoints": 1902,
+    "checks": [
+      "source/split/checkpoint hashes",
+      "all eligible scan positions and declared candidates",
+      "minimum body-token fork interval and exact scan restart boundary",
+      "same pre-injection root for every candidate",
+      "only unchosen alternatives in memory",
+      "selection rule recomputed from recorded rollout statistics",
+      "selected rollout committed verbatim after memory",
+      "cosine matrix recomputed from vectors",
+      "no intervention after thinking ends",
+      "main body preserved across memory compaction",
+      "generated-only repetition history and every blocked cycle token",
+      "separate final-response scoring",
+      "policy cost sums and replay ledgers"
+    ],
+    "completed_cases": 3,
+    "completed_conditions": 3,
+    "events": 220,
+    "partial": false,
+    "worker": "ours-worker7"
+  }
+]
