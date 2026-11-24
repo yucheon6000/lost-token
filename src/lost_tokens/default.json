@@ -80,5 +80,14 @@
     },
     "text_scope": "rollout_only",
     "threshold": 0.85
+  },
+  "em_inf": {
+    "threshold": 0.3,
+    "kl_weight": 0.05,
+    "learning_rate": 0.1,
+    "n_grad_steps": 3,
+    "checkpoint_tokens": 128,
+    "compiled": true,
+    "scope": "all_tokens"
   }
 }

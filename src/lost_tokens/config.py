@@ -39,6 +39,10 @@ def runtime_spec(spec, work_dir, model_cache=None):
 
 
 def validate_spec(spec):
+    if "em_inf" in spec:
+        from .eminf import policy as em_policy
+
+        em_policy(spec)
     if "latent_reasoning" in spec:
         from .latent import policy
 
