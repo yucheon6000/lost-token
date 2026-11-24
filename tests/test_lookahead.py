@@ -301,6 +301,7 @@ class LookaheadRunTests(unittest.TestCase):
         bad.append(("selection", "argmax"))  # lookahead settings present while argmax
         for key, value in bad:
             spec = load_spec()
+            spec["experiment"].update(selection="lookahead", lookahead=good)
             spec["experiment"][key] = value
             path = self.root / "bad.json"
             path.write_text(json.dumps(spec))
@@ -328,14 +329,12 @@ class LookaheadRunTests(unittest.TestCase):
         path.write_text(json.dumps(spec))
         load_spec(path)
 
-    def test_default_protocol_is_lookahead_with_64_token_rollouts(self):
+    def test_default_protocol_is_argmax_with_64_token_rollouts(self):
         spec = load_spec()
         exp = spec["experiment"]
         self.assertEqual(exp["branch_tokens"], 64)
-        self.assertEqual(exp["selection"], "lookahead")
-        self.assertEqual(
-            exp["lookahead"], {"statistic": "mean_logprob", "margin": 0.1, "min_tokens": 16}
-        )
+        self.assertEqual(exp["selection"], "argmax")
+        self.assertIsNone(exp["lookahead"])
         self.assertTrue(exp["memory_preamble"])
         need = (
             spec["data"]["prompt_limit"]

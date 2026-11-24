@@ -28,6 +28,12 @@ ARM_CONDITIONS = {
 }
 
 
+def checkpoint_age(progress, started, epoch=None):
+    """A previous process heartbeat cannot stall a newly launched worker."""
+    current = time.time() if epoch is None else epoch
+    return max(0, current - max(progress.get("epoch", started), started))
+
+
 class DeadlineReached(Exception):
     pass
 
@@ -506,7 +512,7 @@ def supervise(run):
                             raise RuntimeError(f"{name} exited {code}; see {log_dir}")
                         status = read_json(path / "status.json", {})
                         progress = read_json(path / "progress.json", {})
-                        age = time.time() - progress.get("epoch", started)
+                        age = checkpoint_age(progress, started)
                         if (
                             code is None
                             and status.get("state") == "running"

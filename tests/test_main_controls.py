@@ -11,16 +11,11 @@ class MainControlTests(unittest.TestCase):
         spec = load_spec()
         exp = spec["experiment"]
         self.assertTrue(exp["repetition_guard"]["enabled"])
-        self.assertEqual(exp["selection"], "lookahead")
+        self.assertEqual(exp["selection"], "argmax")
+        self.assertEqual(spec["model"]["backend"], "vllm")
+        self.assertEqual(spec, load_spec("configs/vllm-argmax.json"))
         self.assertEqual(exp["branch_tokens"], 64)
-        self.assertEqual(
-            exp["lookahead"],
-            {
-                "statistic": "mean_logprob",
-                "margin": 0.1,
-                "min_tokens": 16,
-            },
-        )
+        self.assertIsNone(exp["lookahead"])
         self.assertIsNotNone(exp["memory_preamble"])
         self.assertIsNone(exp.get("budget_forcing"))
         self.assertEqual(exp["arms"], ["plain_ar", "filtered_futures"])

@@ -18,11 +18,7 @@
     "branch_tokens": 64,
     "checkpoint_body_tokens": 128,
     "commit": "selected_rollout",
-    "lookahead": {
-      "margin": 0.1,
-      "min_tokens": 16,
-      "statistic": "mean_logprob"
-    },
+    "lookahead": null,
     "max_event_memory_tokens": 2048,
     "max_output_tokens": 32768,
     "memory_capacity_tokens": 8192,
@@ -38,7 +34,7 @@
       "min_span_tokens": 64
     },
     "seed": 95021,
-    "selection": "lookahead",
+    "selection": "argmax",
     "temperature": 0.6,
     "top_k": 20,
     "top_p": 0.95
@@ -48,13 +44,16 @@
     "device": "cuda:0",
     "dtype": "bfloat16",
     "enable_thinking": true,
-    "gpu_memory_fraction": 0.95,
+    "gpu_memory_fraction": 0.85,
     "local_files_only": true,
     "max_context_tokens": 73856,
     "name": "Qwen/Qwen3-4B-Thinking-2507",
     "revision": "768f209d9ea81521153ed38c47d515654e938aea",
     "rollout_cache_offload_threshold_tokens": 49000,
-    "threads": 4
+    "threads": 4,
+    "backend": "vllm",
+    "vllm_batch_size": 8,
+    "vllm_batch_tokens": 4096
   },
   "protocol": "recurrent-reasoning-memory-v4",
   "similarity": {

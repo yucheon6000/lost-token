@@ -305,6 +305,8 @@ def export_reports(study, work, output):
 def public_study(study):
     result = json.loads(json.dumps(study))
     result["spec"]["model"]["cache_dir"] = "<MODEL_CACHE>"
+    if "initialization_lock" in result["spec"]["model"]:
+        result["spec"]["model"]["initialization_lock"] = "<WORK_DIR>/locks/vllm-initialization.lock"
     result["spec"]["similarity"]["encoder"]["cache_dir"] = "<MODEL_CACHE>"
     result["runtime_paths_redacted"] = True
     return result

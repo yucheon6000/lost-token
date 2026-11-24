@@ -1,0 +1,38 @@
+{
+  "cpu_tests": 146,
+  "cpu_tests_passed": true,
+  "format_and_lint_passed": true,
+  "historical_result_audit_sha256": "8fa9973d4fb1424f5985cfeae41b561c2b400a4e3cf03b8881a7c787b48397ff",
+  "historical_source_cases_verified": 32738,
+  "native_validation": {
+    "cases_per_condition": 2,
+    "final_answers_extracted": 4,
+    "gpu_indices": [
+      0
+    ],
+    "gpus_used": 1,
+    "ours_branch_events": 8,
+    "purpose": "Native math and multiple-choice final extraction with unchanged full output budget. Not a benchmark rerun or a multi-seed experiment.",
+    "run_plan_sha256": "b25148762e35c75ffb73a24b2a4b5a497fd663a9dd41181944562f41ea6dee81",
+    "status": {
+      "at": "2026-11-24T21:12:07.880053+00:00",
+      "audits_passed": true,
+      "state": "complete"
+    },
+    "thinking_completed": 4
+  },
+  "quickstart": {
+    "gpu_indices": [
+      0
+    ],
+    "gpus_used": 1,
+    "purpose": "Infrastructure interruption/resume/audit; capped outputs are not benchmark scores.",
+    "run_plan_sha256": "cc1328f4db80082e80000401a68d5e111b454be935f14abddf09b0fd01bf4706",
+    "status": {
+      "at": "2026-11-24T21:10:00.203297+00:00",
+      "audits_passed": true,
+      "state": "complete"
+    }
+  },
+  "wheel_verified_from_other_cwd": true
+}

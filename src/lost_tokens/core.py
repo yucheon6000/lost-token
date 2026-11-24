@@ -50,9 +50,19 @@ def extract_choice(text: str, choices: list[str]) -> str | None:
             re.I,
         )
     )
-    if not matches:
+    if matches:
+        value = matches[-1].group(1).upper()
+        return value if value in choices else None
+    # Only an explicit terminal single-letter box in the final response counts.
+    # Never mine a letter from option mentions, derivations, or an open scratchpad.
+    terminal = re.search(
+        r"\\boxed\s*\{\s*([A-Z])\s*\}\s*(?:\$\$?|\\\]|\\\)|\*\*|__)?\s*[.!]?\s*$",
+        text,
+        re.I,
+    )
+    if terminal is None:
         return None
-    value = matches[-1].group(1).upper()
+    value = terminal.group(1).upper()
     return value if value in choices else None
 
 

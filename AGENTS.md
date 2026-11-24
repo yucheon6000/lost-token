@@ -1,5 +1,10 @@
 # Lost Tokens repository
 
+- Main is the promoted argmax/vLLM release. Its curated result snapshot under
+  `results/` is explicitly authorized; the complete shared archive and fixed IDs
+  remain canonical on `shared-evaluation`. Multi-seed evaluation is not implied
+  by publishing this release.
+
 - For shared experiments, read `CLAUDE.md` and the canonical guide on `shared-evaluation`.
   Use that branch's fixed `evaluation/subsets/shared-v1/` IDs; never redraw them.
   Personal `{name}-{YYYY-MM-DD}` branches contain code/settings/tests only.
