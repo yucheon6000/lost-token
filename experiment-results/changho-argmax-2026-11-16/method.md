@@ -1,0 +1,15 @@
+# Released argmax method
+
+Within the thinking phase, when two ordinary next tokens each have raw probability at least 0.2, generate independent 64-token candidate continuations. Commit the rank-1 continuation exactly. Keep only an unchosen candidate that passes the unchanged cosine deduplication rule (threshold 0.85), with an explicit unverified-memory preamble. Candidate caches are independent. Forks are at least 256 body tokens apart. Alternative memory capacity is 8192 tokens, compacted to 4096, with the original compaction semantics. The final-answer phase is ordinary continuation and receives no new branching intervention. Reference answers enter scoring only.
+
+This is one fixed argmax configuration across all six datasets. There is no lookahead selection, disagreement verification, complete-answer voting, latent embedding mixing, EM-INF or new budget forcing in the promoted preset. Ours incurs rollout, embedding and side-input prefill costs; one final answer is not a claim of equal compute to ordinary AR.
+
+The packaged default exactly equals configs/vllm-argmax.json. It selects the pinned vLLM 0.10.2 V0 backend, BF16 Qwen/Qwen3-4B-Thinking-2507 revision 768f209d9ea81521153ed38c47d515654e938aea, seed 95021, temperature 0.6, top-k 20, top-p 0.95 and a 32768-token body cap. The explicit lookahead control and Transformers argmax preset remain available.
+
+Historical inference was archived with the initial method, tracked at generation code commit 204b01c7ee62027115be4d5456bb49acc5d382ed and per-run source identities. Some completed AIME/HMMT/GSM runs were reused from their earlier audited vLLM runs; original timings and source hashes are preserved. Full-suite aggregation completed on 2026-11-16. The published score correction was applied to saved final responses only and has been independently rechecked for this release. No historical checkpoints or predictions were overwritten.
+
+The release keeps the original decoding/branching and cosine modules, promotes the evaluated argmax config as packaged defaults, and includes the corrected multiple-choice extractor, initialization coordination, stale-heartbeat recovery and publication-path redaction. The multi-seed phase is not started. A future comparison should preregister seeds and compare baseline/ours at each same seed and fixed ID cohort.
+
+Validation includes the full CPU suite, wheel resource/CLI loading from another working directory, the README quickstart with interrupted/resumed workers, and native full-budget math/multiple-choice final extraction on an allocated GPU. These validation cases are excluded from the historical benchmark table. See validation.json for exact identities and counts.
+
+Stable main promotion: [5112f934e3881d0891073babcc76016dd6f25388](https://github.com/yucheon6000/lost-token/commit/5112f934e3881d0891073babcc76016dd6f25388). The main result snapshot is under `results/argmax-single-seed/`; this is publication of existing generations, not a new full benchmark run.
