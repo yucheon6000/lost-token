@@ -4,10 +4,12 @@ import copy
 import importlib.util
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 from lost_tokens.config import load_spec
-from lost_tokens.core import digest
+from lost_tokens.core import digest, atomic_json
 
 ROOT = Path(__file__).resolve().parents[1]
 loader = importlib.util.spec_from_file_location(
@@ -18,6 +20,168 @@ loader.loader.exec_module(study)
 
 
 class MultiSeedTests(unittest.TestCase):
+    def test_retirement_targets_only_matching_stopped_scheduler(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            parent = root / "old"
+            parent.mkdir()
+            proc = root / "proc"
+            proc.mkdir()
+
+            def process(pid, study_path, state):
+                p = proc / str(pid)
+                p.mkdir()
+                command = [
+                    "/venv/bin/python",
+                    "/code/scripts/run_multiseed_argmax.py",
+                    "run",
+                    "--study",
+                    str(study_path),
+                ]
+                (p / "cmdline").write_bytes(b"\0".join(x.encode() for x in command) + b"\0")
+                (p / "status").write_text("State:\t" + state + "\n")
+
+            process(123, parent, "T (stopped)")
+            process(124, root / "unrelated", "S (sleeping)")
+            with patch.object(study.os, "kill") as kill:
+                study.retire_stopped_parent(parent, root / "new", proc)
+                kill.assert_called_once_with(123, study.signal.SIGKILL)
+            self.assertEqual(
+                study.read(parent / "superseded.json")["replacement_study"], str(root / "new")
+            )
+            (proc / "123" / "status").write_text("State:\tS (sleeping)\n")
+            with patch.object(study.os, "kill") as kill:
+                with self.assertRaisesRegex(RuntimeError, "still active"):
+                    study.retire_stopped_parent(parent, root / "new", proc)
+                kill.assert_not_called()
+
+    def test_busy_supervisor_lock_is_observed_without_interrupting_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with (root / "supervisor.lock").open("a") as lock:
+                study.fcntl.flock(lock, study.fcntl.LOCK_EX | study.fcntl.LOCK_NB)
+                self.assertTrue(study.supervisor_busy(root))
+            self.assertFalse(study.supervisor_busy(root))
+
+    def continuation_fixture(self, root):
+        cfg = load_spec(ROOT / "configs/vllm-argmax.json")
+        pipeline = study.read(ROOT / "configs/multiseed-argmax.json")
+        old_pipeline = copy.deepcopy(pipeline)
+        old_pipeline["seeds"] = [95025 if s == 42 else s for s in pipeline["seeds"]]
+        m = {
+            "source": {},
+            "config": cfg,
+            "cohort": {},
+            "gpus": "0",
+            "work_dir": str(root),
+            "model_cache": str(root / "models"),
+            "environment": {"runtime": {}},
+            "pipeline": pipeline,
+            "inputs": {},
+        }
+        parent = root / "parent"
+        parent.mkdir()
+        old = {**m, "pipeline": old_pipeline}
+        atomic_json(parent / "manifest.json", old)
+        atomic_json(parent / "manifest-sha256.json", {"sha256": digest(old)})
+        seed_cfg = copy.deepcopy(cfg)
+        seed_cfg["experiment"]["seed"] = 95022
+        old_cfg = parent / "seed.json"
+        new_cfg = root / "seed.json"
+        atomic_json(old_cfg, seed_cfg)
+        atomic_json(new_cfg, seed_cfg)
+        baseline = parent / "baseline"
+        ongoing = parent / "ours"
+        for path in (baseline, ongoing):
+            path.mkdir()
+            atomic_json(path / "plan.json", {})
+        outcomes = parent / "outcomes.json"
+        atomic_json(outcomes, [{"id": "one", "correct": True}])
+        ref = parent / "reference.json"
+        sha = study.seal_reference(
+            ref,
+            {
+                "seed": 95022,
+                "task": "aime25",
+                "n": 1,
+                "correct": 1,
+                "outcomes": [{"id": "one", "correct": True}],
+            },
+        )
+        jobs = []
+        for arm, path, status in [("baseline", baseline, "complete"), ("ours", ongoing, "running")]:
+            job = {
+                "seed": 95022,
+                "task": "aime25",
+                "arm": arm,
+                "state": status,
+                "run_path": str(path),
+                "config_file": str(old_cfg),
+                "reused": False,
+                "n": 1 if arm == "baseline" else 0,
+                "correct": 1 if arm == "baseline" else 0,
+                "audits_passed": arm == "baseline",
+                "started_at": "original-start",
+                "deadline_epoch": None,
+            }
+            if arm == "baseline":
+                job.update(
+                    reference_file=str(ref), reference_sha256=sha, outcomes_file=str(outcomes)
+                )
+            jobs.append(job)
+        jobs.append(
+            {
+                "seed": 95025,
+                "task": "aime25",
+                "arm": "baseline",
+                "state": "queued",
+                "n": 0,
+                "run_path": str(parent / "unused"),
+            }
+        )
+        atomic_json(parent / "status.json", {"started_at": "original-study-start", "jobs": jobs})
+        new_jobs = [
+            {
+                "seed": 95022,
+                "task": "aime25",
+                "arm": arm,
+                "reused": False,
+                "state": "queued",
+                "config_file": str(new_cfg),
+                "estimated_seconds": 10,
+            }
+            for arm in ["baseline", "ours"]
+        ]
+        return SimpleNamespace(continuation_study=parent), m, new_jobs
+
+    def test_seed_amendment_preserves_original_runs_references_and_deadlines(self):
+        with tempfile.TemporaryDirectory() as directory:
+            args, m, jobs = self.continuation_fixture(Path(directory))
+            frozen = (args.continuation_study / "manifest.json").read_bytes()
+            with patch.object(study, "validate_job_run"):
+                start = study.continue_study(args, m, jobs)
+            self.assertEqual(start, "original-study-start")
+            self.assertEqual(jobs[0]["state"], "complete")
+            self.assertEqual(jobs[1]["state"], "queued")
+            self.assertEqual(jobs[1]["started_at"], "original-start")
+            self.assertIsNone(jobs[1]["deadline_epoch"])
+            self.assertEqual(Path(jobs[1]["run_path"]), args.continuation_study / "ours")
+            self.assertEqual(m["seed_amendment"]["added_seeds"], [42])
+            self.assertEqual(m["seed_amendment"]["removed_unstarted_seeds"], [95025])
+            self.assertEqual((args.continuation_study / "manifest.json").read_bytes(), frozen)
+            self.assertIn(jobs[0]["reference_file"], m["inputs"])
+
+    def test_seed_amendment_rejects_dropping_started_seed_or_changed_inference(self):
+        with tempfile.TemporaryDirectory() as directory:
+            args, m, jobs = self.continuation_fixture(Path(directory))
+            (args.continuation_study / "unused").mkdir()
+            with self.assertRaisesRegex(ValueError, "already started"):
+                study.continue_study(args, m, jobs)
+            (args.continuation_study / "unused").rmdir()
+            m["source"] = {"altered": "source"}
+            with self.assertRaisesRegex(ValueError, "inference"):
+                study.continue_study(args, m, jobs)
+
     def test_pipeline_requires_all_six_tasks_and_distinct_matched_seeds(self):
         cfg = load_spec(ROOT / "configs/vllm-argmax.json")
         pipe = study.read(ROOT / "configs/multiseed-argmax.json")

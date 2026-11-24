@@ -289,6 +289,90 @@ def historical_results(args, m):
     return jobs, inputs
 
 
+def continue_study(args, m, jobs):
+    """Amend only unstarted seed membership, preserving existing run identities.
+
+    The old scheduler must be stopped before handoff, while its current GPU child
+    may finish normally. Completed references/results are retained byte-for-byte;
+    an existing unfinished run is resumed at its original path and deadline.
+    """
+    if args.continuation_study is None:
+        return None
+    parent_path = args.continuation_study
+    parent = read(parent_path / "manifest.json")
+    previous = read(parent_path / "status.json")
+    if digest(parent) != read(parent_path / "manifest-sha256.json")["sha256"]:
+        raise ValueError("Continuation parent manifest changed")
+    for key in ("source", "config", "cohort", "gpus", "work_dir", "model_cache"):
+        if parent[key] != m[key]:
+            raise ValueError("Continuation would change inference/cohort/allocation: " + key)
+    if parent["environment"]["runtime"] != m["environment"]["runtime"]:
+        raise ValueError("Continuation runtime differs")
+    old_seeds, new_seeds = parent["pipeline"]["seeds"], m["pipeline"]["seeds"]
+    if len(old_seeds) != len(new_seeds) or {
+        k: v for k, v in parent["pipeline"].items() if k != "seeds"
+    } != {k: v for k, v in m["pipeline"].items() if k != "seeds"}:
+        raise ValueError("Continuation may replace seeds only, keeping the same study size")
+    removed = set(old_seeds) - set(new_seeds)
+    for job in previous["jobs"]:
+        if job["seed"] in removed and (
+            job["state"] != "queued" or job.get("n", 0) or Path(job["run_path"]).exists()
+        ):
+            raise ValueError("Cannot drop an already started seed")
+    for name in ("manifest.json", "manifest-sha256.json", "status.json"):
+        path = parent_path / name
+        m["inputs"][str(path)] = file_digest(path)
+    old_jobs = {(j["seed"], j["task"], j["arm"]): j for j in previous["jobs"]}
+    inherited = []
+    for job in jobs:
+        if job["reused"]:
+            continue
+        old = old_jobs.get((job["seed"], job["task"], job["arm"]))
+        if old is None or not Path(old["run_path"]).exists():
+            continue
+        if load_spec(old["config_file"]) != load_spec(job["config_file"]):
+            raise ValueError("Continuation seed configuration differs")
+        validate_job_run(old, m, args, complete=old["state"] == "complete")
+        new_config, estimate = job["config_file"], job["estimated_seconds"]
+        adopted = dict(old)
+        adopted.update(
+            config_file=new_config,
+            estimated_seconds=estimate,
+            reused=False,
+            state="complete" if old["state"] == "complete" else "queued",
+            continued_from={"study": str(parent_path), "manifest_sha256": digest(parent)},
+        )
+        job.clear()
+        job.update(adopted)
+        for path in (Path(old["run_path"]) / "plan.json", Path(old["config_file"])):
+            m["inputs"][str(path)] = file_digest(path)
+        if old["state"] == "complete":
+            m["inputs"][old["outcomes_file"]] = file_digest(Path(old["outcomes_file"]))
+            if old["arm"] == "baseline":
+                baseline_for(previous, old["seed"], old["task"])
+                m["inputs"][old["reference_file"]] = file_digest(Path(old["reference_file"]))
+        inherited.append(
+            {
+                "seed": old["seed"],
+                "task": old["task"],
+                "arm": old["arm"],
+                "run_path": old["run_path"],
+                "previous_state": old["state"],
+            }
+        )
+    m["seed_amendment"] = {
+        "reason": "Explicit user seed request; excluded seed had not started; inference settings unchanged",
+        "recorded_at": now(),
+        "parent_manifest_sha256": digest(parent),
+        "old_seeds": old_seeds,
+        "new_seeds": new_seeds,
+        "removed_unstarted_seeds": sorted(removed),
+        "added_seeds": sorted(set(new_seeds) - set(old_seeds)),
+        "inherited_runs": inherited,
+    }
+    return previous["started_at"]
+
+
 def initialize(args):
     if git(
         "status",
@@ -334,6 +418,7 @@ def initialize(args):
         "historical_report": str(args.historical_report),
         "cohort_manifest": str(args.cohort_manifest),
         "native_run": str(args.native_run),
+        "continuation_study": str(args.continuation_study) if args.continuation_study else None,
         "name": args.name,
         "min_free_gib": args.min_free_gib,
         "deadline_epoch": None,
@@ -378,6 +463,7 @@ def initialize(args):
                         "config_file": m["seed_configs"][str(seed)],
                     }
                 )
+    continued_start = continue_study(args, m, jobs)
     native_plan = read(args.native_run / "plan.json")
     if native_plan["source"] != m["source"] or native_plan["gpus"] != args.gpus.split(","):
         raise ValueError("Native validation source/allocation differs")
@@ -388,7 +474,7 @@ def initialize(args):
     shutil.copy2(args.cohort_manifest, args.study / "cohort-manifest.json")
     return m, {
         "state": "prepared",
-        "started_at": None,
+        "started_at": continued_start,
         "jobs": jobs,
         "preflight": {"state": "pending"},
     }
@@ -412,6 +498,9 @@ def check(args, m):
     for path, sha in m["inputs"].items():
         if file_digest(Path(path)) != sha:
             raise ValueError("Frozen input changed: " + path)
+    continuation = str(args.continuation_study) if args.continuation_study else None
+    if continuation != m.get("continuation_study"):
+        raise ValueError("Continuation parent changed")
 
 
 def export(study, m, state):
@@ -713,9 +802,84 @@ def finish_job(args, m, state, job):
     )
 
 
+def supervisor_busy(run):
+    with (run / "supervisor.lock").open("a") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            return False
+        except BlockingIOError:
+            return True
+
+
+def retire_stopped_parent(parent, replacement, proc=Path("/proc")):
+    """Retire only a stopped old scheduler after its GPU child has finished."""
+    retired = []
+    for path in proc.iterdir():
+        if not path.name.isdigit():
+            continue
+        try:
+            command = (path / "cmdline").read_bytes().split(b"\0")
+            if not command or not Path(command[0].decode()).name.startswith("python"):
+                continue
+            if not any(p.endswith(b"/run_multiseed_argmax.py") for p in command):
+                continue
+            if b"--study" not in command or b"run" not in command:
+                continue
+            position = command.index(b"--study") + 1
+            if command[position] != str(parent).encode():
+                continue
+            state = next(
+                line
+                for line in (path / "status").read_text().splitlines()
+                if line.startswith("State:")
+            )
+            if state.split()[1] not in ("T", "t"):
+                raise RuntimeError("Previous scheduler is still active; do not run two schedulers")
+            os.kill(int(path.name), signal.SIGKILL)
+            retired.append(int(path.name))
+        except (FileNotFoundError, ProcessLookupError, PermissionError):
+            continue
+    atomic_json(
+        parent / "superseded.json",
+        {
+            "replacement_study": str(replacement),
+            "at": now(),
+            "retired_scheduler_pids": retired,
+            "reason": "User requested an unstarted seed replacement; frozen inputs and GPU work preserved",
+        },
+    )
+
+
+def await_continued_run(args, m, state, job):
+    if "continued_from" not in job:
+        return
+    run = Path(job["run_path"])
+    while supervisor_busy(run):
+        status = read(run / "status.json")
+        if status["state"] in ("failed", "interrupted", "budget_exhausted"):
+            raise RuntimeError("Inherited run stopped; original checkpoints preserved")
+        job.update(state="running", started_at=job.get("started_at") or now())
+        state["state"] = "running"
+        refresh_job(job)
+        export(args.study, m, state)
+        print(
+            "CONTINUING",
+            job["seed"],
+            job["task"],
+            job["arm"],
+            job["n"],
+            "/",
+            job["n_required"],
+            flush=True,
+        )
+        time.sleep(15)
+    retire_stopped_parent(Path(job["continued_from"]["study"]), args.study)
+
+
 def run_job(args, m, state, job):
     if job["arm"] == "ours":
         baseline_for(state, job["seed"], job["task"])
+    await_continued_run(args, m, state, job)
     shared.require_free_gpus(args.gpus)
     run = Path(job["run_path"])
     if not run.exists():
@@ -815,6 +979,7 @@ def main():
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--config", type=Path, default=ROOT / "configs/vllm-argmax.json")
     parser.add_argument("--pipeline", type=Path, default=ROOT / "configs/multiseed-argmax.json")
+    parser.add_argument("--continuation-study", type=Path)
     parser.add_argument("--gpus", required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--min-free-gib", type=float, default=32)
