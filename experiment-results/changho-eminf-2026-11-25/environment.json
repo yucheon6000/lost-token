@@ -1,0 +1,112 @@
+{
+  "capture_scope": "before study launch",
+  "cpu_architecture": "x86_64",
+  "cpu_logical_count": 256,
+  "environment_variables": {
+    "CUDA_VISIBLE_DEVICES": null,
+    "OMP_NUM_THREADS": null,
+    "VLLM_USE_V1": null
+  },
+  "execution": {
+    "backend": "vllm",
+    "dtype": "bfloat16",
+    "gpu_memory_fraction": 0.85,
+    "gpu_workers": 8,
+    "max_concurrent_cases_per_gpu": 8,
+    "model": "Qwen/Qwen3-4B-Thinking-2507",
+    "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "tensor_parallel_size": 1,
+    "vllm_batch_tokens": 4096
+  },
+  "gpu_cli_indices": "0,1,2,3,4,5,6,7",
+  "gpu_count": 8,
+  "gpus": [
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "0",
+      "uuid": "GPU-32baf646-0b90-75f5-fd4c-8f84e66d1d3e"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "1",
+      "uuid": "GPU-f65d2480-22e3-8981-25dd-91ee44c3b544"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "2",
+      "uuid": "GPU-87a49c83-a54b-0f9a-ec77-633a45f6b5c4"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "3",
+      "uuid": "GPU-c6d16c0d-cf3e-db87-6e60-8f1f52d83a22"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "4",
+      "uuid": "GPU-6170ae3e-301b-f10f-b931-3d8f27876b2e"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "5",
+      "uuid": "GPU-7534c195-7b68-8d3a-b6a4-8bbc4334b015"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "6",
+      "uuid": "GPU-6fef2d20-7273-89d1-6fed-09962fc2fb5f"
+    },
+    {
+      "driver_version": "610.57.04",
+      "memory_total_mib": 97887,
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "physical_index": "7",
+      "uuid": "GPU-042ec1bb-2d6b-27df-2f57-5d3120b597f4"
+    }
+  ],
+  "host_ram_bytes": 811067154432,
+  "physical_gpu_indices": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+  ],
+  "recorded_at": "2026-11-25T00:49:43.170484+09:00",
+  "runtime": {
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "packages": {
+      "huggingface-hub": "0.36.2",
+      "numpy": "2.2.6",
+      "tokenizers": "0.22.2",
+      "torch": "2.8.0",
+      "transformers": "4.57.1",
+      "vllm": "0.10.2"
+    },
+    "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3"
+  },
+  "runtime_scope": "launcher; worker-specific execution environments are exported separately",
+  "scoring_packages": {
+    "math-verify": "0.9.0",
+    "sympy": "1.14.0"
+  }
+}

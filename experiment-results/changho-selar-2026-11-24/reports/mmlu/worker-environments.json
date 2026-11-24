@@ -1,0 +1,218 @@
+[
+  {
+    "allocated_gpu": "0",
+    "elapsed_seconds": 10103.942393064499,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1756,
+      "soft_inputs_applied": 816292,
+      "steps": 645427
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "cbdd5bc6692f79f456ae533229ab862dfaa8ec96f7d82b37a0f1fd8f95202481",
+    "status_sha256": "8070b14e85f1d3cb267f9d1f736118e18bdc1e16d042db505f48bc4807339966",
+    "visible_gpu": "0"
+  },
+  {
+    "allocated_gpu": "1",
+    "elapsed_seconds": 10673.03253030777,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1756,
+      "soft_inputs_applied": 871179,
+      "steps": 670656
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "6748a7d3f7dab0cb7d84ff4ec41dfd03a904ae730dc8f8726e8070f2fe7450fb",
+    "status_sha256": "ce92ac98a99bd55eb545cb37c57481e512716928addfa1af44aff0bd64d5fef2",
+    "visible_gpu": "1"
+  },
+  {
+    "allocated_gpu": "2",
+    "elapsed_seconds": 10494.895475625992,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 838280,
+      "steps": 663010
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "b6d6697e319567f769e07165466f6686273b94c67016e2218a7d760e172ce9e5",
+    "status_sha256": "7a30a5781d3e973087abfbf70500717be7a99adda6e3eadf7e10386986c24e8f",
+    "visible_gpu": "2"
+  },
+  {
+    "allocated_gpu": "3",
+    "elapsed_seconds": 10310.9024040699,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 835392,
+      "steps": 652813
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "d2ddc67cd6e826d176a78e13a6907eaabbeab00d66bc56fe86c21cfd5b98f8df",
+    "status_sha256": "bac4f4195c561f8702a909706fd599fb7dd6fdc14d4a12526ca41af77aec3cfe",
+    "visible_gpu": "3"
+  },
+  {
+    "allocated_gpu": "4",
+    "elapsed_seconds": 10519.148213624954,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 873259,
+      "steps": 669713
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "76eb240a57c7bfa62bd0695a752643f51dc9e251826f6ff4b301d5d8a3e65df7",
+    "status_sha256": "349ea7a4dff6c7a9926b7ae75860e51a110f2321a15256fcc6df335d51fe0595",
+    "visible_gpu": "4"
+  },
+  {
+    "allocated_gpu": "5",
+    "elapsed_seconds": 10231.25735616684,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 840791,
+      "steps": 656305
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "e5a77029e46571eef3094fc421f32ac45fca5a8280d02cc43418f2c64a5fb192",
+    "status_sha256": "bf4c4f2edaf3181ba765b14149305cab191ed4b26fd9623467a1772226ddea60",
+    "visible_gpu": "5"
+  },
+  {
+    "allocated_gpu": "6",
+    "elapsed_seconds": 10219.738625526428,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 837143,
+      "steps": 652102
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "12ca9d3247012961052ff37da50439c01765d6ef536d137f10446dd09ec4f7db",
+    "status_sha256": "7d746f3ed9e35f7075dfe0c3b5d966a2e7ce17513eed0c2d6cb3ced57bffd6c1",
+    "visible_gpu": "6"
+  },
+  {
+    "allocated_gpu": "7",
+    "elapsed_seconds": 10107.722204685211,
+    "engine_metrics": {
+      "max_active": 8,
+      "requests": 1755,
+      "soft_inputs_applied": 845576,
+      "steps": 650878
+    },
+    "environment": {
+      "cuda_runtime": "12.8",
+      "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "packages": {
+        "huggingface-hub": "0.36.2",
+        "numpy": "2.2.6",
+        "tokenizers": "0.22.2",
+        "torch": "2.8.0",
+        "transformers": "4.57.1",
+        "vllm": "0.10.2"
+      },
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3"
+    },
+    "identity_sha256": "0a2171fea3ca61e0095f4a09f34917778650534001d1fc968978a67f45fd892a",
+    "status_sha256": "ae14151f79f719022522a78cf4e16046ac519ff6b53d73915ae832a5221f1549",
+    "visible_gpu": "7"
+  }
+]

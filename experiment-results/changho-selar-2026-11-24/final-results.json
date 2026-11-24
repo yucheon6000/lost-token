@@ -1,0 +1,74 @@
+{
+  "aime25": {
+    "baseline_correct": 21,
+    "cap_hits": 6,
+    "gains": 3,
+    "losses": 1,
+    "mean_body_tokens": 21070.166666666668,
+    "missing_finals": 6,
+    "n": 30,
+    "ours_correct": 23,
+    "outcomes_sha256": "41d1918ad145ab8017b7e0b11acf4e07ef2231e2ef472aae17a6e001684fc7a1",
+    "wall_minutes": 10.289244700000001
+  },
+  "gpqa": {
+    "baseline_correct": 280,
+    "cap_hits": 0,
+    "gains": 35,
+    "losses": 38,
+    "mean_body_tokens": 8585.279017857143,
+    "missing_finals": 2,
+    "n": 448,
+    "ours_correct": 277,
+    "outcomes_sha256": "83c8a142f63c1b87ba26e1d519fc7b6c8e4cf0c1200917db3e69f03de97b752d",
+    "wall_minutes": 22.84826028333333
+  },
+  "gsm8k": {
+    "baseline_correct": 1261,
+    "cap_hits": 0,
+    "gains": 11,
+    "losses": 12,
+    "mean_body_tokens": 1495.6087945413192,
+    "missing_finals": 0,
+    "n": 1319,
+    "ours_correct": 1260,
+    "outcomes_sha256": "6963fd17ad5130545a94d75097dfd1878be88eef3895df629493b590b8cdfa13",
+    "wall_minutes": 9.77011865
+  },
+  "hmmt25": {
+    "baseline_correct": 16,
+    "cap_hits": 7,
+    "gains": 3,
+    "losses": 3,
+    "mean_body_tokens": 24684.366666666665,
+    "missing_finals": 7,
+    "n": 30,
+    "ours_correct": 16,
+    "outcomes_sha256": "9b330ca9451f69deb1ae0eb718a1cd4ea8146797ccbad61876c87429c546db55",
+    "wall_minutes": 10.038236750000001
+  },
+  "math500": {
+    "baseline_correct": 491,
+    "cap_hits": 3,
+    "gains": 2,
+    "losses": 4,
+    "mean_body_tokens": 6147.616,
+    "missing_finals": 3,
+    "n": 500,
+    "ours_correct": 489,
+    "outcomes_sha256": "0a377eb77f453f0b65bdc28d59baea8489ee34dfc20c8c7299af40cd0a5ce213",
+    "wall_minutes": 23.328444083333334
+  },
+  "mmlu": {
+    "baseline_correct": 11455,
+    "cap_hits": 0,
+    "gains": 418,
+    "losses": 457,
+    "mean_body_tokens": 2979.1950576840904,
+    "missing_finals": 3,
+    "n": 14042,
+    "ours_correct": 11416,
+    "outcomes_sha256": "500f656ed6e6a922ef64fae3df93321c449cc7272df9d43cedeaa7b9bcfa8c64",
+    "wall_minutes": 178.0202454666667
+  }
+}

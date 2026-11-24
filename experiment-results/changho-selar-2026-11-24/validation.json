@@ -1,0 +1,31 @@
+{
+  "all_worker_audits_passed": true,
+  "baseline_seals_verified": true,
+  "cpu_test_count": 186,
+  "cpu_tests_passed": true,
+  "full_cohorts_verified": true,
+  "native_preflights_excluded_from_scores": [
+    {
+      "audits_passed": true,
+      "correct": 15,
+      "missing": 0,
+      "n": 16,
+      "n_required": 16,
+      "outcomes_sha256": "b2d66e31b63443eda0a3a6c130447e28754ecf51fd237ec21b5544600c8b35a7",
+      "state": "complete",
+      "task": "gsm8k"
+    },
+    {
+      "audits_passed": true,
+      "correct": 12,
+      "missing": 0,
+      "n": 16,
+      "n_required": 16,
+      "outcomes_sha256": "6978edbf24dfadedf49590c9d1ef4d59ec4b84fd0e7b12208ae09a5ec2e8bcad",
+      "state": "complete",
+      "task": "mmlu"
+    }
+  ],
+  "single_seed_only": true,
+  "wheel_and_different_cwd_verified": true
+}

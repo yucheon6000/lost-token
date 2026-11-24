@@ -1,0 +1,156 @@
+{
+  "backend": "vllm",
+  "baseline_reference_sha256": "a7a7654bd924863a744e972daae92c9dbdbd77a0f2f1ab9f574ef0be90caf715",
+  "code_branch": "changho-eminf-2026-11-25",
+  "code_commit": "86f0a0eca221227bd9fc638bb5a40164db8b3c2c",
+  "cohort_manifest_sha256": "fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55",
+  "cohort_version": "full-v1",
+  "comparison_compute_scope": "One trajectory and one final answer per condition; original AR reference measured with identical eager/no-prefix-cache engine. No answer ensemble.",
+  "completed_at": "2026-11-25T05:32:15.212391+09:00",
+  "dtype": "bfloat16",
+  "engine_settings": {
+    "enforce_eager": true,
+    "prefix_caching": false
+  },
+  "evaluation_settings_sha256": "36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032",
+  "id": "changho-eminf-2026-11-25",
+  "model": "Qwen/Qwen3-4B-Thinking-2507",
+  "model_revision": "768f209d9ea81521153ed38c47d515654e938aea",
+  "rows": [
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 21,
+        "n": 30
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "aime25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 30,
+      "ours": {
+        "correct": 23,
+        "n": 30
+      },
+      "outcomes_sha256": "7f65ae52a153e6d0f615adfa7bde8cf840ef4334b524b92085e2ef4e96df88ef",
+      "paired_gains": 2,
+      "paired_losses": 0
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 16,
+        "n": 30
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "hmmt25",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 30,
+      "ours": {
+        "correct": 15,
+        "n": 30
+      },
+      "outcomes_sha256": "de0d93661d19784ce8c8f73b1b5438875331a8bba18cd81a5501edad8a4af0e1",
+      "paired_gains": 1,
+      "paired_losses": 2
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 280,
+        "n": 448
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "gpqa",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 448,
+      "ours": {
+        "correct": 261,
+        "n": 448
+      },
+      "outcomes_sha256": "bf40bb67f1aa96a39613caa329da975e7c005e5a5a4a91e4a71a0e535588a13c",
+      "paired_gains": 24,
+      "paired_losses": 43
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 1261,
+        "n": 1319
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "gsm8k",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 1319,
+      "ours": {
+        "correct": 1258,
+        "n": 1319
+      },
+      "outcomes_sha256": "d9ebd8d0b82445d89eb1378fe04f7ea68785f5722e1f353bc742217c581f5b1d",
+      "paired_gains": 10,
+      "paired_losses": 13
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 491,
+        "n": 500
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "math500",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 500,
+      "ours": {
+        "correct": 491,
+        "n": 500
+      },
+      "outcomes_sha256": "54ff78d5f95357dc761ada48e8c2d2d71866a05a6035ce86a105f577ead44b07",
+      "paired_gains": 2,
+      "paired_losses": 2
+    },
+    {
+      "audits_passed": true,
+      "baseline": {
+        "correct": 11455,
+        "n": 14042
+      },
+      "baseline_reused_from_original_study": true,
+      "batch_size_per_gpu": 8,
+      "complete_generations_per_question": 1,
+      "dataset": "mmlu",
+      "gpu_count": 8,
+      "gpu_model": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "method": "em_inf/eager-no-prefix",
+      "n_required": 14042,
+      "ours": {
+        "correct": 11420,
+        "n": 14042
+      },
+      "outcomes_sha256": "60cfdd9c26523c603ca29a3ccdcc76bfea499076a92be63988bd6c0ff5ab1c8a",
+      "paired_gains": 411,
+      "paired_losses": 446
+    }
+  ],
+  "scope": "full",
+  "scorer_sha256": "544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a",
+  "seed": 95021
+}
