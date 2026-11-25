@@ -1,0 +1,10 @@
+{
+  "protocol": "argmax-five-benchmarks-priority-v1",
+  "seeds": [95021, 95022, 42, 95023, 95024],
+  "historical_seed": 95021,
+  "benchmarks": ["aime25", "hmmt25", "gpqa", "gsm8k", "math500"],
+  "cohort": "full-v1",
+  "primary_analysis": "new seeds only; historical seed reported separately",
+  "method": "filtered_futures/argmax",
+  "arms": ["baseline", "ours"]
+}
