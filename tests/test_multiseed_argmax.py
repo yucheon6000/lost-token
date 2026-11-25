@@ -177,9 +177,64 @@ class MultiSeedTests(unittest.TestCase):
             (args.continuation_study / "unused").mkdir()
             with self.assertRaisesRegex(ValueError, "already started"):
                 study.continue_study(args, m, jobs)
+
             (args.continuation_study / "unused").rmdir()
             m["source"] = {"altered": "source"}
             with self.assertRaisesRegex(ValueError, "inference"):
+                study.continue_study(args, m, jobs)
+
+    def reduction_fixture(self, root):
+        args, m, jobs = self.continuation_fixture(root)
+        parent = study.read(args.continuation_study / "manifest.json")
+        parent["pipeline"]["seeds"] = m["pipeline"]["seeds"] + [95023]
+        atomic_json(args.continuation_study / "manifest.json", parent)
+        atomic_json(args.continuation_study / "manifest-sha256.json", {"sha256": digest(parent)})
+        args.reduce_seeds = True
+        state = study.read(args.continuation_study / "status.json")
+        outcomes = root / "archived.json"
+        records = [{"id": "one", "correct": True}]
+        atomic_json(outcomes, records)
+        state["jobs"].append(
+            {
+                "seed": 95023,
+                "task": "aime25",
+                "arm": "ours",
+                "state": "complete",
+                "audits_passed": True,
+                "n": 1,
+                "correct": 1,
+                "outcomes_file": str(outcomes),
+                "outcomes_sha256": digest(records),
+            }
+        )
+        atomic_json(args.continuation_study / "status.json", state)
+        return args, m, jobs, outcomes
+
+    def test_scope_reduction_archives_completed_excluded_results_without_rewriting(self):
+        with tempfile.TemporaryDirectory() as directory:
+            args, m, jobs, outcomes = self.reduction_fixture(Path(directory))
+            before = outcomes.read_bytes()
+            frozen = (args.continuation_study / "manifest.json").read_bytes()
+            with patch.object(study, "validate_job_run"):
+                study.continue_study(args, m, jobs)
+            self.assertTrue(m["seed_amendment"]["scope_reduction"])
+            self.assertEqual(m["seed_amendment"]["excluded_seeds"], [95023])
+            self.assertEqual(len(m["seed_amendment"]["archived_completed_results"]), 1)
+            self.assertEqual(outcomes.read_bytes(), before)
+            self.assertEqual((args.continuation_study / "manifest.json").read_bytes(), frozen)
+            self.assertIn(str(outcomes), m["inputs"])
+
+    def test_scope_reduction_rejects_unfinished_excluded_work_and_changed_archives(self):
+        with tempfile.TemporaryDirectory() as directory:
+            args, m, jobs, outcomes = self.reduction_fixture(Path(directory))
+            atomic_json(outcomes, [{"id": "one", "correct": False}])
+            with self.assertRaisesRegex(ValueError, "identity"):
+                study.continue_study(args, m, jobs)
+            atomic_json(outcomes, [{"id": "one", "correct": True}])
+            state = study.read(args.continuation_study / "status.json")
+            state["jobs"][-1].update(state="running", run_path=str(Path(directory) / "running"))
+            atomic_json(args.continuation_study / "status.json", state)
+            with self.assertRaisesRegex(ValueError, "already started"):
                 study.continue_study(args, m, jobs)
 
     def test_pipeline_requires_all_six_tasks_and_distinct_matched_seeds(self):

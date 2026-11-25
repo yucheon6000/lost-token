@@ -290,7 +290,7 @@ def historical_results(args, m):
 
 
 def continue_study(args, m, jobs):
-    """Amend only unstarted seed membership, preserving existing run identities.
+    """Amend seed membership while preserving existing run identities.
 
     The old scheduler must be stopped before handoff, while its current GPU child
     may finish normally. Completed references/results are retained byte-for-byte;
@@ -309,15 +309,42 @@ def continue_study(args, m, jobs):
     if parent["environment"]["runtime"] != m["environment"]["runtime"]:
         raise ValueError("Continuation runtime differs")
     old_seeds, new_seeds = parent["pipeline"]["seeds"], m["pipeline"]["seeds"]
-    if len(old_seeds) != len(new_seeds) or {
+    reduction = bool(getattr(args, "reduce_seeds", False))
+    if reduction and not (len(new_seeds) >= 3 and set(new_seeds) < set(old_seeds)):
+        raise ValueError("Scope reduction requires a proper subset of at least three seeds")
+    if (len(old_seeds) != len(new_seeds) and not reduction) or {
         k: v for k, v in parent["pipeline"].items() if k != "seeds"
     } != {k: v for k, v in m["pipeline"].items() if k != "seeds"}:
-        raise ValueError("Continuation may replace seeds only, keeping the same study size")
+        raise ValueError("Continuation changes seeds only; size reduction requires --reduce-seeds")
     removed = set(old_seeds) - set(new_seeds)
+    archived_results = []
     for job in previous["jobs"]:
-        if job["seed"] in removed and (
-            job["state"] != "queued" or job.get("n", 0) or Path(job["run_path"]).exists()
-        ):
+        if job["seed"] not in removed:
+            continue
+        if reduction and job["state"] == "complete" and job.get("audits_passed"):
+            records = read(job["outcomes_file"])
+            if digest(records) != job["outcomes_sha256"]:
+                raise ValueError("Archived completed outcome identity changed")
+            m["inputs"][job["outcomes_file"]] = file_digest(Path(job["outcomes_file"]))
+            if job["arm"] == "baseline":
+                baseline_for(previous, job["seed"], job["task"])
+                m["inputs"][job["reference_file"]] = file_digest(Path(job["reference_file"]))
+            archived_results.append(
+                {
+                    key: job[key]
+                    for key in (
+                        "seed",
+                        "task",
+                        "arm",
+                        "n",
+                        "correct",
+                        "outcomes_file",
+                        "outcomes_sha256",
+                    )
+                }
+            )
+            continue
+        if job["state"] != "queued" or job.get("n", 0) or Path(job["run_path"]).exists():
             raise ValueError("Cannot drop an already started seed")
     for name in ("manifest.json", "manifest-sha256.json", "status.json"):
         path = parent_path / name
@@ -361,12 +388,17 @@ def continue_study(args, m, jobs):
             }
         )
     m["seed_amendment"] = {
-        "reason": "Explicit user seed request; excluded seed had not started; inference settings unchanged",
+        "reason": "Explicit user scope reduction; completed excluded results archived unchanged"
+        if reduction
+        else "Explicit user seed request; excluded seed had not started; inference settings unchanged",
+        "scope_reduction": reduction,
         "recorded_at": now(),
         "parent_manifest_sha256": digest(parent),
         "old_seeds": old_seeds,
         "new_seeds": new_seeds,
-        "removed_unstarted_seeds": sorted(removed),
+        "removed_unstarted_seeds": [] if reduction else sorted(removed),
+        "excluded_seeds": sorted(removed) if reduction else [],
+        "archived_completed_results": archived_results,
         "added_seeds": sorted(set(new_seeds) - set(old_seeds)),
         "inherited_runs": inherited,
     }
@@ -501,6 +533,10 @@ def check(args, m):
     continuation = str(args.continuation_study) if args.continuation_study else None
     if continuation != m.get("continuation_study"):
         raise ValueError("Continuation parent changed")
+    if bool(getattr(args, "reduce_seeds", False)) != m.get("seed_amendment", {}).get(
+        "scope_reduction", False
+    ):
+        raise ValueError("Frozen scope reduction authorization changed")
 
 
 def export(study, m, state):
@@ -845,7 +881,7 @@ def retire_stopped_parent(parent, replacement, proc=Path("/proc")):
             "replacement_study": str(replacement),
             "at": now(),
             "retired_scheduler_pids": retired,
-            "reason": "User requested an unstarted seed replacement; frozen inputs and GPU work preserved",
+            "reason": "User requested a seed scope amendment; frozen inputs and GPU work preserved",
         },
     )
 
@@ -980,6 +1016,7 @@ def main():
     parser.add_argument("--config", type=Path, default=ROOT / "configs/vllm-argmax.json")
     parser.add_argument("--pipeline", type=Path, default=ROOT / "configs/multiseed-argmax.json")
     parser.add_argument("--continuation-study", type=Path)
+    parser.add_argument("--reduce-seeds", action="store_true")
     parser.add_argument("--gpus", required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--min-free-gib", type=float, default=32)
