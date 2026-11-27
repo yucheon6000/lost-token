@@ -1,0 +1,2370 @@
+[
+  {
+    "arm": "baseline",
+    "audit_sha256": "cefe762218eff20b9180a15b094f366aa3f528e909281527ff485af8a306c835",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "0",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker0.json",
+        "gpu": "0",
+        "name": "baseline-worker0",
+        "split": "configs/baseline-worker0-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "6dc2c4cd4c131c3f402595bedf8608040ac1e4cec07edb64f5d0e2541a7e9815"
+    },
+    "identity_sha256_before_redaction": "c16ab76782ef957cdce0bfd7ec82ec12abbc1e2b7cd7fbe2a54a8dd1f3435293",
+    "worker": "baseline-worker0"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "d03542134b32d38694b486f164ed9791ae8a435d818a5581f468dd69fc873174",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "1",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker1.json",
+        "gpu": "1",
+        "name": "baseline-worker1",
+        "split": "configs/baseline-worker1-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "f1260312b32b35b34f83275ca12c46b8017c620d23cb400c5f32f4a7c01436ef"
+    },
+    "identity_sha256_before_redaction": "97db6205213e9af8eb66e9cc9eaa9c4422453686c0ae81efc68a94bd6e68af69",
+    "worker": "baseline-worker1"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "76e7db874d3349fed4b430b2faec897add354eebde20b3a7f097e069d0c2d7da",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "2",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker2.json",
+        "gpu": "2",
+        "name": "baseline-worker2",
+        "split": "configs/baseline-worker2-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "b95bac29007c182aaee7368c910d969888dde83061d423294057ac9b6347f89c"
+    },
+    "identity_sha256_before_redaction": "c82607fd5f9008b330958e7d9a386678b6078f3ea983f733e626fddc8f1f02e7",
+    "worker": "baseline-worker2"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "db9d31663e4038d6c1ac99e48e84c1c2ab6987008949296c9e90df9770155abd",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "3",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker3.json",
+        "gpu": "3",
+        "name": "baseline-worker3",
+        "split": "configs/baseline-worker3-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "6e4b9100e84dd0fdefa18cc91177a93701187219a81424053986d800c3396265"
+    },
+    "identity_sha256_before_redaction": "a7783968bb855ed9fcb1accbe457063b52d7f0e504bd251862661b4c2724d413",
+    "worker": "baseline-worker3"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "a47914503ad604e6c01015244f9538375e81b7726ed62bfbb3527251fc16b4a6",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "4",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker4.json",
+        "gpu": "4",
+        "name": "baseline-worker4",
+        "split": "configs/baseline-worker4-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "244881da521956ac94785c977db6a41a6f39422e3713201f13258582c54d33c5"
+    },
+    "identity_sha256_before_redaction": "c463e271bfcae482c3a895350bc5ff55cf37551d5a3c36ef7ede591e9f837d79",
+    "worker": "baseline-worker4"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "3724222a544886231798f3296adadf43e99b85224cec7a79d04592114cce5193",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "5",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker5.json",
+        "gpu": "5",
+        "name": "baseline-worker5",
+        "split": "configs/baseline-worker5-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "db2333c905c8a75cae7b81ab50f1e93ace1240086157f5bdf4e4fa23433b4297"
+    },
+    "identity_sha256_before_redaction": "bd71e850d6e8c2f1be11809f3ced5121e463d20c9d89821a9e68a29451a3de20",
+    "worker": "baseline-worker5"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "341db9fc9e2c2d16d9d7e9060af0cc582d411580893b2748a2c8ebfb2ae71033",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "6",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker6.json",
+        "gpu": "6",
+        "name": "baseline-worker6",
+        "split": "configs/baseline-worker6-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "eb7bf86794ebdb277339bd55c2abc17bf6832be35fb274474c253ca94f836326"
+    },
+    "identity_sha256_before_redaction": "09cfa104d7620a7dd2e98ffed3c4b5320a3e447fc7e4f08ca75691732ee4f4a6",
+    "worker": "baseline-worker6"
+  },
+  {
+    "arm": "baseline",
+    "audit_sha256": "1a213797ce98a459da04118e5128edabdbbfd77a87bbb9e566777d0b71906f47",
+    "completed_cases": 164,
+    "completed_conditions": 164,
+    "gpu": "7",
+    "identity": {
+      "assignment": {
+        "arm": "baseline",
+        "condition": "plain_ar",
+        "config": "configs/baseline-worker7.json",
+        "gpu": "7",
+        "name": "baseline-worker7",
+        "split": "configs/baseline-worker7-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "f4302e1a4ec38b806b10087652afa312796cdf89d6ccecbb5c9aeef8d6a971dc",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795609576.67761
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "plain_ar"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "a35739552adc3975c1d9aae0e62d4e3fd912b0f97b390c3339aa7ad6dd873d4a"
+    },
+    "identity_sha256_before_redaction": "0eb3991ae1daf82fde2037607ed32700301d06bd947e684c3fd513ec46cc24f8",
+    "worker": "baseline-worker7"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "c2abec65289611325ab6dacdb6f5ca65975cd9554ee9dc3602e9baea132d7dac",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "0",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker0.json",
+        "gpu": "0",
+        "name": "ours-worker0",
+        "split": "configs/ours-worker0-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "6dc2c4cd4c131c3f402595bedf8608040ac1e4cec07edb64f5d0e2541a7e9815"
+    },
+    "identity_sha256_before_redaction": "a401d28dae55d0f459738b362320caded2663f7e38280ed6e4cecdaa6bbd3866",
+    "worker": "ours-worker0"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "b30fa1475ef23971d6d5ece0a98910fc2606d82f82f6d5d558cc40414e4f8485",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "1",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker1.json",
+        "gpu": "1",
+        "name": "ours-worker1",
+        "split": "configs/ours-worker1-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "f1260312b32b35b34f83275ca12c46b8017c620d23cb400c5f32f4a7c01436ef"
+    },
+    "identity_sha256_before_redaction": "d66547e55907911d3d072c85a038ce35cfd309305537375578132d94657d4882",
+    "worker": "ours-worker1"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "f9ae10483c885af5d890fddf5c9affb21662a1627bf3d7c152eb877dc03e0791",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "2",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker2.json",
+        "gpu": "2",
+        "name": "ours-worker2",
+        "split": "configs/ours-worker2-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "b95bac29007c182aaee7368c910d969888dde83061d423294057ac9b6347f89c"
+    },
+    "identity_sha256_before_redaction": "8a4287ecfb584396f797dc786e7419e2c039d4c251b0e8a427cb4bec5c491ccd",
+    "worker": "ours-worker2"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "fe38c0793c6ebab8d9510df5c8a54c4b298704fb3cfbed526c336eba6d2c3c4a",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "3",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker3.json",
+        "gpu": "3",
+        "name": "ours-worker3",
+        "split": "configs/ours-worker3-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "6e4b9100e84dd0fdefa18cc91177a93701187219a81424053986d800c3396265"
+    },
+    "identity_sha256_before_redaction": "9b0dacefd1ba2787e2535e066e9aed59a00b42c7ff56fba632c1f36bd81ee943",
+    "worker": "ours-worker3"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "b616086a05f8c8b11b299549dac792aa09090e4f58a7b16b8e9d7a8e8e62d3fc",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "4",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker4.json",
+        "gpu": "4",
+        "name": "ours-worker4",
+        "split": "configs/ours-worker4-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "244881da521956ac94785c977db6a41a6f39422e3713201f13258582c54d33c5"
+    },
+    "identity_sha256_before_redaction": "cf762ea98cea4513049d3eacd6db58e2d91489f8f8b3bc7f7b0800e871e27741",
+    "worker": "ours-worker4"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "00c0af94db36b95d6be68aa6cd1cf86166d2fbdb439ad7fb2782d8b408110bf2",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "5",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker5.json",
+        "gpu": "5",
+        "name": "ours-worker5",
+        "split": "configs/ours-worker5-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "db2333c905c8a75cae7b81ab50f1e93ace1240086157f5bdf4e4fa23433b4297"
+    },
+    "identity_sha256_before_redaction": "73d6f3b928a1a6e89a7929112ffb43cb443fbc7b5dafc35ee22776b5aa150b1c",
+    "worker": "ours-worker5"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "19de4fd7ab56f85b8cde677b9b43b739e3864e76de38093ebf073109f50b2af2",
+    "completed_cases": 165,
+    "completed_conditions": 165,
+    "gpu": "6",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker6.json",
+        "gpu": "6",
+        "name": "ours-worker6",
+        "split": "configs/ours-worker6-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "eb7bf86794ebdb277339bd55c2abc17bf6832be35fb274474c253ca94f836326"
+    },
+    "identity_sha256_before_redaction": "0c6d35ce81f5c0fd32427a7d1c0f6273931c39e7f4cdd09409a8818e8a2b82cb",
+    "worker": "ours-worker6"
+  },
+  {
+    "arm": "ours",
+    "audit_sha256": "3df1d0aadda368685a992b72e1c0037b37bf01b3ae15f25a851004f06c9ece83",
+    "completed_cases": 164,
+    "completed_conditions": 164,
+    "gpu": "7",
+    "identity": {
+      "assignment": {
+        "arm": "ours",
+        "condition": "filtered_futures",
+        "config": "configs/ours-worker7.json",
+        "gpu": "7",
+        "name": "ours-worker7",
+        "split": "configs/ours-worker7-split.json"
+      },
+      "environment": {
+        "cuda_runtime": "12.8",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "packages": {
+          "huggingface-hub": "0.36.2",
+          "numpy": "2.2.6",
+          "tokenizers": "0.22.2",
+          "torch": "2.8.0",
+          "transformers": "4.57.1",
+          "vllm": "0.10.2"
+        },
+        "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3"
+      },
+      "mode": "study",
+      "plan_sha256": "baf8a2e83c316493d1578704bae9ea0601b2d8d7102757c34cecd28cba5131e7",
+      "schedule": {
+        "deadline_epoch": null,
+        "start_epoch": 1795610420.4332106
+      },
+      "source": {
+        "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+        "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+        "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+        "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+        "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+        "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+        "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+        "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+        "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+        "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+        "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+        "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+        "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+        "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+        "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+        "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+        "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+        "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+        "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+        "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+      },
+      "spec": {
+        "data": {
+          "prompt_limit": 32768,
+          "shuffle_seed": 20260921
+        },
+        "datasets": [
+          {
+            "name": "gsm8k"
+          }
+        ],
+        "execution": {
+          "development_cases_per_task": 0,
+          "max_development_structural_memory_tags": 0,
+          "min_development_answer_completion": 0.9,
+          "repetition_failure_span_tokens": 256,
+          "workers": 1
+        },
+        "experiment": {
+          "arms": [
+            "filtered_futures"
+          ],
+          "branch_tokens": 64,
+          "checkpoint_body_tokens": 128,
+          "commit": "selected_rollout",
+          "lookahead": null,
+          "max_event_memory_tokens": 2048,
+          "max_output_tokens": 32768,
+          "memory_capacity_tokens": 8192,
+          "memory_compact_to_tokens": 4096,
+          "memory_preamble": "Other directions that were started here but not followed. They are unverified and may be wrong or incomplete; treat them as hints, not conclusions.",
+          "min_branch_interval_tokens": 256,
+          "min_candidate_probability": 0.2,
+          "prefill_chunk_tokens": 256,
+          "repetition_guard": {
+            "enabled": true,
+            "max_period_tokens": 32,
+            "min_cycles": 4,
+            "min_span_tokens": 64
+          },
+          "seed": 95024,
+          "selection": "argmax",
+          "temperature": 0.6,
+          "top_k": 20,
+          "top_p": 0.95
+        },
+        "model": {
+          "backend": "vllm",
+          "cache_dir": "<MODEL_CACHE>",
+          "cuda_allocator_config": "expandable_segments:True",
+          "device": "cuda:0",
+          "dtype": "bfloat16",
+          "enable_thinking": true,
+          "gpu_memory_fraction": 0.85,
+          "initialization_lock": "<WORKSPACE>/workspace/locks/vllm-initialization.lock",
+          "local_files_only": true,
+          "max_context_tokens": 73856,
+          "name": "Qwen/Qwen3-4B-Thinking-2507",
+          "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+          "rollout_cache_offload_threshold_tokens": 49000,
+          "threads": 4,
+          "vllm_batch_size": 8,
+          "vllm_batch_tokens": 4096
+        },
+        "protocol": "recurrent-reasoning-memory-v4",
+        "similarity": {
+          "comparison": "retained_candidates",
+          "encoder": {
+            "batch_size": 8,
+            "cache_dir": "<MODEL_CACHE>",
+            "device": "cpu",
+            "dtype": "float32",
+            "local_files_only": true,
+            "max_tokens": 512,
+            "name": "Qwen/Qwen3-Embedding-0.6B",
+            "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+          },
+          "text_scope": "rollout_only",
+          "threshold": 0.85
+        },
+        "smoke": {
+          "cases_per_task": 1,
+          "tasks": [
+            "gsm8k"
+          ]
+        }
+      },
+      "split_sha256": "a35739552adc3975c1d9aae0e62d4e3fd912b0f97b390c3339aa7ad6dd873d4a"
+    },
+    "identity_sha256_before_redaction": "7ca6d693c1334df5c21f837ba98a01909fae7b5a5ee94e8c199be755e62f059e",
+    "worker": "ours-worker7"
+  }
+]

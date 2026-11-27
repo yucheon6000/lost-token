@@ -1,0 +1,116 @@
+{
+  "losses": 0,
+  "mmlu_manifest_sha256": "1b673b4b0e0ebc077dac63c7e22f1e68bce04809211e673850653e2177004e0d",
+  "mmlu_pairs": [
+    {
+      "baseline_accuracy": 81.45563310069791,
+      "baseline_correct": 11438,
+      "delta_pp": -0.12818686796752599,
+      "gains": 413,
+      "losses": 431,
+      "n": 14042,
+      "ours_accuracy": 81.32744623273038,
+      "ours_correct": 11420,
+      "seed": 95021
+    },
+    {
+      "baseline_accuracy": 81.2491098134169,
+      "baseline_correct": 11409,
+      "delta_pp": 0.42016806722689076,
+      "gains": 462,
+      "losses": 403,
+      "n": 14042,
+      "ours_accuracy": 81.66927788064379,
+      "ours_correct": 11468,
+      "seed": 95022
+    },
+    {
+      "baseline_accuracy": 81.34168921806011,
+      "baseline_correct": 11422,
+      "delta_pp": 0.12818686796752599,
+      "gains": 414,
+      "losses": 396,
+      "n": 14042,
+      "ours_accuracy": 81.46987608602763,
+      "ours_correct": 11440,
+      "seed": 95023
+    }
+  ],
+  "prior_selection_file_sha256": "31de7ca2eaf27002766a56db9a232d2691ca47d8c1192eaf3ff9db3153686945",
+  "rows": [
+    {
+      "baseline_accuracy": 65.55555555555556,
+      "baseline_correct": 59,
+      "dataset": "aime25",
+      "delta_correct": 11,
+      "delta_pp": 12.222222222222221,
+      "evaluations_per_arm": 90,
+      "n_per_seed": 30,
+      "ours_accuracy": 77.77777777777777,
+      "ours_correct": 70
+    },
+    {
+      "baseline_accuracy": 51.111111111111114,
+      "baseline_correct": 46,
+      "dataset": "hmmt25",
+      "delta_correct": 5,
+      "delta_pp": 5.555555555555555,
+      "evaluations_per_arm": 90,
+      "n_per_seed": 30,
+      "ours_accuracy": 56.666666666666664,
+      "ours_correct": 51
+    },
+    {
+      "baseline_accuracy": 61.30952380952381,
+      "baseline_correct": 824,
+      "dataset": "gpqa",
+      "delta_correct": 4,
+      "delta_pp": 0.2976190476190476,
+      "evaluations_per_arm": 1344,
+      "n_per_seed": 448,
+      "ours_accuracy": 61.607142857142854,
+      "ours_correct": 828
+    },
+    {
+      "baseline_accuracy": 95.12256760171847,
+      "baseline_correct": 3764,
+      "dataset": "gsm8k",
+      "delta_correct": 6,
+      "delta_pp": 0.1516300227445034,
+      "evaluations_per_arm": 3957,
+      "n_per_seed": 1319,
+      "ours_accuracy": 95.27419762446297,
+      "ours_correct": 3770
+    },
+    {
+      "baseline_accuracy": 97.93333333333334,
+      "baseline_correct": 1469,
+      "dataset": "math500",
+      "delta_correct": 3,
+      "delta_pp": 0.2,
+      "evaluations_per_arm": 1500,
+      "n_per_seed": 500,
+      "ours_accuracy": 98.13333333333334,
+      "ours_correct": 1472
+    },
+    {
+      "baseline_accuracy": 81.34881071072496,
+      "baseline_correct": 34269,
+      "dataset": "mmlu",
+      "delta_correct": 59,
+      "delta_pp": 0.1400560224089636,
+      "evaluations_per_arm": 42126,
+      "n_per_seed": 14042,
+      "ours_accuracy": 81.48886673313393,
+      "ours_correct": 34328
+    }
+  ],
+  "seeds": [
+    95021,
+    95022,
+    95023
+  ],
+  "selection": "Post-hoc selection on five non-MMLU benchmarks; fixed before the missing MMLU seed was generated. No MMLU-based reselection.",
+  "ties": 0,
+  "wins": 6
+}

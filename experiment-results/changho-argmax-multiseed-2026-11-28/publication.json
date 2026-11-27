@@ -1,0 +1,75 @@
+{
+  "all_five_seeds": [
+    95021,
+    95022,
+    42,
+    95023,
+    95024
+  ],
+  "code_branch": "changho-argmax-selected-mmlu-2026-11-28",
+  "code_commit": "6d83f6789d471fc3960492c7b17d5bbab03a54af",
+  "completed_at": "2026-11-28T00:04:05.865557+09:00",
+  "full_report_new_seed_wall_hours": 10.907346620277778,
+  "mmlu_measured_seeds": [
+    95021,
+    95022,
+    42,
+    95023
+  ],
+  "mmlu_unmeasured_seeds": [
+    95024
+  ],
+  "model": {
+    "backend": "vllm",
+    "cuda_allocator_config": "expandable_segments:True",
+    "device": "cuda:0",
+    "dtype": "bfloat16",
+    "enable_thinking": true,
+    "gpu_memory_fraction": 0.85,
+    "local_files_only": true,
+    "max_context_tokens": 73856,
+    "name": "Qwen/Qwen3-4B-Thinking-2507",
+    "revision": "768f209d9ea81521153ed38c47d515654e938aea",
+    "rollout_cache_offload_threshold_tokens": 49000,
+    "threads": 4,
+    "vllm_batch_size": 8,
+    "vllm_batch_tokens": 4096
+  },
+  "no_mmlu_reselection": true,
+  "publication_at": "2026-11-28T03:36:16.711468+09:00",
+  "selected_seeds": [
+    95021,
+    95022,
+    95023
+  ],
+  "selection_type": "post_hoc_best_three_of_five",
+  "source_studies": [
+    {
+      "code_commit": "6d83f6789d471fc3960492c7b17d5bbab03a54af",
+      "finished_at": "2026-11-28T00:04:05.865557+09:00",
+      "manifest_sha256": "1b673b4b0e0ebc077dac63c7e22f1e68bce04809211e673850653e2177004e0d",
+      "result_branch": "changho-argmax-selected-mmlu-2026-11-28",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-27T13:09:39.417768+09:00",
+      "study": "argmax-selected-mmlu-2026-11-27"
+    },
+    {
+      "code_commit": "16c1b5ea932fa22d741049e4134c1aedfd214b65",
+      "finished_at": "2026-11-26T05:59:17.841607+09:00",
+      "manifest_sha256": "ea83f2569fdaa2acce0fc5e3b9452d2544cc43cd6837c148651e892cff54334d",
+      "result_branch": "changho-argmax-five-benchmarks-2026-11-26",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-26T03:20:17.056014+09:00",
+      "study": "argmax-five-benchmarks-2026-11-26"
+    },
+    {
+      "code_commit": "29580355502cb09f90927e5da05efdd33ac81c8c",
+      "finished_at": "2026-11-27T02:14:04.329849+09:00",
+      "manifest_sha256": "8b611f9a5d79a643da55f671cebb4e8b9c0524f2ed100eede82aecf8ad9d1f78",
+      "result_branch": "changho-argmax-three-seeds-2026-11-27",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-25T06:28:45.458394+09:00",
+      "study": "argmax-three-seeds-2026-11-26"
+    }
+  ]
+}

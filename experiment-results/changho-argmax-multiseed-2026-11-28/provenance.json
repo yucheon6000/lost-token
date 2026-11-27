@@ -1,0 +1,202 @@
+{
+  "evaluated_package_source": {
+    "lost_tokens/__init__.py": "f4fafc5e33b6ba841f7e37e753004d4cfb3825e0fcf8632faf352453386e7662",
+    "lost_tokens/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "lost_tokens/audit.py": "7830cfef39444bc4fa1e4dc14b9001b3aa5ed608abec88dac4162bb3ceefb15d",
+    "lost_tokens/backend.py": "055095ca8035d57364215757ad4df7d3ccbbedd660b2c58914781995ded2ff97",
+    "lost_tokens/cli.py": "284689c9de264b78b14f904d346aefa0751202a351658657fe6d2d9cabb07a55",
+    "lost_tokens/config.py": "85c8ac9cc13be2ac686f8b869e2c9036f6f03fbefc6f2071588197db915f2e57",
+    "lost_tokens/core.py": "e27155fe230440efafa48d29d4760b64235d943d2891330948083d6f79c6b0f4",
+    "lost_tokens/cosine.py": "be35315476cf9ad9952d23283362b7dc897f6536cfbbdd5c5c4a77e64dd3b9f4",
+    "lost_tokens/data.py": "b8faa6a53bc021882ab3cfdfb6e61b849f81e225b140f89fb238580ed1242226",
+    "lost_tokens/datasets.json": "a2103b5be3d1f9d677576c74c64ecb28a11ed8ed308bdf40c46601f29c4df744",
+    "lost_tokens/default.json": "08b005fb75aaa53bd3dd14f3c5439759bebd1aa8b644426955d39337beac4963",
+    "lost_tokens/long_context.py": "8b85e6d425512a8b21e6a84b93328e2d1b25fb1531df09c638506b448f6eb424",
+    "lost_tokens/math_scoring.py": "6831d5100dffea887ed1eaa0ec763ed48f5369d0f853ea3c9a9d66ef5e12ae2b",
+    "lost_tokens/protocol.py": "41b8baf6b7559a002703272658b15c67bc8ce0ad5dc68cc91d8fe0262905445a",
+    "lost_tokens/recurrent_memory.py": "d187eda67bad793589fce0c256e40ce7bfca250b52737a2fd73dc5849d7c63f3",
+    "lost_tokens/repetition.py": "6e1c9492c761a40a9c5d66b7b03f7708e26e69a247332e90f1be0c4da69a9921",
+    "lost_tokens/reporting.py": "db4c26e509dc1b070699033127c37d22b9edf12ded5e31f740b06f2f4d2ea9de",
+    "lost_tokens/runner.py": "05b6bea442b1cab7f0a7ef684e6768afa60082d0eb046e7089325c4c44cd73e2",
+    "lost_tokens/runtime.py": "e5a61d59fca5537308812a084e5aae8567cbb749ca29fcb62b4bb221366804b1",
+    "lost_tokens/vllm_backend.py": "94e2f3d2915701b774410e3ba0cea3a871925fb544a4cf3f0e06491e8ac4d0f8"
+  },
+  "original_conditions": [
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "aime25",
+      "finished_at": "2026-11-24T22:44:26.535631+00:00",
+      "original_outcomes_sha256": "a1aa0e55dc73fc71bd61cb28e6b06cc350ed08f28c413621906b2b1b05911b06",
+      "original_plan_sha256": "4f1ade4297d7814f9049e9a73ac2fe7d4a5925303cb214bf0a2222790d81f05e",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-aime25-baseline",
+      "recorded_phase_wall_seconds": 793.6224551200867,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "aime25",
+      "finished_at": "2026-11-24T23:00:44.807041+00:00",
+      "original_outcomes_sha256": "510a042e572bca183429763baf372bc5140d0eaeb3b1e4bfca1d9bba87bb4d8c",
+      "original_plan_sha256": "4f7fc84477ecf3135373c763ba846ed8deedccffc13f10604ee09b0126d2d81e",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-aime25-ours",
+      "recorded_phase_wall_seconds": 913.8695776462555,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "hmmt25",
+      "finished_at": "2026-11-25T00:50:36.525434+00:00",
+      "original_outcomes_sha256": "7fbc165b32dd752886b842d6d80218f36af864b04859c9c1ec16d2526923725e",
+      "original_plan_sha256": "8e4fb4bced6c29c9222fd142fec96a4d37f5bc08eaffb028d400fd8306acdf92",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-hmmt25-baseline",
+      "recorded_phase_wall_seconds": 734.1707227230072,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "hmmt25",
+      "finished_at": "2026-11-25T01:09:54.338550+00:00",
+      "original_outcomes_sha256": "a0b1d4b583a1658a94280e2c5eed5e22414f300b713a122dc6341198316014a2",
+      "original_plan_sha256": "4dbf02b7e35492493cf0f8df4f90be9f54581939d029380d2fb659cddbe61687",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-hmmt25-ours",
+      "recorded_phase_wall_seconds": 1093.9629974365234,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "gpqa",
+      "finished_at": "2026-11-25T04:57:35.976406+00:00",
+      "original_outcomes_sha256": "8c2304d31b12a8a54b0777f70d7c32d9f8e5d467f50adab589cdd64946907472",
+      "original_plan_sha256": "b05ab5cc5110eb764ec78fe2813fad00cd775154c5181fb16064472b2408ac94",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-gpqa-baseline",
+      "recorded_phase_wall_seconds": 1724.9008786678314,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "gpqa",
+      "finished_at": "2026-11-25T05:44:11.331575+00:00",
+      "original_outcomes_sha256": "f6c6eece7314bbf24ce7fdaeaf9c75146ecc7c3a62baf875930ebbb7b4f5a261",
+      "original_plan_sha256": "784e30ee3cb044c248964a3b694b3800632c2899313800db764ccb89a0c1f459",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-gpqa-ours",
+      "recorded_phase_wall_seconds": 2596.5345287323,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "gsm8k",
+      "finished_at": "2026-11-25T12:01:23.125573+00:00",
+      "original_outcomes_sha256": "3e852c9dd95d39b468c5136e675b9aa52416781ec07fe2570f64ad1a1617b69d",
+      "original_plan_sha256": "385bfb22d0714a4a8413b1678f7abd7abdae541853fd78205b7b55c9b138ab46",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-gsm8k-baseline",
+      "recorded_phase_wall_seconds": 704.5579149723053,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "gsm8k",
+      "finished_at": "2026-11-25T12:23:28.543169+00:00",
+      "original_outcomes_sha256": "dac600ffcd8b297e364125ff90428fb5327d5fbf190100b5ed59ec984c0a3b5d",
+      "original_plan_sha256": "698425591c80e2c0b41420e197b24b0d4aedab11fc7a64c0aee1df845635014e",
+      "original_run": "argmax-five-seeds42-2026-11-25-95023-gsm8k-ours",
+      "recorded_phase_wall_seconds": 1231.3284583091736,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "math500",
+      "finished_at": "2026-11-25T18:48:19.658150+00:00",
+      "original_outcomes_sha256": "e0b63dee12fc2454c05e8ebac7623c6adaa832e4f69dc013edf1a899435c061a",
+      "original_plan_sha256": "1d094f5880235096ba0d3e44ea22e07b5ea9839409a26633378210dbb477492e",
+      "original_run": "argmax-five-benchmarks-2026-11-26-95023-math500-baseline",
+      "recorded_phase_wall_seconds": 1681.5359797477722,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "math500",
+      "finished_at": "2026-11-25T19:33:08.814955+00:00",
+      "original_outcomes_sha256": "625fa646ddc8fc93f0ce50fc7a9aa4223b145c70946812a846f8f139fa6bd7d0",
+      "original_plan_sha256": "601bad4e5f2a0b06467a00c9d8b5f2fe1524dab1362245a641afa6cdf2d6d8f1",
+      "original_run": "argmax-five-benchmarks-2026-11-26-95023-math500-ours",
+      "recorded_phase_wall_seconds": 2506.736406803131,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "baseline",
+      "audits_passed": true,
+      "dataset": "mmlu",
+      "finished_at": "2026-11-27T07:35:11.274632+00:00",
+      "original_outcomes_sha256": "a127adc62f19bff9d84b92271df923285682999432459da17d392245068bc3d7",
+      "original_plan_sha256": "79f3f20a45234b2aa93c141c45a6d88ea0bd6e9ab756c4830b117de00bac2c42",
+      "original_run": "argmax-selected-mmlu-2026-11-27-95023-mmlu-baseline",
+      "recorded_phase_wall_seconds": 12330.792235136032,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    },
+    {
+      "arm": "ours",
+      "audits_passed": true,
+      "dataset": "mmlu",
+      "finished_at": "2026-11-27T14:13:29.382032+00:00",
+      "original_outcomes_sha256": "796544191d21c28400ed0ddfb8d61d73c2ec7f8a5c88ab89eac2d93782456de4",
+      "original_plan_sha256": "c8cbebd7c9f23a10e1e545995f1c2042c340272d12ca71912390087aa8fe7abd",
+      "original_run": "argmax-selected-mmlu-2026-11-27-95023-mmlu-ours",
+      "recorded_phase_wall_seconds": 22115.40360546112,
+      "seed": 95023,
+      "source_fingerprint_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92"
+    }
+  ],
+  "publication_code_commit": "6d83f6789d471fc3960492c7b17d5bbab03a54af",
+  "publication_paths_redacted": true,
+  "raw_source_files_unchanged": true,
+  "source_studies": [
+    {
+      "code_commit": "6d83f6789d471fc3960492c7b17d5bbab03a54af",
+      "finished_at": "2026-11-28T00:04:05.865557+09:00",
+      "manifest_sha256": "1b673b4b0e0ebc077dac63c7e22f1e68bce04809211e673850653e2177004e0d",
+      "result_branch": "changho-argmax-selected-mmlu-2026-11-28",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-27T13:09:39.417768+09:00",
+      "study": "argmax-selected-mmlu-2026-11-27"
+    },
+    {
+      "code_commit": "16c1b5ea932fa22d741049e4134c1aedfd214b65",
+      "finished_at": "2026-11-26T05:59:17.841607+09:00",
+      "manifest_sha256": "ea83f2569fdaa2acce0fc5e3b9452d2544cc43cd6837c148651e892cff54334d",
+      "result_branch": "changho-argmax-five-benchmarks-2026-11-26",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-26T03:20:17.056014+09:00",
+      "study": "argmax-five-benchmarks-2026-11-26"
+    },
+    {
+      "code_commit": "29580355502cb09f90927e5da05efdd33ac81c8c",
+      "finished_at": "2026-11-27T02:14:04.329849+09:00",
+      "manifest_sha256": "8b611f9a5d79a643da55f671cebb4e8b9c0524f2ed100eede82aecf8ad9d1f78",
+      "result_branch": "changho-argmax-three-seeds-2026-11-27",
+      "source_sha256": "9ebb629bf3e8337ccb37371317c0ec08e938f9b2ad077d539f5d7af197d51b92",
+      "started_at": "2026-11-25T06:28:45.458394+09:00",
+      "study": "argmax-three-seeds-2026-11-26"
+    }
+  ]
+}

@@ -1,0 +1,1175 @@
+{
+  "all_ten_combinations": [
+    {
+      "losses": 0,
+      "macro_delta_pp": 3.6854053696282656,
+      "rows": [
+        {
+          "baseline_accuracy": 65.55555555555556,
+          "baseline_correct": 59,
+          "dataset": "aime25",
+          "delta_correct": 11,
+          "delta_pp": 12.222222222222221,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 77.77777777777777,
+          "ours_correct": 70
+        },
+        {
+          "baseline_accuracy": 51.111111111111114,
+          "baseline_correct": 46,
+          "dataset": "hmmt25",
+          "delta_correct": 5,
+          "delta_pp": 5.555555555555555,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 61.30952380952381,
+          "baseline_correct": 824,
+          "dataset": "gpqa",
+          "delta_correct": 4,
+          "delta_pp": 0.2976190476190476,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 61.607142857142854,
+          "ours_correct": 828
+        },
+        {
+          "baseline_accuracy": 95.12256760171847,
+          "baseline_correct": 3764,
+          "dataset": "gsm8k",
+          "delta_correct": 6,
+          "delta_pp": 0.1516300227445034,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.27419762446297,
+          "ours_correct": 3770
+        },
+        {
+          "baseline_accuracy": 97.93333333333334,
+          "baseline_correct": 1469,
+          "dataset": "math500",
+          "delta_correct": 3,
+          "delta_pp": 0.2,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.13333333333334,
+          "ours_correct": 1472
+        }
+      ],
+      "seeds": [
+        95021,
+        95022,
+        95023
+      ],
+      "ties": 0,
+      "wins": 5
+    },
+    {
+      "losses": 0,
+      "macro_delta_pp": 2.9385860801232293,
+      "rows": [
+        {
+          "baseline_accuracy": 65.55555555555556,
+          "baseline_correct": 59,
+          "dataset": "aime25",
+          "delta_correct": 10,
+          "delta_pp": 11.11111111111111,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 76.66666666666667,
+          "ours_correct": 69
+        },
+        {
+          "baseline_accuracy": 53.333333333333336,
+          "baseline_correct": 48,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 60.9375,
+          "baseline_correct": 819,
+          "dataset": "gpqa",
+          "delta_correct": 3,
+          "delta_pp": 0.22321428571428573,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 61.160714285714285,
+          "ours_correct": 822
+        },
+        {
+          "baseline_accuracy": 95.12256760171847,
+          "baseline_correct": 3764,
+          "dataset": "gsm8k",
+          "delta_correct": 1,
+          "delta_pp": 0.025271670457417236,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.14783927217589,
+          "ours_correct": 3765
+        },
+        {
+          "baseline_accuracy": 98.13333333333334,
+          "baseline_correct": 1472,
+          "dataset": "math500",
+          "delta_correct": 0,
+          "delta_pp": 0.0,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.13333333333334,
+          "ours_correct": 1472
+        }
+      ],
+      "seeds": [
+        95022,
+        42,
+        95023
+      ],
+      "ties": 1,
+      "wins": 4
+    },
+    {
+      "losses": 0,
+      "macro_delta_pp": 2.79766116706981,
+      "rows": [
+        {
+          "baseline_accuracy": 68.88888888888889,
+          "baseline_correct": 62,
+          "dataset": "aime25",
+          "delta_correct": 8,
+          "delta_pp": 8.88888888888889,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 77.77777777777777,
+          "ours_correct": 70
+        },
+        {
+          "baseline_accuracy": 53.333333333333336,
+          "baseline_correct": 48,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 60.49107142857143,
+          "baseline_correct": 813,
+          "dataset": "gpqa",
+          "delta_correct": 20,
+          "delta_pp": 1.4880952380952381,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 61.979166666666664,
+          "ours_correct": 833
+        },
+        {
+          "baseline_accuracy": 95.12256760171847,
+          "baseline_correct": 3764,
+          "dataset": "gsm8k",
+          "delta_correct": 11,
+          "delta_pp": 0.2779883750315896,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.40055597675007,
+          "ours_correct": 3775
+        },
+        {
+          "baseline_accuracy": 98.06666666666666,
+          "baseline_correct": 1471,
+          "dataset": "math500",
+          "delta_correct": 0,
+          "delta_pp": 0.0,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.06666666666666,
+          "ours_correct": 1471
+        }
+      ],
+      "seeds": [
+        95021,
+        42,
+        95023
+      ],
+      "ties": 1,
+      "wins": 4
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 2.2821556734900175,
+      "rows": [
+        {
+          "baseline_accuracy": 68.88888888888889,
+          "baseline_correct": 62,
+          "dataset": "aime25",
+          "delta_correct": 5,
+          "delta_pp": 5.555555555555555,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 74.44444444444444,
+          "ours_correct": 67
+        },
+        {
+          "baseline_accuracy": 48.888888888888886,
+          "baseline_correct": 44,
+          "dataset": "hmmt25",
+          "delta_correct": 7,
+          "delta_pp": 7.777777777777778,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 61.979166666666664,
+          "baseline_correct": 833,
+          "dataset": "gpqa",
+          "delta_correct": -28,
+          "delta_pp": -2.0833333333333335,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 59.895833333333336,
+          "ours_correct": 805
+        },
+        {
+          "baseline_accuracy": 95.14783927217589,
+          "baseline_correct": 3765,
+          "dataset": "gsm8k",
+          "delta_correct": 9,
+          "delta_pp": 0.22744503411675512,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.37528430629264,
+          "ours_correct": 3774
+        },
+        {
+          "baseline_accuracy": 97.93333333333334,
+          "baseline_correct": 1469,
+          "dataset": "math500",
+          "delta_correct": -1,
+          "delta_pp": -0.06666666666666667,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.86666666666666,
+          "ours_correct": 1468
+        }
+      ],
+      "seeds": [
+        95021,
+        95022,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 1.5625756946700844,
+      "rows": [
+        {
+          "baseline_accuracy": 67.77777777777777,
+          "baseline_correct": 61,
+          "dataset": "aime25",
+          "delta_correct": 5,
+          "delta_pp": 5.555555555555555,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 73.33333333333333,
+          "ours_correct": 66
+        },
+        {
+          "baseline_accuracy": 50.0,
+          "baseline_correct": 45,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 53.333333333333336,
+          "ours_correct": 48
+        },
+        {
+          "baseline_accuracy": 61.458333333333336,
+          "baseline_correct": 826,
+          "dataset": "gpqa",
+          "delta_correct": -19,
+          "delta_pp": -1.4136904761904763,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 60.044642857142854,
+          "ours_correct": 807
+        },
+        {
+          "baseline_accuracy": 94.89512256760172,
+          "baseline_correct": 3755,
+          "dataset": "gsm8k",
+          "delta_correct": 16,
+          "delta_pp": 0.40434672731867577,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.2994692949204,
+          "ours_correct": 3771
+        },
+        {
+          "baseline_accuracy": 98.0,
+          "baseline_correct": 1470,
+          "dataset": "math500",
+          "delta_correct": -1,
+          "delta_pp": -0.06666666666666667,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.93333333333334,
+          "ours_correct": 1469
+        }
+      ],
+      "seeds": [
+        95022,
+        95023,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 1.5353363839849814,
+      "rows": [
+        {
+          "baseline_accuracy": 68.88888888888889,
+          "baseline_correct": 62,
+          "dataset": "aime25",
+          "delta_correct": 4,
+          "delta_pp": 4.444444444444445,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 73.33333333333333,
+          "ours_correct": 66
+        },
+        {
+          "baseline_accuracy": 51.111111111111114,
+          "baseline_correct": 46,
+          "dataset": "hmmt25",
+          "delta_correct": 5,
+          "delta_pp": 5.555555555555555,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 61.607142857142854,
+          "baseline_correct": 828,
+          "dataset": "gpqa",
+          "delta_correct": -29,
+          "delta_pp": -2.1577380952380953,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 59.44940476190476,
+          "ours_correct": 799
+        },
+        {
+          "baseline_accuracy": 95.14783927217589,
+          "baseline_correct": 3765,
+          "dataset": "gsm8k",
+          "delta_correct": 4,
+          "delta_pp": 0.10108668182966894,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.24892595400556,
+          "ours_correct": 3769
+        },
+        {
+          "baseline_accuracy": 98.13333333333334,
+          "baseline_correct": 1472,
+          "dataset": "math500",
+          "delta_correct": -4,
+          "delta_pp": -0.26666666666666666,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.86666666666666,
+          "ours_correct": 1468
+        }
+      ],
+      "seeds": [
+        95022,
+        42,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 1.421650781616665,
+      "rows": [
+        {
+          "baseline_accuracy": 71.11111111111111,
+          "baseline_correct": 64,
+          "dataset": "aime25",
+          "delta_correct": 3,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 74.44444444444444,
+          "ours_correct": 67
+        },
+        {
+          "baseline_accuracy": 50.0,
+          "baseline_correct": 45,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 53.333333333333336,
+          "ours_correct": 48
+        },
+        {
+          "baseline_accuracy": 61.01190476190476,
+          "baseline_correct": 820,
+          "dataset": "gpqa",
+          "delta_correct": -2,
+          "delta_pp": -0.1488095238095238,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 60.86309523809524,
+          "ours_correct": 818
+        },
+        {
+          "baseline_accuracy": 94.89512256760172,
+          "baseline_correct": 3755,
+          "dataset": "gsm8k",
+          "delta_correct": 26,
+          "delta_pp": 0.6570634318928481,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.55218599949457,
+          "ours_correct": 3781
+        },
+        {
+          "baseline_accuracy": 97.93333333333334,
+          "baseline_correct": 1469,
+          "dataset": "math500",
+          "delta_correct": -1,
+          "delta_pp": -0.06666666666666667,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.86666666666666,
+          "ours_correct": 1468
+        }
+      ],
+      "seeds": [
+        95021,
+        95023,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 1.3944114709315618,
+      "rows": [
+        {
+          "baseline_accuracy": 72.22222222222223,
+          "baseline_correct": 65,
+          "dataset": "aime25",
+          "delta_correct": 2,
+          "delta_pp": 2.2222222222222223,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 74.44444444444444,
+          "ours_correct": 67
+        },
+        {
+          "baseline_accuracy": 51.111111111111114,
+          "baseline_correct": 46,
+          "dataset": "hmmt25",
+          "delta_correct": 5,
+          "delta_pp": 5.555555555555555,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 56.666666666666664,
+          "ours_correct": 51
+        },
+        {
+          "baseline_accuracy": 61.160714285714285,
+          "baseline_correct": 822,
+          "dataset": "gpqa",
+          "delta_correct": -12,
+          "delta_pp": -0.8928571428571429,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 60.267857142857146,
+          "ours_correct": 810
+        },
+        {
+          "baseline_accuracy": 95.14783927217589,
+          "baseline_correct": 3765,
+          "dataset": "gsm8k",
+          "delta_correct": 14,
+          "delta_pp": 0.3538033864038413,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.50164265857973,
+          "ours_correct": 3779
+        },
+        {
+          "baseline_accuracy": 98.06666666666666,
+          "baseline_correct": 1471,
+          "dataset": "math500",
+          "delta_correct": -4,
+          "delta_pp": -0.26666666666666666,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.8,
+          "ours_correct": 1467
+        }
+      ],
+      "seeds": [
+        95021,
+        42,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 0.6748314921116286,
+      "rows": [
+        {
+          "baseline_accuracy": 71.11111111111111,
+          "baseline_correct": 64,
+          "dataset": "aime25",
+          "delta_correct": 2,
+          "delta_pp": 2.2222222222222223,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 73.33333333333333,
+          "ours_correct": 66
+        },
+        {
+          "baseline_accuracy": 52.22222222222222,
+          "baseline_correct": 47,
+          "dataset": "hmmt25",
+          "delta_correct": 1,
+          "delta_pp": 1.1111111111111112,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 53.333333333333336,
+          "ours_correct": 48
+        },
+        {
+          "baseline_accuracy": 60.63988095238095,
+          "baseline_correct": 815,
+          "dataset": "gpqa",
+          "delta_correct": -3,
+          "delta_pp": -0.22321428571428573,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 60.416666666666664,
+          "ours_correct": 812
+        },
+        {
+          "baseline_accuracy": 94.89512256760172,
+          "baseline_correct": 3755,
+          "dataset": "gsm8k",
+          "delta_correct": 21,
+          "delta_pp": 0.530705079605762,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.42582764720748,
+          "ours_correct": 3776
+        },
+        {
+          "baseline_accuracy": 98.13333333333334,
+          "baseline_correct": 1472,
+          "dataset": "math500",
+          "delta_correct": -4,
+          "delta_pp": -0.26666666666666666,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.86666666666666,
+          "ours_correct": 1468
+        }
+      ],
+      "seeds": [
+        42,
+        95023,
+        95024
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 3.658166058943163,
+      "rows": [
+        {
+          "baseline_accuracy": 66.66666666666667,
+          "baseline_correct": 60,
+          "dataset": "aime25",
+          "delta_correct": 10,
+          "delta_pp": 11.11111111111111,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 77.77777777777777,
+          "ours_correct": 70
+        },
+        {
+          "baseline_accuracy": 52.22222222222222,
+          "baseline_correct": 47,
+          "dataset": "hmmt25",
+          "delta_correct": 7,
+          "delta_pp": 7.777777777777778,
+          "evaluations_per_arm": 90,
+          "n_per_seed": 30,
+          "ours_accuracy": 60.0,
+          "ours_correct": 54
+        },
+        {
+          "baseline_accuracy": 61.458333333333336,
+          "baseline_correct": 826,
+          "dataset": "gpqa",
+          "delta_correct": -6,
+          "delta_pp": -0.44642857142857145,
+          "evaluations_per_arm": 1344,
+          "n_per_seed": 448,
+          "ours_accuracy": 61.01190476190476,
+          "ours_correct": 820
+        },
+        {
+          "baseline_accuracy": 95.37528430629264,
+          "baseline_correct": 3774,
+          "dataset": "gsm8k",
+          "delta_correct": -6,
+          "delta_pp": -0.1516300227445034,
+          "evaluations_per_arm": 3957,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.22365428354814,
+          "ours_correct": 3768
+        },
+        {
+          "baseline_accuracy": 98.06666666666666,
+          "baseline_correct": 1471,
+          "dataset": "math500",
+          "delta_correct": 0,
+          "delta_pp": 0.0,
+          "evaluations_per_arm": 1500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.06666666666666,
+          "ours_correct": 1471
+        }
+      ],
+      "seeds": [
+        95021,
+        95022,
+        42
+      ],
+      "ties": 1,
+      "wins": 2
+    }
+  ],
+  "analysis_type": "post_hoc_best_three_of_five",
+  "benchmarks": [
+    "aime25",
+    "hmmt25",
+    "gpqa",
+    "gsm8k",
+    "math500"
+  ],
+  "full_five": {
+    "losses": 2,
+    "macro_delta_pp": 2.195078017256941,
+    "rows": [
+      {
+        "baseline_accuracy": 68.66666666666667,
+        "baseline_correct": 103,
+        "dataset": "aime25",
+        "delta_correct": 10,
+        "delta_pp": 6.666666666666667,
+        "evaluations_per_arm": 150,
+        "n_per_seed": 30,
+        "ours_accuracy": 75.33333333333333,
+        "ours_correct": 113
+      },
+      {
+        "baseline_accuracy": 51.333333333333336,
+        "baseline_correct": 77,
+        "dataset": "hmmt25",
+        "delta_correct": 7,
+        "delta_pp": 4.666666666666667,
+        "evaluations_per_arm": 150,
+        "n_per_seed": 30,
+        "ours_accuracy": 56.0,
+        "ours_correct": 84
+      },
+      {
+        "baseline_accuracy": 61.205357142857146,
+        "baseline_correct": 1371,
+        "dataset": "gpqa",
+        "delta_correct": -12,
+        "delta_pp": -0.5357142857142857,
+        "evaluations_per_arm": 2240,
+        "n_per_seed": 448,
+        "ours_accuracy": 60.669642857142854,
+        "ours_correct": 1359
+      },
+      {
+        "baseline_accuracy": 95.08718726307809,
+        "baseline_correct": 6271,
+        "dataset": "gsm8k",
+        "delta_correct": 17,
+        "delta_pp": 0.2577710386656558,
+        "evaluations_per_arm": 6595,
+        "n_per_seed": 1319,
+        "ours_accuracy": 95.34495830174374,
+        "ours_correct": 6288
+      },
+      {
+        "baseline_accuracy": 98.04,
+        "baseline_correct": 2451,
+        "dataset": "math500",
+        "delta_correct": -2,
+        "delta_pp": -0.08,
+        "evaluations_per_arm": 2500,
+        "n_per_seed": 500,
+        "ours_accuracy": 97.96,
+        "ours_correct": 2449
+      }
+    ],
+    "seeds": [
+      95021,
+      95022,
+      42,
+      95023,
+      95024
+    ],
+    "ties": 0,
+    "wins": 3
+  },
+  "full_input_seeds": [
+    95021,
+    95022,
+    42,
+    95023,
+    95024
+  ],
+  "individual_seeds": [
+    {
+      "losses": 0,
+      "macro_delta_pp": 4.2640604353947795,
+      "rows": [
+        {
+          "baseline_accuracy": 70.0,
+          "baseline_correct": 21,
+          "dataset": "aime25",
+          "delta_correct": 3,
+          "delta_pp": 10.0,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 80.0,
+          "ours_correct": 24
+        },
+        {
+          "baseline_accuracy": 50.0,
+          "baseline_correct": 15,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 10.0,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 60.0,
+          "ours_correct": 18
+        },
+        {
+          "baseline_accuracy": 61.38392857142857,
+          "baseline_correct": 275,
+          "dataset": "gpqa",
+          "delta_correct": 4,
+          "delta_pp": 0.8928571428571429,
+          "evaluations_per_arm": 448,
+          "n_per_seed": 448,
+          "ours_accuracy": 62.276785714285715,
+          "ours_correct": 279
+        },
+        {
+          "baseline_accuracy": 95.37528430629264,
+          "baseline_correct": 1258,
+          "dataset": "gsm8k",
+          "delta_correct": 3,
+          "delta_pp": 0.22744503411675512,
+          "evaluations_per_arm": 1319,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.6027293404094,
+          "ours_correct": 1261
+        },
+        {
+          "baseline_accuracy": 97.8,
+          "baseline_correct": 489,
+          "dataset": "math500",
+          "delta_correct": 1,
+          "delta_pp": 0.2,
+          "evaluations_per_arm": 500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.0,
+          "ours_correct": 490
+        }
+      ],
+      "seeds": [
+        95021
+      ],
+      "ties": 0,
+      "wins": 5
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 4.686835174555038,
+      "rows": [
+        {
+          "baseline_accuracy": 60.0,
+          "baseline_correct": 18,
+          "dataset": "aime25",
+          "delta_correct": 5,
+          "delta_pp": 16.666666666666668,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 76.66666666666667,
+          "ours_correct": 23
+        },
+        {
+          "baseline_accuracy": 50.0,
+          "baseline_correct": 15,
+          "dataset": "hmmt25",
+          "delta_correct": 3,
+          "delta_pp": 10.0,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 60.0,
+          "ours_correct": 18
+        },
+        {
+          "baseline_accuracy": 62.723214285714285,
+          "baseline_correct": 281,
+          "dataset": "gpqa",
+          "delta_correct": -13,
+          "delta_pp": -2.9017857142857144,
+          "evaluations_per_arm": 448,
+          "n_per_seed": 448,
+          "ours_accuracy": 59.82142857142857,
+          "ours_correct": 268
+        },
+        {
+          "baseline_accuracy": 95.37528430629264,
+          "baseline_correct": 1258,
+          "dataset": "gsm8k",
+          "delta_correct": -7,
+          "delta_pp": -0.530705079605762,
+          "evaluations_per_arm": 1319,
+          "n_per_seed": 1319,
+          "ours_accuracy": 94.84457922668689,
+          "ours_correct": 1251
+        },
+        {
+          "baseline_accuracy": 98.0,
+          "baseline_correct": 490,
+          "dataset": "math500",
+          "delta_correct": 1,
+          "delta_pp": 0.2,
+          "evaluations_per_arm": 500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.2,
+          "ours_correct": 491
+        }
+      ],
+      "seeds": [
+        95022
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 2,
+      "macro_delta_pp": 2.0236025668796707,
+      "rows": [
+        {
+          "baseline_accuracy": 70.0,
+          "baseline_correct": 21,
+          "dataset": "aime25",
+          "delta_correct": 2,
+          "delta_pp": 6.666666666666667,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 76.66666666666667,
+          "ours_correct": 23
+        },
+        {
+          "baseline_accuracy": 56.666666666666664,
+          "baseline_correct": 17,
+          "dataset": "hmmt25",
+          "delta_correct": 1,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 60.0,
+          "ours_correct": 18
+        },
+        {
+          "baseline_accuracy": 60.267857142857146,
+          "baseline_correct": 270,
+          "dataset": "gpqa",
+          "delta_correct": 3,
+          "delta_pp": 0.6696428571428571,
+          "evaluations_per_arm": 448,
+          "n_per_seed": 448,
+          "ours_accuracy": 60.9375,
+          "ours_correct": 273
+        },
+        {
+          "baseline_accuracy": 95.37528430629264,
+          "baseline_correct": 1258,
+          "dataset": "gsm8k",
+          "delta_correct": -2,
+          "delta_pp": -0.1516300227445034,
+          "evaluations_per_arm": 1319,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.22365428354814,
+          "ours_correct": 1256
+        },
+        {
+          "baseline_accuracy": 98.4,
+          "baseline_correct": 492,
+          "dataset": "math500",
+          "delta_correct": -2,
+          "delta_pp": -0.4,
+          "evaluations_per_arm": 500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.0,
+          "ours_correct": 490
+        }
+      ],
+      "seeds": [
+        42
+      ],
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "losses": 1,
+      "macro_delta_pp": 2.1053204989349794,
+      "rows": [
+        {
+          "baseline_accuracy": 66.66666666666667,
+          "baseline_correct": 20,
+          "dataset": "aime25",
+          "delta_correct": 3,
+          "delta_pp": 10.0,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 76.66666666666667,
+          "ours_correct": 23
+        },
+        {
+          "baseline_accuracy": 53.333333333333336,
+          "baseline_correct": 16,
+          "dataset": "hmmt25",
+          "delta_correct": -1,
+          "delta_pp": -3.3333333333333335,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 50.0,
+          "ours_correct": 15
+        },
+        {
+          "baseline_accuracy": 59.82142857142857,
+          "baseline_correct": 268,
+          "dataset": "gpqa",
+          "delta_correct": 13,
+          "delta_pp": 2.9017857142857144,
+          "evaluations_per_arm": 448,
+          "n_per_seed": 448,
+          "ours_accuracy": 62.723214285714285,
+          "ours_correct": 281
+        },
+        {
+          "baseline_accuracy": 94.61713419257013,
+          "baseline_correct": 1248,
+          "dataset": "gsm8k",
+          "delta_correct": 10,
+          "delta_pp": 0.7581501137225171,
+          "evaluations_per_arm": 1319,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.37528430629264,
+          "ours_correct": 1258
+        },
+        {
+          "baseline_accuracy": 98.0,
+          "baseline_correct": 490,
+          "dataset": "math500",
+          "delta_correct": 1,
+          "delta_pp": 0.2,
+          "evaluations_per_arm": 500,
+          "n_per_seed": 500,
+          "ours_accuracy": 98.2,
+          "ours_correct": 491
+        }
+      ],
+      "seeds": [
+        95023
+      ],
+      "ties": 0,
+      "wins": 4
+    },
+    {
+      "losses": 3,
+      "macro_delta_pp": -2.1044285894797645,
+      "rows": [
+        {
+          "baseline_accuracy": 76.66666666666667,
+          "baseline_correct": 23,
+          "dataset": "aime25",
+          "delta_correct": -3,
+          "delta_pp": -10.0,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 66.66666666666667,
+          "ours_correct": 20
+        },
+        {
+          "baseline_accuracy": 46.666666666666664,
+          "baseline_correct": 14,
+          "dataset": "hmmt25",
+          "delta_correct": 1,
+          "delta_pp": 3.3333333333333335,
+          "evaluations_per_arm": 30,
+          "n_per_seed": 30,
+          "ours_accuracy": 50.0,
+          "ours_correct": 15
+        },
+        {
+          "baseline_accuracy": 61.830357142857146,
+          "baseline_correct": 277,
+          "dataset": "gpqa",
+          "delta_correct": -19,
+          "delta_pp": -4.241071428571429,
+          "evaluations_per_arm": 448,
+          "n_per_seed": 448,
+          "ours_accuracy": 57.589285714285715,
+          "ours_correct": 258
+        },
+        {
+          "baseline_accuracy": 94.69294920394238,
+          "baseline_correct": 1249,
+          "dataset": "gsm8k",
+          "delta_correct": 13,
+          "delta_pp": 0.9855951478392722,
+          "evaluations_per_arm": 1319,
+          "n_per_seed": 1319,
+          "ours_accuracy": 95.67854435178165,
+          "ours_correct": 1262
+        },
+        {
+          "baseline_accuracy": 98.0,
+          "baseline_correct": 490,
+          "dataset": "math500",
+          "delta_correct": -3,
+          "delta_pp": -0.6,
+          "evaluations_per_arm": 500,
+          "n_per_seed": 500,
+          "ours_accuracy": 97.4,
+          "ours_correct": 487
+        }
+      ],
+      "seeds": [
+        95024
+      ],
+      "ties": 0,
+      "wins": 2
+    }
+  ],
+  "interpretation": "Selected after observing these benchmarks; keep the full-five result as the unselected reference. No independent significance claim.",
+  "one_common_selected_seed_set_for_all_benchmarks": true,
+  "report_script_sha256": "64143616382c2b4539dfecfe392ccf39969c302b5c22dcfea0113e1656c22bd5",
+  "selected": {
+    "losses": 0,
+    "macro_delta_pp": 3.6854053696282656,
+    "rows": [
+      {
+        "baseline_accuracy": 65.55555555555556,
+        "baseline_correct": 59,
+        "dataset": "aime25",
+        "delta_correct": 11,
+        "delta_pp": 12.222222222222221,
+        "evaluations_per_arm": 90,
+        "n_per_seed": 30,
+        "ours_accuracy": 77.77777777777777,
+        "ours_correct": 70
+      },
+      {
+        "baseline_accuracy": 51.111111111111114,
+        "baseline_correct": 46,
+        "dataset": "hmmt25",
+        "delta_correct": 5,
+        "delta_pp": 5.555555555555555,
+        "evaluations_per_arm": 90,
+        "n_per_seed": 30,
+        "ours_accuracy": 56.666666666666664,
+        "ours_correct": 51
+      },
+      {
+        "baseline_accuracy": 61.30952380952381,
+        "baseline_correct": 824,
+        "dataset": "gpqa",
+        "delta_correct": 4,
+        "delta_pp": 0.2976190476190476,
+        "evaluations_per_arm": 1344,
+        "n_per_seed": 448,
+        "ours_accuracy": 61.607142857142854,
+        "ours_correct": 828
+      },
+      {
+        "baseline_accuracy": 95.12256760171847,
+        "baseline_correct": 3764,
+        "dataset": "gsm8k",
+        "delta_correct": 6,
+        "delta_pp": 0.1516300227445034,
+        "evaluations_per_arm": 3957,
+        "n_per_seed": 1319,
+        "ours_accuracy": 95.27419762446297,
+        "ours_correct": 3770
+      },
+      {
+        "baseline_accuracy": 97.93333333333334,
+        "baseline_correct": 1469,
+        "dataset": "math500",
+        "delta_correct": 3,
+        "delta_pp": 0.2,
+        "evaluations_per_arm": 1500,
+        "n_per_seed": 500,
+        "ours_accuracy": 98.13333333333334,
+        "ours_correct": 1472
+      }
+    ],
+    "seeds": [
+      95021,
+      95022,
+      95023
+    ],
+    "ties": 0,
+    "wins": 5
+  },
+  "selection_rule": "Maximize benchmarks won versus the matched baseline; then maximize equally weighted mean benchmark delta in percentage points; exact ties keep the fixed input-seed combination order.",
+  "source_manifest_sha256": "ea83f2569fdaa2acce0fc5e3b9452d2544cc43cd6837c148651e892cff54334d",
+  "source_status_sha256": "c494881fbd725fd020ce1e841d79b360a0797af964938639c7e1c1b9c858389c"
+}

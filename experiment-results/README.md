@@ -11,6 +11,24 @@ L40S 4 GPU/l40s-2h-v1, PRO 6000 8 GPU/shared-v1, 과거 pilot은 분리한다.
 Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
 Hardware profile: `full-cohort`
 
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `42` · `bfloat16`
+
+Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 70.00% (21/30) | 76.67% (23/30) | +6.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 60.27% (270/448) | 60.94% (273/448) | +0.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gsm8k | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 95.38% (1258/1319) | 95.22% (1256/1319) | -0.15 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 56.67% (17/30) | 60.00% (18/30) | +3.33 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| math500 | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 98.40% (492/500) | 98.00% (490/500) | -0.40 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| mmlu | [changho-argmax-seed42-2026-11-28](changho-argmax-seed42-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 81.26% (11410/14042) | 81.23% (11407/14042) | -0.02 | 8 × RTX PRO 6000 Blackwell | 완료 |
+
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
 Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95021` · `bfloat16`
 
 Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
@@ -86,6 +104,59 @@ Scorer: `8c2da86b956bdb6808005e35073506adb2ec05f60c5c0a794b4bd596342b7c0a` · ev
 | mmlu | [changho-full-2026-11-15](changho-full-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | filtered_futures/argmax | 81.10% (11388/14042) | 80.95% (11367/14042) | -0.15 | 8 × RTX PRO 6000 Blackwell | 완료 |
 | mmlu | [changho-full-2026-11-15](changho-full-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | filtered_futures/lookahead | 81.10% (11388/14042) | 81.39% (11429/14042) | +0.29 | 8 × RTX PRO 6000 Blackwell | 완료 |
 | mmlu | [changho-full-baseline-2026-11-15](changho-full-baseline-2026-11-15/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/204b01c7ee62027115be4d5456bb49acc5d382ed) | plain_ar | 81.10% (11388/14042) | 미측정 | — | 8 × RTX PRO 6000 Blackwell | baseline 완료 · ours 미측정 |
+
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95022` · `bfloat16`
+
+Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 60.00% (18/30) | 76.67% (23/30) | +16.67 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 62.72% (281/448) | 59.82% (268/448) | -2.90 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gsm8k | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 95.38% (1258/1319) | 94.84% (1251/1319) | -0.53 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 50.00% (15/30) | 60.00% (18/30) | +10.00 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| math500 | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 98.00% (490/500) | 98.20% (491/500) | +0.20 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| mmlu | [changho-argmax-seed95022-2026-11-28](changho-argmax-seed95022-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 81.25% (11409/14042) | 81.67% (11468/14042) | +0.42 | 8 × RTX PRO 6000 Blackwell | 완료 |
+
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95023` · `bfloat16`
+
+Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 66.67% (20/30) | 76.67% (23/30) | +10.00 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 59.82% (268/448) | 62.72% (281/448) | +2.90 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gsm8k | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 94.62% (1248/1319) | 95.38% (1258/1319) | +0.76 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 53.33% (16/30) | 50.00% (15/30) | -3.33 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| math500 | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 98.00% (490/500) | 98.20% (491/500) | +0.20 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| mmlu | [changho-argmax-multiseed-2026-11-28](changho-argmax-multiseed-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 81.34% (11422/14042) | 81.47% (11440/14042) | +0.13 | 8 × RTX PRO 6000 Blackwell | 완료 |
+
+## full-v1
+
+Manifest SHA256: `fa8feb36a037f8bcb4a16a46349c36fef050dabddcc232e5406a2d4733e02c55`
+Hardware profile: `full-cohort`
+
+Model: `Qwen/Qwen3-4B-Thinking-2507@768f209d9ea81521153ed38c47d515654e938aea` · backend `vllm` · seed `95024` · `bfloat16`
+
+Scorer: `544e8653b5167cbdd85010401c4214292753eaf4da70d006833369f6c6fd739a` · evaluation settings: `36c329411fce12def62776326e9418ea92b5ac5b656231b38d30d7d7f1e48032`
+
+| Dataset | 제출 / 코드 | 방법 | Baseline (일반 AR) | Ours | Δ %p | GPU | 검증 |
+|---|---|---|---:|---:|---:|---|---|
+| aime25 | [changho-argmax-seed95024-2026-11-28](changho-argmax-seed95024-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 76.67% (23/30) | 66.67% (20/30) | -10.00 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gpqa | [changho-argmax-seed95024-2026-11-28](changho-argmax-seed95024-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 61.83% (277/448) | 57.59% (258/448) | -4.24 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| gsm8k | [changho-argmax-seed95024-2026-11-28](changho-argmax-seed95024-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 94.69% (1249/1319) | 95.68% (1262/1319) | +0.99 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| hmmt25 | [changho-argmax-seed95024-2026-11-28](changho-argmax-seed95024-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 46.67% (14/30) | 50.00% (15/30) | +3.33 | 8 × RTX PRO 6000 Blackwell | 완료 |
+| math500 | [changho-argmax-seed95024-2026-11-28](changho-argmax-seed95024-2026-11-28/method.md) / [code](https://github.com/yucheon6000/lost-token/tree/6d83f6789d471fc3960492c7b17d5bbab03a54af) | argmax/multiseed | 98.00% (490/500) | 97.40% (487/500) | -0.60 | 8 × RTX PRO 6000 Blackwell | 완료 |
 
 ## l40s-2h-v1
 
