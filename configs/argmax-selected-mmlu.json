@@ -1,0 +1,11 @@
+{
+  "protocol": "argmax-selected-three-mmlu-v1",
+  "seeds": [95021, 95022, 95023],
+  "historical_seed": 95021,
+  "benchmarks": ["mmlu"],
+  "cohort": "full-v1",
+  "primary_analysis": "new seeds only; historical seed reported separately",
+  "method": "filtered_futures/argmax",
+  "arms": ["baseline", "ours"],
+  "selection_policy": "Keep the three seeds selected from the five non-MMLU benchmarks; never reselect using MMLU results"
+}
